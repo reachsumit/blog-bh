@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Sumit&#39;s Diary</title>
-    <link>https:///reachsumit.github.io/blog-bh/categories/</link>
+    <link>http://blog.reachsumit.com/categories/</link>
     <description>Recent content in Categories on Sumit&#39;s Diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
     <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster>
     
-	<atom:link href="https:///reachsumit.github.io/blog-bh/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.reachsumit.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
