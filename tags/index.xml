@@ -2,58 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Sumit&#39;s Diary</title>
-    <link>http://blog.reachsumit.com/tags/</link>
+    <link>https://blog.reachsumit.com/tags/</link>
     <description>Recent content in Tags on Sumit&#39;s Diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
     <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster>
     <lastBuildDate>Fri, 03 Jul 2020 12:17:39 -0700</lastBuildDate>
     
-	<atom:link href="http://blog.reachsumit.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.reachsumit.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>start</title>
-      <link>http://blog.reachsumit.com/tags/start/</link>
+      <link>https://blog.reachsumit.com/tags/start/</link>
       <pubDate>Fri, 03 Jul 2020 12:17:39 -0700</pubDate>
       <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
-      <guid>http://blog.reachsumit.com/tags/start/</guid>
+      <guid>https://blog.reachsumit.com/tags/start/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tag1</title>
-      <link>http://blog.reachsumit.com/tags/tag1/</link>
+      <link>https://blog.reachsumit.com/tags/tag1/</link>
       <pubDate>Fri, 03 Jul 2020 12:17:39 -0700</pubDate>
       <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
-      <guid>http://blog.reachsumit.com/tags/tag1/</guid>
+      <guid>https://blog.reachsumit.com/tags/tag1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tag2</title>
-      <link>http://blog.reachsumit.com/tags/tag2/</link>
+      <link>https://blog.reachsumit.com/tags/tag2/</link>
       <pubDate>Fri, 03 Jul 2020 12:17:39 -0700</pubDate>
       <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
-      <guid>http://blog.reachsumit.com/tags/tag2/</guid>
+      <guid>https://blog.reachsumit.com/tags/tag2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>example</title>
-      <link>http://blog.reachsumit.com/tags/example/</link>
+      <link>https://blog.reachsumit.com/tags/example/</link>
       <pubDate>Fri, 20 Feb 2015 00:00:00 +0000</pubDate>
       <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
-      <guid>http://blog.reachsumit.com/tags/example/</guid>
+      <guid>https://blog.reachsumit.com/tags/example/</guid>
       <description></description>
     </item>
     
     <item>
       <title>markdown</title>
-      <link>http://blog.reachsumit.com/tags/markdown/</link>
+      <link>https://blog.reachsumit.com/tags/markdown/</link>
       <pubDate>Fri, 20 Feb 2015 00:00:00 +0000</pubDate>
       <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
-      <guid>http://blog.reachsumit.com/tags/markdown/</guid>
+      <guid>https://blog.reachsumit.com/tags/markdown/</guid>
       <description></description>
     </item>
     
