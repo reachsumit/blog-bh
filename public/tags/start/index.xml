@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>start on Sumit&#39;s Diary</title>
+    <link>https:///reachsumit.github.io/blog-bh/tags/start/</link>
+    <description>Recent content in start on Sumit&#39;s Diary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
+    <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster>
+    <lastBuildDate>Fri, 03 Jul 2020 12:17:39 -0700</lastBuildDate>
+    
+	<atom:link href="https:///reachsumit.github.io/blog-bh/tags/start/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My First Post</title>
+      <link>https:///reachsumit.github.io/blog-bh/posts/my-first-post/</link>
+      <pubDate>Fri, 03 Jul 2020 12:17:39 -0700</pubDate>
+      <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
+      <guid>https:///reachsumit.github.io/blog-bh/posts/my-first-post/</guid>
+      <description>This is heading 1 Hello world! You&amp;rsquo;re online now!!
+yo yo. what&amp;rsquo;s up boo! :card_index_dividers:what the shit!
+👇
+I&amp;rsquo;m not sure how long of a text is kept from the body to the front page for previews.
+{{ $related := .Site.RegularPages.Related . }}
+👆
+So, probably I should keep writing and see if it cuts down at some point. Hopefully it does otherwise the page would have bombardment of text.</description>
+    </item>
+    
+    <item>
+      <title>My Second Post</title>
+      <link>https:///reachsumit.github.io/blog-bh/posts/my-second.post/</link>
+      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
+      <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
+      <guid>https:///reachsumit.github.io/blog-bh/posts/my-second.post/</guid>
+      <description>This is heading 2 Hello world! You&amp;rsquo;re second post of mine!!
+yo yo. what&amp;rsquo;s up scond page! :card_index_dividers:
+👇
+{{ $related := .Site.RegularPages.Related . }}
+👆
+This is the content (hidden until clicked).</description>
+    </item>
+    
+  </channel>
+</rss>

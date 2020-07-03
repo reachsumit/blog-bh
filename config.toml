@@ -1,0 +1,114 @@
+baseurl = "https:/reachsumit.github.io/blog-bh"
+DefaultContentLanguage = "en"
+title = "Sumit's Diary"
+theme = "beautifulhugo"
+metaDataFormat = "yaml"
+#pygmentsStyle = "trac"
+#pygmentsUseClasses = true
+#pygmentsCodeFences = true
+#pygmentsCodefencesGuessSyntax = true
+#pygmentsUseClassic = true
+#pygmentOptions = "linenos=inline"
+disqusShortname = "reachsumit-blog"
+googleAnalytics = "UA-171612692-1"
+
+[Params]
+  homeTitle = "Sumit's Diary" # Set a different text for the header on the home page
+  subtitle = "Hello World!"
+  mainSections = ["post","posts"]
+  logo = "https://image.freepik.com/free-vector/young-man-head-with-beard-avatar-character_24877-36786.jpg" # Expecting square dimensions
+  favicon = "img/favicon.ico"
+  dateFormat = "January 2, 2006"
+  commit = false
+  rss = true
+  comments = true
+  readingTime = true
+#  wordCount = true
+  useHLJS = true
+  socialShare = true
+  delayDisqus = true
+  showRelatedPosts = true
+  hideAuthor = true
+  gcse = "003719148038536084026:jjxece69kgq" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+
+#[[Params.bigimg]]
+#  src = "img/triangle.jpg"
+#  desc = "Triangle"
+#[[Params.bigimg]]
+#  src = "img/sphere.jpg"
+#  desc = "Sphere"
+#  # position: see values of CSS background-position.
+#  position = "center top"
+#[[Params.bigimg]]
+#  src = "img/hexagon.jpg"
+#  desc = "Hexagon"
+
+[Author]
+  name = "Sumit Kumar"
+  website = "reachsumit.com"
+  email = "sam.sumitkumar@gmail.com"
+#  facebook = "username"
+  github = "reachsumit"
+#  gitlab = "username"
+#  bitbucket = "username"
+  twitter = "reachsumit"
+#  reddit = "username"
+  linkedin = "reachsumit"
+#  xing = "username"
+#  stackoverflow = "users/XXXXXXX/username"
+#  snapchat = "username"
+  instagram = "reachsumit"
+#  youtube = "user/username" # or channel/channelname
+#  soundcloud = "username"
+#  spotify = "username"
+#  bandcamp = "username"
+#  itchio = "username"
+#  vk = "username"
+#  paypal = "username"
+#  telegram = "username"
+#  500px = "username"
+#  codepen = "username"
+#  mastodon = "url"
+  kaggle = "reachsumit"
+#  weibo = "username"
+#  slack = "username"
+
+
+
+[[menu.main]]
+    name = "Blog"
+    url = ""
+    weight = 1
+
+[[menu.main]]
+    name = "About"
+    url = "page/about/"
+    weight = 2
+
+#[[menu.main]]
+#    identifier = "samples"
+#    name = "Samples"
+#    weight = 2
+
+#[[menu.main]]
+#    parent = "samples"
+#    name = "Big Image Sample"
+#    url = "post/2017-03-07-bigimg-sample"
+#    weight = 1
+
+#[[menu.main]]
+#    parent = "samples"
+#    name = "Math Sample"
+#    url = "post/2017-03-05-math-sample"
+#    weight = 2
+
+#[[menu.main]]
+#    parent = "samples"
+#    name = "Code Sample"
+#    url = "post/2016-03-08-code-sample"
+#    weight = 3
+
+[[menu.main]]
+    name = "Tags"
+    url = "tags"
+    weight = 3
