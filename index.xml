@@ -19,11 +19,10 @@
       <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
       <guid>https://blog.reachsumit.com/posts/my-first-post/</guid>
       <description>This is heading 1 Hello world! You&amp;rsquo;re online now!!
-yo yo. what&amp;rsquo;s up boo! :card_index_dividers:what the shit!
+Lorem ipsum dolor sit amet. :card_index_dividers: Does this work?
 👇
 I&amp;rsquo;m not sure how long of a text is kept from the body to the front page for previews.
 {{ $related := .Site.RegularPages.Related . }}
-👆
 So, probably I should keep writing and see if it cuts down at some point. Hopefully it does otherwise the page would have bombardment of text.</description>
     </item>
     
@@ -33,18 +32,13 @@ So, probably I should keep writing and see if it cuts down at some point. Hopefu
       <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
       <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
       <guid>https://blog.reachsumit.com/posts/my-second.post/</guid>
-      <description>This is heading 2 Hello world! You&amp;rsquo;re second post of mine!!
-yo yo. what&amp;rsquo;s up scond page! :card_index_dividers:
-👇
-{{ $related := .Site.RegularPages.Related . }}
-👆
-This is the content (hidden until clicked).</description>
+      <description>This is heading 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis porttitor quam. Aenean feugiat hendrerit ipsum, quis pharetra turpis cursus sit amet. Duis vel dui metus. Vivamus eget lectus nec metus euismod consectetur. Fusce cursus ipsum purus, non ultrices sapien fermentum non. Donec rhoncus et ex eu egestas. Cras ac felis libero. Nulla nec sodales libero. Etiam metus mauris, blandit nec cursus non, vulputate ac elit.</description>
     </item>
     
     <item>
       <title>Test markdown</title>
       <link>https://blog.reachsumit.com/posts/2015-02-20-test-markdown/</link>
-      <pubDate>Fri, 20 Feb 2015 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
       <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
       <guid>https://blog.reachsumit.com/posts/2015-02-20-test-markdown/</guid>
       <description>You can write regular markdown here and Hugo will automatically convert it to a nice webpage. I strongly encourage you to take 5 minutes to learn how to write in markdown - it&amp;rsquo;ll teach you how to transform regular text into bold/italics/headings/tables/etc.
@@ -59,9 +53,9 @@ Here is a secondary heading Here&amp;rsquo;s a useless table:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
       <guid>https://blog.reachsumit.com/page/about/</guid>
-      <description>My name is Inigo Montoya. I have the following qualities:
- I rock a great mustache I&amp;rsquo;m extremely loyal to my family  What else do you need?
-my history To be honest, I&amp;rsquo;m having some trouble remembering right now, so why don&amp;rsquo;t you just watch my movie and it will answer all your questions.</description>
+      <description>‎‎‎‎‎‏‏‎ ‎
+Brief My name is Sumit Kumar. I love learning new things. I have more than 8 years of work exeperience in Software Development, Machine Learning/Deep Learning research. Currently I work as a Research Scientist II for Alexa AI at Amazon, Seattle. And, my area of research focus is Natural Language Understanding.
+Long Form 😄 Sumit joined the University of Chicago’s Graham School as a full-time, international student in the autumn 2017 cohort.</description>
     </item>
     
   </channel>

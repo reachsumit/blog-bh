@@ -57,9 +57,9 @@
     "name" : "Sumit Kumar"
   },
   "headline": "My First Post",
-  "description" : "This is heading 1 Hello world! You\u0026rsquo;re online now!!\nyo yo. what\u0026rsquo;s up boo! :card_index_dividers:what the shit!\n👇\nI\u0026rsquo;m not sure how long of a text is kept from the body to the front page for previews.\n{{ $related := .Site.RegularPages.Related . }}\n👆\nSo, probably I should keep writing and see if it cuts down at some point. Hopefully it does otherwise the page would have bombardment of text.",
+  "description" : "This is heading 1 Hello world! You\u0026rsquo;re online now!!\nLorem ipsum dolor sit amet. :card_index_dividers: Does this work?\n👇\nI\u0026rsquo;m not sure how long of a text is kept from the body to the front page for previews.\n{{ $related := .Site.RegularPages.Related . }}\nSo, probably I should keep writing and see if it cuts down at some point. Hopefully it does otherwise the page would have bombardment of text.",
   "inLanguage" : "en",
-  "wordCount":  73 ,
+  "wordCount":  76 ,
   "datePublished" : "2020-07-03T12:17:39",
   "dateModified" : "2020-07-03T12:17:39",
   "image" : "https:\/\/image.freepik.com\/free-vector\/young-man-head-with-beard-avatar-character_24877-36786.jpg",
@@ -138,13 +138,22 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="About" href="/page/about/">About</a>
+              <a title="Tags" href="/tags">Tags</a>
             </li>
           
         
           
-            <li>
-              <a title="Tags" href="/tags">Tags</a>
+            <li class="navlinks-container">
+              <a class="navlinks-parent">About</a>
+              <div class="navlinks-children">
+                
+                  <a href="/page/about/">About Me</a>
+                
+                  <a href="https://medium.com/@sumit.arora">My Medium.com blog</a>
+                
+                  <a href="https://reachsumit.com">More About Sumit</a>
+                
+              </div>
             </li>
           
         
@@ -287,13 +296,13 @@ if (!doNotTrack) {
       <article role="main" class="blog-post">
         <h1 id="this-is-heading-1">This is heading 1</h1>
 <p>Hello world! You&rsquo;re online now!!</p>
-<p>yo yo. what&rsquo;s up boo! :card_index_dividers:what the shit!</p>
+<p>Lorem ipsum dolor sit amet. :card_index_dividers: Does this work?</p>
 <p>👇</p>
 <p>I&rsquo;m not sure how long of a text is kept from the body to the front page for previews.</p>
 <p>{{ $related := .Site.RegularPages.Related . }}</p>
-<p>👆</p>
 <p>So, probably I should keep writing and see if it cuts down at some point. Hopefully it does otherwise the page would have bombardment of text.</p>
 <p>It stopped here.</p>
+<p>Or did it?</p>
 
 
         
@@ -502,10 +511,7 @@ if (!doNotTrack) {
           
         </p>
         
-        <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.73.0</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
-          
-        </p>
+		
       </div>
     </div>
   </div>

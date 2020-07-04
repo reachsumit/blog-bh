@@ -63,8 +63,8 @@ Here is a secondary heading Here&rsquo;s a useless table:
   "description" : "You can write regular markdown here and Hugo will automatically convert it to a nice webpage. I strongly encourage you to take 5 minutes to learn how to write in markdown - it\u0026rsquo;ll teach you how to transform regular text into bold\/italics\/headings\/tables\/etc.\nHere is some bold text\nHere is a secondary heading Here\u0026rsquo;s a useless table:\n   Number Next number Previous number     Five Six Four   Ten Eleven Nine   Seven Eight Six   Two Three One    How about a yummy crepe?",
   "inLanguage" : "en",
   "wordCount":  95 ,
-  "datePublished" : "2015-02-20T00:00:00",
-  "dateModified" : "2015-02-20T00:00:00",
+  "datePublished" : "2020-07-03T00:00:00",
+  "dateModified" : "2020-07-03T00:00:00",
   "image" : "https:\/\/image.freepik.com\/free-vector\/young-man-head-with-beard-avatar-character_24877-36786.jpg",
   "keywords" : [ "example, markdown" ],
   "mainEntityOfPage" : "https:\/\/blog.reachsumit.com\/posts\/2015-02-20-test-markdown\/",
@@ -144,13 +144,22 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="About" href="/page/about/">About</a>
+              <a title="Tags" href="/tags">Tags</a>
             </li>
           
         
           
-            <li>
-              <a title="Tags" href="/tags">Tags</a>
+            <li class="navlinks-container">
+              <a class="navlinks-parent">About</a>
+              <div class="navlinks-children">
+                
+                  <a href="/page/about/">About Me</a>
+                
+                  <a href="https://medium.com/@sumit.arora">My Medium.com blog</a>
+                
+                  <a href="https://reachsumit.com">More About Sumit</a>
+                
+              </div>
             </li>
           
         
@@ -524,10 +533,7 @@ foo(3)
           
         </p>
         
-        <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.73.0</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
-          
-        </p>
+		
       </div>
     </div>
   </div>
