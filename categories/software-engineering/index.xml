@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>software engineering - Category - Sumit&#39;s Diary</title>
+        <link>https://blog.reachsumit.com/categories/software-engineering/</link>
+        <description>software engineering - Category - Sumit&#39;s Diary</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 14 Jul 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/software-engineering/" rel="self" type="application/rss+xml" /><item>
+    <title>Skip List Data Structure - Explained!</title>
+    <link>https://blog.reachsumit.com/skip-list/</link>
+    <pubDate>Tue, 14 Jul 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.reachsumit.com/skip-list/</guid>
+    <description><![CDATA[<p>Analyzing randomness is hard. So why would you want to choose a probabilistic data structure in your system implementation? Allow me to explain!</p>]]></description>
+</item></channel>
+</rss>

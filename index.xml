@@ -1,36 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Sumit&#39;s Diary</title>
-    <link>https://blog.reachsumit.com/</link>
-    <description>Recent content on Sumit&#39;s Diary</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
-    <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster>
-    <lastBuildDate>Tue, 14 Jul 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.reachsumit.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Skip List Data Structure - Explained!</title>
-      <link>https://blog.reachsumit.com/posts/skip-list/</link>
-      <pubDate>Tue, 14 Jul 2020 00:00:00 +0000</pubDate>
-      <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
-      <guid>https://blog.reachsumit.com/posts/skip-list/</guid>
-      <description>Why am I writing about Skip Lists? Skip List is one of those data structures that I have seen briefly mentioned in academic books; but never seen it being used in academic or industrial projects (or in LeetCode questions 🙂 ). However I was pleasantly surprised to see Skip List being one of the major contributors behind Twitter&amp;rsquo;s recent success in reducing their search indexing latency by more than 90% (absolute).</description>
-    </item>
-    
-    <item>
-      <title>About me</title>
-      <link>https://blog.reachsumit.com/page/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
-      <guid>https://blog.reachsumit.com/page/about/</guid>
-      <description>‎‎‎‎‎‏‏‎ ‎
-Brief My name is Sumit Kumar. I love learning new things. I have more than 8 years of work exeperience in Software Development, Machine Learning/Deep Learning research. Currently I work as a Research Scientist II for Alexa AI at Amazon, Seattle. And, my area of research focus is Natural Language Understanding.
-Long Form 😄 Sumit joined the University of Chicago’s Graham School as a full-time, international student in the autumn 2017 cohort.</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Sumit&#39;s Diary</title>
+        <link>https://blog.reachsumit.com/</link>
+        <description>Welcome to Sumit Kumar&#39;s Personal Blog!</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 14 Jul 2020 00:00:00 &#43;0000</lastBuildDate>
+            <atom:link href="https://blog.reachsumit.com/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Skip List Data Structure - Explained!</title>
+    <link>https://blog.reachsumit.com/skip-list/</link>
+    <pubDate>Tue, 14 Jul 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.reachsumit.com/skip-list/</guid>
+    <description><![CDATA[<p>Analyzing randomness is hard. So why would you want to choose a probabilistic data structure in your system implementation? Allow me to explain!</p>]]></description>
+</item></channel>
 </rss>
