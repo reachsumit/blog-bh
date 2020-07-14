@@ -7,53 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
     <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster>
-    <lastBuildDate>Fri, 03 Jul 2020 12:17:39 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.reachsumit.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>start</title>
-      <link>https://blog.reachsumit.com/tags/start/</link>
-      <pubDate>Fri, 03 Jul 2020 12:17:39 -0700</pubDate>
+      <title>data structure</title>
+      <link>https://blog.reachsumit.com/tags/data-structure/</link>
+      <pubDate>Tue, 14 Jul 2020 00:00:00 +0000</pubDate>
       <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
-      <guid>https://blog.reachsumit.com/tags/start/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tag1</title>
-      <link>https://blog.reachsumit.com/tags/tag1/</link>
-      <pubDate>Fri, 03 Jul 2020 12:17:39 -0700</pubDate>
-      <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
-      <guid>https://blog.reachsumit.com/tags/tag1/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tag2</title>
-      <link>https://blog.reachsumit.com/tags/tag2/</link>
-      <pubDate>Fri, 03 Jul 2020 12:17:39 -0700</pubDate>
-      <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
-      <guid>https://blog.reachsumit.com/tags/tag2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>example</title>
-      <link>https://blog.reachsumit.com/tags/example/</link>
-      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
-      <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
-      <guid>https://blog.reachsumit.com/tags/example/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>markdown</title>
-      <link>https://blog.reachsumit.com/tags/markdown/</link>
-      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
-      <author>sam.sumitkumar@gmail.com (Sumit Kumar)</author>
-      <guid>https://blog.reachsumit.com/tags/markdown/</guid>
+      <guid>https://blog.reachsumit.com/tags/data-structure/</guid>
       <description></description>
     </item>
     
