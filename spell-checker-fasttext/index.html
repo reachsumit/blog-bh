@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/spell-checker-fasttext\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "embeddings","wordcount":  2313 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "embeddings","wordcount":  2336 ,
         "url": "https:\/\/blog.reachsumit.com\/spell-checker-fasttext\/","datePublished": "2020-07-18T00:00:00+00:00","dateModified": "2020-07-18T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -104,7 +104,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Building a spell-checker with FastText word embeddings</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/nlp/"><i class="far fa-folder fa-fw"></i>NLP</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-18">2020-07-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2313 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-18">2020-07-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2336 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;11 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -498,7 +498,7 @@ found replacement: &lt;li&gt;&lt;strong&gt;Style for word: earlyest<br>
     <span class="n">spelltest</span><span class="p">(</span><span class="n">Testset</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;spell-testset2.txt&#39;</span><span class="p">)),</span> <span class="n">model</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>There are a couple of changes in this code. We are training the model with specific hyper-parameters, and the output traces will inform us what went wrong in our decisions.</p>
+</div><p>There are a couple of changes in this code. We are training the model with specific hyper-parameters, and the output traces will inform us what went wrong in our decisions. Note that <a href="https://github.com/facebookresearch/fastText/issues/776" target="_blank" rel="noopener noreffer">FastText doesn&rsquo;t provide an option to set seed</a> in the above implementation, so the results may vary by 1%-2% on every execution.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -523,7 +523,7 @@ Progress: 100.0% words/sec/thread:	<span class="m">20348</span> lr: 0.000000 avg
 69% of <span class="m">400</span> correct at <span class="m">48</span> words per second.
 </code></pre></td></tr></table>
 </div>
-</div><p>This is a big improvement! 😄 We have almost the same accuracy as Norvig&rsquo;s spell-corrector. :happy:</p>
+</div><p>This is a big improvement! 😄 We have almost the same accuracy as Norvig&rsquo;s spell-corrector.</p>
 <p>Here are Norvig&rsquo;s results for comparison.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
