@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/spell-checker-fasttext\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "embeddings","wordcount":  2342 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "embeddings","wordcount":  2349 ,
         "url": "https:\/\/blog.reachsumit.com\/spell-checker-fasttext\/","datePublished": "2020-07-18T00:00:00+00:00","dateModified": "2020-07-18T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -104,8 +104,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Building a spell-checker with FastText word embeddings</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/nlp/"><i class="far fa-folder fa-fw"></i>NLP</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-18">2020-07-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2342 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;11 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-18">2020-07-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2349 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -556,7 +556,7 @@ Edited goegraphicaly to geographical, but the correct word is: geographically<br
 &hellip;</div>
         </div>
     </div>
-<p>As you can see our trained model is producing dictionary based words as edited output. Maybe with more contextual test set and more training data, we can come up with an even better strategy to understand context in a full sentence and produce the correct word as the edit output.</p>
+<p>As you can see our trained model is nicely producing dictionary-based words as output. It&rsquo;s likely that with contextual training approaches and evaluations, along with more training data, we can come up with an even better approaches that would understand context in a full sentence and produce the correct word as the spell-checked output.</p>
 <p>Let&rsquo;s also compare the model with the pretrained model from method one.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -568,9 +568,9 @@ Edited goegraphicaly to geographical, but the correct word is: geographically<br
 <span class="p">[(</span><span class="mf">0.96987646</span><span class="p">,</span> <span class="s1">&#39;incorrect&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.937522232</span><span class="p">,</span> <span class="s1">&#39;correct&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.91315931</span><span class="p">,</span> <span class="s1">&#39;corrects&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.90868479</span><span class="p">,</span> <span class="s1">&#39;correcting&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.89917653</span><span class="p">,</span> <span class="s1">&#39;corrective&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.89813524</span><span class="p">,</span> <span class="s1">&#39;contractor&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.89806741</span><span class="p">,</span> <span class="s1">&#39;correction&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.896661</span><span class="p">,</span> <span class="s1">&#39;disconcert&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.894903957</span><span class="p">,</span> <span class="s1">&#39;contradict&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.8944035768</span><span class="p">,</span> <span class="s1">&#39;concurrent&#39;</span><span class="p">))]</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>The trained model&rsquo;s outputs are much more sensible now and the topmost word is also the word that we were actually looking for.</p>
+</div><p>The trained model&rsquo;s outputs are much more sensible now and the topmost word is also the word that we are actually looking for.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Our model was able to match Peter Norvig&rsquo;s spell-corrector. 😊 Looking at the failing cases, we realize that the model could do even better with more training data and contextual evaluation during testing.</p></div><div class="post-footer" id="post-footer">
+<p>Our model was able to match Peter Norvig&rsquo;s spell-corrector. 😊 Looking at the failing cases, we realize that the model could potentially do even better with more training data and a contextual training and evaluation strategy.</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
