@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/spell-checker-fasttext\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "embeddings","wordcount":  2336 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "embeddings","wordcount":  2342 ,
         "url": "https:\/\/blog.reachsumit.com\/spell-checker-fasttext\/","datePublished": "2020-07-18T00:00:00+00:00","dateModified": "2020-07-18T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -104,7 +104,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Building a spell-checker with FastText word embeddings</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/nlp/"><i class="far fa-folder fa-fw"></i>NLP</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-18">2020-07-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2336 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-18">2020-07-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2342 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;11 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -211,7 +211,7 @@ Figure: example subword representations</div>
         </div>
     </div>
 <h3 id="dataset--benchmark">Dataset &amp; Benchmark</h3>
-<p>For fun, let&rsquo;s build and evaluate our spell-checker on the same training and testing data as this classic article by <a href="https://norvig.com/" target="_blank" rel="noopener noreffer">Peter Norvig</a>, &ldquo;<a href="https://norvig.com/spell-correct.html" target="_blank" rel="noopener noreffer">How to write a Spelling Corrector</a>&rdquo;. In this article, Norvig build a simple spelling corrector based on basic probability theory. Let&rsquo;s see how does this FastText based approach hold up against it.</p>
+<p>For fun, let&rsquo;s build and evaluate our spell-checker on the same training and testing data as this classic article: &ldquo;<a href="https://norvig.com/spell-correct.html" target="_blank" rel="noopener noreffer">How to write a Spelling Corrector</a>&rdquo; by <a href="https://norvig.com/" target="_blank" rel="noopener noreffer">Peter Norvig</a> , Director of Research at Google.  In this article, Norvig build a simple spelling corrector based on basic probability theory. Let&rsquo;s see how does this FastText based approach hold up against it.</p>
 <h3 id="installing-fasttext">Installing FastText</h3>
 <p>Installation for FastText is straightforward. FastText can be used as a command line tool or via Python client. <a href="https://fasttext.cc/docs/en/support.html" target="_blank" rel="noopener noreffer">Click here</a> to access the latest installation instructions for both approaches.</p>
 <h3 id="method-1-using-pre-trained-word-vectors">Method 1: Using Pre-trained Word Vectors</h3>
