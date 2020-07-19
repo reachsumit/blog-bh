@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>embeddings - Tag - Sumit&#39;s Diary</title>
+        <link>https://blog.reachsumit.com/tags/embeddings/</link>
+        <description>embeddings - Tag - Sumit&#39;s Diary</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 18 Jul 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/embeddings/" rel="self" type="application/rss+xml" /><item>
+    <title>Building a spell-checker with FastText word embeddings</title>
+    <link>https://blog.reachsumit.com/spell-checker-fasttext/</link>
+    <pubDate>Sat, 18 Jul 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.reachsumit.com/spell-checker-fasttext/</guid>
+    <description><![CDATA[<p>Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&rsquo;s spell-corrector? Let&rsquo;s find out!</p>]]></description>
+</item></channel>
+</rss>
