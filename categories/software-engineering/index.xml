@@ -5,7 +5,7 @@
         <description>Software Engineering - Category - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
             <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/software-engineering/" rel="self" type="application/rss+xml" /><item>
-    <title>How Twitter Improved Search Index Latency</title>
+    <title>How Twitter Reduced Search Indexing Latency to One Second</title>
     <link>https://blog.reachsumit.com/twitter-search-redesign/</link>
     <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
