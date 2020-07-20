@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>How Twitter Improved Search Index Latency - Sumit&#39;s Diary</title><meta name="Description" content="In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second. So, what did they do to get such impressive gains? Allow me to explain!"><meta property="og:title" content="How Twitter Improved Search Index Latency" />
+<meta property="og:description" content="In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second. So, what did they do to get such impressive gains? Allow me to explain!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.reachsumit.com/twitter-search-redesign/" />
+<meta property="og:image" content="https://blog.reachsumit.com/logo.png"/>
+<meta property="article:published_time" content="2020-07-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-07-19T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/logo.png"/>
+
+<meta name="twitter:title" content="How Twitter Improved Search Index Latency"/>
+<meta name="twitter:description" content="In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second. So, what did they do to get such impressive gains? Allow me to explain!"/>
+<meta name="application-name" content="Sumit&#39;s Diary">
+<meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.reachsumit.com/twitter-search-redesign/" /><link rel="prev" href="https://blog.reachsumit.com/spell-checker-fasttext/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "How Twitter Improved Search Index Latency",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.reachsumit.com\/twitter-search-redesign\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "design, data structure","wordcount":  1974 ,
+        "url": "https:\/\/blog.reachsumit.com\/twitter-search-redesign\/","datePublished": "2020-07-19T00:00:00+00:00","dateModified": "2020-07-19T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Sumit Kumar"
+            },"description": "In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second. So, what did they do to get such impressive gains? Allow me to explain!"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Sumit&#39;s Diary"><span id="id-3" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search this blog" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Sumit&#39;s Diary"><span id="id-4" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search this blog" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">How Twitter Improved Search Index Latency</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/software-engineering/"><i class="far fa-folder fa-fw"></i>software engineering</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-19">2020-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1974 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#twitters-search-architecture">Twitter&rsquo;s Search Architecture</a>
+      <ul>
+        <li><a href="#lucene-basics">Lucene Basics</a></li>
+      </ul>
+    </li>
+    <li><a href="#changes-in-ingestion-pipeline">Changes in ingestion pipeline</a></li>
+    <li><a href="#changes-in-data-structures-and-algorithm">Changes in data structures and algorithm</a>
+      <ul>
+        <li><a href="#eliminating-sorting-step">Eliminating Sorting Step</a></li>
+        <li><a href="#optimizing-operations-on-posting-lists">Optimizing Operations on Posting Lists</a>
+          <ul>
+            <li><a href="#twitters-skip-list-implementation">Twitter&rsquo;s Skip List implementation</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#additional-details">Additional Details</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
+<p>So, what did they do to get such impressive gains? Allow me to explain!</p>
+<h2 id="twitters-search-architecture">Twitter&rsquo;s Search Architecture</h2>
+<p>Designing a search system for Twitter is an incredibly complex task. Twitter has <em><cite>more the 145 million daily users <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite></em> and <em><cite>over half a billion tweets are sent each day <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite></em>. Their search system gets hundreds of thousands of search queries per second. For any search system indexing latency is an important metric. The indexing latency can be defined as the amount of time it takes for new information (&ldquo;tweets&rdquo; in this case) to be available in the search index. And as you can imagine, with a large amount of data generated every day, we have an interesting engineering problem at hand.</p>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw"></i>But why is search indexing latency important for Twitter?<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Note that not every service out there needs to have low update their search index quickly. For example, a Costco warehouse could update their search index once every couple of hours or so. For Twitter, however, real-time access to the content can be really important, for cases like following some breaking news, ongoing conversations, delivering timelines etc.</div>
+        </div>
+    </div>
+<p>Before we take a look at what&rsquo;s new, let&rsquo;s first understand how the search workflow looked like at Twitter before these changes took place. In their 2012 paper titled: <cite>&quot;Earlybird: Real-Time Search at Twitter&rdquo; <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></cite>, Twitter released details about its search system project codenamed &ldquo;Earlybird&rdquo;. With Earlybird Twitter adopted their custom implementation of <a href="https://lucene.apache.org/" target="_blank" rel="noopener noreffer">Apache Lucene</a> which was a replacement for Twitter&rsquo;s earlier MySQL-indexes based search algorithm. Some of the enhancements included image/video search support, searchable IndexWriter buffer, efficient relevance based search in time sorted index etc. This enabled Twitter to launch relevance-based product features like ranked home timeline. Although the search was still limited to last x days, but they later added the support for performing archive search on SSD with vanilla Lucene, as shown by the bottom row in the diagram below.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/posts/twitter-search-redesign/search-architecture.png"
+        data-srcset="/img/posts/twitter-search-redesign/search-architecture.png, /img/posts/twitter-search-redesign/search-architecture.png 1.5x, /img/posts/twitter-search-redesign/search-architecture.png 2x"
+        data-sizes="auto"
+        alt="/img/posts/twitter-search-redesign/search-architecture.png"
+        title="Earlybird search architecture" /></p>
+<h3 id="lucene-basics">Lucene Basics</h3>
+<p>Knowing basics of Lucene helps to better understand Twitter&rsquo;s implementation for their search system. Lucene is an open-source search engine library that is completely written in Java and is used by tech companies like LinkedIn, Twitter, Slack, Evernote etc. As you can imagine, we can&rsquo;t afford to search record-by-record on large data specially for a time-sensitive application, we use a Lucene like solution that provides us <a href="https://www.wikiwand.com/en/Inverted_index" target="_blank" rel="noopener noreffer">Inverted Indexes</a>. In information retrieval terminologies, a string is called a &ldquo;term&rdquo; (for example, English words), a sequence of terms is called a &ldquo;field&rdquo; (for example, sentences), a sequence of fields is called  a document (for example, tweets), and a sequence of documents is called an <cite>index <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></cite>.</p>
+<p>Following is an example of inverted index creation, taken from &ldquo;<em>Inverted files for text search engines</em>&rdquo; research <cite>paper <i class="fa fa-book"></i>&nbsp;<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite></p>
+<table>
+<thead>
+<tr>
+<th>document id</th>
+<th>document text</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The old night keeper keeps the keep in the town</td>
+</tr>
+<tr>
+<td>2</td>
+<td>In the big old house in the big old gown</td>
+</tr>
+<tr>
+<td>3</td>
+<td>The house in the town had the big old keep</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Where the old night keeper never did sleep</td>
+</tr>
+<tr>
+<td>5</td>
+<td>The night keeper keeps the keep in the night</td>
+</tr>
+<tr>
+<td>6</td>
+<td>And keeps in the dark and sleeps in the night</td>
+</tr>
+</tbody>
+</table>
+<div id="id-1">Table: Input documents</div>
+<table>
+<thead>
+<tr>
+<th>term‏‏‎ | freq</th>
+<th>inverted list for t</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>and | 1</td>
+<td>&lt;6&gt;</td>
+</tr>
+<tr>
+<td>big | 2</td>
+<td>&lt;2&gt;, &lt;3&gt;</td>
+</tr>
+<tr>
+<td>dark | 1</td>
+<td>&lt;6&gt;</td>
+</tr>
+<tr>
+<td>did | 1</td>
+<td>&lt;4&gt;</td>
+</tr>
+<tr>
+<td>gown | 1</td>
+<td>&lt;2&gt;</td>
+</tr>
+<tr>
+<td>had | 1</td>
+<td>&lt;3&gt;</td>
+</tr>
+<tr>
+<td>house | 2</td>
+<td>&lt;2&gt;, &lt;3&gt;</td>
+</tr>
+<tr>
+<td>in | 5</td>
+<td>&lt;1&gt;, &lt;2&gt;, &lt;3&gt;, &lt;5&gt;, &lt;6&gt;</td>
+</tr>
+<tr>
+<td>keep | 3</td>
+<td>&lt;1&gt;, &lt;3&gt;, &lt;5&gt;</td>
+</tr>
+<tr>
+<td>keeper | 3</td>
+<td>&lt;1&gt;, &lt;4&gt;, &lt;5&gt;</td>
+</tr>
+<tr>
+<td>keeps | 3</td>
+<td>&lt;1&gt;, &lt;5&gt;, &lt;6&gt;</td>
+</tr>
+<tr>
+<td>light | 1</td>
+<td>&lt;6&gt;</td>
+</tr>
+<tr>
+<td>never | 1</td>
+<td>&lt;4&gt;</td>
+</tr>
+<tr>
+<td>night |3</td>
+<td>&lt;1&gt;, &lt;4&gt;, &lt;5&gt;</td>
+</tr>
+<tr>
+<td>old | 4</td>
+<td>&lt;1&gt;, &lt;2&gt;, &lt;3&gt;, &lt;4&gt;</td>
+</tr>
+<tr>
+<td>sleep | 1</td>
+<td>&lt;4&gt;</td>
+</tr>
+<tr>
+<td>sleeps | 1</td>
+<td>&lt;6&gt;</td>
+</tr>
+<tr>
+<td>the | 6</td>
+<td>&lt;1&gt;, &lt;2&gt;, &lt;3&gt;, &lt;4&gt;, &lt;5&gt;, &lt;6&gt;</td>
+</tr>
+<tr>
+<td>town | 2</td>
+<td>&lt;1&gt;, &lt;3&gt;</td>
+</tr>
+<tr>
+<td>where | 1</td>
+<td>&lt;4&gt;</td>
+</tr>
+</tbody>
+</table>
+<div id="id-2">Table: inverted file</div>
+<p>You can use the above inverted index to answer questions like &ldquo;Which documents have the word <em>house</em> in them?&rdquo; Also, note that a term or a document could also be a single word, a conjunction, a phrase or a number. Each row of this index above, maps a term to a <strong>Posting List</strong>. In real implementations, the posting list may also include additional information, such as the position (index) of the term in the document or some other application-specific payload.</p>
+<h2 id="changes-in-ingestion-pipeline">Changes in ingestion pipeline</h2>
+<p>Let&rsquo;s get back to Twitter&rsquo;s ingestion pipeline, which used to look like this:</p>
+<p><figure><a class="lightgallery" href="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/old_ingestion_pipeline.jpg" title="Twitter&amp;rsquo;s ingestion pipeline" data-thumbnail="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/old_ingestion_pipeline.jpg" data-sub-html="<h2>Click to zoom</h2><p>Twitter&amp;rsquo;s ingestion pipeline</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/old_ingestion_pipeline.jpg"
+            data-srcset="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/old_ingestion_pipeline.jpg, https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/old_ingestion_pipeline.jpg 1.5x, https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/old_ingestion_pipeline.jpg 2x"
+            data-sizes="auto"
+            alt="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/old_ingestion_pipeline.jpg" />
+    </a><figcaption class="image-caption">Click to zoom</figcaption>
+    </figure></p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Flaw 1: Synchronous Workflow<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">One major problem with this design is that the Tweet data that we want to index isn&rsquo;t available as soon as the Tweet is created. With ranked Home timeline feature, the timeline needs additional &ldquo;relevance&rdquo; detail about each Tweet. Among other factors, this relevance depends on fields that may not be immediately available. For example, a shortened URL (https://t.co/foo) needs to be expanded to provide more context for ranking, geo-coding resolution might take longer.</div>
+        </div>
+    </div>
+<p><strong>Fix:</strong> Twitter decided to stop waiting for the delayed fields to become available by adding an asynchronous part to their ingestion pipeline.</p>
+<p><figure><a class="lightgallery" href="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/new_ingestion_pipeline.jpg" title="Twitter&amp;rsquo;s new ingestion pipeline" data-thumbnail="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/new_ingestion_pipeline.jpg" data-sub-html="<h2>click to zoom</h2><p>Twitter&amp;rsquo;s new ingestion pipeline</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/new_ingestion_pipeline.jpg"
+            data-srcset="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/new_ingestion_pipeline.jpg, https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/new_ingestion_pipeline.jpg 1.5x, https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/new_ingestion_pipeline.jpg 2x"
+            data-sizes="auto"
+            alt="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/new_ingestion_pipeline.jpg" />
+    </a><figcaption class="image-caption">click to zoom</figcaption>
+    </figure></p>
+<p>Now most of the data will be sent to indexing system as soon as the Tweet is posted. Another update will be sent once the additional information is available. Even though the indexing service doesn&rsquo;t have full information at the beginning, at least for search system we have enough information to fetch results.</p>
+<h2 id="changes-in-data-structures-and-algorithm">Changes in data structures and algorithm</h2>
+<h3 id="eliminating-sorting-step">Eliminating Sorting Step</h3>
+<p>Lucene&rsquo;s vanilla implementation stored document ids using delta encoding, such that the key at an index depends on the previous index. Also, the document ids were generated starting from 0 up to the size of the segment storing those documents (a segment is just a &ldquo;committed&rdquo; i.e. immutable index). This essentially meant that the search could only be performed from left to right, i.e. from the oldest tweet to latest tweet. However, like many other products at Twitter, search is also designed to prioritize recent tweets over the older ones. So, twitter decided to customize this implementation in Earlybird.</p>
+<p>Earlybird diverged from standard Lucene approach and allocated document ids to incoming tweet from high value to low value, i.e. from the {size of the index - 1} to 0. This lets searching algorithm to traverse from latest tweet to oldest tweet and with the possibility of returning early if a client-specified number of hits have been recorded.</p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Flaw 2: Decoupled Search System and Tweet Creation System<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">By design, Tweet creation system at Twitter is decoupled from the search system. Hence the indexing service can&rsquo;t guarantee that the order in which it receives the tweets is also the order of their creation. Hence to fix this, Twitter had to include a buffer in their ingestion pipeline to temporarily store and then sort all of the incoming tweets to the indexing service. This unfortunately adds additional delays in search indexing.</div>
+        </div>
+    </div>
+<p><strong>FIx:</strong> Twitter changed it&rsquo;s ID assignment scheme such that each tweet is given a document ID based on its time of creation. They fit the document id to 31 bits (positive Java Integer), such that 27 bits store the timestamp with microseconds granularity. The rest 4 bits are used as a counter for the all of the tweets received at the same microsecond. Although the probability of such \( 2^4\) events is rare, but all tweets after 16, that are created at the same microsecond precision, would be assigned to the next segment, and would appear slightly out of order in search results, if selected. This means that Twitter can eliminate the need for explicit sorting step and reduce latency even further.</p>
+<h3 id="optimizing-operations-on-posting-lists">Optimizing Operations on Posting Lists</h3>
+<p>For their posting list implementation, Twitter had been using <a href="https://www.wikiwand.com/en/Unrolled_linked_list" target="_blank" rel="noopener noreffer">Unrolled Linked Lists</a>.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/unrolled_linked.png"
+        data-srcset="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/unrolled_linked.png, https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/unrolled_linked.png 1.5x, https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/unrolled_linked.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/unrolled_linked.png"
+        title="Twitter&amp;rsquo;s unrolled linked lists" /></p>
+<p>This implementation had only one writer thread and multiple searcher threads (one per CPU core, with tens of thousands of cores per server) without any locks. Writing would be done only at the head of the list, and the searcher would search starting from the new head pointer or the older head (still, valid) pointer to the end of the list. (notice in the figure above how document id assignment is done from high value to low value.  )</p>
+<p>Unrolled linked lists are cache friendly data structures that also reduce some of the overhead of storing pointer references. However, we can&rsquo;t use them to cost-effectively insert at arbitrary location in the list, they also depend largely upon the assumption that the input will be strictly ordered.</p>
+<p><strong>Fix:</strong> Twitter decided to opt for Skip Lists as the replacement for unrolled linked lists. Skip Lists allow for O(\( \log{n}\)) search and insertions, and also support concurrency. I wrote an <a href="https://blog.reachsumit.com/skip-list/" target="_blank" rel="noopener noreffer">introductory article on Skip Lists here</a>. I highly recommend you to read through the article to better understand the concept behind Skip Lists.</p>
+<h4 id="twitters-skip-list-implementation">Twitter&rsquo;s Skip List implementation</h4>
+<p>Skip Lists are probabilistic data structures, such that after inserting a new node at list \( L_{i} \), we insert the node at the layer \( L_{i+1}\) with some probability. Twitter&rsquo;s found 20% ( \( \frac{1}{5}\) ) is a good tradeoff between space and time complexity (memory used vs. speed).</p>
+<p>In their implementation, Twitter used several optimizations. The implemented the Skip List in a single flat array, such that the &ldquo;next&rdquo; pointer becomes just an index into the array.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/skiplist_index_pointers.png"
+        data-srcset="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/skiplist_index_pointers.png, https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/skiplist_index_pointers.png 1.5x, https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/skiplist_index_pointers.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/engineering/en_us/infrastructure/2020/reducingsearchlatency/skiplist_index_pointers.png"
+        title="Twitter&amp;rsquo;s Skip List" /></p>
+<p>Here&rsquo;s a breakdown of the other optimizations in their Skip List:</p>
+<ol>
+<li>Insertion would simply append the new value at the end of the array, and the corresponding pointer will be updated appropriately after traversing the Skip List. New values at the higher levels will be added with a 20% probability.</li>
+<li>At every search operation, the descent down the different levels is  recorded and saved as a &ldquo;<em>search finger</em>&rdquo;. This helps in lookups when we are finding a document with id greater than the one for which we already have the search finger. It reduces the lookup time complexity from O(\( \log{n} \)) to O(\( \log{d} \)), where n is the number of items in the posting list and d is the number of items in the list between the first value and the second value, in case of conjunction search queries.</li>
+<li>Using primitive array also has an advantage of reducing pointer management overheads, such as garbage collection.</li>
+<li>Allocating vertical levels of Skip List in adjacent location, eliminates the need for storing &ldquo;above&rdquo; and &ldquo;below&rdquo; pointers.</li>
+</ol>
+<p>One obvious disadvantage, however, is that the Skip Lists are not cache friendly. However, being able to run in logarithmic time in case of sparse documents is a big advantage.</p>
+<h2 id="additional-details">Additional Details</h2>
+<ul>
+<li>Twitter&rsquo;s new Skip List implementation also uses a &ldquo;published pointer&rdquo; that points to the current maximum pointer into array such that searchers never traverse beyond this pointer. This allows for ensuring atomicity in search and retrievals, and a document is searched only if all of its terms are indexed.</li>
+<li>Considering this was a change of large magnitude, Twitter rolled it out gradually by first evaluating the results in <a href="https://blog.leaseweb.com/2017/11/17/dark-launching/" target="_blank" rel="noopener noreffer">Dark Launch</a> mode. This was done to ensure that the clients do not have any reliance or assumptions on the earlier 15 seconds delay in search indexing.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>In order to reduce search indexing latency, Twitter made big changes to its storage system and retrieval system. They shared their approach and learnings in a <cite>whitepaper <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></cite> that I summarized here. The search indexing improvement from 15 seconds to 1 second means that the new content should be available for Twitter users to access almost instantaneously.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://s22.q4cdn.com/826641620/files/doc_financials/2019/q3/Q3-2019-Selected-Financials-and-Metrics.pdf" target="_blank" rel="noopener noreffer">Twitter Q3-2019 - Selected Financial and Metrics</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://info.mention.com/hubfs/Twitter%20Engagement%20Report%202018%20%7C%20Mention.pdf" target="_blank" rel="noopener noreffer">Twitter Engagement Report 2018</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="http://users.umiacs.umd.edu/~jimmylin/publications/Busch_etal_ICDE2012.pdf">http://users.umiacs.umd.edu/~jimmylin/publications/Busch_etal_ICDE2012.pdf</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p><a href="https://www.youtube.com/watch?v=KUmFJc3fFuM">https://www.youtube.com/watch?v=KUmFJc3fFuM</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p><a href="https://lucene.apache.org/core/8_6_0/core/org/apache/lucene/codecs/lucene86/package-summary.html#package.description">https://lucene.apache.org/core/8_6_0/core/org/apache/lucene/codecs/lucene86/package-summary.html#package.description</a> <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.105.8844">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.105.8844</a> <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7" role="doc-endnote">
+<p><a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2020/reducing-search-indexing-latency-to-one-second.html" target="_blank" rel="noopener noreffer">Twitter Infrastructure: Reducing search indexing latency</a> <a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-07-19</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/twitter-search-redesign/" data-title="How Twitter Improved Search Index Latency" data-via="_reachsumit" data-hashtags="design,data structure"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/twitter-search-redesign/" data-hashtag="design"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/twitter-search-redesign/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/twitter-search-redesign/" data-title="How Twitter Improved Search Index Latency" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/twitter-search-redesign/" data-title="How Twitter Improved Search Index Latency"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/twitter-search-redesign/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/twitter-search-redesign/" data-title="How Twitter Improved Search Index Latency"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/twitter-search-redesign/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/twitter-search-redesign/" data-title="How Twitter Improved Search Index Latency"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/twitter-search-redesign/" data-title="How Twitter Improved Search Index Latency"><i class="fab fa-evernote fa-fw"></i></a><a href="javascript:void(0);" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/twitter-search-redesign/" data-title="How Twitter Improved Search Index Latency" data-description="In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second. So, what did they do to get such impressive gains? Allow me to explain!"><i class="fab fa-trello fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/design/">design</a>,&nbsp;<a href="/tags/data-structure/">data structure</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/spell-checker-fasttext/" class="prev" rel="prev" title="Building a spell-checker with FastText word embeddings"><i class="fas fa-angle-left fa-fw"></i>Building a spell-checker with FastText word embeddings</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://reachsumit.com" target="_blank">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="/css/cc8928.min.css"><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-3":"Sumit's Diary","id-4":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-3":["id-3"],"id-4":["id-4"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-171612692-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-171612692-1" async></script></body>
+</html>
