@@ -8,32 +8,32 @@
             <atom:link href="https://blog.reachsumit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>Decoding the LeetCode: Sliding Window Pattern Explained</title>
-    <link>https://blog.reachsumit.com/leetcode-sliding-window/</link>
+    <link>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</link>
     <pubDate>Mon, 26 Oct 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.reachsumit.com/leetcode-sliding-window/</guid>
+    <guid>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</guid>
     <description><![CDATA[<p>Identifying patterns among questions is quite an effective strategy when you are grinding LeetCode in preparation for your upcoming software engineering interviews. In this article, you will develop intuitions about Sliding Window pattern. You will also get a template approach to write code to solve these problems. I will also walk you through some LeetCode questions to show how to apply the template and at the end, there will be some LeetCode exercises for you to practice what you learn.</p>]]></description>
 </item><item>
     <title>How Twitter Reduced Search Indexing Latency to One Second</title>
-    <link>https://blog.reachsumit.com/twitter-search-redesign/</link>
+    <link>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</link>
     <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.reachsumit.com/twitter-search-redesign/</guid>
+    <guid>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</guid>
     <description><![CDATA[<p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
 <p>So, what did they do to get such impressive gains? Allow me to explain!</p>]]></description>
 </item><item>
     <title>Building a spell-checker with FastText word embeddings</title>
-    <link>https://blog.reachsumit.com/spell-checker-fasttext/</link>
+    <link>https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/</link>
     <pubDate>Sat, 18 Jul 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.reachsumit.com/spell-checker-fasttext/</guid>
+    <guid>https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/</guid>
     <description><![CDATA[<p>Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&rsquo;s spell-corrector? Let&rsquo;s find out!</p>]]></description>
 </item><item>
     <title>Skip List Data Structure - Explained!</title>
-    <link>https://blog.reachsumit.com/skip-list/</link>
+    <link>https://blog.reachsumit.com/posts/2020/07/skip-list/</link>
     <pubDate>Tue, 14 Jul 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.reachsumit.com/skip-list/</guid>
+    <guid>https://blog.reachsumit.com/posts/2020/07/skip-list/</guid>
     <description><![CDATA[<p>Analyzing randomness is hard. So why would you want to choose a probabilistic data structure in your system implementation? Allow me to explain!</p>]]></description>
 </item></channel>
 </rss>

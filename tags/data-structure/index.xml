@@ -6,18 +6,18 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
             <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/data-structure/" rel="self" type="application/rss+xml" /><item>
     <title>How Twitter Reduced Search Indexing Latency to One Second</title>
-    <link>https://blog.reachsumit.com/twitter-search-redesign/</link>
+    <link>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</link>
     <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.reachsumit.com/twitter-search-redesign/</guid>
+    <guid>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</guid>
     <description><![CDATA[<p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
 <p>So, what did they do to get such impressive gains? Allow me to explain!</p>]]></description>
 </item><item>
     <title>Skip List Data Structure - Explained!</title>
-    <link>https://blog.reachsumit.com/skip-list/</link>
+    <link>https://blog.reachsumit.com/posts/2020/07/skip-list/</link>
     <pubDate>Tue, 14 Jul 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.reachsumit.com/skip-list/</guid>
+    <guid>https://blog.reachsumit.com/posts/2020/07/skip-list/</guid>
     <description><![CDATA[<p>Analyzing randomness is hard. So why would you want to choose a probabilistic data structure in your system implementation? Allow me to explain!</p>]]></description>
 </item></channel>
 </rss>
