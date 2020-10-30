@@ -2,17 +2,17 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</loc><lastmod>2020-10-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</loc><lastmod>2020-10-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</loc><lastmod>2020-07-19T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/</loc><lastmod>2020-07-18T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/posts/2020/07/skip-list/</loc><lastmod>2020-07-14T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://blog.reachsumit.com/</loc><lastmod>2020-10-26T00:00:00&#43;00:00</lastmod><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/tags/algorithms/</loc><lastmod>2020-10-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/categories/</loc><lastmod>2020-10-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/tags/leetcode/</loc><lastmod>2020-10-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/posts/</loc><lastmod>2020-10-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/categories/software-engineering/</loc><lastmod>2020-10-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/tags/</loc><lastmod>2020-10-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/</loc><lastmod>2020-10-29T00:00:00&#43;00:00</lastmod><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/tags/algorithms/</loc><lastmod>2020-10-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/categories/</loc><lastmod>2020-10-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/tags/leetcode/</loc><lastmod>2020-10-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/posts/</loc><lastmod>2020-10-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/categories/software-engineering/</loc><lastmod>2020-10-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/tags/</loc><lastmod>2020-10-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://blog.reachsumit.com/tags/data-structure/</loc><lastmod>2020-07-19T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/tags/system-design/</loc><lastmod>2020-07-19T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/tags/embeddings/</loc><lastmod>2020-07-18T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
