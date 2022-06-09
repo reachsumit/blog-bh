@@ -4,7 +4,14 @@
         <link>https://blog.reachsumit.com/categories/software-engineering/</link>
         <description>Software Engineering - Category - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
-            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 26 Oct 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/software-engineering/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 09 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/software-engineering/" rel="self" type="application/rss+xml" /><item>
+    <title>SQL vs NoSQL vs NewSQL: An In-depth Literature Review</title>
+    <link>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</link>
+    <pubDate>Thu, 09 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</guid>
+    <description><![CDATA[SQL Databases Origin The concept of Relational Databases was originally developed in the 1970s by IBM 1. They are also known as SQL (Structured Query Language) databases, named after the query language used for managing data in Relational Database Management Systems (RDBMS). Over multiple years of research and development, an unmatched level of reliability, stability, and strong mechanism to store and query data has been baked into Relational Databases. They have been the storage of choice for a majority of transactional data management applications such as banking, airline reservation, online e-commerce, and supply chain management applications.]]></description>
+</item><item>
     <title>Effective LeetCode: Understanding the Sliding Window Pattern</title>
     <link>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</link>
     <pubDate>Mon, 26 Oct 2020 00:00:00 &#43;0000</pubDate>
