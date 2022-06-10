@@ -242,7 +242,7 @@
             <i class="icon fas fa-info-circle fa-fw"></i>NoSQL!<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">The term “NoSQL” was first coined in 1998 by Carlo Strozzi for his RDBMS, Strozzi NoSQL. However, Strozzi used the term simply to distinguish his solution from other RDBMS. He used the term NoSQL just for the reason that his database did not expose a SQL interface. It was then brought back in 2009 for naming an event that highlighted new non-relational databases, such as BigTable and Dynamo. While originally the term stood for “No SQL”, it has been restated as “Not Only SQL” to highlight that these systems rarely fully drop the relational model. Thus, despite being a recurrent theme in literature, NoSQL is a very broad term, encompassing very distinct database systems <cite>[^8]</cite>.</div>
+            <div class="admonition-content">The term “NoSQL” was first coined in 1998 by Carlo Strozzi for his RDBMS, Strozzi NoSQL. However, Strozzi used the term simply to distinguish his solution from other RDBMS. He used the term NoSQL just for the reason that his database did not expose a SQL interface. It was then brought back in 2009 for naming an event that highlighted new non-relational databases, such as BigTable and Dynamo. While originally the term stood for “No SQL”, it has been restated as “Not Only SQL” to highlight that these systems rarely fully drop the relational model. Thus, despite being a recurrent theme in literature, NoSQL is a very broad term, encompassing very distinct database systems <cite>[^18]</cite>.</div>
         </div>
     </div>
 <h3 id="nosql-properties">NoSQL Properties</h3>
@@ -285,7 +285,7 @@
             <i class="icon fas fa-info-circle fa-fw"></i>NewSQL!<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">NewSQL is not only used to overcome some limitations of the SQL, but it could also be an alternative for NoSQL in certain applications where the need for analytics and decision making has to be found on request with high consistency <cite>[^13]</cite>. It helps in executing read-write transactions that are short-lived and operated using index loops and executing the same number of queries with different inputs. It works on lock-free concurrency control and share-nothing architecture <cite>[^10]</cite>.</div>
+            <div class="admonition-content">NewSQL is not only used to overcome some limitations of the SQL, but it could also be an alternative for NoSQL in certain applications where the need for analytics and decision making has to be found on request with high consistency <cite>[^12]</cite>. It helps in executing read-write transactions that are short-lived and operated using index loops and executing the same number of queries with different inputs. It works on lock-free concurrency control and share-nothing architecture <cite>[^10]</cite>.</div>
         </div>
     </div>
 <h3 id="characteristics-of-newsql-databases">Characteristics of NewSQL Databases</h3>
@@ -369,7 +369,7 @@
 </ul>
 <p>Eric Brewer conjectured that at any given moment in time only two out of the three mentioned characteristics can be guaranteed, concluding that only distributed systems accomplishing the following combinations can be created: AP (Availability-Partition Tolerance), CP (Consistency-Partition Tolerance), or AC (Availability-Consistency). Most of the databases fall in the “AP” (eventual consistent systems) or the “CP” group because resigning P (Partition Tolerance) in a distributed system means assuming that the underlying network will never drop packages or disconnect, which is not feasible. Some systems usually are available and consistent, but fail completely when there is a partition (CA), for example, single-node relational database systems.</p>
 <div id="id-3"><img src="/img/posts/sql-nosql-newsql/cap_theorem_diagram.png" alt="The Cap Theorem">
-<p>Figure: CAP theorem with databases that “choose” CA, CP, and AP <cite>[^8]</cite></div>
+<p>Figure: CAP theorem with databases that “choose” CA, CP, and AP <cite>[^18]</cite></div>
 <h3 id="base-properties">BASE Properties</h3>
 <p>Many of the NoSQL databases have loosened up the requirements on Consistency to achieve better Availability and Partitioning. This resulted in systems known as the BASE (Basically Available, Soft-state, Eventually consistent). The idea behind the systems implementing this concept is to allow partial failures instead of full system failure, which leads to a perception of greater system availability.</p>
 <ul>
