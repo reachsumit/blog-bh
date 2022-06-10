@@ -8,8 +8,9 @@
     <title>Effective LeetCode: Understanding the Sliding Window Pattern</title>
     <link>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</link>
     <pubDate>Mon, 26 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>Sumit Kumar</author>
     <guid>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</guid>
     <description><![CDATA[<p>Identifying patterns among questions is quite an effective strategy when you are grinding LeetCode in preparation for your upcoming software engineering interviews. In this article, you will develop intuitions about Sliding Window pattern. You will also get a template approach to write code to solve these problems. I will also walk you through some LeetCode questions to show how to apply the template and at the end, there will be some LeetCode exercises for you to practice what you learn.</p>]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

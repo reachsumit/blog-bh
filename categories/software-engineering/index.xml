@@ -8,30 +8,34 @@
     <title>SQL vs NoSQL vs NewSQL: An In-depth Literature Review</title>
     <link>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</link>
     <pubDate>Thu, 09 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>Sumit Kumar</author>
     <guid>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</guid>
     <description><![CDATA[SQL Databases Origin The concept of Relational Databases was originally developed in the 1970s by IBM 1. They are also known as SQL (Structured Query Language) databases, named after the query language used for managing data in Relational Database Management Systems (RDBMS). Over multiple years of research and development, an unmatched level of reliability, stability, and strong mechanisms to store and query data have been baked into Relational Databases. They have been the storage of choice for a majority of transactional data management applications such as banking, airline reservation, online e-commerce, and supply chain management applications.]]></description>
-</item><item>
+</item>
+<item>
     <title>Effective LeetCode: Understanding the Sliding Window Pattern</title>
     <link>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</link>
     <pubDate>Mon, 26 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>Sumit Kumar</author>
     <guid>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</guid>
     <description><![CDATA[<p>Identifying patterns among questions is quite an effective strategy when you are grinding LeetCode in preparation for your upcoming software engineering interviews. In this article, you will develop intuitions about Sliding Window pattern. You will also get a template approach to write code to solve these problems. I will also walk you through some LeetCode questions to show how to apply the template and at the end, there will be some LeetCode exercises for you to practice what you learn.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>How Twitter Reduced Search Indexing Latency to One Second</title>
     <link>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</link>
     <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>Sumit Kumar</author>
     <guid>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</guid>
     <description><![CDATA[<p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
 <p>So, what did they do to get such impressive gains? Allow me to explain!</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>Skip List Data Structure - Explained!</title>
     <link>https://blog.reachsumit.com/posts/2020/07/skip-list/</link>
     <pubDate>Tue, 14 Jul 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>Sumit Kumar</author>
     <guid>https://blog.reachsumit.com/posts/2020/07/skip-list/</guid>
     <description><![CDATA[<p>Analyzing randomness is hard. So why would you want to choose a probabilistic data structure in your system implementation? Allow me to explain!</p>]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

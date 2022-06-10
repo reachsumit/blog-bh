@@ -8,8 +8,9 @@
     <title>Building a spell-checker with FastText word embeddings</title>
     <link>https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/</link>
     <pubDate>Sat, 18 Jul 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>Sumit Kumar</author>
     <guid>https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/</guid>
     <description><![CDATA[<p>Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&rsquo;s spell-corrector? Let&rsquo;s find out!</p>]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>
