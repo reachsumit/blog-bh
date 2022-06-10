@@ -9,10 +9,10 @@
         <title>Skip List Data Structure - Explained! - Sumit&#39;s Diary</title><meta name="Description" content="Analyzing randomness is hard. So why would you want to choose a probabilistic data structure in your system implementation? Allow me to explain!"><meta property="og:title" content="Skip List Data Structure - Explained!" />
 <meta property="og:description" content="Analyzing randomness is hard. So why would you want to choose a probabilistic data structure in your system implementation? Allow me to explain!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2020/07/skip-list/" />
-<meta property="og:image" content="https://blog.reachsumit.com/logo.png"/>
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2020/07/skip-list/" /><meta property="og:image" content="https://blog.reachsumit.com/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-07-14T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-07-14T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.reachsumit.com/logo.png"/>
 
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2020\/07\/skip-list\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "data structure","wordcount":  3405 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "data structure","wordcount":  3404 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2020\/07\/skip-list\/","datePublished": "2020-07-14T00:00:00+00:00","dateModified": "2020-07-14T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -105,7 +105,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Skip List Data Structure - Explained!</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/software-engineering/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Software Engineering</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-07-14">2020-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3405 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-07-14">2020-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3404 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;16 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -513,7 +513,7 @@ However, our Skip List don&rsquo;t have to limited to 2 lists. We can have more 
         data-sizes="auto"
         alt="/img/posts/skip-list/24skiplistinsert3.png"
         title="Skip List - Insert 3" /></p>
-<p>Note that we also need to &ldquo;re-hook&rdquo; the links for the newly inserted node. The new node needs to have it&rsquo;s &lsquo;below&rsquo; reference pointing to the node below, and the node below would have &lsquo;above&rsquo; reference pointer to the new node. To find the &lsquo;left&rsquo; neighbor for the new node, we simply traverse towards left from the node below it and return &lsquo;above&rsquo; pointer from a node for which &lsquo;above&rsquo; pointer is not null. The &lsquo;right&rsquo; reference of the &lsquo;left&rsquo; neighbor is used to update the &lsquo;right&rsquo; reference of the new node. Also, the &lsquo;left&rsquo; reference for the new node&rsquo;s right neighbor is also updated to the new node. This re-hooking operation is actually pretty easy to implement with Linked Lists.</p>
+<p>Note that we also need to &ldquo;re-hook&rdquo; the links for the newly inserted node. The new node needs to have it&rsquo;s &lsquo;below&rsquo; reference pointing to the node below, and the node below would have &lsquo;above&rsquo; reference pointer to the new node. To find the &rsquo;left&rsquo; neighbor for the new node, we simply traverse towards left from the node below it and return &lsquo;above&rsquo; pointer from a node for which &lsquo;above&rsquo; pointer is not null. The &lsquo;right&rsquo; reference of the &rsquo;left&rsquo; neighbor is used to update the &lsquo;right&rsquo; reference of the new node. Also, the &rsquo;left&rsquo; reference for the new node&rsquo;s right neighbor is also updated to the new node. This re-hooking operation is actually pretty easy to implement with Linked Lists.</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -591,14 +591,14 @@ However, our Skip List don&rsquo;t have to limited to 2 lists. We can have more 
 <h2 id="conclusion">Conclusion</h2>
 <p>In this article we saw how Skip List is a probabilistic data structure that loosely resembles a balanced binary tree. It is also easy to implement and very fast as the search, insert, delete operations have an expected time complexity of <strong>O(log(n))</strong>, along with <strong>O(n)</strong> expected space complexity. in next article, I will introduce a practical application of Skip List and explain how Twitter used Skip List to get a huge improvement in their search indexing latency.</p>
 <h2 id="reference-and-further-reading">Reference and Further Reading</h2>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p>MIT OCW 6.046 Design and Analysis of Algorithms  <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-design-and-analysis-of-algorithms-spring-2015/lecture-videos/lecture-7-randomization-skip-lists/" target="_blank" rel="noopener noreffer">Lecture 7: Randomization: Skip Lists</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1">
+<p>MIT OCW 6.046 Design and Analysis of Algorithms  <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-design-and-analysis-of-algorithms-spring-2015/lecture-videos/lecture-7-randomization-skip-lists/" target="_blank" rel="noopener noreffer">Lecture 7: Randomization: Skip Lists</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section></div><div class="post-footer" id="post-footer">
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

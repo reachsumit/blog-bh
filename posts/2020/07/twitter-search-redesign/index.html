@@ -9,10 +9,10 @@
         <title>How Twitter Reduced Search Indexing Latency to One Second - Sumit&#39;s Diary</title><meta name="Description" content="In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second. So, what did they do to get such impressive gains? Allow me to explain!"><meta property="og:title" content="How Twitter Reduced Search Indexing Latency to One Second" />
 <meta property="og:description" content="In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second. So, what did they do to get such impressive gains? Allow me to explain!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/" />
-<meta property="og:image" content="https://blog.reachsumit.com/logo.png"/>
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/" /><meta property="og:image" content="https://blog.reachsumit.com/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-07-19T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-07-19T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.reachsumit.com/logo.png"/>
 
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2020\/07\/twitter-search-redesign\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "system design, data structure","wordcount":  1974 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "system design, data structure","wordcount":  1954 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2020\/07\/twitter-search-redesign\/","datePublished": "2020-07-19T00:00:00+00:00","dateModified": "2020-07-19T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -105,7 +105,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">How Twitter Reduced Search Indexing Latency to One Second</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/software-engineering/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Software Engineering</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-07-19">2020-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1974 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-07-19">2020-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1954 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -302,7 +302,7 @@
             <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Flaw 1: Synchronous Workflow<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">One major problem with this design is that the Tweet data that we want to index isn&rsquo;t available as soon as the Tweet is created. With ranked Home timeline feature, the timeline needs additional &ldquo;relevance&rdquo; detail about each Tweet. Among other factors, this relevance depends on fields that may not be immediately available. For example, a shortened URL (https://t.co/foo) needs to be expanded to provide more context for ranking, geo-coding resolution might take longer.</div>
+            <div class="admonition-content">One major problem with this design is that the Tweet data that we want to index isn&rsquo;t available as soon as the Tweet is created. With ranked Home timeline feature, the timeline needs additional &ldquo;relevance&rdquo; detail about each Tweet. Among other factors, this relevance depends on fields that may not be immediately available. For example, a shortened URL (<a href="https://t.co/foo" target="_blank" rel="noopener noreffer">https://t.co/foo</a>) needs to be expanded to provide more context for ranking, geo-coding resolution might take longer.</div>
         </div>
     </div>
 <p><strong>Fix:</strong> Twitter decided to stop waiting for the delayed fields to become available by adding an asynchronous part to their ingestion pipeline.</p>
@@ -369,32 +369,32 @@
 </ul>
 <h2 id="conclusion">Conclusion</h2>
 <p>In order to reduce search indexing latency, Twitter made big changes to its storage system and retrieval system. They shared their approach and learnings in a <cite>whitepaper <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></cite> that I summarized here. The search indexing improvement from 15 seconds to 1 second means that the new content should be available for Twitter users to access almost instantaneously.</p>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p><a href="https://s22.q4cdn.com/826641620/files/doc_financials/2019/q3/Q3-2019-Selected-Financials-and-Metrics.pdf" target="_blank" rel="noopener noreffer">Twitter Q3-2019 - Selected Financial and Metrics</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1">
+<p><a href="https://s22.q4cdn.com/826641620/files/doc_financials/2019/q3/Q3-2019-Selected-Financials-and-Metrics.pdf" target="_blank" rel="noopener noreffer">Twitter Q3-2019 - Selected Financial and Metrics</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
-<p><a href="https://info.mention.com/hubfs/Twitter%20Engagement%20Report%202018%20%7C%20Mention.pdf" target="_blank" rel="noopener noreffer">Twitter Engagement Report 2018</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:2">
+<p><a href="https://info.mention.com/hubfs/Twitter%20Engagement%20Report%202018%20%7C%20Mention.pdf" target="_blank" rel="noopener noreffer">Twitter Engagement Report 2018</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
-<p><a href="http://users.umiacs.umd.edu/~jimmylin/publications/Busch_etal_ICDE2012.pdf">http://users.umiacs.umd.edu/~jimmylin/publications/Busch_etal_ICDE2012.pdf</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:3">
+<p><a href="http://users.umiacs.umd.edu/~jimmylin/publications/Busch_etal_ICDE2012.pdf" target="_blank" rel="noopener noreffer">http://users.umiacs.umd.edu/~jimmylin/publications/Busch_etal_ICDE2012.pdf</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
-<p><a href="https://www.youtube.com/watch?v=KUmFJc3fFuM">https://www.youtube.com/watch?v=KUmFJc3fFuM</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:4">
+<p><a href="https://www.youtube.com/watch?v=KUmFJc3fFuM" target="_blank" rel="noopener noreffer">https://www.youtube.com/watch?v=KUmFJc3fFuM</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:5" role="doc-endnote">
-<p><a href="https://lucene.apache.org/core/8_6_0/core/org/apache/lucene/codecs/lucene86/package-summary.html#package.description">https://lucene.apache.org/core/8_6_0/core/org/apache/lucene/codecs/lucene86/package-summary.html#package.description</a> <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:5">
+<p><a href="https://lucene.apache.org/core/8_6_0/core/org/apache/lucene/codecs/lucene86/package-summary.html#package.description" target="_blank" rel="noopener noreffer">https://lucene.apache.org/core/8_6_0/core/org/apache/lucene/codecs/lucene86/package-summary.html#package.description</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:6" role="doc-endnote">
-<p><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.105.8844">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.105.8844</a> <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:6">
+<p><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.105.8844" target="_blank" rel="noopener noreffer">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.105.8844</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:7" role="doc-endnote">
-<p><a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2020/reducing-search-indexing-latency-to-one-second.html" target="_blank" rel="noopener noreffer">Twitter Infrastructure: Reducing search indexing latency</a> <a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:7">
+<p><a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2020/reducing-search-indexing-latency-to-one-second.html" target="_blank" rel="noopener noreffer">Twitter Infrastructure: Reducing search indexing latency</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section></div><div class="post-footer" id="post-footer">
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

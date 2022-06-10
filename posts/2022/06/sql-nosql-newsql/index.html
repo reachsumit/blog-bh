@@ -9,10 +9,10 @@
         <title>SQL vs NoSQL vs NewSQL: An In-depth Literature Review - Sumit&#39;s Diary</title><meta name="Description" content="In this article, we look at SQL, NoSQL and NewSQL database technologies. We go over the origin, strengths, weaknesses, application areas, and fundamental concepts for each of the database types to make it easy to select the most appropriate database type for a given application."><meta property="og:title" content="SQL vs NoSQL vs NewSQL: An In-depth Literature Review" />
 <meta property="og:description" content="In this article, we look at SQL, NoSQL and NewSQL database technologies. We go over the origin, strengths, weaknesses, application areas, and fundamental concepts for each of the database types to make it easy to select the most appropriate database type for a given application." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/" />
-<meta property="og:image" content="https://blog.reachsumit.com/logo.png"/>
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/" /><meta property="og:image" content="https://blog.reachsumit.com/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-09T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-06-09T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.reachsumit.com/logo.png"/>
 
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2022\/06\/sql-nosql-newsql\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "system design, database","wordcount":  4087 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "system design, database","wordcount":  4067 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2022\/06\/sql-nosql-newsql\/","datePublished": "2022-06-09T00:00:00+00:00","dateModified": "2022-06-09T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -105,7 +105,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">SQL vs NoSQL vs NewSQL: An In-depth Literature Review</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/software-engineering/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Software Engineering</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-09">2022-06-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4087 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-09">2022-06-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4067 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;20 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -360,7 +360,7 @@
 <h3 id="acid-properties-1">ACID Properties</h3>
 <p>We discussed ACID properties earlier on in this article. ACID is a combination of four properties namely Atomicity, Consistency, Isolation, and Durability. These transactional properties of the database guarantee the reliability of transactions <cite><sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></cite>.</p>
 <h3 id="the-cap-theorem">The CAP Theorem</h3>
-<p>The CAP Theorem, also known as Brewer&rsquo;s theorem was presented by Eric Brewer in 2000 and later proven by Gilbert and Lynch <cite><sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></cite>, is one of the truly influential impossibility results in the field of distributed computing, because it places an ultimate upper bound on what can be accomplished by a distributed system <cite><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite>.  It states that it is impossible for a distributed computer system to simultaneously provide all three of the following guarantees:</p>
+<p>The CAP Theorem, also known as Brewer&rsquo;s theorem was presented by Eric Brewer in 2000 and later proven by Gilbert and Lynch <cite><sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></cite>, is one of the truly influential impossibility results in the field of distributed computing, because it places an ultimate upper bound on what can be accomplished by a distributed system <cite><sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite>.  It states that it is impossible for a distributed computer system to simultaneously provide all three of the following guarantees:</p>
 <ul>
 <li><strong>Consistency (C)</strong>: Reads and writes are always executed atomically and are strictly consistent (linearizable). Put differently, all clients have the same view on the data at all times.</li>
 <li><strong>Availability (A)</strong>: All clients can always find at least one copy of the requested data, even if some of the machines in a cluster are down. Put differently, it is a guarantee that every request receives a response about whether it succeeded or failed.</li>
@@ -396,71 +396,71 @@
 <h2 id="whats-next">What&rsquo;s Next</h2>
 <p>I hope you found this database technologies review to be useful. In the next few articles, I will compare different NoSQL data models on several criteria, then I will compare the most popular databases from each NoSQL model, followed by explaining structured approaches for picking the best database for your use-case.</p>
 <h2 id="references">References</h2>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p>Don Chamberlin : “SQL”, IBM Almaden Research Center, San Jose, CA <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1">
+<p>Don Chamberlin : “SQL”, IBM Almaden Research Center, San Jose, CA&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
-<p>Chen, J.-K.; Lee, W.-Z. An Introduction of NoSQL Databases Based on Their Categories and Application Industries. <em>Algorithms</em> 2019, <em>12</em>, 106. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:2">
+<p>Chen, J.-K.; Lee, W.-Z. An Introduction of NoSQL Databases Based on Their Categories and Application Industries. <em>Algorithms</em> 2019, <em>12</em>, 106.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
-<p>Binani, Sneha &amp; Gutti, Ajinkya &amp; Upadhyay, Shivam. (2016). SQL vs. NoSQL vs. NewSQL- A Comparative Study. Communications on Applied Electronics. 6. 43-46. 10.5120/cae2016652418. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:3">
+<p>Binani, Sneha &amp; Gutti, Ajinkya &amp; Upadhyay, Shivam. (2016). SQL vs. NoSQL vs. NewSQL- A Comparative Study. Communications on Applied Electronics. 6. 43-46. 10.5120/cae2016652418.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
-<p>Jim Gray, Andreas Reuter, Transaction Processing: Concepts and Techniques, 1st ed. Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1992 <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:4">
+<p>Jim Gray, Andreas Reuter, Transaction Processing: Concepts and Techniques, 1st ed. Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1992&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:5" role="doc-endnote">
-<p>Corbellini, Alejandro &amp; Mateos, Cristian &amp; Zunino, Alejandro &amp; Godoy, Daniela &amp; Schiaffino, Silvia. (2017). Persisting big data: The NoSQL landscape. Information Systems. 63. 1-23. 10.1016/j.is.2016.07.009. <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:5">
+<p>Corbellini, Alejandro &amp; Mateos, Cristian &amp; Zunino, Alejandro &amp; Godoy, Daniela &amp; Schiaffino, Silvia. (2017). Persisting big data: The NoSQL landscape. Information Systems. 63. 1-23. 10.1016/j.is.2016.07.009.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:6" role="doc-endnote">
-<p>Gessert, Felix &amp; Wingerath, Wolfram &amp; Friedrich, Steffen &amp; Ritter, Norbert. (2017). NoSQL database systems: a survey and decision guidance. Computer Science - Research and Development. 32. 10.1007/s00450-016-0334-3. <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:6">
+<p>Gessert, Felix &amp; Wingerath, Wolfram &amp; Friedrich, Steffen &amp; Ritter, Norbert. (2017). NoSQL database systems: a survey and decision guidance. Computer Science - Research and Development. 32. 10.1007/s00450-016-0334-3.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:7" role="doc-endnote">
-<p>S. J. Veloso, 2015, Data Analytics Topic: Big Data [Online]. <a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:7">
+<p>S. J. Veloso, 2015, Data Analytics Topic: Big Data [Online].&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:8" role="doc-endnote">
-<p>Venkatraman, S., Fahd, K., Kaspi, S., &amp; Venkatraman, R. (2016). SQL Versus NoSQL Movement with Big Data Analytics. <em>International Journal of Information Technology and Computer Science, 8</em>, 59-66. <a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:8">
+<p>Venkatraman, S., Fahd, K., Kaspi, S., &amp; Venkatraman, R. (2016). SQL Versus NoSQL Movement with Big Data Analytics. <em>International Journal of Information Technology and Computer Science, 8</em>, 59-66.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:9" role="doc-endnote">
-<p>Kotecha, Bansari H., and Hetal Joshiyara. &ldquo;A Survey of Non-Relational Databases with Big Data.&rdquo; <em>International Journal on Recent and Innovation Trends in Computing and Communication</em> 5.11 (2017): 143-148. <a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:9">
+<p>Kotecha, Bansari H., and Hetal Joshiyara. &ldquo;A Survey of Non-Relational Databases with Big Data.&rdquo; <em>International Journal on Recent and Innovation Trends in Computing and Communication</em> 5.11 (2017): 143-148.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:10" role="doc-endnote">
-<p>Hajoui, Omar &amp; Dehbi, Rachid &amp; Talea, Mohamed &amp; Ibn Batouta, Zouhair. (2015). An advanced comparative study of the most promising NoSQL and NewSQL databases with a multi-criteria analysis method. 81. 579-588. <a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:10">
+<p>Hajoui, Omar &amp; Dehbi, Rachid &amp; Talea, Mohamed &amp; Ibn Batouta, Zouhair. (2015). An advanced comparative study of the most promising NoSQL and NewSQL databases with a multi-criteria analysis method. 81. 579-588.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:11" role="doc-endnote">
-<p>Stonebraker M (2010) Sql databases v. nosql databases. Commun ACM. 53(4):10–11 <a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:11">
+<p>Stonebraker M (2010) Sql databases v. nosql databases. Commun ACM. 53(4):10–11&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:12" role="doc-endnote">
-<p>Khasawneh, Tariq &amp; Alsahlee, Mahmoud &amp; Safieh, Ali. (2020). SQL, NewSQL, and NOSQL Databases: A Comparative Survey. 013-021. 10.1109/ICICS49469.2020.239513. <a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:12">
+<p>Khasawneh, Tariq &amp; Alsahlee, Mahmoud &amp; Safieh, Ali. (2020). SQL, NewSQL, and NOSQL Databases: A Comparative Survey. 013-021. 10.1109/ICICS49469.2020.239513.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:13" role="doc-endnote">
-<p>Chandra, Umesh. (2017). A Comparative Study On: Nosql, Newsql And Polygot Persistence. International Journal Of Soft Computing and Engineering (IJSE). 7. <a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:13">
+<p>Chandra, Umesh. (2017). A Comparative Study On: Nosql, Newsql And Polygot Persistence. International Journal Of Soft Computing and Engineering (IJSE). 7.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:14" role="doc-endnote">
-<p>Chaudhry, Natalia &amp; Yousaf, Muhammad. (2020). Architectural assessment of NoSQL and NewSQL systems. Distributed and Parallel Databases. 38. 10.1007/s10619-020-07310-1. <a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:14">
+<p>Chaudhry, Natalia &amp; Yousaf, Muhammad. (2020). Architectural assessment of NoSQL and NewSQL systems. Distributed and Parallel Databases. 38. 10.1007/s10619-020-07310-1.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:15" role="doc-endnote">
-<p>Gilbert S, Lynch N (2002) Brewer’s conjecture and the feasibility of consistent, available, partition-tolerant web services. SIGACT News 33(2):51–59 <a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:15">
+<p>Gilbert S, Lynch N (2002) Brewer’s conjecture and the feasibility of consistent, available, partition-tolerant web services. SIGACT News 33(2):51–59&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:16" role="doc-endnote">
-<p>Khazaei, Hamzeh &amp; Fokaefs, Marios &amp; Zareian, Saeed &amp; Beigi, Nasim &amp; Ramprasad, Brian &amp; Shtern, Mark &amp; Gaikwad, Purwa &amp; Litoiu, Marin. (2015). How do I choose the right NoSQL solution? A comprehensive theoretical and experimental survey. Journal of Big Data and Information Analytics (BDIA). 2. 10.3934/bdia.2016004. <a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:16">
+<p>Khazaei, Hamzeh &amp; Fokaefs, Marios &amp; Zareian, Saeed &amp; Beigi, Nasim &amp; Ramprasad, Brian &amp; Shtern, Mark &amp; Gaikwad, Purwa &amp; Litoiu, Marin. (2015). How do I choose the right NoSQL solution? A comprehensive theoretical and experimental survey. Journal of Big Data and Information Analytics (BDIA). 2. 10.3934/bdia.2016004.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:17" role="doc-endnote">
-<p>Abadi D (2012) Consistency tradeoffs in modern distributed data- base system design: cap is only part of the story. Computer 45(2):37–42 <a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:17">
+<p>Abadi D (2012) Consistency tradeoffs in modern distributed data- base system design: cap is only part of the story. Computer 45(2):37–42&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:18" role="doc-endnote">
-<p>Lourenço, João &amp; Cabral, Bruno &amp; Carreiro, Paulo &amp; Vieira, Marco &amp; Bernardino, Jorge. (2015). Choosing the right NoSQL database for the job: a quality attribute evaluation. Journal of Big Data. 2. 18. 10.1186/s40537-015-0025-0. <a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:18">
+<p>Lourenço, João &amp; Cabral, Bruno &amp; Carreiro, Paulo &amp; Vieira, Marco &amp; Bernardino, Jorge. (2015). Choosing the right NoSQL database for the job: a quality attribute evaluation. Journal of Big Data. 2. 18. 10.1186/s40537-015-0025-0.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:19" role="doc-endnote">
-<p>Yuan, Li-Yan &amp; Wu, Lengdong &amp; You, Jia-Huai &amp; Shanghai, Yan &amp; Software, Shifang. (2015). A Demonstration of Rubato DB: A Highly Scalable NewSQL Database System for OLTP and Big Data Applications. <a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:19">
+<p>Yuan, Li-Yan &amp; Wu, Lengdong &amp; You, Jia-Huai &amp; Shanghai, Yan &amp; Software, Shifang. (2015). A Demonstration of Rubato DB: A Highly Scalable NewSQL Database System for OLTP and Big Data Applications.&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:20" role="doc-endnote">
-<p>Wu, Lengdong &amp; Yuan, Li-Yan &amp; You, Jia-Huai. (2014). BASIC: An alternative to BASE for large-scale data management system. Proceedings - 2014 IEEE International Conference on Big Data, IEEE Big Data 2014. 10.1109/BigData.2014.7004206. <a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:20">
+<p>Wu, Lengdong &amp; Yuan, Li-Yan &amp; You, Jia-Huai. (2014). BASIC: An alternative to BASE for large-scale data management system. Proceedings - 2014 IEEE International Conference on Big Data, IEEE Big Data 2014. 10.1109/BigData.2014.7004206.&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

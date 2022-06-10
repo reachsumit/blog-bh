@@ -9,10 +9,10 @@
         <title>Effective LeetCode: Understanding the Sliding Window Pattern - Sumit&#39;s Diary</title><meta name="Description" content="Identifying patterns among questions is quite an effective strategy when you are grinding LeetCode in preparation for your upcoming software engineering interviews. In this article, you will develop intuitions about Sliding Window pattern. You will also get a template approach to write code to solve these problems. I will also walk you through some LeetCode questions to show how to apply the template and at the end, there will be some LeetCode exercises for you to practice what you learn."><meta property="og:title" content="Effective LeetCode: Understanding the Sliding Window Pattern" />
 <meta property="og:description" content="Identifying patterns among questions is quite an effective strategy when you are grinding LeetCode in preparation for your upcoming software engineering interviews. In this article, you will develop intuitions about Sliding Window pattern. You will also get a template approach to write code to solve these problems. I will also walk you through some LeetCode questions to show how to apply the template and at the end, there will be some LeetCode exercises for you to practice what you learn." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/" />
-<meta property="og:image" content="https://blog.reachsumit.com/logo.png"/>
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/" /><meta property="og:image" content="https://blog.reachsumit.com/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-10-26T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-10-29T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.reachsumit.com/logo.png"/>
 
@@ -312,72 +312,72 @@
 <p>&hellip; and that&rsquo;s it. That&rsquo;s all you need to write a program that uses Sliding Window approach to find an optimal solution. Let&rsquo;s make this understanding more concrete with the help of an actual LeetCode question.</p>
 <h2 id="solving-leetcode-problems-with-sliding-window-pattern">Solving LeetCode Problems with Sliding Window Pattern</h2>
 <h3 id="leetcode-1004-max-consecutive-ones-iii">LeetCode 1004: Max Consecutive Ones III</h3>
-<p>Let&rsquo;s try to apply what we you have learned above and solve this LeetCode problem: <a href="https://leetcode.com/problems/max-consecutive-ones-iii/">https://leetcode.com/problems/max-consecutive-ones-iii/</a></p>
+<p>Let&rsquo;s try to apply what we you have learned above and solve this LeetCode problem: <a href="https://leetcode.com/problems/max-consecutive-ones-iii/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/max-consecutive-ones-iii/</a></p>
 <p>You are given an array input that has 0s and 1s. You are given a constraint that you can change only K number of values from 0 to 1. And, your task is to find the longest subarray that contains only 1s.</p>
 <p>So, we are looking for the maximum window size (i.e. R - L + 1), such that the window contains all 1s, and given the constraint that we can change up to K number of values in the window from 0 to 1.</p>
 <p>Let&rsquo;s first setup some basic variables:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">current_change_count</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># This is our &#34;inventory&#34;, i.e. a count for the number of changes from 0 to 1</span>
-<span class="n">L</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># This is the left marker of our Sliding Window</span>
-<span class="n">answer</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># This is the variable that will store the best answer</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">current_change_count</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># This is our &#34;inventory&#34;, i.e. a count for the number of changes from 0 to 1</span>
+</span></span><span class="line"><span class="cl"><span class="n">L</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># This is the left marker of our Sliding Window</span>
+</span></span><span class="line"><span class="cl"><span class="n">answer</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># This is the variable that will store the best answer</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Based on the earlier template, we need an outer loop, that will move R to the right.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)):</span> <span class="c1"># Here A is the input array</span>
-	<span class="o">...</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)):</span> <span class="c1"># Here A is the input array</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Inside the for loop, we need to update our &ldquo;inventory&rdquo;, i.e. current_change_count, if required i.e. if the value of the current position is 0, we need to make it 1 to include it in the window</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">current_change_count</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">current_change_count</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>And we need an inner loop to move L to the right, if required i.e. if the constraint &ldquo;current_change_count &lt;= K&rdquo;  doesn&rsquo;t hold.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">while</span> <span class="n">current_change_count</span> <span class="o">&gt;</span> <span class="n">K</span> <span class="ow">and</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">L</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">current_change_count</span> <span class="o">-=</span> <span class="mi">1</span>
-    <span class="n">L</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">while</span> <span class="n">current_change_count</span> <span class="o">&gt;</span> <span class="n">K</span> <span class="ow">and</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">L</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">current_change_count</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">L</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Finally we save the current answer as the best answer, if required, i.e. if the current window length (R-L+1) is greater than answer.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">R</span><span class="o">-</span><span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">answer</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">R</span><span class="o">-</span><span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>So, our complete solution will be:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -400,95 +400,95 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">longestOnes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">K</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">A</span><span class="p">:</span>
-            <span class="k">return</span> <span class="mi">0</span>
-                
-        <span class="n">current_change_count</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">answer</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-        
-        <span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)):</span>
-            <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">current_change_count</span> <span class="o">+=</span> <span class="mi">1</span>
-            
-            <span class="k">while</span> <span class="n">current_change_count</span> <span class="o">&gt;</span> <span class="n">K</span> <span class="ow">and</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">L</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">current_change_count</span> <span class="o">-=</span> <span class="mi">1</span>
-                <span class="n">L</span> <span class="o">+=</span> <span class="mi">1</span>
-                
-            <span class="n">answer</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">R</span><span class="o">-</span><span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-        
-        <span class="k">return</span> <span class="n">answer</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">longestOnes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">K</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">A</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">        <span class="n">current_change_count</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="n">answer</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">current_change_count</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="n">current_change_count</span> <span class="o">&gt;</span> <span class="n">K</span> <span class="ow">and</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">L</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">current_change_count</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                <span class="n">L</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">            <span class="n">answer</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">R</span><span class="o">-</span><span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">answer</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="leetcode-1358-number-of-substrings-containing-all-three-characters">LeetCode 1358: Number of Substrings Containing All Three Characters</h3>
-<p>Let&rsquo;s take another example: <a href="https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/">https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/</a></p>
+<p>Let&rsquo;s take another example: <a href="https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/</a></p>
 <p>A valid window in this case is the one that satisfies the constraint that all of the three characters &lsquo;a&rsquo;, &lsquo;b&rsquo; and &lsquo;c&rsquo; are at least once present in the window.</p>
 <p>Let&rsquo;s setup some basic variables:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">current_answer</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">looking_for</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># We will save the count of &#39;a&#39;, &#39;b&#39; and &#39;c&#39; occurances in the window on the 3 indexes in this array/list</span>
-<span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">best_answer</span> <span class="o">=</span> <span class="mi">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">current_answer</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">looking_for</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># We will save the count of &#39;a&#39;, &#39;b&#39; and &#39;c&#39; occurances in the window on the 3 indexes in this array/list</span>
+</span></span><span class="line"><span class="cl"><span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">best_answer</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>The outer loop will simply be:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
-    <span class="o">...</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Our inventory, in this case, keeps track of the count of &lsquo;a&rsquo;, &lsquo;b&rsquo; and &lsquo;c&rsquo; in &ldquo;looking_for&rdquo; list. Since we know each character in the input will be one of the three characters, we can directly update the index like this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">looking_for</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">R</span><span class="p">)</span><span class="o">-</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">looking_for</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">R</span><span class="p">)</span><span class="o">-</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>and the inner loop will move L to the right if the window has &lsquo;a&rsquo;, &lsquo;b&rsquo; and &lsquo;c&rsquo; occurring at least once.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">while</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">and</span> <span class="n">looking_for</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">looking_for</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">looking_for</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
-    <span class="n">looking_for</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">L</span><span class="p">])</span><span class="o">-</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span> <span class="o">-=</span> <span class="mi">1</span> <span class="c1"># subtract count for the character at L</span>
-    <span class="n">L</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="n">current_answer</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">while</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">and</span> <span class="n">looking_for</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">looking_for</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">looking_for</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">looking_for</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">L</span><span class="p">])</span><span class="o">-</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span> <span class="o">-=</span> <span class="mi">1</span> <span class="c1"># subtract count for the character at L</span>
+</span></span><span class="line"><span class="cl">    <span class="n">L</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">current_answer</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>The optimal answer will simply add up the overall answers found in the Sliding Window.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">best_answer</span> <span class="o">+=</span> <span class="n">current_answer</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">best_answer</span> <span class="o">+=</span> <span class="n">current_answer</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>So, our complete solution will be:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -511,95 +511,95 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">numberOfSubstrings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="k">return</span> <span class="mi">0</span>
-        
-        <span class="n">current_answer</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">looking_for</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">best_answer</span> <span class="o">=</span> <span class="mi">0</span>
-        
-        <span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
-            <span class="n">looking_for</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">R</span><span class="p">)</span><span class="o">-</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
-            
-            <span class="k">while</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">and</span> <span class="n">looking_for</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">looking_for</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">looking_for</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
-                <span class="n">looking_for</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">L</span><span class="p">])</span><span class="o">-</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span> <span class="o">-=</span> <span class="mi">1</span>
-                <span class="n">L</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="n">current_answer</span> <span class="o">+=</span> <span class="mi">1</span>
-            
-            <span class="n">best_answer</span> <span class="o">+=</span> <span class="n">current_answer</span>
-        
-        <span class="k">return</span> <span class="n">best_answer</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">numberOfSubstrings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">current_answer</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="n">looking_for</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="n">best_answer</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">looking_for</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">R</span><span class="p">)</span><span class="o">-</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">and</span> <span class="n">looking_for</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">looking_for</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">looking_for</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">looking_for</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">L</span><span class="p">])</span><span class="o">-</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                <span class="n">L</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                <span class="n">current_answer</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="n">best_answer</span> <span class="o">+=</span> <span class="n">current_answer</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">best_answer</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="leetcode-904-fruit-into-baskets">LeetCode 904: Fruit Into Baskets</h3>
-<p>Let&rsquo;s solve yet another LeetCode question with this approach: <a href="https://leetcode.com/problems/fruit-into-baskets/">https://leetcode.com/problems/fruit-into-baskets/</a></p>
+<p>Let&rsquo;s solve yet another LeetCode question with this approach: <a href="https://leetcode.com/problems/fruit-into-baskets/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/fruit-into-baskets/</a></p>
 <p>In this problem, we maintain an inventory of two baskets with a each count containing a fruit type (kind of a &ldquo;key&rdquo;), and a fruit count (kind of a &ldquo;value&rdquo;), so we can simply make it a hashmap, i.e. a Python dictionary. The constraint here is that we can only have maximum 2 baskets, with each having a unique fruit type. Our goal is to find the maximum count of fruits in both baskets.</p>
 <p>First, we setup some basic variables:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">inventory_hashmap</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">best_answer</span> <span class="o">=</span> <span class="mi">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">inventory_hashmap</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="n">best_answer</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Then we setup an outer loop for moving R.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">)):</span>
-    <span class="o">...</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>We update the inventory, i.e. our hashmap with keys representing the fruit type and the values representing the number of fruits picked during current window.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">R</span><span class="p">]]</span> <span class="o">=</span> <span class="n">inventory_hashmap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">R</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">R</span><span class="p">]]</span> <span class="o">=</span> <span class="n">inventory_hashmap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">R</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Next, we move L to the right, and remove the corresponding count and fruit type from the inventory, if the constraint is broken.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">while</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">inventory_hashmap</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">L</span><span class="p">]]</span><span class="o">-=</span> <span class="mi">1</span>                
-    <span class="k">if</span> <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">L</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">del</span> <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">L</span><span class="p">]]</span>
-        <span class="n">L</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">while</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">inventory_hashmap</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">L</span><span class="p">]]</span><span class="o">-=</span> <span class="mi">1</span>                
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">L</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">del</span> <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">L</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">L</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Finally, we update the best answer by finding the maximum value between the best answer so far, and the current number of fruits in our inventory.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">best_answer</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">best_answer</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">inventory_hashmap</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">best_answer</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">best_answer</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">inventory_hashmap</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Adding all the components together, our solution will be this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -622,45 +622,45 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">totalFruit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">tree</span><span class="p">:</span>
-            <span class="k">return</span> <span class="mi">0</span>
-        
-        <span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">inventory_hashmap</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">best_answer</span> <span class="o">=</span> <span class="mi">0</span>
-        
-        <span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">)):</span>
-            <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">R</span><span class="p">]]</span> <span class="o">=</span> <span class="n">inventory_hashmap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">R</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-            
-            <span class="k">while</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">inventory_hashmap</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">L</span><span class="p">]]</span><span class="o">-=</span> <span class="mi">1</span>                
-                <span class="k">if</span> <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">L</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="k">del</span> <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">L</span><span class="p">]]</span>
-                <span class="n">L</span> <span class="o">+=</span> <span class="mi">1</span>
-            
-            <span class="n">best_answer</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">best_answer</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">inventory_hashmap</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
-        
-        <span class="k">return</span> <span class="n">best_answer</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">totalFruit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">tree</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="n">inventory_hashmap</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">best_answer</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">R</span><span class="p">]]</span> <span class="o">=</span> <span class="n">inventory_hashmap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">R</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">inventory_hashmap</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">L</span><span class="p">]]</span><span class="o">-=</span> <span class="mi">1</span>                
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">L</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">del</span> <span class="n">inventory_hashmap</span><span class="p">[</span><span class="n">tree</span><span class="p">[</span><span class="n">L</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">                <span class="n">L</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="n">best_answer</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">best_answer</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">inventory_hashmap</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">best_answer</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="summing-up">Summing Up</h2>
 <p>I hope these examples were good enough to drive home the intuitions required to build a Sliding Window based solution. I would also like to point out that the template that I talked explained in this article is the most common strategy with Sliding Window problems, however it is not the only kind of Sliding Window approach. As you saw, in our template, the right marker R moves faster than the left marker L, therefore this approach is sometimes referred to as Fast/Slow Sliding Window approach. There are other approaches like Fast/Catch-Up and Front/Back that I will talk about in a future post.</p>
 <h2 id="exercise-for-the-readers">Exercise for the Readers</h2>
 <p>If you want to apply what you have learned in this article, and solve a few LeetCode challenges, then you can try your hand on the following Sliding Window  problems on LeetCode website:</p>
 <ul>
-<li><a href="https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/">https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/</a></li>
-<li><a href="https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/">https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/</a></li>
-<li><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/">https://leetcode.com/problems/replace-the-substring-for-balanced-string/</a></li>
-<li><a href="https://leetcode.com/problems/max-consecutive-ones-iii/">https://leetcode.com/problems/max-consecutive-ones-iii/</a></li>
-<li><a href="https://leetcode.com/problems/subarrays-with-k-different-integers/">https://leetcode.com/problems/subarrays-with-k-different-integers/</a></li>
-<li><a href="https://leetcode.com/problems/fruit-into-baskets/">https://leetcode.com/problems/fruit-into-baskets/</a></li>
-<li><a href="https://leetcode.com/problems/get-equal-substrings-within-budget/">https://leetcode.com/problems/get-equal-substrings-within-budget/</a></li>
-<li><a href="https://leetcode.com/problems/longest-repeating-character-replacement/">https://leetcode.com/problems/longest-repeating-character-replacement/</a></li>
-<li><a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/">https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/</a></li>
-<li><a href="https://leetcode.com/problems/minimum-size-subarray-sum/">https://leetcode.com/problems/minimum-size-subarray-sum/</a></li>
-<li><a href="https://leetcode.com/problems/sliding-window-maximum/">https://leetcode.com/problems/sliding-window-maximum/</a></li>
+<li><a href="https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/</a></li>
+<li><a href="https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/</a></li>
+<li><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/replace-the-substring-for-balanced-string/</a></li>
+<li><a href="https://leetcode.com/problems/max-consecutive-ones-iii/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/max-consecutive-ones-iii/</a></li>
+<li><a href="https://leetcode.com/problems/subarrays-with-k-different-integers/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/subarrays-with-k-different-integers/</a></li>
+<li><a href="https://leetcode.com/problems/fruit-into-baskets/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/fruit-into-baskets/</a></li>
+<li><a href="https://leetcode.com/problems/get-equal-substrings-within-budget/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/get-equal-substrings-within-budget/</a></li>
+<li><a href="https://leetcode.com/problems/longest-repeating-character-replacement/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/longest-repeating-character-replacement/</a></li>
+<li><a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/</a></li>
+<li><a href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/minimum-size-subarray-sum/</a></li>
+<li><a href="https://leetcode.com/problems/sliding-window-maximum/" target="_blank" rel="noopener noreffer">https://leetcode.com/problems/sliding-window-maximum/</a></li>
 </ul>
 <p>I also want to thank the LeetCode user <a href="https://leetcode.com/wh0ami/" target="_blank" rel="noopener noreffer">wh0ami</a> for compiling this list of questions and sharing this idea, in his C++ post at LeetCode discussion forums <a href="https://leetcode.com/discuss/general-discussion/657507/sliding-window-for-beginners-problems-template-sample-solutions/" target="_blank" rel="noopener noreffer">here</a>.</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">

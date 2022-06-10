@@ -9,10 +9,10 @@
         <title>Building a spell-checker with FastText word embeddings - Sumit&#39;s Diary</title><meta name="Description" content="Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&#39;s spell-corrector? Let&#39;s find out!"><meta property="og:title" content="Building a spell-checker with FastText word embeddings" />
 <meta property="og:description" content="Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&#39;s spell-corrector? Let&#39;s find out!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/" />
-<meta property="og:image" content="https://blog.reachsumit.com/logo.png"/>
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/" /><meta property="og:image" content="https://blog.reachsumit.com/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-07-18T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-07-18T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.reachsumit.com/logo.png"/>
 
@@ -220,13 +220,13 @@ Figure: example subword representations</div>
 <p>Download and unzip the trained vectors and binary model file.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">-&gt; wget https://dl.fbaipublicfiles.com/fasttext/vectors-english/crawl-300d-2M-subword.zip
--&gt; unzip crawl-300d-2M-subword.zip
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">-&gt; wget https://dl.fbaipublicfiles.com/fasttext/vectors-english/crawl-300d-2M-subword.zip
+</span></span><span class="line"><span class="cl">-&gt; unzip crawl-300d-2M-subword.zip
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>There are two files inside the zip:</p>
 <ul>
@@ -236,7 +236,7 @@ Figure: example subword representations</div>
 <p>As mentioned <a href="https://norvig.com/spell-correct.html" target="_blank" rel="noopener noreffer">in his article</a>, Norvig used <a href="https://norvig.com/spell-testset1.txt" target="_blank" rel="noopener noreffer">spell-testset1.txt</a> and <a href="https://norvig.com/spell-testset2.txt" target="_blank" rel="noopener noreffer">spell-testset2.txt</a> as development and test set respectively, to evaluate the performance of his spelling-corrector. I&rsquo;m going to load the pretrained FastText model and make predictions based on the heurisitic defined above. I&rsquo;m also going to borrow some of the evaluation code from Norvig.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -281,50 +281,50 @@ Figure: example subword representations</div>
 </span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">io</span>
-<span class="kn">import</span> <span class="nn">fasttext</span>
-
-<span class="k">def</span> <span class="nf">load_vectors</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
-    <span class="n">fin</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
-    <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">fin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fin</span><span class="p">:</span>
-        <span class="n">tokens</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-        <span class="n">data</span><span class="p">[</span><span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-    <span class="k">return</span> <span class="n">data</span>
-
-<span class="k">def</span> <span class="nf">spelltest</span><span class="p">(</span><span class="n">tests</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">vocab</span><span class="p">):</span>
-    <span class="s2">&#34;Run correction(wrong) on all (right, wrong) pairs; report results.&#34;</span>
-    <span class="kn">import</span> <span class="nn">time</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
-    <span class="n">good</span><span class="p">,</span> <span class="n">unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">right</span><span class="p">,</span> <span class="n">wrong</span> <span class="ow">in</span> <span class="n">tests</span><span class="p">:</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="n">wrong</span>
-        <span class="k">if</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">vocab</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;word: {} exists in the vocabulary. No correction required&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">w_old</span> <span class="o">=</span> <span class="n">w</span>
-            <span class="n">w</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_nearest_neighbors</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&#34;found replacement: {} for word: {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">w_old</span><span class="p">))</span>
-        <span class="n">good</span> <span class="o">+=</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">right</span><span class="p">)</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{:.0%} of {} correct at {:.0f} words per second &#39;</span>
-          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">good</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span> <span class="o">/</span> <span class="n">dt</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">Testset</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
-    <span class="s2">&#34;Parse &#39;right: wrong1 wrong2&#39; lines into [(&#39;right&#39;, &#39;wrong1&#39;), (&#39;right&#39;, &#39;wrong2&#39;)] pairs.&#34;</span>
-    <span class="k">return</span> <span class="p">[(</span><span class="n">right</span><span class="p">,</span> <span class="n">wrong</span><span class="p">)</span>
-            <span class="k">for</span> <span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">wrongs</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">wrong</span> <span class="ow">in</span> <span class="n">wrongs</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&#34;crawl-300d-2M-subword.bin&#34;</span><span class="p">)</span>
-    <span class="n">vocab</span> <span class="o">=</span> <span class="n">load_vectors</span><span class="p">(</span><span class="s2">&#34;crawl-300d-2M-subword.vec&#34;</span><span class="p">)</span>
-    
-    <span class="n">spelltest</span><span class="p">(</span><span class="n">Testset</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;spell-testset1.txt&#39;</span><span class="p">)),</span> <span class="n">model</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
-    <span class="n">spelltest</span><span class="p">(</span><span class="n">Testset</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;spell-testset2.txt&#39;</span><span class="p">)),</span> <span class="n">model</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">io</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">fasttext</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">load_vectors</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fin</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">fin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fin</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tokens</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span><span class="p">[</span><span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">spelltest</span><span class="p">(</span><span class="n">tests</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">vocab</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Run correction(wrong) on all (right, wrong) pairs; report results.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">good</span><span class="p">,</span> <span class="n">unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">right</span><span class="p">,</span> <span class="n">wrong</span> <span class="ow">in</span> <span class="n">tests</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">w</span> <span class="o">=</span> <span class="n">wrong</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">vocab</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;word: </span><span class="si">{}</span><span class="s1"> exists in the vocabulary. No correction required&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">w_old</span> <span class="o">=</span> <span class="n">w</span>
+</span></span><span class="line"><span class="cl">            <span class="n">w</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_nearest_neighbors</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;found replacement: </span><span class="si">{}</span><span class="s2"> for word: </span><span class="si">{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">w_old</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">good</span> <span class="o">+=</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">right</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dt</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.0%}</span><span class="s1"> of </span><span class="si">{}</span><span class="s1"> correct at </span><span class="si">{:.0f}</span><span class="s1"> words per second &#39;</span>
+</span></span><span class="line"><span class="cl">          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">good</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span> <span class="o">/</span> <span class="n">dt</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">Testset</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Parse &#39;right: wrong1 wrong2&#39; lines into [(&#39;right&#39;, &#39;wrong1&#39;), (&#39;right&#39;, &#39;wrong2&#39;)] pairs.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">[(</span><span class="n">right</span><span class="p">,</span> <span class="n">wrong</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">wrongs</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">wrong</span> <span class="ow">in</span> <span class="n">wrongs</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&#34;crawl-300d-2M-subword.bin&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vocab</span> <span class="o">=</span> <span class="n">load_vectors</span><span class="p">(</span><span class="s2">&#34;crawl-300d-2M-subword.vec&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">spelltest</span><span class="p">(</span><span class="n">Testset</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;spell-testset1.txt&#39;</span><span class="p">)),</span> <span class="n">model</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">spelltest</span><span class="p">(</span><span class="n">Testset</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;spell-testset2.txt&#39;</span><span class="p">)),</span> <span class="n">model</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>For the sake of brevity, I&rsquo;m reducing the output log to just the metrics trace.</p>
 <div class="details admonition example open">
@@ -365,13 +365,13 @@ found replacement: &lt;li&gt;&lt;strong&gt;Style for word: earlyest<br>
 <p>We can verify this by checking out the neighbors for random misspellings.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">get_nearest_neighbors</span><span class="p">(</span><span class="s2">&#34;incorrct&#34;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="p">[(</span><span class="mf">0.68821</span><span class="p">,</span> <span class="s1">&#39;corrct&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.67809</span><span class="p">,</span> <span class="s1">&#39;corrctly&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.63196</span><span class="p">,</span> <span class="s1">&#39;altadena&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.58083</span><span class="p">,</span> <span class="s1">&#39;huntersville&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.579281</span><span class="p">,</span> <span class="s1">&#39;concorda&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.578464</span><span class="p">,</span> <span class="s1">&#39;bartlesville&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.576386</span><span class="p">,</span> <span class="s1">&#39;controlin&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.576119</span><span class="p">,</span> <span class="s1">&#39;variaton&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.574023</span><span class="p">,</span> <span class="s1">&#39;relavence&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.572117</span><span class="p">,</span> <span class="s1">&#39;concorrenza&#39;</span><span class="p">))]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">get_nearest_neighbors</span><span class="p">(</span><span class="s2">&#34;incorrct&#34;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">[(</span><span class="mf">0.68821</span><span class="p">,</span> <span class="s1">&#39;corrct&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.67809</span><span class="p">,</span> <span class="s1">&#39;corrctly&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.63196</span><span class="p">,</span> <span class="s1">&#39;altadena&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.58083</span><span class="p">,</span> <span class="s1">&#39;huntersville&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.579281</span><span class="p">,</span> <span class="s1">&#39;concorda&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.578464</span><span class="p">,</span> <span class="s1">&#39;bartlesville&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.576386</span><span class="p">,</span> <span class="s1">&#39;controlin&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.576119</span><span class="p">,</span> <span class="s1">&#39;variaton&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.574023</span><span class="p">,</span> <span class="s1">&#39;relavence&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.572117</span><span class="p">,</span> <span class="s1">&#39;concorrenza&#39;</span><span class="p">))]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>As you can see, misspelled words have misspelled semantic neighbors. And the top ones also seem syntactically related. This makes sense. But we were hoping that the subword approach would be able to prioritize the potentially correct lexical variants of the word, and not just it&rsquo;s semantic neighbors.</p>
 <div class="details admonition failure open">
@@ -395,19 +395,19 @@ found replacement: &lt;li&gt;&lt;strong&gt;Style for word: earlyest<br>
     </div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">-&gt; wc big.txt
-<span class="m">128457</span> <span class="m">1095695</span> <span class="m">6488666</span> big.txt
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">-&gt; wc big.txt
+</span></span><span class="line"><span class="cl"><span class="m">128457</span> <span class="m">1095695</span> <span class="m">6488666</span> big.txt
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>The training data has around 128K lines, 1M words, 6.5M characters.</p>
 <p>As discussed above, we should try with keeping the <code>wordNgrams</code> hyperparameter to <code>1</code>, and use the trained FastText model to perform spell-checking.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -453,56 +453,56 @@ found replacement: &lt;li&gt;&lt;strong&gt;Style for word: earlyest<br>
 </span><span class="lnt">44
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">io</span>
-<span class="kn">import</span> <span class="nn">fasttext</span>
-
-<span class="k">def</span> <span class="nf">load_vectors</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
-    <span class="n">fin</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
-    <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">fin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fin</span><span class="p">:</span>
-        <span class="n">tokens</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-        <span class="n">data</span><span class="p">[</span><span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-    <span class="k">return</span> <span class="n">data</span>
-
-<span class="k">def</span> <span class="nf">spelltest</span><span class="p">(</span><span class="n">tests</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
-    <span class="s2">&#34;Run correction(wrong) on all (right, wrong) pairs; report results.&#34;</span>
-    <span class="kn">import</span> <span class="nn">time</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
-    <span class="n">good</span><span class="p">,</span> <span class="n">unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">right</span><span class="p">,</span> <span class="n">wrong</span> <span class="ow">in</span> <span class="n">tests</span><span class="p">:</span>
-        <span class="n">w_old</span> <span class="o">=</span> <span class="n">wrong</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="n">wrong</span>
-        <span class="k">if</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">words</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">w</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_nearest_neighbors</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">good</span> <span class="o">+=</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">right</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">right</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">w_old</span> <span class="o">!=</span> <span class="n">w</span><span class="p">:</span>
-                <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Edited {} to {}, but the correct word is: {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w_old</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">right</span><span class="p">))</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{:.0%} of {} correct at {:.0f} words per second &#39;</span>
-          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">good</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span> <span class="o">/</span> <span class="n">dt</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">Testset</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
-    <span class="s2">&#34;Parse &#39;right: wrong1 wrong2&#39; lines into [(&#39;right&#39;, &#39;wrong1&#39;), (&#39;right&#39;, &#39;wrong2&#39;)] pairs.&#34;</span>
-    <span class="k">return</span> <span class="p">[(</span><span class="n">right</span><span class="p">,</span> <span class="n">wrong</span><span class="p">)</span>
-            <span class="k">for</span> <span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">wrongs</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">wrong</span> <span class="ow">in</span> <span class="n">wrongs</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">train_unsupervised</span><span class="p">(</span><span class="s1">&#39;big.txt&#39;</span><span class="p">,</span> <span class="n">wordNgrams</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">minn</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">maxn</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">ws</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">neg</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">minCount</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bucket</span><span class="o">=</span><span class="mi">900000</span><span class="p">)</span>
-    
-    <span class="n">spelltest</span><span class="p">(</span><span class="n">Testset</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;spell-testset1.txt&#39;</span><span class="p">)),</span> <span class="n">model</span><span class="p">)</span>
-    <span class="n">spelltest</span><span class="p">(</span><span class="n">Testset</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;spell-testset2.txt&#39;</span><span class="p">)),</span> <span class="n">model</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">io</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">fasttext</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">load_vectors</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fin</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">fin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fin</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tokens</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span><span class="p">[</span><span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">spelltest</span><span class="p">(</span><span class="n">tests</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Run correction(wrong) on all (right, wrong) pairs; report results.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">good</span><span class="p">,</span> <span class="n">unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">right</span><span class="p">,</span> <span class="n">wrong</span> <span class="ow">in</span> <span class="n">tests</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">w_old</span> <span class="o">=</span> <span class="n">wrong</span>
+</span></span><span class="line"><span class="cl">        <span class="n">w</span> <span class="o">=</span> <span class="n">wrong</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">words</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">w</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_nearest_neighbors</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">good</span> <span class="o">+=</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">right</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">right</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">w_old</span> <span class="o">!=</span> <span class="n">w</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Edited </span><span class="si">{}</span><span class="s2"> to </span><span class="si">{}</span><span class="s2">, but the correct word is: </span><span class="si">{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w_old</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">right</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dt</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.0%}</span><span class="s1"> of </span><span class="si">{}</span><span class="s1"> correct at </span><span class="si">{:.0f}</span><span class="s1"> words per second &#39;</span>
+</span></span><span class="line"><span class="cl">          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">good</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span> <span class="o">/</span> <span class="n">dt</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">Testset</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Parse &#39;right: wrong1 wrong2&#39; lines into [(&#39;right&#39;, &#39;wrong1&#39;), (&#39;right&#39;, &#39;wrong2&#39;)] pairs.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">[(</span><span class="n">right</span><span class="p">,</span> <span class="n">wrong</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">wrongs</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">wrong</span> <span class="ow">in</span> <span class="n">wrongs</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">train_unsupervised</span><span class="p">(</span><span class="s1">&#39;big.txt&#39;</span><span class="p">,</span> <span class="n">wordNgrams</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">minn</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">maxn</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">ws</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">neg</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">minCount</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bucket</span><span class="o">=</span><span class="mi">900000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">spelltest</span><span class="p">(</span><span class="n">Testset</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;spell-testset1.txt&#39;</span><span class="p">)),</span> <span class="n">model</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">spelltest</span><span class="p">(</span><span class="n">Testset</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;spell-testset2.txt&#39;</span><span class="p">)),</span> <span class="n">model</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>There are a couple of changes in this code. We are training the model with specific hyper-parameters, and the output traces will inform us what went wrong in our decisions. Note that <a href="https://github.com/facebookresearch/fastText/issues/776" target="_blank" rel="noopener noreffer">FastText doesn&rsquo;t provide an option to set seed</a> in the above implementation, so the results may vary by 1%-2% on every execution.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -513,28 +513,28 @@ found replacement: &lt;li&gt;&lt;strong&gt;Style for word: earlyest<br>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">-&gt; python fasttext_trained.py
-Read 1M words
-Number of words: <span class="m">81398</span>
-Number of labels: <span class="m">0</span>
-Progress: 100.0% words/sec/thread:	<span class="m">20348</span> lr: 0.000000 avg. loss 1.943424 ETA:	0h 0m 0s
-...
-73% of <span class="m">270</span> correct at <span class="m">46</span> words per second.
-...
-69% of <span class="m">400</span> correct at <span class="m">48</span> words per second.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">-&gt; python fasttext_trained.py
+</span></span><span class="line"><span class="cl">Read 1M words
+</span></span><span class="line"><span class="cl">Number of words: <span class="m">81398</span>
+</span></span><span class="line"><span class="cl">Number of labels: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">Progress: 100.0% words/sec/thread:	<span class="m">20348</span> lr: 0.000000 avg. loss 1.943424 ETA:	0h 0m 0s
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">73% of <span class="m">270</span> correct at <span class="m">46</span> words per second.
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">69% of <span class="m">400</span> correct at <span class="m">48</span> words per second.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>This is a big improvement! 😄 We have almost the same accuracy as Norvig&rsquo;s spell-corrector.</p>
 <p>Here are Norvig&rsquo;s results for comparison.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">75% of 270 correct at 41 words per second
-68% of 400 correct at 35 words per second
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">75% of 270 correct at 41 words per second
+</span></span><span class="line"><span class="cl">68% of 400 correct at 35 words per second
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Looking at some of the edits in the output traces, I can see that the model output isn&rsquo;t essentially incorrect, but the model is biased to certain edit-based operations.</p>
 <div class="details admonition example open">
@@ -561,13 +561,13 @@ Edited goegraphicaly to geographical, but the correct word is: geographically<br
 <p>Let&rsquo;s also compare the model with the pretrained model from method one.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">get_nearest_neighbors</span><span class="p">(</span><span class="s2">&#34;incorrct&#34;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="p">[(</span><span class="mf">0.96987646</span><span class="p">,</span> <span class="s1">&#39;incorrect&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.937522232</span><span class="p">,</span> <span class="s1">&#39;correct&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.91315931</span><span class="p">,</span> <span class="s1">&#39;corrects&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.90868479</span><span class="p">,</span> <span class="s1">&#39;correcting&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.89917653</span><span class="p">,</span> <span class="s1">&#39;corrective&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.89813524</span><span class="p">,</span> <span class="s1">&#39;contractor&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.89806741</span><span class="p">,</span> <span class="s1">&#39;correction&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.896661</span><span class="p">,</span> <span class="s1">&#39;disconcert&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.894903957</span><span class="p">,</span> <span class="s1">&#39;contradict&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.8944035768</span><span class="p">,</span> <span class="s1">&#39;concurrent&#39;</span><span class="p">))]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">get_nearest_neighbors</span><span class="p">(</span><span class="s2">&#34;incorrct&#34;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">[(</span><span class="mf">0.96987646</span><span class="p">,</span> <span class="s1">&#39;incorrect&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.937522232</span><span class="p">,</span> <span class="s1">&#39;correct&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.91315931</span><span class="p">,</span> <span class="s1">&#39;corrects&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.90868479</span><span class="p">,</span> <span class="s1">&#39;correcting&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.89917653</span><span class="p">,</span> <span class="s1">&#39;corrective&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.89813524</span><span class="p">,</span> <span class="s1">&#39;contractor&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.89806741</span><span class="p">,</span> <span class="s1">&#39;correction&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.896661</span><span class="p">,</span> <span class="s1">&#39;disconcert&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.894903957</span><span class="p">,</span> <span class="s1">&#39;contradict&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.8944035768</span><span class="p">,</span> <span class="s1">&#39;concurrent&#39;</span><span class="p">))]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>The trained model&rsquo;s outputs are much more sensible now and the topmost word is also the word that we are actually looking for.</p>
 <h2 id="conclusion">Conclusion</h2>
