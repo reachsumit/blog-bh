@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2022\/06\/sql-nosql-newsql\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "system design, database","wordcount":  3948 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "system design, database","wordcount":  4087 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2022\/06\/sql-nosql-newsql\/","datePublished": "2022-06-09T00:00:00+00:00","dateModified": "2022-06-09T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -43,7 +43,7 @@
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="Sumit&#39;s Diary"><span id="id-4" class="typeit"></span></a>
+            <a href="/" title="Sumit&#39;s Diary"><span id="id-5" class="typeit"></span></a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
@@ -67,7 +67,7 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="Sumit&#39;s Diary"><span id="id-5" class="typeit"></span></a>
+                <a href="/" title="Sumit&#39;s Diary"><span id="id-6" class="typeit"></span></a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">SQL vs NoSQL vs NewSQL: An In-depth Literature Review</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/software-engineering/"><i class="far fa-folder fa-fw"></i>Software Engineering</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-09">2022-06-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3948 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;19 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-09">2022-06-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;4087 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;20 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -117,7 +117,12 @@
   <ul>
     <li><a href="#sql-databases-origin">SQL Databases Origin</a>
       <ul>
-        <li><a href="#what-made-relational-databases-popular">What Made Relational Databases Popular?</a></li>
+        <li><a href="#relations-in-relational-databases">Relations in Relational Databases</a></li>
+        <li><a href="#characteristics-of-relational-databases">Characteristics of Relational Databases</a>
+          <ul>
+            <li><a href="#acid-properties">Acid Properties</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#the-rise-of-nosql-databases">The Rise of NoSQL Databases</a>
@@ -139,7 +144,7 @@
     <li><a href="#sql-vs-nosql-vs-newsql-database-comparison">SQL vs NoSQL vs NewSQL database comparison</a></li>
     <li><a href="#transactional-properties-and-theorems">Transactional Properties and Theorems</a>
       <ul>
-        <li><a href="#acid-properties">ACID Properties</a></li>
+        <li><a href="#acid-properties-1">ACID Properties</a></li>
         <li><a href="#the-cap-theorem">The CAP Theorem</a></li>
         <li><a href="#base-properties">BASE Properties</a></li>
         <li><a href="#pacelc-theorem">PACELC Theorem</a></li>
@@ -147,11 +152,13 @@
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
+    <li><a href="#whats-next">What&rsquo;s Next</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="sql-databases-origin">SQL Databases Origin</h2>
-<p>The concept of Relational Databases was originally developed in the 1970s by IBM <cite><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite>. They are also known as SQL (Structured Query Language) databases, named after the query language used for managing data in Relational Database Management Systems (RDBMS). Over multiple years of research and development, an unmatched level of reliability, stability, and strong mechanism to store and query data has been baked into Relational Databases. They have been the storage of choice for a majority of transactional data management applications such as banking, airline reservation, online e-commerce, and supply chain management applications.</p>
+<p>The concept of Relational Databases was originally developed in the 1970s by IBM <cite><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite>. They are also known as SQL (Structured Query Language) databases, named after the query language used for managing data in Relational Database Management Systems (RDBMS). Over multiple years of research and development, an unmatched level of reliability, stability, and strong mechanisms to store and query data have been baked into Relational Databases. They have been the storage of choice for a majority of transactional data management applications such as banking, airline reservation, online e-commerce, and supply chain management applications.</p>
+<h3 id="relations-in-relational-databases">Relations in Relational Databases</h3>
 <p>Relational Databases model the data to be stored as a collection of relations. A relation is a two-dimensional, normalized table to organize data. Each relation is composed of two parts: relation schema and relation instances. Relation schema includes the name of the relation, names of the attributes in the relation, along with their domain. Relation instances refer to the data records stored in the relation at a specific time. The following table gives an example of a relation <cite><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite>.</p>
 <table>
 <thead>
@@ -191,47 +198,69 @@
 </table>
 <div id="id-1">Table Name: Students</div>
 <p>Here &ldquo;Students&rdquo; is the relation; SID, name, telephone, and birthday are the names of the attributes; domain for Birthday is Date, and the relation has four data records stored.</p>
-<h3 id="what-made-relational-databases-popular">What Made Relational Databases Popular?</h3>
-<p>Relational databases have reached an unmatched level of reliability, stability, and support through decades of development. They can be scaled vertically to handle growing data volume by beefing up the existing server. They enforce strict structure (schema) constraints on the data to be stored, and provide powerful mechanisms to store and query this structured data. As part of an RDB design, integrity constraints are used to check the correctness of the data input into the database. Integrity constraints not only prevent authorized users from storing illegal data into the database but also avoid data inconsistency between relations. The four common kinds of integrity constraints are: Primary Key constraints, Domain constraints, Entity integrity constraints, and Referential integrity constraints. RDBMS uses a relational model which has a relationship between tables using foreign keys, primary keys, and indexes. Because of this, fetching and storing of data becomes faster than the older Navigational models that RDBMS replaced <cite><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite>.</p>
-<p>RDBs especially shine when it comes to managing transactions. The concept of a transaction was first proposed by Jim Gray in 1970 <cite><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></cite>, and it represents a work unit in a database system that contains a set of operations. For a transaction to behave in a safe manner it should exhibit four main properties: atomicity, consistency, isolation, and durability. These properties, known as ACID, increase the complexity of database systems <cite><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></cite>, but guarantee strong consistency and serializability.</p>
+<h3 id="characteristics-of-relational-databases">Characteristics of Relational Databases</h3>
 <ul>
-<li>Atomicity: a guarantee that all of the operations of a transaction will be completed as a whole or none at all</li>
-<li>Consistency: a guarantee that the saved data will always be valid and the database will be consistent both before and after the transaction</li>
-<li>Integrity: a guarantee that the different transactions will not interfere with each other</li>
-<li>Durability: a guarantee that the changes of a successful transaction will persist permanently in the database even if a system failure occurs</li>
+<li><strong>Mature Ecosystem</strong>: Relational databases are well known for reliability, stability, and support achieved through decades of development.</li>
+<li><strong>Support for Vertical Scaling</strong>: They can be scaled vertically to handle growing data volume by beefing up the existing server.</li>
+<li><strong>Fixed Schema</strong>: They enforce strict structure (schema) constraints on the data to be stored, and provide powerful mechanisms to store and query this structured data.</li>
+<li><strong>Constraints</strong>: As part of an RDB design, integrity constraints are used to check the correctness of the data input into the database. Integrity constraints not only prevent authorized users from storing illegal data into the database but also avoid data inconsistency between relations. The four common kinds of integrity constraints are: Primary Key constraints, Domain constraints, Entity integrity constraints, and Referential integrity constraints. RDBMS uses a relational model which has a relationship between tables using foreign keys, primary keys, and indexes. Because of this, fetching and storing of data becomes faster than the older Navigational models that RDBMS replaced <cite><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite>.</li>
+<li><strong>Support for Transactions</strong>: RDBs especially shine when it comes to managing transactions. The concept of a transaction was first proposed by Jim Gray in 1970 <cite><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></cite>, and it represents a work unit in a database system that contains a set of operations. For a transaction to behave in a safe manner it should exhibit four main properties: atomicity, consistency, isolation, and durability (ACID).</li>
+</ul>
+<h4 id="acid-properties">Acid Properties</h4>
+<p>This set of properties, known as ACID, increases the complexity of database systems <cite><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></cite>, but also guarantees strong consistency and serializability.</p>
+<ul>
+<li><strong>Atomicity</strong>: a guarantee that all of the operations of a transaction will be completed as a whole or none at all</li>
+<li><strong>Consistency</strong>: a guarantee that the saved data will always be valid and the database will be consistent both before and after the transaction</li>
+<li><strong>Integrity</strong>: a guarantee that the different transactions will not interfere with each other</li>
+<li><strong>Durability</strong>: a guarantee that the changes of a successful transaction will persist permanently in the database even if a system failure occurs</li>
 </ul>
 <p>Relational databases are ACID-compliant and hence simplify the work of the developer by guaranteeing that every operation will leave the database in a consistent state.</p>
 <h2 id="the-rise-of-nosql-databases">The Rise of NoSQL Databases</h2>
 <h3 id="big-data-era">Big Data Era</h3>
-<p>In recent years, the amount of useful data in some application areas has become so vast that it cannot be stored or processed by traditional database solutions. With the launch of Web 2.0, a large amount of valuable business data started being generated. This data can be structured or unstructured and can come from multiple sources. Social networks, products viewed in virtual stores, information read by sensors, GPS signals from mobile devices, lP addresses, cookies, bar codes, etc. are examples of this phenomenon commonly referred to as Big Data <cite><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite>. Big data is often characterized by 7 Vs: Volume (great size), Velocity (rapid procreation), Variety (various types), Veracity (data messiness or constancy), Value (huge value but low density), Variability (constantly changing), and Visualization (data presentation).</p>
+<p>In recent years, the amount of useful data in some application areas has become so vast that it cannot be stored or processed by traditional database solutions. With the launch of Web 2.0, a large amount of valuable business data started being generated. This data can be structured or unstructured and can come from multiple sources. Social networks, products viewed in virtual stores, information read by sensors, GPS signals from mobile devices, lP addresses, cookies, bar codes, etc. are examples of this phenomenon commonly referred to as Big Data <cite><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite>.</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Big Data!<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Big data is often characterized by 7 Vs: Volume (great size), Velocity (rapid procreation), Variety (various types), Veracity (data messiness or constancy), Value (huge value but low density), Variability (constantly changing), and Visualization (data presentation).</div>
+        </div>
+    </div>
 <h3 id="shortcomings-of-relational-databases">Shortcomings of Relational Databases</h3>
-<p>Big Data significantly changed the way organizations viewed data. The data volume, accumulation speed, and various data types required operating in ways that Relational databases were not quite designed for. A survey suggested that 37.5% of leading companies were unable to analyze big data <cite><sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></cite>. The major shortcomings that Relational databases exhibited are as follows.</p>
+<p>Big Data significantly changed the way organizations viewed data. The data volume, accumulation speed, and various data types required operating in ways that Relational databases were not quite designed for. A popular survey suggested that 37.5% of leading companies were unable to analyze big data <cite><sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></cite>. Some of the major shortcomings that Relational databases exhibited are as follows.</p>
 <ul>
-<li>Scalability: Most SQL-oriented databases don’t support distributed data processing and storage, making it a challenge to work with data of high volume, therefore, resulting in a need for a server with exceptional computing capabilities to handle the large data volume, which is an expensive undesirable solution.</li>
-<li>Flexibility: Big Data systems are primarily unstructured in nature, which meant that the need for a predefined structure of the data, i.e. explicitly defining a schema for the data being stored became difficult. Not all data could be fit into tables, so custom solutions targeting the new data models were required.</li>
-<li>Complexity: Database performance often decreases significantly since joins and transactions are costly in distributed environments.</li>
-<li>Others: Servers based on SQL standards are now prone to memory footprint, security risks, and performance issues <cite><sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></cite>.</li>
+<li><strong>Scalability</strong>: Most SQL-oriented databases do not support distributed data processing and storage, making it a challenge to work with data of high volume, therefore, resulting in a need for a server with exceptional computing capabilities to handle the large data volume, which is an expensive undesirable solution.</li>
+<li><strong>Flexibility</strong>: Big Data systems are primarily unstructured in nature, which meant that the need for a predefined structure of the data, i.e. explicitly defining a schema for the data being stored became difficult. Not all data could be fit into tables, so custom solutions targeting the new data models were required.</li>
+<li><strong>Complexity</strong>: Database performance often decreases significantly since joins and transactions are costly in distributed environments.</li>
+<li><strong>Others</strong>: Servers based on SQL standards are now prone to memory footprint, security risks, and performance issues <cite><sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></cite>.</li>
 </ul>
 <p>All in all, this does not mean RDBMSs have become obsolete, but rather they have been designed with other requirements in mind and work well when extreme scalability is not required.</p>
 <h3 id="introducing-nosql-databases">Introducing NoSQL databases</h3>
 <p>Traditional databases could not cope with the generation of massive amounts of information by different devices, including GPS information, RFIDs, IP addresses, unique Identifiers, data and metadata about the devices, sensor data, and historical data. A class of novel data storage systems able to cope with Big Data has subsumed under the term NoSQL databases.</p>
-<p>The term “NoSQL” was first coined in 1998 by Carlo Strozzi for his RDBMS, Strozzi NoSQL. However, Strozzi used the term simply to distinguish his solution from other RDBMS. He used the term NoSQL just for the reason that his database did not expose a SQL interface. It was then brought back in 2009 for naming an event that highlighted new non-relational databases, such as BigTable and Dynamo. While originally the term stood for “No SQL”, it has been restated as “Not Only SQL” to highlight that these systems rarely fully drop the relational model. Thus, despite being a recurrent theme in literature, NoSQL is a very broad term, encompassing very distinct database systems <cite><sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></cite>.</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>NoSQL!<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The term “NoSQL” was first coined in 1998 by Carlo Strozzi for his RDBMS, Strozzi NoSQL. However, Strozzi used the term simply to distinguish his solution from other RDBMS. He used the term NoSQL just for the reason that his database did not expose a SQL interface. It was then brought back in 2009 for naming an event that highlighted new non-relational databases, such as BigTable and Dynamo. While originally the term stood for “No SQL”, it has been restated as “Not Only SQL” to highlight that these systems rarely fully drop the relational model. Thus, despite being a recurrent theme in literature, NoSQL is a very broad term, encompassing very distinct database systems <cite>[^8]</cite>.</div>
+        </div>
+    </div>
 <h3 id="nosql-properties">NoSQL Properties</h3>
-<p>The major properties of NoSQL databases are as follows <cite><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></cite> <cite><sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></cite>.</p>
+<p>The major properties of NoSQL databases are as follows <cite><sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></cite> <cite><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></cite>.</p>
 <ul>
-<li>Highly and Easily Scalable: NoSQL databases are designed to expand horizontally, meaning that you scale out by adding more machines into your pool of resources, while still being able to run CRUD operations over many servers. They are based on No Sharing Architecture in which neither memory nor storage is shared. This enables each node to operate independently. The scaling thus becomes very convenient as new nodes can be easily added or removed from the system to meet the data processing requirement. Data can also be distributed across nodes in a non-overlapping way; this technique is known as sharding, and the locations of the stored data are managed by metadata.</li>
-<li>Flexible Schema: The data to be stored in NoSQL databases do not need to conform to a strict schema. This also enables the ability to dynamically add new attributes to data records.</li>
-<li>Less expensive to maintain: The scalability of NoSQL databases allows the database admins to make use of pay-as-you-go pricing models of cloud-based database service providers. NoSQL databases can run on low specs devices.</li>
-<li>Replication: A lot of NoSQL databases are designed under a &ldquo;let it crash&rdquo; philosophy, where nodes are allowed to crash and their replicas are always ready to receive requests. NoSQL databases mostly support master-slave replication or peer-to-peer replication, making it easier for NoSQL databases to ensure high availability.</li>
-<li>Integrated Caching: In general, as NoSQL databases are designed to be distributed, the location of the data in
-the cluster is leveraged to improve network usage, usually by caching remote data, and making queries to those nodes located closer in the network topology. This mechanism is often referred to as location awareness or data affinity.</li>
-<li>No Support for Joins: In general, NoSQL databases do not use a relational database model, and do not support
-SQL join operations or have very limited support for it. So the related data needs to be stored together to improve the speed of data access.</li>
-<li>Others: Unlike most RDBs that require a fee to purchase, most NoSQL databases are open source and free to download. NoSQL databases often have easy-to-use APIs as well.</li>
+<li><strong>Highly and Easily Scalable</strong>: NoSQL databases are designed to expand horizontally, meaning that you scale out by adding more machines into your pool of resources, while still being able to run CRUD operations over many servers.</li>
+<li><strong>Sharding</strong>: Data can also be distributed across nodes in a non-overlapping way; this technique is known as Sharding, and the locations of the stored data are managed by metadata.</li>
+<li><strong>Replication</strong>: To provision scaling, a lot of NoSQL databases are designed under a &ldquo;let it crash&rdquo; philosophy, where nodes are allowed to crash and their replicas are always ready to receive requests. NoSQL databases mostly support master-slave replication or peer-to-peer replication, making it easier for NoSQL databases to ensure high availability.</li>
+<li><strong>No-Sharing Architecture</strong>: They are based on &lsquo;No Sharing Architecture&rsquo; in which neither memory nor storage is shared. This enables each node to operate independently. The scaling thus becomes very convenient as new nodes can be easily added or removed from the system to meet the data processing requirement.</li>
+<li><strong>Flexible Schema</strong>: The data to be stored in NoSQL databases do not need to conform to a strict schema. This also enables the ability to dynamically add new attributes to data records.</li>
+<li><strong>Less expensive to maintain</strong>: The scalability of NoSQL databases allows the database admins to make use of pay-as-you-go pricing models of cloud-based database service providers. NoSQL databases can run on low specs devices.</li>
+<li><strong>Integrated Caching</strong>: In general, as NoSQL databases are designed to be distributed, the location of the data in the cluster is leveraged to improve network usage, usually by caching remote data, and making queries to those nodes located closer in the network topology. This mechanism is often referred to as location awareness or data affinity.</li>
+<li><strong>No Support for Joins</strong>: In general, NoSQL databases do not use a relational database model, and do not support SQL join operations or have very limited support for it. So the related data needs to be stored together to improve the speed of data access.</li>
+<li><strong>Others</strong>: Unlike most RDBs that require a fee to purchase, most NoSQL databases are open source and free to download. NoSQL databases often have easy-to-use APIs as well.</li>
 </ul>
-<p>Past researchers, such as Stonebraker et al. <cite><sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup></cite>, have argued that the main reasons to move to NoSQL databases are performance and flexibility. Performance is mainly focused on sharing and management of distributed data (i.e. dealing with “Big Data”), while flexibility relates to the semi-structured or unstructured data that may arise on the web.</p>
+<p>Past researches, such as Stonebraker et al. <cite><sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></cite>, have argued that the main reasons to move to NoSQL databases are performance and flexibility. Performance is mainly focused on sharing and management of distributed data (i.e. dealing with “Big Data”), while flexibility relates to the semi-structured or unstructured data that may arise on the web.</p>
 <h3 id="most-suited-applications-for-nosql">Most Suited Applications for NoSQL</h3>
-<p>NoSQL is primarily suited <cite><sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup></cite> for applications with:</p>
+<p>NoSQL is primarily suited <cite><sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup></cite> for applications with:</p>
 <ul>
 <li>No need for ACID properties</li>
 <li>Flexible Schema</li>
@@ -250,19 +279,27 @@ SQL join operations or have very limited support for it. So the related data nee
 <li>Despite being designed with horizontal scaling in mind, not all NoSQL databases are good at automating the process of sharding.</li>
 </ul>
 <h2 id="the-newsql-paradigm">The NewSQL Paradigm</h2>
-<p>NewSQL is a class of modern relational database management systems that aim to combine the best of SQL and NoSQL databases. NoSQL databases seek to provide the same scalable performance as NoSQL systems for online transaction processing(OLTP) read-write workloads while still maintaining the ACID guarantees of a traditional database system. Basically, it is a combination of NoSQL (Scalable) properties with Relational (ACID) Properties <cite><sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></cite>. Example systems in this category are NuoDB, VoltDB, Google Spanner, and Clustrix.</p>
-<p>NewSQL is not only used to overcome some limitations of the SQL, but it could also be an alternative for NoSQL in certain applications where the need for analytics and decision making has to be found on request with high consistency <cite><sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup></cite>. It helps in executing read-write transactions that are short-lived and operated using index loops and executing the same number of queries with different inputs. It works on lock-free concurrency control and share-nothing architecture <cite><sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></cite>.</p>
+<p>NewSQL is a class of modern relational database management systems that aim to combine the best of SQL and NoSQL databases. NoSQL databases seek to provide the same scalable performance as NoSQL systems for online transaction processing(OLTP) read-write workloads while still maintaining the ACID guarantees of a traditional database system. Basically, it is a combination of NoSQL (Scalable) properties with Relational (ACID) Properties <cite><sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup></cite>. Example systems in this category are NuoDB, VoltDB, Google Spanner, and Clustrix.</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>NewSQL!<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">NewSQL is not only used to overcome some limitations of the SQL, but it could also be an alternative for NoSQL in certain applications where the need for analytics and decision making has to be found on request with high consistency <cite>[^13]</cite>. It helps in executing read-write transactions that are short-lived and operated using index loops and executing the same number of queries with different inputs. It works on lock-free concurrency control and share-nothing architecture <cite>[^10]</cite>.</div>
+        </div>
+    </div>
 <h3 id="characteristics-of-newsql-databases">Characteristics of NewSQL Databases</h3>
 <ul>
-<li>Distributed: NewSQL databases are relational databases supporting share-nothing architecture, sharding, automatic replication, and distributed transaction processing, i.e., providing ACID guarantees even across shards.</li>
-<li>Schemas: NewSQL databases support fixed schemas as well as schema-free databases.</li>
-<li>ACID-compliant: NewSQL systems preserve the ACID properties of relational databases.</li>
-<li>SQL Support: NewSQL databases support SQL but query complexity is very high. They also support SQL extensions.</li>
-<li>RAM Support: NewSQL gives high performance by keeping all data in RAM and enabling in-memory computations.</li>
-<li>Data Affinity: Scalability is provided by employing partitioning and replication in such a way that queries generally do not have to communicate between multiple machines. They get the required information from a single host.</li>
+<li><strong>Distributed</strong>: NewSQL databases are relational databases supporting share-nothing architecture, sharding, automatic replication, and distributed transaction processing, i.e., providing ACID guarantees even across shards.</li>
+<li><strong>Schemas</strong>: NewSQL databases support fixed schemas as well as schema-free databases.</li>
+<li><strong>ACID-compliant</strong>: NewSQL systems preserve the ACID properties of relational databases.</li>
+<li><strong>SQL Support</strong>: NewSQL databases support SQL but query complexity is very high. They also support SQL extensions.</li>
+<li><strong>RAM Support</strong>: NewSQL gives high performance by keeping all data in RAM and enabling in-memory computations.</li>
+<li><strong>Data Affinity</strong>: Scalability is provided by employing partitioning and replication in such a way that queries generally do not have to communicate between multiple machines. They get the required information from a single host.</li>
 </ul>
 <h3 id="application-of-newsql-google-spanner">Application of NewSQL: Google Spanner</h3>
-<p>As an example, Google&rsquo;s Spanner is a globally distributed database system created at Google that supports distributed transactions, designed as a replacement to Megastore, a BigTable-based storage. It is a database that performs sharding of data that is a horizontal partition of data and it is spread across many Paxos state machines. Paxos state machines are used to solve consensus which is the process of agreeing upon one result when there are multiple participants. The datacenters are spread all over the world. The databases should be available globally. So for this purpose replication is used. The replication isn’t completely random. It considers the geographic locality and what kind of data is required more frequently. Spanner works dynamically. It reshards and migrates data automatically for the purpose of load balancing. For achieving low latency and high availability most applications would probably replicate data over three or five datacenters in one geographic region. Spanner is useful when applications want strong consistency and are distributed over a large area. Spanner performs versioning of the data and stores the time stamp which is the same as the commit time. Unrequired data can be deleted with proper policies for handling old data. Spanner is very useful for OLTP concerning Big Data. It uses SQL query language.</p>
+<p>Google&rsquo;s Spanner is a globally distributed database system created at Google that supports distributed transactions, designed as a replacement to Megastore, a BigTable-based storage. It is a database that performs sharding of data that is a horizontal partition of data and it is spread across many Paxos state machines. Paxos state machines are used to solve consensus which is the process of agreeing upon one result when there are multiple participants. The datacenters are spread all over the world. The databases should be available globally. So for this purpose replication is used. The replication isn’t completely random. It considers the geographic locality and what kind of data is required more frequently.</p>
+<p>Spanner works dynamically. It reshards and migrates data automatically for the purpose of load balancing. For achieving low latency and high availability most applications would probably replicate data over three or five datacenters in one geographic region. Spanner is useful when applications want strong consistency and are distributed over a large area. Spanner performs versioning of the data and stores the time stamp which is the same as the commit time. Unrequired data can be deleted with proper policies for handling old data. Spanner is very useful for OLTP concerning Big Data. It also uses SQL query language.</p>
 <h2 id="sql-vs-nosql-vs-newsql-database-comparison">SQL vs NoSQL vs NewSQL database comparison</h2>
 <table>
 <thead>
@@ -318,44 +355,47 @@ SQL join operations or have very limited support for it. So the related data nee
 </tr>
 </tbody>
 </table>
+<div id="id-2">Source <cite>[^3]</cite></div>
 <h2 id="transactional-properties-and-theorems">Transactional Properties and Theorems</h2>
 <p>Now we turn our attention to some fundamental properties and theorems that will lay the foundations for understanding the key differentiating core philosophies among the different database implementations.</p>
-<h3 id="acid-properties">ACID Properties</h3>
-<p>We discussed ACID properties earlier on in this article. ACID is a combination of four properties namely Atomicity, Consistency, Isolation, and Durability. These transactional properties of the database guarantee the reliability of transactions <cite><sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></cite>.</p>
+<h3 id="acid-properties-1">ACID Properties</h3>
+<p>We discussed ACID properties earlier on in this article. ACID is a combination of four properties namely Atomicity, Consistency, Isolation, and Durability. These transactional properties of the database guarantee the reliability of transactions <cite><sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></cite>.</p>
 <h3 id="the-cap-theorem">The CAP Theorem</h3>
-<p>The CAP Theorem, also known as Brewer&rsquo;s theorem was presented by Eric Brewer in 2000 and later proven by Gilbert and Lynch <cite><sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup></cite>, is one of the truly influential impossibility results in the field of distributed computing, because it places an ultimate upper bound on what can be accomplished by a distributed system <cite><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite>.  It states that it is impossible for a distributed computer system to simultaneously provide all three of the following guarantees:</p>
+<p>The CAP Theorem, also known as Brewer&rsquo;s theorem was presented by Eric Brewer in 2000 and later proven by Gilbert and Lynch <cite><sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></cite>, is one of the truly influential impossibility results in the field of distributed computing, because it places an ultimate upper bound on what can be accomplished by a distributed system <cite><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite>.  It states that it is impossible for a distributed computer system to simultaneously provide all three of the following guarantees:</p>
 <ul>
-<li>Consistency (C): Reads and writes are always executed atomically and are strictly consistent (linearizable). Put differently, all clients have the same view on the data at all times.</li>
-<li>Availability (A): All clients can always find at least one copy of the requested data, even if some of the machines in a cluster are down. Put differently, it is a guarantee that every request receives a response about whether it succeeded or failed.</li>
-<li>Partition Tolerance (P): The system can continue operating normally in the presence of network partitions. These occur if two or more “islands” of network nodes arise that (temporarily or permanently) cannot connect to each other due to network failures.</li>
+<li><strong>Consistency (C)</strong>: Reads and writes are always executed atomically and are strictly consistent (linearizable). Put differently, all clients have the same view on the data at all times.</li>
+<li><strong>Availability (A)</strong>: All clients can always find at least one copy of the requested data, even if some of the machines in a cluster are down. Put differently, it is a guarantee that every request receives a response about whether it succeeded or failed.</li>
+<li><strong>Partition Tolerance (P)</strong>: The system can continue operating normally in the presence of network partitions. These occur if two or more “islands” of network nodes arise that (temporarily or permanently) cannot connect to each other due to network failures.</li>
 </ul>
 <p>Eric Brewer conjectured that at any given moment in time only two out of the three mentioned characteristics can be guaranteed, concluding that only distributed systems accomplishing the following combinations can be created: AP (Availability-Partition Tolerance), CP (Consistency-Partition Tolerance), or AC (Availability-Consistency). Most of the databases fall in the “AP” (eventual consistent systems) or the “CP” group because resigning P (Partition Tolerance) in a distributed system means assuming that the underlying network will never drop packages or disconnect, which is not feasible. Some systems usually are available and consistent, but fail completely when there is a partition (CA), for example, single-node relational database systems.</p>
-<div id="id-2"><img src="/img/posts/sql-nosql-newsql/cap_theorem_diagram.png" alt="The Cap Theorem">
+<div id="id-3"><img src="/img/posts/sql-nosql-newsql/cap_theorem_diagram.png" alt="The Cap Theorem">
 <p>Figure: CAP theorem with databases that “choose” CA, CP, and AP <cite>[^8]</cite></div>
 <h3 id="base-properties">BASE Properties</h3>
 <p>Many of the NoSQL databases have loosened up the requirements on Consistency to achieve better Availability and Partitioning. This resulted in systems known as the BASE (Basically Available, Soft-state, Eventually consistent). The idea behind the systems implementing this concept is to allow partial failures instead of full system failure, which leads to a perception of greater system availability.</p>
 <ul>
-<li>Basically Available: Basically available ensures the availability of data. It means that there will always be a guaranteed response to each request. Some NoSQL DBs typically keep several copies of specific data on different servers, which allows the DB system to respond to all queries even if a few of the servers fail.</li>
-<li>Soft-state: Soft state means the system may change as it switches from one state to another even without any input, i.e. the data can be volatile, stored, and recovered easily and can be regenerated, unlike the hard state of the system in which the predictable inputs produce the predictable outputs. This soft state is due to the concept of eventual consistency in which the state of the system may become consistent after some time even without input.</li>
-<li>Eventually consistent: Eventually consistent means that the consistency is achieved after some indeterminate time because after a write operation, the replicas need to be synchronized. Therefore, strict consistency is difficult to ensure.</li>
+<li><strong>Basically Available</strong>: Basically available ensures the availability of data. It means that there will always be a guaranteed response to each request. Some NoSQL DBs typically keep several copies of specific data on different servers, which allows the DB system to respond to all queries even if a few of the servers fail.</li>
+<li><strong>Soft-state</strong>: Soft state means the system may change as it switches from one state to another even without any input, i.e. the data can be volatile, stored, and recovered easily and can be regenerated, unlike the hard state of the system in which the predictable inputs produce the predictable outputs. This soft state is due to the concept of eventual consistency in which the state of the system may become consistent after some time even without input.</li>
+<li><strong>Eventually consistent</strong>: Eventually consistent means that the consistency is achieved after some indeterminate time because after a write operation, the replicas need to be synchronized. Therefore, strict consistency is difficult to ensure.</li>
 </ul>
-<p>The design of BASE systems, and in particular BASE NoSQL databases, allows certain operations to be performed leaving the replicas (i.e., copies of the data) in an inconsistent state. ACID principles are used when data reliability and consistency are important because the focus is on consistency and availability. Whereas BASE principles are used when data viability and speed are important because the focus is on focuses on availability and partition tolerance.</p>
-<div id="id-3"><img src="/img/posts/sql-nosql-newsql/big_data_to_nosql_features.png" alt="Big Data to NoSQL Features Mapping">
-<p>Figure: Big Data characteristics and NoSQL System features <cite>[^20]</cite></div>
+<p>The design of BASE systems, and in particular BASE NoSQL databases, allows certain operations to be performed leaving the replicas (i.e., copies of the data) in an inconsistent state. ACID principles are used when data reliability and consistency are important because the focus is on consistency and availability. Whereas BASE principles are used when data viability and speed are important because the focus is on focuses on availability and partition tolerance <cite><sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup></cite>.</p>
+<div id="id-4"><img src="/img/posts/sql-nosql-newsql/big_data_to_nosql_features.png" alt="Big Data to NoSQL Features Mapping">
+<p>Figure: Big Data characteristics and NoSQL System features</div>
 <h3 id="pacelc-theorem">PACELC Theorem</h3>
 <p>It is important to note that the CAP Theorem actually does not state anything on normal operation; it merely tells us whether a system favors availability or consistency in the face of a network partition. The CAP theorem assumes a failure model that allows arbitrary messages to be dropped, reordered, or delayed indefinitely. This lack of the CAP Theorem is addressed in an article by Daniel Abadi <cite><sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup></cite>  in which he points out that the CAP Theorem fails to capture the trade-off between latency and consistency during normal operation. He formulates PACELC which unifies both trade-offs and thus portrays the design space of distributed systems more accurately. From PACELC, we learn that in the case of a <strong>P</strong>artition, there is an <strong>A</strong>vailability-<strong>C</strong>onsistency trade-off; <strong>E</strong>lse, i.e. in normal operation, there is a <strong>L</strong>atency-<strong>C</strong>onsistency trade-off.</p>
-<p>This classification basically offers two possible choices for the partition scenario (A/C) and also two for normal operation (L/C) and thus appears more fine-grained than the CAP classification. However, many systems cannot be assigned exclusively to one single PACELC class and one of the four PACELC classes, namely PC/EL, can hardly be assigned to any system <cite><sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></cite>.</p>
+<p>This classification basically offers two possible choices for the partition scenario (A/C) and also two for normal operation (L/C) and thus appears more fine-grained than the CAP classification. However, many systems cannot be assigned exclusively to one single PACELC class and one of the four PACELC classes, namely PC/EL, can hardly be assigned to any system <cite><sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup></cite>.</p>
 <h3 id="basic-properties">BASIC Properties</h3>
-<p>SQL databases use ACID, which is the strongest consistency level, while NoSQL databases use BASE, which is a weak consistency model. Some NewSQL databases <cite><sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup></cite> support a consistency level between ACID and BASE, called BASIC (Basic Availability, Scalability, Instant Consistency) <cite><sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup></cite>.</p>
+<p>SQL databases use ACID, which is the strongest consistency level, while NoSQL databases use BASE, which is a weak consistency model. Some NewSQL databases <cite><sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup></cite> support a consistency level between ACID and BASE, called BASIC (Basic Availability, Scalability, Instant Consistency) <cite><sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup></cite>.</p>
 <ul>
-<li>Basic Availability: The system always responds to read/write queries.</li>
-<li>Scalability: Scalability allows for adding more resources if the workload is increased.</li>
-<li>Instant Consistency: Instant consistency, a better consistency level than eventual consistency, ensures that if a write and read operation is carried out consecutively, then the result returned by a read operation must be the same as written by a write operation.</li>
+<li><strong>Basic Availability</strong>: The system always responds to read/write queries.</li>
+<li><strong>Scalability</strong>: Scalability allows for adding more resources if the workload is increased.</li>
+<li><strong>Instant Consistency</strong>: Instant consistency, a better consistency level than eventual consistency, ensures that if a write and read operation is carried out consecutively, then the result returned by a read operation must be the same as written by a write operation.</li>
 </ul>
 <h2 id="summary">Summary</h2>
-<p>SQL Databases, also known as RDBMS (Relational Database Management Systems) are the most common and traditional approach to database solutions. SQL solves problems ranging from fast write-oriented transactions to scan-intensive deep analytics. SQL allows users to apply their knowledge across systems and provides support for third-party add-ons and tools because it is standardized. The data is stored in a structured way in form of tables or Relations. With the advent of Big Data, however, the structured approach falls short to serve the needs of Big Data systems which are primarily unstructured in nature. Increasing the capacity of SQL although allows a huge amount of data to be managed, does not really count as a solution to Big Data needs, which expects a fast response and quick scalability.</p>
-<p>To solve this problem a new kind of Database system called NoSQL was introduced to provide the scalability and unstructured platform for Big Data applications. The data structures used by NoSQL databases (e.g. key-value, graph, or document) differ slightly from those used by default in relational databases, making some operations faster in NoSQL and others faster in relational databases. NoSQL stands for Not Only SQL. It is also horizontally Scalable as opposed to vertical scaling in RDBMS.</p>
-<p>NoSQL was introduced to us for resolving scalability issues but consistency issues after scalability moved us from NoSQL to NewSQL. NoSQL provided great promises to be a perfect database system for Big Data applications; it however falls short because of some major drawbacks like NoSQL does not guarantee ACID properties (Atomicity, Consistency, Isolation, and Durability) of SQL systems. It is also not compatible with earlier versions of the database. This is where NewSQL comes into the picture. NewSQL is the latest development in the world of database systems. NewSQL is a Relational Database with the scalability properties of NoSQL.</p>
+<p><strong>SQL Databases</strong>, also known as RDBMS (Relational Database Management Systems) are the most common and traditional approach to database solutions. SQL solves problems ranging from fast write-oriented transactions to scan-intensive deep analytics. SQL allows users to apply their knowledge across systems and provides support for third-party add-ons and tools because it is standardized. The data is stored in a structured way in form of tables or Relations. With the advent of Big Data, however, the structured approach falls short to serve the needs of Big Data systems which are primarily unstructured in nature. Increasing the capacity of SQL although allows a huge amount of data to be managed, it does not really count as a solution to Big Data needs, which expects a fast response and quick scalability.</p>
+<p>To solve this problem a new kind of Database system called NoSQL was introduced to provide the scalability and unstructured platform for Big Data applications. The data structures used by <strong>NoSQL databases</strong> (e.g. key-value, graph, or document) differ slightly from those used by default in relational databases, making some operations faster in NoSQL and others faster in relational databases. NoSQL stands for Not Only SQL. It is also horizontally Scalable as opposed to vertical scaling in RDBMS.</p>
+<p>NoSQL was introduced to us for resolving scalability issues but consistency issues after scalability moved us from NoSQL to <strong>NewSQL</strong>. NoSQL provided great promises to be a perfect database system for Big Data applications; it however falls short because of some major drawbacks like NoSQL does not guarantee ACID properties (Atomicity, Consistency, Isolation, and Durability) of SQL systems. It is also not compatible with earlier versions of the database. This is where NewSQL comes into the picture. NewSQL is the latest development in the world of database systems, and it is basically a Relational Database with the scalability properties of NoSQL.</p>
+<h2 id="whats-next">What&rsquo;s Next</h2>
+<p>I hope you found this database technologies review to be useful. In the next few articles, I will compare different NoSQL data models on several criteria, then I will compare the most popular databases from each NoSQL model, followed by explaining structured approaches for picking the best database for your use-case.</p>
 <h2 id="references">References</h2>
 <section class="footnotes" role="doc-endnotes">
 <hr>
@@ -385,37 +425,40 @@ SQL join operations or have very limited support for it. So the related data nee
 <p>Venkatraman, S., Fahd, K., Kaspi, S., &amp; Venkatraman, R. (2016). SQL Versus NoSQL Movement with Big Data Analytics. <em>International Journal of Information Technology and Computer Science, 8</em>, 59-66. <a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:9" role="doc-endnote">
-<p>Lourenço, João &amp; Cabral, Bruno &amp; Carreiro, Paulo &amp; Vieira, Marco &amp; Bernardino, Jorge. (2015). Choosing the right NoSQL database for the job: a quality attribute evaluation. Journal of Big Data. 2. 18. 10.1186/s40537-015-0025-0. <a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Kotecha, Bansari H., and Hetal Joshiyara. &ldquo;A Survey of Non-Relational Databases with Big Data.&rdquo; <em>International Journal on Recent and Innovation Trends in Computing and Communication</em> 5.11 (2017): 143-148. <a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:10" role="doc-endnote">
-<p>Kotecha, Bansari H., and Hetal Joshiyara. &ldquo;A Survey of Non-Relational Databases with Big Data.&rdquo; <em>International Journal on Recent and Innovation Trends in Computing and Communication</em> 5.11 (2017): 143-148. <a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Hajoui, Omar &amp; Dehbi, Rachid &amp; Talea, Mohamed &amp; Ibn Batouta, Zouhair. (2015). An advanced comparative study of the most promising NoSQL and NewSQL databases with a multi-criteria analysis method. 81. 579-588. <a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:11" role="doc-endnote">
-<p>Hajoui, Omar &amp; Dehbi, Rachid &amp; Talea, Mohamed &amp; Ibn Batouta, Zouhair. (2015). An advanced comparative study of the most promising NoSQL and NewSQL databases with a multi-criteria analysis method. 81. 579-588. <a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Stonebraker M (2010) Sql databases v. nosql databases. Commun ACM. 53(4):10–11 <a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:12" role="doc-endnote">
-<p>Stonebraker M (2010) Sql databases v. nosql databases. Commun ACM. 53(4):10–11 <a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Khasawneh, Tariq &amp; Alsahlee, Mahmoud &amp; Safieh, Ali. (2020). SQL, NewSQL, and NOSQL Databases: A Comparative Survey. 013-021. 10.1109/ICICS49469.2020.239513. <a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:13" role="doc-endnote">
-<p>Khasawneh, Tariq &amp; Alsahlee, Mahmoud &amp; Safieh, Ali. (2020). SQL, NewSQL, and NOSQL Databases: A Comparative Survey. 013-021. 10.1109/ICICS49469.2020.239513. <a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Chandra, Umesh. (2017). A Comparative Study On: Nosql, Newsql And Polygot Persistence. International Journal Of Soft Computing and Engineering (IJSE). 7. <a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:14" role="doc-endnote">
-<p>Chandra, Umesh. (2017). A Comparative Study On: Nosql, Newsql And Polygot Persistence. International Journal Of Soft Computing and Engineering (IJSE). 7. <a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Chaudhry, Natalia &amp; Yousaf, Muhammad. (2020). Architectural assessment of NoSQL and NewSQL systems. Distributed and Parallel Databases. 38. 10.1007/s10619-020-07310-1. <a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:15" role="doc-endnote">
-<p>Chaudhry, Natalia &amp; Yousaf, Muhammad. (2020). Architectural assessment of NoSQL and NewSQL systems. Distributed and Parallel Databases. 38. 10.1007/s10619-020-07310-1. <a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Gilbert S, Lynch N (2002) Brewer’s conjecture and the feasibility of consistent, available, partition-tolerant web services. SIGACT News 33(2):51–59 <a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:16" role="doc-endnote">
-<p>Gilbert S, Lynch N (2002) Brewer’s conjecture and the feasibility of consistent, available, partition-tolerant web services. SIGACT News 33(2):51–59 <a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Khazaei, Hamzeh &amp; Fokaefs, Marios &amp; Zareian, Saeed &amp; Beigi, Nasim &amp; Ramprasad, Brian &amp; Shtern, Mark &amp; Gaikwad, Purwa &amp; Litoiu, Marin. (2015). How do I choose the right NoSQL solution? A comprehensive theoretical and experimental survey. Journal of Big Data and Information Analytics (BDIA). 2. 10.3934/bdia.2016004. <a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:17" role="doc-endnote">
 <p>Abadi D (2012) Consistency tradeoffs in modern distributed data- base system design: cap is only part of the story. Computer 45(2):37–42 <a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:18" role="doc-endnote">
-<p>Yuan, Li-Yan &amp; Wu, Lengdong &amp; You, Jia-Huai &amp; Shanghai, Yan &amp; Software, Shifang. (2015). A Demonstration of Rubato DB: A Highly Scalable NewSQL Database System for OLTP and Big Data Applications. <a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Lourenço, João &amp; Cabral, Bruno &amp; Carreiro, Paulo &amp; Vieira, Marco &amp; Bernardino, Jorge. (2015). Choosing the right NoSQL database for the job: a quality attribute evaluation. Journal of Big Data. 2. 18. 10.1186/s40537-015-0025-0. <a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:19" role="doc-endnote">
-<p>Wu, Lengdong &amp; Yuan, Li-Yan &amp; You, Jia-Huai. (2014). BASIC: An alternative to BASE for large-scale data management system. Proceedings - 2014 IEEE International Conference on Big Data, IEEE Big Data 2014. 10.1109/BigData.2014.7004206. <a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Yuan, Li-Yan &amp; Wu, Lengdong &amp; You, Jia-Huai &amp; Shanghai, Yan &amp; Software, Shifang. (2015). A Demonstration of Rubato DB: A Highly Scalable NewSQL Database System for OLTP and Big Data Applications. <a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:20" role="doc-endnote">
+<p>Wu, Lengdong &amp; Yuan, Li-Yan &amp; You, Jia-Huai. (2014). BASIC: An alternative to BASE for large-scale data management system. Proceedings - 2014 IEEE International Conference on Big Data, IEEE Big Data 2014. 10.1109/BigData.2014.7004206. <a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -457,7 +500,7 @@ SQL join operations or have very limited support for it. So the related data nee
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="/css/411dff.min.css"><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":30},"comment":{},"data":{"id-4":"Sumit's Diary","id-5":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-4":["id-4"],"id-5":["id-5"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="/css/5b56eb.min.css"><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":30},"comment":{},"data":{"id-5":"Sumit's Diary","id-6":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-5":["id-5"],"id-6":["id-6"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-171612692-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-171612692-1" async></script></body>
