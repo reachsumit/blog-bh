@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1169788709596718"
+     crossorigin="anonymous"></script>
+        <title>Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model - Sumit&#39;s Diary</title><meta name="Description" content="This article will explain the basic concepts of each category of the NoSQL database models and analyze the characteristics of the data that each category of the NoSQL database is suitable for processing."><meta property="og:title" content="Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model" />
+<meta property="og:description" content="This article will explain the basic concepts of each category of the NoSQL database models and analyze the characteristics of the data that each category of the NoSQL database is suitable for processing." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/" /><meta property="og:image" content="https://blog.reachsumit.com/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-20T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/logo.png"/>
+
+<meta name="twitter:title" content="Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model"/>
+<meta name="twitter:description" content="This article will explain the basic concepts of each category of the NoSQL database models and analyze the characteristics of the data that each category of the NoSQL database is suitable for processing."/>
+<meta name="application-name" content="Sumit&#39;s Diary">
+<meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.reachsumit.com\/posts\/2022\/06\/nosql-models-comparison\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "system design, database","wordcount":  3290 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2022\/06\/nosql-models-comparison\/","datePublished": "2022-06-20T00:00:00+00:00","dateModified": "2022-06-20T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Sumit Kumar"
+            },"description": "This article will explain the basic concepts of each category of the NoSQL database models and analyze the characteristics of the data that each category of the NoSQL database is suitable for processing."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Sumit&#39;s Diary"><span id="id-8" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search this blog" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Sumit&#39;s Diary"><span id="id-9" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search this blog" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/software-engineering/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Software Engineering</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-20">2022-06-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3290 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;16 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#tackling-the-data-variety">Tackling the Data Variety</a></li>
+    <li><a href="#nosql-database-models">NoSQL Database Models</a>
+      <ul>
+        <li><a href="#key-value-stores">Key-Value Stores</a>
+          <ul>
+            <li><a href="#strengths-of-key-value-stores">Strengths of Key-Value Stores</a></li>
+            <li><a href="#weaknesses-of-key-value-stores">Weaknesses of Key-Value Stores</a></li>
+            <li><a href="#example-applications-of-key-value-stores">Example Applications of Key-value Stores</a></li>
+          </ul>
+        </li>
+        <li><a href="#document-oriented-stores">Document-Oriented Stores</a>
+          <ul>
+            <li><a href="#strengths-of-document-stores">Strengths of Document Stores</a></li>
+            <li><a href="#weaknesses-of-document-stores">Weaknesses of Document Stores</a></li>
+            <li><a href="#example-applications-of-document--stores">Example Applications of Document  Stores</a></li>
+          </ul>
+        </li>
+        <li><a href="#column-oriented-stores">Column-Oriented Stores</a>
+          <ul>
+            <li><a href="#strengths-of-column-oriented-stores">Strengths of Column-Oriented Stores</a></li>
+            <li><a href="#weaknesses-of-column-oriented-stores">Weaknesses of Column-Oriented Stores</a></li>
+            <li><a href="#example-applications-of-column-oriented-stores">Example Applications of Column-Oriented Stores</a></li>
+          </ul>
+        </li>
+        <li><a href="#graph-oriented-stores">Graph-Oriented Stores</a>
+          <ul>
+            <li><a href="#strengths-of-graph-oriented-stores">Strengths of Graph-Oriented Stores</a></li>
+            <li><a href="#weaknesses-of-graph-oriented-stores">Weaknesses of Graph-Oriented Stores</a></li>
+            <li><a href="#example-applications-of-graph-oriented-stores">Example Applications of Graph-Oriented Stores</a></li>
+          </ul>
+        </li>
+        <li><a href="#other-nosql-stores">Other NoSQL Stores</a></li>
+      </ul>
+    </li>
+    <li><a href="#comparing-nosql-database-models">Comparing NoSQL Database Models</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#whats-next">What&rsquo;s Next</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>In the last article, I did a literature review defining the origin of SQL, NoSQL, and NewSQL. I also went over the important theorems and properties that could help in the categorization and comparison of the different types of databases. If you haven&rsquo;t read that article yet, I highly recommend you to go over it: <a href="https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/" target="_blank" rel="noopener noreffer">SQL vs NoSQL vs NewSQL: An In-depth Literature Review</a>. In this article, we will build upon those concepts and learn how to categorize NoSQL databases based on the type of data we intend to store.</p>
+<h2 id="tackling-the-data-variety">Tackling the Data Variety</h2>
+<p>Variety is one of defining aspects, the 7 Vs, of Big Data. It refers to the diverse, complex, and unstructured nature of the data generated by new channels and emerging technologies, such as social media, IoT, mobile devices, and online advertising. A majority of these processes generate semi-structured or unstructured data. This includes tabular data (databases), hierarchical data, documents, XML, emails, blogs, instant messaging, click streams, log files, data metering, images, audio, video, and information about share rates (stock ticker), financial transactions, etc <cite><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite>.</p>
+<p>NoSQL provides a simple and flexible technology for the storage and retrieval of such data. This new DBMS drops the structure, entity relationships, and most of the other principles of the ACID (Atomicity, Consistency, Isolation, Durability) model. Instead, it proposes a more flexible model named Basic Availability Soft State Eventual Consistency (BASE).</p>
+<h2 id="nosql-database-models">NoSQL Database Models</h2>
+<p>The most commonly employed distinction between NoSQL databases is the way they store and allow access to data. While Relational databases require all data to neatly fit into tables, NoSQL offers different database solutions for specific contexts without having to use a specific schema. The “one size fits all” approach of relational databases no longer applies.</p>
+<p>According to the classification on the NoSQL database official website <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, there are 15 categories of NoSQL databases. This classification is based on the logical organization of the data (also called data models), meaning the way the data are stored in the database. Its query model specifies how to retrieve and update the data. There are hundreds of readily available NoSQL databases, and each has different use case scenarios. They are usually divided into four categories, according to their data model and storage: Key-Value Stores, Document Stores, Column Stores, and Graph databases.</p>
+<h3 id="key-value-stores">Key-Value Stores</h3>
+<p>As the name suggests a key-value store consists of a set of key-value pairs with unique keys. The data is stored and accessed using keys and almost all queries are key lookup based. Key-value stores do not assume the structure of the stored data, meaning that both the key and the value can be of any structure and NoSQL has no information on the data; it just delivers the data based on the key.</p>
+<p>If the use-case requires any assumptions about the structure of the stored data, it has to be implicitly encoded in the application logic (i.e. schema-on-read), and not explicitly defined through a data definition language (i.e. schema-on-write) <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. These stores do not support operations beyond the get-put operations-based CRUD (Create, Read, Update, Delete), and their model can be likened to a distributed hash table. They also usually do not support composite keys and secondary indexes. A logical data structure that can contain any number of key-value pairs is called a namespace.</p>
+<p>Key-value stores commonly apply a hashing function to the key to obtain a specific node of the physical network where the value will be finally stored. To allow easy addition and/or removal of nodes, several databases take advantage of the concept of Consistent Hashing. Amazon&rsquo;s DynamoDB made further improvements in this partitioning scheme by introducing virtual nodes. Similar to Consistent Hashing, some databases like Membase/CouchBase use Virtual Buckets or vBuckets to overcome the problem of redistributing keys when a node is added or removed.</p>
+<div id="id-1"><img src="/img/posts/2022/nosql-models-comparison/kv_example.png" alt="Key-Value Store Example">
+<p>Figure: A simple key-value store example for serving static web content.</div>
+<p>Key-value stores can be categorized into three types in terms of storage options: temporary, permanent, and hybrid stores. In temporary stores, all the data are stored in memory, hence the access to data is fast. However, data will be lost if the system is down. Permanent key-value stores ensure the high availability of data by storing the data on the hard disk but with the price of the lower speed of I/O operations on the hard disk. Hybrid approaches combine the best of both temporary and permanent types by storing the data into memory and then writing the input to the hard disk when a set of specified conditions are met <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. Some of the in-memory key-value systems are Redis, Ehcache, Aerospike, and Tarantool. Persistent key-value systems include RocksDB, and LevelDB <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+<h4 id="strengths-of-key-value-stores">Strengths of Key-Value Stores</h4>
+<ul>
+<li>The simplicity of such a system makes it attractive in certain circumstances. For example, resource-efficient key-value stores are often applied in embedded systems or as high-performance in-process databases</li>
+<li>They are horizontally scalable. Partitioning and data querying is easy because of their simple abstraction.</li>
+<li>They provide low latency and high throughput. The time complexity of its data access is O(1)</li>
+<li>They can be optimized for reads or writes.</li>
+</ul>
+<h4 id="weaknesses-of-key-value-stores">Weaknesses of Key-Value Stores</h4>
+<ul>
+<li>They are not powerful enough if an application requires complex operations such as range querying.</li>
+<li>KV Stores needs to return the entire value when accessing a key because the stored data is schemaless.</li>
+<li>In-place updates are generally not supported.</li>
+<li>It is hard for these stores to support reporting, analytics, aggregation, or ordered values.</li>
+</ul>
+<h4 id="example-applications-of-key-value-stores">Example Applications of Key-value Stores</h4>
+<p>Key-value stores are generally good solutions if you have a simple application with only one kind of object, and you only need to look up objects based on one attribute <sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. Some examples of use-cases for KV stores are listed below <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
+<ul>
+<li>Data storage with simple querying needs</li>
+<li>Profiles, user preferences</li>
+<li>Data from a cart of purchases</li>
+<li>Sensor data, logs</li>
+<li>Data cache for rarely updated data</li>
+<li>Large-scale sessions management for users</li>
+</ul>
+<h3 id="document-oriented-stores">Document-Oriented Stores</h3>
+<p>Document stores extend the unstructured storage paradigm of key-value stores and make the values to be semi-structured, specifically attribute name/value pairs, called documents. A document, in this context, is a JSON or JSON-like object (such as XML, YAML, or BSON). This restriction brings flexibility in accessing the data because it is now possible to fetch either an entire document by its key or to only retrieve parts of the document. The document-oriented database still regards the document as a whole, instead of partitioning the document into many key/value pairs. This enables the documents of different structures to be put into the same set. The document-oriented database supports document index, including not only primary identifiers but also document properties <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>. Also, unlike key-value stores, both keys and values are fully searchable in document databases. They also usually support complex keys along with secondary indexes.</p>
+<p>Each document can store hundreds of attributes, and the number and type of attributes stored can vary from document to document (schema-free!). The attribute names are dynamically defined for each document at runtime, and values can be nested documents, or lists, as well as scalar values. Most of the databases available under this category provide data access typically over HTTP protocol using RESTful API or over Apache Thrift protocol for cross-language interoperability. A group of documents is called a collection. The documents within a collection are usually related to the same subject, such as employees, products, and so on.</p>
+<div id="id-2"><img src="/img/posts/2022/nosql-models-comparison/document_example.png" alt="Document Store Example">
+<p>Figure: A simple Document store example for customer data.</div>
+<p>Document stores make it possible to add and delete value fields, modify certain fields, and query the database by fields. Queries can be done on any field using patterns, so, ranges, logical operators, wildcards, and more, can also be used in queries. The drawback is that for each type of query a new index needs to be created <sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>. According to db-engines <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>, some highly ranked document-oriented systems include MongoDB, Couchbase, CouchDB, Realm, MarkLogic, OrientDB, RavenDB, PouchDB, and RethinkDB.</p>
+<h4 id="strengths-of-document-stores">Strengths of Document Stores</h4>
+<ul>
+<li>They tend to support more complex data models than key-value stores.</li>
+<li>They usually support multiple indexes and range querying.</li>
+<li>They support data access over RESTful API.</li>
+<li>Documents can be nested due to the schemaless nature of the store.</li>
+<li>They typically support low latency reads.</li>
+</ul>
+<h4 id="weaknesses-of-document-stores">Weaknesses of Document Stores</h4>
+<ul>
+<li>Joins are still not available within the database. A query requiring documents from two collections will require two separate queries.</li>
+<li>A lot of document stores have security concerns in regards to data leakage on web apps. However, this problem is prevalent among other NoSQL models as well.</li>
+</ul>
+<h4 id="example-applications-of-document--stores">Example Applications of Document  Stores</h4>
+<p>A Document-oriented database is useful when the number of fields cannot be fully determined at application design time. Some examples of use-cases for document stores are as follows.</p>
+<ul>
+<li>Content Management Systems</li>
+<li>Real-time Web Analytics</li>
+<li>Products Catalog</li>
+<li>Blogs</li>
+<li>Analytical Platforms</li>
+</ul>
+<h3 id="column-oriented-stores">Column-Oriented Stores</h3>
+<p>While the relational databases store and process the data with a row as the unit, column-oriented stores process and store the data with a column as the unit. A column-oriented store (also known as extensible record stores, wide-column stores, and column-family stores) stores each row by splitting it vertically and horizontally across the physical nodes of distributed systems. Each row can have one or more column families and is identified by a row key. Each column family can also act as a key to manipulate one or more columns. Technically a wide-column store is closer to a distributed multi-level sorted map (or a two-dimensional key-value store): the first-level keys identify rows that themselves consist of key-value pairs. The first-level keys are called row keys, the second-level keys are called column keys <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+<div id="id-3"><img src="/img/posts/2022/nosql-models-comparison/columnoriented_db_table.png" alt="column-db-structure">
+<p>Figure: General structure for Wide-Column databases.</div>
+<p>A Keyspace is used as the repository for the tables. The row key is similar to the key used in key-value systems for data manipulation. The set of all columns is partitioned into so-called column families to colocate columns on disks that are usually accessed together. Each column family acts as a key to manipulate one or more containing columns. Wide column stores are also called extensible record stores because they store data in records with the ability to hold very large numbers (billions) of columns (schema-free!). These column-wide data management systems are flexible enough to store the data of any format or type. The following figure represents a sample table in a wide-column datastore <sup id="fnref2:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
+<div id="id-4"><img src="/img/posts/2022/nosql-models-comparison/wide_column_db_example.png" alt="column-db-example">
+<p>Figure: An example of a data table in a wide column store.</div>
+<p>On disk, wide-column stores do not co-locate all data from each row, but instead values of the same column family and from the same row. Hence, an entity (a row) cannot be retrieved by one single lookup as in a document store but has to be joined together from the columns of all column families. However, this storage layout usually enables highly efficient data compression and makes retrieving only a portion of an entity very efficient. According to db-engines <sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>, some of the column-oriented systems that are ranked high include Cassandra, HBase, Google Cloud Bigtable, Accumulo, and ScyllaDB.</p>
+<h4 id="strengths-of-column-oriented-stores">Strengths of Column-Oriented Stores</h4>
+<ul>
+<li>Wide Column or Column Families databases store data by columns and do not impose a rigid scheme on user data. This means that some rows may or may not have columns of a certain type.</li>
+<li>Since data stored by column have the same data type, compression algorithms can be used to decrease the required space.</li>
+<li>Because there is no column key without a corresponding value, null values can be stored without any space overhead.</li>
+<li>It is also possible to do functional partitioning per column so that columns that are frequently accessed are placed in the same physical location.</li>
+<li>The column-oriented database is so scalable that the increase in data size will not result in decreased processing speed. So it is well-suited for processing a huge amount of data.</li>
+<li>They have better querying capabilities than the key-value stores due to the usage of row-level and column-level keys.</li>
+<li>Wide-column stores allow different access levels for different columns.</li>
+</ul>
+<h4 id="weaknesses-of-column-oriented-stores">Weaknesses of Column-Oriented Stores</h4>
+<ul>
+<li>Complexity in the development of such databases is considerably high.</li>
+<li>The application domain of Wide Column databases is limited to particular problems: data to be stored need to be structured and potentially reach the order of petabytes, but the search can only be done through the primary key, i.e., the ID of the row. Queries on certain columns are not possible as this would imply having an index on the entire dataset or traversing it <sup id="fnref1:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>.</li>
+<li>Referential integrity and joins are not supported.</li>
+<li>They are much less efficient when processing many columns simultaneously.</li>
+<li>Designing an effective indexing schema is difficult and time-consuming. Even then, the said schema would still not be as effective as simple relational database schemas.</li>
+</ul>
+<h4 id="example-applications-of-column-oriented-stores">Example Applications of Column-Oriented Stores</h4>
+<p>These stores are very efficient (low latency and load times!) when an aggregate needs to be computed over many rows but only for a notably smaller subset of all columns of data. They also work well when new values of a column are supplied for all rows at once, because that column data can be written efficiently and replace old column data without touching any other columns for the rows.</p>
+<ul>
+<li>Search Optimization</li>
+<li>Processing of  structured data and Business Intelligence (BI)</li>
+<li>A high number of fast writes and basic analyses in real-time (Cassandra)</li>
+<li>Can be a good analysis store for semi-structured data</li>
+<li>Event Logging</li>
+</ul>
+<h3 id="graph-oriented-stores">Graph-Oriented Stores</h3>
+<p>Graph-oriented systems are based on graph theory that represents the objects as nodes of the graph and their relationships as the edges. In graph-oriented systems, the main focus is on the relationships, which naturally represent data and their relationships. This reduces the overhead of joins that involves the merging of columns from one or more tables. Instead of joins, each node possesses a record list of the relationships that it holds with the other nodes, eliminating the need for foreign keys and join operations <sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>. The graph-oriented systems are widely used in applications that embody complex relationships such as recommendation systems and social networking applications. Graph databases help us to implement graph processing requirements in the same query language level as we use for fetching graph data without the extra layer of abstraction for graph nodes and edges. This means less overhead for graph-related processing and more flexibility and performance.</p>
+<div id="id-5"><img src="/img/posts/2022/nosql-models-comparison/graph_db_example.png" alt="graph-db-example">
+<p>Figure: Example of vertex representation in a Graph-oriented database.</div>
+<p>The above figure shows an example where users in a system may have friendship relationships (i.e., undirected edges) and send messages to each other (i.e., directed edges). Undirected edges are commutative and can be stored once, whereas directed edges are often stored in two different structures to provide faster access for queries in different directions. Additionally, vertices and edges have specific properties associated with them, and thereby, these properties must be stored in separate structures. According to db-engines <sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>, some of the graph-oriented systems that are ranked high include Neo4j, JanusGraph, TigerGraph, Dgraph, Giraph, Nebula Graph, and FlockDB.</p>
+<h4 id="strengths-of-graph-oriented-stores">Strengths of Graph-Oriented Stores</h4>
+<ul>
+<li>They provide support for graph-based algorithms and queries. For example, deep traversals in graph databased systems are faster than relational databases.</li>
+<li>Graph-based stores allow for very fast execution of complex pattern-matching queries.</li>
+<li>They also allow for a compact representation of the data, basing its implementation on bitmaps.</li>
+<li>Most of them are transactional.</li>
+</ul>
+<h4 id="weaknesses-of-graph-oriented-stores">Weaknesses of Graph-Oriented Stores</h4>
+<ul>
+<li>Distributed graph processing is challenging. Additionally, a partitioning strategy is difficult to express in source code because the structure of the graph (unlike lists or hashes) is not known a priori. This is one of the greatest pitfalls in the application of MapReduce-based frameworks in graph processing <sup id="fnref2:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>.</li>
+<li>Similar to partitioning, computing locality is also challenging. Traversal algorithms generate a significant communication overhead when the vertices are located in different computing nodes.</li>
+<li>Most graph-based stores do not have a declarative language.</li>
+</ul>
+<h4 id="example-applications-of-graph-oriented-stores">Example Applications of Graph-Oriented Stores</h4>
+<ul>
+<li>Generating recommendations</li>
+<li>Business Intelligence (BI)</li>
+<li>Semantic Web, Social networks analysis</li>
+<li>Geospatial Data, geolocation</li>
+<li>Genealogy, Web of things, Routing Services</li>
+<li>Authentication and authorization systems</li>
+<li>Fraud detection in financial services</li>
+</ul>
+<h3 id="other-nosql-stores">Other NoSQL Stores</h3>
+<p>So far we have seen the four major categories of NoSQL database models. NoSQL website defines 11 other categories: Multi-model databases, Object databases, Grid/Cloud databases, XML databases, Multidimensional databases, Multi-value databases, Event Sourcing databases, Time Series databases, Scientific/Specialized databases, Others, and Unresolved and Uncategorized. The following table summarizes the suitable data processing feature for each of these databases <sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>.</p>
+<div id="id-6"><img src="/img/posts/2022/nosql-models-comparison/all-nosql-data-features.png" alt="suitable data features for all NoSQL models">
+<p>Figure: Summary of suitable data features for NoSQL databases.</div>
+<h2 id="comparing-nosql-database-models">Comparing NoSQL Database Models</h2>
+<p>Within the family of NoSQL databases, different systems handle size, data model, and query complexity differently. Big data requires NoSQL database solutions to address velocity and variety of data more than data volume. This notion comes from the belief that 90% of web-based companies will likely never rise to the volume levels implied by NoSQL <sup id="fnref3:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. The following figure plots the different NoSQL data stores on the data volume vs. modeling complexity dimensions. There is a tradeoff between size and complexity, as can be noticed from the figure.</p>
+<div id="id-7"><img src="/img/posts/2022/nosql-models-comparison/complexity_vs_size.png" alt="NoSQL complexity vs size">
+<p>Figure: NoSQL solutions; complexity vs size.</div>
+<p>Further, these NoSQL stores can also be compared based on non-functional requirements as shown below <sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup>.</p>
+<table>
+<thead>
+<tr>
+<th>Data Store Type</th>
+<th>Performance</th>
+<th>Scalability</th>
+<th>Flexibility</th>
+<th>Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Key-value store</td>
+<td>high</td>
+<td>high</td>
+<td>high</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Column store</td>
+<td>high</td>
+<td>high</td>
+<td>moderate</td>
+<td>low</td>
+</tr>
+<tr>
+<td>Document store</td>
+<td>high</td>
+<td>variable (high)</td>
+<td>high</td>
+<td>low</td>
+</tr>
+<tr>
+<td>Graph store</td>
+<td>variable</td>
+<td>variable</td>
+<td>high</td>
+<td>high</td>
+</tr>
+</tbody>
+</table>
+<h2 id="summary">Summary</h2>
+<p>The most commonly employed distinction between NoSQL databases is the way they store and allow access to data. Understanding the storage model characteristics of the NoSQL databases can help individuals or organizations in selecting the most appropriate class of databases for specific data feature requirements. This article explored the four most popular NoSQL data storage models. We looked at strengths, weaknesses, and specific application domains for each of those database models, along with a basic comparison among them.</p>
+<h2 id="whats-next">What&rsquo;s Next</h2>
+<p>In the next article, we will look at the most popular database examples from each of the NoSQL models explained above. We will compare those individual databases against each other on functional and non-functional requirements. That comparison will further help the users in selecting the most appropriate database for their specific data application requirements.</p>
+<h2 id="references">References</h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Alexandru, Adriana &amp; Alexandru, Cristina &amp; Coardos, Dora &amp; Tudora, Eleonora. (2016). Big data: Concepts, Technologies and Applications in the Public Sector. International Journal of Computer, Electrical, Automation, Control and Information Engineering. 10. 1629-1635.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>NoSQL Databases. Available online: <a href="http://nosql-database.org/" target="_blank" rel="noopener noreffer">http://nosql-database.org/</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Gessert, Felix &amp; Wingerath, Wolfram &amp; Friedrich, Steffen &amp; Ritter, Norbert. (2017). NoSQL database systems: a survey and decision guidance. Computer Science - Research and Development. 32. 10.1007/s00450-016-0334-3&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Khazaei, Hamzeh &amp; Fokaefs, Marios &amp; Zareian, Saeed &amp; Beigi, Nasim &amp; Ramprasad, Brian &amp; Shtern, Mark &amp; Gaikwad, Purwa &amp; Litoiu, Marin. (2015). How do I choose the right NoSQL solution? A comprehensive theoretical and experimental survey. Journal of Big Data and Information Analytics (BDIA). 2. 10.3934/bdia.2016004.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>DB-Engines Ranking of Key-value Stores. Available online: <a href="https://db-engines.com/en/ranking/key-value&#43;store" target="_blank" rel="noopener noreffer">https://db-engines.com/en/ranking/key-value+store</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Hajoui, Omar &amp; Dehbi, Rachid &amp; Talea, Mohamed &amp; Ibn Batouta, Zouhair. (2015). An advanced comparative study of the most promising NoSQL and NewSQL databases with a multi-criteria analysis method. 81. 579-588.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Han, Jing, E. Haihong, Guan Le and Jian Du. “Survey on NoSQL database.” <em>2011 6th International Conference on Pervasive Computing and Applications</em> (2011): 363-366.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>Corbellini, Alejandro &amp; Mateos, Cristian &amp; Zunino, Alejandro &amp; Godoy, Daniela &amp; Schiaffino, Silvia. (2017). Persisting big data: The NoSQL landscape. Information Systems. 63. 1-23. 10.1016/j.is.2016.07.009.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>DB-Engines Ranking of Document Stores. Available online: <a href="https://db-engines.com/en/ranking/document&#43;store" target="_blank" rel="noopener noreffer">https://db-engines.com/en/ranking/document+store</a>&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>DB-Engines Ranking of Wide-Column Stores. Available online: <a href="https://db-engines.com/en/ranking/wide&#43;column&#43;store" target="_blank" rel="noopener noreffer">https://db-engines.com/en/ranking/wide+column+store</a>&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>Chaudhry, Natalia &amp; Yousaf, Muhammad. (2020). Architectural assessment of NoSQL and NewSQL systems. Distributed and Parallel Databases. 38. 10.1007/s10619-020-07310-1.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p>DB-Engines Ranking of Graph DBMS. Available online: <a href="https://db-engines.com/en/ranking/graph&#43;dbms" target="_blank" rel="noopener noreffer">https://db-engines.com/en/ranking/graph+dbms</a>&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p>Chen, &amp; Lee,. (2019). An Introduction of NoSQL Databases Based on Their Categories and Application Industries. Algorithms. 12. 106. 10.3390/a12050106.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:14">
+<p>Kotecha, Bansari H., and Hetal Joshiyara. “A Survey of Non-Relational Databases with Big Data.” <em>International Journal on Recent and Innovation Trends in Computing and Communication</em> 5.11 (2017): 143-148.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-06-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/" data-title="Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model" data-via="_reachsumit" data-hashtags="system design,database"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/" data-hashtag="system design"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/" data-title="Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/" data-title="Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/" data-title="Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/"><i class="fab fa-get-pocket fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/" data-title="Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/" data-title="Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model"><i class="fab fa-evernote fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/" data-title="Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model" data-description="This article will explain the basic concepts of each category of the NoSQL database models and analyze the characteristics of the data that each category of the NoSQL database is suitable for processing."><i class="fab fa-trello fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/system-design/">system design</a>,&nbsp;<a href="/tags/database/">database</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/2022/06/sql-nosql-newsql/" class="prev" rel="prev" title="SQL vs NoSQL vs NewSQL: An In-depth Literature Review"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>SQL vs NoSQL vs NewSQL: An In-depth Literature Review</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://reachsumit.com" target="_blank">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><link rel="stylesheet" href="/css/b444eb.min.css"><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.5.4/dist/index.umd.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":30},"comment":{},"data":{"id-8":"Sumit's Diary","id-9":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-8":["id-8"],"id-9":["id-9"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-171612692-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-171612692-1" async></script></body>
+</html>

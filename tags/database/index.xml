@@ -4,7 +4,15 @@
         <link>https://blog.reachsumit.com/tags/database/</link>
         <description>database - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
-            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 09 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/database/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/database/" rel="self" type="application/rss+xml" /><item>
+    <title>Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model</title>
+    <link>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</link>
+    <pubDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Sumit Kumar</author>
+    <guid>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</guid>
+    <description><![CDATA[In the last article, I did a literature review defining the origin of SQL, NoSQL, and NewSQL. I also went over the important theorems and properties that could help in the categorization and comparison of the different types of databases. If you haven&rsquo;t read that article yet, I highly recommend you to go over it: SQL vs NoSQL vs NewSQL: An In-depth Literature Review. In this article, we will build upon those concepts and learn how to categorize NoSQL databases based on the type of data we intend to store.]]></description>
+</item>
+<item>
     <title>SQL vs NoSQL vs NewSQL: An In-depth Literature Review</title>
     <link>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</link>
     <pubDate>Thu, 09 Jun 2022 00:00:00 &#43;0000</pubDate>
