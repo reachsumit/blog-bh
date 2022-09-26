@@ -3,7 +3,6 @@
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
             <loc>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</loc><lastmod>2022-09-25T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/posts/2022/06/nosql-db-intro-comparison/</loc><lastmod>2022-06-21T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</loc><lastmod>2022-06-20T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</loc><lastmod>2022-06-09T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/posts/2020/12/generating-empathetic-responses/</loc><lastmod>2020-12-07T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -18,9 +17,9 @@
             <loc>https://blog.reachsumit.com/categories/recommender-systems/</loc><lastmod>2022-09-25T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://blog.reachsumit.com/tags/recsys/</loc><lastmod>2022-09-25T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://blog.reachsumit.com/tags/</loc><lastmod>2022-09-25T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/tags/database/</loc><lastmod>2022-06-21T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://blog.reachsumit.com/categories/software-engineering/</loc><lastmod>2022-06-21T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://blog.reachsumit.com/tags/system-design/</loc><lastmod>2022-06-21T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://blog.reachsumit.com/tags/database/</loc><lastmod>2022-06-20T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://blog.reachsumit.com/categories/software-engineering/</loc><lastmod>2022-06-20T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://blog.reachsumit.com/tags/system-design/</loc><lastmod>2022-06-20T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/tags/dialogue-systems/</loc><lastmod>2020-12-07T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/categories/nlp/</loc><lastmod>2020-12-07T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/tags/algorithms/</loc><lastmod>2020-10-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
