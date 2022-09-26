@@ -4,9 +4,26 @@
         <link>https://blog.reachsumit.com/</link>
         <description>Welcome to Sumit Kumar&#39;s Personal Blog!</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
-            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 25 Sep 2022 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.reachsumit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Collaborative Filtering based Recommender Systems for Implicit Feedback Data</title>
+    <link>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</link>
+    <pubDate>Sun, 25 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>Sumit Kumar</author>
+    <guid>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</guid>
+    <description><![CDATA[Different Flavors of Recommenders At a high-level, Recommender systems work based on two different strategies (or a hybrid of the two) for recommending content.
+Collaborative Filtering: Algorithms that use usage data, such as explicit or implicit feedback from the user. Content-based Filtering: Algorithms that use content metadata and user profile. For example, a movie can be profiled based on its genre, IMDb ratings, box-office sales, etc., and a user can be profile based on their demographic information or their answers to an onboarding survey.]]></description>
+</item>
+<item>
+    <title>A Comparative Introduction to the most popular NoSQL Databases</title>
+    <link>https://blog.reachsumit.com/posts/2022/06/nosql-db-intro-comparison/</link>
+    <pubDate>Tue, 21 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Sumit Kumar</author>
+    <guid>https://blog.reachsumit.com/posts/2022/06/nosql-db-intro-comparison/</guid>
+    <description><![CDATA[In the last couple of articles, I reviewed literary surveys on SQL vs NoSQL vs NewSQL paradigm. I also went over some of the key concepts that will help you in understanding the motivation behind each type of the NoSQL database. I then explained different NoSQL data storage models, along with strengths, weaknesses and specific application areas of each of those models. If you haven&rsquo;t yet checked out those posts, I recommend checking them out: SQL vs NoSQL vs NewSQL: An In-depth Literature Review, and Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model.]]></description>
+</item>
+<item>
     <title>Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model</title>
     <link>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</link>
     <pubDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</pubDate>
