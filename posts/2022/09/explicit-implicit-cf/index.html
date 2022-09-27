@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2022\/09\/explicit-implicit-cf\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "recsys, literature review","wordcount":  2576 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "recsys, literature review","wordcount":  2577 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2022\/09\/explicit-implicit-cf\/","datePublished": "2022-09-25T00:00:00+00:00","dateModified": "2022-09-25T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -105,7 +105,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Collaborative Filtering based Recommender Systems for Implicit Feedback Data</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Recommender systems</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-25">2022-09-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2576 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-25">2022-09-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2577 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -579,17 +579,17 @@ $r_{ui}$ indicates the observations for user actions, for example $r_{ui}$ = 0.7
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">artist_factor</span><span class="p">,</span> <span class="n">user_factor</span> <span class="o">=</span> <span class="n">cf_object</span><span class="o">.</span><span class="n">factorize</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">artist_factor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (292364, 50)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">user_factor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (50, 358868)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">user_factor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (358868, 50)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">cf_object</span><span class="o">.</span><span class="n">init_predict</span><span class="p">(</span><span class="n">artist_factor</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cf_object</span><span class="o">.</span><span class="n">factors</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (292364, 50)</span>
 </span></span><span class="line"><span class="cl"><span class="n">cf_object</span><span class="o">.</span><span class="n">get_related</span><span class="p">(</span><span class="mi">2170</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="c1">#Recommendations:</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#artist id: 257, artist_name: the beatles score: 1.00000</span>
 </span></span><span class="line"><span class="cl"><span class="c1">#artist id: 2170, artist_name: maroon 5 score: 1.00000</span>
 </span></span><span class="line"><span class="cl"><span class="c1">#artist id: 170436, artist_name: vilma palma e vampiros score: 1.00000</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#artist id: 252491, artist_name: l-vis 1990 score: 0.98227</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#artist id: 190583, artist_name: joe satriani score: 0.97922</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#artist id: 257, artist_name: the beatles score: 1.00000</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#artist id: 24297, artist_name: dizzee rascal score: 0.77604</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#artist id: 257575, artist_name: the velvet underground score: 0.71697</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Code is also available on <a href="https://gist.github.com/reachsumit/35598b25c7abdc0c034f03db823c9a7d" target="_blank" rel="noopener noreffer">this GitHub Gist</a>.</p>
