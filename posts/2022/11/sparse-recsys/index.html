@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7470684047959463"
+     crossorigin="anonymous"></script>
+        <title>Recommender Systems for Modeling Feature Interactions under Sparse Settings - Sumit&#39;s Diary</title><meta name="Description" content="Many machine learning domains, such as recommender systems, targeted advertisement, search ranking, and text analysis contain highly sparse data because of the large categorical variable domains. This sparsity makes it hard for ML algorithms to model second-order and above feature interactions. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed for estimating interactions from sparse data."><meta property="og:title" content="Recommender Systems for Modeling Feature Interactions under Sparse Settings" />
+<meta property="og:description" content="Many machine learning domains, such as recommender systems, targeted advertisement, search ranking, and text analysis contain highly sparse data because of the large categorical variable domains. This sparsity makes it hard for ML algorithms to model second-order and above feature interactions. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed for estimating interactions from sparse data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" /><meta property="og:image" content="https://blog.reachsumit.com/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-11-06T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/logo.png"/>
+
+<meta name="twitter:title" content="Recommender Systems for Modeling Feature Interactions under Sparse Settings"/>
+<meta name="twitter:description" content="Many machine learning domains, such as recommender systems, targeted advertisement, search ranking, and text analysis contain highly sparse data because of the large categorical variable domains. This sparsity makes it hard for ML algorithms to model second-order and above feature interactions. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed for estimating interactions from sparse data."/>
+<meta name="application-name" content="Sumit&#39;s Diary">
+<meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Recommender Systems for Modeling Feature Interactions under Sparse Settings",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.reachsumit.com\/posts\/2022\/11\/sparse-recsys\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "recsys, literature review","wordcount":  3745 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2022\/11\/sparse-recsys\/","datePublished": "2022-11-06T00:00:00+00:00","dateModified": "2022-11-06T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Sumit Kumar"
+            },"description": "Many machine learning domains, such as recommender systems, targeted advertisement, search ranking, and text analysis contain highly sparse data because of the large categorical variable domains. This sparsity makes it hard for ML algorithms to model second-order and above feature interactions. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed for estimating interactions from sparse data."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Sumit&#39;s Diary"><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search this blog" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Sumit&#39;s Diary"><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search this blog" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Recommender Systems for Modeling Feature Interactions under Sparse Settings</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Recommender systems</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-06">2022-11-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3745 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;18 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#problem-with-sparse-inputs">Problem with sparse inputs</a></li>
+        <li><a href="#why-modeling-feature-interaction-is-important">Why modeling feature interaction is important?</a></li>
+        <li><a href="#memorization-and-generalization-paradigms">Memorization and Generalization paradigms</a></li>
+      </ul>
+    </li>
+    <li><a href="#dataset-preprocessing">Dataset Preprocessing</a></li>
+    <li><a href="#experimentation">Experimentation</a>
+      <ul>
+        <li><a href="#1-factorization-machine-fm">1. Factorization Machine (FM)</a>
+          <ul>
+            <li><a href="#implementation">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-field-aware-factorization-machine-ffm">2. Field-Aware Factorization Machine (FFM)</a>
+          <ul>
+            <li><a href="#implementation-1">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-attentional-factorization-machine-afm">3. Attentional Factorization Machine (AFM)</a>
+          <ul>
+            <li><a href="#implementation-2">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-wide--deep-learning">4. Wide &amp; Deep Learning</a>
+          <ul>
+            <li><a href="#implementation-3">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-deepfm">5. DeepFM</a>
+          <ul>
+            <li><a href="#implementation-4">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-neural-factorization-machine-nfm">6. Neural Factorization Machine (NFM)</a>
+          <ul>
+            <li><a href="#implementation-5">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-deep-learning-recommendation-model-dlrm">7. Deep Learning Recommendation Model (DLRM)</a>
+          <ul>
+            <li><a href="#implementation-6">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#comparing-all-models">Comparing all models</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Many machine learning domains, such as recommender systems, targeted advertisement, search ranking, and text analysis contain highly sparse data because of the large categorical variable domains. This sparsity makes it hard for ML algorithms to model second-order and above feature interactions. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed for estimating interactions from sparse data.</p>
+<h2 id="introduction">Introduction</h2>
+<h3 id="problem-with-sparse-inputs">Problem with sparse inputs</h3>
+<p>A variety of Information Retrieval and Data Mining tasks, such as Recommender Systems, Targeted Advertising, Search Ranking, etc. model discrete and categorical variables extensively. As an example, these variables could be user IDs, product IDs, advertisement IDs, and user demographics such as gender and occupation. A common technique to use these categorical variables in machine learning algorithms is to convert them to a set of binary vectors via one-hot encoding. This means that for a system with a large userbase and catalog the resultant feature vector is highly sparse. As explained next, this highly sparse setting makes it difficult to incorporate feature interactions.</p>
+<h3 id="why-modeling-feature-interaction-is-important">Why modeling feature interaction is important?</h3>
+<p>As an example, consider an artificial Click-through rate (CTR) dataset shown in the table below, where + and - represent the number of clicked and unclicked impressions respectively.</p>
+<img src="/img/posts/2022/sparse-recsys/table_1_ctr_example.png" alt="Using Factor Matrices">
+<p>We can see that an ad from Gucci has a high CTR on Vogue. It is difficult for linear models to learn this information because they learn the two weights Gucci and Vogue separately. To address this problem, a machine learning model will have to learn the effect of their feature interaction. Algorithms such as Poly2 (degree-2 polynomial) do this by learning a dedicated weight for each feature conjunction ($O(n^{2})$ time complexity).</p>
+<p><u>Note</u>: An order-2 interaction can be between two features like app category and timestamp. For example, people often download Uber apps for food delivery at meal-time. Similarly, an order-3 interaction can be between app category, user gender, and age. For example, a report showed that male teenagers like shooting and RPG games. Research shows that considering low- and high-order feature interactions simultaneously brings additional improvement over the cases of considering either alone<cite><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite>. For a highly sparse dataset, these feature interactions are often hidden and difficult to identify a priori.</p>
+<h3 id="memorization-and-generalization-paradigms">Memorization and Generalization paradigms</h3>
+<p>One common challenge in building such applications is to achieve both memorization and generalization.</p>
+<ul>
+<li><strong>Memorization</strong> is about learning the frequent co-occurrence of features and exploiting the correlations observed from the historical data. Google Play store recommender system might look into two features &lsquo;<em>installed_app</em>&rsquo; and &lsquo;<em>impression_app</em>&rsquo; to calculate the probability of a user installing the <em>impression_app</em>. Memorization-based algorithms use cross-product transformation and look at the features, such as <em>&ldquo;AND(previously_installed_app=netflix, current_impression_app=spotify)</em>&rdquo;, whose value is 1 and correlate it with the target label. While such recommendations are topical and directly relevant based on the user&rsquo;s previous actions, they can not generalize when cross-feature interaction never happened in the training data. For example, there is no training data for the pair (NBC, Gucci) in the table above. Creating cross-product transformations may also require a lot of manual feature engineering effort.</li>
+<li><strong>Generalization</strong> is based on the transitivity of correlation and exploring new feature combinations that have never or rarely occurred in the past. To achieve this generalization we use embeddings-based methods, such as factorization machines or deep neural networks by learning a low-dimensional dense embedding vector. While such recommenders tend to improve the diversity of the recommended items, they also suffer from the problem of over-generalizing. These methods have to learn effective low-dimensional representations from sparse and high-rank data. For cases such as users with specific preferences, or niche items with a narrow appeal, dense embeddings lead to nonzero predictions and thus make less relevant recommendations. Comparatively, it is easier for generalized linear models with cross-product feature transformations to memorize these &ldquo;exception rules&rdquo; with much fewer parameters.</li>
+</ul>
+<p>In this article, I will introduce, implement and compare seven popular frameworks to achieve both memorization and generalization in individual model architectures.</p>
+<h2 id="dataset-preprocessing">Dataset Preprocessing</h2>
+<p>For this article, I will be using the MovieLens 100K dataset<cite><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite> from Kaggle. It contains 100K ratings from 943 users on 1682 movies, along with demographic information for the user. Each user has rated at least 20 movies. The following transformations were applied to prepare the dataset for experimentation.</p>
+<ul>
+<li>Dataset was sorted by user_id and timestamp to create time ordering for each user.</li>
+<li>A target column was created which is time-wise the next movie that the user will watch.</li>
+<li>New columns such as average movie rating per user, average movie rating per genre per user, number of movies watched per user in each genre normalized by total movies watched by that user, etc. were created.</li>
+<li>Gender column was label encoded, and the occupation column was dummy encoded.</li>
+<li>Continuous features were scaled as appropriate.</li>
+<li>A sparse binary tensor was created indicating movies that the user has watched previously.</li>
+<li>Dataset was split into train-test with an 80-20 ratio.</li>
+</ul>
+<p>The following diagram shows the various features generated through preprocessing. Some or all of these features are used during experimentation depending upon the specific model architecture.</p>
+<img src="/img/posts/2022/sparse-recsys/input_features.png" alt="input features">
+<p>Refer to the respective notebook for data preprocessing steps specific to each model.</p>
+<h2 id="experimentation">Experimentation</h2>
+<p>Each of the model implementations is done in its standalone Jupyter notebook file and is linked in the corresponding section below. Every notebook contains code for data preprocessing, model definition, training, and evaluation as appropriate to the respective model.</p>
+<h3 id="1-factorization-machine-fm">1. Factorization Machine (FM)</h3>
+<p>Factorization Machines (FMs) were originally purposed as a supervised machine learning method for collaborative recommendations in 2010. FMs allow parameter estimation under very sparse data where its predecessors, like SVMs failed, and unlike Matrix Factorization it isn&rsquo;t limited to modeling the relation of two entities only. FMs learn second-order feature interactions on top of a linear model by modeling all interactions between each pair of features. They can also be optimized to work in linear time complexity. While in principle, FM can model high-order feature interaction, in practice usually only order-2 features are considered due to high complexity.</p>
+<img src="/img/posts/2022/sparse-recsys/fm_equation_1.png" alt="FM equation 1">
+<p>where $w_{0}$ is the global bias, $w_{i}$ denotes the weight of the i-th feature, and $ŵ_{ij}$ denotes the weight of the cross feature $x_{i}x_{j}$, which is factorized as: $ŵ_{ij} = v_{i}^{T} v_{j}$, where $v_{i} \in R^{k}$ denotes the embedding vector for feature i, and k denotes the size of embedding vector. Note that due to the coefficient $x_{i}x_{j}$, only interactions between non-zero features are considered.</p>
+<img src="/img/posts/2022/sparse-recsys/fm_example.png" alt="FM example">
+<p>The example above shows a sparse input feature vector x with corresponding target y. We have binary indicator variables for the user, movie, and the last movie rated, along with a normalized rating for other movies and timestamps. Let&rsquo;s say we want to estimate the interaction between the user Alice (A) and the movie Star Trek (ST). You will notice that in x we do not have any example in x with an interaction between A and ST. FM can still estimate this by using the factorized interaction parameters $\langle v_{A}, v_{ST} \rangle$ even in this case.</p>
+<h4 id="implementation">Implementation</h4>
+<p>Suppose we have M training objects, n features and we want to factorize feature interaction with vectors of size k i.e. dimensionality of $v_{i}$. Let us denote our trainset as $X \in R^{M×n}$, and matrix of $v_{i}$ (the ith row is $v_{i}$) as $V \in R^{n×k}$. Also, let&rsquo;s denote the feature vector for the jth object as $x_{j}$. So:</p>
+<img src="/img/posts/2022/sparse-recsys/fm_equation_3.png" alt="equation 3">
+<p>The number in brackets indicates the index of the sample for x and the index of the feature for v. Also, the last term in the FM equation can be expressed as:</p>
+<img src="/img/posts/2022/sparse-recsys/fm_equation_2.png" alt="equation 2">
+<p>$S_{1}$ is a dot product of feature vector $x_{j}$ and ith column of V. If we multiply X and V, we get:</p>
+<img src="/img/posts/2022/sparse-recsys/fm_equation_4.png" alt="equation 4">
+<p>So if square XV element-wise and then find the sum of each row, we obtain a vector of $S_{1}^{2}$ terms for each training sample. Also, if we first square X and V element-wise, then multiply them, and finally sum by rows, we&rsquo;ll get $S_{2}$ term for each training object. So, conceptually, we can express the final term like this:</p>
+<img src="/img/posts/2022/sparse-recsys/fm_equation_6.png" alt="equation 6">
+<p><strong>PyTorch Code</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">FM</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">k</span><span class="p">),</span><span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">linear_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">square_of_sum</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#S_1^2</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sum_of_square</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># S_2</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">out_inter</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">square_of_sum</span> <span class="o">-</span> <span class="n">sum_of_square</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out_lin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="n">out_inter</span> <span class="o">+</span> <span class="n">out_lin</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">out</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/2a639276fc781870c4dcd480a3417bf9" target="_blank" rel="noopener noreffer">https://gist.github.com/reachsumit/2a639276fc781870c4dcd480a3417bf9</a></p>
+<p>You can read more about FMs in the <a href="https://ieeexplore.ieee.org/document/5694074" target="_blank" rel="noopener noreffer">original paper</a> and the <a href="https://github.com/srendle/libfm" target="_blank" rel="noopener noreffer">official codebase</a>.</p>
+<h3 id="2-field-aware-factorization-machine-ffm">2. Field-Aware Factorization Machine (FFM)</h3>
+<p>Let&rsquo;s revisit the artificial dataset example from earlier and add another column Gender to it. One observation of such a dataset might look like this:</p>
+<img src="/img/posts/2022/sparse-recsys/ffm_example.png" alt="FFM example">
+<p>FMs will model the effect of feature conjunction as: $w_{ESPN} \cdot w_{Nike} + w_{ESPN} \cdot w_{Male} + w_{Nike} \cdot w_{Male}$. Field-aware factorization machines (FFMs) extend FMs by introducing the concept of fields and features. With the same example, Publisher, Advertiser, and Gender will be called fields, while values like ESPN, Nike, and Male will be called their features. Note that in FMs every feature has only one latent vector to learn the latent effect with any other features. For example, for ESPN $w_{ESPN}$ is used to learn the latent effect with Nike ($w_{ESPN} \cdot w_{Nike}$) and Male ($w_{ESPN} \cdot w_{Male}$). However, because Nike and Male belong to different fields, the latent effects of (EPSN, Nike) and (EPSN, Male) may be different.</p>
+<p>In FFMs, each feature has several latent vectors. Depending on the field of other features, one of them is used to do the inner product. So, for the same example, the feature interaction effect is modelled by FFM as: $w_{ESPN,A} \cdot w_{Nike,P} + w_{ESPN,G} \cdot w_{Male,P} + w_{Nike,G} \cdot w_{Male,A}$. To learn the latent effect of (ESPN, NIKE), for example, $w_{ESPN,A}$ is used because Nike belongs to the field Advertiser, and $w_{Nike,P}$ is used because ESPN belongs to the field Publisher.</p>
+<p>If f is the number of fields, then the number of variables of FFMs is nfk, and the time complexity is $O(\bar{n}^{2}k)$. Note that because each latent vector in FFMs only needs to learn the effect with a specific field, usually: $k_{FFM} \ll k_{FM}$. FFM authors empirically show that for large, sparse datasets with many categorical features, FFMs perform better than FMs. Whereas for small and dense datasets or numerical datasets, FMs perform better than FFMs.</p>
+<h4 id="implementation-1">Implementation</h4>
+<p><strong>PyTorch Code</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">FFM</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">continuous_dim</span><span class="p">,</span> <span class="n">field_dims</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">embed_dim</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">pad_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">bias</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_class</span><span class="p">,)))</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">field_dims</span><span class="p">),</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">padding_idx</span><span class="o">=</span><span class="n">pad_idx</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">num_fields</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">field_dims</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">embeddings_interaction</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">field_dims</span><span class="p">),</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">padding_idx</span><span class="o">=</span><span class="n">pad_idx</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_fields</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">])</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">linear_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">continuous_dim</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">continuous_X</span><span class="p">,</span> <span class="n">categorical_X</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embeds_out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="p">(</span><span class="n">categorical_X</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">field_wise_emb_list</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">embeddings_interaction</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">categorical_X</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_fields</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ix</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_fields</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_fields</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field_wise_emb_list</span><span class="p">[</span><span class="n">j</span><span class="p">][:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">field_wise_emb_list</span><span class="p">[</span><span class="n">i</span><span class="p">][:,</span> <span class="n">j</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ix</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">ix</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ffm_interaction_term</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ix</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_layer</span><span class="p">(</span><span class="n">continuous_X</span><span class="p">)</span> <span class="o">+</span> <span class="n">embeds_out</span> <span class="o">+</span> <span class="n">ffm_interaction_term</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">output</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/c6a8037f4596a8181376313fdba33ffd" target="_blank" rel="noopener noreffer">https://gist.github.com/reachsumit/c6a8037f4596a8181376313fdba33ffd</a></p>
+<p>You can read more about FFMs in the <a href="https://dl.acm.org/doi/10.1145/2959100.2959134" target="_blank" rel="noopener noreffer">original paper</a> and the <a href="https://github.com/ycjuan/libffm" target="_blank" rel="noopener noreffer">official codebase</a>.</p>
+<h3 id="3-attentional-factorization-machine-afm">3. Attentional Factorization Machine (AFM)</h3>
+<p>Note how all interactions in FM are weighted with interaction weight matrix W. This W is a positive definite matrix and it can be shown that given a sufficiently large value of k, there will always be a matrix V such that $W=V\cdot V^{T}$. In sparse settings, we usually restrict k to a smaller value which also leads to better generalizability. However, despite its effectiveness, FMs model all feature interactions with the same weight, but not all feature interactions are equally useful and predictive. For example, the interactions with useless features may even introduce noise leading to degraded model performance. Attentional Factorization Machines (AFMs) fix this by learning the importance of each feature interaction from data via a neural attention network.</p>
+<img src="/img/posts/2022/sparse-recsys/afm_arch.png" alt="AFM architecture">
+<p>AFM starts with sparse input and embedding layer, and inspired by FM&rsquo;s inner product, it expands m vectors to m(m-1)/2  interacted vectors, where each interacted vector is the element-wise product of two distinct vectors to encode their interaction. The output of the pair-wise interaction layer is fed into an attention-based pooling layer, the idea here is to allow different parts to contribute differently when compressing them to a single representation. An attention mechanism is applied to feature interactions by performing a weighted sum on the interacted vectors. This weight or attention score can be thought of as the importance of weight $\hat{w}_{ij}$ in predicting the target. However, we have a problem when the features have never co-occurred in the training data. To address this problem, the authors further parameterize attention scores with a multi-layer perceptron (MLP). The attention scores are also normalized through the softmax function. One shortcoming of AFM architecture is that it models only second-order feature interactions.</p>
+<h4 id="implementation-2">Implementation</h4>
+<p><strong>PyTorch Code</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AFM</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">continuous_dim</span><span class="p">,</span> <span class="n">field_dims</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">attn_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">embed_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">pad_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">field_dims</span><span class="p">),</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">padding_idx</span><span class="o">=</span><span class="n">pad_idx</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">attention</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_size</span><span class="p">,</span> <span class="n">attn_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">projection</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">attn_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_size</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">linear_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">continuous_dim</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">continuous_X</span><span class="p">,</span> <span class="n">categorical_X</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embeds_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="p">(</span><span class="n">categorical_X</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">num_fields</span> <span class="o">=</span> <span class="n">embeds_out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">row</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(),</span> <span class="nb">list</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_fields</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_fields</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">embeds_out</span><span class="p">[:,</span> <span class="n">row</span><span class="p">],</span> <span class="n">embeds_out</span><span class="p">[:,</span> <span class="n">col</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">inner_product</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">q</span>
+</span></span><span class="line"><span class="cl">        <span class="n">attn_scores</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attention</span><span class="p">(</span><span class="n">inner_product</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">attn_scores</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">projection</span><span class="p">(</span><span class="n">attn_scores</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">attn_output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">attn_scores</span> <span class="o">*</span> <span class="n">inner_product</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_layer</span><span class="p">(</span><span class="n">continuous_X</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">attn_output</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">output</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/85fe046691c66221bec00bc7e59e145b" target="_blank" rel="noopener noreffer">https://gist.github.com/reachsumit/85fe046691c66221bec00bc7e59e145b</a></p>
+<p>You can read more about AFMs in the <a href="https://arxiv.org/abs/1708.04617" target="_blank" rel="noopener noreffer">original paper</a> and the <a href="https://github.com/hexiangnan/neural_factorization_machine" target="_blank" rel="noopener noreffer">official codebase</a>.</p>
+<h3 id="4-wide--deep-learning">4. Wide &amp; Deep Learning</h3>
+<p>The Wide &amp; Deep learning framework was proposed by Google to achieve both memorization and generalization in one model, by jointly training a linear model component and a neural network component. The wide component is a generalized linear model to which raw input features and transformed features (such as cross-product transformations) are supplied. The deep component is a feed-forward neural network, which consumes sparse categorical features in embedding vector form. The wide and deep part are combined using a weighted sum of their output log odds as the prediction which is then fed to a common loss function for joint training.</p>
+<img src="/img/posts/2022/sparse-recsys/wnd_arch.png" alt="W&D architecture">
+<p>The authors claim that wide linear models can effectively memorize sparse feature interactions using cross-product feature transformations, while deep neural networks can generalize to previously unseen feature interactions through low-dimensional embeddings. Note that the wide and deep parts work with two different inputs and the input to the wide part still relies on expertise feature engineering. The model also suffers from the same problem as the linear models like Polynomial Regression that features interactions can not be learned for unobserved cross features.</p>
+<h4 id="implementation-3">Implementation</h4>
+<p><strong>PyTorch Code</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">WideDeep</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wide_dim</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">deep_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">pad_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">WideDeep</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">embed</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">padding_idx</span><span class="o">=</span><span class="n">pad_idx</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_size</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="o">+</span><span class="n">wide_dim</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_w</span><span class="p">,</span> <span class="n">X_sparse_idx</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">X_sparse_idx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embed</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">embed</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">deep_logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span><span class="p">(</span><span class="n">embed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">total_logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">deep_logits</span><span class="p">,</span> <span class="n">X_w</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">total_logits</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/a6ab97ed6bc053aaf3d73320b4b31b97" target="_blank" rel="noopener noreffer">https://gist.github.com/reachsumit/a6ab97ed6bc053aaf3d73320b4b31b97</a></p>
+<p>You can read more about Wide&amp;Deep in the <a href="https://arxiv.org/abs/1606.07792" target="_blank" rel="noopener noreffer">original paper</a> and the <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/DNNLinearCombinedClassifier" target="_blank" rel="noopener noreffer">official codebase</a>.</p>
+<h3 id="5-deepfm">5. DeepFM</h3>
+<p>DeepFM model architecture combines the power of FMs and deep learning to overcome the issues with Wide&amp;Deep networks. DeepFM uses a single shared input to its wide and deep parts, with no need of any special feature engineering besides raw features. It models low-order feature interactions like FM and models high-order feature interactions like DNN.</p>
+<img src="/img/posts/2022/sparse-recsys/deepfm_arch.png" alt="DeepFM architecture">
+<h4 id="implementation-4">Implementation</h4>
+<p><strong>PyTorch Code</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DeepFM</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">wide_dim</span><span class="p">,</span> <span class="n">deep_dim</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">pad_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">padding_idx</span><span class="o">=</span><span class="n">pad_idx</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">linear_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">wide_dim</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_size</span> <span class="o">+</span> <span class="n">deep_dim</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_w</span><span class="p">,</span> <span class="n">X_d</span><span class="p">,</span> <span class="n">X_sparse_idx</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embed_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">X_sparse_idx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embed_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">embed_x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># FM</span>
+</span></span><span class="line"><span class="cl">        <span class="n">square_of_sum</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">embed_x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sum_of_square</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">embed_x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out_inter</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">square_of_sum</span> <span class="o">-</span> <span class="n">sum_of_square</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Linear</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out_lin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_layer</span><span class="p">(</span><span class="n">X_w</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Deep</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out_deep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">X_d</span><span class="p">,</span> <span class="n">embed_x</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">out_inter</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">out_deep</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="n">out_lin</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">output</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/79237a4de62b4033e2576c55df3dc056" target="_blank" rel="noopener noreffer">https://gist.github.com/reachsumit/79237a4de62b4033e2576c55df3dc056</a></p>
+<p>You can read more about DeepFM in the <a href="https://arxiv.org/abs/1703.04247" target="_blank" rel="noopener noreffer">original paper</a>.</p>
+<h3 id="6-neural-factorization-machine-nfm">6. Neural Factorization Machine (NFM)</h3>
+<p>Neural Factorization Machine (NFM) model architecture was also proposed by the authors of the AFM paper with the same goal of overcoming the insufficient linear modeling of feature interactions in FM. After the sparse input and embedding layer, this time the authors propose a Bi-Interaction layer that models the second-order feature interactions. This layer is a pooling layer that converts a set of the embedding vectors set input to one vector by performing an element-wise product of vectors: $\sum_{i=1}^{n} \sum_{j=i+1}^{n} x_{i}v_{i} \odot  x_{j}v_{j}$, and passes it on to another set of fully connected layers.</p>
+<img src="/img/posts/2022/sparse-recsys/nfm_arch.png" alt="NFM architecture">
+<h4 id="implementation-5">Implementation</h4>
+<p><strong>PyTorch Code</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">NFM</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">wide_dim</span><span class="p">,</span> <span class="n">deep_dim</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">pad_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">padding_idx</span><span class="o">=</span><span class="n">pad_idx</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">linear_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">wide_dim</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">deep_dim</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_w</span><span class="p">,</span> <span class="n">X_d</span><span class="p">,</span> <span class="n">X_sparse_idx</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embed_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">X_sparse_idx</span><span class="p">)</span> <span class="c1"># movies_train_idx</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embed_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">embed_x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># FM</span>
+</span></span><span class="line"><span class="cl">        <span class="n">square_of_sum</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">embed_x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sum_of_square</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">embed_x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out_inter</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">square_of_sum</span> <span class="o">-</span> <span class="n">sum_of_square</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Linear</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out_lin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_layer</span><span class="p">(</span><span class="n">X_w</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Deep</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out_deep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">X_d</span><span class="p">,</span> <span class="n">out_inter</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">output</span> <span class="o">=</span> <span class="n">out_deep</span> <span class="o">+</span> <span class="n">out_lin</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">output</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/f29d7001b7687785f33636c9bca302c3" target="_blank" rel="noopener noreffer">https://gist.github.com/reachsumit/f29d7001b7687785f33636c9bca302c3</a></p>
+<p>You can read more about NFM in the <a href="https://arxiv.org/abs/1708.05027" target="_blank" rel="noopener noreffer">original paper</a> and the <a href="https://github.com/hexiangnan/neural_factorization_machine" target="_blank" rel="noopener noreffer">official codebase</a>.</p>
+<h3 id="7-deep-learning-recommendation-model-dlrm">7. Deep Learning Recommendation Model (DLRM)</h3>
+<p>Deep Learning Recommendation Model (DLRM) was proposed by Facebook in 2019. The DLRM architecture can be thought of as a simplified version of DeepFM architecture. DLRM tries to stay away from high-order interactions by not passing the embedded categorical features through an MLP layer. First, it makes the continuous features go through a &ldquo;bottom&rdquo; MLP layer such that they have the same length as the embedding vectors. Then, it computes the dot product between all combinations of embedding vectors and the bottom MLP output from the previous step. The dot product output is then concatenated with the bottom MLP output and is passed to a &ldquo;top&rdquo; MLP layer to compute the final output.</p>
+<img src="/img/posts/2022/sparse-recsys/dlrm_arch.png" alt="DLRM architecture">
+<p>This architecture design is tailored to mimic the way Factorization Machines compute the second-order interactions between the embeddings, and the paper also says:</p>
+<blockquote>
+<p>We argue that higher-order interactions beyond second-order found in other networks may not necessarily be worth the additional computational/memory cost.</p>
+</blockquote>
+<h4 id="implementation-6">Implementation</h4>
+<p>The paper also notes that DLRM contains far more parameters than common models like CNNs, RNNs, GANs, and transformers, making the training time for this model go up to several weeks. They also propose a framework to parallelize DLRM operations. Due to high compute requirements, I couldn&rsquo;t train the DLRM model myself. DLRM results in this experimentation are with a simplified implementation using a concatenation of bottom MLP output and embedding output, instead of their dot product.</p>
+<p><strong>PyTorch Code</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DLRM</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">deep_dim</span><span class="p">,</span> <span class="n">n_fields</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">pad_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">interaction_op</span><span class="o">=</span><span class="s2">&#34;cat&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">padding_idx</span><span class="o">=</span><span class="n">pad_idx</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">bottom_mlp_stack</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">deep_dim</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">interaction_op</span> <span class="o">=</span> <span class="n">interaction_op</span> <span class="c1"># [&#34;dot&#34;, &#34;cat&#34;]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">interaction_op</span> <span class="o">==</span> <span class="s2">&#34;dot&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="nb">list</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_fields</span><span class="p">),</span> <span class="mi">2</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">field_p</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">field_q</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">interaction_units</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_fields</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_fields</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">upper_triange_mask</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_fields</span><span class="p">,</span> <span class="n">n_fields</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ByteTensor</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                                   <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># torchrec style implementation (as an alterante to above)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># self.triu_indices: torch.Tensor = torch.triu_indices(</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#     self.n_fields + 1, self.n_fields + 1, offset=1</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># )</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">top_input_dim</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_fields</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_fields</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">embed_size</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">interaction_op</span> <span class="o">==</span> <span class="s2">&#34;cat&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">top_input_dim</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_fields</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">embed_size</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">top_mlp_stack</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top_input_dim</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_d</span><span class="p">,</span> <span class="n">X_sparse_idx</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embed_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">X_sparse_idx</span><span class="p">)</span> <span class="c1"># movies_train_idx</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># bottom mlp</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dense_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bottom_mlp_stack</span><span class="p">(</span><span class="n">X_d</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">feat_emb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">embed_x</span><span class="p">,</span> <span class="n">dense_out</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># interaction</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">interaction_op</span> <span class="o">==</span> <span class="s2">&#34;dot&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">inner_product_matrix</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">bmm</span><span class="p">(</span><span class="n">feat_emb</span><span class="p">,</span> <span class="n">feat_emb</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">flat_upper_triange</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">masked_select</span><span class="p">(</span><span class="n">inner_product_matrix</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">upper_triange_mask</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">interact_out</span> <span class="o">=</span> <span class="n">flat_upper_triange</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">interaction_units</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># torchrec style implementation (as an alterante to above)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># interactions = torch.bmm(</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#     feat_emb, torch.transpose(feat_emb, 1, 2)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># )</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># interactions_flat = interactions[:, self.triu_indices[0], self.triu_indices[1]]</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># interact_out = torch.cat((dense_out, interactions_flat), dim=1)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">interact_out</span> <span class="o">=</span> <span class="n">feat_emb</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">start_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># torch.Size([76228, 11792]) 737*16</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># top mlp</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">top_mlp_stack</span><span class="p">(</span><span class="n">interact_out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">output</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/a02a83fbb3ae5e293fde4b90e3a319d7" target="_blank" rel="noopener noreffer">https://gist.github.com/reachsumit/a02a83fbb3ae5e293fde4b90e3a319d7</a></p>
+<p>You can read more about DLRM in the <a href="https://arxiv.org/abs/1906.00091" target="_blank" rel="noopener noreffer">original paper</a> and the <a href="https://github.com/facebookresearch/dlrm" target="_blank" rel="noopener noreffer">official codebase</a>.</p>
+<h3 id="comparing-all-models">Comparing all models</h3>
+<p>The mean rank of the test set examples was computed using each model, and the following chart shows their comparison based on the best rank achieved on the test set. In short, for this experiment: AFM &gt; FFM &raquo; DeepFM &gt; DLRM_simplified &gt; Wide &amp; Deep &gt; NFM &gt; FM.</p>
+<img src="/img/posts/2022/sparse-recsys/final_comparison.png" alt="Comaring all models">
+<h2 id="summary">Summary</h2>
+<p>In this article, we defined the need for modeling feature interactions and then looked at some of the most popular machine learning algorithms designed to estimate feature interactions under sparse settings. We implemented all of the algorithms in Python and compared their results on a toy dataset.</p>
+<h2 id="references">References</h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Cheng et al. (2016). Wide &amp; Deep Learning for Recommender Systems. 7-10. 10.1145/2988450.2988454.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://www.kaggle.com/datasets/prajitdatta/movielens-100k-dataset" target="_blank" rel="noopener noreffer">https://www.kaggle.com/datasets/prajitdatta/movielens-100k-dataset</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-11-06</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" data-title="Recommender Systems for Modeling Feature Interactions under Sparse Settings" data-via="_reachsumit" data-hashtags="recsys,literature review"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" data-hashtag="recsys"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" data-title="Recommender Systems for Modeling Feature Interactions under Sparse Settings" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" data-title="Recommender Systems for Modeling Feature Interactions under Sparse Settings"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" data-title="Recommender Systems for Modeling Feature Interactions under Sparse Settings"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/"><i class="fab fa-get-pocket fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" data-title="Recommender Systems for Modeling Feature Interactions under Sparse Settings"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" data-title="Recommender Systems for Modeling Feature Interactions under Sparse Settings"><i class="fab fa-evernote fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" data-title="Recommender Systems for Modeling Feature Interactions under Sparse Settings" data-description="Many machine learning domains, such as recommender systems, targeted advertisement, search ranking, and text analysis contain highly sparse data because of the large categorical variable domains. This sparsity makes it hard for ML algorithms to model second-order and above feature interactions. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed for estimating interactions from sparse data."><i class="fab fa-trello fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/literature-review/">literature review</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/2022/09/explicit-implicit-cf/" class="prev" rel="prev" title="Collaborative Filtering based Recommender Systems for Implicit Feedback Data"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Collaborative Filtering based Recommender Systems for Implicit Feedback Data</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://reachsumit.com" target="_blank">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.5.4/dist/index.umd.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"Sumit's Diary","id-2":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-171612692-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-171612692-1" async></script></body>
+</html>

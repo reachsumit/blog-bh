@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/categories/recommender-systems/</link>
         <description>Recommender systems - Category - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
-            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 25 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/recommender-systems/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 06 Nov 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/recommender-systems/" rel="self" type="application/rss+xml" /><item>
+    <title>Recommender Systems for Modeling Feature Interactions under Sparse Settings</title>
+    <link>https://blog.reachsumit.com/posts/2022/11/sparse-recsys/</link>
+    <pubDate>Sun, 06 Nov 2022 00:00:00 &#43;0000</pubDate>
+    <author>Sumit Kumar</author>
+    <guid>https://blog.reachsumit.com/posts/2022/11/sparse-recsys/</guid>
+    <description><![CDATA[Many machine learning domains, such as recommender systems, targeted advertisement, search ranking, and text analysis contain highly sparse data because of the large categorical variable domains. This sparsity makes it hard for ML algorithms to model second-order and above feature interactions. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed for estimating interactions from sparse data.
+Introduction Problem with sparse inputs A variety of Information Retrieval and Data Mining tasks, such as Recommender Systems, Targeted Advertising, Search Ranking, etc.]]></description>
+</item>
+<item>
     <title>Collaborative Filtering based Recommender Systems for Implicit Feedback Data</title>
     <link>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</link>
     <pubDate>Sun, 25 Sep 2022 00:00:00 &#43;0000</pubDate>
