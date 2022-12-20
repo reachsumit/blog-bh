@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>forecasting - Tag - Sumit&#39;s Diary</title>
+        <link>https://blog.reachsumit.com/tags/forecasting/</link>
+        <description>forecasting - Tag - Sumit&#39;s Diary</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 20 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/forecasting/" rel="self" type="application/rss+xml" /><item>
+    <title>Statistical vs Machine Learning vs Deep Learning Modeling for Time Series Forecasting</title>
+    <link>https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</link>
+    <pubDate>Tue, 20 Dec 2022 00:00:00 &#43;0000</pubDate>
+    <author>Sumit Kumar</author>
+    <guid>https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</guid>
+    <description><![CDATA[Over recent decades, Machine Learning (ML) and, its subdomain, Deep Learning (DL) based algorithms have achieved remarkable success in various areas, such as image processing, natural language understanding, and speech recognition. However, ML algorithms haven&rsquo;t quite had the same widely known and unquestionable superiority when it comes to forecasting applications in the time series domain. While ML algorithms have to overcome the challenges in modeling the non-i.i.d. nature of data inherent in the time series domain, statistical models excel in this setting and provide explicit means to model time series structural elements, such as trend and seasonality.]]></description>
+</item>
+</channel>
+</rss>
