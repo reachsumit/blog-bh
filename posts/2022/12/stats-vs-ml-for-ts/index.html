@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2022\/12\/stats-vs-ml-for-ts\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "forecasting, literature review","wordcount":  3747 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "forecasting, literature review","wordcount":  3788 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2022\/12\/stats-vs-ml-for-ts\/","datePublished": "2022-12-20T00:00:00+00:00","dateModified": "2022-12-20T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -105,7 +105,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Statistical vs Machine Learning vs Deep Learning Modeling for Time Series Forecasting</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/time-series/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Time Series</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-20">2022-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3747 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-20">2022-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3788 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;18 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -256,7 +256,8 @@ the study found, statistical models are better suited for short-term forecasts, 
 <li>ML methods need more data for better forecasting especially when the series being predicted is non-stationary, displaying seasonality and trend.</li>
 <li>For many years, ML methods have been outperformed by simple, yet robust statistical approaches specifically for domains that involve shorter, non-stationary data, such as business forecasting.</li>
 <li>DL methods can effectively balance learning across multiple forecasting horizons, sacrificing part of their short-term accuracy to ensure adequate performance in the long term.</li>
-<li>Ensemble and Hybrid methods outperform most of the individual statistical and ML models.</li>
+<li>Statistical models tend to do well on short-term forecasts, while DL ones are better at capturing the long-term characteristics of the data. So it could be beneficial to combine statistical or ML models with DL ones depending on the time horizon of forecasting.</li>
+<li>Ensemble methods outperform most of the individual statistical and ML models.</li>
 <li>Ensembles of some relatively simple statistical methods like ARIMA, ETS, and Theta, often provide similarly accurate or even more accurate short-term forecasts than the individual DL models and even their ensembles (on rare occasions), but inferior results when medium or long-term forecasts are considered.</li>
 <li>DL ensembles will almost always give better results than Stat ensembles but at a much higher cost and not necessarily a big margin.</li>
 <li>Although the ensembles of multiple DL models lead to more accurate results, depending on the particular characteristics of the series, the additional cost that has to be paid for using a DL model in order to improve forecasting accuracy to a small extent is extensive.</li>
