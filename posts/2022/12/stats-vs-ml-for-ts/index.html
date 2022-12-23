@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/" /><meta property="og:image" content="https://blog.reachsumit.com/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-12-20T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-12-20T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta property="article:modified_time" content="2022-12-22T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.reachsumit.com/logo.png"/>
@@ -30,8 +30,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2022\/12\/stats-vs-ml-for-ts\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "forecasting, literature review","wordcount":  3788 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2022\/12\/stats-vs-ml-for-ts\/","datePublished": "2022-12-20T00:00:00+00:00","dateModified": "2022-12-20T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "forecasting, literature review","wordcount":  3919 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2022\/12\/stats-vs-ml-for-ts\/","datePublished": "2022-12-20T00:00:00+00:00","dateModified": "2022-12-22T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -105,8 +105,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Statistical vs Machine Learning vs Deep Learning Modeling for Time Series Forecasting</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/time-series/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Time Series</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-20">2022-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3788 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;18 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-20">2022-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3919 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;19 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -223,7 +223,7 @@
 <h4 id="summary-2">Summary</h4>
 <p>The authors conclude that &ldquo;deep-learning ensembles outperform statistical ensembles just by 0.36 points in SMAPE. However, the DL ensemble takes more than 14 days to run and costs around USD 11,000, while the statistical ensemble takes 6 minutes to run and costs $0.5c.&rdquo;.</p>
 <h4 id="additional-notes-2">Additional Notes</h4>
-<p>In another recent experiment, the authors of Statsforecast compared their statistical ensemble against Amazon Forecast <cite><sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></cite>.  Amazon Forecast is an AutoML time-series forecasting service on AWS that includes algorithms ranging from commonly known statistical models like ARIMA to complex algorithms like CNN-QR and DeepAR+, CNN-QR, DeepAR+, Prophet, NPTS, ARIMA, and ETS. They showed that Amazon Forecast was 60% less accurate and 669 times more expensive than running their statistical alternative.</p>
+<p>In another recent experiment, the authors of Statsforecast compared their statistical ensemble against Amazon Forecast <cite><sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></cite>.  Amazon Forecast is a time-series forecasting service on AWS that includes algorithms ranging from commonly known statistical models like ARIMA to complex algorithms like CNN-QR, DeepAR+, etc. They showed that Amazon Forecast&rsquo;s AutoML was 60% less accurate and 669 times more expensive than running their statistical alternative.</p>
 <h3 id="are-there-any-unique-time-series-characteristics-for-which-some-methods-perform-better-than-others">Are there any unique time series characteristics for which some methods perform better than others?</h3>
 <h3 id="are-there-certain-methods-that-can-be-expected-to-work-reasonably-well-with-data-from-certain-data-domains">Are there certain methods that can be expected to work reasonably well with data from certain data domains?</h3>
 <p>We can define a time series in terms of its characteristics such as forecastability (aka spectral entropy), the strength of trend and seasonality, etc. Montero-Manso et al <cite><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></cite> utilized 42 such features in their runner-up model in the M4 competition. In Makridakis et al.<cite><sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></cite> authors used 5 out 6 features recommended by Kang et al <cite><sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite> for the M3 dataset. The features were: Spectral Entropy, Strength of Trend, Strength of Seasonality, Linearity, and Stability. The sMAPE results for the statistical and deep ensembles were then correlated with these features using a Multiple Linear Regression (MLR).</p>
@@ -239,12 +239,12 @@ applications, at least in the area of retail sales forecasting<cite><sup id="fnr
 <p>Another important observation is that Cross-Learning i.e. a single model learning across many related series simultaneously, as opposed to learning in a series-by-series fashion, can enhance forecasting performance. Modeling many series with similar properties is likely to generate a more densely populated, and thus better defined, manifold that is preferred over search spaces with data sparsity. Data normalization used by ML models (as opposed to decomposition-based preprocessing methods used by statistical methods) and rolling-origin cross-validation steps also help in densely populating the same manifold space.</p>
 <h2 id="comparisons-based-on-forecasting-competitions">Comparisons based on forecasting competitions</h2>
 <h3 id="learnings-from-the-m3-competition">Learnings from the M3 competition</h3>
-<p>We learned a bit about the best performing models on M3 data in &ldquo;<em>Extending to all 3,003 time series of M3 dataset</em>&rdquo;. As
-the study found, statistical models are better suited for short-term forecasts, while DL ones are better at capturing the long-term characteristics of the data. So it could be beneficial to combine statistical or ML models with DL ones depending on the time horizon of forecasting. The winning model of the M3 competition was built on this theme using a statistical algorithm (ETS) for preprocessing followed by an LSTM-based neural network <cite><sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></cite>. This hybrid model performance produced the best results (as measured by sMAPE) in the M3 competition.</p>
+<p>The M3 forecasting competition was held in 2002 and the winner used the Theta method. V. Assimakopoulos and K. Nikolopoulos proposed this method as a decompositional approach to forecasting <cite><sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></cite>. Rob Hyndman et al. later simplified the Theta method and showed that we can use ETS with a drift term to get equivalent results to the original Theta method, which is what is adapted into most of the implementations of the method that exist today <cite><sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></cite>.</p>
+<p>In &ldquo;<em>Extending to all 3,003 time series of M3 dataset</em>&rdquo; section, we also saw a few other methods that have since outperformed the Theta method for M3 data. Specifically, the LGT model that was built on the theme of using a statistical algorithm (ETS) for preprocessing followed by an LSTM-based neural network <cite><sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup></cite> performed the best on yearly forecast horizon (as measured by sMAPE). The study we discussed also found out that statistical models are better suited for short-term forecasts, while DL ones are better at capturing the long-term characteristics of the data. So it could be beneficial to combine statistical or ML models with DL ones depending on the time horizon of forecasting. LGT model was built on this theme using a statistical algorithm (ETS) for preprocessing followed by an LSTM-based neural network <cite><sup id="fnref1:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup></cite>.</p>
 <h4 id="additional-notes-3">Additional Notes</h4>
-<p>The authors of this M3 winning paper used categorical variables, like error type, trend type (such as additive, multiplicative), etc. as additional information for improving forecasting accuracy.</p>
+<p>The authors of the LGT paper suggest using categorical variables, like error type, trend type (such as additive, multiplicative), etc. as additional information for improving forecasting accuracy.</p>
 <h3 id="learnings-from-the-m4-competition">Learnings from the M4 competition</h3>
-<p>The winning author of the M3 competition also authored the winning method of the M4 competition in a similar fashion. The contest-winning model was a truly hybrid forecasting approach that utilized both statistical and ML elements, using cross-learning. This approach used exponential smoothing mixed with a dilated LSTM network<cite><sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></cite>. The ES formulas enable the method to capture the local components (like per-series seasonality), while LSTM allows it to learn non-linear trends (like NN parameters) and cross-learning. To account for seasonality, the author advocate for incorporating categorical seasonality components (one-hot vector of size 6 appended to time series derived features), and smoothing coefficients into model fitting to allow deseasonalizing of data in the absence of any calendar features like the day of the week or the month number.</p>
+<p>The author of the LGT model also authored the winning method of the M4 competition in a similar fashion. The contest-winning model was a truly hybrid forecasting approach that utilized both statistical and ML elements, using cross-learning. This approach used exponential smoothing mixed with a dilated LSTM network<cite><sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup></cite>. The ES formulas enable the method to capture the local components (like per-series seasonality), while LSTM allows it to learn non-linear trends (like NN parameters) and cross-learning. To account for seasonality, the author advocate for incorporating categorical seasonality components (one-hot vector of size 6 appended to time series derived features), and smoothing coefficients into model fitting to allow deseasonalizing of data in the absence of any calendar features like the day of the week or the month number.</p>
 <p>Additionally, the second-best M4 method was also based on a cross-learning approach, utilizing an ML algorithm (XGBoost) for selecting the most appropriate weights for combining various statistical methods (Theta, ARIMA, TBATS, etc.) <cite><sup id="fnref1:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></cite>.</p>
 <h3 id="learnings-from-the-m5-competition">Learnings from the M5 competition</h3>
 <p>Barker&rsquo;s study <cite><sup id="fnref3:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite> pointed out how learning to forecast using multiple time series simultaneously leads to narrower and more densely populated manifolds when the series have a commonality in their origin. The dataset of the M5 competition consisted of more than 30,000 series of daily sales at Walmart. So theoretically we would expect ML models trained in a cross-learning fashion to perform well on this dataset without having to specify additional features. Also, the statistical models that do assume interdependence between the series should perform well. It is worth noting that 48.4% of participating teams could beat the Naïve benchmark, 35.8% could beat the Seasonal Naïve, and only 7.5% of teams could beat the exponential smoothing-based benchmark.</p>
@@ -308,10 +308,16 @@ the study found, statistical models are better suited for short-term forecasts, 
 <p>Kang, Yanfei &amp; Hyndman, Rob &amp; Smith-Miles, Kate. (2017). Visualising forecasting algorithm performance using time series instance spaces. International Journal of Forecasting. 33. 345-358. 10.1016/j.ijforecast.2016.09.004.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:14">
-<p>Smyl, Slawek &amp; Kuber, Karthik. (2016). Data Preprocessing and Augmentation for Multiple Short Time Series Forecasting with Recurrent Neural Networks.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Assimakopoulos, Vassilis &amp; Nikolopoulos, K.. (2000). The theta model: A decomposition approach to forecasting. International Journal of Forecasting. 16. 521-530. 10.1016/S0169-2070(00)00066-2.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:15">
-<p>Smyl, Slawek. (2019). A hybrid method of exponential smoothing and recurrent neural networks for time series forecasting. International Journal of Forecasting. 36. 10.1016/j.ijforecast.2019.03.017.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Hyndman, Rob &amp; Billah, Baki. (2003). Unmasking the Theta method. International Journal of Forecasting. 19. 287-290. 10.1016/S0169-2070(01)00143-1.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:16">
+<p>Smyl, Slawek &amp; Kuber, Karthik. (2016). Data Preprocessing and Augmentation for Multiple Short Time Series Forecasting with Recurrent Neural Networks.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:17">
+<p>Smyl, Slawek. (2019). A hybrid method of exponential smoothing and recurrent neural networks for time series forecasting. International Journal of Forecasting. 36. 10.1016/j.ijforecast.2019.03.017.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
@@ -319,7 +325,7 @@ the study found, statistical models are better suited for short-term forecasts, 
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-12-20</span>
+                <span>Updated on 2022-12-22</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
