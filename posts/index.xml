@@ -10,7 +10,7 @@
     <pubDate>Sat, 21 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>Sumit Kumar</author>
     <guid>https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/</guid>
-    <description><![CDATA[Introduction Why Should We Use Deep Learning for Forecasting? Statistical algorithms have long been widely used for making forecasts with time series data. These classical algorithms, like Exponential Smoothing, ARIMA models, prescribe the data generation process and require manual selections to account for factors like trend, seasonality, and auto-correlation. However, modern data applications often deal with hundreds or millions of related time series. For example, a demand forecasting algorithm at Amazon may have to consider sales data from millions of products, an engagement forecasting algorithm at Instagram may have to model metrics from millions of posts.]]></description>
+    <description><![CDATA[Introduction Why Should We Use Deep Learning for Forecasting? Statistical algorithms have long been widely used for making forecasts with time series data. These classical algorithms, like Exponential Smoothing, and ARIMA models, prescribe the data generation process and require manual selections to account for factors like the trend, seasonality, and auto-correlation. However, modern data applications often deal with hundreds or millions of related time series. For example, a demand forecasting algorithm at Amazon may have to consider sales data from millions of products, and an engagement forecasting algorithm at Instagram may have to model metrics from millions of posts.]]></description>
 </item>
 <item>
     <title>Statistical vs Machine Learning vs Deep Learning Modeling for Time Series Forecasting</title>
