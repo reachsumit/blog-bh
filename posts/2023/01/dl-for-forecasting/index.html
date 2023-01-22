@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7470684047959463"
+     crossorigin="anonymous"></script>
+        <title>Specialized Deep Learning Architectures for Time Series Forecasting - Sumit&#39;s Diary</title><meta name="Description" content="Modern time series forecasting requires a model to learn from multiple related time series. These time series often number in thousands or millions. Traditional statistical models do not scale well to these settings because they learn individual series in isolation and do not share parameters across series. Various deep learning models have been proposed recently with different inductive biases to work effectively under these settings. This article explores some of the most popular advances in deep learning architectures for modern time series forecasting."><meta property="og:title" content="Specialized Deep Learning Architectures for Time Series Forecasting" />
+<meta property="og:description" content="Modern time series forecasting requires a model to learn from multiple related time series. These time series often number in thousands or millions. Traditional statistical models do not scale well to these settings because they learn individual series in isolation and do not share parameters across series. Various deep learning models have been proposed recently with different inductive biases to work effectively under these settings. This article explores some of the most popular advances in deep learning architectures for modern time series forecasting." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" /><meta property="og:image" content="https://blog.reachsumit.com/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-21T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/logo.png"/>
+
+<meta name="twitter:title" content="Specialized Deep Learning Architectures for Time Series Forecasting"/>
+<meta name="twitter:description" content="Modern time series forecasting requires a model to learn from multiple related time series. These time series often number in thousands or millions. Traditional statistical models do not scale well to these settings because they learn individual series in isolation and do not share parameters across series. Various deep learning models have been proposed recently with different inductive biases to work effectively under these settings. This article explores some of the most popular advances in deep learning architectures for modern time series forecasting."/>
+<meta name="application-name" content="Sumit&#39;s Diary">
+<meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Specialized Deep Learning Architectures for Time Series Forecasting",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/01\/dl-for-forecasting\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "forecasting, literature review","wordcount":  4906 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/01\/dl-for-forecasting\/","datePublished": "2023-01-21T00:00:00+00:00","dateModified": "2023-01-21T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Sumit Kumar"
+            },"description": "Modern time series forecasting requires a model to learn from multiple related time series. These time series often number in thousands or millions. Traditional statistical models do not scale well to these settings because they learn individual series in isolation and do not share parameters across series. Various deep learning models have been proposed recently with different inductive biases to work effectively under these settings. This article explores some of the most popular advances in deep learning architectures for modern time series forecasting."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Sumit&#39;s Diary"><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search this blog" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Sumit&#39;s Diary"><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search this blog" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Specialized Deep Learning Architectures for Time Series Forecasting</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Sumit Kumar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/time-series/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Time Series</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-21">2023-01-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4906 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;24 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#why-should-we-use-deep-learning-for-forecasting">Why Should We Use Deep Learning for Forecasting?</a></li>
+      </ul>
+    </li>
+    <li><a href="#basic-concepts">Basic Concepts</a>
+      <ul>
+        <li><a href="#types-of-forecasting">Types of Forecasting</a></li>
+        <li><a href="#covariates">Covariates</a></li>
+      </ul>
+    </li>
+    <li><a href="#models">Models</a>
+      <ul>
+        <li><a href="#1-deepar">1. DeepAR</a>
+          <ul>
+            <li><a href="#handling-unique-data-challenges">Handling Unique Data Challenges</a></li>
+            <li><a href="#likelihood-model">Likelihood model</a></li>
+            <li><a href="#model-architecture">Model Architecture</a></li>
+            <li><a href="#pytorch-code">PyTorch Code</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-mqrnn">2. MQRNN</a>
+          <ul>
+            <li><a href="#incorporating-future-covariate-values">Incorporating Future Covariate Values</a></li>
+            <li><a href="#decoder-design">Decoder Design</a></li>
+            <li><a href="#model-architecture-1">Model Architecture</a></li>
+            <li><a href="#pytorch-code-1">PyTorch Code</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-bayesian-lstm">3. Bayesian LSTM</a>
+          <ul>
+            <li><a href="#quantifying-uncertainty">Quantifying Uncertainty</a></li>
+            <li><a href="#model-architecture-2">Model Architecture</a></li>
+            <li><a href="#pytorch-code-2">PyTorch Code</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-deeptcn">4. DeepTCN</a>
+          <ul>
+            <li><a href="#notes-on-tcn">Notes on TCN</a></li>
+            <li><a href="#data-preparation">Data Preparation</a></li>
+            <li><a href="#model-architecture-3">Model Architecture</a></li>
+            <li><a href="#pytorch-code-3">PyTorch Code</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-n-beats">5. N-BEATS</a>
+          <ul>
+            <li><a href="#model-architecture-4">Model Architecture</a></li>
+            <li><a href="#pytorch-code-4">PyTorch Code</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#experiment-results">Experiment Results</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="introduction">Introduction</h2>
+<h3 id="why-should-we-use-deep-learning-for-forecasting">Why Should We Use Deep Learning for Forecasting?</h3>
+<p>Statistical algorithms have long been widely used for making forecasts with time series data. These classical algorithms, like Exponential Smoothing, ARIMA models, prescribe the data generation process and require manual selections to account for factors like trend, seasonality, and auto-correlation. However, modern data applications often deal with hundreds or millions of related time series. For example, a demand forecasting algorithm at Amazon may have to consider sales data from millions of products, an engagement forecasting algorithm at Instagram may have to model metrics from millions of posts. Traditional forecasting methods learn characteristics of individual time series, and hence do not scale well because they fit a model for each individual time series and do not share parameters among them.</p>
+<p>Deep learning provides a data-driven approach that makes minimal set of assumptions to learn from multiple related time series. In the previous article, I did a detailed literature review on the state of statistical vs machine learning vs deep learning approaches for time series forecasting<cite><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite>. It is important to note that the deep learning methods are not necessarily free of inductive biases. While DL models make very few assumptions on the features, inductive biases creep into the modeling process in the form of the architectural design of the DL model. This is why we see certain models perform better than others on certain tasks. For example, Convolutional Neural Networks work well with images due to their spatial inductive biases and translational equivariance. Hence a careful design of DL model based on the application domain is critical. Over the past few years, several new DL models have been developed for forecasting applications. In this article we will go over some of the most popular DL models, understand their inductive biases, implement them in PyTorch and compare their results on a dataset with multiple time series.</p>
+<h2 id="basic-concepts">Basic Concepts</h2>
+<p>Before going any further, let&rsquo;s look at some fundamental concepts that will help develop a better understanding of the models.</p>
+<h3 id="types-of-forecasting">Types of Forecasting</h3>
+<p>We will focus on the following two types of forecasting applications:</p>
+<ul>
+<li><strong>Point forecasting</strong>: Our goal is to predict a single value, which is often the conditional mean or median of the future observations.</li>
+<li><strong>Probabilistic forecasting</strong>: Our goal here will be to predict the full distribution. Probabilistic forecasting captures the uncertainty of the future and hence plays a key role in automating and optimizing operational business processes. For example, in retail it helps to optimize procurement, inventory planning; in logistics it enables efficient labor resource planning, delivery vehicle deployments etc.</li>
+</ul>
+<p>We further divide probabilistic forecasting into two categories:</p>
+<ul>
+<li><strong>Parametric probabilistic forecasting</strong>: We directly predict the parameters of the hypothetical target distribution, for example we predict the mean and standard deviation under gaussian distribution assumption. Maximum likelihood estimation is commonly applied to estimate the corresponding parameters in this setting.</li>
+<li><strong>Non-Parametric probabilistic forecasting</strong>: We predict a set of values corresponding to each quantile point of interests. Such models are commonly trained to minimize the quantile loss.</li>
+</ul>
+<h3 id="covariates">Covariates</h3>
+<p>Along with the time series data a lot of models also incorporate covariates. Covariates provide additional information about an item being modeled or the time point corresponding to the item&rsquo;s observed values. For example, covariates ensure that the information about the absolute or relative time is available to the model when we use windowing approach during training.</p>
+<ul>
+<li><strong>Item-dependent covariates</strong>, can be product id, product brand, category, product image, product text etc. One common way to incorporate them into modeling process is by using embeddings. Some numeric covariates can also be repeated along the time dimensions to be used together with the time series input.</li>
+<li><strong>Time-depended covariates</strong>, can be product price, weekend, holidays, day-of-the-week etc or binary features like price adjustment, censoring, etc. This information can usually be modeled using the corresponding numeric values.</li>
+</ul>
+<p>Covariates can also be both time and item dependent, for example, product-specific promotions.</p>
+<h2 id="models">Models</h2>
+<h3 id="1-deepar">1. DeepAR</h3>
+<p>DeepAR is an RNN-based probabilistic forecasting model proposed by Amazon that trains on a large number of related time series <cite><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite>. Even though it trains on all time series, it is still a univariate model, i.e. it predicts a univariate target. It learns seasonal behavior and dependencies without any manual feature engineering. It can also incorporate cold items with limited historical data. Assuming $t_{0}$ as the forecast creation time, i.e. the time step at which the forecast for future horizon must be generated, our goal is to model the following conditional distribution:</p>
+<img src="/img/posts/2022/dl-for-forecasting/deepar_eq1.png" alt="DeepAR goal">
+<p>Using autoregressive recurrent network, we can further represent our model distribution as the product of likelihood factors</p>
+<img src="/img/posts/2022/dl-for-forecasting/deepar_eq2.png" alt="DeepAR likelihood eq">
+<p>parameterized by the output $h_{i,t}$ of an autoregressive recurrent network.</p>
+<img src="/img/posts/2022/dl-for-forecasting/deepar_eq3.png" alt="DeepAR likelihood eq 3">
+<h4 id="handling-unique-data-challenges">Handling Unique Data Challenges</h4>
+<p>Amazon website catalogues millions of products with very skewed sales velocity. The magnitudes of sales numbers among series also have a large variance which makes common normalization techniques like input standardization or batch normalization less effective. Also, the erratic, intermittent and bursty nature of data in such demand forecasting violates the core assumptions of many classical techniques, such as gaussian errors, stationarity, or homoscedasticity of the time series. The authors propose two solutions:</p>
+<ol>
+<li>Scaling input time series: An average-based heuristic is used to scale the inputs. The autoregressive inputs $z_{i,t}$ are divided by the following average value $v_{i}$ and at the end likelihood parameters are multiplied by the same value.
+![average value for scaling](D:\demo\GitHub Projects\blog-bh-source\static\img\posts\2022\dl-for-forecasting\deepar_eq4.png)</li>
+<li>Velocity-based sampling: Large magnitude variance can also lead to suboptimal results because an optimization procedure that picks training instances uniformly at random will visit the small number time series with a large scale very infrequently, which result in underfitting those time series. To handle this, a weighted sampling scheme is adopted where the probability of selecting a sample with scale $v_{i}$ is proportional to $v_{i}$ (see <code>WeightedSampler</code> class in code).</li>
+</ol>
+<p>The paper also recommends using the following covariates: age (distance to the first observation in that time series), day-of-the-week and hour-of-the-week for hourly data, week-of-the-year for weekly data, month-of-the-year for monthly data, and a time series id (representing the product category) as embedding. All covariates were standardized to zero mean and unit variance.</p>
+<h4 id="likelihood-model">Likelihood model</h4>
+<p>DeepAR maximizes the log-likelihood, but does not limit itself to assuming gaussian noise. In fact the any noise model can be chosen as long as the log-likelihood and its gradients wrt the parameters can be evaluated. The authors recommend using Gaussian distribution (parameterized by mean and standard deviation) for real-valued data, and negative-binomial likelihood (parameterized by mean and shape) for unbound positive count data and long-tail data. Other possibilities include Beta distribution for unit interval, Bernoulli for binary data, mixtures for complex marginal distributions. The paper also recommends using SoftPlus activation function for parameters, like standard deviation, that are always positive.</p>
+<h4 id="model-architecture">Model Architecture</h4>
+<img src="/img/posts/2022/dl-for-forecasting/deepar.png" alt="DeepAR architecture">
+<p>DeepAR model uses an encoder-decoder design, but uses the same architecture for the encoder and decoder components. During training (left), at each time step t, the model takes the target value at the previous time step $z_{i,t-1}$, covariates $x_{i,t}$, as well as the previous network output $h_{i,t-1}$. The model is using teacher forcing approach, which has shown to pose a few problems for tasks like NLP, but haven&rsquo;t had any known adverse effect in the forecasting setting. For prediction, the history of the time series is first fed for all timestamps before the forecast creation time (left), and a sample is drawn (also called ancestral sampling) and fed back for the next point until the end of the prediction range (right).</p>
+<p>DeepAR model has been extended in several other research works. For example, DeepAR with quantiles functions <cite><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite> , DeepAR with dilated causal convolutions <cite><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></cite>, and DeepAR for multivariate forecasting (TimeGrad) <cite><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></cite>.</p>
+<h4 id="pytorch-code">PyTorch Code</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DeepAR</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">num_class</span><span class="o">=</span><span class="n">num_series</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">cov_dim</span><span class="o">=</span><span class="n">num_covariates</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">lstm_hidden_dim</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">lstm_dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">sample_times</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">predict_start</span><span class="o">=</span><span class="n">window_size</span><span class="o">-</span><span class="n">stride_size</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">predict_steps</span><span class="o">=</span><span class="n">stride_size</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">DeepAR</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">lstm_layers</span> <span class="o">=</span> <span class="n">lstm_layers</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">lstm_hidden_dim</span> <span class="o">=</span> <span class="n">lstm_hidden_dim</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">sample_times</span> <span class="o">=</span> <span class="n">sample_times</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">predict_steps</span> <span class="o">=</span> <span class="n">predict_steps</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">predict_start</span> <span class="o">=</span> <span class="n">predict_start</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">num_class</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="mi">1</span><span class="o">+</span><span class="n">cov_dim</span><span class="o">+</span><span class="n">embedding_dim</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">hidden_size</span><span class="o">=</span><span class="n">lstm_hidden_dim</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">num_layers</span><span class="o">=</span><span class="n">lstm_layers</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">batch_first</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">dropout</span><span class="o">=</span><span class="n">lstm_dropout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">distribution_mu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">lstm_hidden_dim</span> <span class="o">*</span> <span class="n">lstm_layers</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">distribution_presigma</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">lstm_hidden_dim</span> <span class="o">*</span> <span class="n">lstm_layers</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">distribution_sigma</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Softplus</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">hidden</span><span class="p">,</span> <span class="n">cell</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">onehot_embed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lstm_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">onehot_embed</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">lstm_input</span><span class="p">,</span> <span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="n">cell</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">hidden_permute</span> <span class="o">=</span> <span class="n">hidden</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">hidden</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">mu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distribution_mu</span><span class="p">(</span><span class="n">hidden_permute</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">pre_sigma</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distribution_presigma</span><span class="p">(</span><span class="n">hidden_permute</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sigma</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distribution_sigma</span><span class="p">(</span><span class="n">pre_sigma</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">mu</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sigma</span><span class="p">),</span> <span class="n">hidden</span><span class="p">,</span> <span class="n">cell</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/c1f7e11c0cfa5f696fd9ccd392f9b8d0" target="_blank" rel="noopener noreffer">https://gist.github.com/reachsumit/c1f7e11c0cfa5f696fd9ccd392f9b8d0</a></p>
+<p>You can read more about DeepAR in the <a href="https://arxiv.org/abs/1704.04110" target="_blank" rel="noopener noreffer">original paper</a>.</p>
+<h3 id="2-mqrnn">2. MQRNN</h3>
+<p>Multi-horizon Quantile Recurrent Neural Network (MQRNN) is an RNN-based non-parametric probabilistic forecasting model proposed by Amazon <cite><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite>. It uses quantile loss to prediction values for each desired quantile for every time step in the forecast horizon. One problem with recursive forecast generators like DeepAR, is that they tend to accumulate errors from previous steps during recursive forecast generation. Some empirical search also suggests that directly forecasting values for the full forecast horizon is less biased, more stable, and retrains efficiency of the parameter sharing <cite><sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></cite>. MQRNN builds on this idea and uses direct multi-horizon forecasting instead of a one-step-ahead recursive forecasting approach. It also incorporates both static and temporal covariates and solves the following large scale time series regression problem:</p>
+<img src="/img/posts/2022/dl-for-forecasting/mqrnn_eq.png" alt="mqrnn equation">
+<h4 id="incorporating-future-covariate-values">Incorporating Future Covariate Values</h4>
+<p>This paper suggests that the distant future information can have retrospective impact on near future horizons. For example, if a festival or black-friday sales event is coming up in future, the anticipation of it can affect a customer&rsquo;s buying decisions. As explained later, these future information are supplied to the two decoder MLP components.</p>
+<h4 id="decoder-design">Decoder Design</h4>
+<p>The model adopts the encoder-decoder framework. The encoder is a vanilla LSTM network that takes historical time series and covariates values. For decoder structure, the model uses two MLP branches instead of a recursive decoder. As stated earlier, the model focuses on directly producing output for the full horizon at once,. The MLP branches are used to achieve this goal. The design philosophy for the two decoders is as follows:</p>
+<ul>
+<li>
+<p><strong>Global Decoder</strong>: The global MLP takes encoder output and future covariates as input, and generates two context vectors as output: horizon-specific context, horizon-agnostic context.
+<img src="/img/posts/2022/dl-for-forecasting/mqrnn_eq2.png" alt="mqrnn-global decoder"></p>
+<p>The idea here behind horizon-specific context is that it carries the structural awareness of the temporal distance between a forecast creation time point and a specific horizon. This is essential to aspects like seasonality mapping. Whereas the horizon-agnostic context is based on the idea that not all relevant information is time-sensitive. Note that in the standard encoder-decoder architecture, only horizon-agnostic context exists, and horizon awareness is indirectly enforced by recursively feeding predictions not the RNN cell for the next time step.</p>
+</li>
+<li>
+<p><strong>Local Decoder</strong>: The local MLP takes global decoder&rsquo;s outputs and also future covariates as input, and generates all required quantiles for each specific horizon.
+<img src="/img/posts/2022/dl-for-forecasting/mqrnn_eq3.png" alt="mqrnn-local decoder"></p>
+<p>The local MLP is key to aligning future seasonality and event, and the capability to generate sharp, spiky forecasts. In cases where there is no meaningful future information, or sharp, spiky forecasts are not desired, the local MLP can be removed.</p>
+</li>
+</ul>
+<h4 id="model-architecture-1">Model Architecture</h4>
+<img src="/img/posts/2022/dl-for-forecasting/mqrnn.png" alt="MQRNN">
+<p>The loss function for MQRNN is the sum of individual quantiles loss, and the output is all the quantile forecasts. At 0.5 quantile, the quantile loss is simply the Mean Absolute Error and its minimizer is the median of the predictive distribution. MQRNN generates multi-horizon forecasts by placing a series of decoders, with shared parameters, at each recurrent layer (time point) in the encoder, and computes the loss against the corresponding targets. Each time series of arbitrary length can serve as a single sample in the model training, hence allowing cold content with limited history to also be used in the model. It also uses static information by replicating it across time. The authors also recommend trying different encoder structures for processing sequential input, like dilated 1D causal convolution layers (MQCNN), NARX-like LSTM, or WaveNet.</p>
+<h4 id="pytorch-code-1">PyTorch Code</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MQRNN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">horizon_size</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="n">horizon_size</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">hidden_size</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">quantiles</span><span class="p">:</span><span class="nb">list</span><span class="o">=</span><span class="n">desired_quantiles</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">dropout</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">layer_size</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">context_size</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">covariate_size</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="n">num_covariates</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">bidirectional</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">MQRNN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">quantiles</span> <span class="o">=</span> <span class="n">desired_quantiles</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">quantile_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">quantiles</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">bidirectional</span> <span class="o">=</span> <span class="n">bidirectional</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_size</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">horizon_size</span> <span class="o">=</span> <span class="n">horizon_size</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">covariate_size</span> <span class="o">=</span> <span class="n">covariate_size</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span> <span class="n">covariate_size</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="n">hidden_size</span><span class="o">=</span><span class="n">hidden_size</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="n">num_layers</span><span class="o">=</span><span class="n">layer_size</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">bidirectional</span><span class="o">=</span><span class="n">bidirectional</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">global_decoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span> <span class="n">hidden_size</span> <span class="o">+</span> <span class="n">covariate_size</span><span class="o">*</span><span class="n">horizon_size</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span> <span class="n">horizon_size</span><span class="o">*</span><span class="n">hidden_size</span><span class="o">*</span><span class="mi">3</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                           <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                                           <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span> <span class="n">horizon_size</span><span class="o">*</span><span class="n">hidden_size</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span> <span class="n">horizon_size</span><span class="o">*</span><span class="n">hidden_size</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                           <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                                           <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span> <span class="n">horizon_size</span><span class="o">*</span><span class="n">hidden_size</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span> <span class="p">(</span><span class="n">horizon_size</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">context_size</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                           <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">local_decoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span> <span class="n">horizon_size</span><span class="o">*</span><span class="n">context_size</span> <span class="o">+</span> <span class="n">horizon_size</span><span class="o">*</span> <span class="n">covariate_size</span> <span class="o">+</span> <span class="n">context_size</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span> <span class="n">horizon_size</span><span class="o">*</span> <span class="n">context_size</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                           <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                                           <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span> <span class="n">horizon_size</span><span class="o">*</span> <span class="n">context_size</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span> <span class="n">horizon_size</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">quantile_size</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                           <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">double</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">global_decoder</span><span class="o">.</span><span class="n">double</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">local_decoder</span><span class="o">.</span><span class="n">double</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cur_series_covariate_tensor</span><span class="p">,</span> <span class="n">next_covariate_tensor</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">seq_len</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">cur_series_covariate_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cur_series_covariate_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">direction_size</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bidirectional</span> <span class="k">else</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">outputs</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">cur_series_covariate_tensor</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">outputs_reshape</span> <span class="o">=</span> <span class="n">outputs</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">seq_len</span><span class="p">,</span><span class="n">batch_size</span><span class="p">,</span><span class="n">direction_size</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)[:,:,</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">encoder_outputs</span> <span class="o">=</span> <span class="n">outputs_reshape</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">seq_len</span><span class="p">,</span><span class="n">batch_size</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">encoder_outputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">encoder_outputs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">global_decoder_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_decoder</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">encoder_outputs</span><span class="p">,</span> <span class="n">next_covariate_tensor</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">local_decoder_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_decoder</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">global_decoder_output</span><span class="p">,</span> <span class="n">next_covariate_tensor</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">seq_len</span> <span class="o">=</span> <span class="n">local_decoder_output</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">local_decoder_output</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">local_decoder_output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">seq_len</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">horizon_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantile_size</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/b0dfc7390fe4eff023226bbb6c0f538b" target="_blank" rel="noopener noreffer">https://gist.github.com/reachsumit/b0dfc7390fe4eff023226bbb6c0f538b</a></p>
+<p>You can read more about MQRNN in the <a href="https://arxiv.org/abs/1711.11053" target="_blank" rel="noopener noreffer">original paper</a> and the <a href="https://github.com/tianchen101/MQRNN" target="_blank" rel="noopener noreffer">official codebase</a>.</p>
+<h3 id="3-bayesian-lstm">3. Bayesian LSTM</h3>
+<p>Another clever usage of encoder-decoder framework for time-series forecasting was proposed by Uber <cite><sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></cite>. This main objective of this proposal was to create a solution for quantifying the forecasting uncertainty using Bayesian Neural Networks. This approach can also be used for anomaly detection at scale. Bayesian perspective introduces uncertainty measurement to deep learning models. A prior (often Gaussian) is introduced for the weight parameters, and the model aims to fit the optimal posterior distribution. Many methods, such as stochastic search, variational Bayes, and probabilistic backpropagation, have been proposed to approximates inference methods for Bayesian networks at scale. This paper adopts a Monte Carlo Dropout based approach suggested by a prior research <cite><sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></cite>. Specifically, stochastic dropouts are applied after each hidden layer, and the model output can be approximately viewed as a random sample generated from posterior prediction distribution. Hence the uncertainty in model predictions can be estimated by the sample variance of the model predictions in a few repititions.</p>
+<h4 id="quantifying-uncertainty">Quantifying Uncertainty</h4>
+<p>This paper decomposes prediction uncertainty into 3 types:</p>
+<ul>
+<li>Uncertainty due to model (ignorance of model parameters). This uncertainty can be reduced by collecting more samples or by using MC dropouts.</li>
+<li>Uncertainty due to data (train and test samples are from different population). This can be accounted for by fitting a latent embedding space for all training time series using an encoder-decoder model and calculating variance using only the encoder representations.</li>
+<li>Inherent noise (irreducible). This noise can be estimated through the residual sum of squares evaluated on an independent help-out validation set.</li>
+</ul>
+<h4 id="model-architecture-2">Model Architecture</h4>
+<img src="/img/posts/2022/dl-for-forecasting/bayes_lstm.png" alt="bayes_lstm">
+<p>The encoder-decoder is a standard RNN-based framework that captures the inherent pattern in the time series during the pre-training step. After the encoder-decoder is pre-trained, the encoder is treated as an intelligent feature-extraction blackbox. A prediction network learns to take input from both the learned encoder, as well as any potential external features to generate the final prediction. Before training, the raw data are log-transformed to remove exponential effects. Within each input sliding window, the first day is subtracted from all values, so that trends are removed and the neural network is trained for the increment value. Later, these transformations are reverted to obtain predictions at the original scale. In the paper, learnt embeddings (i.e. the last LSTM cell states in the encoder) are projected to lower dimensions using PCA for interpreting extracted features.</p>
+<h4 id="pytorch-code-2">PyTorch Code</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">VariationalDropout</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dropout</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">dropout</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl">        <span class="n">max_batch_size</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">m</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">new_empty</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_batch_size</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">bernoulli_</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">m</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">LSTM</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="o">*</span><span class="n">args</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                 <span class="n">dropouti</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">dropoutw</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                 <span class="n">dropouto</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">unit_forget_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">unit_forget_bias</span> <span class="o">=</span> <span class="n">unit_forget_bias</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dropoutw</span> <span class="o">=</span> <span class="n">dropoutw</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">input_drop</span> <span class="o">=</span> <span class="n">VariationalDropout</span><span class="p">(</span><span class="n">dropouti</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">output_drop</span> <span class="o">=</span> <span class="n">VariationalDropout</span><span class="p">(</span><span class="n">dropouto</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_drop</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">seq</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_drop</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="n">state</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">VDEncoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_features</span><span class="p">,</span> <span class="n">out_features</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">VDEncoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleDict</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;lstm1&#39;</span><span class="p">:</span> <span class="n">LSTM</span><span class="p">(</span><span class="n">in_features</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span><span class="n">dropouto</span><span class="o">=</span><span class="n">p</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;lstm2&#39;</span><span class="p">:</span> <span class="n">LSTM</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">dropouto</span><span class="o">=</span><span class="n">p</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;lstm3&#39;</span><span class="p">:</span> <span class="n">LSTM</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">out_features</span><span class="p">,</span> <span class="n">dropouto</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;lstm1&#39;</span><span class="p">](</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;lstm2&#39;</span><span class="p">](</span><span class="n">out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;lstm3&#39;</span><span class="p">](</span><span class="n">out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">out</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">VDDecoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">VDDecoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleDict</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;lstm1&#39;</span><span class="p">:</span> <span class="n">LSTM</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dropouto</span><span class="o">=</span><span class="n">p</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;lstm2&#39;</span><span class="p">:</span> <span class="n">LSTM</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dropouto</span><span class="o">=</span><span class="n">p</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;lstm3&#39;</span><span class="p">:</span> <span class="n">LSTM</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dropouto</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;lstm1&#39;</span><span class="p">](</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;lstm2&#39;</span><span class="p">](</span><span class="n">out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;lstm3&#39;</span><span class="p">](</span><span class="n">out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">out</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">VDEncoderDecoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_features</span><span class="p">,</span> <span class="n">output_steps</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">VDEncoderDecoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">enc_in_features</span> <span class="o">=</span> <span class="n">in_features</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">output_steps</span> <span class="o">=</span> <span class="n">output_steps</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">enc_out_features</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleDict</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;encoder&#39;</span><span class="p">:</span> <span class="n">VDEncoder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">enc_in_features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">enc_out_features</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;decoder&#39;</span><span class="p">:</span> <span class="n">VDDecoder</span><span class="p">(</span><span class="n">p</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;fc1&#39;</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">window_size</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;fc2&#39;</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_steps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;encoder&#39;</span><span class="p">](</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;decoder&#39;</span><span class="p">](</span><span class="n">out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;fc1&#39;</span><span class="p">](</span><span class="n">out</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;fc2&#39;</span><span class="p">](</span><span class="n">out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">out</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/f4a55186706675a085157c64fd1e0634" target="_blank" rel="noopener noreffer">https://gist.github.com/reachsumit/f4a55186706675a085157c64fd1e0634</a></p>
+<p>You can read more about Bayesian LSTM in the <a href="https://arxiv.org/abs/1709.01907" target="_blank" rel="noopener noreffer">original paper</a>.</p>
+<h3 id="4-deeptcn">4. DeepTCN</h3>
+<p>Deep Temporal Convolutional Network (DeepTCN) was proposed by Bigo Research <cite><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></cite>. Instead of using RNNs, DeepTCN utilize stacked layers of dilated causal convolutional nets to capture the long-term correlations in time series data. RNNs can be remarkably difficult to train due to exploding or vanishing gradients <cite><sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></cite>, and backpropagation through time (BPTT) often hampers efficient computation <cite><sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup></cite>. On the other hand, Temporal Convolutional Network (TCN) is more robust to error accumulation due to its non-autoregressive nature, and it can also be efficiently trained in parallel.</p>
+<h4 id="notes-on-tcn">Notes on TCN</h4>
+<p>A TCN is basically a 1D FCN with causal convolutions. Casual means that there is no information leakage from future to past, i.e. the output at time t can only be obtained from the inputs that are no later than t. Dilated convolutions enable exponentially large receptive field (as opposed to linear to the depth of the network). Dilation allows the filter to be applied over an area larger than its length by skipping the input values by a certain step.</p>
+<p>Recent studies have empirically shown that TCNs outperform RNNs across a broad range of sequence modeling tasks. These studies also recommend using TCNs, instead of RNNs, as the default starting point for sequence modeling tasks <cite><sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup></cite>.</p>
+<h4 id="data-preparation">Data Preparation</h4>
+<p>This research used time-independent covariates like product_id to incorporate series-level information that helps in capturing the scale level and seasonality of each specific series. Other covariates included hour-of-the-day, day-of-the-week, day-of-the-month for hourly data, day-of-the-year for daily data, month-of-the-year for monthly data. One of the major concerns for this study was to effectively handle complex seasonal patterns, like holiday effects. This is done by using hand-crafted exogeneous variable (covariates) such as holiday indicators, weather forecasts, etc. New products with little historical information used zero-padding to ensure the desired input sequence length.</p>
+<h4 id="model-architecture-3">Model Architecture</h4>
+<img src="/img/posts/2022/dl-for-forecasting/deeptcn_full.png" alt="DeepTCN architecture">
+<p>DeepTCN uses an encoder-decoder framework. The encoder is composed of stacked residual blocks based on dilated causal convolutional nets to capture temporal dependencies. The diagram above shows an encoder on the left with {1, 2, 4, 8} as the dilation factors, filter size of 2, and receptive field of 16. More specifically, the encoder architecture is stacked dilated causal convolutions that models historical observations and covariates. The diagram below shows the original DeepTCN encoder on the left, and the one I adapted from another research<cite><sup id="fnref1:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup></cite> for my implementation.</p>
+<img src="/img/posts/2022/dl-for-forecasting/deeptcn_encoder.png" alt="deepTCN - encoder">
+<p>For decoder, the paper proposed a modified resnet-v block that takes two inputs (encoder output and future covariates). The decoder architecture is shown in the figure below.</p>
+<img src="/img/posts/2022/dl-for-forecasting/deeptcn_decoder.png" alt="DeepTCN - decoder">
+<h4 id="pytorch-code-3">PyTorch Code</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ResidualBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_filters</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">ResidualBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout_fn</span> <span class="o">=</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1d</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">num_filters</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">dilation</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1d</span><span class="p">(</span><span class="n">num_filters</span><span class="p">,</span> <span class="n">num_filters</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">dilation</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">weight_norm</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">weight_norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">weight_norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1d</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">num_filters</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">input_dim</span> <span class="o">!=</span> <span class="n">num_filters</span> <span class="k">else</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout_fn</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">float</span><span class="p">())))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout_fn</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">out</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">residual</span> <span class="o">=</span> <span class="n">x</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span> <span class="o">+</span> <span class="n">residual</span><span class="p">[:,:,</span><span class="o">-</span><span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]:])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">FutureResidual</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_features</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">FutureResidual</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">in_features</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="n">in_features</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                  <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">in_features</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                 <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                                 <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">in_features</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="n">in_features</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                  <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">in_features</span><span class="p">),)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lag_x</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">lag_x</span><span class="p">,</span> <span class="n">out</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DeepTCN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cov_dims</span><span class="o">=</span><span class="n">cov_dims</span><span class="p">,</span> <span class="n">num_class</span><span class="o">=</span><span class="n">num_series</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">dilations</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">32</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">DeepTCN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cov_dims</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cov_dims</span><span class="p">)</span><span class="o">*</span><span class="n">embedding_dim</span><span class="p">),</span> <span class="n">cov_dims</span><span class="p">,</span> <span class="p">[],</span> <span class="n">device</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">cov</span> <span class="ow">in</span> <span class="n">cov_dims</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">num_class</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dilations</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ResidualBlock</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">num_filters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">d</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">FutureResidual</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1158</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">SiLU</span><span class="p">(),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/e0a56592c32844231d40e3e48a1bc64a" target="_blank" rel="noopener noreffer">https://gist.github.com/reachsumit/e0a56592c32844231d40e3e48a1bc64a</a></p>
+<p>You can read more about DeepTCN in the <a href="https://arxiv.org/abs/1906.04397" target="_blank" rel="noopener noreffer">original paper</a>.</p>
+<h3 id="5-n-beats">5. N-BEATS</h3>
+<p>N-BEATS is a univariate time series forecasting model proposed by Element AI (acquired by ServiceNow) <cite><sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></cite>. This research work came out at the time when, ES-RNN, a hybrid of Exponential Smoothing and RNN model won the M4 competition in 2018. A popular narrative at that time suggested that the hybrid of statistical and deep learning methods could be the way forward. But this paper challenged this notion by developing a pure-DL architecture for time series forecasting that was inspired from signal processing domain. Their architecture also allowed for interpretable outputs by carefully injecting a suitable inductive bias in the model. However, there is no provision to include covariates in the model. N-BEATS was later extended by N-BEATSx <cite><sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></cite> to incorporate exogenous variables. Another work, N-HiTS <cite><sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup></cite> altered the architecture and achieved accuracy improvements along with drastically cutting long-forecasting compute costs.</p>
+<h4 id="model-architecture-4">Model Architecture</h4>
+<img src="/img/posts/2022/dl-for-forecasting/nbeats.png" alt="NBeats">
+<p>The above diagram shows the N-BEATS architecture from most granular view on the left to the high-level view on the right. N-BEATS used the residual principle to stack many basic blocks and the paper has shown that we can stack up to 150 layers and still facilitate efficient learning. Let&rsquo;s look at each of the above 3 columns individually.</p>
+<ul>
+<li>[Left] Block: Each block takes the lookback period data as input and generates two outputs: a backcast and a forecast. The backcast is the block&rsquo;s own best prediction of the lookback period. The input to the block is first processed by four standard fully connected layers (with bias and activation) and output from this FC stack is transformed by two separate linear layers (no bias or activation) to something the paper calls expansion coefficients for the backcast and
+forecast, $\theta^{b}$, and $\theta^{f}$, respectively. These expansion coefficients are then mapped to output using a set of basis layers ($g^{b}$ and $g^{f}$).</li>
+<li>[Middle] Stacks: Different blocks are arranged in a stack (middle component in the above figure). All the blocks in a stack share the same kind of basis layer. The blocks are arranged in a residual manner, such that the input to a block $l$ is  $x_{l} = x_{l-1} - \hat{x}_{l-1}$, i.e. at each step, the backcast generated by the block is subtracted from the input to that block before it is passed on to the next layer. And all the forecast outputs of all the blocks in a stack are added up to make the stack forecast. The residual backcast from the last block in a stack is the stack residual</li>
+<li>[Right] Overall Architecture: On the right, we see the top-level view of the architecture. Each stack is chained together so that for any stack, the stack residual output of the previous stack is the input and the stack generates two outputs: the stack forecast and the stack residual. Finally, the N-BEATS forecast, is the additive sum of all the stack forecasts.</li>
+</ul>
+<p><strong>Basis Layer</strong></p>
+<p>A basis layer puts a constraint on the functional space and thereby limits the output representation constrained by the chosen basis function. We can have the basis of any arbitrary function, which gives us a lot of flexibility. In the paper, N-BEATS operates in two modes: generic and interpretable. Generic mode doesn&rsquo;t have any basis function constraining the function search (we can think of it as having an identity function). So, in this mode, we are leaving the function completely learned by the model through a linear projection of the basis coefficients. Fixing the basis function allows for human interpretability about what each stack signifies. The authors propose two specific basis functions that capture trend (polynomial function) and seasonality (Fourier basis). So we can say that the forecast output of the stack represents trend or seasonality based on the corresponding chosen basis function.</p>
+<h4 id="pytorch-code-4">PyTorch Code</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">GenericBasis</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backcast_size</span><span class="p">,</span> <span class="n">forecast_size</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">backcast_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">forecast_size</span> <span class="o">=</span> <span class="n">backcast_size</span><span class="p">,</span> <span class="n">forecast_size</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">theta</span><span class="p">[:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">backcast_size</span><span class="p">],</span> <span class="n">theta</span><span class="p">[:,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">forecast_size</span><span class="p">:]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">NBeatsBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">input_size</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">theta_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">basis_function</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">layers</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">layer_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">input_size</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="n">layer_size</span><span class="p">)]</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                                      <span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">layer_size</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="n">layer_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                       <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">layers</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">basis_parameters</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">layer_size</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="n">theta_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">basis_function</span> <span class="o">=</span> <span class="n">basis_function</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">block_input</span> <span class="o">=</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">block_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">layer</span><span class="p">(</span><span class="n">block_input</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">basis_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis_parameters</span><span class="p">(</span><span class="n">block_input</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis_function</span><span class="p">(</span><span class="n">basis_parameters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">NBeats</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blocks</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="o">=</span> <span class="n">blocks</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">input_mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">residuals</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">input_mask</span> <span class="o">=</span> <span class="n">input_mask</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">forecast</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">block</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">backcast</span><span class="p">,</span> <span class="n">block_forecast</span> <span class="o">=</span> <span class="n">block</span><span class="p">(</span><span class="n">residuals</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">residuals</span> <span class="o">=</span> <span class="p">(</span><span class="n">residuals</span> <span class="o">-</span> <span class="n">backcast</span><span class="p">)</span> <span class="o">*</span> <span class="n">input_mask</span>
+</span></span><span class="line"><span class="cl">            <span class="n">forecast</span> <span class="o">=</span> <span class="n">forecast</span> <span class="o">+</span> <span class="n">block_forecast</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">forecast</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/9b31afe74c560c9f804081af3e1b4a1d" target="_blank" rel="noopener noreffer">https://gist.github.com/reachsumit/9b31afe74c560c9f804081af3e1b4a1d</a></p>
+<p>You can read more about N-BEATS in the <a href="https://arxiv.org/abs/1905.10437" target="_blank" rel="noopener noreffer">original paper</a>.</p>
+<h2 id="experiment-results">Experiment Results</h2>
+<p>I used UCI&rsquo;s ElectricityLoadDiagrams20112014 dataset<cite><sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup></cite> to run a quick experiment with minimal PyTorch implementations of these models. The dataset contains 370 time series sampled at 15 mins with a total of 140K observations for each series. The data was resampled to 1 hour. Three covariates (weekday, hour, month) and one time series id was used wherever allowed by the model architecture. Refer to the notebooks linked in respective sections to see the code for each experiment. The following chart shows RMSE values for the test set for each of the model. Results are sorted from left to right by the best to the worst.</p>
+<img src="/img/posts/2022/dl-for-forecasting/results.png" alt="results">
+<h2 id="summary">Summary</h2>
+<p>In this article, we defined the need for using deep learning for modern time series forecasting and then looked at some of the most popular deep learning algorithms designed for time series forecasting with different inductive biases in their model architecture. We implemented all of the algorithms in Python and compared their results on a toy dataset.</p>
+<h2 id="references">References</h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>&ldquo;Statistical vs Machine Learning vs Deep Learning Modeling for Time Series Forecasting&rdquo;, <a href="https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/" target="_blank" rel="noopener noreffer">https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Flunkert, Valentin &amp; Salinas, David &amp; Gasthaus, Jan. (2017). DeepAR: Probabilistic Forecasting with Autoregressive Recurrent Networks. International Journal of Forecasting. 36. 10.1016/j.ijforecast.2019.07.001.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Jan Gasthaus, Konstantinos Benidis, Yuyang Wang, Syama Sundar Rangapuram, David Salinas, Valentin Flunkert, and Tim Januschowski. Probabilistic forecasting with spline quantile function RNNs. In The 22nd International Conference on Artificial Intelligence and Statistics, pages 1901–1910, 2019.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>oord, Aaron &amp; Dieleman, Sander &amp; Zen, Heiga &amp; Simonyan, Karen &amp; Vinyals, Oriol &amp; Graves, Alex &amp; Kalchbrenner, Nal &amp; Senior, Andrew &amp; Kavukcuoglu, Koray. (2016). WaveNet: A Generative Model for Raw Audio.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Kashif Rasul, Calvin Seward, Ingmar Schuster, and Roland Vollgraf. Autoregressive denoising diffusion models for multivariate probabilistic time series forecasting. In International Conference on Machine Learning, pages 8857–8868. PMLR, 2021.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Wen, Ruofeng &amp; Torkkola, Kari &amp; Narayanaswamy, Balakrishnan. (2017). A Multi-Horizon Quantile Recurrent Forecaster.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Ben Taieb, Souhaib &amp; Atiya, Amir. (2015). A Bias and Variance Analysis for Multistep-Ahead Time Series Forecasting. IEEE transactions on neural networks and learning systems. 27. 10.1109/TNNLS.2015.2411629.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>Zhu, Lingxue &amp; Laptev, Nikolay. (2017). Deep and Confident Prediction for Time Series at Uber.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>Gal, Yarin &amp; Ghahramani, Zoubin. (2015). Dropout as a Bayesian Approximation: Appendix.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>Chen, Yitian &amp; Kang, Yanfei &amp; Chen, Yixiong &amp; Wang, Zizhuo. (2019). Probabilistic Forecasting with Temporal Convolutional Neural Network.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>Pascanu, Razvan &amp; Mikolov, Tomas &amp; Bengio, Y.. (2012). On the difficulty of training Recurrent Neural Networks. 30th International Conference on Machine Learning, ICML 2013.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p>Werbos, Paul. (1990). Backpropagation through time: what it does and how to do it. Proceedings of the IEEE. 78. 1550 - 1560. 10.1109/5.58337.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p>Bai, Shaojie &amp; Kolter, J. &amp; Koltun, Vladlen. (2018). An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:14">
+<p>Oreshkin, Boris &amp; Carpo, Dmitri &amp; Chapados, Nicolas &amp; Bengio, Yoshua. (2019). N-BEATS: Neural basis expansion analysis for interpretable time series forecasting.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:15">
+<p>Gutierrez, Kin &amp; Challu, Cristian &amp; Marcjasz, Grzegorz &amp; Weron, Rafał &amp; Dubrawski, Artur. (2022). Neural basis expansion analysis with exogenous variables: Forecasting electricity prices with NBEATSx. International Journal of Forecasting. 10.1016/j.ijforecast.2022.03.001.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:16">
+<p>Challu, Cristian &amp; Gutierrez, Kin &amp; Oreshkin, Boris &amp; Garza, Federico &amp; Mergenthaler, Max &amp; Dubrawski, Artur. (2022). N-HiTS: Neural Hierarchical Interpolation for Time Series Forecasting.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:17">
+<p><a href="https://archive.ics.uci.edu/ml/datasets/ElectricityLoadDiagrams20112014" target="_blank" rel="noopener noreffer">https://archive.ics.uci.edu/ml/datasets/ElectricityLoadDiagrams20112014</a>&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-01-21</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" data-title="Specialized Deep Learning Architectures for Time Series Forecasting" data-via="_reachsumit" data-hashtags="forecasting,literature review"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" data-hashtag="forecasting"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" data-title="Specialized Deep Learning Architectures for Time Series Forecasting" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" data-title="Specialized Deep Learning Architectures for Time Series Forecasting"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" data-title="Specialized Deep Learning Architectures for Time Series Forecasting"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/"><i class="fab fa-get-pocket fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" data-title="Specialized Deep Learning Architectures for Time Series Forecasting"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" data-title="Specialized Deep Learning Architectures for Time Series Forecasting"><i class="fab fa-evernote fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" data-title="Specialized Deep Learning Architectures for Time Series Forecasting" data-description="Modern time series forecasting requires a model to learn from multiple related time series. These time series often number in thousands or millions. Traditional statistical models do not scale well to these settings because they learn individual series in isolation and do not share parameters across series. Various deep learning models have been proposed recently with different inductive biases to work effectively under these settings. This article explores some of the most popular advances in deep learning architectures for modern time series forecasting."><i class="fab fa-trello fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/forecasting/">forecasting</a>,&nbsp;<a href="/tags/literature-review/">literature review</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/2022/12/stats-vs-ml-for-ts/" class="prev" rel="prev" title="Statistical vs Machine Learning vs Deep Learning Modeling for Time Series Forecasting"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Statistical vs Machine Learning vs Deep Learning Modeling for Time Series Forecasting</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://reachsumit.com" target="_blank">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.5.4/dist/index.umd.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"Sumit's Diary","id-2":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-171612692-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-171612692-1" async></script></body>
+</html>
