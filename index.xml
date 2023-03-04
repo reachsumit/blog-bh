@@ -4,9 +4,17 @@
         <link>https://blog.reachsumit.com/</link>
         <description>Welcome to Sumit Kumar&#39;s Personal Blog!</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
-            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 21 Jan 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 04 Mar 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.reachsumit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Two Tower Model Architecture: Current State and Promising Extensions</title>
+    <link>https://blog.reachsumit.com/posts/2023/03/two-tower-model/</link>
+    <pubDate>Sat, 04 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Sumit Kumar</author>
+    <guid>https://blog.reachsumit.com/posts/2023/03/two-tower-model/</guid>
+    <description><![CDATA[Introduction Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state.]]></description>
+</item>
+<item>
     <title>Specialized Deep Learning Architectures for Time Series Forecasting</title>
     <link>https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/</link>
     <pubDate>Sat, 21 Jan 2023 00:00:00 &#43;0000</pubDate>
@@ -80,14 +88,6 @@ Collaborative Filtering: Algorithms that use usage data, such as explicit or imp
     <guid>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</guid>
     <description><![CDATA[<p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
 <p>So, what did they do to get such impressive gains? Allow me to explain!</p>]]></description>
-</item>
-<item>
-    <title>Building a spell-checker with FastText word embeddings</title>
-    <link>https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/</link>
-    <pubDate>Sat, 18 Jul 2020 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/</guid>
-    <description><![CDATA[<p>Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&rsquo;s spell-corrector? Let&rsquo;s find out!</p>]]></description>
 </item>
 </channel>
 </rss>
