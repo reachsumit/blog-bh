@@ -7,18 +7,16 @@
             <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 21 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/time-series/" rel="self" type="application/rss+xml" /><item>
     <title>Specialized Deep Learning Architectures for Time Series Forecasting</title>
     <link>https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/</link>
-    <pubDate>Sat, 21 Jan 2023 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/</guid>
-    <description><![CDATA[Introduction Why Should We Use Deep Learning for Forecasting? Statistical algorithms have long been widely used for making forecasts with time series data. These classical algorithms, like Exponential Smoothing, and ARIMA models, prescribe the data generation process and require manual selections to account for factors like the trend, seasonality, and auto-correlation. However, modern data applications often deal with hundreds or millions of related time series. For example, a demand forecasting algorithm at Amazon may have to consider sales data from millions of products, and an engagement forecasting algorithm at Instagram may have to model metrics from millions of posts.]]></description>
-</item>
-<item>
+    <pubDate>Sat, 21 Jan 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/</guid>
+    <description><![CDATA[Modern time series forecasting requires a model to learn from multiple related time series. These time series often number in thousands or millions. Traditional statistical models do not scale well to these settings because they learn individual series in isolation and do not share parameters across series. Various deep learning models have been proposed recently with different inductive biases to work effectively under these settings. This article explores some of the most popular advances in deep learning architectures for modern time series forecasting.]]></description>
+</item><item>
     <title>Statistical vs Machine Learning vs Deep Learning Modeling for Time Series Forecasting</title>
     <link>https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</link>
-    <pubDate>Tue, 20 Dec 2022 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</guid>
-    <description><![CDATA[Over recent decades, Machine Learning (ML) and, its subdomain, Deep Learning (DL) based algorithms have achieved remarkable success in various areas, such as image processing, natural language understanding, and speech recognition. However, ML algorithms haven&rsquo;t quite had the same widely known and unquestionable superiority when it comes to forecasting applications in the time series domain. While ML algorithms have to overcome the challenges in modeling the non-i.i.d. nature of data inherent in the time series domain, statistical models excel in this setting and provide explicit means to model time series structural elements, such as trend and seasonality.]]></description>
-</item>
-</channel>
+    <pubDate>Tue, 20 Dec 2022 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</guid>
+    <description><![CDATA[Statistical methods have been used in the time series domain for multiple decades. But given the recent advances in Machine Learning and especially its sub-domain Deep Learning, are statistical methods still superior for forecasting? In this article, we will do a deep dive into literature and recent time series competitions to do a multifaceted comparison between Statistical, Machine Learning, and Deep Learning methods for time series forecasting.]]></description>
+</item></channel>
 </rss>

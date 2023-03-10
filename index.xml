@@ -9,85 +9,74 @@
         <item>
     <title>Two Tower Model Architecture: Current State and Promising Extensions</title>
     <link>https://blog.reachsumit.com/posts/2023/03/two-tower-model/</link>
-    <pubDate>Sat, 04 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2023/03/two-tower-model/</guid>
-    <description><![CDATA[Introduction Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state.]]></description>
-</item>
-<item>
+    <pubDate>Sat, 04 Mar 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/03/two-tower-model/</guid>
+    <description><![CDATA[Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state.]]></description>
+</item><item>
     <title>Specialized Deep Learning Architectures for Time Series Forecasting</title>
     <link>https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/</link>
-    <pubDate>Sat, 21 Jan 2023 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/</guid>
-    <description><![CDATA[Introduction Why Should We Use Deep Learning for Forecasting? Statistical algorithms have long been widely used for making forecasts with time series data. These classical algorithms, like Exponential Smoothing, and ARIMA models, prescribe the data generation process and require manual selections to account for factors like the trend, seasonality, and auto-correlation. However, modern data applications often deal with hundreds or millions of related time series. For example, a demand forecasting algorithm at Amazon may have to consider sales data from millions of products, and an engagement forecasting algorithm at Instagram may have to model metrics from millions of posts.]]></description>
-</item>
-<item>
+    <pubDate>Sat, 21 Jan 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/</guid>
+    <description><![CDATA[Modern time series forecasting requires a model to learn from multiple related time series. These time series often number in thousands or millions. Traditional statistical models do not scale well to these settings because they learn individual series in isolation and do not share parameters across series. Various deep learning models have been proposed recently with different inductive biases to work effectively under these settings. This article explores some of the most popular advances in deep learning architectures for modern time series forecasting.]]></description>
+</item><item>
     <title>Statistical vs Machine Learning vs Deep Learning Modeling for Time Series Forecasting</title>
     <link>https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</link>
-    <pubDate>Tue, 20 Dec 2022 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</guid>
-    <description><![CDATA[Over recent decades, Machine Learning (ML) and, its subdomain, Deep Learning (DL) based algorithms have achieved remarkable success in various areas, such as image processing, natural language understanding, and speech recognition. However, ML algorithms haven&rsquo;t quite had the same widely known and unquestionable superiority when it comes to forecasting applications in the time series domain. While ML algorithms have to overcome the challenges in modeling the non-i.i.d. nature of data inherent in the time series domain, statistical models excel in this setting and provide explicit means to model time series structural elements, such as trend and seasonality.]]></description>
-</item>
-<item>
+    <pubDate>Tue, 20 Dec 2022 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</guid>
+    <description><![CDATA[Statistical methods have been used in the time series domain for multiple decades. But given the recent advances in Machine Learning and especially its sub-domain Deep Learning, are statistical methods still superior for forecasting? In this article, we will do a deep dive into literature and recent time series competitions to do a multifaceted comparison between Statistical, Machine Learning, and Deep Learning methods for time series forecasting.]]></description>
+</item><item>
     <title>Recommender Systems for Modeling Feature Interactions under Sparse Settings</title>
     <link>https://blog.reachsumit.com/posts/2022/11/sparse-recsys/</link>
-    <pubDate>Sun, 06 Nov 2022 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2022/11/sparse-recsys/</guid>
+    <pubDate>Sun, 06 Nov 2022 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2022/11/sparse-recsys/</guid>
     <description><![CDATA[Many machine learning domains, such as recommender systems, targeted advertisement, search ranking, and text analysis contain highly sparse data because of the large categorical variable domains. This sparsity makes it hard for ML algorithms to model second-order and above feature interactions. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed for estimating interactions from sparse data.
-Introduction Problem with sparse inputs A variety of Information Retrieval and Data Mining tasks, such as Recommender Systems, Targeted Advertising, Search Ranking, etc.]]></description>
-</item>
-<item>
+IntroductionProblem with sparse inputsA variety of Information Retrieval and Data Mining tasks, such as Recommender Systems, Targeted Advertising, Search Ranking, etc.]]></description>
+</item><item>
     <title>Collaborative Filtering based Recommender Systems for Implicit Feedback Data</title>
     <link>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</link>
-    <pubDate>Sun, 25 Sep 2022 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</guid>
-    <description><![CDATA[Different Flavors of Recommenders At a high-level, Recommender systems work based on two different strategies (or a hybrid of the two) for recommending content.
-Collaborative Filtering: Algorithms that use usage data, such as explicit or implicit feedback from the user. Content-based Filtering: Algorithms that use content metadata and user profile. For example, a movie can be profiled based on its genre, IMDb ratings, box-office sales, etc., and a user can be profile based on their demographic information or their answers to an onboarding survey.]]></description>
-</item>
-<item>
+    <pubDate>Sun, 25 Sep 2022 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</guid>
+    <description><![CDATA[This article explains what explicit and implicit feedback data means for recommender systems. We discuss their characteristics and peculiarities concerning collaborative filtering based algorithms. Then we go over one of the most popular collaborative filtering algorithms for implicit data and implement it in Python with an example dataset.]]></description>
+</item><item>
     <title>Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model</title>
     <link>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</link>
-    <pubDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</guid>
-    <description><![CDATA[In the last article, I did a literature review defining the origin of SQL, NoSQL, and NewSQL. I also went over the important theorems and properties that could help in the categorization and comparison of the different types of databases. If you haven&rsquo;t read that article yet, I highly recommend you to go over it: SQL vs NoSQL vs NewSQL: An In-depth Literature Review. In this article, we will build upon those concepts and learn how to categorize NoSQL databases based on the type of data we intend to store.]]></description>
-</item>
-<item>
+    <pubDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</guid>
+    <description><![CDATA[This article will explain the basic concepts of each category of the NoSQL database models and analyze the characteristics of the data that each category of the NoSQL database is suitable for processing.]]></description>
+</item><item>
     <title>SQL vs NoSQL vs NewSQL: An In-depth Literature Review</title>
     <link>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</link>
-    <pubDate>Thu, 09 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</guid>
-    <description><![CDATA[SQL Databases Origin The concept of Relational Databases was originally developed in the 1970s by IBM 1. They are also known as SQL (Structured Query Language) databases, named after the query language used for managing data in Relational Database Management Systems (RDBMS). Over multiple years of research and development, an unmatched level of reliability, stability, and strong mechanisms to store and query data have been baked into Relational Databases. They have been the storage of choice for a majority of transactional data management applications such as banking, airline reservation, online e-commerce, and supply chain management applications.]]></description>
-</item>
-<item>
+    <pubDate>Thu, 09 Jun 2022 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</guid>
+    <description><![CDATA[In this article, we look at SQL, NoSQL and NewSQL database technologies. We go over the origin, strengths, weaknesses, application areas, and fundamental concepts for each of the database types to make it easy to select the most appropriate database type for a given application.]]></description>
+</item><item>
     <title>Towards Empathetic Dialogue Systems</title>
     <link>https://blog.reachsumit.com/posts/2020/12/generating-empathetic-responses/</link>
-    <pubDate>Mon, 07 Dec 2020 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2020/12/generating-empathetic-responses/</guid>
+    <pubDate>Mon, 07 Dec 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2020/12/generating-empathetic-responses/</guid>
     <description><![CDATA[<p>Recognizing feelings in the conversation partner and replying empathetically is a trivial skill for humans. But how can we infuse empathy into responses generated by a conversational dialogue agent or any of the text generation algorithm in Natural Language Processing? In this article, I will describe what empathy means through the lens of various academic disciplines and then do an in-depth review of the prior and current state-of-the-art NLU systems that can simulate empathy.</p>]]></description>
-</item>
-<item>
+</item><item>
     <title>Effective LeetCode: Understanding the Sliding Window Pattern</title>
     <link>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</link>
-    <pubDate>Mon, 26 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</guid>
+    <pubDate>Mon, 26 Oct 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</guid>
     <description><![CDATA[<p>Identifying patterns among questions is quite an effective strategy when you are grinding LeetCode in preparation for your upcoming software engineering interviews. In this article, you will develop intuitions about Sliding Window pattern. You will also get a template approach to write code to solve these problems. I will also walk you through some LeetCode questions to show how to apply the template and at the end, there will be some LeetCode exercises for you to practice what you learn.</p>]]></description>
-</item>
-<item>
+</item><item>
     <title>How Twitter Reduced Search Indexing Latency to One Second</title>
     <link>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</link>
-    <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</guid>
+    <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</guid>
     <description><![CDATA[<p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
 <p>So, what did they do to get such impressive gains? Allow me to explain!</p>]]></description>
-</item>
-</channel>
+</item></channel>
 </rss>

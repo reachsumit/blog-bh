@@ -7,18 +7,16 @@
             <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/database/" rel="self" type="application/rss+xml" /><item>
     <title>Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model</title>
     <link>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</link>
-    <pubDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</guid>
-    <description><![CDATA[In the last article, I did a literature review defining the origin of SQL, NoSQL, and NewSQL. I also went over the important theorems and properties that could help in the categorization and comparison of the different types of databases. If you haven&rsquo;t read that article yet, I highly recommend you to go over it: SQL vs NoSQL vs NewSQL: An In-depth Literature Review. In this article, we will build upon those concepts and learn how to categorize NoSQL databases based on the type of data we intend to store.]]></description>
-</item>
-<item>
+    <pubDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</guid>
+    <description><![CDATA[This article will explain the basic concepts of each category of the NoSQL database models and analyze the characteristics of the data that each category of the NoSQL database is suitable for processing.]]></description>
+</item><item>
     <title>SQL vs NoSQL vs NewSQL: An In-depth Literature Review</title>
     <link>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</link>
-    <pubDate>Thu, 09 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>Sumit Kumar</author>
-    <guid>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</guid>
-    <description><![CDATA[SQL Databases Origin The concept of Relational Databases was originally developed in the 1970s by IBM 1. They are also known as SQL (Structured Query Language) databases, named after the query language used for managing data in Relational Database Management Systems (RDBMS). Over multiple years of research and development, an unmatched level of reliability, stability, and strong mechanisms to store and query data have been baked into Relational Databases. They have been the storage of choice for a majority of transactional data management applications such as banking, airline reservation, online e-commerce, and supply chain management applications.]]></description>
-</item>
-</channel>
+    <pubDate>Thu, 09 Jun 2022 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</guid>
+    <description><![CDATA[In this article, we look at SQL, NoSQL and NewSQL database technologies. We go over the origin, strengths, weaknesses, application areas, and fundamental concepts for each of the database types to make it easy to select the most appropriate database type for a given application.]]></description>
+</item></channel>
 </rss>
