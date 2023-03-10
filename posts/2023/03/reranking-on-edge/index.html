@@ -5,34 +5,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title>Two Tower Model Architecture: Current State and Promising Extensions - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Two Tower Model Architecture: Current State and Promising Extensions" />
-<meta property="og:description" content="Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state." />
+    <title>Next Gen Recommender Systems: Real-time reranking on mobile devices - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Next Gen Recommender Systems: Real-time reranking on mobile devices" />
+<meta property="og:description" content="A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" /><meta property="og:image" content="https://blog.reachsumit.com/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-03-04T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" /><meta property="og:image" content="https://blog.reachsumit.com/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-09T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.reachsumit.com/logo.png"/>
 
-<meta name="twitter:title" content="Two Tower Model Architecture: Current State and Promising Extensions"/>
-<meta name="twitter:description" content="Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state."/>
+<meta name="twitter:title" content="Next Gen Recommender Systems: Real-time reranking on mobile devices"/>
+<meta name="twitter:description" content="A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems."/>
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Two Tower Model Architecture: Current State and Promising Extensions",
+        "headline": "Next Gen Recommender Systems: Real-time reranking on mobile devices",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/two-tower-model\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  1967 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/two-tower-model\/","datePublished": "2023-03-04T00:00:00+00:00","dateModified": "2023-03-04T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/reranking-on-edge\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  2779 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/reranking-on-edge\/","datePublished": "2023-03-09T00:00:00+00:00","dateModified": "2023-03-09T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -128,33 +128,53 @@
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
     <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#cascade-ranking-system">Cascade Ranking System</a></li>
-    <li><a href="#two-tower-model">Two Tower Model</a></li>
-    <li><a href="#related-dnn-paradigms">Related DNN Paradigms</a></li>
-    <li><a href="#enhancing-two-tower-model">Enhancing Two Tower Model</a>
+    <li><a href="#why-should-we-compute-real-time-recommendations-on-edge-devices">Why should we compute real-time recommendations on edge devices?</a>
       <ul>
-        <li><a href="#dual-augmented-two-tower-model-dat">Dual Augmented Two-Tower Model (DAT)</a></li>
-        <li><a href="#interaction-enhanced-two-tower-model-inttower">Interaction Enhanced Two Tower Model (IntTower)</a>
+        <li><a href="#shortcomings-of-the-existing-system">Shortcomings of the existing system</a></li>
+        <li><a href="#factors-promoting-device-side-computations">Factors promoting device-side computations</a></li>
+        <li><a href="#challenges">Challenges</a></li>
+      </ul>
+    </li>
+    <li><a href="#device-side-computation-paradigms">Device-side computation paradigms</a>
+      <ul>
+        <li><a href="#on-device-inference">On-Device Inference</a>
           <ul>
-            <li><a href="#light-se-block">Light-SE Block</a></li>
-            <li><a href="#fe-block">FE-Block</a></li>
-            <li><a href="#cir-module">CIR Module</a></li>
-            <li><a href="#inttower-model-architecture">IntTower Model Architecture</a></li>
+            <li><a href="#kuaishous-short-video-recommendation-on-mobile-devices">Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices</a>
+              <ul>
+                <li><a href="#what-input-features-are-used">What input features are used?</a></li>
+                <li><a href="#when-is-the-on-device-reranking-triggered">When is the on-device reranking triggered?</a></li>
+                <li><a href="#model-architecture">Model Architecture</a></li>
+                <li><a href="#results">Results</a></li>
+              </ul>
+            </li>
+            <li><a href="#taobaos-edgerec">Taobao&rsquo;s EdgeRec</a>
+              <ul>
+                <li><a href="#what-input-features-are-used-1">What input features are used?</a></li>
+                <li><a href="#when-is-the-on-device-reranking-triggered-1">When is the on-device reranking triggered?</a></li>
+                <li><a href="#model-architecture-1">Model Architecture</a></li>
+                <li><a href="#results-1">Results</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#on-device-learning">On-device Learning</a>
+          <ul>
+            <li><a href="#device-cloud-collaborative-learning-dccl-framework">Device-Cloud Collaborative Learning (DCCL) framework</a></li>
+            <li><a href="#collaborative-learning-with-data-augmentation-coda">Collaborative learning with Data Augmentation (CoDA)</a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="#alternatives-to-two-tower-model">Alternatives to Two Tower Model</a></li>
-    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Two Tower Model Architecture: Current State and Promising Extensions</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Next Gen Recommender Systems: Real-time reranking on mobile devices</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><i class="far fa-folder fa-fw"></i>Information Retrieval</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-04">2023-03-04</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-04">2023-03-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1967 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-09">2023-03-09</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-09">2023-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2779 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;14 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -163,104 +183,213 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#cascade-ranking-system">Cascade Ranking System</a></li>
-    <li><a href="#two-tower-model">Two Tower Model</a></li>
-    <li><a href="#related-dnn-paradigms">Related DNN Paradigms</a></li>
-    <li><a href="#enhancing-two-tower-model">Enhancing Two Tower Model</a>
+    <li><a href="#why-should-we-compute-real-time-recommendations-on-edge-devices">Why should we compute real-time recommendations on edge devices?</a>
       <ul>
-        <li><a href="#dual-augmented-two-tower-model-dat">Dual Augmented Two-Tower Model (DAT)</a></li>
-        <li><a href="#interaction-enhanced-two-tower-model-inttower">Interaction Enhanced Two Tower Model (IntTower)</a>
+        <li><a href="#shortcomings-of-the-existing-system">Shortcomings of the existing system</a></li>
+        <li><a href="#factors-promoting-device-side-computations">Factors promoting device-side computations</a></li>
+        <li><a href="#challenges">Challenges</a></li>
+      </ul>
+    </li>
+    <li><a href="#device-side-computation-paradigms">Device-side computation paradigms</a>
+      <ul>
+        <li><a href="#on-device-inference">On-Device Inference</a>
           <ul>
-            <li><a href="#light-se-block">Light-SE Block</a></li>
-            <li><a href="#fe-block">FE-Block</a></li>
-            <li><a href="#cir-module">CIR Module</a></li>
-            <li><a href="#inttower-model-architecture">IntTower Model Architecture</a></li>
+            <li><a href="#kuaishous-short-video-recommendation-on-mobile-devices">Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices</a>
+              <ul>
+                <li><a href="#what-input-features-are-used">What input features are used?</a></li>
+                <li><a href="#when-is-the-on-device-reranking-triggered">When is the on-device reranking triggered?</a></li>
+                <li><a href="#model-architecture">Model Architecture</a></li>
+                <li><a href="#results">Results</a></li>
+              </ul>
+            </li>
+            <li><a href="#taobaos-edgerec">Taobao&rsquo;s EdgeRec</a>
+              <ul>
+                <li><a href="#what-input-features-are-used-1">What input features are used?</a></li>
+                <li><a href="#when-is-the-on-device-reranking-triggered-1">When is the on-device reranking triggered?</a></li>
+                <li><a href="#model-architecture-1">Model Architecture</a></li>
+                <li><a href="#results-1">Results</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#on-device-learning">On-device Learning</a>
+          <ul>
+            <li><a href="#device-cloud-collaborative-learning-dccl-framework">Device-Cloud Collaborative Learning (DCCL) framework</a></li>
+            <li><a href="#collaborative-learning-with-data-augmentation-coda">Collaborative learning with Data Augmentation (CoDA)</a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="#alternatives-to-two-tower-model">Alternatives to Two Tower Model</a></li>
-    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="introduction" class="headerLink">
-    <a href="#introduction" class="header-mark"></a>Introduction</h2><p>Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state.</p>
-<h2 id="cascade-ranking-system" class="headerLink">
-    <a href="#cascade-ranking-system" class="header-mark"></a>Cascade Ranking System</h2><p>Large-scale information retrieval and item recommendation services often contain tens of millions of candidate items or documents. A search query on Google may have matching keywords in millions of documents (web pages), and Instagram may have thousands or even millions of candidate videos for generating a recommended feed for a user. Designing such systems often has to deal with the additional challenge of strict strict latency constraints. Studies have shown that even a 100ms increase in response time leads to degraded user experience and a measurable impact on revenue <cite><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite>. A single, complex ranking algorithm cannot efficiently rank such large sets of candidates. Hence, a multi-stage ranking system is commonly adopted to balance efficiency and effectiveness.</p>
-<img src="/img/posts/2023/two-tower-model/cascade_ranking_system.png" alt="Cascade ranking architecture">
-<p>In this system, simpler and faster algorithms that focus on recall metrics are employed at earlier steps (Recall and Pre-Ranking). Whereas the large-scale deep neural networks are employed at the later steps (Ranking and Re-Ranking). Keeping latency expectations and accuracy tradeoffs in mind, an appropriate algorithm is used at each step. Each algorithm calculates some form of relevance or similarity value for every single candidate and passes the most relevant candidate set onto the next step.</p>
-<p>In an earlier blog post <cite><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite>, I introduced several interaction-focused DNN algorithms that can be used for the ranking stage. I recommend going through <a href="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" target="_blank" rel="noopener noreferrer">that article</a> for developing a good understanding of these algorithms. This current article will mainly talk about the Two Tower model in the context of the pre-ranking stage.</p>
-<h2 id="two-tower-model" class="headerLink">
-    <a href="#two-tower-model" class="header-mark"></a>Two Tower Model</h2><p>The pre-ranking stage does the initial filtering of the candidates received from the preceding recall or retrieval stage. Compared to the ranking stage, the pre-ranking model has to evaluate a larger number of candidates and therefore a faster approach is preferred here. The following figure shows the development history of pre-ranking systems from an ads recommendation modeling perspective <cite><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite>.</p>
-<img src="/img/posts/2023/two-tower-model/pre_ranking_generations.png" alt="pre-ranking generations">
-<p>Here $x_{u}$, $x_{a}$, $x_{ua}$ are the raw user features, ad features, and cross features. The first generation calculated the pre-rank score in a non-personalized way by averaging the recent click-through rate of each ad. Logistic regression used in the second generation is also a lightweight algorithm that can be deployed in online learning and serving manner. The third generation commonly used a Two Tower model which is a vector-produced based DNN. In this method, user and ad features pass through embedding and DNN layers to generate a latent vector representation for both the user and the ad. Then an inner product of the two vectors is calculated to obtain the pre-ranking score. This Two Tower structure was originally developed in search systems as a means to map a query to the most relevant documents <cite><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></cite>.</p>
-<img src="/img/posts/2023/two-tower-model/two_tower_model.png" alt="Two Tower model architecture">
-<p>The reason why the Two Tower model rose to popularity was its accuracy as well as its inference efficiency-focused design. The two towers generate latent representations independently in parallel and interact only at the output layer (referred to as &ldquo;late interaction&rdquo;). Often the learned ad or item tower embeddings are also frozen after training and stored in an indexing service for a quicker operation at inference time.</p>
-<h2 id="related-dnn-paradigms" class="headerLink">
-    <a href="#related-dnn-paradigms" class="header-mark"></a>Related DNN Paradigms</h2><p>The information retrieval domain has several other DNN paradigms related to the Two Tower model. The following figure shows some examples in the context of neural matching applications (query to document matching) <cite><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></cite>.</p>
-<img src="/img/posts/2023/two-tower-model/related_dnn_paradigms.png" alt="Related DNN Paradigms">
-<p>As you can see, the Two Tower model is a representation-based ranker architecture, which independently computes embeddings for the query and documents and estimates their similarity via interaction between them at the output layer. The other paradigms represent more interaction-focused rankers. Models like DRMM, and KNRM model word- and phrase-level relationships across query and document using an interaction matrix and then feed it to a neural network like CNN or MLP. Similarly, models like BERT are much more powerful as they model interactions between words as well as across the query and documents at the same time. On the other hand, models like ColBERT (<strong>Co</strong>ntextualized <strong>l</strong>ater interactions over <strong>BERT</strong>) keep interactions within the query and document features while delaying the query-document interaction to the output layer. This allows the model to preserve the &ldquo;query-document decoupling&rdquo; (or &ldquo;user-item decoupling&rdquo;) architecture paradigm, and the document or item embeddings can be frozen after training and served through an index at the inference time as shown on the left in the figure below. Inference costs can be further reduced if the application can work with freezing both towers. For example, as shown on the right in the following figure, Alibaba creates indexes out of the learned embeddings from both towers and retrains the model offline on a daily frequency <cite><sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite>.</p>
-<img src="/img/posts/2023/two-tower-model/related_dnn_paradigms_2.png" alt="related dnn paradigms - 2">
-<h2 id="enhancing-two-tower-model" class="headerLink">
-    <a href="#enhancing-two-tower-model" class="header-mark"></a>Enhancing Two Tower Model</h2><p>In this section, we look at some of the proposals from different researchers for extending the Two Tower model. One common problem with the Two Tower model that this research works focus on is the lack of information interaction between the two towers. As we saw earlier, the Two Tower model trains the latent embeddings in both towers independently and without using any enriching information from the other tower. This limitation hinders the model&rsquo;s performance.</p>
-<h3 id="dual-augmented-two-tower-model-dat" class="headerLink">
-    <a href="#dual-augmented-two-tower-model-dat" class="header-mark"></a>Dual Augmented Two-Tower Model (DAT)</h3><p>To model feature interactions between two towers, Yu et al. <cite><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite> proposed augmenting the embedding input of each tower with a vector ($a_{u}$ and $a_{v}$ in the figure below) that captures historical positive interaction information from the other tower. $a_{u}$ and $a_{v}$ vectors get updated during the training process and are used to model the information interaction between the two towers by regarding them as the input feature of the two towers. This paper also proposes a new category alignment loss to handle the imbalance among different categories of items by transferring the knowledge learned from the category with a large amount of data to other categories. Later research showed that the gains achieved by the DAT model are still limited.</p>
-<img src="/img/posts/2023/two-tower-model/dat_model.png" alt="DAT model">
-<h3 id="interaction-enhanced-two-tower-model-inttower" class="headerLink">
-    <a href="#interaction-enhanced-two-tower-model-inttower" class="header-mark"></a>Interaction Enhanced Two Tower Model (IntTower)</h3><p>The authors of this research design a two-tower model that emphasizes both information interactions and inference efficiency <cite><sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></cite>. Their proposed model consists of three new blocks, as mentioned below.</p>
-<h4 id="light-se-block" class="headerLink">
-    <a href="#light-se-block" class="header-mark"></a>Light-SE Block</h4><p>This module is used to identify the importance of different features and obtain refined feature representations in each tower. The design of this module is based on the SENET model proposed in the &ldquo;Squeeze-and-Excitation Networks&rdquo; paper <cite><sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></cite>. SENET is used in the computer vision domain to explicitly model the interdependencies between the image channels through feature recalibration, i.e. selectively emphasizing informative features and suppressing less useful ones. The basic structure of the SE building block is shown in the next figure.</p>
-<img src="/img/posts/2023/two-tower-model/senet_block.png" alt="SENET block">
-<p>First, a squeeze operation aggregates the feature maps across spatial dimensions to produce a channel descriptor. An excitation operation then excites informative features by a self-gating mechanism based on channel dependence (similar to calculating attention weights). The final output of the block is obtained through a scaling step by rescaling the transformation output with the learned activations. The authors of the IntTower paper adopt a more lightweight approach with a single FC layer to obtain the feature importance. The following figure shows the SENET and Light-SE blocks side-by-side.</p>
-<img src="/img/posts/2023/two-tower-model/senet_lightse.png" alt="SENET vs LightSE">
-<h4 id="fe-block" class="headerLink">
-    <a href="#fe-block" class="header-mark"></a>FE-Block</h4><p>The purposed FE (Fine-grained and Early Feature Interaction) Block is inspired by the later interaction style of ColBERT. It performs fine-grained early feature interaction between multi-layer user representations and the last layer of item representation.</p>
-<img src="/img/posts/2023/two-tower-model/fe_block_cir_block.png" alt="FE block and CIR module">
-<h4 id="cir-module" class="headerLink">
-    <a href="#cir-module" class="header-mark"></a>CIR Module</h4><p>A Contrastive Interaction Regularization (CIR) module was also purposed to shorten the distance between a user and positive items using InfoNCE loss function <cite><sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></cite>. During training, this loss value is combined with the logloss between the model prediction scores and the true labels.</p>
-<h4 id="inttower-model-architecture" class="headerLink">
-    <a href="#inttower-model-architecture" class="header-mark"></a>IntTower Model Architecture</h4><img src="/img/posts/2023/two-tower-model/two_tower_model.png" alt="IntTower architecture">
-<p>As shown in the figure above, the IntTower model architecture combines the three blocks described earlier. Through experimentation, the authors show that the IntTower model outperforms other pre-ranking algorithms (Logistic Regression, Two-Tower, DAT, COLD) and even performs comparably to some ranking algorithms (Wide&amp;Deep, DeepFM, DCN, AutoInt). Compared with the Two Tower model, the increased parameters count and training time of IntTower are negligible and the serving latency is also acceptable. The authors also investigate the user and item representations generated by Two Tower and IntTower models by projecting them into 2-dimensions using t-SNE. As shown in the next figure, the IntTower representations have the user and positive items in the same cluster while negative items are far away from the user.</p>
-<img src="/img/posts/2023/two-tower-model/embedding_reps.png" alt="Embedding representations">
-<h2 id="alternatives-to-two-tower-model" class="headerLink">
-    <a href="#alternatives-to-two-tower-model" class="header-mark"></a>Alternatives to Two Tower Model</h2><p>Apart from Two Tower models, there has been some research work with single-tower structures to fully model feature interactions and further improve prediction accuracy. However, due to the lack of a &ldquo;user-item decoupling architecture&rdquo; paradigm, these models have to employ several optimization tricks to alleviate efficiency degradations. For example, the COLD (<strong>C</strong>omputing power cost-aware <strong>O</strong>nline and <strong>L</strong>ightweight <strong>D</strong>eep pre-ranking system) model <cite><sup id="fnref2:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite> performs offline feature selection experiments to find out a set of important features for the ranking algorithm that are optimal concerning metrics such as QPS (queries per second) and RT (return time). Similarly, FSCD (<strong>F</strong>eature Selection method based on feature <strong>C</strong>omplexity and variational <strong>D</strong>ropout) model <cite><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></cite> uses learnable dropout parameters to perform feature-wise regularization such that the pre-ranking model is effectively inherited from that of the ranking model.</p>
-<img src="/img/posts/2023/two-tower-model/single_towers.png" alt="Single Tower Models">
-<h2 id="conclusion" class="headerLink">
-    <a href="#conclusion" class="header-mark"></a>Conclusion</h2><p>This article introduced the historical evolution of pre-ranking approaches in the context of cascade ranking-based systems. We learned how the balance of efficiency and effectiveness makes Two Tower models an excellent choice for several information retrieval use cases. We also explored several recent research proposals that combine ideas from related domains to enhance the Two Tower model. We wrapped up the article with a look at some of the available alternatives to the Two Tower model architecture.</p>
+    <a href="#introduction" class="header-mark"></a>Introduction</h2><p>In the age of information overload, recommender systems have become an indispensable tool in our digital lives to help catalog online content. A lot of large-scale recommender systems today are deployed as a <a href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system" target="_blank" rel="noopener noreferrer">cascade ranking architecture</a> <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Under such &ldquo;cloud-to-edge&rdquo; frameworks, a mobile client initiates a paging request to a cloud server when a user triggers a recommendation scenario, for example by opening their mobile app. And recommendation models on the server side retrieve and return a ranked list of items to be displayed to the user. Often these recommendations are computed in advance on the cloud server.</p>
+<p>An exciting line of research has recently started exploring the potential of extending this recommendation computation to edge devices. This article is intended to help understand the need and advantage of computing real-time recommendations on mobile devices. We will also look at the system design and implementation of some of the commercial recommender systems that are built on this idea and are serving billions of users.</p>
+<h2 id="why-should-we-compute-real-time-recommendations-on-edge-devices" class="headerLink">
+    <a href="#why-should-we-compute-real-time-recommendations-on-edge-devices" class="header-mark"></a>Why should we compute real-time recommendations on edge devices?</h2><h3 id="shortcomings-of-the-existing-system" class="headerLink">
+    <a href="#shortcomings-of-the-existing-system" class="header-mark"></a>Shortcomings of the existing system</h3><p>Due to network bandwidth and latency constraints, the server usually sends a batch of items and a pagination mechanism is implemented on the client. The server only sends the next batch when a recommendation event is triggered on the client, for example, when the user scrolls to the end of the current page. This means that the system is not designed to respond in real time to changing user behavior and interests, and it leads to the following shortcomings.</p>
+<ul>
+<li><strong>Delays in getting system feedback</strong>: If a user makes her interests known earlier on, for example, by positively interacting with the first few videos in the recommended feed, the recommender system on the server can&rsquo;t respond to this feedback until the next batch of videos is requested by the client. Depending on the architecture, it may even take tens of seconds or minutes for the recommender system on the server to process and respond to the newly collected user feedback because the new signals can only be processed at the server end. Also, some of the real-time client-specific features such as network conditions are not available to the cloud model in real-time.</li>
+<li><strong>Delays in adapting to user interests</strong>: If the user interacts with an item on the current page, for example, by leaving positive feedback on a video, it is impossible to adjust the order of the remaining content of the batch, even if there are some videos that closely match the new known user interest.</li>
+</ul>
+<h3 id="factors-promoting-device-side-computations" class="headerLink">
+    <a href="#factors-promoting-device-side-computations" class="header-mark"></a>Factors promoting device-side computations</h3><p>Several other factors help push the idea of cost-effective computation of recommendations on edge devices as mentioned below.</p>
+<ul>
+<li>On short-video platforms like TikTok, Instagram Reels, and YouTube Shorts, the user usually watches a diverse set of short videos in a short period that belong to different topics. In such an environment, real-time user interest is constantly changing. Device-side modeling can help reduce the latency in responding quickly to perceived user interests.</li>
+<li>Computing power on mobile phones has increased exponentially in recent years. For instance, the TI-84 calculator developed by Texas Instruments in 2004 is 350 times faster than Apollo computers and had 32 times more RAM and 14,500 times more ROM <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</li>
+<li>On-device engines like PyTorch Mobile, Google&rsquo;s TFLite, and Apple&rsquo;s CoreML for DNN model inference and even training have also started to gain popularity.</li>
+<li>Hardware-efficient neural network architectures like MobileNets, and model compression techniques based on network pruning or quantization have made it possible to optimize computation for on-device inference.</li>
+<li>Deploying models on the device helps to reduce server congestion.</li>
+<li>It is prohibitive to train the recommender algorithm at the server with embedded personalized behavior sequences for every user.</li>
+<li>Personalized client-side models help to unbias the server-side recommender algorithms from long-tailed users or items. It is common to have discrepancies between training and test data distributions that make the global model not optimal for each user.</li>
+<li>On-device training approaches like Federated Learning also help resolve some of the privacy concerns around using real-time client-specific signals.</li>
+</ul>
+<h3 id="challenges" class="headerLink">
+    <a href="#challenges" class="header-mark"></a>Challenges</h3><ul>
+<li>Data for individual users is often insufficient and sparse to be able to train or fine-tune a model local to the edge device. Few-shot learning also has a higher generalization error and hence a higher likelihood of failing to realize the desired personalization.</li>
+<li>Learning from on-device data often suffers from local optimization in the long term and can lead to overfitting for individual users.</li>
+<li>To respect the mobile data plans and battery consumption on the user device, the models have to be kept small in size and simple to compute with.</li>
+<li>Updating an on-device model is often constrained by factors like Wi-Fi availability and current battery level as well.</li>
+</ul>
+<p>In the on-device learning section, we will look at some of the solutions to handle the first two challenges mentioned above. Whereas in the on-device inference section, we will see some model optimizations and versioning methods to deal with the last two challenges.</p>
+<h2 id="device-side-computation-paradigms" class="headerLink">
+    <a href="#device-side-computation-paradigms" class="header-mark"></a>Device-side computation paradigms</h2><p>We can think of the majority of the prior work done in on-edge recommender systems as belonging to one of the two categories below.</p>
+<ul>
+<li><strong>On-device Inference</strong>: In this strategy, the server sends the pre-trained model(s) to the device, and the device uses this model to run inference. This method saves communication latency between client and server while being able to capture real-time user behavior and system feedback.</li>
+<li><strong>On-device Learning</strong>: A lot of the work done in this category belongs to the Federated recommender systems. This strategy aggregates the on-device trained information from multiple devices and then trains a centralized model on the server. This method overcomes some of the privacy concerns regarding user data usage. Later this article will introduce some alternatives to the federated recommender systems paradigm that do on-device learning.</li>
+</ul>
+<p>Next, we will look at the design philosophy and architecture choices of some industrial large-scale examples of mobile recommender systems paradigms currently serving billions of users.</p>
+<h3 id="on-device-inference" class="headerLink">
+    <a href="#on-device-inference" class="header-mark"></a>On-Device Inference</h3><h4 id="kuaishous-short-video-recommendation-on-mobile-devices" class="headerLink">
+    <a href="#kuaishous-short-video-recommendation-on-mobile-devices" class="header-mark"></a>Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices</h4><p>Chinese social network app, Kuaishou, released a paper describing an on-device inference framework used in their billion-user scale short video application <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. They developed an on-device ranking model that used users&rsquo; real-time feedback of watched videos and client-specific real-time features. Their system can react immediately to users’ implicit or explicit feedback to make appropriate ordering adjustments to remaining candidate videos.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png" title="Kuaishou overall system" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png" data-sub-html="<h2>Kuaishou real-time short video recommender system architecture</h2><p>Kuaishou overall system</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png"
+            srcset="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png, /img/posts/2023/reranking-on-edge/kuaishou_overall_system.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_overall_system.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png">
+    </a><figcaption class="image-caption">Kuaishou real-time short video recommender system architecture</figcaption>
+    </figure></p>
+<p>On the cloud side, we have a traditional recommender system along with a Mobile Ranking Model Training module that uses the input features generated from the access logs from user devices and trains a ranking model. This trained model is exported to TFLite format periodically and sent to the user device for deployment. While responding to the initial paging request, the server also sends the item features for the recommended candidates along with the candidate videos. The client uses these features along with the client-specific features (watched videos and corresponding feedback along with real-time features like network signal) for inference using the on-device ranking model.</p>
+<h5 id="what-input-features-are-used" class="headerLink">
+    <a href="#what-input-features-are-used" class="header-mark"></a>What input features are used?</h5><p>The server-side model primarily focuses on modeling users&rsquo; long-term interests and uses a lot of ID features (user id, video id, crossing features), users&rsquo; watch history, etc. The following table shows the features used by the on-device reranking model. Apart from these, the model also used some engineered cross features such as time since last impression, pXTR, and impression position diffs between with preceding historical item. Note that the server-side features are not used in the on-device model because the offline experiments showed that their information has already been distilled into the predictions from the server model.</p>
+<p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png" title="Kuaishou client-side features" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png"
+            srcset="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png, /img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png">
+    </a></p>
+<h5 id="when-is-the-on-device-reranking-triggered" class="headerLink">
+    <a href="#when-is-the-on-device-reranking-triggered" class="header-mark"></a>When is the on-device reranking triggered?</h5><p>Kuaishou&rsquo;s interface allows for only one video to occupy the current screen space. At each user swipe, the client system performs reranking with the remaining candidate videos and inserts the top-ranked candidate video at the next position.</p>
+<h5 id="model-architecture" class="headerLink">
+    <a href="#model-architecture" class="header-mark"></a>Model Architecture</h5><p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png" title="Kuaishou model architecture" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png"
+            srcset="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png, /img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png">
+    </a></p>
+<p>Their model also considers interaction among candidate videos. The watch history sequence is modeled using a multi-head attention (MHA) mechanism with Q projected from candidate item features and K, V projected from watch history sequence features. Only one candidate video is considered at a time. Outputs of the two MHA modules are concatenated with target features and other features and passed to a Multi-gate Mixture of Experts (MMoE) to calculate probabilities of the user continuing to watch the next video, watching the video for longer than a threshold like 3 seconds, and liking the video. The loss function is defined as the sum of log losses of each target averaged by the number of training samples. They also proposed a novel beam search strategy to further optimize evaluating all candidates in the target list.</p>
+<h5 id="results" class="headerLink">
+    <a href="#results" class="header-mark"></a>Results</h5><p>Kuaishou deployed this architecture in production to serve over a billion users, and improved effective view, like, and follow by 1.28%, 8.22%, and 13.6% respectively. Their studies also show that each inference had an average cost of 120 ms on the Android platform and 50 ms on the iOS platform. The increase in CPU and memory usage was about 2% each on Android and 0.5% and 1.5% respectively on the iOS platform.</p>
+<h4 id="taobaos-edgerec" class="headerLink">
+    <a href="#taobaos-edgerec" class="header-mark"></a>Taobao&rsquo;s EdgeRec</h4><p>EdgeRec <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> was one of the earliest on-device inference-based recommender systems. It was fully deployed in Alibaba&rsquo;s Taobao application and served billions of users. Through real-time computing on edge devices, EdgeRec can capture users&rsquo; diverse interests in real-time and adjust recommendation results accordingly without making any additional requests to the cloud server.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png" title="EdgeRec System Overview" data-thumbnail="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png" data-sub-html="<h2>EdgeRec system overview. The module on the left was deployed in mobile client and the one of the right was deployed on cloud.</h2><p>EdgeRec System Overview</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png"
+            srcset="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png, /img/posts/2023/reranking-on-edge/edgerec_system_overview.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_system_overview.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png">
+    </a><figcaption class="image-caption">EdgeRec system overview. The module on the left was deployed in mobile client and the one of the right was deployed on cloud.</figcaption>
+    </figure></p>
+<p>As shown above, the Client Native module collects user behavior logs (e.g. browsing and click records) and triggers model serving. It also initiates the paging request to the server and stores the features returned from the server along with the corresponding candidate items. It also updates the UI upon receiving the reranked list from the on-device model. The cloud server also uses a versioning strategy to keep the updated model synchronized with the edge devices.</p>
+<h5 id="what-input-features-are-used-1" class="headerLink">
+    <a href="#what-input-features-are-used-1" class="header-mark"></a>What input features are used?</h5><p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/edgerec_features.png" title="EdgeRec Input Features" data-thumbnail="/img/posts/2023/reranking-on-edge/edgerec_features.png" data-sub-html="<h2>Features used in EdgeRec Model</h2><p>EdgeRec Input Features</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/reranking-on-edge/edgerec_features.png"
+            srcset="/img/posts/2023/reranking-on-edge/edgerec_features.png, /img/posts/2023/reranking-on-edge/edgerec_features.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_features.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/reranking-on-edge/edgerec_features.png">
+    </a><figcaption class="image-caption">Features used in EdgeRec Model</figcaption>
+    </figure></p>
+<p>The figure above shows the collection of features used in EdgeRec. Variables $e_{1}$ to $e_{7}$ are &ldquo;Item Exposure User Action&rdquo; features used in the server-side recommender system that describes how the user behaves upon exposure to an item. Variables $d_{1}$ to $d_{12}$ are &ldquo;Item Page-View User Action&rdquo; features used in the mobile side model that describes how the user behaves on the item detail page after clicking an item. Variables $p_{1}$ to $p_{7}$ are the item features.</p>
+<h5 id="when-is-the-on-device-reranking-triggered-1" class="headerLink">
+    <a href="#when-is-the-on-device-reranking-triggered-1" class="header-mark"></a>When is the on-device reranking triggered?</h5><p>EdgeRec system sets the following three trigger points for invoking reranking of &ldquo;unseen&rdquo; candidate items: (1) the user clicks an item, (2) the user deletes an item (i.e. long press) and (3) k items have been exposed without being clicked.</p>
+<h5 id="model-architecture-1" class="headerLink">
+    <a href="#model-architecture-1" class="header-mark"></a>Model Architecture</h5><p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/edgerec_architecture.png" title="EdgeRec Architecture" data-thumbnail="/img/posts/2023/reranking-on-edge/edgerec_architecture.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/reranking-on-edge/edgerec_architecture.png"
+            srcset="/img/posts/2023/reranking-on-edge/edgerec_architecture.png, /img/posts/2023/reranking-on-edge/edgerec_architecture.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_architecture.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/reranking-on-edge/edgerec_architecture.png">
+    </a></p>
+<p>As shown in the figure above, EdgeRec models &ldquo;Item Exposure Behavior Sequence&rdquo; and &ldquo;Item Page-View Behavior Sequence&rdquo; separately because the item clicks are more sparse than the item exposures. A simple GRU layer is used as the Encoder. The context-aware reranking module uses the attention technique to automatically find parts of user behavior context that are relevant to ranking the encoded candidate items. This behavior attention also employs Item Exposure (IE) and Item Page-View (IPV) contexts.</p>
+<h5 id="results-1" class="headerLink">
+    <a href="#results-1" class="header-mark"></a>Results</h5><p>Using EdgeRec Taobao was able to achieve up to an additional 1.6% views, 7.2% click-through rate, 8.9% clicks, and 10.9% purchase amount in an online A/B experiment. The delay time for capturing user behavior was reduced from 1 minute to 300 ms. On average, the on-device model size was around 3 MB.</p>
+<h3 id="on-device-learning" class="headerLink">
+    <a href="#on-device-learning" class="header-mark"></a>On-device Learning</h3><p>Due to data heterogeneity, cloud models trained over the global data are non-optimal to individual users&rsquo; local data distribution. To deal with model personalization, on-device learning is a great solution. However, as explained earlier in the &ldquo;challenges&rdquo; section, user data on local devices is often very small and sparse which leads to overfitting and loss of generalization. In this section, we will mainly focus on solutions that can help fix this problem.</p>
+<h4 id="device-cloud-collaborative-learning-dccl-framework" class="headerLink">
+    <a href="#device-cloud-collaborative-learning-dccl-framework" class="header-mark"></a>Device-Cloud Collaborative Learning (DCCL) framework</h4><p>As mentioned earlier, a lot of work done under the on-device learning paradigm belongs to the Federated Recommender Systems. Under these systems, on-device learning is used to compute gradients over the local data which are then aggregated over multiple devices and used to update a central model&rsquo;s parameters by approaches like federated averaging (FedAvg), etc. For example, Qi et al.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> by applying Federated Learning and differential privacy for news recommendation use case, and Lin et al.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> accounted for storage, power, and network bandwidth to distribute gradient computation among user devices and cloud servers. This centralized cloud model-based traditional approach follows the &ldquo;model-over-data&rdquo; paradigm. One limitation of federated learning is that it assumes the data never leaves the user device, and hence there is no concept of global data. Such a scenario is unlikely in modern recommender systems because most user data has already been uploaded to the cloud and the cloud server still does a majority of personalization computations.</p>
+<p>In DCCL Yao et al.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> proposed an alternative &ldquo;model-over-models&rdquo; paradigm to model the collaboration between the device and the cloud. Under this framework, the cloud model is frozen and the edge devices use patch learning method <sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> to learn the parameters of a trainable patch function using sparse local samples. These patches are then sent to the server where the cloud model uses a distillation process with these patches as meaningful priors to optimize the cloud model.</p>
+<h4 id="collaborative-learning-with-data-augmentation-coda" class="headerLink">
+    <a href="#collaborative-learning-with-data-augmentation-coda" class="header-mark"></a>Collaborative learning with Data Augmentation (CoDA)</h4><p>Gu et al. proposed a device-cloud collaborative learning framework called CoDA where the edge model also receives extra samples from the cloud&rsquo;s global pool of data to augment their local dataset for training the on-device model. The edge device also maintains a personalized sample classifier for further filtering out some of the samples received from the cloud. Global models are trained with all users&rsquo; data but do inferences over each user&rsquo;s local data. CoDA attempts to address this data discrepancy so that the model can be made optimal for each user. In the CoDA framework, an on-device model is trained with both local data and the augmentation data received from the server.</p>
+<p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/coda.png" title="CoDA workflow" data-thumbnail="/img/posts/2023/reranking-on-edge/coda.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/reranking-on-edge/coda.png"
+            srcset="/img/posts/2023/reranking-on-edge/coda.png, /img/posts/2023/reranking-on-edge/coda.png 1.5x, /img/posts/2023/reranking-on-edge/coda.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/reranking-on-edge/coda.png">
+    </a></p>
+<p>The cloud server uses a K nearest-neighbor (KNN) method on user feature vectors to find samples similar to the current user behavior. The server then desensitizes and anonymizes these samples before sending them to the end user&rsquo;s device. The user device uses this augmented data and the local data for training and evaluating a personalized binary classifier. This classifier is trained to identify local samples from the combined data, and the augmentation samples with high scores (i.e. false positives) are considered close enough to be used for the on-device reranking model. The remaining augmentation data is dropped. Both classification and reranking inference tasks use models based on Deep Interest Network architecture <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
+<h2 id="summary" class="headerLink">
+    <a href="#summary" class="header-mark"></a>Summary</h2><p>This article explained the shortcomings of a cloud server model trained on global data for serving personalized recommendations. It introduced on-device inference and on-device learning paradigms which aim to timely capture rich user behavior and respond to users&rsquo; changing demands in real time. We also looked at system design choices and implementation details of some exemplar systems from different industrial applications that have served recommendations to billions of users.</p>
 <h2 id="references" class="headerLink">
     <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>Kohavi, R., Deng, A., Frasca, B., Walker, T., Xu, Y., &amp; Pohlmann, N. (2013). Online controlled experiments at large scale. <em>Proceedings of the 19th ACM SIGKDD international conference on Knowledge discovery and data mining</em>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Two Tower Model Architecture: Current State and Promising Extensions. Cascade Ranking System: <a href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system" target="_blank" rel="noopener noreferrer">https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>Sumit Kumar. Recommender Systems for Modeling Feature Interactions under Sparse Settings. <a href="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" target="_blank" rel="noopener noreferrer">https://blog.reachsumit.com/posts/2022/11/sparse-recsys/</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Your smartphone is millions of times more powerful than the Apollo 11 guidance computers. <a href="https://www.zmescience.com/science/news-science/smartphone-power-compared-to-apollo-432/" target="_blank" rel="noopener noreferrer">https://www.zmescience.com/science/news-science/smartphone-power-compared-to-apollo-432/</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Wang, Zhe &amp; Zhao, Liqin &amp; Jiang, Biye &amp; Zhou, Guorui &amp; Zhu, Xiaoqiang &amp; Gai, Kun. (2020). COLD: Towards the Next Generation of Pre-Ranking System.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Gong, X., Feng, Q., Zhang, Y., Qin, J., Ding, W., Li, B., &amp; Jiang, P. (2022). Real-time Short Video Recommendation on Mobile Devices. <em>Proceedings of the 31st ACM International Conference on Information &amp; Knowledge Management</em>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Huang, P., He, X., Gao, J., Deng, L., Acero, A., &amp; Heck, L. (2013). Learning deep structured semantic models for web search using clickthrough data. <em>Proceedings of the 22nd ACM international conference on Information &amp; Knowledge Management</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Gong, Yu &amp; Jiang, Ziwen &amp; Zhao, Kaiqi &amp; Liu, Qingwen &amp; Ou, Wenwu. (2020). EdgeRec: Recommender System on Edge in Mobile Taobao.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>Khattab, O., &amp; Zaharia, M.A. (2020). ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT. <em>Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval</em>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Qi, Tao &amp; Wu, Fangzhao &amp; Wu, Chuhan &amp; Huang, Yongfeng &amp; Xie, Xing. (2020). Privacy-Preserving News Recommendation Model Training via Federated Learning.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>Yu, Y., Wang, W., Feng, Z., Xue, D., Meituan, &amp; Beijing (2021). A Dual Augmented Two-tower Model for Online Large-scale Recommendation.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Lin, Yujie &amp; Ren, Pengjie &amp; Chen, Zhumin &amp; Ren, Zhaochun &amp; Yu, Dongxiao &amp; Ma, Jun &amp; Rijke, Maarten &amp; Cheng, Xiuzhen. (2020). Meta Matrix Factorization for Federated Rating Predictions. 981-990. 10.1145/3397271.3401081.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
-<p>Li, X., Chen, B., Guo, H., Li, J., Zhu, C., Long, X., Li, S., Wang, Y., Guo, W., Mao, L., Liu, J., Dong, Z., &amp; Tang, R. (2022). IntTower: The Next Generation of Two-Tower Model for Pre-Ranking System. <em>Proceedings of the 31st ACM International Conference on Information &amp; Knowledge Management</em>.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Yao, Jiangchao &amp; Wang, Feng &amp; Jia, Kunyang &amp; Han, Bo &amp; Zhou, Jingren &amp; Yang, Hongxia. (2021). Device-Cloud Collaborative Learning for Recommendation.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:8">
-<p>Hu, J., Shen, L., Albanie, S., Sun, G., &amp; Wu, E. (2017). Squeeze-and-Excitation Networks. <em>IEEE Transactions on Pattern Analysis and Machine Intelligence, 42</em>, 2011-2023.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Yuan, F., He, X., Karatzoglou, A., &amp; Zhang, L. (2020). Parameter-Efficient Transfer from Sequential Behaviors for User Modeling and Recommendation. <em>Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval</em>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:9">
-<p><a href="https://lilianweng.github.io/posts/2021-05-31-contrastive/#infonce" target="_blank" rel="noopener noreferrer">https://lilianweng.github.io/posts/2021-05-31-contrastive/#infonce</a>&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:10">
-<p>Ma, X., Wang, P., Zhao, H., Liu, S., Zhao, C., Lin, W., Lee, K., Xu, J., &amp; Zheng, B. (2021). Towards a Better Tradeoff between Effectiveness and Efficiency in Pre-Ranking: A Learnable Feature Selection based Approach. <em>Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</em>.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Zhou, Guorui &amp; Gai, Kun &amp; Zhu, Xiaoqiang &amp; Song, Chenru &amp; Fan, Ying &amp; Zhu, Han &amp; Ma, Xiao &amp; Yan, Yanghui &amp; Jin, Junqi &amp; Li, Han. (2018). Deep Interest Network for Click-Through Rate Prediction. 1059-1068. 10.1145/3219819.3219823.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
@@ -275,14 +404,14 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-03-04</span>
+                <span>Updated on 2023-03-09</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-title="Two Tower Model Architecture: Current State and Promising Extensions" data-via="_reachsumit" data-hashtags="literature review,recsys,ranking"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-title="Two Tower Model Architecture: Current State and Promising Extensions" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-title="Two Tower Model Architecture: Current State and Promising Extensions"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-title="Two Tower Model Architecture: Current State and Promising Extensions"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-title="Two Tower Model Architecture: Current State and Promising Extensions"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-title="Two Tower Model Architecture: Current State and Promising Extensions"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-title="Two Tower Model Architecture: Current State and Promising Extensions" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
+                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-via="_reachsumit" data-hashtags="literature review,recsys,ranking"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -294,8 +423,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/2023/01/dl-for-forecasting/" class="prev" rel="prev" title="Specialized Deep Learning Architectures for Time Series Forecasting"><i class="fas fa-angle-left fa-fw"></i>Specialized Deep Learning Architectures for Time Series Forecasting</a>
-            <a href="/posts/2023/03/reranking-on-edge/" class="next" rel="next" title="Next Gen Recommender Systems: Real-time reranking on mobile devices">Next Gen Recommender Systems: Real-time reranking on mobile devices<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/2023/03/two-tower-model/" class="prev" rel="prev" title="Two Tower Model Architecture: Current State and Promising Extensions"><i class="fas fa-angle-left fa-fw"></i>Two Tower Model Architecture: Current State and Promising Extensions</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
@@ -312,8 +440,8 @@
         </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-171612692-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-171612692-1" async></script></div>

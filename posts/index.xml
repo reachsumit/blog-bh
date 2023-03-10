@@ -4,7 +4,14 @@
         <link>https://blog.reachsumit.com/posts/</link>
         <description>All Posts | Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
-            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 04 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 09 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Next Gen Recommender Systems: Real-time reranking on mobile devices</title>
+    <link>https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/</link>
+    <pubDate>Thu, 09 Mar 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/</guid>
+    <description><![CDATA[A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems.]]></description>
+</item><item>
     <title>Two Tower Model Architecture: Current State and Promising Extensions</title>
     <link>https://blog.reachsumit.com/posts/2023/03/two-tower-model/</link>
     <pubDate>Sat, 04 Mar 2023 00:00:00 &#43;0000</pubDate><author>
@@ -68,13 +75,5 @@ IntroductionProblem with sparse inputsA variety of Information Retrieval and Da
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</guid>
     <description><![CDATA[<p>Identifying patterns among questions is quite an effective strategy when you are grinding LeetCode in preparation for your upcoming software engineering interviews. In this article, you will develop intuitions about Sliding Window pattern. You will also get a template approach to write code to solve these problems. I will also walk you through some LeetCode questions to show how to apply the template and at the end, there will be some LeetCode exercises for you to practice what you learn.</p>]]></description>
-</item><item>
-    <title>How Twitter Reduced Search Indexing Latency to One Second</title>
-    <link>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</link>
-    <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</guid>
-    <description><![CDATA[<p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
-<p>So, what did they do to get such impressive gains? Allow me to explain!</p>]]></description>
 </item></channel>
 </rss>
