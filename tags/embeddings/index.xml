@@ -10,6 +10,8 @@
     <pubDate>Sat, 18 Jul 2020 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/</guid>
-    <description><![CDATA[<p>Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&rsquo;s spell-corrector? Let&rsquo;s find out!</p>]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2020/07/spell-checker-fasttext/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div><p>Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&rsquo;s spell-corrector? Let&rsquo;s find out!</p>]]></description>
 </item></channel>
 </rss>

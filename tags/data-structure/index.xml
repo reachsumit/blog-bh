@@ -10,7 +10,9 @@
     <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</guid>
-    <description><![CDATA[<p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2020/07/twitter-search-redesign/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div><p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
 <p>So, what did they do to get such impressive gains? Allow me to explain!</p>]]></description>
 </item><item>
     <title>Skip List Data Structure - Explained!</title>
@@ -18,6 +20,8 @@
     <pubDate>Tue, 14 Jul 2020 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2020/07/skip-list/</guid>
-    <description><![CDATA[Analyzing randomness is hard. So why would you want to choose a probabilistic data structure in your system implementation? Allow me to explain!]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2020/07/skip-list/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Analyzing randomness is hard. So why would you want to choose a probabilistic data structure in your system implementation? Allow me to explain!]]></description>
 </item></channel>
 </rss>

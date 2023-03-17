@@ -10,13 +10,17 @@
     <pubDate>Sat, 21 Jan 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/</guid>
-    <description><![CDATA[Modern time series forecasting requires a model to learn from multiple related time series. These time series often number in thousands or millions. Traditional statistical models do not scale well to these settings because they learn individual series in isolation and do not share parameters across series. Various deep learning models have been proposed recently with different inductive biases to work effectively under these settings. This article explores some of the most popular advances in deep learning architectures for modern time series forecasting.]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/01/dl-for-forecasting/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Modern time series forecasting requires a model to learn from multiple related time series. These time series often number in thousands or millions. Traditional statistical models do not scale well to these settings because they learn individual series in isolation and do not share parameters across series. Various deep learning models have been proposed recently with different inductive biases to work effectively under these settings. This article explores some of the most popular advances in deep learning architectures for modern time series forecasting.]]></description>
 </item><item>
     <title>Statistical vs Machine Learning vs Deep Learning Modeling for Time Series Forecasting</title>
     <link>https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</link>
     <pubDate>Tue, 20 Dec 2022 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</guid>
-    <description><![CDATA[Statistical methods have been used in the time series domain for multiple decades. But given the recent advances in Machine Learning and especially its sub-domain Deep Learning, are statistical methods still superior for forecasting? In this article, we will do a deep dive into literature and recent time series competitions to do a multifaceted comparison between Statistical, Machine Learning, and Deep Learning methods for time series forecasting.]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2022/12/stats-vs-ml-for-ts/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Statistical methods have been used in the time series domain for multiple decades. But given the recent advances in Machine Learning and especially its sub-domain Deep Learning, are statistical methods still superior for forecasting? In this article, we will do a deep dive into literature and recent time series competitions to do a multifaceted comparison between Statistical, Machine Learning, and Deep Learning methods for time series forecasting.]]></description>
 </item></channel>
 </rss>

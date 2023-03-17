@@ -10,28 +10,36 @@
     <pubDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</guid>
-    <description><![CDATA[This article will explain the basic concepts of each category of the NoSQL database models and analyze the characteristics of the data that each category of the NoSQL database is suitable for processing.]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2022/06/nosql-models-comparison/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This article will explain the basic concepts of each category of the NoSQL database models and analyze the characteristics of the data that each category of the NoSQL database is suitable for processing.]]></description>
 </item><item>
     <title>SQL vs NoSQL vs NewSQL: An In-depth Literature Review</title>
     <link>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</link>
     <pubDate>Thu, 09 Jun 2022 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</guid>
-    <description><![CDATA[In this article, we look at SQL, NoSQL and NewSQL database technologies. We go over the origin, strengths, weaknesses, application areas, and fundamental concepts for each of the database types to make it easy to select the most appropriate database type for a given application.]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2022/06/sql-nosql-newsql/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>In this article, we look at SQL, NoSQL and NewSQL database technologies. We go over the origin, strengths, weaknesses, application areas, and fundamental concepts for each of the database types to make it easy to select the most appropriate database type for a given application.]]></description>
 </item><item>
     <title>Effective LeetCode: Understanding the Sliding Window Pattern</title>
     <link>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</link>
     <pubDate>Mon, 26 Oct 2020 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/</guid>
-    <description><![CDATA[<p>Identifying patterns among questions is quite an effective strategy when you are grinding LeetCode in preparation for your upcoming software engineering interviews. In this article, you will develop intuitions about Sliding Window pattern. You will also get a template approach to write code to solve these problems. I will also walk you through some LeetCode questions to show how to apply the template and at the end, there will be some LeetCode exercises for you to practice what you learn.</p>]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2020/10/leetcode-sliding-window/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div><p>Identifying patterns among questions is quite an effective strategy when you are grinding LeetCode in preparation for your upcoming software engineering interviews. In this article, you will develop intuitions about Sliding Window pattern. You will also get a template approach to write code to solve these problems. I will also walk you through some LeetCode questions to show how to apply the template and at the end, there will be some LeetCode exercises for you to practice what you learn.</p>]]></description>
 </item><item>
     <title>How Twitter Reduced Search Indexing Latency to One Second</title>
     <link>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</link>
     <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</guid>
-    <description><![CDATA[<p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2020/07/twitter-search-redesign/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div><p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
 <p>So, what did they do to get such impressive gains? Allow me to explain!</p>]]></description>
 </item><item>
     <title>Skip List Data Structure - Explained!</title>
@@ -39,6 +47,8 @@
     <pubDate>Tue, 14 Jul 2020 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2020/07/skip-list/</guid>
-    <description><![CDATA[Analyzing randomness is hard. So why would you want to choose a probabilistic data structure in your system implementation? Allow me to explain!]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2020/07/skip-list/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Analyzing randomness is hard. So why would you want to choose a probabilistic data structure in your system implementation? Allow me to explain!]]></description>
 </item></channel>
 </rss>

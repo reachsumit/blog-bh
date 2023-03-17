@@ -10,21 +10,27 @@
     <pubDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</guid>
-    <description><![CDATA[This article will explain the basic concepts of each category of the NoSQL database models and analyze the characteristics of the data that each category of the NoSQL database is suitable for processing.]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2022/06/nosql-models-comparison/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This article will explain the basic concepts of each category of the NoSQL database models and analyze the characteristics of the data that each category of the NoSQL database is suitable for processing.]]></description>
 </item><item>
     <title>SQL vs NoSQL vs NewSQL: An In-depth Literature Review</title>
     <link>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</link>
     <pubDate>Thu, 09 Jun 2022 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2022/06/sql-nosql-newsql/</guid>
-    <description><![CDATA[In this article, we look at SQL, NoSQL and NewSQL database technologies. We go over the origin, strengths, weaknesses, application areas, and fundamental concepts for each of the database types to make it easy to select the most appropriate database type for a given application.]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2022/06/sql-nosql-newsql/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>In this article, we look at SQL, NoSQL and NewSQL database technologies. We go over the origin, strengths, weaknesses, application areas, and fundamental concepts for each of the database types to make it easy to select the most appropriate database type for a given application.]]></description>
 </item><item>
     <title>How Twitter Reduced Search Indexing Latency to One Second</title>
     <link>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</link>
     <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</guid>
-    <description><![CDATA[<p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2020/07/twitter-search-redesign/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div><p>In June 2020, Twitter announced a major overhaul in its storage and retrieval systems. These changes allowed Twitter to reduce the search index latency from 15 seconds to 1 second.</p>
 <p>So, what did they do to get such impressive gains? Allow me to explain!</p>]]></description>
 </item></channel>
 </rss>
