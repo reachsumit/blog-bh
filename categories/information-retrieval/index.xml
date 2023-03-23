@@ -12,7 +12,7 @@
     </author><guid>https://blog.reachsumit.com/posts/2023/03/pairing-for-representation/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/03/pairing-for-representation/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Defining positive and negative labels for a retrieval task in a search ranking system is a non-trivial problem. This article goes over various sampling strategies for creating negative and positive pairs for effective representation learning. It introduces the concept of mining hard examples, followed by various strategies to sample hard positive and hard negative pairs. The article contains a lot of tips and learnings based on heuristics or empirical results from a comprehensive set of research papers published across the industry and academia.]]></description>
+            </div>Defining positive and negative labels for a retrieval task in a search ranking system is a non-trivial problem. This article goes over various sampling strategies for creating negative and positive pairs for effective representation learning. It introduces the concept of mining hard examples, followed by various strategies to sample hard positive and hard negative pairs. The article includes a lot of tips and learnings based on heuristics and empirical results from a comprehensive set of research papers published across the industry and academia.]]></description>
 </item><item>
     <title>Zero and Few Shot Text Retrieval and Ranking Using Large Language Models</title>
     <link>https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/</link>
