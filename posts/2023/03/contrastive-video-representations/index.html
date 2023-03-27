@@ -5,33 +5,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title>Zero and Few Shot Text Retrieval and Ranking Using Large Language Models - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Zero and Few Shot Text Retrieval and Ranking Using Large Language Models" />
-<meta property="og:description" content="Large Language Models (LLMs), like GPT-x, PaLM, BLOOM, have shaken up the NLP domain and completely redefined the state-of-the-art for a variety of tasks. One reason for the popularity of these LLMs has been their out-of-the-box capability to produce excellent performance with none to little domain-specific labeled data. The information retrieval community is also witnessing a revolution due to LLMs. These large pre-trained models can understand task instructions specified in natural language and then perform well on tasks in a zero-shot or few-shot manner. In this article, I review this theme and some of the most prominent ideas proposed by researchers in the last few months to enable zero/few-shot learning in text retrieval and ranking applications like search ranking, question answering, fact verification, etc." />
+    <title>Self-Supervised Contrastive Approaches for Video Representation Learning - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Self-Supervised Contrastive Approaches for Video Representation Learning" />
+<meta property="og:description" content="Advances in the contrastive learning domain have made it possible to reduce the performance gap between self-supervised and supervised learning methods. Consequently, it has enabled the potential of utilizing the vast amount of unlabeled big data. This article goes over state-of-the-art contrastive learning methods for effective video representation learning." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-16T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-03-16T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/featured-image-preview.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-27T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp"/>
-<meta name="twitter:title" content="Zero and Few Shot Text Retrieval and Ranking Using Large Language Models"/>
-<meta name="twitter:description" content="Large Language Models (LLMs), like GPT-x, PaLM, BLOOM, have shaken up the NLP domain and completely redefined the state-of-the-art for a variety of tasks. One reason for the popularity of these LLMs has been their out-of-the-box capability to produce excellent performance with none to little domain-specific labeled data. The information retrieval community is also witnessing a revolution due to LLMs. These large pre-trained models can understand task instructions specified in natural language and then perform well on tasks in a zero-shot or few-shot manner. In this article, I review this theme and some of the most prominent ideas proposed by researchers in the last few months to enable zero/few-shot learning in text retrieval and ranking applications like search ranking, question answering, fact verification, etc."/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/featured-image-preview.webp"/>
+<meta name="twitter:title" content="Self-Supervised Contrastive Approaches for Video Representation Learning"/>
+<meta name="twitter:description" content="Advances in the contrastive learning domain have made it possible to reduce the performance gap between self-supervised and supervised learning methods. Consequently, it has enabled the potential of utilizing the vast amount of unlabeled big data. This article goes over state-of-the-art contrastive learning methods for effective video representation learning."/>
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/03/pairing-for-representation/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/pairing-for-representation/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Zero and Few Shot Text Retrieval and Ranking Using Large Language Models",
+        "headline": "Self-Supervised Contrastive Approaches for Video Representation Learning",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/llm-for-text-ranking\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, retrieval, ranking","wordcount":  3617 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/llm-for-text-ranking\/","datePublished": "2023-03-16T00:00:00+00:00","dateModified": "2023-03-16T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/contrastive-video-representations\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, embeddings","wordcount":  2040 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/contrastive-video-representations\/","datePublished": "2023-03-27T00:00:00+00:00","dateModified": "2023-03-27T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -126,316 +126,163 @@
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#syntactic-vs-semantic-approaches">Syntactic vs Semantic Approaches</a></li>
-    <li><a href="#cascade-ranking-pipeline">Cascade Ranking Pipeline</a></li>
-    <li><a href="#zero-and-few-shot-settings">Zero and Few Shot Settings</a></li>
-    <li><a href="#using-llms-for-zero-or-few-shot-domain-adaption">Using LLMs for Zero or Few Shot Domain Adaption</a>
+    <li><a href="#need-for-self-supervised-learning">Need for self-supervised learning</a></li>
+    <li><a href="#the-emergence-of-contrastive-learning">The emergence of contrastive learning</a></li>
+    <li><a href="#contrastive-learning-from-unlabeled-videos">Contrastive learning from unlabeled videos</a>
       <ul>
-        <li><a href="#inpars">InPars</a></li>
-        <li><a href="#promptagator-">Promptagator 🐊</a></li>
-        <li><a href="#upr">UPR</a></li>
-        <li><a href="#hyde">HyDE</a></li>
-        <li><a href="#genread">GenRead</a></li>
-        <li><a href="#inpars-v2">InPars-v2</a></li>
-        <li><a href="#inpars-light">InPars-Light</a></li>
-        <li><a href="#udapdr">UDAPDR</a></li>
-        <li><a href="#datagen">DataGen</a></li>
+        <li><a href="#googles-contrastive-video-representation-learning-cvrl">Google&rsquo;s Contrastive Video Representation Learning (CVRL)</a></li>
+        <li><a href="#facebooks-rho-momentum-contrast-rho-moco">Facebook&rsquo;s $\rho$-Momentum Contrast ($\rho$-MoCo)</a></li>
+        <li><a href="#amazons-inter-intra-video-contrastive-learning-iivcl">Amazon&rsquo;s Inter-Intra Video Contrastive Learning (IIVCL)</a></li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Zero and Few Shot Text Retrieval and Ranking Using Large Language Models</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Self-Supervised Contrastive Approaches for Video Representation Learning</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><i class="far fa-folder fa-fw"></i>Information Retrieval</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-16">2023-03-16</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-16">2023-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3617 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;17 minutes&nbsp;</div>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/computer-vision/"><i class="far fa-folder fa-fw"></i>Computer Vision</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-27">2023-03-27</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-27">2023-03-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2040 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
-        src="/posts/2023/03/llm-for-text-ranking/featured-image.webp"
-        srcset="/posts/2023/03/llm-for-text-ranking/featured-image.webp, /posts/2023/03/llm-for-text-ranking/featured-image.webp 1.5x, /posts/2023/03/llm-for-text-ranking/featured-image.webp 2x"
+        src="/posts/2023/03/contrastive-video-representations/featured-image.webp"
+        srcset="/posts/2023/03/contrastive-video-representations/featured-image.webp, /posts/2023/03/contrastive-video-representations/featured-image.webp 1.5x, /posts/2023/03/contrastive-video-representations/featured-image.webp 2x"
         sizes="auto"
-        alt="/posts/2023/03/llm-for-text-ranking/featured-image.webp"
-        title="/posts/2023/03/llm-for-text-ranking/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
+        alt="/posts/2023/03/contrastive-video-representations/featured-image.webp"
+        title="/posts/2023/03/contrastive-video-representations/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#syntactic-vs-semantic-approaches">Syntactic vs Semantic Approaches</a></li>
-    <li><a href="#cascade-ranking-pipeline">Cascade Ranking Pipeline</a></li>
-    <li><a href="#zero-and-few-shot-settings">Zero and Few Shot Settings</a></li>
-    <li><a href="#using-llms-for-zero-or-few-shot-domain-adaption">Using LLMs for Zero or Few Shot Domain Adaption</a>
+    <li><a href="#need-for-self-supervised-learning">Need for self-supervised learning</a></li>
+    <li><a href="#the-emergence-of-contrastive-learning">The emergence of contrastive learning</a></li>
+    <li><a href="#contrastive-learning-from-unlabeled-videos">Contrastive learning from unlabeled videos</a>
       <ul>
-        <li><a href="#inpars">InPars</a></li>
-        <li><a href="#promptagator-">Promptagator 🐊</a></li>
-        <li><a href="#upr">UPR</a></li>
-        <li><a href="#hyde">HyDE</a></li>
-        <li><a href="#genread">GenRead</a></li>
-        <li><a href="#inpars-v2">InPars-v2</a></li>
-        <li><a href="#inpars-light">InPars-Light</a></li>
-        <li><a href="#udapdr">UDAPDR</a></li>
-        <li><a href="#datagen">DataGen</a></li>
+        <li><a href="#googles-contrastive-video-representation-learning-cvrl">Google&rsquo;s Contrastive Video Representation Learning (CVRL)</a></li>
+        <li><a href="#facebooks-rho-momentum-contrast-rho-moco">Facebook&rsquo;s $\rho$-Momentum Contrast ($\rho$-MoCo)</a></li>
+        <li><a href="#amazons-inter-intra-video-contrastive-learning-iivcl">Amazon&rsquo;s Inter-Intra Video Contrastive Learning (IIVCL)</a></li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="introduction" class="headerLink">
-    <a href="#introduction" class="header-mark"></a>Introduction</h2><p>Text retrieval and ranking simply refers to the task of finding a ranked list of the most relevant documents or passages out of a large text collection given a user query. Many Information Retrieval (IR) applications such as search ranking, open-domain question answering, fact verification, etc. use text retrievers to find the text that fulfills users&rsquo; information needs. This article gives a brief overview of a standard text ranking workflow and then introduces several recently proposed ideas to utilize large language models to enhance the text ranking task.<br>
- </p>
-<h2 id="syntactic-vs-semantic-approaches" class="headerLink">
-    <a href="#syntactic-vs-semantic-approaches" class="header-mark"></a>Syntactic vs Semantic Approaches</h2><p>Some of the most common methods used in these applications are based on keyword matching, sophisticated dense representations, or a hybrid of the two. BM25 is one simple term-matching-based scoring function that was proposed decades ago<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, but is still immensely popular in the IR domain. BM25 only uses the terms common to both the query and the document and isn&rsquo;t able to recognize synonyms and distinguish between ambiguous words<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. Still, a lot of studies in the field have proven BM25 to be a really strong baseline<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
-<p>Neural information retrieval, on the other hand, captures and compares the semantics of queries and documents. Dense representation-based neural retrieval models usually take the form of either a bi-encoder network (aka &ldquo;dual encoder&rdquo;<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, &ldquo;two tower network&rdquo;, &ldquo;Siamese network&rdquo;, &ldquo;DSSM&rdquo;) or a cross-encoder network.</p>
-<p> </p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-text-ranking/two_encoders.png" title="Two kinds of encoders" data-thumbnail="/img/posts/2023/llm-for-text-ranking/two_encoders.png" data-sub-html="<h2>Dense Retrievers. Figure adapted from ColBERT paper [^3]</h2><p>Two kinds of encoders</p>">
+            </div><div class="content" id="content"><h2 id="need-for-self-supervised-learning" class="headerLink">
+    <a href="#need-for-self-supervised-learning" class="header-mark"></a>Need for self-supervised learning</h2><p>Supervised deep learning approaches have shown remarkable success in various domains, such as Computer Vision. With the advent of big data, some of these approaches have lagged as the amount of labeled data is often minuscule compared to large-scale unlabeled data, like text, photos, and videos. To address this challenge, a number of algorithms have been proposed in the self-supervised domain that learn robust representations without any labels.</p>
+<p>A common approach to training such models is to learn a pretext task, which is solved only for the purpose of learning effective data representations to be used in downstream tasks. Some of the pretext tasks for learning image representations include predicting the rotation of images, relative positions or tracking of patches in an image,  image colorization, solving jigsaw puzzles, and counting visual primitives.</p>
+<p>Pretext tasks for video representation learning are more complex due to the presence of temporal dimensions. Some of the pretext tasks in the video domain include predicting future frames or the correct order of shuffled frames, shuffled clips, video rotations, motion and appearance statistics, tracking patches, objects, pixels, etc. These approaches have achieved great performance in learning image/video representations. However, they do not perform competitively with supervised methods because some of these tasks can be trivially solved through learned shortcuts.</p>
+<h2 id="the-emergence-of-contrastive-learning" class="headerLink">
+    <a href="#the-emergence-of-contrastive-learning" class="header-mark"></a>The emergence of contrastive learning</h2><p>Contrastive learning is one of the categories of the self-supervised learning paradigm. These methods learn a latent space that draws positive samples together (e.g. frames from the same video) while pushing part negative samples (e.g. frames from different videos). Various contrastive learning algorithms usually differ in the way they define positive and negative samples. For example, algorithms could use multiple augmented views of the same image, clustering methods to find semantically similar examples, sub-clips of the same or different lengths from the same video, etc. In some cases, these methods can also work without explicit negatives<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. In video representation learning, contrastive methods could use pretext tasks such as pace prediction, clip shuffling, etc.</p>
+<p>A lot of recent approaches use a variant of contrastive learning called Instance Discrimination to further close the gap with supervised learning methods. These approaches include data augmentation, contrastive losses, momentum encoders<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, and memory banks<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. Data augmentation is commonly used by several image-based methods like SimCLR<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> to generate positive samples. For example, random image transformations, like random crops, can be applied to an image to obtain multiple views of the same image, which are assumed to be positives. The downside of using such a transformation is that the onus of generalization lies heavily on the data augmentation pipeline which can not cover all possible variances<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+<p>InfoNCE is one of the most commonly used contrastive loss functions. Given an embedded video $z$  and corresponding positive embedded video $k^+$ (for example, a random augmentation of $z$) and many negative embedded videos $k^- \in \mathcal{N}_i$ respectively, infoNCE loss is defined as:</p>
+<p>$$ \mathcal{L}^{\text{InfoNCE}} = -\log \frac{\exp(z_i \cdot z_i^+ / \tau)}{\exp(z_i \cdot z_i^+ / \tau) + \sum\limits_{z^- \in \mathcal{N}_i} \exp(z_i \cdot z^- / \tau)} $$</p>
+<p>where $\tau$ is the temperature hyperparameter. Similarity among the positive $(z_{i}, z_{i}^+)$ and negative $(z_i, z^-)$ pair is usually defined as dot product (cosine distance) and the embedded vectors are usually $\ell_2$-normalized.</p>
+<h2 id="contrastive-learning-from-unlabeled-videos" class="headerLink">
+    <a href="#contrastive-learning-from-unlabeled-videos" class="header-mark"></a>Contrastive learning from unlabeled videos</h2><h3 id="googles-contrastive-video-representation-learning-cvrl" class="headerLink">
+    <a href="#googles-contrastive-video-representation-learning-cvrl" class="header-mark"></a>Google&rsquo;s Contrastive Video Representation Learning (CVRL)</h3><p>In the CVRL paper<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, researchers at Google built a framework to promote spatial self-supervision signals in videos. They noted that since both spatial and temporal information is crucial for learning video representation, only applying spatial augmentation independent of video frames breaks the natural motion along the time dimension.</p>
+<p>Instead, they recommended a temporally consistent spatial augmentation method by fixing the randomness across frames. They hypothesized that a pair of positive clips (taken from the same video) that are temporally distant, may contain very different visual content, leading to a low similarity that will be indistinguishable from negative pairs. At the same time, disregarding timewise distant clips reduces the temporal augmentation effect.</p>
+<p>So their recommended sampling method ensured that the time difference between two positive clips, sampled from the same input video, follows a monotonically decreasing distribution. Effectively, temporally close clips are a much stronger basis for learning as compared to distant clips. It also ensures that the model doesn&rsquo;t learn temporally invariant features, which is the problem with previous temporal augmentation techniques like sorting video frames or clips, altering playback rates, etc.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/contrastive-video-representations/cvrl.png" title="Google&amp;rsquo;s CVRL framework" data-thumbnail="/img/posts/2023/contrastive-video-representations/cvrl.png" data-sub-html="<h2>Google&#39;s CVRL Framework</h2><p>Google&amp;rsquo;s CVRL framework</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/llm-for-text-ranking/two_encoders.png"
-            srcset="/img/posts/2023/llm-for-text-ranking/two_encoders.png, /img/posts/2023/llm-for-text-ranking/two_encoders.png 1.5x, /img/posts/2023/llm-for-text-ranking/two_encoders.png 2x"
+            src="/img/posts/2023/contrastive-video-representations/cvrl.png"
+            srcset="/img/posts/2023/contrastive-video-representations/cvrl.png, /img/posts/2023/contrastive-video-representations/cvrl.png 1.5x, /img/posts/2023/contrastive-video-representations/cvrl.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/llm-for-text-ranking/two_encoders.png">
-    </a><figcaption class="image-caption">Dense Retrievers. Figure adapted from ColBERT paper [^3]</figcaption>
+            alt="/img/posts/2023/contrastive-video-representations/cvrl.png">
+    </a><figcaption class="image-caption">Google's CVRL Framework</figcaption>
     </figure></p>
-<p>A bi-encoder network independently learns latent representations for query and document inputs and interacts them only at the final layer to calculate a similarity function, such as dot-product, cosine, MaxSim<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, or Euclidian distance, on them. After offline training, the document encoder is often frozen and an indexing solution like FAISS is used to fetch document embeddings in real-time during inference. Their efficiency has made bi-encoder a really popular choice for production environments, even though the late interaction makes the model less effective. To read more about the Two-tower models&rsquo; usage in the recommender systems domain and some potential architectural extensions, please refer to <a href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" target="_blank" rel="noopener noreferrer">this article</a>.</p>
-<p>A cross-encoder network takes a query and a document vector as the input and calculates the relevance scores as the maximum inner product over it. Cross-Encoders achieve higher performance than bi-encoders due to rich interactions, however, they do not scale well for large datasets<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>. To evaluate these dense retrieval models, metrics like accuracy, mean rank, and mean reciprocal rank (MRR) are used if the relevance score is binary, otherwise, metrics like discounted cumulative gain (DCG) and normalized DCG (nDCG) are used if a graded relevance score is used.</p>
-<p> </p>
-<h2 id="cascade-ranking-pipeline" class="headerLink">
-    <a href="#cascade-ranking-pipeline" class="header-mark"></a>Cascade Ranking Pipeline</h2><p>While designing end-to-end retrieval systems, we often have to balance the tradeoff between effectiveness and efficiency. As mentioned earlier, while a cross-encoder can be highly effective, its time complexity can be prohibitive for most real-time production use cases that work with large-scale document collections. A bi-encoder model can be much more efficient but doesn&rsquo;t usually have the same level of accuracy as the cross-encoders.</p>
-<p>To address this tradeoff, a cascading ranking pipeline is adopted where increasingly complex ranking functions progressively prune and refine the set of candidate documents to minimize retrieval latency and maximize result set quality<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>. In a semantic search pipeline, a relatively simpler algorithm like Elasticsearch, BM25, bi-encoder, or a combination may be used to retrieve the top-n (e.g. 100, 1000) candidate documents followed by a more complex algorithm like cross-encoder to re-rank these candidates. Often modern IR systems use multi-stage re-ranking, for example, by using a bi-encoder followed by a cheap cross-encoder, followed by a more expensive cross-encoder model for the final re-ranking of the top candidates<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>.</p>
-<p>As an example, open-domain question-answering (ODQA) workflow is usually implemented as a two-stage pipeline: 1) given a question, a context retriever selects relevant passages and 2) a question-answering model, also known as a reader, answers the given question based on the retrieved passages<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>. This decoupling also allows for independent advancements of the two models.</p>
-<p> </p>
-<h2 id="zero-and-few-shot-settings" class="headerLink">
-    <a href="#zero-and-few-shot-settings" class="header-mark"></a>Zero and Few Shot Settings</h2><p>A significant challenge in developing neural retrievers is the lack of domain-specific training data. Low-resource target domains lack labeled training data. Manually constructing high-quality datasets is often costly and takes a lot of time. It could be especially difficult for retrieval applications as they require queries from real users. There are a few general-purpose datasets like MS MARCO and Natural Questions, but they do not always generalize well for out-of-domain uses and are often not available under a commercial license. Additionally, the original paper that introduced the BEIR IR benchmark showed that the performance of dense retrievers severely degrades under a domain shift (i.e. the shift in data distribution), often performing worse than traditional models such as BM25. This paper also showed that dense retrievers require a large amount of training data to work well<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>.</p>
-<p>Hence zero-shot and few-shot adaptions of effective retrieval and ranking models do not necessarily produce generalizations that are fully compatible with the target domain, leading to severe degradation when the source and target domains differ drastically<sup id="fnref1:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> <sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>. To address this, a recent line of research work has started using generative large language models (LLMs) to do zero-shot or few-shot domain adaptions of retrieval and ranking models. One reason for the popularity of these LLMs has been their capability to produce better performance from smaller quantities of labeled data<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>. A lot of the research work focuses on prompting LLMs with instructions for the task and a few examples in natural language to generate synthetic examples to finetune task-specific models.</p>
-<p>In the next section, we will take a look at some of the most recent and prominent research proposals on using LLMs to help retrievers and rankers with target domain adaption.</p>
-<p> </p>
-<h2 id="using-llms-for-zero-or-few-shot-domain-adaption" class="headerLink">
-    <a href="#using-llms-for-zero-or-few-shot-domain-adaption" class="header-mark"></a>Using LLMs for Zero or Few Shot Domain Adaption</h2><h3 id="inpars" class="headerLink">
-    <a href="#inpars" class="header-mark"></a>InPars</h3><p>In <strong>In</strong>quisitive <strong>Pa</strong>rrots for <strong>S</strong>earch (InPars), Bonifacio et al.<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup> used LLMs to generate synthetic data for IR tasks in a few-shot manner under minimal supervision. This data is then used to finetune a neural reranker model that is used to rerank search results in a pipeline comprised of a BM25 retriever followed by a neural monoT5 reranker. For the reranker, they tried a monoT5 model with 220M and also one with 3B parameters.</p>
-<p> </p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-text-ranking/inpars.png" title="InPars Method" data-thumbnail="/img/posts/2023/llm-for-text-ranking/inpars.png" data-sub-html="<h2>InPars Method</h2><p>InPars Method</p>">
+<p>These sampled clips are then spatially augmented. Previous spatial augmentation techniques like random cropping, color jittering, and blurring break the motion cues across frames that negatively affect the representation learning along the temporal dimension. To address this, the authors designed the following algorithm that makes the spatial augmentation consistent along the temporal dimension.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png" title="CVRL - Spatial Augmentation Algorithm" data-thumbnail="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png" data-sub-html="<h2>CVRL&#39;s Spatial Augmentation Algorithm</h2><p>CVRL - Spatial Augmentation Algorithm</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/llm-for-text-ranking/inpars.png"
-            srcset="/img/posts/2023/llm-for-text-ranking/inpars.png, /img/posts/2023/llm-for-text-ranking/inpars.png 1.5x, /img/posts/2023/llm-for-text-ranking/inpars.png 2x"
+            src="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png"
+            srcset="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png, /img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png 1.5x, /img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/llm-for-text-ranking/inpars.png">
-    </a><figcaption class="image-caption">InPars Method</figcaption>
+            alt="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png">
+    </a><figcaption class="image-caption">CVRL's Spatial Augmentation Algorithm</figcaption>
     </figure></p>
-<p>The training set consists of query, positive, and negative document triplets. Given a collection of documents, 100,000 documents are randomly sampled. Documents with less than 300 characters are discarded and a new document is sampled instead. GPT-3 Curie model is used as the LLM that generates one question corresponding to each of the sampled documents based on greedy decoding (<code>temperature = 0</code>).</p>
-<p>They experimented with two prompting strategies:</p>
-<ol>
-<li>Vanilla prompting, which uses 3 randomly chosen pairs of the document and relevant question from the MS MARCO dataset as shown on the left in the following diagram (<code>{document_text}</code> is replaced with the sampled document and the LLM generates a question one token at a time)</li>
-<li>Guided by Bad Questions (GBQ), that uses a strategy similar to Vanilla but the corresponding question from MS MARCO is marked as a &ldquo;bad&rdquo; question while a manually created example is marked a &ldquo;good&rdquo; question. This was done to encourage the model to produce more contextual-aware questions than the one from MS MARCO. Only the good questions are used to create the question-document positive pair.</li>
-</ol>
-<p>Negative examples were sampled from the top candidates returned by the BM25 method that weren&rsquo;t relevant documents. Only top-k generated examples (sorted by log probability output of the LLM) were used to finetune the reranker model.</p>
-<p> </p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-text-ranking/inpars_prompting.png" title="InPars: Prompting" data-thumbnail="/img/posts/2023/llm-for-text-ranking/inpars_prompting.png" data-sub-html="<h2>InPars: Vanilla (left) vs GBQ (right) prompts</h2><p>InPars: Prompting</p>">
+<p>Following this, a video encoder maps the input video clip to a 2048-dimensional latent representation using 3D-ResNets as backbones. This network is a minor modification (different stride and kernel size) of the &ldquo;slow&rdquo; pathway of the SlowFast network<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>. An MLP layer further reduces this representation to a 128-dimensional feature vector that is used to compute InfoNCE loss. As per the standard convention, the MLP is discarded during evaluation. Their representations outperformed all existing baselines for self-supervised learning and they also showed that the CVRL framework benefits from larger datasets and larger networks. The official TensorFlow implementation of CVRL is available <a href="https://github.com/tensorflow/models/tree/master/official/projects/video_ssl" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
+<h3 id="facebooks-rho-momentum-contrast-rho-moco" class="headerLink">
+    <a href="#facebooks-rho-momentum-contrast-rho-moco" class="header-mark"></a>Facebook&rsquo;s $\rho$-Momentum Contrast ($\rho$-MoCo)</h3><p>Facebook AI Research (FAIR) proposed a simple method to learn video representations that generalized existing image-based frameworks to space-time. The authors argue that visual content is often temporally-persistent along a timespan in a given video. For example, persistency may involve a person dancing, transitioning from running to walking, etc. covering short to long spans, with different levels of visual invariance. Hence they use an encoder to produce embeddings that are persistent in space-time, over multiple ($\rho$) temporally distant clips of the same video. Their experiments showed that it is beneficial to sample positives with longer timespans between them.</p>
+<p>The authors used an encoder design that is similar to Google&rsquo;s CVRL, i.e. a 3D ResNet-50 ConvNet without temporal pooling in convolutional feature maps, followed by an MLP projection head. For their experiments, they used 2 contrastive approaches which use both positive and negative samples: SimCLR and MoCo, and 2 other methods that only use positive samples: BYOL and SwAV. The original objective of these methods was to learn invariant features for images across different views (augmentations). The authors extended this objective to the temporal domain for videos.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/contrastive-video-representations/moco_frameworks.png" title="Four Frameworks" data-thumbnail="/img/posts/2023/contrastive-video-representations/moco_frameworks.png" data-sub-html="<h2>The four conceptual frameworks</h2><p>Four Frameworks</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/llm-for-text-ranking/inpars_prompting.png"
-            srcset="/img/posts/2023/llm-for-text-ranking/inpars_prompting.png, /img/posts/2023/llm-for-text-ranking/inpars_prompting.png 1.5x, /img/posts/2023/llm-for-text-ranking/inpars_prompting.png 2x"
+            src="/img/posts/2023/contrastive-video-representations/moco_frameworks.png"
+            srcset="/img/posts/2023/contrastive-video-representations/moco_frameworks.png, /img/posts/2023/contrastive-video-representations/moco_frameworks.png 1.5x, /img/posts/2023/contrastive-video-representations/moco_frameworks.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/llm-for-text-ranking/inpars_prompting.png">
-    </a><figcaption class="image-caption">InPars: Vanilla (left) vs GBQ (right) prompts</figcaption>
+            alt="/img/posts/2023/contrastive-video-representations/moco_frameworks.png">
+    </a><figcaption class="image-caption">The four conceptual frameworks</figcaption>
     </figure></p>
-<p>The Vanilla prompting strategy worked better for two out of the five tested datasets while GBQ performed better for the other three. On the target domain, the retrieval model finetuned solely on the synthetic examples outperformed BM25 and self-supervised dense method baselines. While models finetuned on both supervised and synthetic data achieved better results than models finetuned only on the supervised data. The code, model, and data for InPars are available <a href="https://github.com/zetaalphavector/inpars" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
-<p> </p>
-<h3 id="promptagator-" class="headerLink">
-    <a href="#promptagator-" class="header-mark"></a>Promptagator 🐊</h3><p>In Prompt-base Query Generation for Retriever (Promptagator 🐊), Dai et al.<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup> argued that different retrieval tasks have very different search intents (like retrieving entities, finding evidence, etc.). So they proposed a few-shot setting for dense retrievers where each task comes with a short description and a few annotated examples to clearly illustrate the search intents. Their proposed method &ldquo;Promptagator&rdquo; relies solely on a few (2 to 8) in-domain relevant query-document examples from the target tasks without using any query-document pairs from other tasks or datasets.</p>
-<p>The authors used the following instruction prompt:
-$$ (e_{doc}(d_{1}), e_{query}(q1), &hellip;, e_{doc}(d_{k}), e_{query}(qk), e_{doc}(d)) $$
-where $e_{doc}(d)$ and $e_{query}(q)$ are one of the k-pairs of the task-specific document and query descriptions respectively, and $d$ is a new document. They ran the prompt on all documents from the corpus and created a large set of synthetic examples using a FLAN-137B LLM.  During prompt engineering, they used 2 to 8 examples depending on the input length limit of FLAN and generated 8 questions per document using sampling decoding (<code>temperature=0.7</code>).</p>
-<p>The quality of generated queries was further improved by ensuring &ldquo;round-trip consistency&rdquo;, i.e. the query should retrieve its source passage. To do this consistency filtering, they first trained an initial retriever using only the synthetic query and document pairs. Then the kept query only if the corresponding document occurs among top-K (the used <code>K=1</code>) passages returned in the prediction by the same retriever. This seemingly counter-intuitive approach worked well in their experiments.</p>
-<p> </p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-text-ranking/promptagator.png" title="Promptagator&#43;&#43;" data-thumbnail="/img/posts/2023/llm-for-text-ranking/promptagator.png" data-sub-html="<h2>Promptagator&#43;&#43; Training Pipeline</h2><p>Promptagator&#43;&#43;</p>">
+<p>SimCLR uses the in-batch negative embeddings of other videos, while MoCo maintains a queue that stores embeddings from previous iterations to fetch negatives. BYOL can be thought of as a form of MoCo without the negative samples but with an extra predictor MLP ($\theta_p$ in the figure), whereas SwAV can be viewed as a form of SimCLR without the negative samples that also has Sinkhorn-Knopp (SK) transformation step for the targets. Through an extensive set of experiments, the authors share the following findings:</p>
+<ul>
+<li>The long-spanned persistency can be effective even if the timespan between positives is up to 60 seconds. Beyond that the positive pair might no longer share the same semantic context for learning high-level features corresponding in time, hence the corresponding representations might not be beneficial for downstream tasks.</li>
+<li>There was no performance difference between contrastive and non-contrastive methods.</li>
+<li>Multiple samples ($\rho$) from the same clip are beneficial to achieve high accuracy, with the best results achieved at $\rho = 4$.</li>
+<li>While MoCo performed the best for uncurated videos, BYOL and SimCLR showed better performance for short videos (10-16 seconds).</li>
+<li>Methods that used momentum encoders (like MoCo, BYOL) tend to do better than the methods with contrastive objectives (SimCLR, SwAV).</li>
+</ul>
+<h3 id="amazons-inter-intra-video-contrastive-learning-iivcl" class="headerLink">
+    <a href="#amazons-inter-intra-video-contrastive-learning-iivcl" class="header-mark"></a>Amazon&rsquo;s Inter-Intra Video Contrastive Learning (IIVCL)</h3><p>The authors of <strong>N</strong>earest-<strong>N</strong>eighbor <strong>C</strong>ontrastive <strong>L</strong>earning of Visual <strong>R</strong>epresentations (NNCLR)<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> proposed a nearest-neighbor-based approach to sampling the nearest neighbor as a positive sample for images. The authors of IIVCL<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> extended this idea to the video domain to provision extra positive samples in addition to the previous CVRL and $\rho$-MoCo models&rsquo; approach of fetching two positive clips from the same video. The authors argue that by only considering clips from the same video to be positive, the previous methods neglect other semantically related videos that may also be useful and relevant as positives for contrastive learning. For example: in the following samples clip A and B are from the same skiing video, hence they are positives, while video 2 and video 3 are negatives for both. But this assumption ignores the fact that video 3 (snowboarding) is more similar to video 1 (skiing) than video 2 (push-ups).</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/contrastive-video-representations/iivcl_example.png" title="IIVCL Example" data-thumbnail="/img/posts/2023/contrastive-video-representations/iivcl_example.png" data-sub-html="<h2>Contrastive Learning in CVRL and ρ-MoCo neglects that video 2 is more similar to video 1 than video 3</h2><p>IIVCL Example</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/llm-for-text-ranking/promptagator.png"
-            srcset="/img/posts/2023/llm-for-text-ranking/promptagator.png, /img/posts/2023/llm-for-text-ranking/promptagator.png 1.5x, /img/posts/2023/llm-for-text-ranking/promptagator.png 2x"
+            src="/img/posts/2023/contrastive-video-representations/iivcl_example.png"
+            srcset="/img/posts/2023/contrastive-video-representations/iivcl_example.png, /img/posts/2023/contrastive-video-representations/iivcl_example.png 1.5x, /img/posts/2023/contrastive-video-representations/iivcl_example.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/llm-for-text-ranking/promptagator.png">
-    </a><figcaption class="image-caption">Promptagator++ Training Pipeline</figcaption>
+            alt="/img/posts/2023/contrastive-video-representations/iivcl_example.png">
+    </a><figcaption class="image-caption">Contrastive Learning in CVRL and ρ-MoCo neglects that video 2 is more similar to video 1 than video 3</figcaption>
     </figure></p>
-<p>Finally, they trained a retriever (a dual encoder) followed by a cross-attention reranker on the filtered data. The dual encoder was a GTR initialized from a T5-110M network that was pretrained on the C4 dataset using independent cropping (using two random crops from the same document as positive pairs and in-batch negatives) with cross-entropy loss. This dual encoder was then finetuned using synthetic data. After this training is done, the same model is used to perform the consistency filtering mentioned before.</p>
-<p>The reranker component was proposed in the Promptagator++ variant and was trained using negative data sampled from the retriever step and the positive synthetic data. They also tested a zero-shot approach for query generation where the following prompt was used irrespective of the task: <code>'{d} Read the passage and generate a query.'</code>. In their experiments, Promptagator outperformed ColBERTv2 and SPLADEv2 on all tested retrieval tasks.</p>
-<p> </p>
-<h3 id="upr" class="headerLink">
-    <a href="#upr" class="header-mark"></a>UPR</h3><p>In <strong>U</strong>nsupervised <strong>P</strong>assage <strong>R</strong>e-ranker (UPR), Sachan et al.<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup> proposed a fully unsupervised pipeline consisting of a retriever and a reranker that can outperform supervised dense retrieval models (like DPR<sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>) alone. They applied UPR to a zero-shot question generation task where given a question, the retriever fetches the most relevant passages and reranker reorders these passages such that a passage with the correct answer is ranked as highly as possible.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-text-ranking/upr.png" title="UPR" data-thumbnail="/img/posts/2023/llm-for-text-ranking/upr.png" data-sub-html="<h2>UPR Pipeline</h2><p>UPR</p>">
+<p>Hence there is a need to look beyond just the local intra-video similarities and consider global inter-video similarities as well. This ensures additional diversity in viewpoint and scene orientation that cannot be expressed through sampling sub-clips from the same video. And, it also makes it possible to learn from weaker yet relevant and useful positive pairs. However, only using global inter-video semantics will lead to losing granular details that are also important for video understanding. So an effective approach must use both local and global similarities. To achieve this, IIVCL creates a dynamically evolving queue from which the most similar videos (nearest neighbors) are found. Note that the intra-video clips are randomly sampled and there is no temporal ordering among them.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/contrastive-video-representations/iivcl_overall.png" title="IIVCL Overview" data-thumbnail="/img/posts/2023/contrastive-video-representations/iivcl_overall.png" data-sub-html="<h2>Current state-of-the-art (a) vs. inter-video nearest neighbor sampled from a queue(b) vs. IIVCL(c)</h2><p>IIVCL Overview</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/llm-for-text-ranking/upr.png"
-            srcset="/img/posts/2023/llm-for-text-ranking/upr.png, /img/posts/2023/llm-for-text-ranking/upr.png 1.5x, /img/posts/2023/llm-for-text-ranking/upr.png 2x"
+            src="/img/posts/2023/contrastive-video-representations/iivcl_overall.png"
+            srcset="/img/posts/2023/contrastive-video-representations/iivcl_overall.png, /img/posts/2023/contrastive-video-representations/iivcl_overall.png 1.5x, /img/posts/2023/contrastive-video-representations/iivcl_overall.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/llm-for-text-ranking/upr.png">
-    </a><figcaption class="image-caption">UPR Pipeline</figcaption>
+            alt="/img/posts/2023/contrastive-video-representations/iivcl_overall.png">
+    </a><figcaption class="image-caption">Current state-of-the-art (a) vs. inter-video nearest neighbor sampled from a queue(b) vs. IIVCL(c)</figcaption>
     </figure></p>
-<p>The retriever could be based on any unsupervised method like BM25, Contriever<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup>, or MSS<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>, the only requirement is that the retriever provides the K most relevant passages. For the reranker, they experimented with off-the-shelf T5-lm-adapt, T0, and GPT-neo models. The rerankers were given the following prompt in a zero-shot manner: <code>'Passage: {p}. Please write a question based on this passage.'</code>. The reranking score is computed as $p(z_{i}|q)$ for each passage $z_{i}$ and a query $q$. The paper shows that this relevancy score can be approximated by computing the average log-likelihood of the question conditioned on the passage, i.e. $log p(q|z)$.</p>
-<p>In their experiments, UPR is shown to improve both unsupervised and supervised retrieval tasks in terms of top-20 passage retrieval accuracy. However, due to the LLM usage in their pipeline, UPR also suffers from high latency issues with a complexity directly proportional to the product of question and passage tokens and the number of layers in LLM. The code, data, and model checkpoints for UPR are available <a href="https://github.com/DevSinghSachan/unsupervised-passage-reranking" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
-<p> </p>
-<h3 id="hyde" class="headerLink">
-    <a href="#hyde" class="header-mark"></a>HyDE</h3><p>In <strong>Hy</strong>pothetical <strong>D</strong>ocument <strong>E</strong>mbeddings (HyDE), Gao et al. <sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup> proposed a novel zero-shot dense retrieval method. Given a query, they first zero-shot instruct an instruction-following language model (InstructGPT) to generate a synthetic (&ldquo;hypothetical&rdquo;) document. Next, they use an unsupervised contrastively learned encoder (like a Contriever) to encode this hypothetical document into an embedding vector. Finally, they use a nearest-neighbor approach to fetch similar real documents based on vector similarity in corpus embedding space. The assumption here is that the bottleneck layer in the encoder filters out factual errors and incorrect details in the hypothetical document. In their experiments, HyDE outperformed the state-of-the-art unsupervised Contriever method and also performed comparably to finetuned retrievers on various tasks. The code for the HyDE method is available <a href="https://github.com/texttron/hyde" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
-<p> </p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-text-ranking/hyde.png" title="HyDE" data-thumbnail="/img/posts/2023/llm-for-text-ranking/hyde.png" data-sub-html="<h2>The HyDE Model</h2><p>HyDE</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/llm-for-text-ranking/hyde.png"
-            srcset="/img/posts/2023/llm-for-text-ranking/hyde.png, /img/posts/2023/llm-for-text-ranking/hyde.png 1.5x, /img/posts/2023/llm-for-text-ranking/hyde.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/llm-for-text-ranking/hyde.png">
-    </a><figcaption class="image-caption">The HyDE Model</figcaption>
-    </figure></p>
-<h3 id="genread" class="headerLink">
-    <a href="#genread" class="header-mark"></a>GenRead</h3><p>In <strong>Gen</strong>erate-then-<strong>Read</strong> (GenRead), Yu et al.<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup> replace the retriever in the traditional <em>retrieve-then-read</em> QA pipeline with a LLM generator model to create a <em>generate-then-read</em> pipeline instead. Their approach does not require any external world or domain knowledge. They generate a synthetic document using an InstructGPT LLM given the input query and then use the reader model on the generated document to produce the final answer. Using multiple datasets, they show that the LLM-generated document is more likely to contain correct answers than the top retrieved document, which justifies the use of the generator in this context.</p>
-<p>Under a zero-shot setting, the generator uses a prompt like: <code>Generate a background document to answer the given question. {question placeholder}</code> and the reader does zero-shot reading comprehension with a prompt like: <code>Refer to the passage below and answer the following question. Passage: {background placeholder} Question: {question placeholder}</code>. A supervised setting with a reader model like FiD (Fusion-in-Decoder) was shown to provide better performance than a zero-shot setting. The code and generated documents for GenRead are available <a href="https://github.com/wyu97/GenRead" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-text-ranking/genread.png" title="GenRead" data-thumbnail="/img/posts/2023/llm-for-text-ranking/genread.png" data-sub-html="<h2>GenRead&#39;s clustering-based prompting method</h2><p>GenRead</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/llm-for-text-ranking/genread.png"
-            srcset="/img/posts/2023/llm-for-text-ranking/genread.png, /img/posts/2023/llm-for-text-ranking/genread.png 1.5x, /img/posts/2023/llm-for-text-ranking/genread.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/llm-for-text-ranking/genread.png">
-    </a><figcaption class="image-caption">GenRead's clustering-based prompting method</figcaption>
-    </figure></p>
-<p>To improve recall performance, the authors propose a clustering-based prompt method that introduces variance and diversity in generated documents. They do offline K-Means clustering on GPT-3 embeddings of a corpus of query-document pairs. At inference, a fixed number of documents are sampled from each of these clusters and given to the reader model. Their experiments showed that the GenRead model outperformed zero-shot <em>retrieve-then-read</em> pipeline models that used the Google search engine to get relevant contextual documents. A major limitation of this method is that the LLM model needs retraining to update the latest external world or domain knowledge.</p>
-<p> </p>
-<h3 id="inpars-v2" class="headerLink">
-    <a href="#inpars-v2" class="header-mark"></a>InPars-v2</h3><p>The authors of InPars released an update, called InPars-v2<sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup>, where they swapped GPT-3 LLM with the open-source GPT-J (6B) model. For prompting the LLM, they only used the GBQ strategy proposed in InPars-v1. Similar to the v1 proposal they sampled 100K documents from the corpus and generated one synthetic query per document. However, instead of filtering them to top-10K pairs with the highest log probabilities of generation like the v1 method, they used a relevancy score calculated by a monoT5 (3B) model finetuned on MS MARCO, to keep the top-10K pairs. Compared to InPars-v1, this model showed better performance on a majority of the tested datasets. The code, finetuned model, and synthetic data for InPars-v2 are available <a href="https://github.com/zetaalphavector/inPars/tree/master/legacy/inpars-v2" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
-<p> </p>
-<h3 id="inpars-light" class="headerLink">
-    <a href="#inpars-light" class="header-mark"></a>InPars-Light</h3><p>In InPars-Light Boytsov et al.<sup id="fnref:21"><a href="#fn:21" class="footnote-ref" role="doc-noteref">21</a></sup> did a reproducibility study of InPars and also proposed some cost-effective improvements. Instead of the proprietary GPT-3, they chose to use the open-source LLM models BLOOM and GPT-J, and instead of using a MonoT5 (220M/3B), they experimented with MiniLM (30M), ERNIEv2 (335M) and DeBERTAv3 (435M) reranker models. For prompting the LLM, they used the &lsquo;vanilla&rsquo; strategy proposed in the InPars paper. For consistency checking they used the same approach as used in the Promptagator model but with K value set to 3. They also pretrained the reranker on all-domain data. Through experiments, they showed that for a good ranking output, they only needed to rerank 100 candidates as opposed to 1000 in InPars.</p>
-<p> </p>
-<h3 id="udapdr" class="headerLink">
-    <a href="#udapdr" class="header-mark"></a>UDAPDR</h3><p>In <strong>U</strong>nsupervised Domain <strong>A</strong>daptation via LLM <strong>P</strong>rompting and <strong>D</strong>istillation of <strong>R</strong>erankers (UDAPDR), Falcon et al.<sup id="fnref:22"><a href="#fn:22" class="footnote-ref" role="doc-noteref">22</a></sup> used a two-stage LLM pipeline (one powerful and expensive LLM followed by a smaller and cheaper LLM) to generate synthetic queries in zero-shot settings. These queries are used to finetune a reranker model. This reranker is then distilled into a single efficient retriever.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-text-ranking/udapdr.png" title="UDAPDR" data-thumbnail="/img/posts/2023/llm-for-text-ranking/udapdr.png" data-sub-html="<h2>UDAPDR Approach</h2><p>UDAPDR</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/llm-for-text-ranking/udapdr.png"
-            srcset="/img/posts/2023/llm-for-text-ranking/udapdr.png, /img/posts/2023/llm-for-text-ranking/udapdr.png 1.5x, /img/posts/2023/llm-for-text-ranking/udapdr.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/llm-for-text-ranking/udapdr.png">
-    </a><figcaption class="image-caption">UDAPDR Approach</figcaption>
-    </figure></p>
-<p>This approach requires access to in-domain passages (but no in-domain queries or labels are required). These passages and LLM-prompting is used to generate a large number of synthetic queries. These passages are first fed to a GPT-3 text-davinci-002 model, using five prompting strategies as shown below. Note that the first two prompts are the same as the InPars paper and the other three zero-short strategies are taken from another recent paper.</p>
-<p> </p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-text-ranking/udapdr_prompting.png" title="UDAPDR - prompting" data-thumbnail="/img/posts/2023/llm-for-text-ranking/udapdr_prompting.png" data-sub-html="<h2>UDAPDR prompting strategies</h2><p>UDAPDR - prompting</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/llm-for-text-ranking/udapdr_prompting.png"
-            srcset="/img/posts/2023/llm-for-text-ranking/udapdr_prompting.png, /img/posts/2023/llm-for-text-ranking/udapdr_prompting.png 1.5x, /img/posts/2023/llm-for-text-ranking/udapdr_prompting.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/llm-for-text-ranking/udapdr_prompting.png">
-    </a><figcaption class="image-caption">UDAPDR prompting strategies</figcaption>
-    </figure></p>
-<p>The generated synthetic query and document pairs are then used to populate the following prompt template. This prompt is used to generate a good query for a new passage through a smaller LLM (they used the FLAN-T5 XXL model). While the first LLM was given a few (X = 5 to 100) sampled passages (to generate 5X synthetic queries), this smaller LLM is given a much large sampled set (10K to 100K) of passages.</p>
-<p> </p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-text-ranking/udapdr_prompt_template.png" title="UDAPDR - prompting" data-thumbnail="/img/posts/2023/llm-for-text-ranking/udapdr_prompt_template.png" data-sub-html="<h2>UDAPDR second stage prompt template</h2><p>UDAPDR - prompting</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/llm-for-text-ranking/udapdr_prompt_template.png"
-            srcset="/img/posts/2023/llm-for-text-ranking/udapdr_prompt_template.png, /img/posts/2023/llm-for-text-ranking/udapdr_prompt_template.png 1.5x, /img/posts/2023/llm-for-text-ranking/udapdr_prompt_template.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/llm-for-text-ranking/udapdr_prompt_template.png">
-    </a><figcaption class="image-caption">UDAPDR second stage prompt template</figcaption>
-    </figure></p>
-<p>Similar to earlier work, consistency filtering is applied. UDAPDR uses a zero-shot ColBERTv2 model for this purpose and keeps the synthetic query only if it returns its gold passage within the top-20 results. Finally, a DeBERTaV3-Large reranker trained using this filtered synthetic data is distilled into a ColBERTv2 retriever model. Their experiments showed good zero-shot results in long-tail domains. One drawback of this approach is that it requires a substantial number of passages from the target domain. The code and synthetic data for UDAPDR is available <a href="https://github.com/primeqa/primeqa" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
-<p> </p>
-<h3 id="datagen" class="headerLink">
-    <a href="#datagen" class="header-mark"></a>DataGen</h3><p>In DataGen, Dua et al.<sup id="fnref2:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> proposed a taxonomy for dataset shift and showed that zero-shot adaptions do not work well in cases where the target domain distribution is very far from the source domain. To fix this, they prompted a Pathways Language Model (PaLM) in few-shot settings to generate a query given a passage. They prompted the model with <code>After reading the article, &lt;&lt;context&gt;&gt; the doctor said &lt;&lt;sentence&gt;&gt;.</code> for PubMed articles. They replaced &ldquo;doctor&rdquo; with engineer, journalist, and poster for StackOverflow, DailyMail, and Reddit target corpora respectively. They filtered out the questions that repeated the passage verbatim or had a 75% or more word overlap with it. Then they used both supervised and synthetic data to train their retriever model.</p>
-<p> </p>
+<p>As contrastive learning requires large batch sizes and computing video embeddings can be very expensive, the FIFO-style queue is updated with embeddings from a momentum encoder. The queue is updated at the end of each training setup (forward pass) by taking the n (batch size) embeddings from the current training step and inserting them into the end of the queue. The nearest neighbors are calculated from this queue by calculating the cosine similarities between the input video and the queue. Over the course of pretraining, the model continually evolves its notion of semantic similarity and becomes better at picking semantically similar nearest-neighbor clips. Hence, no clustering or separate training is required to get the global support set. Separate MLP projection heads are used to process the intra-video and nearest-neighbor positive pairs. Both of these pretext tasks are then combined using a multi-task loss. Similar to other methods, the trained model is evaluated using linear evaluation and fine-tuning protocols.</p>
 <h2 id="summary" class="headerLink">
-    <a href="#summary" class="header-mark"></a>Summary</h2><p>Similar to a majority of NLP tasks, information retrieval has recently witnessed a revolution due to large pretrained transformer models. The ability of these models to understand task instructions specified in natural language and then perform well on tasks in a zero-shot or few-shot manner has unlocked a world of possibilities and exciting solutions. This article reviewed some very recent proposals from the research community to boost text retrieval and ranking tasks using LLMs.</p>
-<p> </p>
-<p> </p>
+    <a href="#summary" class="header-mark"></a>Summary</h2><p>Advances in self-supervised learning have enabled the utilization of large-scale unlabeled data. Contrastive learning methods have further helped to reduce the performance gap between self-supervised and supervised methods. This article summarized some of the most popular ways to apply contrastive methods for effective representation learning for videos. These algorithms proposed different ways to address the spatial and temporal information in video data to achieve state-of-the-art performance for representation learning.</p>
 <h2 id="references" class="headerLink">
-    <a href="#references" class="header-mark"></a>References</h2><p> </p>
-<div class="footnotes" role="doc-endnotes">
+    <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>Robertson, Stephen. (2004). Understanding Inverse Document Frequency: On Theoretical Arguments for IDF. Journal of Documentation - J DOC. 60. 503-520. 10.1108/00220410410560582.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Grill, J., Strub, F., Altch&rsquo;e, F., Tallec, C., Richemond, P.H., Buchatskaya, E., Doersch, C., Pires, B.Á., Guo, Z.D., Azar, M.G., Piot, B., Kavukcuoglu, K., Munos, R., &amp; Valko, M. (2020). Bootstrap Your Own Latent: A New Approach to Self-Supervised Learning. <em>ArXiv, abs/2006.07733</em>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>Wang, K., Thakur, N., Reimers, N., &amp; Gurevych, I. (2021). GPL: Generative Pseudo Labeling for Unsupervised Domain Adaptation of Dense Retrieval. <em>North American Chapter of the Association for Computational Linguistics</em>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>He, K., Fan, H., Wu, Y., Xie, S., &amp; Girshick, R.B. (2019). Momentum Contrast for Unsupervised Visual Representation Learning. <em>2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 9726-9735.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Ma, X., Sun, K., Pradeep, R., &amp; Lin, J.J. (2021). A Replication Study of Dense Passage Retriever. <em>ArXiv, abs/2104.05740</em>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Wu, Z., Xiong, Y., Yu, S.X., &amp; Lin, D. (2018). Unsupervised Feature Learning via Non-parametric Instance Discrimination. <em>2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition</em>, 3733-3742.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Karpukhin, Vladimir &amp; Oğuz, Barlas &amp; Min, Sewon &amp; Wu, Ledell &amp; Edunov, Sergey &amp; Chen, Danqi &amp; Yih, Wen-tau. (2020). Dense Passage Retrieval for Open-Domain Question Answering.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Chen, T., Kornblith, S., Norouzi, M., &amp; Hinton, G. (2020). A Simple Framework for Contrastive Learning of Visual Representations. <em>ArXiv</em>. /abs/2002.05709&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>Khattab, O., &amp; Zaharia, M.A. (2020). ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT. <em>Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval</em>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Dwibedi, D., Aytar, Y., Tompson, J., Sermanet, P., &amp; Zisserman, A. (2021). With a Little Help from My Friends: Nearest-Neighbor Contrastive Learning of Visual Representations. <em>ArXiv</em>. /abs/2104.14548&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>SBERT. Cross-Encoders. <a href="https://www.sbert.net/examples/applications/cross-encoder/README.html" target="_blank" rel="noopener noreferrer">https://www.sbert.net/examples/applications/cross-encoder/README.html</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Qian, R., Meng, T., Gong, B., Yang, M., Wang, H., Belongie, S.J., &amp; Cui, Y. (2020). Spatiotemporal Contrastive Video Representation Learning. <em>2021 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 6960-6970.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
-<p>Wang, L., Lin, J.J., &amp; Metzler, D. (2011). A cascade ranking model for efficient ranked retrieval. <em>Proceedings of the 34th international ACM SIGIR conference on Research and development in Information Retrieval</em>.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Feichtenhofer, C., Fan, H., Malik, J., &amp; He, K. (2018). SlowFast Networks for Video Recognition. <em>2019 IEEE/CVF International Conference on Computer Vision (ICCV)</em>, 6201-6210.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:8">
-<p>Zhou, G., &amp; Devlin, J. (2021). Multi-Vector Attention Models for Deep Re-ranking. <em>Conference on Empirical Methods in Natural Language Processing</em>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:9">
-<p>Dua, D., Strubell, E., Singh, S., &amp; Verga, P. (2022). To Adapt or to Annotate: Challenges and Interventions for Domain Adaptation in Open-Domain Question Answering. <em>ArXiv, abs/2212.10381</em>.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:10">
-<p>Thakur, N., Reimers, N., Ruckl&rsquo;e, A., Srivastava, A., &amp; Gurevych, I. (2021). BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models. <em>ArXiv, abs/2104.08663</em>.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:11">
-<p>Improving Zero-Shot Ranking with Vespa Hybrid Search. <a href="https://blog.vespa.ai/improving-zero-shot-ranking-with-vespa/" target="_blank" rel="noopener noreferrer">https://blog.vespa.ai/improving-zero-shot-ranking-with-vespa/</a>&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:12">
-<p>Scao, T.L. et al. (2022). BLOOM: A 176B-Parameter Open-Access Multilingual Language Model. <em>ArXiv, abs/2211.05100</em>.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:13">
-<p>Bonifacio, L.H., Abonizio, H.Q., Fadaee, M., &amp; Nogueira, R. (2022). InPars: Data Augmentation for Information Retrieval using Large Language Models. <em>ArXiv, abs/2202.05144</em>.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:14">
-<p>Dai, Z., Zhao, V., Ma, J., Luan, Y., Ni, J., Lu, J., Bakalov, A., Guu, K., Hall, K.B., &amp; Chang, M. (2022). Promptagator: Few-shot Dense Retrieval From 8 Examples. <em>ArXiv, abs/2209.11755</em>.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:15">
-<p>Sachan, D.S., Lewis, M., Joshi, M., Aghajanyan, A., Yih, W., Pineau, J., &amp; Zettlemoyer, L. (2022). Improving Passage Retrieval with Zero-Shot Question Generation. <em>Conference on Empirical Methods in Natural Language Processing</em>.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:16">
-<p>Izacard, G., Caron, M., Hosseini, L., Riedel, S., Bojanowski, P., Joulin, A., &amp; Grave, E. (2021). Unsupervised Dense Information Retrieval with Contrastive Learning.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:17">
-<p>Sachan, D.S., Reddy, S., Hamilton, W., Dyer, C., &amp; Yogatama, D. (2021). End-to-End Training of Multi-Document Reader and Retriever for Open-Domain Question Answering. <em>ArXiv, abs/2106.05346</em>.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:18">
-<p>Gao, Luyu &amp; Ma, Xueguang &amp; Lin, Jimmy &amp; Callan, Jamie. (2022). Precise Zero-Shot Dense Retrieval without Relevance Labels. 10.48550/arXiv.2212.10496.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:19">
-<p>Yu, W., Iter, D., Wang, S., Xu, Y., Ju, M., Sanyal, S., Zhu, C., Zeng, M., &amp; Jiang, M. (2022). Generate rather than Retrieve: Large Language Models are Strong Context Generators. <em>ArXiv, abs/2209.10063</em>.&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:20">
-<p>Jeronymo, V., Bonifacio, L.H., Abonizio, H.Q., Fadaee, M., Lotufo, R.D., Zavrel, J., &amp; Nogueira, R. (2023). InPars-v2: Large Language Models as Efficient Dataset Generators for Information Retrieval. <em>ArXiv, abs/2301.01820</em>.&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:21">
-<p>Boytsov, L., Patel, P., Sourabh, V., Nisar, R., Kundu, S., Ramanathan, R., &amp; Nyberg, E. (2023). InPars-Light: Cost-Effective Unsupervised Training of Efficient Rankers. <em>ArXiv, abs/2301.02998</em>.&#160;<a href="#fnref:21" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:22">
-<p>Saad-Falcon, J., Khattab, O., Santhanam, K., Florian, R., Franz, M., Roukos, S., Sil, A., Sultan, M., &amp; Potts, C. (2023). UDAPDR: Unsupervised Domain Adaptation via LLM Prompting and Distillation of Rerankers. <em>ArXiv, abs/2303.00807</em>.&#160;<a href="#fnref:22" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Fan, D., Yang, D., Li, X., Bhat, V., &amp; Rohith, M.V. (2023). Nearest-Neighbor Inter-Intra Contrastive Learning from Unlabeled Videos. <em>ArXiv, abs/2303.07317</em>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
@@ -448,20 +295,6 @@ where $e_{doc}(d)$ and $e_{query}(q)$ are one of the k-pairs of the task-specifi
 <div class="related-container">
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2023/03/contrastive-video-representations/"><img
-        
-        loading="lazy"
-        src="/posts/2023/03/contrastive-video-representations/featured-image-preview.webp"
-        srcset="/posts/2023/03/contrastive-video-representations/featured-image-preview.webp, /posts/2023/03/contrastive-video-representations/featured-image-preview.webp 1.5x, /posts/2023/03/contrastive-video-representations/featured-image-preview.webp 2x"
-        sizes="auto"
-        alt="/posts/2023/03/contrastive-video-representations/featured-image-preview.webp"
-        title="/posts/2023/03/contrastive-video-representations/featured-image-preview.webp" height="200" width="400"></a>
-            </div><h2 class="related-title">
-                <a href="/posts/2023/03/contrastive-video-representations/">Self-Supervised Contrastive Approaches for Video Representation Learning</a>
-            </h2>
-        </div>
-    <div class="related-item-container">
-            <div class="related-image">
                 <a href="/posts/2023/03/pairing-for-representation/"><img
         
         loading="lazy"
@@ -472,6 +305,20 @@ where $e_{doc}(d)$ and $e_{query}(q)$ are one of the k-pairs of the task-specifi
         title="/posts/2023/03/pairing-for-representation/featured-image-preview.webp" height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/03/pairing-for-representation/">Positive and Negative Sampling Strategies for Representation Learning in Semantic Search</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/03/llm-for-text-ranking/"><img
+        
+        loading="lazy"
+        src="/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp"
+        srcset="/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp, /posts/2023/03/llm-for-text-ranking/featured-image-preview.webp 1.5x, /posts/2023/03/llm-for-text-ranking/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp"
+        title="/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp" height="200" width="400"></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/03/llm-for-text-ranking/">Zero and Few Shot Text Retrieval and Ranking Using Large Language Models</a>
             </h2>
         </div>
     <div class="related-item-container">
@@ -1164,27 +1011,26 @@ where $e_{doc}(d)$ and $e_{query}(q)$ are one of the k-pairs of the task-specifi
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-03-16</span>
+                <span>Updated on 2023-03-27</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" data-title="Zero and Few Shot Text Retrieval and Ranking Using Large Language Models" data-via="_reachsumit" data-hashtags="literature review,retrieval,ranking"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" data-title="Zero and Few Shot Text Retrieval and Ranking Using Large Language Models" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" data-title="Zero and Few Shot Text Retrieval and Ranking Using Large Language Models"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" data-title="Zero and Few Shot Text Retrieval and Ranking Using Large Language Models"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" data-title="Zero and Few Shot Text Retrieval and Ranking Using Large Language Models" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" data-title="Zero and Few Shot Text Retrieval and Ranking Using Large Language Models"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" data-title="Zero and Few Shot Text Retrieval and Ranking Using Large Language Models" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
+                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning" data-via="_reachsumit" data-hashtags="literature review,embeddings"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/retrieval/">retrieval</a>,&nbsp;<a href="/tags/ranking/">ranking</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/embeddings/">embeddings</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/2023/03/reranking-on-edge/" class="prev" rel="prev" title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i class="fas fa-angle-left fa-fw"></i>Next Gen Recommender Systems: Real-time reranking on mobile devices</a>
-            <a href="/posts/2023/03/pairing-for-representation/" class="next" rel="next" title="Positive and Negative Sampling Strategies for Representation Learning in Semantic Search">Positive and Negative Sampling Strategies for Representation Learning in Semantic Search<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/2023/03/pairing-for-representation/" class="prev" rel="prev" title="Positive and Negative Sampling Strategies for Representation Learning in Semantic Search"><i class="fas fa-angle-left fa-fw"></i>Positive and Negative Sampling Strategies for Representation Learning in Semantic Search</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
@@ -1201,8 +1047,8 @@ where $e_{doc}(d)$ and $e_{query}(q)$ are one of the k-pairs of the task-specifi
         </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-171612692-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-171612692-1" async></script></div>
