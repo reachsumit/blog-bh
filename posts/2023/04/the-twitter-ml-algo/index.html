@@ -5,33 +5,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title>Next Gen Recommender Systems: Real-time reranking on mobile devices - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Next Gen Recommender Systems: Real-time reranking on mobile devices" />
-<meta property="og:description" content="A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems." />
+    <title>Twitter&#39;s For You Recommendation Algorithm - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Twitter&#39;s For You Recommendation Algorithm" />
+<meta property="og:description" content="Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/featured-image-preview.webp"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-03-09T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-04T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/featured-image-preview.webp"/>
-<meta name="twitter:title" content="Next Gen Recommender Systems: Real-time reranking on mobile devices"/>
-<meta name="twitter:description" content="A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems."/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp"/>
+<meta name="twitter:title" content="Twitter&#39;s For You Recommendation Algorithm"/>
+<meta name="twitter:description" content="Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references."/>
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Next Gen Recommender Systems: Real-time reranking on mobile devices",
+        "headline": "Twitter's For You Recommendation Algorithm",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/reranking-on-edge\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  2779 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/reranking-on-edge\/","datePublished": "2023-03-09T00:00:00+00:00","dateModified": "2023-03-09T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/the-twitter-ml-algo\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  1967 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/the-twitter-ml-algo\/","datePublished": "2023-04-04T00:00:00+00:00","dateModified": "2023-04-04T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -126,276 +126,219 @@
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#why-should-we-compute-real-time-recommendations-on-edge-devices">Why should we compute real-time recommendations on edge devices?</a>
+    <li><a href="#twitter-releases-the-algorithm">Twitter Releases &ldquo;The Algorithm&rdquo;</a></li>
+    <li><a href="#the-algorithm">The Algorithm</a>
       <ul>
-        <li><a href="#shortcomings-of-the-existing-system">Shortcomings of the existing system</a></li>
-        <li><a href="#factors-promoting-device-side-computations">Factors promoting device-side computations</a></li>
-        <li><a href="#challenges">Challenges</a></li>
-      </ul>
-    </li>
-    <li><a href="#device-side-computation-paradigms">Device-side computation paradigms</a>
-      <ul>
-        <li><a href="#on-device-inference">On-Device Inference</a>
+        <li><a href="#data-sourcing">Data Sourcing</a></li>
+        <li><a href="#candidate-generation">Candidate Generation</a>
           <ul>
-            <li><a href="#kuaishous-short-video-recommendation-on-mobile-devices">Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices</a>
+            <li><a href="#in-network-tweets">In-Network Tweets</a></li>
+            <li><a href="#out-of-network-tweets">Out-of-Network Tweets</a>
               <ul>
-                <li><a href="#what-input-features-are-used">What input features are used?</a></li>
-                <li><a href="#when-is-the-on-device-reranking-triggered">When is the on-device reranking triggered?</a></li>
-                <li><a href="#model-architecture">Model Architecture</a></li>
-                <li><a href="#results">Results</a></li>
-              </ul>
-            </li>
-            <li><a href="#taobaos-edgerec">Taobao&rsquo;s EdgeRec</a>
-              <ul>
-                <li><a href="#what-input-features-are-used-1">What input features are used?</a></li>
-                <li><a href="#when-is-the-on-device-reranking-triggered-1">When is the on-device reranking triggered?</a></li>
-                <li><a href="#model-architecture-1">Model Architecture</a></li>
-                <li><a href="#results-1">Results</a></li>
+                <li><a href="#social-graph">Social Graph</a></li>
+                <li><a href="#embedding-based-semantic-spaces">Embedding-based Semantic Spaces</a>
+                  <ul>
+                    <li><a href="#simclusters">SimClusters</a></li>
+                    <li><a href="#twhin">TwHIN</a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
           </ul>
         </li>
-        <li><a href="#on-device-learning">On-device Learning</a>
+        <li><a href="#ranking">Ranking</a>
           <ul>
-            <li><a href="#device-cloud-collaborative-learning-dccl-framework">Device-Cloud Collaborative Learning (DCCL) framework</a></li>
-            <li><a href="#collaborative-learning-with-data-augmentation-coda">Collaborative learning with Data Augmentation (CoDA)</a></li>
+            <li><a href="#light-ranking">Light Ranking</a></li>
+            <li><a href="#heavy-ranking">Heavy Ranking</a></li>
           </ul>
         </li>
+        <li><a href="#heuristics--filtering">Heuristics &amp; Filtering</a></li>
+        <li><a href="#mixing">Mixing</a></li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Next Gen Recommender Systems: Real-time reranking on mobile devices</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Twitter&#39;s For You Recommendation Algorithm</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-09">2023-03-09</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-09">2023-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2779 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;14 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-04">2023-04-04</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-04-04">2023-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1967 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
-        src="/posts/2023/03/reranking-on-edge/featured-image.webp"
-        srcset="/posts/2023/03/reranking-on-edge/featured-image.webp, /posts/2023/03/reranking-on-edge/featured-image.webp 1.5x, /posts/2023/03/reranking-on-edge/featured-image.webp 2x"
+        src="/posts/2023/04/the-twitter-ml-algo/featured-image.webp"
+        srcset="/posts/2023/04/the-twitter-ml-algo/featured-image.webp, /posts/2023/04/the-twitter-ml-algo/featured-image.webp 1.5x, /posts/2023/04/the-twitter-ml-algo/featured-image.webp 2x"
         sizes="auto"
-        alt="/posts/2023/03/reranking-on-edge/featured-image.webp"
-        title="/posts/2023/03/reranking-on-edge/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
+        alt="/posts/2023/04/the-twitter-ml-algo/featured-image.webp"
+        title="/posts/2023/04/the-twitter-ml-algo/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#why-should-we-compute-real-time-recommendations-on-edge-devices">Why should we compute real-time recommendations on edge devices?</a>
+    <li><a href="#twitter-releases-the-algorithm">Twitter Releases &ldquo;The Algorithm&rdquo;</a></li>
+    <li><a href="#the-algorithm">The Algorithm</a>
       <ul>
-        <li><a href="#shortcomings-of-the-existing-system">Shortcomings of the existing system</a></li>
-        <li><a href="#factors-promoting-device-side-computations">Factors promoting device-side computations</a></li>
-        <li><a href="#challenges">Challenges</a></li>
-      </ul>
-    </li>
-    <li><a href="#device-side-computation-paradigms">Device-side computation paradigms</a>
-      <ul>
-        <li><a href="#on-device-inference">On-Device Inference</a>
+        <li><a href="#data-sourcing">Data Sourcing</a></li>
+        <li><a href="#candidate-generation">Candidate Generation</a>
           <ul>
-            <li><a href="#kuaishous-short-video-recommendation-on-mobile-devices">Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices</a>
+            <li><a href="#in-network-tweets">In-Network Tweets</a></li>
+            <li><a href="#out-of-network-tweets">Out-of-Network Tweets</a>
               <ul>
-                <li><a href="#what-input-features-are-used">What input features are used?</a></li>
-                <li><a href="#when-is-the-on-device-reranking-triggered">When is the on-device reranking triggered?</a></li>
-                <li><a href="#model-architecture">Model Architecture</a></li>
-                <li><a href="#results">Results</a></li>
-              </ul>
-            </li>
-            <li><a href="#taobaos-edgerec">Taobao&rsquo;s EdgeRec</a>
-              <ul>
-                <li><a href="#what-input-features-are-used-1">What input features are used?</a></li>
-                <li><a href="#when-is-the-on-device-reranking-triggered-1">When is the on-device reranking triggered?</a></li>
-                <li><a href="#model-architecture-1">Model Architecture</a></li>
-                <li><a href="#results-1">Results</a></li>
+                <li><a href="#social-graph">Social Graph</a></li>
+                <li><a href="#embedding-based-semantic-spaces">Embedding-based Semantic Spaces</a>
+                  <ul>
+                    <li><a href="#simclusters">SimClusters</a></li>
+                    <li><a href="#twhin">TwHIN</a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
           </ul>
         </li>
-        <li><a href="#on-device-learning">On-device Learning</a>
+        <li><a href="#ranking">Ranking</a>
           <ul>
-            <li><a href="#device-cloud-collaborative-learning-dccl-framework">Device-Cloud Collaborative Learning (DCCL) framework</a></li>
-            <li><a href="#collaborative-learning-with-data-augmentation-coda">Collaborative learning with Data Augmentation (CoDA)</a></li>
+            <li><a href="#light-ranking">Light Ranking</a></li>
+            <li><a href="#heavy-ranking">Heavy Ranking</a></li>
           </ul>
         </li>
+        <li><a href="#heuristics--filtering">Heuristics &amp; Filtering</a></li>
+        <li><a href="#mixing">Mixing</a></li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="introduction" class="headerLink">
-    <a href="#introduction" class="header-mark"></a>Introduction</h2><p>In the age of information overload, recommender systems have become an indispensable tool in our digital lives to help catalog online content. A lot of large-scale recommender systems today are deployed as a <a href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system" target="_blank" rel="noopener noreferrer">cascade ranking architecture</a> <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Under such &ldquo;cloud-to-edge&rdquo; frameworks, a mobile client initiates a paging request to a cloud server when a user triggers a recommendation scenario, for example by opening their mobile app. And recommendation models on the server side retrieve and return a ranked list of items to be displayed to the user. Often these recommendations are computed in advance on the cloud server.</p>
-<p>An exciting line of research has recently started exploring the potential of extending this recommendation computation to edge devices. This article is intended to help understand the need and advantage of computing real-time recommendations on mobile devices. We will also look at the system design and implementation of some of the commercial recommender systems that are built on this idea and are serving billions of users.</p>
-<h2 id="why-should-we-compute-real-time-recommendations-on-edge-devices" class="headerLink">
-    <a href="#why-should-we-compute-real-time-recommendations-on-edge-devices" class="header-mark"></a>Why should we compute real-time recommendations on edge devices?</h2><h3 id="shortcomings-of-the-existing-system" class="headerLink">
-    <a href="#shortcomings-of-the-existing-system" class="header-mark"></a>Shortcomings of the existing system</h3><p>Due to network bandwidth and latency constraints, the server usually sends a batch of items and a pagination mechanism is implemented on the client. The server only sends the next batch when a recommendation event is triggered on the client, for example, when the user scrolls to the end of the current page. This means that the system is not designed to respond in real time to changing user behavior and interests, and it leads to the following shortcomings.</p>
-<ul>
-<li><strong>Delays in getting system feedback</strong>: If a user makes her interests known earlier on, for example, by positively interacting with the first few videos in the recommended feed, the recommender system on the server can&rsquo;t respond to this feedback until the next batch of videos is requested by the client. Depending on the architecture, it may even take tens of seconds or minutes for the recommender system on the server to process and respond to the newly collected user feedback because the new signals can only be processed at the server end. Also, some of the real-time client-specific features such as network conditions are not available to the cloud model in real-time.</li>
-<li><strong>Delays in adapting to user interests</strong>: If the user interacts with an item on the current page, for example, by leaving positive feedback on a video, it is impossible to adjust the order of the remaining content of the batch, even if there are some videos that closely match the new known user interest.</li>
-</ul>
-<h3 id="factors-promoting-device-side-computations" class="headerLink">
-    <a href="#factors-promoting-device-side-computations" class="header-mark"></a>Factors promoting device-side computations</h3><p>Several other factors help push the idea of cost-effective computation of recommendations on edge devices as mentioned below.</p>
-<ul>
-<li>On short-video platforms like TikTok, Instagram Reels, and YouTube Shorts, the user usually watches a diverse set of short videos in a short period that belong to different topics. In such an environment, real-time user interest is constantly changing. Device-side modeling can help reduce the latency in responding quickly to perceived user interests.</li>
-<li>Computing power on mobile phones has increased exponentially in recent years. For instance, the TI-84 calculator developed by Texas Instruments in 2004 is 350 times faster than Apollo computers and had 32 times more RAM and 14,500 times more ROM <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</li>
-<li>On-device engines like PyTorch Mobile, Google&rsquo;s TFLite, and Apple&rsquo;s CoreML for DNN model inference and even training have also started to gain popularity.</li>
-<li>Hardware-efficient neural network architectures like MobileNets, and model compression techniques based on network pruning or quantization have made it possible to optimize computation for on-device inference.</li>
-<li>Deploying models on the device helps to reduce server congestion.</li>
-<li>It is prohibitive to train the recommender algorithm at the server with embedded personalized behavior sequences for every user.</li>
-<li>Personalized client-side models help to unbias the server-side recommender algorithms from long-tailed users or items. It is common to have discrepancies between training and test data distributions that make the global model not optimal for each user.</li>
-<li>On-device training approaches like Federated Learning also help resolve some of the privacy concerns around using real-time client-specific signals.</li>
-</ul>
-<h3 id="challenges" class="headerLink">
-    <a href="#challenges" class="header-mark"></a>Challenges</h3><ul>
-<li>Data for individual users is often insufficient and sparse to be able to train or fine-tune a model local to the edge device. Few-shot learning also has a higher generalization error and hence a higher likelihood of failing to realize the desired personalization.</li>
-<li>Learning from on-device data often suffers from local optimization in the long term and can lead to overfitting for individual users.</li>
-<li>To respect the mobile data plans and battery consumption on the user device, the models have to be kept small in size and simple to compute with.</li>
-<li>Updating an on-device model is often constrained by factors like Wi-Fi availability and current battery level as well.</li>
-</ul>
-<p>In the on-device learning section, we will look at some of the solutions to handle the first two challenges mentioned above. Whereas in the on-device inference section, we will see some model optimizations and versioning methods to deal with the last two challenges.</p>
-<h2 id="device-side-computation-paradigms" class="headerLink">
-    <a href="#device-side-computation-paradigms" class="header-mark"></a>Device-side computation paradigms</h2><p>We can think of the majority of the prior work done in on-edge recommender systems as belonging to one of the two categories below.</p>
-<ul>
-<li><strong>On-device Inference</strong>: In this strategy, the server sends the pre-trained model(s) to the device, and the device uses this model to run inference. This method saves communication latency between client and server while being able to capture real-time user behavior and system feedback.</li>
-<li><strong>On-device Learning</strong>: A lot of the work done in this category belongs to the Federated recommender systems. This strategy aggregates the on-device trained information from multiple devices and then trains a centralized model on the server. This method overcomes some of the privacy concerns regarding user data usage. Later this article will introduce some alternatives to the federated recommender systems paradigm that do on-device learning.</li>
-</ul>
-<p>Next, we will look at the design philosophy and architecture choices of some industrial large-scale examples of mobile recommender systems paradigms currently serving billions of users.</p>
-<h3 id="on-device-inference" class="headerLink">
-    <a href="#on-device-inference" class="header-mark"></a>On-Device Inference</h3><h4 id="kuaishous-short-video-recommendation-on-mobile-devices" class="headerLink">
-    <a href="#kuaishous-short-video-recommendation-on-mobile-devices" class="header-mark"></a>Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices</h4><p>Chinese social network app, Kuaishou, released a paper describing an on-device inference framework used in their billion-user scale short video application <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. They developed an on-device ranking model that used users&rsquo; real-time feedback of watched videos and client-specific real-time features. Their system can react immediately to users’ implicit or explicit feedback to make appropriate ordering adjustments to remaining candidate videos.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png" title="Kuaishou overall system" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png" data-sub-html="<h2>Kuaishou real-time short video recommender system architecture</h2><p>Kuaishou overall system</p>">
+            </div><div class="content" id="content"><h2 id="twitter-releases-the-algorithm" class="headerLink">
+    <a href="#twitter-releases-the-algorithm" class="header-mark"></a>Twitter Releases &ldquo;The Algorithm&rdquo;</h2><p>Last week, Twitter released a lot of details about the recommendation algorithm that powers their For You feed. The release included an <a href="https://blog.twitter.com/en_us/topics/company/2023/a-new-era-of-transparency-for-twitter" target="_blank" rel="noopener noreferrer">announcement</a>, two new GitHub repositories (<a href="https://github.com/twitter/the-algorithm/" target="_blank" rel="noopener noreferrer">main repo</a>, <a href="https://github.com/twitter/the-algorithm-ml" target="_blank" rel="noopener noreferrer">ml repo</a>), and an accompanying <a href="https://blog.twitter.com/engineering/en_us/topics/open-source/2023/twitter-recommendation-algorithm" target="_blank" rel="noopener noreferrer">post on the engineering blog</a>. Their release also includes some model configs, hyperparameters, input feature descriptions, feature weights, combined score calculation formula, etc. that are immensely valuable for ML practitioners. This article gives an overview of the end-to-end machine learning components made public by Twitter.</p>
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Today marks a new era of transparency for Twitter. 🧵<br><br>We’re sharing much of the source code that powers our platform with the world. Visit our blog to learn more about this initiative: <a href="https://t.co/hTHVpuMDz8">https://t.co/hTHVpuMDz8</a></p>&mdash; Twitter Engineering (@TwitterEng) <a href="https://twitter.com/TwitterEng/status/1641872259320274944?ref_src=twsrc%5Etfw">March 31, 2023</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<h2 id="the-algorithm" class="headerLink">
+    <a href="#the-algorithm" class="header-mark"></a>The Algorithm</h2><p>At a broad level, we can think of Twitter&rsquo;s For You timeline generation as the sequence of following steps that are also common to large-scale recommendation systems.</p>
+<div class="mermaid" id="id-1"></div>
+<p>We will look at each of these components one by one. Note that while Twitter has shared a lot of information on the code and algorithms for most of these steps, they haven&rsquo;t still shared details about components such as input data processing, model configs, serving infrastructure, source code for modules like Candidate Generation, Trust &amp; Safety, Ads, etc.</p>
+<h3 id="data-sourcing" class="headerLink">
+    <a href="#data-sourcing" class="header-mark"></a>Data Sourcing</h3><p>Twitter has previously shared details about its data infrastructure in <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">another blog</a>. Twitter processes close to 500 million daily tweets, and 400 billion real-time events. The event data is sourced from various platforms, storage systems, and distributed databases. The user engagement data is collected from various real-time streams, server, and client-side logs, etc. They also utilize various proprietary tools such as <a href="https://github.com/twitter/scalding" target="_blank" rel="noopener noreferrer">Scalding</a> for batch processing, <a href="https://github.com/apache/incubator-heron" target="_blank" rel="noopener noreferrer">Heron</a> for streaming, and <a href="https://blog.twitter.com/engineering/en_us/a/2014/tsar-a-timeseries-aggregator" target="_blank" rel="noopener noreferrer">TSAR</a> (<strong>T</strong>imeSeries <strong>A</strong>ggregato<strong>R</strong>) for processing temporal signals. In their <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">recent redesign</a> (see figure below) proposal<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> they built an on-premise event processor along with deduplication and BigTable storage on the Google Cloud Platform (GCP). Note that Twitter exactly specified any data schema or preprocessing applied to the data for the recommender system.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png" title="Twitter Data Pipeline" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png" data-sub-html="<h2>Twitter&#39;s redesigned data pipeline. Source: [^1]</h2><p>Twitter Data Pipeline</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png"
-            srcset="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png, /img/posts/2023/reranking-on-edge/kuaishou_overall_system.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_overall_system.png 2x"
+            src="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png"
+            srcset="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png, /img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png 1.5x, /img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png">
-    </a><figcaption class="image-caption">Kuaishou real-time short video recommender system architecture</figcaption>
+            alt="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png">
+    </a><figcaption class="image-caption">Twitter's redesigned data pipeline. Source: [^1]</figcaption>
     </figure></p>
-<p>On the cloud side, we have a traditional recommender system along with a Mobile Ranking Model Training module that uses the input features generated from the access logs from user devices and trains a ranking model. This trained model is exported to TFLite format periodically and sent to the user device for deployment. While responding to the initial paging request, the server also sends the item features for the recommended candidates along with the candidate videos. The client uses these features along with the client-specific features (watched videos and corresponding feedback along with real-time features like network signal) for inference using the on-device ranking model.</p>
-<h5 id="what-input-features-are-used" class="headerLink">
-    <a href="#what-input-features-are-used" class="header-mark"></a>What input features are used?</h5><p>The server-side model primarily focuses on modeling users&rsquo; long-term interests and uses a lot of ID features (user id, video id, crossing features), users&rsquo; watch history, etc. The following table shows the features used by the on-device reranking model. Apart from these, the model also used some engineered cross features such as time since last impression, pXTR, and impression position diffs between with preceding historical item. Note that the server-side features are not used in the on-device model because the offline experiments showed that their information has already been distilled into the predictions from the server model.</p>
-<p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png" title="Kuaishou client-side features" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png">
+<h3 id="candidate-generation" class="headerLink">
+    <a href="#candidate-generation" class="header-mark"></a>Candidate Generation</h3><p>The job of the candidate generation module is to select 1500 most relevant tweets from various sources. The first half of these candidates are from the people that you follow (in-network tweets), while the other half is from the people who you do not follow (out-of-network tweets).</p>
+<h4 id="in-network-tweets" class="headerLink">
+    <a href="#in-network-tweets" class="header-mark"></a>In-Network Tweets</h4><p>Most of the in-network tweets are sourced from Twitter&rsquo;s RealGraph framework (originally deployed in 2012<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>). RealGraph framework uses a directed, weighted graph to model users (tweeps) as nodes. An edge from source to target node indicates that the source user follows the target user or the target user is in the source user&rsquo;s contact book, or the source user recently interacted with the target user. Each type of edge has its own set of features represented by weights, such as days since edge creation, days since last interaction, number of common friends, explicit and implicit engagement statistics, etc. Similarly, nodes have features such as the number of retweets in the last week, number of followers, demographics, PageRank on the follow graph, etc.</p>
+<p>Note that Twitter has also shared the implementation details of its PageRank algorithm called <a href="https://github.com/twitter/the-algorithm/blob/main/src/scala/com/twitter/graph/batch/job/tweepcred/README" target="_blank" rel="noopener noreferrer">TweepCred</a>. A logistic regression model is trained on all of these features to predict interaction in a future time window. Note that the graph itself is updated daily in batch mode. In their announcement, Twitter also mentioned that the logistic regression model was trained several years ago and is in the process of being redesigned.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/real_graph.png" title="Twitter&amp;rsquo;s RealGraph Framework" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/real_graph.png" data-sub-html="<h2>Twitter&#39;s RealGraph Framework. Source: [^2]</h2><p>Twitter&amp;rsquo;s RealGraph Framework</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png"
-            srcset="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png, /img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png 2x"
+            src="/img/posts/2023/the-twitter-ml-algo/real_graph.png"
+            srcset="/img/posts/2023/the-twitter-ml-algo/real_graph.png, /img/posts/2023/the-twitter-ml-algo/real_graph.png 1.5x, /img/posts/2023/the-twitter-ml-algo/real_graph.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png">
-    </a></p>
-<h5 id="when-is-the-on-device-reranking-triggered" class="headerLink">
-    <a href="#when-is-the-on-device-reranking-triggered" class="header-mark"></a>When is the on-device reranking triggered?</h5><p>Kuaishou&rsquo;s interface allows for only one video to occupy the current screen space. At each user swipe, the client system performs reranking with the remaining candidate videos and inserts the top-ranked candidate video at the next position.</p>
-<h5 id="model-architecture" class="headerLink">
-    <a href="#model-architecture" class="header-mark"></a>Model Architecture</h5><p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png" title="Kuaishou model architecture" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png"
-            srcset="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png, /img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png">
-    </a></p>
-<p>Their model also considers interaction among candidate videos. The watch history sequence is modeled using a multi-head attention (MHA) mechanism with Q projected from candidate item features and K, V projected from watch history sequence features. Only one candidate video is considered at a time. Outputs of the two MHA modules are concatenated with target features and other features and passed to a Multi-gate Mixture of Experts (MMoE) to calculate probabilities of the user continuing to watch the next video, watching the video for longer than a threshold like 3 seconds, and liking the video. The loss function is defined as the sum of log losses of each target averaged by the number of training samples. They also proposed a novel beam search strategy to further optimize evaluating all candidates in the target list.</p>
-<h5 id="results" class="headerLink">
-    <a href="#results" class="header-mark"></a>Results</h5><p>Kuaishou deployed this architecture in production to serve over a billion users, and improved effective view, like, and follow by 1.28%, 8.22%, and 13.6% respectively. Their studies also show that each inference had an average cost of 120 ms on the Android platform and 50 ms on the iOS platform. The increase in CPU and memory usage was about 2% each on Android and 0.5% and 1.5% respectively on the iOS platform.</p>
-<h4 id="taobaos-edgerec" class="headerLink">
-    <a href="#taobaos-edgerec" class="header-mark"></a>Taobao&rsquo;s EdgeRec</h4><p>EdgeRec <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> was one of the earliest on-device inference-based recommender systems. It was fully deployed in Alibaba&rsquo;s Taobao application and served billions of users. Through real-time computing on edge devices, EdgeRec can capture users&rsquo; diverse interests in real-time and adjust recommendation results accordingly without making any additional requests to the cloud server.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png" title="EdgeRec System Overview" data-thumbnail="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png" data-sub-html="<h2>EdgeRec system overview. The module on the left was deployed in mobile client and the one of the right was deployed on cloud.</h2><p>EdgeRec System Overview</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png"
-            srcset="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png, /img/posts/2023/reranking-on-edge/edgerec_system_overview.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_system_overview.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png">
-    </a><figcaption class="image-caption">EdgeRec system overview. The module on the left was deployed in mobile client and the one of the right was deployed on cloud.</figcaption>
+            alt="/img/posts/2023/the-twitter-ml-algo/real_graph.png">
+    </a><figcaption class="image-caption">Twitter's RealGraph Framework. Source: [^2]</figcaption>
     </figure></p>
-<p>As shown above, the Client Native module collects user behavior logs (e.g. browsing and click records) and triggers model serving. It also initiates the paging request to the server and stores the features returned from the server along with the corresponding candidate items. It also updates the UI upon receiving the reranked list from the on-device model. The cloud server also uses a versioning strategy to keep the updated model synchronized with the edge devices.</p>
-<h5 id="what-input-features-are-used-1" class="headerLink">
-    <a href="#what-input-features-are-used-1" class="header-mark"></a>What input features are used?</h5><p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/edgerec_features.png" title="EdgeRec Input Features" data-thumbnail="/img/posts/2023/reranking-on-edge/edgerec_features.png" data-sub-html="<h2>Features used in EdgeRec Model</h2><p>EdgeRec Input Features</p>">
+<h4 id="out-of-network-tweets" class="headerLink">
+    <a href="#out-of-network-tweets" class="header-mark"></a>Out-of-Network Tweets</h4><h5 id="social-graph" class="headerLink">
+    <a href="#social-graph" class="header-mark"></a>Social Graph</h5><p>For some of the out-of-network tweets, the retrieval process uses a graph processing engine called GraphJet<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. GraphJet maintains a dynamic (real-time), undirected, bipartite graph between users and tweets in memory on a single server (no partitioning!) through clever edge encoding and dynamic memory allocation schemes. The nodes in the graph represent the users and the tweets, while the edges represent the actions (favorite, tweet, retweet, reply, click, etc.) within a rolling temporal window. To ensure the efficient growth of the graph structure, GraphJet maintains a list of temporally-ordered index segments such that only the latest segment can be written into (see the figure below).</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/graphjet.png" title="GraphJet Architecture" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/graphjet.png" data-sub-html="<h2>GraphJet Architecture. Source: [^3]</h2><p>GraphJet Architecture</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/edgerec_features.png"
-            srcset="/img/posts/2023/reranking-on-edge/edgerec_features.png, /img/posts/2023/reranking-on-edge/edgerec_features.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_features.png 2x"
+            src="/img/posts/2023/the-twitter-ml-algo/graphjet.png"
+            srcset="/img/posts/2023/the-twitter-ml-algo/graphjet.png, /img/posts/2023/the-twitter-ml-algo/graphjet.png 1.5x, /img/posts/2023/the-twitter-ml-algo/graphjet.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/edgerec_features.png">
-    </a><figcaption class="image-caption">Features used in EdgeRec Model</figcaption>
+            alt="/img/posts/2023/the-twitter-ml-algo/graphjet.png">
+    </a><figcaption class="image-caption">GraphJet Architecture. Source: [^3]</figcaption>
     </figure></p>
-<p>The figure above shows the collection of features used in EdgeRec. Variables $e_{1}$ to $e_{7}$ are &ldquo;Item Exposure User Action&rdquo; features used in the server-side recommender system that describes how the user behaves upon exposure to an item. Variables $d_{1}$ to $d_{12}$ are &ldquo;Item Page-View User Action&rdquo; features used in the mobile side model that describes how the user behaves on the item detail page after clicking an item. Variables $p_{1}$ to $p_{7}$ are the item features.</p>
-<h5 id="when-is-the-on-device-reranking-triggered-1" class="headerLink">
-    <a href="#when-is-the-on-device-reranking-triggered-1" class="header-mark"></a>When is the on-device reranking triggered?</h5><p>EdgeRec system sets the following three trigger points for invoking reranking of &ldquo;unseen&rdquo; candidate items: (1) the user clicks an item, (2) the user deletes an item (i.e. long press) and (3) k items have been exposed without being clicked.</p>
-<h5 id="model-architecture-1" class="headerLink">
-    <a href="#model-architecture-1" class="header-mark"></a>Model Architecture</h5><p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/edgerec_architecture.png" title="EdgeRec Architecture" data-thumbnail="/img/posts/2023/reranking-on-edge/edgerec_architecture.png">
+<p>A SALSA (<strong>S</strong>tochastic <strong>A</strong>pproach for <strong>L</strong>ink-<strong>S</strong>tructure <strong>A</strong>nalysis) random walk over this graph is done to get the tweets that a might be interested in (for example, tweets that the user&rsquo;s connection recently engaged with). A seed set of user nodes called the circle of trust (personalized PageRank), is used for cold users or users with no recent engagement history. Similar to RealGraph, a logistic regression model is used to predict the probability of engagement. GraphJet is implemented in Java, and powers about 15% of tweets in the For You feed.</p>
+<h5 id="embedding-based-semantic-spaces" class="headerLink">
+    <a href="#embedding-based-semantic-spaces" class="header-mark"></a>Embedding-based Semantic Spaces</h5><p>The majority of out-of-network tweets are retrieved through embedding-based methods described below.</p>
+<h6 id="simclusters" class="headerLink">
+    <a href="#simclusters" class="header-mark"></a>SimClusters</h6><p>Twitter has used its SimClusters<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> embedding space to identify 145,000 communities that are either based on a common theme (such as &ldquo;machine learning&rdquo;, or &ldquo;K-pop&rdquo;), or social relationships (such as users who went to the same school). Using SimClusters, Twitter has a representation layer where both users and content are mapped in the same space. First, using a user-user graph (based on follow relationship) k number of possible overlapping communities are discovered. While this can be technically done using a sparse non-negative matrix factorization (NMF) technique, Twitter  devised a custom matrix factorization technique (called <a href="https://github.com/twitter/sbf" target="_blank" rel="noopener noreferrer">Sparse Binary Factorization</a> or SBF) that can also scale for large graphs. Next, an item representation can be calculated using a simple aggregation, such as an exponentially time-decayed average, over the representations of all the users who engaged with that item (see the figure below).</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png" title="SimClusters" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png" data-sub-html="<h2>Overview of SimClusters. Source: [^4]</h2><p>SimClusters</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/edgerec_architecture.png"
-            srcset="/img/posts/2023/reranking-on-edge/edgerec_architecture.png, /img/posts/2023/reranking-on-edge/edgerec_architecture.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_architecture.png 2x"
+            src="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png"
+            srcset="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png, /img/posts/2023/the-twitter-ml-algo/simclusterspng.png 1.5x, /img/posts/2023/the-twitter-ml-algo/simclusterspng.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/edgerec_architecture.png">
-    </a></p>
-<p>As shown in the figure above, EdgeRec models &ldquo;Item Exposure Behavior Sequence&rdquo; and &ldquo;Item Page-View Behavior Sequence&rdquo; separately because the item clicks are more sparse than the item exposures. A simple GRU layer is used as the Encoder. The context-aware reranking module uses the attention technique to automatically find parts of user behavior context that are relevant to ranking the encoded candidate items. This behavior attention also employs Item Exposure (IE) and Item Page-View (IPV) contexts.</p>
-<h5 id="results-1" class="headerLink">
-    <a href="#results-1" class="header-mark"></a>Results</h5><p>Using EdgeRec Taobao was able to achieve up to an additional 1.6% views, 7.2% click-through rate, 8.9% clicks, and 10.9% purchase amount in an online A/B experiment. The delay time for capturing user behavior was reduced from 1 minute to 300 ms. On average, the on-device model size was around 3 MB.</p>
-<h3 id="on-device-learning" class="headerLink">
-    <a href="#on-device-learning" class="header-mark"></a>On-device Learning</h3><p>Due to data heterogeneity, cloud models trained over the global data are non-optimal to individual users&rsquo; local data distribution. To deal with model personalization, on-device learning is a great solution. However, as explained earlier in the &ldquo;challenges&rdquo; section, user data on local devices is often very small and sparse which leads to overfitting and loss of generalization. In this section, we will mainly focus on solutions that can help fix this problem.</p>
-<h4 id="device-cloud-collaborative-learning-dccl-framework" class="headerLink">
-    <a href="#device-cloud-collaborative-learning-dccl-framework" class="header-mark"></a>Device-Cloud Collaborative Learning (DCCL) framework</h4><p>As mentioned earlier, a lot of work done under the on-device learning paradigm belongs to the Federated Recommender Systems. Under these systems, on-device learning is used to compute gradients over the local data which are then aggregated over multiple devices and used to update a central model&rsquo;s parameters by approaches like federated averaging (FedAvg), etc. For example, Qi et al.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> by applying Federated Learning and differential privacy for news recommendation use case, and Lin et al.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> accounted for storage, power, and network bandwidth to distribute gradient computation among user devices and cloud servers. This centralized cloud model-based traditional approach follows the &ldquo;model-over-data&rdquo; paradigm. One limitation of federated learning is that it assumes the data never leaves the user device, and hence there is no concept of global data. Such a scenario is unlikely in modern recommender systems because most user data has already been uploaded to the cloud and the cloud server still does a majority of personalization computations.</p>
-<p>In DCCL Yao et al.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> proposed an alternative &ldquo;model-over-models&rdquo; paradigm to model the collaboration between the device and the cloud. Under this framework, the cloud model is frozen and the edge devices use patch learning method <sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> to learn the parameters of a trainable patch function using sparse local samples. These patches are then sent to the server where the cloud model uses a distillation process with these patches as meaningful priors to optimize the cloud model.</p>
-<h4 id="collaborative-learning-with-data-augmentation-coda" class="headerLink">
-    <a href="#collaborative-learning-with-data-augmentation-coda" class="header-mark"></a>Collaborative learning with Data Augmentation (CoDA)</h4><p>Gu et al. proposed a device-cloud collaborative learning framework called CoDA where the edge model also receives extra samples from the cloud&rsquo;s global pool of data to augment their local dataset for training the on-device model. The edge device also maintains a personalized sample classifier for further filtering out some of the samples received from the cloud. Global models are trained with all users&rsquo; data but do inferences over each user&rsquo;s local data. CoDA attempts to address this data discrepancy so that the model can be made optimal for each user. In the CoDA framework, an on-device model is trained with both local data and the augmentation data received from the server.</p>
-<p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/coda.png" title="CoDA workflow" data-thumbnail="/img/posts/2023/reranking-on-edge/coda.png">
+            alt="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png">
+    </a><figcaption class="image-caption">Overview of SimClusters. Source: [^4]</figcaption>
+    </figure></p>
+<p>Twitter retrieves out-of-network tweets from these clusters by simply identifying the tweets that have the highest dot-product value with the interest representations, along with an item-based collaborative filtering technique. A high similarity score means that the corresponding tweet will be associated more with that community.</p>
+<h6 id="twhin" class="headerLink">
+    <a href="#twhin" class="header-mark"></a>TwHIN</h6><p>Twitter uses its knowledge graph embeddings, called TwHIN (<strong>Tw</strong>itter&rsquo;s <strong>H</strong>eterogeneous <strong>I</strong>nformation <strong>N</strong>etwork) embeddings<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, for candidate generation and also as features for ranking and prediction tasks. These are pretrained generalizable embeddings applicable to users, tweets, advertisements, etc. These embeddings are learned from disparate network data (heterogeneous relationships) to capture a diverse set of signals, such as social signals, content or advertisement engagement signals, etc while simultaneously addressing data sparsity. For the learning process, Twitter uses positive and negative triplets (source entity, edge type, target entity) with contrastive loss and the training objective to find entity representations that effectively predict which other entities are directly linked by a certain relation. Twitter has released the source code for training TwHIN embeddings <a href="https://github.com/twitter/the-algorithm-ml/tree/main/projects/twhin" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>At this end of candidate retrieval, we have 1500 tweets ready to be ranked for the user&rsquo;s For You feed.</p>
+<h3 id="ranking" class="headerLink">
+    <a href="#ranking" class="header-mark"></a>Ranking</h3><h4 id="light-ranking" class="headerLink">
+    <a href="#light-ranking" class="header-mark"></a>Light Ranking</h4><p>A simple and efficient logistic-regression-based light ranker is used for ranking both in-network and out-of-network tweets. Twitter&rsquo;s core retrieval system (called EarlyBird<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>) builds and maintains inverted indexes required to perform the real-time search and retrieval of tweets. Instead of relying on the full social graph, In <a href="https://blog.twitter.com/engineering/en_us/a/2011/the-engineering-behind-twitter-s-new-search-experience" target="_blank" rel="noopener noreferrer">earlier iterations</a>, EarlyBird utilized Bloom Filter to compress relevant social graph information for each user. Apart from being space-efficient, this implementation also enabled constant-time set-membership operations. The logistic regression model uses various static and real-time features listed <a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/scripts/models/earlybird/README.md" target="_blank" rel="noopener noreferrer">here</a>. Twitter notes that &ldquo;<em>the current model was last trained several years ago, and uses some very strange features.</em>&rdquo; and they are working on training a new model.</p>
+<p>The source code for this light ranking is released <a href="https://github.com/twitter/the-algorithm/tree/main/src/python/twitter/deepbird/projects/timelines/scripts/models/earlybird" target="_blank" rel="noopener noreferrer">here</a>, along with the details about input features(<a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/configs/recap_earlybird/feature_config.py" target="_blank" rel="noopener noreferrer">in-network</a>, <a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/configs/rectweet_earlybird/feature_config.py" target="_blank" rel="noopener noreferrer">out-of-network</a>), <a href="https://github.com/twitter/the-algorithm/blob/main/cr-mixer/server/src/main/scala/com/twitter/cr_mixer/similarity_engine/EarlybirdTensorflowBasedSimilarityEngine.scala#L142" target="_blank" rel="noopener noreferrer">feature weights</a>, and <a href="https://github.com/twitter/the-algorithm/blob/ec83d01dcaebf369444d75ed04b3625a0a645eb9/src/thrift/com/twitter/search/common/ranking/ranking.thrift#L14-L21" target="_blank" rel="noopener noreferrer">time decay</a> used by the model. It is mentioned that EarlyBird ranks a lesser number of tweets than heavy ranker, but the exact order and counts corresponding to light ranker execution are not specified.</p>
+<h4 id="heavy-ranking" class="headerLink">
+    <a href="#heavy-ranking" class="header-mark"></a>Heavy Ranking</h4><p>Twitter uses MaskNet<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> to perform computationally costlier ranking for the 1500 retrieved tweets. Similar to a lot of other rankers in the Click-Through Rate (CTR) estimation domain, MaskNet emphasizes effectively capturing the high-order feature interactions in an explicit manner similar to the earlier Deep &amp; Cross Network (DCN). MaskNet introduces a basic building block called a MaskBlock that contains three components: an &ldquo;instance-guided mask&rdquo;, a feed-forward hidden layer, and a layer normalization module. The instance-guided mask performs element-wise product on feature embeddings and feed-forward layers to highlight the global context information. Twitter uses the parallel MaskNet variant (~48M parameters) where multiple MaskBlocks on feature embeddings are applied in parallel (similar to MMoE design).</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/masknet.png" title="MaskNet" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/masknet.png" data-sub-html="<h2>Instance-guided Mask(left). Parallel variant of MaskNet (right). Souce: [^7]</h2><p>MaskNet</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/coda.png"
-            srcset="/img/posts/2023/reranking-on-edge/coda.png, /img/posts/2023/reranking-on-edge/coda.png 1.5x, /img/posts/2023/reranking-on-edge/coda.png 2x"
+            src="/img/posts/2023/the-twitter-ml-algo/masknet.png"
+            srcset="/img/posts/2023/the-twitter-ml-algo/masknet.png, /img/posts/2023/the-twitter-ml-algo/masknet.png 1.5x, /img/posts/2023/the-twitter-ml-algo/masknet.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/coda.png">
-    </a></p>
-<p>The cloud server uses a K nearest-neighbor (KNN) method on user feature vectors to find samples similar to the current user behavior. The server then desensitizes and anonymizes these samples before sending them to the end user&rsquo;s device. The user device uses this augmented data and the local data for training and evaluating a personalized binary classifier. This classifier is trained to identify local samples from the combined data, and the augmentation samples with high scores (i.e. false positives) are considered close enough to be used for the on-device reranking model. The remaining augmentation data is dropped. Both classification and reranking inference tasks use models based on Deep Interest Network architecture <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
+            alt="/img/posts/2023/the-twitter-ml-algo/masknet.png">
+    </a><figcaption class="image-caption">Instance-guided Mask(left). Parallel variant of MaskNet (right). Souce: [^7]</figcaption>
+    </figure></p>
+<p>Twitter has released its source code for MaskNet implementation <a href="https://github.com/twitter/the-algorithm-ml/tree/main/projects/home/recap" target="_blank" rel="noopener noreferrer">here</a>, along with <a href="https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/config/local_prod.yaml" target="_blank" rel="noopener noreferrer">model hyperparameters</a>, and the details of aggregate, non-aggregate, and embedding <a href="https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/FEATURES.md" target="_blank" rel="noopener noreferrer">input features</a> used by the model.</p>
+<p>MaskNet outputs 10 different probabilities, and the final score calculation is calculated by weighing the output probabilities as shown below. These weights are <a href="https://github.com/twitter/the-algorithm-ml/blob/78c3235eee5b4e111ccacb7d48e80eca019e480c/projects/home/recap/config/local_prod.yaml#L1" target="_blank" rel="noopener noreferrer">hard coded</a> and were likely fixed after a lot of A/B testing.</p>
+<p>$$ Combined Score = P(favorite) \times 0.5 + max(P(good click and reply or like), P(good click and stay for at least 2 minutes)) \times 11 + P(negative reaction) \times -74 + P(author profile clicked and profile engaged) \times 12 + P(reply) \times 27 + P(reply and author engaged) \times 75 + P(report) \times -369 + P(retweet) * 1 + P(watch half the video) \times 0.005 $$</p>
+<h3 id="heuristics--filtering" class="headerLink">
+    <a href="#heuristics--filtering" class="header-mark"></a>Heuristics &amp; Filtering</h3><p>Twitter applies a lot of heuristics and filters on the ranked list of tweets to create a balanced and diverse For You feed. The following list contains some prominent examples.</p>
+<ul>
+<li>The <a href="https://github.com/twitter/the-algorithm/tree/main/visibilitylib" target="_blank" rel="noopener noreferrer">Visibility Filtering module</a> removes <a href="https://github.com/twitter/the-algorithm/blob/main/visibilitylib/src/main/scala/com/twitter/visibility/rules/VisibilityPolicy.scala" target="_blank" rel="noopener noreferrer">various spam</a> along with the tweet from accounts you have blocked or muted.</li>
+<li>Remove out-of-network competitor URL tweets. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/functional_component/filter/OutOfNetworkCompetitorURLFilter.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
+<li>Infuse diversity by applying a penalty to too many consecutive tweets from the same author. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/product/scored_tweets/scorer/DiversityDiscountProvider.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
+<li>Lower the relevance score for tweets with the author or engaged audience for whom the user had given negative feedback in the past. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/functional_component/scorer/FeedbackFatigueScorer.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
+<li>Remove out-of-network tweets that do not have a second-degree connection. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/functional_component/scorer/OONTweetScalingScorer.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
+<li>Boost Twitter Blue Verified authors by a factor of 4.0 for in-network tweets and 2.0 for out-of-network tweets. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/param/HomeGlobalParams.scala#L89" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
+</ul>
+<h3 id="mixing" class="headerLink">
+    <a href="#mixing" class="header-mark"></a>Mixing</h3><p>As the last step, the Home Mixer system blends together non-tweet content like ads, promotions, follow recommendations, etc. to the list of ranked and filtered tweets. The output of this step is the final feed that gets sent and displayed on the end-user device.</p>
 <h2 id="summary" class="headerLink">
-    <a href="#summary" class="header-mark"></a>Summary</h2><p>This article explained the shortcomings of a cloud server model trained on global data for serving personalized recommendations. It introduced on-device inference and on-device learning paradigms which aim to timely capture rich user behavior and respond to users&rsquo; changing demands in real time. We also looked at system design choices and implementation details of some exemplar systems from different industrial applications that have served recommendations to billions of users.</p>
+    <a href="#summary" class="header-mark"></a>Summary</h2><p>Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references.</p>
 <h2 id="references" class="headerLink">
     <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>Two Tower Model Architecture: Current State and Promising Extensions. Cascade Ranking System: <a href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system" target="_blank" rel="noopener noreferrer">https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Processing billions of events in real time at Twitter. Lu Zhang, Chukwudiuto Malife, 22 October 2021. <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>Your smartphone is millions of times more powerful than the Apollo 11 guidance computers. <a href="https://www.zmescience.com/science/news-science/smartphone-power-compared-to-apollo-432/" target="_blank" rel="noopener noreferrer">https://www.zmescience.com/science/news-science/smartphone-power-compared-to-apollo-432/</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Kamath, K.Y., Sharma, A., Wang, D., &amp; Yin, Z. (2014). RealGraph: User Interaction Prediction at Twitter.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Gong, X., Feng, Q., Zhang, Y., Qin, J., Ding, W., Li, B., &amp; Jiang, P. (2022). Real-time Short Video Recommendation on Mobile Devices. <em>Proceedings of the 31st ACM International Conference on Information &amp; Knowledge Management</em>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Sharma, A., Jiang, J., Bommannavar, P., Larson, B., &amp; Lin, J.J. (2016). GraphJet: Real-Time Content Recommendations at Twitter. <em>Proc. VLDB Endow., 9</em>, 1281-1292.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Gong, Yu &amp; Jiang, Ziwen &amp; Zhao, Kaiqi &amp; Liu, Qingwen &amp; Ou, Wenwu. (2020). EdgeRec: Recommender System on Edge in Mobile Taobao.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Satuluri, V., Wu, Y., Zheng, X., Qian, Y., Wichers, B., Dai, Q., Tang, G.M., Jiang, J., &amp; Lin, J.J. (2020). SimClusters: Community-Based Representations for Heterogeneous Recommendations at Twitter. <em>Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>Qi, Tao &amp; Wu, Fangzhao &amp; Wu, Chuhan &amp; Huang, Yongfeng &amp; Xie, Xing. (2020). Privacy-Preserving News Recommendation Model Training via Federated Learning.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>El-Kishky, A., Markovich, T., Park, S., Verma, C.K., Kim, B., Eskander, R., Malkov, Y., Portman, F., Samaniego, S., Xiao, Y., &amp; Haghighi, A. (2022). TwHIN: Embedding the Twitter Heterogeneous Information Network for Personalized Recommendation. <em>Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</em>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>Lin, Yujie &amp; Ren, Pengjie &amp; Chen, Zhumin &amp; Ren, Zhaochun &amp; Yu, Dongxiao &amp; Ma, Jun &amp; Rijke, Maarten &amp; Cheng, Xiuzhen. (2020). Meta Matrix Factorization for Federated Rating Predictions. 981-990. 10.1145/3397271.3401081.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Busch, M., Gade, K., Larson, B., Lok, P., Luckenbill, S.B., &amp; Lin, J.J. (2012). Earlybird: Real-Time Search at Twitter. <em>2012 IEEE 28th International Conference on Data Engineering</em>, 1360-1369.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
-<p>Yao, Jiangchao &amp; Wang, Feng &amp; Jia, Kunyang &amp; Han, Bo &amp; Zhou, Jingren &amp; Yang, Hongxia. (2021). Device-Cloud Collaborative Learning for Recommendation.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:8">
-<p>Yuan, F., He, X., Karatzoglou, A., &amp; Zhang, L. (2020). Parameter-Efficient Transfer from Sequential Behaviors for User Modeling and Recommendation. <em>Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval</em>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:9">
-<p>Zhou, Guorui &amp; Gai, Kun &amp; Zhu, Xiaoqiang &amp; Song, Chenru &amp; Fan, Ying &amp; Zhu, Han &amp; Ma, Xiao &amp; Yan, Yanghui &amp; Jin, Junqi &amp; Li, Han. (2018). Deep Interest Network for Click-Through Rate Prediction. 1059-1068. 10.1145/3219819.3219823.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Wang, Z., She, Q., &amp; Zhang, J. (2021). MaskNet: Introducing Feature-Wise Multiplication to CTR Ranking Models by Instance-Guided Mask. <em>ArXiv, abs/2102.07619</em>.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
@@ -406,20 +349,6 @@
 
 <h2>Related Content</h2>
 <div class="related-container">
-    <div class="related-item-container">
-            <div class="related-image">
-                <a href="/posts/2023/04/the-twitter-ml-algo/"><img
-        
-        loading="lazy"
-        src="/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp"
-        srcset="/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp, /posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp 1.5x, /posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp 2x"
-        sizes="auto"
-        alt="/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp"
-        title="/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp" height="200" width="400"></a>
-            </div><h2 class="related-title">
-                <a href="/posts/2023/04/the-twitter-ml-algo/">Twitter&#39;s For You Recommendation Algorithm</a>
-            </h2>
-        </div>
     <div class="related-item-container">
             <div class="related-image">
                 <a href="/posts/2023/03/contrastive-video-representations/"><img
@@ -460,6 +389,20 @@
         title="/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp" height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/03/llm-for-text-ranking/">Zero and Few Shot Text Retrieval and Ranking Using Large Language Models</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/03/reranking-on-edge/"><img
+        
+        loading="lazy"
+        src="/posts/2023/03/reranking-on-edge/featured-image-preview.webp"
+        srcset="/posts/2023/03/reranking-on-edge/featured-image-preview.webp, /posts/2023/03/reranking-on-edge/featured-image-preview.webp 1.5x, /posts/2023/03/reranking-on-edge/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/03/reranking-on-edge/featured-image-preview.webp"
+        title="/posts/2023/03/reranking-on-edge/featured-image-preview.webp" height="200" width="400"></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/03/reranking-on-edge/">Next Gen Recommender Systems: Real-time reranking on mobile devices</a>
             </h2>
         </div>
     <div class="related-item-container">
@@ -1124,14 +1067,14 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-03-09</span>
+                <span>Updated on 2023-04-04</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-via="_reachsumit" data-hashtags="literature review,recsys,ranking"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
+                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-via="_reachsumit" data-hashtags="literature review,recsys,ranking"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -1143,8 +1086,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/2023/03/two-tower-model/" class="prev" rel="prev" title="Two Tower Model Architecture: Current State and Promising Extensions"><i class="fas fa-angle-left fa-fw"></i>Two Tower Model Architecture: Current State and Promising Extensions</a>
-            <a href="/posts/2023/03/llm-for-text-ranking/" class="next" rel="next" title="Zero and Few Shot Text Retrieval and Ranking Using Large Language Models">Zero and Few Shot Text Retrieval and Ranking Using Large Language Models<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/2023/03/contrastive-video-representations/" class="prev" rel="prev" title="Self-Supervised Contrastive Approaches for Video Representation Learning"><i class="fas fa-angle-left fa-fw"></i>Self-Supervised Contrastive Approaches for Video Representation Learning</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
@@ -1161,8 +1103,8 @@
         </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/mermaid/mermaid.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"desktop-header-typeit":"Sumit's Diary","id-1":"graph LR;\r\n    A(Data Sourcing) --\u003e B(Candidate Generation)\r\n    B --\u003e C(Ranking)\r\n    C --\u003e D(Heuristics \u0026 Filtering)\r\n    D --\u003e E(Mixing)\r","mobile-header-typeit":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"mermaid":true,"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@8.13.3/dist/mermaid.min.js" defer></script><script type="text/javascript" src="/js/mermaid.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-171612692-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-171612692-1" async></script></div>

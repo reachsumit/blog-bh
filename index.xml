@@ -4,9 +4,18 @@
         <link>https://blog.reachsumit.com/</link>
         <description>Welcome to Sumit Kumar&#39;s Personal Blog!</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
-            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 27 Mar 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.reachsumit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Twitter&#39;s For You Recommendation Algorithm</title>
+    <link>https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/</link>
+    <pubDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references.]]></description>
+</item><item>
     <title>Self-Supervised Contrastive Approaches for Video Representation Learning</title>
     <link>https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/</link>
     <pubDate>Mon, 27 Mar 2023 00:00:00 &#43;0000</pubDate><author>
@@ -88,14 +97,5 @@ IntroductionProblem with sparse inputsA variety of Information Retrieval and Da
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2022/09/explicit-implicit-cf/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>This article explains what explicit and implicit feedback data means for recommender systems. We discuss their characteristics and peculiarities concerning collaborative filtering based algorithms. Then we go over one of the most popular collaborative filtering algorithms for implicit data and implement it in Python with an example dataset.]]></description>
-</item><item>
-    <title>Comparing NoSQL Models: A Guide for Selecting the Best-fitting Database Model</title>
-    <link>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</link>
-    <pubDate>Mon, 20 Jun 2022 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2022/06/nosql-models-comparison/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2022/06/nosql-models-comparison/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>This article will explain the basic concepts of each category of the NoSQL database models and analyze the characteristics of the data that each category of the NoSQL database is suitable for processing.]]></description>
 </item></channel>
 </rss>
