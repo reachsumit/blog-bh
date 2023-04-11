@@ -4,7 +4,18 @@
         <link>https://blog.reachsumit.com/tags/literature-review/</link>
         <description>literature review - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
-            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/literature-review/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/literature-review/" rel="self" type="application/rss+xml" /><item>
+    <title>Zero and Few Shot Recommender Systems based on Large Language Models</title>
+    <link>https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/</link>
+    <pubDate>Mon, 10 Apr 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/04/llm-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div><p>Recent developments in Large Language Models (LLMs) have brought a significant paradigm shift in Natural Language Processing (NLP) domain. These pretrained language models encode an extensive amount of world knowledge, and they can be applied to a multitude of downstream NLP applications with zero or just a handful of demonstrations.</p>
+<p>While existing recommender systems mainly focus on behavior data, large language models (LLMs) encode extensive world knowledge mined from large-scale web corpora. Hence these LLMs store knowledge that can complement the behavior data. For example, an LLM, like ChatGPT, can easily recommend buying turkey on Thanksgiving day, in a zero-shot manner, even without having click behavior data related to turkeys or Thanksgiving.</p>
+<p>Many researchers have recently proposed different approaches to building recommender systems using LLMs. These methods convert different recommendation tasks into either language understanding or language generation templates. This article highlights the prominent work done on this theme.</p>]]></description>
+</item><item>
     <title>Twitter&#39;s For You Recommendation Algorithm</title>
     <link>https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/</link>
     <pubDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</pubDate><author>
@@ -86,14 +97,5 @@
                 <img src="/posts/2022/11/sparse-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Many machine learning domains, such as recommender systems, targeted advertisement, search ranking, and text analysis contain highly sparse data because of the large categorical variable domains. This sparsity makes it hard for ML algorithms to model second-order and above feature interactions. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed for estimating interactions from sparse data.
 IntroductionProblem with sparse inputsA variety of Information Retrieval and Data Mining tasks, such as Recommender Systems, Targeted Advertising, Search Ranking, etc.]]></description>
-</item><item>
-    <title>Collaborative Filtering based Recommender Systems for Implicit Feedback Data</title>
-    <link>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</link>
-    <pubDate>Sun, 25 Sep 2022 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2022/09/explicit-implicit-cf/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>This article explains what explicit and implicit feedback data means for recommender systems. We discuss their characteristics and peculiarities concerning collaborative filtering based algorithms. Then we go over one of the most popular collaborative filtering algorithms for implicit data and implement it in Python with an example dataset.]]></description>
 </item></channel>
 </rss>

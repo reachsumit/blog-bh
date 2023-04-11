@@ -5,33 +5,37 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title>Twitter&#39;s For You Recommendation Algorithm - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Twitter&#39;s For You Recommendation Algorithm" />
-<meta property="og:description" content="Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references." />
+    <title>Zero and Few Shot Recommender Systems based on Large Language Models - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Zero and Few Shot Recommender Systems based on Large Language Models" />
+<meta property="og:description" content="Recent developments in Large Language Models (LLMs) have brought a significant paradigm shift in Natural Language Processing (NLP) domain. These pretrained language models encode an extensive amount of world knowledge, and they can be applied to a multitude of downstream NLP applications with zero or just a handful of demonstrations.
+While existing recommender systems mainly focus on behavior data, large language models (LLMs) encode extensive world knowledge mined from large-scale web corpora. Hence these LLMs store knowledge that can complement the behavior data. For example, an LLM, like ChatGPT, can easily recommend buying turkey on Thanksgiving day, in a zero-shot manner, even without having click behavior data related to turkeys or Thanksgiving.
+Many researchers have recently proposed different approaches to building recommender systems using LLMs. These methods convert different recommendation tasks into either language understanding or language generation templates. This article highlights the prominent work done on this theme." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-04-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-04-04T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/featured-image-preview.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-10T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp"/>
-<meta name="twitter:title" content="Twitter&#39;s For You Recommendation Algorithm"/>
-<meta name="twitter:description" content="Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references."/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/featured-image-preview.webp"/>
+<meta name="twitter:title" content="Zero and Few Shot Recommender Systems based on Large Language Models"/>
+<meta name="twitter:description" content="Recent developments in Large Language Models (LLMs) have brought a significant paradigm shift in Natural Language Processing (NLP) domain. These pretrained language models encode an extensive amount of world knowledge, and they can be applied to a multitude of downstream NLP applications with zero or just a handful of demonstrations.
+While existing recommender systems mainly focus on behavior data, large language models (LLMs) encode extensive world knowledge mined from large-scale web corpora. Hence these LLMs store knowledge that can complement the behavior data. For example, an LLM, like ChatGPT, can easily recommend buying turkey on Thanksgiving day, in a zero-shot manner, even without having click behavior data related to turkeys or Thanksgiving.
+Many researchers have recently proposed different approaches to building recommender systems using LLMs. These methods convert different recommendation tasks into either language understanding or language generation templates. This article highlights the prominent work done on this theme."/>
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Twitter's For You Recommendation Algorithm",
+        "headline": "Zero and Few Shot Recommender Systems based on Large Language Models",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/the-twitter-ml-algo\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  1967 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/the-twitter-ml-algo\/","datePublished": "2023-04-04T00:00:00+00:00","dateModified": "2023-04-04T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/llm-for-recsys\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, LLM","wordcount":  1922 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/llm-for-recsys\/","datePublished": "2023-04-10T00:00:00+00:00","dateModified": "2023-04-10T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -126,223 +130,220 @@
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
-    <li><a href="#twitter-releases-the-algorithm">Twitter Releases &ldquo;The Algorithm&rdquo;</a></li>
-    <li><a href="#the-algorithm">The Algorithm</a>
+    <li><a href="#why-should-you-use-llms-for-building-recommendation-systems">Why should you use LLMs for building recommendation systems?</a></li>
+    <li><a href="#pretraining-foundation-language-model-on-recommendation-tasks">Pretraining Foundation Language Model on Recommendation Tasks</a></li>
+    <li><a href="#fine-tuning-pretrained-language-models">Fine-Tuning Pretrained Language Models</a></li>
+    <li><a href="#prompt-tuning-pretrained-language-models">Prompt-Tuning Pretrained Language Models</a>
       <ul>
-        <li><a href="#data-sourcing">Data Sourcing</a></li>
-        <li><a href="#candidate-generation">Candidate Generation</a>
-          <ul>
-            <li><a href="#in-network-tweets">In-Network Tweets</a></li>
-            <li><a href="#out-of-network-tweets">Out-of-Network Tweets</a>
-              <ul>
-                <li><a href="#social-graph">Social Graph</a></li>
-                <li><a href="#embedding-based-semantic-spaces">Embedding-based Semantic Spaces</a>
-                  <ul>
-                    <li><a href="#simclusters">SimClusters</a></li>
-                    <li><a href="#twhin">TwHIN</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="#ranking">Ranking</a>
-          <ul>
-            <li><a href="#light-ranking">Light Ranking</a></li>
-            <li><a href="#heavy-ranking">Heavy Ranking</a></li>
-          </ul>
-        </li>
-        <li><a href="#heuristics--filtering">Heuristics &amp; Filtering</a></li>
-        <li><a href="#mixing">Mixing</a></li>
+        <li><a href="#lmrecsys">LMRecSys</a></li>
+        <li><a href="#nir">NIR</a></li>
+        <li><a href="#chat-rec">Chat-REC</a></li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Twitter&#39;s For You Recommendation Algorithm</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Zero and Few Shot Recommender Systems based on Large Language Models</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-04">2023-04-04</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-04-04">2023-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1967 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-10">2023-04-10</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-04-10">2023-04-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1922 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
-        src="/posts/2023/04/the-twitter-ml-algo/featured-image.webp"
-        srcset="/posts/2023/04/the-twitter-ml-algo/featured-image.webp, /posts/2023/04/the-twitter-ml-algo/featured-image.webp 1.5x, /posts/2023/04/the-twitter-ml-algo/featured-image.webp 2x"
+        src="/posts/2023/04/llm-for-recsys/featured-image.webp"
+        srcset="/posts/2023/04/llm-for-recsys/featured-image.webp, /posts/2023/04/llm-for-recsys/featured-image.webp 1.5x, /posts/2023/04/llm-for-recsys/featured-image.webp 2x"
         sizes="auto"
-        alt="/posts/2023/04/the-twitter-ml-algo/featured-image.webp"
-        title="/posts/2023/04/the-twitter-ml-algo/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
+        alt="/posts/2023/04/llm-for-recsys/featured-image.webp"
+        title="/posts/2023/04/llm-for-recsys/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#twitter-releases-the-algorithm">Twitter Releases &ldquo;The Algorithm&rdquo;</a></li>
-    <li><a href="#the-algorithm">The Algorithm</a>
+    <li><a href="#why-should-you-use-llms-for-building-recommendation-systems">Why should you use LLMs for building recommendation systems?</a></li>
+    <li><a href="#pretraining-foundation-language-model-on-recommendation-tasks">Pretraining Foundation Language Model on Recommendation Tasks</a></li>
+    <li><a href="#fine-tuning-pretrained-language-models">Fine-Tuning Pretrained Language Models</a></li>
+    <li><a href="#prompt-tuning-pretrained-language-models">Prompt-Tuning Pretrained Language Models</a>
       <ul>
-        <li><a href="#data-sourcing">Data Sourcing</a></li>
-        <li><a href="#candidate-generation">Candidate Generation</a>
-          <ul>
-            <li><a href="#in-network-tweets">In-Network Tweets</a></li>
-            <li><a href="#out-of-network-tweets">Out-of-Network Tweets</a>
-              <ul>
-                <li><a href="#social-graph">Social Graph</a></li>
-                <li><a href="#embedding-based-semantic-spaces">Embedding-based Semantic Spaces</a>
-                  <ul>
-                    <li><a href="#simclusters">SimClusters</a></li>
-                    <li><a href="#twhin">TwHIN</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="#ranking">Ranking</a>
-          <ul>
-            <li><a href="#light-ranking">Light Ranking</a></li>
-            <li><a href="#heavy-ranking">Heavy Ranking</a></li>
-          </ul>
-        </li>
-        <li><a href="#heuristics--filtering">Heuristics &amp; Filtering</a></li>
-        <li><a href="#mixing">Mixing</a></li>
+        <li><a href="#lmrecsys">LMRecSys</a></li>
+        <li><a href="#nir">NIR</a></li>
+        <li><a href="#chat-rec">Chat-REC</a></li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="twitter-releases-the-algorithm" class="headerLink">
-    <a href="#twitter-releases-the-algorithm" class="header-mark"></a>Twitter Releases &ldquo;The Algorithm&rdquo;</h2><p>Last week, Twitter released a lot of details about the recommendation algorithm that powers their For You feed. The release included an <a href="https://blog.twitter.com/en_us/topics/company/2023/a-new-era-of-transparency-for-twitter" target="_blank" rel="noopener noreferrer">announcement</a>, two new GitHub repositories (<a href="https://github.com/twitter/the-algorithm/" target="_blank" rel="noopener noreferrer">main repo</a>, <a href="https://github.com/twitter/the-algorithm-ml" target="_blank" rel="noopener noreferrer">ml repo</a>), and an accompanying <a href="https://blog.twitter.com/engineering/en_us/topics/open-source/2023/twitter-recommendation-algorithm" target="_blank" rel="noopener noreferrer">post on the engineering blog</a>. Their release also includes some model configs, hyperparameters, input feature descriptions, feature weights, combined score calculation formula, etc. that are immensely valuable for ML practitioners. This article gives an overview of the end-to-end machine learning components made public by Twitter.</p>
-<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Today marks a new era of transparency for Twitter. 🧵<br><br>We’re sharing much of the source code that powers our platform with the world. Visit our blog to learn more about this initiative: <a href="https://t.co/hTHVpuMDz8">https://t.co/hTHVpuMDz8</a></p>&mdash; Twitter Engineering (@TwitterEng) <a href="https://twitter.com/TwitterEng/status/1641872259320274944?ref_src=twsrc%5Etfw">March 31, 2023</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<h2 id="the-algorithm" class="headerLink">
-    <a href="#the-algorithm" class="header-mark"></a>The Algorithm</h2><p>At a broad level, we can think of Twitter&rsquo;s For You timeline generation as the sequence of following steps that are also common to large-scale recommendation systems.</p>
-<div class="mermaid" id="id-1"></div>
-<p>We will look at each of these components one by one. Note that while Twitter has shared a lot of information on the code and algorithms for most of these steps, they haven&rsquo;t still shared details about components such as input data processing, model configs, serving infrastructure, source code for modules like Candidate Generation, Trust &amp; Safety, Ads, etc.</p>
-<h3 id="data-sourcing" class="headerLink">
-    <a href="#data-sourcing" class="header-mark"></a>Data Sourcing</h3><p>Twitter has previously shared details about its data infrastructure in <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">another blog</a>. Twitter processes close to 500 million daily tweets, and 400 billion real-time events. The event data is sourced from various platforms, storage systems, and distributed databases. The user engagement data is collected from various real-time streams, server, and client-side logs, etc. They also utilize various proprietary tools such as <a href="https://github.com/twitter/scalding" target="_blank" rel="noopener noreferrer">Scalding</a> for batch processing, <a href="https://github.com/apache/incubator-heron" target="_blank" rel="noopener noreferrer">Heron</a> for streaming, and <a href="https://blog.twitter.com/engineering/en_us/a/2014/tsar-a-timeseries-aggregator" target="_blank" rel="noopener noreferrer">TSAR</a> (<strong>T</strong>imeSeries <strong>A</strong>ggregato<strong>R</strong>) for processing temporal signals. In their <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">recent redesign</a> (see figure below) proposal<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> they built an on-premise event processor along with deduplication and BigTable storage on the Google Cloud Platform (GCP). Note that Twitter exactly specified any data schema or preprocessing applied to the data for the recommender system.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png" title="Twitter Data Pipeline" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png" data-sub-html="<h2>Twitter&#39;s redesigned data pipeline. Source: [^1]</h2><p>Twitter Data Pipeline</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png, /img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png 1.5x, /img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png">
-    </a><figcaption class="image-caption">Twitter's redesigned data pipeline. Source: [^1]</figcaption>
-    </figure></p>
-<h3 id="candidate-generation" class="headerLink">
-    <a href="#candidate-generation" class="header-mark"></a>Candidate Generation</h3><p>The job of the candidate generation module is to select 1500 most relevant tweets from various sources. The first half of these candidates are from the people that you follow (in-network tweets), while the other half is from the people who you do not follow (out-of-network tweets).</p>
-<h4 id="in-network-tweets" class="headerLink">
-    <a href="#in-network-tweets" class="header-mark"></a>In-Network Tweets</h4><p>Most of the in-network tweets are sourced from Twitter&rsquo;s RealGraph framework (originally deployed in 2012<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>). RealGraph framework uses a directed, weighted graph to model users (tweeps) as nodes. An edge from source to target node indicates that the source user follows the target user or the target user is in the source user&rsquo;s contact book, or the source user recently interacted with the target user. Each type of edge has its own set of features represented by weights, such as days since edge creation, days since last interaction, number of common friends, explicit and implicit engagement statistics, etc. Similarly, nodes have features such as the number of retweets in the last week, number of followers, demographics, PageRank on the follow graph, etc.</p>
-<p>Note that Twitter has also shared the implementation details of its PageRank algorithm called <a href="https://github.com/twitter/the-algorithm/blob/main/src/scala/com/twitter/graph/batch/job/tweepcred/README" target="_blank" rel="noopener noreferrer">TweepCred</a>. A logistic regression model is trained on all of these features to predict interaction in a future time window. Note that the graph itself is updated daily in batch mode. In their announcement, Twitter also mentioned that the logistic regression model was trained several years ago and is in the process of being redesigned.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/real_graph.png" title="Twitter&amp;rsquo;s RealGraph Framework" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/real_graph.png" data-sub-html="<h2>Twitter&#39;s RealGraph Framework. Source: [^2]</h2><p>Twitter&amp;rsquo;s RealGraph Framework</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/real_graph.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/real_graph.png, /img/posts/2023/the-twitter-ml-algo/real_graph.png 1.5x, /img/posts/2023/the-twitter-ml-algo/real_graph.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/the-twitter-ml-algo/real_graph.png">
-    </a><figcaption class="image-caption">Twitter's RealGraph Framework. Source: [^2]</figcaption>
-    </figure></p>
-<h4 id="out-of-network-tweets" class="headerLink">
-    <a href="#out-of-network-tweets" class="header-mark"></a>Out-of-Network Tweets</h4><h5 id="social-graph" class="headerLink">
-    <a href="#social-graph" class="header-mark"></a>Social Graph</h5><p>For some of the out-of-network tweets, the retrieval process uses a graph processing engine called GraphJet<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. GraphJet maintains a dynamic (real-time), undirected, bipartite graph between users and tweets in memory on a single server (no partitioning!) through clever edge encoding and dynamic memory allocation schemes. The nodes in the graph represent the users and the tweets, while the edges represent the actions (favorite, tweet, retweet, reply, click, etc.) within a rolling temporal window. To ensure the efficient growth of the graph structure, GraphJet maintains a list of temporally-ordered index segments such that only the latest segment can be written into (see the figure below).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/graphjet.png" title="GraphJet Architecture" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/graphjet.png" data-sub-html="<h2>GraphJet Architecture. Source: [^3]</h2><p>GraphJet Architecture</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/graphjet.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/graphjet.png, /img/posts/2023/the-twitter-ml-algo/graphjet.png 1.5x, /img/posts/2023/the-twitter-ml-algo/graphjet.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/the-twitter-ml-algo/graphjet.png">
-    </a><figcaption class="image-caption">GraphJet Architecture. Source: [^3]</figcaption>
-    </figure></p>
-<p>A SALSA (<strong>S</strong>tochastic <strong>A</strong>pproach for <strong>L</strong>ink-<strong>S</strong>tructure <strong>A</strong>nalysis) random walk over this graph is done to get the tweets that a might be interested in (for example, tweets that the user&rsquo;s connection recently engaged with). A seed set of user nodes called the circle of trust (personalized PageRank), is used for cold users or users with no recent engagement history. Similar to RealGraph, a logistic regression model is used to predict the probability of engagement. GraphJet is implemented in Java, and powers about 15% of tweets in the For You feed.</p>
-<h5 id="embedding-based-semantic-spaces" class="headerLink">
-    <a href="#embedding-based-semantic-spaces" class="header-mark"></a>Embedding-based Semantic Spaces</h5><p>The majority of out-of-network tweets are retrieved through embedding-based methods described below.</p>
-<h6 id="simclusters" class="headerLink">
-    <a href="#simclusters" class="header-mark"></a>SimClusters</h6><p>Twitter has used its SimClusters<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> embedding space to identify 145,000 communities that are either based on a common theme (such as &ldquo;machine learning&rdquo;, or &ldquo;K-pop&rdquo;), or social relationships (such as users who went to the same school). Using SimClusters, Twitter has a representation layer where both users and content are mapped in the same space. First, using a user-user graph (based on follow relationship) k number of possible overlapping communities are discovered. While this can be technically done using a sparse non-negative matrix factorization (NMF) technique, Twitter  devised a custom matrix factorization technique (called <a href="https://github.com/twitter/sbf" target="_blank" rel="noopener noreferrer">Sparse Binary Factorization</a> or SBF) that can also scale for large graphs. Next, an item representation can be calculated using a simple aggregation, such as an exponentially time-decayed average, over the representations of all the users who engaged with that item (see the figure below).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png" title="SimClusters" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png" data-sub-html="<h2>Overview of SimClusters. Source: [^4]</h2><p>SimClusters</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png, /img/posts/2023/the-twitter-ml-algo/simclusterspng.png 1.5x, /img/posts/2023/the-twitter-ml-algo/simclusterspng.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png">
-    </a><figcaption class="image-caption">Overview of SimClusters. Source: [^4]</figcaption>
-    </figure></p>
-<p>Twitter retrieves out-of-network tweets from these clusters by simply identifying the tweets that have the highest dot-product value with the interest representations, along with an item-based collaborative filtering technique. A high similarity score means that the corresponding tweet will be associated more with that community.</p>
-<h6 id="twhin" class="headerLink">
-    <a href="#twhin" class="header-mark"></a>TwHIN</h6><p>Twitter uses its knowledge graph embeddings, called TwHIN (<strong>Tw</strong>itter&rsquo;s <strong>H</strong>eterogeneous <strong>I</strong>nformation <strong>N</strong>etwork) embeddings<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, for candidate generation and also as features for ranking and prediction tasks. These are pretrained generalizable embeddings applicable to users, tweets, advertisements, etc. These embeddings are learned from disparate network data (heterogeneous relationships) to capture a diverse set of signals, such as social signals, content or advertisement engagement signals, etc while simultaneously addressing data sparsity. For the learning process, Twitter uses positive and negative triplets (source entity, edge type, target entity) with contrastive loss and the training objective to find entity representations that effectively predict which other entities are directly linked by a certain relation. Twitter has released the source code for training TwHIN embeddings <a href="https://github.com/twitter/the-algorithm-ml/tree/main/projects/twhin" target="_blank" rel="noopener noreferrer">here</a>.</p>
-<p>At this end of candidate retrieval, we have 1500 tweets ready to be ranked for the user&rsquo;s For You feed.</p>
-<h3 id="ranking" class="headerLink">
-    <a href="#ranking" class="header-mark"></a>Ranking</h3><h4 id="light-ranking" class="headerLink">
-    <a href="#light-ranking" class="header-mark"></a>Light Ranking</h4><p>A simple and efficient logistic-regression-based light ranker is used for ranking both in-network and out-of-network tweets. Twitter&rsquo;s core retrieval system (called EarlyBird<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>) builds and maintains inverted indexes required to perform the real-time search and retrieval of tweets. Instead of relying on the full social graph, In <a href="https://blog.twitter.com/engineering/en_us/a/2011/the-engineering-behind-twitter-s-new-search-experience" target="_blank" rel="noopener noreferrer">earlier iterations</a>, EarlyBird utilized Bloom Filter to compress relevant social graph information for each user. Apart from being space-efficient, this implementation also enabled constant-time set-membership operations. The logistic regression model uses various static and real-time features listed <a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/scripts/models/earlybird/README.md" target="_blank" rel="noopener noreferrer">here</a>. Twitter notes that &ldquo;<em>the current model was last trained several years ago, and uses some very strange features.</em>&rdquo; and they are working on training a new model.</p>
-<p>The source code for this light ranking is released <a href="https://github.com/twitter/the-algorithm/tree/main/src/python/twitter/deepbird/projects/timelines/scripts/models/earlybird" target="_blank" rel="noopener noreferrer">here</a>, along with the details about input features(<a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/configs/recap_earlybird/feature_config.py" target="_blank" rel="noopener noreferrer">in-network</a>, <a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/configs/rectweet_earlybird/feature_config.py" target="_blank" rel="noopener noreferrer">out-of-network</a>), <a href="https://github.com/twitter/the-algorithm/blob/main/cr-mixer/server/src/main/scala/com/twitter/cr_mixer/similarity_engine/EarlybirdTensorflowBasedSimilarityEngine.scala#L142" target="_blank" rel="noopener noreferrer">feature weights</a>, and <a href="https://github.com/twitter/the-algorithm/blob/ec83d01dcaebf369444d75ed04b3625a0a645eb9/src/thrift/com/twitter/search/common/ranking/ranking.thrift#L14-L21" target="_blank" rel="noopener noreferrer">time decay</a> used by the model. It is mentioned that EarlyBird ranks a lesser number of tweets than heavy ranker, but the exact order and counts corresponding to light ranker execution are not specified.</p>
-<h4 id="heavy-ranking" class="headerLink">
-    <a href="#heavy-ranking" class="header-mark"></a>Heavy Ranking</h4><p>Twitter uses MaskNet<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> to perform computationally costlier ranking for the 1500 retrieved tweets. Similar to a lot of other rankers in the Click-Through Rate (CTR) estimation domain, MaskNet emphasizes effectively capturing the high-order feature interactions in an explicit manner similar to the earlier Deep &amp; Cross Network (DCN). MaskNet introduces a basic building block called a MaskBlock that contains three components: an &ldquo;instance-guided mask&rdquo;, a feed-forward hidden layer, and a layer normalization module. The instance-guided mask performs element-wise product on feature embeddings and feed-forward layers to highlight the global context information. Twitter uses the parallel MaskNet variant (~48M parameters) where multiple MaskBlocks on feature embeddings are applied in parallel (similar to MMoE design).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/masknet.png" title="MaskNet" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/masknet.png" data-sub-html="<h2>Instance-guided Mask(left). Parallel variant of MaskNet (right). Souce: [^7]</h2><p>MaskNet</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/masknet.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/masknet.png, /img/posts/2023/the-twitter-ml-algo/masknet.png 1.5x, /img/posts/2023/the-twitter-ml-algo/masknet.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/the-twitter-ml-algo/masknet.png">
-    </a><figcaption class="image-caption">Instance-guided Mask(left). Parallel variant of MaskNet (right). Souce: [^7]</figcaption>
-    </figure></p>
-<p>Twitter has released its source code for MaskNet implementation <a href="https://github.com/twitter/the-algorithm-ml/tree/main/projects/home/recap" target="_blank" rel="noopener noreferrer">here</a>, along with <a href="https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/config/local_prod.yaml" target="_blank" rel="noopener noreferrer">model hyperparameters</a>, and the details of aggregate, non-aggregate, and embedding <a href="https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/FEATURES.md" target="_blank" rel="noopener noreferrer">input features</a> used by the model.</p>
-<p>MaskNet outputs 10 different probabilities, and the final score calculation is calculated by weighing the output probabilities as shown below. These weights are <a href="https://github.com/twitter/the-algorithm-ml/blob/78c3235eee5b4e111ccacb7d48e80eca019e480c/projects/home/recap/config/local_prod.yaml#L1" target="_blank" rel="noopener noreferrer">hard coded</a> and were likely fixed after a lot of A/B testing.</p>
-<p>$$ Combined Score = P(favorite) \times 0.5 + max(P(good click and reply or like), P(good click and stay for at least 2 minutes)) \times 11 + P(negative reaction) \times -74 + P(author profile clicked and profile engaged) \times 12 + P(reply) \times 27 + P(reply and author engaged) \times 75 + P(report) \times -369 + P(retweet) * 1 + P(watch half the video) \times 0.005 $$</p>
-<h3 id="heuristics--filtering" class="headerLink">
-    <a href="#heuristics--filtering" class="header-mark"></a>Heuristics &amp; Filtering</h3><p>Twitter applies a lot of heuristics and filters on the ranked list of tweets to create a balanced and diverse For You feed. The following list contains some prominent examples.</p>
+            </div><div class="content" id="content"><p>Recent developments in Large Language Models (LLMs) have brought a significant paradigm shift in Natural Language Processing (NLP) domain. These pretrained language models encode an extensive amount of world knowledge, and they can be applied to a multitude of downstream NLP applications with zero or just a handful of demonstrations.</p>
+<p>While existing recommender systems mainly focus on behavior data, large language models (LLMs) encode extensive world knowledge mined from large-scale web corpora. Hence these LLMs store knowledge that can complement the behavior data. For example, an LLM, like ChatGPT, can easily recommend buying turkey on Thanksgiving day, in a zero-shot manner, even without having click behavior data related to turkeys or Thanksgiving.</p>
+<p>Many researchers have recently proposed different approaches to building recommender systems using LLMs. These methods convert different recommendation tasks into either language understanding or language generation templates. This article highlights the prominent work done on this theme.</p>
+<h2 id="why-should-you-use-llms-for-building-recommendation-systems" class="headerLink">
+    <a href="#why-should-you-use-llms-for-building-recommendation-systems" class="header-mark"></a>Why should you use LLMs for building recommendation systems?</h2><p>A lot of characteristics of LLMs make them a great choice for building recommender systems.</p>
 <ul>
-<li>The <a href="https://github.com/twitter/the-algorithm/tree/main/visibilitylib" target="_blank" rel="noopener noreferrer">Visibility Filtering module</a> removes <a href="https://github.com/twitter/the-algorithm/blob/main/visibilitylib/src/main/scala/com/twitter/visibility/rules/VisibilityPolicy.scala" target="_blank" rel="noopener noreferrer">various spam</a> along with the tweet from accounts you have blocked or muted.</li>
-<li>Remove out-of-network competitor URL tweets. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/functional_component/filter/OutOfNetworkCompetitorURLFilter.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
-<li>Infuse diversity by applying a penalty to too many consecutive tweets from the same author. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/product/scored_tweets/scorer/DiversityDiscountProvider.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
-<li>Lower the relevance score for tweets with the author or engaged audience for whom the user had given negative feedback in the past. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/functional_component/scorer/FeedbackFatigueScorer.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
-<li>Remove out-of-network tweets that do not have a second-degree connection. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/functional_component/scorer/OONTweetScalingScorer.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
-<li>Boost Twitter Blue Verified authors by a factor of 4.0 for in-network tweets and 2.0 for out-of-network tweets. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/param/HomeGlobalParams.scala#L89" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
+<li>By expressing user behavior data as a part of the task descriptions (aka prompts), the knowledge stored in LLM parameters can be used to generate personalized recommendations. LLMs&rsquo; reasoning capability can infer user interest from the context provided through prompts.</li>
+<li>Research work done in zero and few-shot domain adaptions for LLMs have proven their ability to effectively adapt to downstream domains. This allows startups and large businesses to expand into new domains and set up recommendation applications even with a limited amount of task-specific data.</li>
+<li>Large-scale recommender systems are often built as a <a href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system" target="_blank" rel="noopener noreferrer">multi-step cascade pipeline</a>. Using a single LLM framework for recommendations can help in unifying common improvements, like bias reduction, which are usually tuned at each step. It can even minimize the carbon footprint by avoiding training a separate model for each downstream task.</li>
+<li>In the majority of workflows, these different recommendation tasks share a common user-item pool and have overlapping contextual features. Hence they have a high likelihood of benefitting from unified frameworks for representing inputs and jointly learning from them. Such a learned model will also likely generalize well on unseen tasks.</li>
+<li>Their interactive nature can help with model explainability.</li>
+<li>Their feedback mechanism can help enhance the overall user experience.</li>
 </ul>
-<h3 id="mixing" class="headerLink">
-    <a href="#mixing" class="header-mark"></a>Mixing</h3><p>As the last step, the Home Mixer system blends together non-tweet content like ads, promotions, follow recommendations, etc. to the list of ranked and filtered tweets. The output of this step is the final feed that gets sent and displayed on the end-user device.</p>
+<p>Next, we will see various ways in which researchers have proposed to use LLMs for recommender systems.</p>
+<h2 id="pretraining-foundation-language-model-on-recommendation-tasks" class="headerLink">
+    <a href="#pretraining-foundation-language-model-on-recommendation-tasks" class="header-mark"></a>Pretraining Foundation Language Model on Recommendation Tasks</h2><p>In <strong>P</strong>retrain, <strong>P</strong>ersonalized <strong>P</strong>rompt &amp; <strong>P</strong>redict <strong>P</strong>aradigm (P5), Geng et al.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> proposed a unified text-to-text paradigm for building recommender systems. Their framework combines five types of recommendation tasks: Sequential Recommendation, Rating Prediction, Explanation Generation, Review Summarization, and Direct Recommendation. During pretraining, all of these tasks are learned using the same language modeling objective. All of the available data, such as user information, item metadata, user reviews, and user-item interactions are converted to natural language sequences. This rich information in multitask learning setup helps P5 to learn the semantic information required for making personalized recommendations.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-recsys/p5_model.png" title="P5 Model" data-thumbnail="/img/posts/2023/llm-for-recsys/p5_model.png" data-sub-html="<h2>P5 Model</h2><p>P5 Model</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/llm-for-recsys/p5_model.png"
+            srcset="/img/posts/2023/llm-for-recsys/p5_model.png, /img/posts/2023/llm-for-recsys/p5_model.png 1.5x, /img/posts/2023/llm-for-recsys/p5_model.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/llm-for-recsys/p5_model.png">
+    </a><figcaption class="image-caption">P5 Model</figcaption>
+    </figure></p>
+<p>As shown above, P5 learns these related recommendation tasks together with a unified sequence-to-sequence framework by formulating tasks in prompt-based natural language format. The features input is fed to the model using adaptive personalized prompt templates. P5 treats all personalized tasks as a conditional text generation problem and solves them using an encoder-decoder Transformer model pretrained with instruction-based prompts. These personalized prompts have fields for user and item information and can be further categorized into three prompt templates. The following figure shows examples of each prompt template built using the beauty products category from an Amazon dataset.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-recsys/p5_prompts.png" title="P5 Personalized Prompt Templates" data-thumbnail="/img/posts/2023/llm-for-recsys/p5_prompts.png" data-sub-html="<h2>P5: Personalized Prompt Templates</h2><p>P5 Personalized Prompt Templates</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/llm-for-recsys/p5_prompts.png"
+            srcset="/img/posts/2023/llm-for-recsys/p5_prompts.png, /img/posts/2023/llm-for-recsys/p5_prompts.png 1.5x, /img/posts/2023/llm-for-recsys/p5_prompts.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/llm-for-recsys/p5_prompts.png">
+    </a><figcaption class="image-caption">P5: Personalized Prompt Templates</figcaption>
+    </figure></p>
+<p>Using the above prompt templates, all input and output data is converted to the same token sequence format. The following figure shows P5&rsquo;s Transformer model architecture along with an example prompt <code>What star rating do you think user_23 will give item_7391?</code> as input. Note that instead of the sentence-piece tokenization process that divides the <code>user_23</code> token to <code>user</code>, <code>_</code>, and <code>23</code>, an independent extra token <code>&lt;user_23&gt;</code> can also be used, however, this approach will incur a significant amount of extra compute. P5 learns to minimize the negative log-likelihood of target tokens given the input tokens along with different performance metrics for different tasks. Note that P5 uses pretrained T5 model checkpoints as the backbone.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-recsys/p5_arch.png" title="P5 Model Architecture" data-thumbnail="/img/posts/2023/llm-for-recsys/p5_arch.png" data-sub-html="<h2>P5: Encoder-Decoder Architecture</h2><p>P5 Model Architecture</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/llm-for-recsys/p5_arch.png"
+            srcset="/img/posts/2023/llm-for-recsys/p5_arch.png, /img/posts/2023/llm-for-recsys/p5_arch.png 1.5x, /img/posts/2023/llm-for-recsys/p5_arch.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/llm-for-recsys/p5_arch.png">
+    </a><figcaption class="image-caption">P5: Encoder-Decoder Architecture</figcaption>
+    </figure></p>
+<p>The shared task framework enables knowledge generalization such that P5 can serve as a foundation model for various unseen downstream recommendation tasks in a zero-shot or few-shot manner with novel downstream prompts. Through experiments, authors exhibit P5&rsquo;s zero-shot generalization capability through transfer to unseen personalized prompts and new items in new domains.</p>
+<h2 id="fine-tuning-pretrained-language-models" class="headerLink">
+    <a href="#fine-tuning-pretrained-language-models" class="header-mark"></a>Fine-Tuning Pretrained Language Models</h2><p>Cui et al.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> built a foundation model, M6-Rec, using Alibaba&rsquo;s pretrained LLM called M6. To train the model, they added a negligible amount (1%) of task-specific parameters without making changes to the original M6 Transformer model. The following diagram shows the M6 architecture that takes sentence inputs to its bidirectional and autoregressive regions and calculates autoregressive loss on the output of the autoregressive region.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-recsys/m6_arch.png" title="M6 Model Architecture" data-thumbnail="/img/posts/2023/llm-for-recsys/m6_arch.png" data-sub-html="<h2>M6 Model Architecture</h2><p>M6 Model Architecture</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/llm-for-recsys/m6_arch.png"
+            srcset="/img/posts/2023/llm-for-recsys/m6_arch.png, /img/posts/2023/llm-for-recsys/m6_arch.png 1.5x, /img/posts/2023/llm-for-recsys/m6_arch.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/llm-for-recsys/m6_arch.png">
+    </a><figcaption class="image-caption">M6 Model Architecture</figcaption>
+    </figure></p>
+<p>The authors represented user behavior as plain texts and converted various recommendation tasks, such as retrieval, scoring, explanation generation, conversational recommendation, etc. to either language understanding or generation. To further adapt to open-domain recommendations, M6-Rec avoids using user IDs or item IDs as input. This enables M6-Rec to be applied to target domains that consist of unseen items.</p>
+<ul>
+<li>For scoring tasks, such as click-through rate prediction and conversion rate prediction, M6-Rec uses the following template.</li>
+</ul>
+<div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw"></i>prompt<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">[BOS′] December. Beijing, China. Cold weather. A male user in their early twenties searched &ldquo;winter stuff&rdquo; 23 minutes ago, clicked a product of the category &ldquo;jacket&rdquo; named &ldquo;men&rsquo;s lightweight warm winter hooded jacket&rdquo; 19 minutes ago, clicked &hellip; [EOS&rsquo;] [BOS] The user is now recommended a product of category &ldquo;boots&rdquo; named &ldquo;waterproof hiking shoes men&rsquo;s outdoor&rdquo;. The product has had a high population-level CTR in the past 14 days, among the top 5%. The user clicked the category 4 times in the last 2 years. [EOS]</div>
+        </div>
+    </div>
+<p>The text between <code>[BOS']</code> and <code>[EOS']</code> tokens represents user-side features and is fed to the bidirectional region, the text between <code>[BOS]</code> and <code>[EOS]</code> represents items as well as information common to both user and items.</p>
+<ul>
+<li>For generation tasks, such as product design and explainable recommendations, it uses the following template.</li>
+</ul>
+<div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw"></i>prompt<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">[BOS&rsquo;] &hellip; [EOS&rsquo;] [BOS] The user now purchases a product of category &ldquo;&hellip;&rdquo; named &ldquo;&hellip;&rdquo;. Product details: &hellip; The user likes it because &hellip; [EOS]</div>
+        </div>
+    </div>
+<p>This prompt is populated using information mined from the product description and user&rsquo;s review.</p>
+<ul>
+<li>For zero-shot scoring tasks, for example, for a user who clicks hiking shoes prefers trekking poles or yoga knee pads, M6-Rec uses the following template:</li>
+</ul>
+<div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw"></i>prompt<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">[BOS&rsquo;] A user clicks hiking shoes [EOS&rsquo;] [BOS] also clicks trekking poles [EOS]
+[BOS&rsquo;] A user clicks hiking shoes [EOS&rsquo;] [BOS] also clicks yoga knee pads [EOS]</div>
+        </div>
+    </div>
+<p>The plausibility of each is calculated based on token probability from M6.</p>
+<p>Similarly, for retrieval tasks, M6-Rec feeds user and item prompt information separately to the two regions followed by a nearest-neighbor approach over learned representations. The authors also showed that the trained model could be deployed to edge devices in Alipay through various optimizations such as pruning, early exiting, 8-bit quantization, and parameter sharing.</p>
+<h2 id="prompt-tuning-pretrained-language-models" class="headerLink">
+    <a href="#prompt-tuning-pretrained-language-models" class="header-mark"></a>Prompt-Tuning Pretrained Language Models</h2><p>Several researchers have proposed various prompt-based fine-tuning methods that enable downstream adaption by using a few examples without any gradient updates or fine-tuning.</p>
+<h3 id="lmrecsys" class="headerLink">
+    <a href="#lmrecsys" class="header-mark"></a>LMRecSys</h3><p>In <strong>L</strong>anguage <strong>M</strong>odel <strong>Rec</strong>ommender <strong>Sys</strong>tems (LMRecSys), Zhang et al.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> use prompts to reformulate the session-based recommendation task as a multi-token cloze task. They use the user&rsquo;s past interaction history (watched movies), taken from the MovieLens-1M dataset, to predict the next movie that the user would watch. First, they use a rule-based system to create a personalized prompt, similar to the one shown below.</p>
+<div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw"></i>prompt<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">A user watched One Flew Over the Cuckoo’s Nest, James and the Giant Peach, and My Fair Lady. Now the user wants to watch [MASK].</div>
+        </div>
+    </div>
+<p>Next, they use a GPT-2 to estimate the probability distribution of the next item by multi-token inference. The probability of the ground-truth item is maximized using a cross-entropy loss. MRR@K and Recall@K metrics are used for evaluation. Through experiments, they showed that in zero-shot settings, the pretrained language model (PLM) outperformed the random recommendations baseline, but also had linguistic biases. In few-shot settings, the PLM underperformed the GRU4Rec baseline.</p>
+<h3 id="nir" class="headerLink">
+    <a href="#nir" class="header-mark"></a>NIR</h3><p>In Zero-Shot <strong>N</strong>ext-<strong>I</strong>tem <strong>R</strong>ecommendation (NIR), Wang et al.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> proposed a prompting strategy to perform next-item recommendations in a zero-shot setting. Their method works in the following three steps.</p>
+<ol>
+<li><strong>Candidate Generation</strong>: The authors argue that a PLM, like GPT-3, will exhibit poor performance when given a zero-shot prompt like: <code>Based on the movies I have watched, including..., can you recommend 10 movies to me?</code> because the recommendation space is large. Hence, in their experiment, they used a user-filtering or item-filtering-based external recommendation system component to first construct a candidate set of items.</li>
+<li><strong>Three-step Prompting</strong>: This step uses GPT-3 and three prompts. First, they prompt GPT-3 to summarize the user&rsquo;s preferences using the items from the watch history. Next, they use GPT-3&rsquo;s response and the candidate movies in a prompt to request GPT-3 to select representative movies in descending order of preference. Finally, they create a recommendation prompt to guide GPT-3 to recommend 10 movies from the candidate set that is the most similar to the representative movies.</li>
+<li><strong>Answer Extraction</strong>: They use a rule-based extraction method to get the recommended items from GPT-3&rsquo;s final response. The extracted items can be used in downstream applications, or for performance evaluation.</li>
+</ol>
+<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-recsys/nir.png" title="Zero-shot NIR Prompts" data-thumbnail="/img/posts/2023/llm-for-recsys/nir.png" data-sub-html="<h2>Zero-shot NIR Prompts</h2><p>Zero-shot NIR Prompts</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/llm-for-recsys/nir.png"
+            srcset="/img/posts/2023/llm-for-recsys/nir.png, /img/posts/2023/llm-for-recsys/nir.png 1.5x, /img/posts/2023/llm-for-recsys/nir.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/llm-for-recsys/nir.png">
+    </a><figcaption class="image-caption">Zero-shot NIR Prompts</figcaption>
+    </figure></p>
+<h3 id="chat-rec" class="headerLink">
+    <a href="#chat-rec" class="header-mark"></a>Chat-REC</h3><p>In Chat-GPT Augmented Recommender System (Chat-REC), Gao et al.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> used an LLM to augment their conversational recommender system. They first created prompts using user profiles, like age, gender, location, interests, etc., historical interactions, like clicked, purchased, or rated items, and history of dialogues (optional). The LLM is then asked to summarize user preferences. Next, a conventional recommender system is used to generate a large set of candidate items, and finally, LLM narrows down the candidate set to generate the final set of recommendations.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/llm-for-recsys/chat_rec.png" title="Overview of Chat-Rec" data-thumbnail="/img/posts/2023/llm-for-recsys/chat_rec.png" data-sub-html="<h2>Overview of Chat-Rec</h2><p>Overview of Chat-Rec</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/llm-for-recsys/chat_rec.png"
+            srcset="/img/posts/2023/llm-for-recsys/chat_rec.png, /img/posts/2023/llm-for-recsys/chat_rec.png 1.5x, /img/posts/2023/llm-for-recsys/chat_rec.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/llm-for-recsys/chat_rec.png">
+    </a><figcaption class="image-caption">Overview of Chat-Rec</figcaption>
+    </figure></p>
+<p>The authors leverage OpenAI&rsquo;s Chat-GPT as their recommender system interface to enable multi-round recommendations, interactivity, and explainability. To tackle the cold item recommendations (note that current ChatGPT&rsquo;s training data is capped till September 2021), they recommend using an item-to-item similarity approach using an external source of current information. In their experiments, Chat-REC exhibited good performance on zero-shot and cross-domain recommendation tasks.</p>
 <h2 id="summary" class="headerLink">
-    <a href="#summary" class="header-mark"></a>Summary</h2><p>Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references.</p>
+    <a href="#summary" class="header-mark"></a>Summary</h2><p>Language grounding is a powerful medium to describe different tasks and modalities in the form of natural language. Pretrained language models (PLMs) have shown remarkable performance on natural language tasks. Expressing different recommendation tasks in natural language opens up a world of possibilities for using large language models for effective recommendations. In this article, I summarized various methods that combine language modeling with user behavior data through personalized prompts for building recommender systems.</p>
 <h2 id="references" class="headerLink">
     <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>Processing billions of events in real time at Twitter. Lu Zhang, Chukwudiuto Malife, 22 October 2021. <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Geng, S., Liu, S., Fu, Z., Ge, Y., &amp; Zhang, Y. (2022). Recommendation as Language Processing (RLP): A Unified Pretrain, Personalized Prompt &amp; Predict Paradigm (P5). <em>Proceedings of the 16th ACM Conference on Recommender Systems</em>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>Kamath, K.Y., Sharma, A., Wang, D., &amp; Yin, Z. (2014). RealGraph: User Interaction Prediction at Twitter.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Cui, Z., Ma, J., Zhou, C., Zhou, J., &amp; Yang, H. (2022). M6-Rec: Generative Pretrained Language Models are Open-Ended Recommender Systems. <em>ArXiv, abs/2205.08084</em>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Sharma, A., Jiang, J., Bommannavar, P., Larson, B., &amp; Lin, J.J. (2016). GraphJet: Real-Time Content Recommendations at Twitter. <em>Proc. VLDB Endow., 9</em>, 1281-1292.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Zhang, Y., Ding, H., Shui, Z., Ma, Y., Zou, J.Y., Deoras, A., &amp; Wang, H. (2021). Language Models as Recommender Systems: Evaluations and Limitations.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Satuluri, V., Wu, Y., Zheng, X., Qian, Y., Wichers, B., Dai, Q., Tang, G.M., Jiang, J., &amp; Lin, J.J. (2020). SimClusters: Community-Based Representations for Heterogeneous Recommendations at Twitter. <em>Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>(2023). Zero-Shot Next-Item Recommendation using Large Pretrained Language Models.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>El-Kishky, A., Markovich, T., Park, S., Verma, C.K., Kim, B., Eskander, R., Malkov, Y., Portman, F., Samaniego, S., Xiao, Y., &amp; Haghighi, A. (2022). TwHIN: Embedding the Twitter Heterogeneous Information Network for Personalized Recommendation. <em>Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</em>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:6">
-<p>Busch, M., Gade, K., Larson, B., Lok, P., Luckenbill, S.B., &amp; Lin, J.J. (2012). Earlybird: Real-Time Search at Twitter. <em>2012 IEEE 28th International Conference on Data Engineering</em>, 1360-1369.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:7">
-<p>Wang, Z., She, Q., &amp; Zhang, J. (2021). MaskNet: Introducing Feature-Wise Multiplication to CTR Ranking Models by Instance-Guided Mask. <em>ArXiv, abs/2102.07619</em>.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Gao, Y., Sheng, T., Xiang, Y., Xiong, Y., Wang, H., &amp; Zhang, J. (2023). Chat-REC: Towards Interactive and Explainable LLMs-Augmented Recommender System.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</div>
-</div>
+</div></div>
 		
         
 
@@ -351,16 +352,16 @@
 <div class="related-container">
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2023/04/llm-for-recsys/"><img
+                <a href="/posts/2023/04/the-twitter-ml-algo/"><img
         
         loading="lazy"
-        src="/posts/2023/04/llm-for-recsys/featured-image-preview.webp"
-        srcset="/posts/2023/04/llm-for-recsys/featured-image-preview.webp, /posts/2023/04/llm-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/04/llm-for-recsys/featured-image-preview.webp 2x"
+        src="/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp"
+        srcset="/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp, /posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp 1.5x, /posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp 2x"
         sizes="auto"
-        alt="/posts/2023/04/llm-for-recsys/featured-image-preview.webp"
-        title="/posts/2023/04/llm-for-recsys/featured-image-preview.webp" height="200" width="400"></a>
+        alt="/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp"
+        title="/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp" height="200" width="400"></a>
             </div><h2 class="related-title">
-                <a href="/posts/2023/04/llm-for-recsys/">Zero and Few Shot Recommender Systems based on Large Language Models</a>
+                <a href="/posts/2023/04/the-twitter-ml-algo/">Twitter&#39;s For You Recommendation Algorithm</a>
             </h2>
         </div>
     <div class="related-item-container">
@@ -1067,27 +1068,26 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-04-04</span>
+                <span>Updated on 2023-04-10</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-via="_reachsumit" data-hashtags="literature review,recsys,ranking"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
+                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" data-title="Zero and Few Shot Recommender Systems based on Large Language Models" data-via="_reachsumit" data-hashtags="literature review,recsys,LLM"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" data-title="Zero and Few Shot Recommender Systems based on Large Language Models" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" data-title="Zero and Few Shot Recommender Systems based on Large Language Models"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" data-title="Zero and Few Shot Recommender Systems based on Large Language Models"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" data-title="Zero and Few Shot Recommender Systems based on Large Language Models" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" data-title="Zero and Few Shot Recommender Systems based on Large Language Models"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" data-title="Zero and Few Shot Recommender Systems based on Large Language Models" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/ranking/">ranking</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/llm/">LLM</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/2023/03/contrastive-video-representations/" class="prev" rel="prev" title="Self-Supervised Contrastive Approaches for Video Representation Learning"><i class="fas fa-angle-left fa-fw"></i>Self-Supervised Contrastive Approaches for Video Representation Learning</a>
-            <a href="/posts/2023/04/llm-for-recsys/" class="next" rel="next" title="Zero and Few Shot Recommender Systems based on Large Language Models">Zero and Few Shot Recommender Systems based on Large Language Models<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/2023/04/the-twitter-ml-algo/" class="prev" rel="prev" title="Twitter&#39;s For You Recommendation Algorithm"><i class="fas fa-angle-left fa-fw"></i>Twitter&#39;s For You Recommendation Algorithm</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
@@ -1104,8 +1104,8 @@
         </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/mermaid/mermaid.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"desktop-header-typeit":"Sumit's Diary","id-1":"graph LR;\r\n    A(Data Sourcing) --\u003e B(Candidate Generation)\r\n    B --\u003e C(Ranking)\r\n    C --\u003e D(Heuristics \u0026 Filtering)\r\n    D --\u003e E(Mixing)\r","mobile-header-typeit":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"mermaid":true,"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@8.13.3/dist/mermaid.min.js" defer></script><script type="text/javascript" src="/js/mermaid.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://reachsumit-blog.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-171612692-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-171612692-1" async></script></div>
