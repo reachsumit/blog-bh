@@ -4,9 +4,18 @@
         <link>https://blog.reachsumit.com/</link>
         <description>Welcome to Sumit Kumar&#39;s Personal Blog!</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sam.sumitkumar@gmail.com (Sumit Kumar)</managingEditor>
-            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>sam.sumitkumar@gmail.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 17 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.reachsumit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Diffusion Modeling based Recommender Systems</title>
+    <link>https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/</link>
+    <pubDate>Mon, 17 Apr 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/04/diffusion-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Diffusion Models have exhibited state-of-the-art results in image and audio synthesis domains. A recent line of research has started to adopt Diffusion for recommender systems. This article introduces Diffusion and its relevance to the recommendations domain and also highlights some of the most recent proposals on this novel theme.]]></description>
+</item><item>
     <title>Zero and Few Shot Recommender Systems based on Large Language Models</title>
     <link>https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/</link>
     <pubDate>Mon, 10 Apr 2023 00:00:00 &#43;0000</pubDate><author>
@@ -89,15 +98,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2022/12/stats-vs-ml-for-ts/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Statistical methods have been used in the time series domain for multiple decades. But given the recent advances in Machine Learning and especially its sub-domain Deep Learning, are statistical methods still superior for forecasting? In this article, we will do a deep dive into literature and recent time series competitions to do a multifaceted comparison between Statistical, Machine Learning, and Deep Learning methods for time series forecasting.]]></description>
-</item><item>
-    <title>Recommender Systems for Modeling Feature Interactions under Sparse Settings</title>
-    <link>https://blog.reachsumit.com/posts/2022/11/sparse-recsys/</link>
-    <pubDate>Sun, 06 Nov 2022 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2022/11/sparse-recsys/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2022/11/sparse-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Many machine learning domains, such as recommender systems, targeted advertisement, search ranking, and text analysis contain highly sparse data because of the large categorical variable domains. This sparsity makes it hard for ML algorithms to model second-order and above feature interactions. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed for estimating interactions from sparse data.
-IntroductionProblem with sparse inputsA variety of Information Retrieval and Data Mining tasks, such as Recommender Systems, Targeted Advertising, Search Ranking, etc.]]></description>
 </item></channel>
 </rss>
