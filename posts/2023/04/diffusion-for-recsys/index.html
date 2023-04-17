@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/diffusion-for-recsys\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, diffusion","wordcount":  2173 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, diffusion","wordcount":  2169 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/diffusion-for-recsys\/","datePublished": "2023-04-17T00:00:00+00:00","dateModified": "2023-04-17T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -148,7 +148,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-17">2023-04-17</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-04-17">2023-04-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2173 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-17">2023-04-17</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-04-17">2023-04-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2169 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;11 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
@@ -242,7 +242,7 @@ $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\
 <li>Users&rsquo; currently known preferences are always uncertain to some degree due to diversity and the evolution of interests.</li>
 </ul>
 <p>Soft-attention and dynamic-routing-based methods like DIN, MIND, and ComiRec can do multi-interest modeling, but they also require a predefined number of interests. It is possible to address some of these concerns by modeling users&rsquo; current interests as a distribution. Generative methods like VAEs can model the multiple latent aspects of an item as a distribution and inject uncertainty as Gaussian noises. But as explained earlier, these traditional methods suffer from a lot of issues like mode collapse, and Diffusion Models are much better alternatives.</p>
-<p>The goal of recommender systems is to predict future interaction probabilities based on historical interactions. In practice, the collected user interactions in implicit feedback can be considered naturally noisy (or corrupt) due to false-positive and false-negative interactions. Hence the objective of the diffusion model to predict probabilities based on the iterative denoising process aligns well with recommender systems. We can use DMs to predict users&rsquo; future interaction probabilities based on corrupted interactions by learning to recover the original interactions based on corrupted interactions. Then these probabilities can be used to rank and recommend items.</p>
+<p>The goal of recommender systems is to predict future interaction probabilities based on historical interactions. In practice, the collected user interactions in implicit feedback can be considered naturally noisy (or corrupt) due to false-positive and false-negative interactions. Hence the objective of the diffusion model to predict probabilities based on the iterative denoising process aligns well with recommender systems. We can use DMs to predict users&rsquo; future interaction probabilities based on corrupted interactions by learning to recover the original interactions. Then these probabilities can be used to rank and recommend items.</p>
 <h2 id="diffusion-based-recommender-systems" class="headerLink">
     <a href="#diffusion-based-recommender-systems" class="header-mark"></a>Diffusion-based Recommender Systems</h2><p>In the last couple of weeks, several researchers have proposed ways to utilize diffusion models for recommendation tasks. This section highlights some of those ideas.</p>
 <h3 id="diffrec-by-soochow-university" class="headerLink">
