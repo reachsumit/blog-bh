@@ -5,33 +5,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title>Next Gen Recommender Systems: Real-time reranking on mobile devices - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Next Gen Recommender Systems: Real-time reranking on mobile devices" />
-<meta property="og:description" content="A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems." />
+    <title>Mixture-of-Experts based Recommender Systems - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Mixture-of-Experts based Recommender Systems" />
+<meta property="og:description" content="The Mixture-of-Experts (MoE) is a classical ensemble learning technique originally proposed by Jacobs et. al1 in 1991. MoEs have the capability to substantially scale up the model capacity and only introduce small computation overhead. This ability combined with recent innovations in the deep learning domain has led to the wide-scale adoption of MoEs in healthcare, finance, pattern recognition, etc. They have been successfully utilized in large-scale applications such as Large Language Modeling (LLM), Machine Translation, and Recommendations." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/featured-image-preview.webp"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-03-09T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/featured-image-preview.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-23T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/featured-image-preview.webp"/>
-<meta name="twitter:title" content="Next Gen Recommender Systems: Real-time reranking on mobile devices"/>
-<meta name="twitter:description" content="A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems."/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/featured-image-preview.webp"/>
+<meta name="twitter:title" content="Mixture-of-Experts based Recommender Systems"/>
+<meta name="twitter:description" content="The Mixture-of-Experts (MoE) is a classical ensemble learning technique originally proposed by Jacobs et. al1 in 1991. MoEs have the capability to substantially scale up the model capacity and only introduce small computation overhead. This ability combined with recent innovations in the deep learning domain has led to the wide-scale adoption of MoEs in healthcare, finance, pattern recognition, etc. They have been successfully utilized in large-scale applications such as Large Language Modeling (LLM), Machine Translation, and Recommendations."/>
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Next Gen Recommender Systems: Real-time reranking on mobile devices",
+        "headline": "Mixture-of-Experts based Recommender Systems",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/reranking-on-edge\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  2779 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/reranking-on-edge\/","datePublished": "2023-03-09T00:00:00+00:00","dateModified": "2023-03-09T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/moe-for-recsys\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, Mixture-of-experts","wordcount":  2901 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/moe-for-recsys\/","datePublished": "2023-04-23T00:00:00+00:00","dateModified": "2023-04-23T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -126,276 +126,266 @@
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#why-should-we-compute-real-time-recommendations-on-edge-devices">Why should we compute real-time recommendations on edge devices?</a>
+    <li><a href="#introduction-to-mixture-of-experts-moe">Introduction to Mixture-of-Experts (MoE)</a>
       <ul>
-        <li><a href="#shortcomings-of-the-existing-system">Shortcomings of the existing system</a></li>
-        <li><a href="#factors-promoting-device-side-computations">Factors promoting device-side computations</a></li>
-        <li><a href="#challenges">Challenges</a></li>
+        <li><a href="#make-experts-complete-not-cooperate">Make experts complete, not cooperate</a></li>
+        <li><a href="#advantages-of-moe">Advantages of MoE</a></li>
+        <li><a href="#problems-with-moe">Problems with MoE</a></li>
+        <li><a href="#moe-variants">MoE Variants</a>
+          <ul>
+            <li><a href="#hierarchical-mixture-of-experts">Hierarchical Mixture of Experts</a></li>
+            <li><a href="#deep-mixture-of-experts">Deep Mixture of Experts</a></li>
+            <li><a href="#sparsely-gated-mixture-of-experts">Sparsely-gated Mixture of Experts</a></li>
+            <li><a href="#multi-gate-mixture-of-experts">Multi-gate Mixture-of-Experts</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#device-side-computation-paradigms">Device-side computation paradigms</a>
+    <li><a href="#mixture-of-expert-for-recommendations">Mixture-of-Expert for Recommendations</a>
       <ul>
-        <li><a href="#on-device-inference">On-Device Inference</a>
-          <ul>
-            <li><a href="#kuaishous-short-video-recommendation-on-mobile-devices">Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices</a>
-              <ul>
-                <li><a href="#what-input-features-are-used">What input features are used?</a></li>
-                <li><a href="#when-is-the-on-device-reranking-triggered">When is the on-device reranking triggered?</a></li>
-                <li><a href="#model-architecture">Model Architecture</a></li>
-                <li><a href="#results">Results</a></li>
-              </ul>
-            </li>
-            <li><a href="#taobaos-edgerec">Taobao&rsquo;s EdgeRec</a>
-              <ul>
-                <li><a href="#what-input-features-are-used-1">What input features are used?</a></li>
-                <li><a href="#when-is-the-on-device-reranking-triggered-1">When is the on-device reranking triggered?</a></li>
-                <li><a href="#model-architecture-1">Model Architecture</a></li>
-                <li><a href="#results-1">Results</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="#on-device-learning">On-device Learning</a>
-          <ul>
-            <li><a href="#device-cloud-collaborative-learning-dccl-framework">Device-Cloud Collaborative Learning (DCCL) framework</a></li>
-            <li><a href="#collaborative-learning-with-data-augmentation-coda">Collaborative learning with Data Augmentation (CoDA)</a></li>
-          </ul>
-        </li>
+        <li><a href="#youtubes-next-video-recommendation">YouTube&rsquo;s Next Video Recommendation</a></li>
+        <li><a href="#gmails-mixture-of-sequential-experts">GMail&rsquo;s Mixture of Sequential Experts</a></li>
+        <li><a href="#kuaishous-kwai-recommender-system">Kuaishou&rsquo;s Kwai Recommender System</a></li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Next Gen Recommender Systems: Real-time reranking on mobile devices</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Mixture-of-Experts based Recommender Systems</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-09">2023-03-09</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-09">2023-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2779 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-23">2023-04-23</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-04-23">2023-04-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2901 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;14 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
-        src="/posts/2023/03/reranking-on-edge/featured-image.webp"
-        srcset="/posts/2023/03/reranking-on-edge/featured-image.webp, /posts/2023/03/reranking-on-edge/featured-image.webp 1.5x, /posts/2023/03/reranking-on-edge/featured-image.webp 2x"
+        src="/posts/2023/04/moe-for-recsys/featured-image.webp"
+        srcset="/posts/2023/04/moe-for-recsys/featured-image.webp, /posts/2023/04/moe-for-recsys/featured-image.webp 1.5x, /posts/2023/04/moe-for-recsys/featured-image.webp 2x"
         sizes="auto"
-        alt="/posts/2023/03/reranking-on-edge/featured-image.webp"
-        title="/posts/2023/03/reranking-on-edge/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
+        alt="/posts/2023/04/moe-for-recsys/featured-image.webp"
+        title="/posts/2023/04/moe-for-recsys/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#why-should-we-compute-real-time-recommendations-on-edge-devices">Why should we compute real-time recommendations on edge devices?</a>
+    <li><a href="#introduction-to-mixture-of-experts-moe">Introduction to Mixture-of-Experts (MoE)</a>
       <ul>
-        <li><a href="#shortcomings-of-the-existing-system">Shortcomings of the existing system</a></li>
-        <li><a href="#factors-promoting-device-side-computations">Factors promoting device-side computations</a></li>
-        <li><a href="#challenges">Challenges</a></li>
+        <li><a href="#make-experts-complete-not-cooperate">Make experts complete, not cooperate</a></li>
+        <li><a href="#advantages-of-moe">Advantages of MoE</a></li>
+        <li><a href="#problems-with-moe">Problems with MoE</a></li>
+        <li><a href="#moe-variants">MoE Variants</a>
+          <ul>
+            <li><a href="#hierarchical-mixture-of-experts">Hierarchical Mixture of Experts</a></li>
+            <li><a href="#deep-mixture-of-experts">Deep Mixture of Experts</a></li>
+            <li><a href="#sparsely-gated-mixture-of-experts">Sparsely-gated Mixture of Experts</a></li>
+            <li><a href="#multi-gate-mixture-of-experts">Multi-gate Mixture-of-Experts</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#device-side-computation-paradigms">Device-side computation paradigms</a>
+    <li><a href="#mixture-of-expert-for-recommendations">Mixture-of-Expert for Recommendations</a>
       <ul>
-        <li><a href="#on-device-inference">On-Device Inference</a>
-          <ul>
-            <li><a href="#kuaishous-short-video-recommendation-on-mobile-devices">Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices</a>
-              <ul>
-                <li><a href="#what-input-features-are-used">What input features are used?</a></li>
-                <li><a href="#when-is-the-on-device-reranking-triggered">When is the on-device reranking triggered?</a></li>
-                <li><a href="#model-architecture">Model Architecture</a></li>
-                <li><a href="#results">Results</a></li>
-              </ul>
-            </li>
-            <li><a href="#taobaos-edgerec">Taobao&rsquo;s EdgeRec</a>
-              <ul>
-                <li><a href="#what-input-features-are-used-1">What input features are used?</a></li>
-                <li><a href="#when-is-the-on-device-reranking-triggered-1">When is the on-device reranking triggered?</a></li>
-                <li><a href="#model-architecture-1">Model Architecture</a></li>
-                <li><a href="#results-1">Results</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="#on-device-learning">On-device Learning</a>
-          <ul>
-            <li><a href="#device-cloud-collaborative-learning-dccl-framework">Device-Cloud Collaborative Learning (DCCL) framework</a></li>
-            <li><a href="#collaborative-learning-with-data-augmentation-coda">Collaborative learning with Data Augmentation (CoDA)</a></li>
-          </ul>
-        </li>
+        <li><a href="#youtubes-next-video-recommendation">YouTube&rsquo;s Next Video Recommendation</a></li>
+        <li><a href="#gmails-mixture-of-sequential-experts">GMail&rsquo;s Mixture of Sequential Experts</a></li>
+        <li><a href="#kuaishous-kwai-recommender-system">Kuaishou&rsquo;s Kwai Recommender System</a></li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="introduction" class="headerLink">
-    <a href="#introduction" class="header-mark"></a>Introduction</h2><p>In the age of information overload, recommender systems have become an indispensable tool in our digital lives to help catalog online content. A lot of large-scale recommender systems today are deployed as a <a href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system" target="_blank" rel="noopener noreferrer">cascade ranking architecture</a> <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Under such &ldquo;cloud-to-edge&rdquo; frameworks, a mobile client initiates a paging request to a cloud server when a user triggers a recommendation scenario, for example by opening their mobile app. And recommendation models on the server side retrieve and return a ranked list of items to be displayed to the user. Often these recommendations are computed in advance on the cloud server.</p>
-<p>An exciting line of research has recently started exploring the potential of extending this recommendation computation to edge devices. This article is intended to help understand the need and advantage of computing real-time recommendations on mobile devices. We will also look at the system design and implementation of some of the commercial recommender systems that are built on this idea and are serving billions of users.</p>
-<h2 id="why-should-we-compute-real-time-recommendations-on-edge-devices" class="headerLink">
-    <a href="#why-should-we-compute-real-time-recommendations-on-edge-devices" class="header-mark"></a>Why should we compute real-time recommendations on edge devices?</h2><h3 id="shortcomings-of-the-existing-system" class="headerLink">
-    <a href="#shortcomings-of-the-existing-system" class="header-mark"></a>Shortcomings of the existing system</h3><p>Due to network bandwidth and latency constraints, the server usually sends a batch of items and a pagination mechanism is implemented on the client. The server only sends the next batch when a recommendation event is triggered on the client, for example, when the user scrolls to the end of the current page. This means that the system is not designed to respond in real time to changing user behavior and interests, and it leads to the following shortcomings.</p>
-<ul>
-<li><strong>Delays in getting system feedback</strong>: If a user makes her interests known earlier on, for example, by positively interacting with the first few videos in the recommended feed, the recommender system on the server can&rsquo;t respond to this feedback until the next batch of videos is requested by the client. Depending on the architecture, it may even take tens of seconds or minutes for the recommender system on the server to process and respond to the newly collected user feedback because the new signals can only be processed at the server end. Also, some of the real-time client-specific features such as network conditions are not available to the cloud model in real-time.</li>
-<li><strong>Delays in adapting to user interests</strong>: If the user interacts with an item on the current page, for example, by leaving positive feedback on a video, it is impossible to adjust the order of the remaining content of the batch, even if there are some videos that closely match the new known user interest.</li>
-</ul>
-<h3 id="factors-promoting-device-side-computations" class="headerLink">
-    <a href="#factors-promoting-device-side-computations" class="header-mark"></a>Factors promoting device-side computations</h3><p>Several other factors help push the idea of cost-effective computation of recommendations on edge devices as mentioned below.</p>
-<ul>
-<li>On short-video platforms like TikTok, Instagram Reels, and YouTube Shorts, the user usually watches a diverse set of short videos in a short period that belong to different topics. In such an environment, real-time user interest is constantly changing. Device-side modeling can help reduce the latency in responding quickly to perceived user interests.</li>
-<li>Computing power on mobile phones has increased exponentially in recent years. For instance, the TI-84 calculator developed by Texas Instruments in 2004 is 350 times faster than Apollo computers and had 32 times more RAM and 14,500 times more ROM <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</li>
-<li>On-device engines like PyTorch Mobile, Google&rsquo;s TFLite, and Apple&rsquo;s CoreML for DNN model inference and even training have also started to gain popularity.</li>
-<li>Hardware-efficient neural network architectures like MobileNets, and model compression techniques based on network pruning or quantization have made it possible to optimize computation for on-device inference.</li>
-<li>Deploying models on the device helps to reduce server congestion.</li>
-<li>It is prohibitive to train the recommender algorithm at the server with embedded personalized behavior sequences for every user.</li>
-<li>Personalized client-side models help to unbias the server-side recommender algorithms from long-tailed users or items. It is common to have discrepancies between training and test data distributions that make the global model not optimal for each user.</li>
-<li>On-device training approaches like Federated Learning also help resolve some of the privacy concerns around using real-time client-specific signals.</li>
-</ul>
-<h3 id="challenges" class="headerLink">
-    <a href="#challenges" class="header-mark"></a>Challenges</h3><ul>
-<li>Data for individual users is often insufficient and sparse to be able to train or fine-tune a model local to the edge device. Few-shot learning also has a higher generalization error and hence a higher likelihood of failing to realize the desired personalization.</li>
-<li>Learning from on-device data often suffers from local optimization in the long term and can lead to overfitting for individual users.</li>
-<li>To respect the mobile data plans and battery consumption on the user device, the models have to be kept small in size and simple to compute with.</li>
-<li>Updating an on-device model is often constrained by factors like Wi-Fi availability and current battery level as well.</li>
-</ul>
-<p>In the on-device learning section, we will look at some of the solutions to handle the first two challenges mentioned above. Whereas in the on-device inference section, we will see some model optimizations and versioning methods to deal with the last two challenges.</p>
-<h2 id="device-side-computation-paradigms" class="headerLink">
-    <a href="#device-side-computation-paradigms" class="header-mark"></a>Device-side computation paradigms</h2><p>We can think of the majority of the prior work done in on-edge recommender systems as belonging to one of the two categories below.</p>
-<ul>
-<li><strong>On-device Inference</strong>: In this strategy, the server sends the pre-trained model(s) to the device, and the device uses this model to run inference. This method saves communication latency between client and server while being able to capture real-time user behavior and system feedback.</li>
-<li><strong>On-device Learning</strong>: A lot of the work done in this category belongs to the Federated recommender systems. This strategy aggregates the on-device trained information from multiple devices and then trains a centralized model on the server. This method overcomes some of the privacy concerns regarding user data usage. Later this article will introduce some alternatives to the federated recommender systems paradigm that do on-device learning.</li>
-</ul>
-<p>Next, we will look at the design philosophy and architecture choices of some industrial large-scale examples of mobile recommender systems paradigms currently serving billions of users.</p>
-<h3 id="on-device-inference" class="headerLink">
-    <a href="#on-device-inference" class="header-mark"></a>On-Device Inference</h3><h4 id="kuaishous-short-video-recommendation-on-mobile-devices" class="headerLink">
-    <a href="#kuaishous-short-video-recommendation-on-mobile-devices" class="header-mark"></a>Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices</h4><p>Chinese social network app, Kuaishou, released a paper describing an on-device inference framework used in their billion-user scale short video application <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. They developed an on-device ranking model that used users&rsquo; real-time feedback of watched videos and client-specific real-time features. Their system can react immediately to users’ implicit or explicit feedback to make appropriate ordering adjustments to remaining candidate videos.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png" title="Kuaishou overall system" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png" data-sub-html="<h2>Kuaishou real-time short video recommender system architecture</h2><p>Kuaishou overall system</p>">
+            </div><div class="content" id="content"><p>The Mixture-of-Experts (MoE) is a classical ensemble learning technique originally proposed by Jacobs et. al<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> in 1991. MoEs have the capability to substantially scale up the model capacity and only introduce small computation overhead. This ability combined with recent innovations in the deep learning domain has led to the wide-scale adoption of MoEs in healthcare, finance, pattern recognition, etc. They have been successfully utilized in large-scale applications such as Large Language Modeling (LLM), Machine Translation, and Recommendations. This article gives an introduction to Mixture-of-Experts and some of the most important enhancements made to the original MoE proposal. Then we look at how MoEs have been adapted to compute recommendations by looking at examples of such systems in production.</p>
+<h2 id="introduction-to-mixture-of-experts-moe" class="headerLink">
+    <a href="#introduction-to-mixture-of-experts-moe" class="header-mark"></a>Introduction to Mixture-of-Experts (MoE)</h2><p>Generally speaking, MoE architecture is an ensemble of many models (aka experts). We train a number of these experts, each of which can be trained on a subspace of the problem, and then specialize in that specific part of the input space. The underlying assumption is that our data comes from different regimes. Many datasets can be naturally divided into that correspond to different subtasks. For example: in financial data, the state of the economy has a big effect on mapping inputs to outputs. So you might want different models for different states of the economy.</p>
+<p>Each of the experts can be any machine learning algorithm such as an SVM, HMM, a small neural network, or even just a simple matrix multiplication. These experts often have the same architecture and are also trained by the same algorithm. Additionally, MoEs include a gating (or routing) function that acts as a manager that forwards individual inputs to the best experts based on their specialization.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/moe_classification_example.png" title="A simple classification example for MoE" data-thumbnail="/img/posts/2023/moe-for-recsys/moe_classification_example.png" data-sub-html="<h2>A simple classification example for MoE</h2><p>A simple classification example for MoE</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png"
-            srcset="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png, /img/posts/2023/reranking-on-edge/kuaishou_overall_system.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_overall_system.png 2x"
+            src="/img/posts/2023/moe-for-recsys/moe_classification_example.png"
+            srcset="/img/posts/2023/moe-for-recsys/moe_classification_example.png, /img/posts/2023/moe-for-recsys/moe_classification_example.png 1.5x, /img/posts/2023/moe-for-recsys/moe_classification_example.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png">
-    </a><figcaption class="image-caption">Kuaishou real-time short video recommender system architecture</figcaption>
+            alt="/img/posts/2023/moe-for-recsys/moe_classification_example.png">
+    </a><figcaption class="image-caption">A simple classification example for MoE</figcaption>
     </figure></p>
-<p>On the cloud side, we have a traditional recommender system along with a Mobile Ranking Model Training module that uses the input features generated from the access logs from user devices and trains a ranking model. This trained model is exported to TFLite format periodically and sent to the user device for deployment. While responding to the initial paging request, the server also sends the item features for the recommended candidates along with the candidate videos. The client uses these features along with the client-specific features (watched videos and corresponding feedback along with real-time features like network signal) for inference using the on-device ranking model.</p>
-<h5 id="what-input-features-are-used" class="headerLink">
-    <a href="#what-input-features-are-used" class="header-mark"></a>What input features are used?</h5><p>The server-side model primarily focuses on modeling users&rsquo; long-term interests and uses a lot of ID features (user id, video id, crossing features), users&rsquo; watch history, etc. The following table shows the features used by the on-device reranking model. Apart from these, the model also used some engineered cross features such as time since last impression, pXTR, and impression position diffs between with preceding historical item. Note that the server-side features are not used in the on-device model because the offline experiments showed that their information has already been distilled into the predictions from the server model.</p>
-<p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png" title="Kuaishou client-side features" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png">
+<p>In the classification example shown above, the blue circles and red diamonds correspond to two different classes. The gate does a soft partition of the input space and defines the regions where the individual experts are trustworthy. For example, Expert 1 is responsible for the left of the gating line, whereas Expert 2&rsquo;s opinion is considered for the data points to the right of it. This approach simplifies a non-linear classification problem into two linear classification problems<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>This divide-and-conquer approach to problem-solving also underlies many other predictive modeling ensembles, like Boosting methods. However, all the trained models in Boosting are given some weightage regardless of the current input we are dealing with, so the result will be combined from all models. On the other hand, the routing scheme in MoE only incurs computational cost corresponding to the selected experts. Hence MoEs enable a paradigm called Conditional Computation and perform effectively when there is a large amount of training data. Also, because the input is fractionated, MoE models often do not perform well with small datasets.</p>
+<h3 id="make-experts-complete-not-cooperate" class="headerLink">
+    <a href="#make-experts-complete-not-cooperate" class="header-mark"></a>Make experts complete, not cooperate</h3><p>Training a single, multilayer network to perform different subtasks on different occasions can lead to strong interference effects that lead to slow learning and poor generalization. If the number of subtasks is known prior to training, one option, for example, is to make the final output of the whole system to be a linear combination of the outputs of the local experts, each given their own proportional weights. So, the error value on case c can be calculated as:</p>
+<p>$$ E^c = || y^c - \sum_{i} w_i^c o_i^c ||^2 $$</p>
+<p>where $o_i^c$ is the output vector of $i$th expert and $w_i^c$ is the proportional contribution of expert $i$, and $y^c$ is the desired output. Note that the CART algorithm uses a similar approach. One problem with such an error measure is that it encourages cooperation as there is a strong coupling between the experts. Each local expert will have to make its output cancel the residual error that is left by the combined effect of other experts. And, if the weight of one expert changes, the residual error changes, and the error derivatives for all other local experts also change.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/moe.png" title="Mixture of Experts" data-thumbnail="/img/posts/2023/moe-for-recsys/moe.png" data-sub-html="<h2>Mixture of Experts</h2><p>Mixture of Experts</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png"
-            srcset="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png, /img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png 2x"
+            src="/img/posts/2023/moe-for-recsys/moe.png"
+            srcset="/img/posts/2023/moe-for-recsys/moe.png, /img/posts/2023/moe-for-recsys/moe.png 1.5x, /img/posts/2023/moe-for-recsys/moe.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png">
-    </a></p>
-<h5 id="when-is-the-on-device-reranking-triggered" class="headerLink">
-    <a href="#when-is-the-on-device-reranking-triggered" class="header-mark"></a>When is the on-device reranking triggered?</h5><p>Kuaishou&rsquo;s interface allows for only one video to occupy the current screen space. At each user swipe, the client system performs reranking with the remaining candidate videos and inserts the top-ranked candidate video at the next position.</p>
-<h5 id="model-architecture" class="headerLink">
-    <a href="#model-architecture" class="header-mark"></a>Model Architecture</h5><p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png" title="Kuaishou model architecture" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png"
-            srcset="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png, /img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png">
-    </a></p>
-<p>Their model also considers interaction among candidate videos. The watch history sequence is modeled using a multi-head attention (MHA) mechanism with Q projected from candidate item features and K, V projected from watch history sequence features. Only one candidate video is considered at a time. Outputs of the two MHA modules are concatenated with target features and other features and passed to a Multi-gate Mixture of Experts (MMoE) to calculate probabilities of the user continuing to watch the next video, watching the video for longer than a threshold like 3 seconds, and liking the video. The loss function is defined as the sum of log losses of each target averaged by the number of training samples. They also proposed a novel beam search strategy to further optimize evaluating all candidates in the target list.</p>
-<h5 id="results" class="headerLink">
-    <a href="#results" class="header-mark"></a>Results</h5><p>Kuaishou deployed this architecture in production to serve over a billion users, and improved effective view, like, and follow by 1.28%, 8.22%, and 13.6% respectively. Their studies also show that each inference had an average cost of 120 ms on the Android platform and 50 ms on the iOS platform. The increase in CPU and memory usage was about 2% each on Android and 0.5% and 1.5% respectively on the iOS platform.</p>
-<h4 id="taobaos-edgerec" class="headerLink">
-    <a href="#taobaos-edgerec" class="header-mark"></a>Taobao&rsquo;s EdgeRec</h4><p>EdgeRec <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> was one of the earliest on-device inference-based recommender systems. It was fully deployed in Alibaba&rsquo;s Taobao application and served billions of users. Through real-time computing on edge devices, EdgeRec can capture users&rsquo; diverse interests in real-time and adjust recommendation results accordingly without making any additional requests to the cloud server.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png" title="EdgeRec System Overview" data-thumbnail="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png" data-sub-html="<h2>EdgeRec system overview. The module on the left was deployed in mobile client and the one of the right was deployed on cloud.</h2><p>EdgeRec System Overview</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png"
-            srcset="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png, /img/posts/2023/reranking-on-edge/edgerec_system_overview.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_system_overview.png 2x"
-            sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png">
-    </a><figcaption class="image-caption">EdgeRec system overview. The module on the left was deployed in mobile client and the one of the right was deployed on cloud.</figcaption>
+            alt="/img/posts/2023/moe-for-recsys/moe.png">
+    </a><figcaption class="image-caption">Mixture of Experts</figcaption>
     </figure></p>
-<p>As shown above, the Client Native module collects user behavior logs (e.g. browsing and click records) and triggers model serving. It also initiates the paging request to the server and stores the features returned from the server along with the corresponding candidate items. It also updates the UI upon receiving the reranked list from the on-device model. The cloud server also uses a versioning strategy to keep the updated model synchronized with the edge devices.</p>
-<h5 id="what-input-features-are-used-1" class="headerLink">
-    <a href="#what-input-features-are-used-1" class="header-mark"></a>What input features are used?</h5><p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/edgerec_features.png" title="EdgeRec Input Features" data-thumbnail="/img/posts/2023/reranking-on-edge/edgerec_features.png" data-sub-html="<h2>Features used in EdgeRec Model</h2><p>EdgeRec Input Features</p>">
+<p>The interference can be reduced by using a system composed of several different &ldquo;expert&rdquo; networks plus a gating network that decides which of the experts should be used for each training case. Instead of using a linear combination of experts, we can use a manager layer (aka a gating network) that makes a stochastic decision about which single expert to use for specific input. The gating network allows the mixing proportions of the experts to be determined by the input vector. This gives us a system of competing local experts where each expert is required to produce the whole of the output vector rather than a residual effectively making the experts independent of each other.</p>
+<p>$$ E^c  = || y^c - o_i^c ||^2 = \sum_{i} p_i^c || y^c - o_i^c ||^2  $$</p>
+<p>Here $p_i^c$ represents the probability that the gating network will select the output from the expert $i$ for an input $c$. If an expert gives less error than the weighted average of all experts, its responsibility for that case will be increased. There is still some indirect coupling because if some other expert changes its weights, it may cause the gating network to alter the responsibilities that get assigned to the experts, but at least these responsibility changes cannot alter the sign of the error that a local expert senses on a given training case.</p>
+<p>The original authors proposed to further optimize the above error function to a negative log probability of generating the desired output vector under the mixture of Gaussian model<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>$$ E^c = - \log{ \sum_i p_i^c e^{- \frac{1}{2} || y^c - o_i^c || }} $$</p>
+<h3 id="advantages-of-moe" class="headerLink">
+    <a href="#advantages-of-moe" class="header-mark"></a>Advantages of MoE</h3><ul>
+<li>MoEs are can be flexibly combined with different models. For example, when combined with SVMs they can allocate different kernel functions to different input regions, which is not possible with vanilla SVMs.</li>
+<li>They find the subsets of patterns that naturally exist within the data. This makes MoEs a great choice for problems that contain non-stationary, piecewise continuous data and datasets that contain a naturally distinctive subset of patterns.</li>
+<li>The divide-and-conquer strategy used by MoEs allows for building larger networks that are still cheap to compute at test time, and more parallelizable at training time<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</li>
+<li>Empirical studies show that the MoE model does not collapse into a single model<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</li>
+</ul>
+<h3 id="problems-with-moe" class="headerLink">
+    <a href="#problems-with-moe" class="header-mark"></a>Problems with MoE</h3><ul>
+<li>At the beginning of the training, all experts are randomly initialized, have the same network, and are trained by the same algorithm. This makes it hard for the gating network to learn the right features because all the experts look the same. Hence the gating mistakes get amplified.</li>
+<li>The gating network can converge to a state where it relies heavily on a specific set of experts. This problems is called the expert load imbalance during training and it can lead to performance issues. Some researchers have suggested adding a load imbalance loss value to mitigate this problem<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</li>
+</ul>
+<h3 id="moe-variants" class="headerLink">
+    <a href="#moe-variants" class="header-mark"></a>MoE Variants</h3><p>Since its inception over 30 years ago, MoEs have been revised many times and several improvements have been proposed. This section highlights a few of them.</p>
+<h4 id="hierarchical-mixture-of-experts" class="headerLink">
+    <a href="#hierarchical-mixture-of-experts" class="header-mark"></a>Hierarchical Mixture of Experts</h4><p>The Hierarchical Mixture-of-Experts (HME) algorithm proposed by Jordan et. al<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> takes a recursive approach to decompose the predictive modeling task. During MoE training, the gate and expert parameters are decoupled and estimated separately. This modularity led to the development of HMEs. HME learns a hierarchy of gating networks in a tree structure, such that the output is conditioned on multiple levels of gating functions. The outputs are then mixed according to the gating weights at each node.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/hmoe.png" title="Two-level HME Architecture" data-thumbnail="/img/posts/2023/moe-for-recsys/hmoe.png" data-sub-html="<h2>Two-level HME Architecture</h2><p>Two-level HME Architecture</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/edgerec_features.png"
-            srcset="/img/posts/2023/reranking-on-edge/edgerec_features.png, /img/posts/2023/reranking-on-edge/edgerec_features.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_features.png 2x"
+            src="/img/posts/2023/moe-for-recsys/hmoe.png"
+            srcset="/img/posts/2023/moe-for-recsys/hmoe.png, /img/posts/2023/moe-for-recsys/hmoe.png 1.5x, /img/posts/2023/moe-for-recsys/hmoe.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/edgerec_features.png">
-    </a><figcaption class="image-caption">Features used in EdgeRec Model</figcaption>
+            alt="/img/posts/2023/moe-for-recsys/hmoe.png">
+    </a><figcaption class="image-caption">Two-level HME Architecture</figcaption>
     </figure></p>
-<p>The figure above shows the collection of features used in EdgeRec. Variables $e_{1}$ to $e_{7}$ are &ldquo;Item Exposure User Action&rdquo; features used in the server-side recommender system that describes how the user behaves upon exposure to an item. Variables $d_{1}$ to $d_{12}$ are &ldquo;Item Page-View User Action&rdquo; features used in the mobile side model that describes how the user behaves on the item detail page after clicking an item. Variables $p_{1}$ to $p_{7}$ are the item features.</p>
-<h5 id="when-is-the-on-device-reranking-triggered-1" class="headerLink">
-    <a href="#when-is-the-on-device-reranking-triggered-1" class="header-mark"></a>When is the on-device reranking triggered?</h5><p>EdgeRec system sets the following three trigger points for invoking reranking of &ldquo;unseen&rdquo; candidate items: (1) the user clicks an item, (2) the user deletes an item (i.e. long press) and (3) k items have been exposed without being clicked.</p>
-<h5 id="model-architecture-1" class="headerLink">
-    <a href="#model-architecture-1" class="header-mark"></a>Model Architecture</h5><p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/edgerec_architecture.png" title="EdgeRec Architecture" data-thumbnail="/img/posts/2023/reranking-on-edge/edgerec_architecture.png">
+<p>The above example shows a two-level HME architecture with two MoE components at the bottom, each consisting of a single gate and two experts. Compared to the CART algorithm&rsquo;s greedy approach, splits in HME are probabilistic functions. So HME can also be thought of as a statistical approach to decision tree modeling that has the capability of recovering from a poor decision somewhere further up the tree.</p>
+<h4 id="deep-mixture-of-experts" class="headerLink">
+    <a href="#deep-mixture-of-experts" class="header-mark"></a>Deep Mixture of Experts</h4><p>Eigen et. al<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> proposed a Deep Mixture of Experts (DMoE) model that stacks MoEs such that a suitable expert combination is dynamically assembled for a given input. DMoE uses multiple sets of gating and experts to exponentially increase the number of effective paths, yet maintains a modest model size by associating each input with a subset of experts at each layer.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/dmoe.png" title="DMoE" data-thumbnail="/img/posts/2023/moe-for-recsys/dmoe.png" data-sub-html="<h2>DMoE Architecture</h2><p>DMoE</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/edgerec_architecture.png"
-            srcset="/img/posts/2023/reranking-on-edge/edgerec_architecture.png, /img/posts/2023/reranking-on-edge/edgerec_architecture.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_architecture.png 2x"
+            src="/img/posts/2023/moe-for-recsys/dmoe.png"
+            srcset="/img/posts/2023/moe-for-recsys/dmoe.png, /img/posts/2023/moe-for-recsys/dmoe.png 1.5x, /img/posts/2023/moe-for-recsys/dmoe.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/edgerec_architecture.png">
-    </a></p>
-<p>As shown in the figure above, EdgeRec models &ldquo;Item Exposure Behavior Sequence&rdquo; and &ldquo;Item Page-View Behavior Sequence&rdquo; separately because the item clicks are more sparse than the item exposures. A simple GRU layer is used as the Encoder. The context-aware reranking module uses the attention technique to automatically find parts of user behavior context that are relevant to ranking the encoded candidate items. This behavior attention also employs Item Exposure (IE) and Item Page-View (IPV) contexts.</p>
-<h5 id="results-1" class="headerLink">
-    <a href="#results-1" class="header-mark"></a>Results</h5><p>Using EdgeRec Taobao was able to achieve up to an additional 1.6% views, 7.2% click-through rate, 8.9% clicks, and 10.9% purchase amount in an online A/B experiment. The delay time for capturing user behavior was reduced from 1 minute to 300 ms. On average, the on-device model size was around 3 MB.</p>
-<h3 id="on-device-learning" class="headerLink">
-    <a href="#on-device-learning" class="header-mark"></a>On-device Learning</h3><p>Due to data heterogeneity, cloud models trained over the global data are non-optimal to individual users&rsquo; local data distribution. To deal with model personalization, on-device learning is a great solution. However, as explained earlier in the &ldquo;challenges&rdquo; section, user data on local devices is often very small and sparse which leads to overfitting and loss of generalization. In this section, we will mainly focus on solutions that can help fix this problem.</p>
-<h4 id="device-cloud-collaborative-learning-dccl-framework" class="headerLink">
-    <a href="#device-cloud-collaborative-learning-dccl-framework" class="header-mark"></a>Device-Cloud Collaborative Learning (DCCL) framework</h4><p>As mentioned earlier, a lot of work done under the on-device learning paradigm belongs to the Federated Recommender Systems. Under these systems, on-device learning is used to compute gradients over the local data which are then aggregated over multiple devices and used to update a central model&rsquo;s parameters by approaches like federated averaging (FedAvg), etc. For example, Qi et al.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> by applying Federated Learning and differential privacy for news recommendation use case, and Lin et al.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> accounted for storage, power, and network bandwidth to distribute gradient computation among user devices and cloud servers. This centralized cloud model-based traditional approach follows the &ldquo;model-over-data&rdquo; paradigm. One limitation of federated learning is that it assumes the data never leaves the user device, and hence there is no concept of global data. Such a scenario is unlikely in modern recommender systems because most user data has already been uploaded to the cloud and the cloud server still does a majority of personalization computations.</p>
-<p>In DCCL Yao et al.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> proposed an alternative &ldquo;model-over-models&rdquo; paradigm to model the collaboration between the device and the cloud. Under this framework, the cloud model is frozen and the edge devices use patch learning method <sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> to learn the parameters of a trainable patch function using sparse local samples. These patches are then sent to the server where the cloud model uses a distillation process with these patches as meaningful priors to optimize the cloud model.</p>
-<h4 id="collaborative-learning-with-data-augmentation-coda" class="headerLink">
-    <a href="#collaborative-learning-with-data-augmentation-coda" class="header-mark"></a>Collaborative learning with Data Augmentation (CoDA)</h4><p>Gu et al. proposed a device-cloud collaborative learning framework called CoDA where the edge model also receives extra samples from the cloud&rsquo;s global pool of data to augment their local dataset for training the on-device model. The edge device also maintains a personalized sample classifier for further filtering out some of the samples received from the cloud. Global models are trained with all users&rsquo; data but do inferences over each user&rsquo;s local data. CoDA attempts to address this data discrepancy so that the model can be made optimal for each user. In the CoDA framework, an on-device model is trained with both local data and the augmentation data received from the server.</p>
-<p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/coda.png" title="CoDA workflow" data-thumbnail="/img/posts/2023/reranking-on-edge/coda.png">
+            alt="/img/posts/2023/moe-for-recsys/dmoe.png">
+    </a><figcaption class="image-caption">DMoE Architecture</figcaption>
+    </figure></p>
+<p>The above example shows a DMoE with two sets of experts with gating networks. It dynamically computes a suitable expert combination by conditioning the experts and gating networks on the output of the previous layers. To ensure that the experts at the first layer do not overpower the remaining experts, the authors propose an explicit constraint on relative gating assignments temporarily during training.</p>
+<h4 id="sparsely-gated-mixture-of-experts" class="headerLink">
+    <a href="#sparsely-gated-mixture-of-experts" class="header-mark"></a>Sparsely-gated Mixture of Experts</h4><p>One of the most influential improvements to MoEs was proposed by Shazeer et. al<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> which offered a dramatic increase in model capacity without a proportional increase in computation. Their Sparsely-gated Mixture-of-Experts model can achieve more than 1000x improvement in model capacity while incurring only a minor loss in computational efficiency. Scaling a traditional deep learning model costs a significant amount of compute because the entire model is activated for every example. Their gating method selects a sparse combination of experts to process each input. Before taking the softmax in a standard gating network, they add a tunable Gaussian noise, and then keep only the top-k values, setting the rest to $-\infty$ (making the corresponding gate outputs to be 0).</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/sparse_moe.png" title="Sparsely-gated MoE" data-thumbnail="/img/posts/2023/moe-for-recsys/sparse_moe.png" data-sub-html="<h2>Sparsely-gated MoE</h2><p>Sparsely-gated MoE</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/reranking-on-edge/coda.png"
-            srcset="/img/posts/2023/reranking-on-edge/coda.png, /img/posts/2023/reranking-on-edge/coda.png 1.5x, /img/posts/2023/reranking-on-edge/coda.png 2x"
+            src="/img/posts/2023/moe-for-recsys/sparse_moe.png"
+            srcset="/img/posts/2023/moe-for-recsys/sparse_moe.png, /img/posts/2023/moe-for-recsys/sparse_moe.png 1.5x, /img/posts/2023/moe-for-recsys/sparse_moe.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/coda.png">
-    </a></p>
-<p>The cloud server uses a K nearest-neighbor (KNN) method on user feature vectors to find samples similar to the current user behavior. The server then desensitizes and anonymizes these samples before sending them to the end user&rsquo;s device. The user device uses this augmented data and the local data for training and evaluating a personalized binary classifier. This classifier is trained to identify local samples from the combined data, and the augmentation samples with high scores (i.e. false positives) are considered close enough to be used for the on-device reranking model. The remaining augmentation data is dropped. Both classification and reranking inference tasks use models based on Deep Interest Network architecture <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
+            alt="/img/posts/2023/moe-for-recsys/sparse_moe.png">
+    </a><figcaption class="image-caption">Sparsely-gated MoE</figcaption>
+    </figure></p>
+<p>The above example shows their proposed MoE layer embedded within a recurrent model. The sparse gating function in the example has selected two experts to perform computations. They trained the model on language modeling and machine translation tasks and show that different experts tend to become highly specialized based on input syntax and semantics. The paper also proposes parallelism techniques for increasing batch sizes and additional loss terms to balance the utilization of experts.</p>
+<p>Some recent studies show that using sparsely-gated MoEs for Large Language Modeling (LLM) can lead to similar performance as achieved by a dense model that requires four times as much compute<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>. Meta also used the sparsely-gated MoE technique for its No Language Left Behind (NLLB-200) model that provides translation capability for low-resource languages with relatively little data<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
+<h4 id="multi-gate-mixture-of-experts" class="headerLink">
+    <a href="#multi-gate-mixture-of-experts" class="header-mark"></a>Multi-gate Mixture-of-Experts</h4><p>In Multi-gate Mixture-of-Experts (MMoE), Ma el. al<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> adapted the MoE structure to multi-task learning. The goal of multi-task learning is to build a single model that learns multiple tasks simultaneously. The authors hypothesize that such learning is sensitive to the differences in data distributions and the relationship between tasks. Such factors can affect a model&rsquo;s performance especially when model parameters are shared among the tasks.</p>
+<p>They propose a novel approach that is based on MoEs and explicitly models task relationships along with learning task-specific functionalities. In their architecture, the expert submodels (feed-forward networks) are shared across all tasks, while the gating networks are task-specific. Each task also has a task-specific &ldquo;tower&rdquo; to decouple the optimization for tasks. The key idea here is that the commonly used shared-bottom model structure is replaced by MoEs.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/mmoe.png" title="MMoE" data-thumbnail="/img/posts/2023/moe-for-recsys/mmoe.png" data-sub-html="<h2>MMoE Architecture</h2><p>MMoE</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/moe-for-recsys/mmoe.png"
+            srcset="/img/posts/2023/moe-for-recsys/mmoe.png, /img/posts/2023/moe-for-recsys/mmoe.png 1.5x, /img/posts/2023/moe-for-recsys/mmoe.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/moe-for-recsys/mmoe.png">
+    </a><figcaption class="image-caption">MMoE Architecture</figcaption>
+    </figure></p>
+<p>The above example shows an MMoE architecture for two tasks. Their gating networks allow different tasks to utilize different experts differently. Through experiments, the authors show that MMoE architecture outperforms baseline methods, especially when the correlation among tasks is low. The authors test MMoEs in large-scale recommender systems at Google by training a ranking model optimized for user engagement and user satisfaction objectives. However, because training task-specific models can lead to learning billions of parameters for individual tasks, the authors simply change the top layer of the shared-bottom network to an MMoE layer.</p>
+<h2 id="mixture-of-expert-for-recommendations" class="headerLink">
+    <a href="#mixture-of-expert-for-recommendations" class="header-mark"></a>Mixture-of-Expert for Recommendations</h2><p>A lot of recommender system applications are built on a multi-task learning framework. The key idea is to model multiple related objectives, like user engagement (such as clicks, engagement time), user satisfaction (such as ratings, like rate), and user purchases together for a more holistic view of the users. Such joint modeling allows for efficient and effective knowledge and data sharing across relevant tasks. This is especially useful for tasks with sparse data availability. Multi-task learning can also act as a regularizer such that the inductive biases introduced by the auxiliary tasks also improve the generalization of the main task.</p>
+<p>Some of the widely used multi-task learning models are based on a shared-bottom model structure. These systems suffer from optimization conflicts caused by different tasks sharing the same set of parameters. Data sparsity, data heterogeneity, and users&rsquo; complex underlying intents are some of the common challenges faced by these multi-task learning systems. Recently, some large-scale recommendation systems have started to utilize MMoE for multi-task modeling and achieve state-of-the-art results for recommendations. This section highlights some notable examples from the industry.</p>
+<h3 id="youtubes-next-video-recommendation" class="headerLink">
+    <a href="#youtubes-next-video-recommendation" class="header-mark"></a>YouTube&rsquo;s Next Video Recommendation</h3><p>Zhao et. al<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup> from Google proposed an MMoE-based multi-objective ranking system for recommending what video to watch next on YouTube. They first group their task objective into two categories: engagement and satisfaction. Given the list of candidate videos from the retrieval step, their ranking system uses candidate, user, and context features to learn to predict the probabilities corresponding to the two categories of user behavior.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/youtube_mmoe.png" title="YouTube&amp;rsquo;s MMoE" data-thumbnail="/img/posts/2023/moe-for-recsys/youtube_mmoe.png" data-sub-html="<h2>YouTube&#39;s MMoE</h2><p>YouTube&amp;rsquo;s MMoE</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/moe-for-recsys/youtube_mmoe.png"
+            srcset="/img/posts/2023/moe-for-recsys/youtube_mmoe.png, /img/posts/2023/moe-for-recsys/youtube_mmoe.png 1.5x, /img/posts/2023/moe-for-recsys/youtube_mmoe.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/moe-for-recsys/youtube_mmoe.png">
+    </a><figcaption class="image-caption">YouTube's MMoE</figcaption>
+    </figure></p>
+<p>They substitute the last shared-bottom layer in their previous model with the MoE layer with task-specific gating and experts shared across tasks. They chose to not apply the MoE layer directly to the input because the high dimensionality of input would lead to significant model training and serving costs. In the paper, they also describe a shallow tower learned alongside this MMoE to reduce selection biases.</p>
+<h3 id="gmails-mixture-of-sequential-experts" class="headerLink">
+    <a href="#gmails-mixture-of-sequential-experts" class="header-mark"></a>GMail&rsquo;s Mixture of Sequential Experts</h3><p>Qin et. al<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> from Google, proposed a Mixture-of-Sequential-Experts (MoSE) framework for multi-task modeling that focuses on non-sequential data (like user query and context) as well as sequential data (like user behavior from search or browsing logs). In order to incorporate temporal dependencies from sequential data modeling into the MMoE structure, they utilized an LSTM shared-bottom, LSTM-based experts and LSTM task-towers.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/gmail_mmoe.png" title="MoSE model structure" data-thumbnail="/img/posts/2023/moe-for-recsys/gmail_mmoe.png" data-sub-html="<h2>MoSE model structure</h2><p>MoSE model structure</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/moe-for-recsys/gmail_mmoe.png"
+            srcset="/img/posts/2023/moe-for-recsys/gmail_mmoe.png, /img/posts/2023/moe-for-recsys/gmail_mmoe.png 1.5x, /img/posts/2023/moe-for-recsys/gmail_mmoe.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/moe-for-recsys/gmail_mmoe.png">
+    </a><figcaption class="image-caption">MoSE model structure</figcaption>
+    </figure></p>
+<p>Their experiments showed that the LSTM-based MMoE (MoSE) performed better at modeling user activity streams than the FFN-based MMoE model.</p>
+<h3 id="kuaishous-kwai-recommender-system" class="headerLink">
+    <a href="#kuaishous-kwai-recommender-system" class="header-mark"></a>Kuaishou&rsquo;s Kwai Recommender System</h3><p>In Personalized Cold Start Modules (POSO), Dai et. al<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup> explained their recommendation system used in the Kwai app. The input consists of sequential features (like the user&rsquo;s historical interaction) and non-sequential features (like user ID). All of these features are first mapped into low-dimensional vectors using an embedding look-up table. For each sequential feature, a multi-head attention (MHA) module is used to fuse the embeddings into a concatenation of vector outputs from each head. These sequential and non-sequential vectors are then concatenated and fed into an MMoE layer, which is followed by a task-specific MLP that predicts the probabilities for user behavior specific to the task.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/kwai_mmoe.png" title="Kwai&amp;rsquo;s Recommender System" data-thumbnail="/img/posts/2023/moe-for-recsys/kwai_mmoe.png" data-sub-html="<h2>Kwai&#39;s recommender system in production</h2><p>Kwai&amp;rsquo;s Recommender System</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/moe-for-recsys/kwai_mmoe.png"
+            srcset="/img/posts/2023/moe-for-recsys/kwai_mmoe.png, /img/posts/2023/moe-for-recsys/kwai_mmoe.png 1.5x, /img/posts/2023/moe-for-recsys/kwai_mmoe.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/moe-for-recsys/kwai_mmoe.png">
+    </a><figcaption class="image-caption">Kwai's recommender system in production</figcaption>
+    </figure></p>
 <h2 id="summary" class="headerLink">
-    <a href="#summary" class="header-mark"></a>Summary</h2><p>This article explained the shortcomings of a cloud server model trained on global data for serving personalized recommendations. It introduced on-device inference and on-device learning paradigms which aim to timely capture rich user behavior and respond to users&rsquo; changing demands in real time. We also looked at system design choices and implementation details of some exemplar systems from different industrial applications that have served recommendations to billions of users.</p>
+    <a href="#summary" class="header-mark"></a>Summary</h2><p>Mixture-of-Experts have seen a wide-scale adoption in the industry for a number of applications. Their learning procedure divides up the task into appropriate subtasks, each of which can be solved by a very simple expert network. A gating network further reduces the computational overhead by deciding which of the experts should be used for each input. Hence MoEs can automatically adjust parameterization between modeling shared information and modeling task-specific information. MoE layers in deep learning achieve conditional computation where only parts of a network are active on a per-example basis at both training and serving time. This capability translates to parallelizable training and fast inference, making MoEs lucrative for large-scale systems. This article introduced MoE and its variants in detail and highlighted several industrial recommender systems that utilized mixture-of-experts.</p>
 <h2 id="references" class="headerLink">
     <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>Two Tower Model Architecture: Current State and Promising Extensions. Cascade Ranking System: <a href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system" target="_blank" rel="noopener noreferrer">https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Jacobs, R.A., Jordan, M.I., Nowlan, S.J., &amp; Hinton, G.E. (1991). Adaptive Mixtures of Local Experts. <em>Neural Computation, 3</em>, 79-87.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>Your smartphone is millions of times more powerful than the Apollo 11 guidance computers. <a href="https://www.zmescience.com/science/news-science/smartphone-power-compared-to-apollo-432/" target="_blank" rel="noopener noreferrer">https://www.zmescience.com/science/news-science/smartphone-power-compared-to-apollo-432/</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Yüksel, S.E., Wilson, J.N., &amp; Gader, P.D. (2012). Twenty Years of Mixture of Experts. <em>IEEE Transactions on Neural Networks and Learning Systems, 23</em>, 1177-1193.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Gong, X., Feng, Q., Zhang, Y., Qin, J., Ding, W., Li, B., &amp; Jiang, P. (2022). Real-time Short Video Recommendation on Mobile Devices. <em>Proceedings of the 31st ACM International Conference on Information &amp; Knowledge Management</em>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Kalyan, S.K. (2017). Designing mixture of deep experts.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Gong, Yu &amp; Jiang, Ziwen &amp; Zhao, Kaiqi &amp; Liu, Qingwen &amp; Ou, Wenwu. (2020). EdgeRec: Recommender System on Edge in Mobile Taobao.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Chen, Z., Deng, Y., Wu, Y., Gu, Q., &amp; Li, Y. (2022). Towards Understanding Mixture of Experts in Deep Learning. <em>ArXiv, abs/2208.02813</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>Qi, Tao &amp; Wu, Fangzhao &amp; Wu, Chuhan &amp; Huang, Yongfeng &amp; Xie, Xing. (2020). Privacy-Preserving News Recommendation Model Training via Federated Learning.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Shazeer, N.M., Mirhoseini, A., Maziarz, K., Davis, A., Le, Q.V., Hinton, G.E., &amp; Dean, J. (2017). Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer. <em>ArXiv, abs/1701.06538</em>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>Lin, Yujie &amp; Ren, Pengjie &amp; Chen, Zhumin &amp; Ren, Zhaochun &amp; Yu, Dongxiao &amp; Ma, Jun &amp; Rijke, Maarten &amp; Cheng, Xiuzhen. (2020). Meta Matrix Factorization for Federated Rating Predictions. 981-990. 10.1145/3397271.3401081.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Jordan, M.I., &amp; Jacobs, R.A. (1993). Hierarchical Mixtures of Experts and the EM Algorithm. <em>Neural Computation, 6</em>, 181-214.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
-<p>Yao, Jiangchao &amp; Wang, Feng &amp; Jia, Kunyang &amp; Han, Bo &amp; Zhou, Jingren &amp; Yang, Hongxia. (2021). Device-Cloud Collaborative Learning for Recommendation.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Eigen, D., Ranzato, M., &amp; Sutskever, I. (2013). Learning Factored Representations in a Deep Mixture of Experts. <em>CoRR, abs/1312.4314</em>.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:8">
-<p>Yuan, F., He, X., Karatzoglou, A., &amp; Zhang, L. (2020). Parameter-Efficient Transfer from Sequential Behaviors for User Modeling and Recommendation. <em>Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval</em>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Artetxe, M., Bhosale, S., Goyal, &amp; Stoyanov, V. (2021). Efficient Large Scale Language Modeling with Mixtures of Experts. <em>Conference on Empirical Methods in Natural Language Processing</em>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:9">
-<p>Zhou, Guorui &amp; Gai, Kun &amp; Zhu, Xiaoqiang &amp; Song, Chenru &amp; Fan, Ying &amp; Zhu, Han &amp; Ma, Xiao &amp; Yan, Yanghui &amp; Jin, Junqi &amp; Li, Han. (2018). Deep Interest Network for Click-Through Rate Prediction. 1059-1068. 10.1145/3219819.3219823.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Team, N. (2022). No Language Left Behind: Scaling Human-Centered Machine Translation. <em>ArXiv</em>. /abs/2207.04672&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>Ma, J., Zhao, Z., Yi, X., Chen, J., Hong, L., &amp; Chi, E.H. (2018). Modeling Task Relationships in Multi-task Learning with Multi-gate Mixture-of-Experts. <em>Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</em>.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>Zhao, Z., Hong, L., Wei, L., Chen, J., Nath, A., Andrews, S., Kumthekar, A., Sathiamoorthy, M., Yi, X., &amp; Chi, E.H. (2019). Recommending what video to watch next: a multitask ranking system. <em>Proceedings of the 13th ACM Conference on Recommender Systems</em>.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p>Qin, Z., Cheng, Y., Zhao, Z., Chen, Z., Metzler, D., &amp; Qin, J. (2020). Multitask Mixture of Sequential Experts for User Activity Streams. <em>Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</em>.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p>Dai, S., Lin, H., Zhao, Z., Lin, J., Wu, H., Wang, Z., Yang, S., &amp; Liu, J. (2021). POSO: Personalized Cold Start Modules for Large-scale Recommender Systems. <em>ArXiv, abs/2108.04690</em>.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
@@ -406,20 +396,6 @@
 
 <h2>Related Content</h2>
 <div class="related-container">
-    <div class="related-item-container">
-            <div class="related-image">
-                <a href="/posts/2023/04/moe-for-recsys/"><img
-        
-        loading="lazy"
-        src="/posts/2023/04/moe-for-recsys/featured-image-preview.webp"
-        srcset="/posts/2023/04/moe-for-recsys/featured-image-preview.webp, /posts/2023/04/moe-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/04/moe-for-recsys/featured-image-preview.webp 2x"
-        sizes="auto"
-        alt="/posts/2023/04/moe-for-recsys/featured-image-preview.webp"
-        title="/posts/2023/04/moe-for-recsys/featured-image-preview.webp" height="200" width="400"></a>
-            </div><h2 class="related-title">
-                <a href="/posts/2023/04/moe-for-recsys/">Mixture-of-Experts based Recommender Systems</a>
-            </h2>
-        </div>
     <div class="related-item-container">
             <div class="related-image">
                 <a href="/posts/2023/04/diffusion-for-recsys/"><img
@@ -476,6 +452,20 @@
                 <a href="/posts/2023/03/contrastive-video-representations/">Self-Supervised Contrastive Approaches for Video Representation Learning</a>
             </h2>
         </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/03/pairing-for-representation/"><img
+        
+        loading="lazy"
+        src="/posts/2023/03/pairing-for-representation/featured-image-preview.webp"
+        srcset="/posts/2023/03/pairing-for-representation/featured-image-preview.webp, /posts/2023/03/pairing-for-representation/featured-image-preview.webp 1.5x, /posts/2023/03/pairing-for-representation/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/03/pairing-for-representation/featured-image-preview.webp"
+        title="/posts/2023/03/pairing-for-representation/featured-image-preview.webp" height="200" width="400"></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/03/pairing-for-representation/">Positive and Negative Sampling Strategies for Representation Learning in Semantic Search</a>
+            </h2>
+        </div>
     
 
 </div>
@@ -489,27 +479,26 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-03-09</span>
+                <span>Updated on 2023-04-23</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-via="_reachsumit" data-hashtags="literature review,recsys,ranking"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
+                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-title="Mixture-of-Experts based Recommender Systems" data-via="_reachsumit" data-hashtags="literature review,recsys,Mixture-of-experts"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-title="Mixture-of-Experts based Recommender Systems" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-title="Mixture-of-Experts based Recommender Systems"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-title="Mixture-of-Experts based Recommender Systems"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-title="Mixture-of-Experts based Recommender Systems" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-title="Mixture-of-Experts based Recommender Systems"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-title="Mixture-of-Experts based Recommender Systems" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/ranking/">ranking</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/mixture-of-experts/">Mixture-of-experts</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/2023/03/two-tower-model/" class="prev" rel="prev" title="Two Tower Model Architecture: Current State and Promising Extensions"><i class="fas fa-angle-left fa-fw"></i>Two Tower Model Architecture: Current State and Promising Extensions</a>
-            <a href="/posts/2023/03/llm-for-text-ranking/" class="next" rel="next" title="Zero and Few Shot Text Retrieval and Ranking Using Large Language Models">Zero and Few Shot Text Retrieval and Ranking Using Large Language Models<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/2023/04/diffusion-for-recsys/" class="prev" rel="prev" title="Diffusion Modeling based Recommender Systems"><i class="fas fa-angle-left fa-fw"></i>Diffusion Modeling based Recommender Systems</a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
@@ -527,7 +516,7 @@
             <i class="fas fa-comment fa-fw"></i>
         </a>
     </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-03-09T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Next Gen Recommender Systems: Real-time reranking on mobile devices"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-04-23T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Mixture-of-Experts based Recommender Systems"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-171612692-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-171612692-1" async></script></div>

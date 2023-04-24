@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/posts/</link>
         <description>All Posts | Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 17 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 23 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Mixture-of-Experts based Recommender Systems</title>
+    <link>https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/</link>
+    <pubDate>Sun, 23 Apr 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/04/moe-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>The Mixture-of-Experts (MoE) is a classical ensemble learning technique originally proposed by Jacobs et. al1 in 1991. MoEs have the capability to substantially scale up the model capacity and only introduce small computation overhead. This ability combined with recent innovations in the deep learning domain has led to the wide-scale adoption of MoEs in healthcare, finance, pattern recognition, etc. They have been successfully utilized in large-scale applications such as Large Language Modeling (LLM), Machine Translation, and Recommendations.]]></description>
+</item><item>
     <title>Diffusion Modeling based Recommender Systems</title>
     <link>https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/</link>
     <pubDate>Mon, 17 Apr 2023 00:00:00 &#43;0000</pubDate><author>
@@ -87,14 +96,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/01/dl-for-forecasting/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Modern time series forecasting requires a model to learn from multiple related time series. These time series often number in thousands or millions. Traditional statistical models do not scale well to these settings because they learn individual series in isolation and do not share parameters across series. Various deep learning models have been proposed recently with different inductive biases to work effectively under these settings. This article explores some of the most popular advances in deep learning architectures for modern time series forecasting.]]></description>
-</item><item>
-    <title>Statistical vs Machine Learning vs Deep Learning Modeling for Time Series Forecasting</title>
-    <link>https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</link>
-    <pubDate>Tue, 20 Dec 2022 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2022/12/stats-vs-ml-for-ts/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Statistical methods have been used in the time series domain for multiple decades. But given the recent advances in Machine Learning and especially its sub-domain Deep Learning, are statistical methods still superior for forecasting? In this article, we will do a deep dive into literature and recent time series competitions to do a multifaceted comparison between Statistical, Machine Learning, and Deep Learning methods for time series forecasting.]]></description>
 </item></channel>
 </rss>
