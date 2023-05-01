@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>graphs - Tag - Sumit&#39;s Diary</title>
+        <link>https://blog.reachsumit.com/tags/graphs/</link>
+        <description>graphs - Tag - Sumit&#39;s Diary</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 30 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/graphs/" rel="self" type="application/rss+xml" /><item>
+    <title>A Guide to Graph Representation Learning</title>
+    <link>https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/</link>
+    <pubDate>Sun, 30 Apr 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/04/intro-to-graph-representation-learning/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>In recent years, there has been a significant amount of research activity in the graph representation learning domain. These methods help in analyzing abstract graph structures in information networks and improve the performances of state-of-the-art machine learning solutions for real-world applications, such as social recommendations, targeted advertising, user search, etc. This article provides a comprehensive introduction to the graph representation learning domain, including common terminologies, deterministic and stochastic modeling techniques, taxonomy, evaluation methods, and applications.]]></description>
+</item></channel>
+</rss>
