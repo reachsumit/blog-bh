@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
     <title>A Guide to Graph Representation Learning - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="A Guide to Graph Representation Learning" />
-<meta property="og:description" content="In recent years, there has been a significant amount of research activity in the graph representation learning domain. These methods help in analyzing abstract graph structures in information networks and improve the performances of state-of-the-art machine learning solutions for real-world applications, such as social recommendations, targeted advertising, user search, etc. This article provides a comprehensive introduction to the graph representation learning domain, including common terminologies, deterministic and stochastic modeling techniques, taxonomy, evaluation methods, and applications." />
+<meta property="og:description" content="In recent years, there has been a significant amount of research activity in the graph representation learning domain. These learning methods help in analyzing abstract graph structures in information networks and improve the performances of state-of-the-art machine learning solutions for real-world applications, such as social recommendations, targeted advertising, user search, etc. This article provides a comprehensive introduction to the graph representation learning domain, including common terminologies, deterministic and stochastic modeling techniques, taxonomy, evaluation methods, and applications." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/featured-image-preview.webp"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-04-30T00:00:00+00:00" />
@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/featured-image-preview.webp"/>
 <meta name="twitter:title" content="A Guide to Graph Representation Learning"/>
-<meta name="twitter:description" content="In recent years, there has been a significant amount of research activity in the graph representation learning domain. These methods help in analyzing abstract graph structures in information networks and improve the performances of state-of-the-art machine learning solutions for real-world applications, such as social recommendations, targeted advertising, user search, etc. This article provides a comprehensive introduction to the graph representation learning domain, including common terminologies, deterministic and stochastic modeling techniques, taxonomy, evaluation methods, and applications."/>
+<meta name="twitter:description" content="In recent years, there has been a significant amount of research activity in the graph representation learning domain. These learning methods help in analyzing abstract graph structures in information networks and improve the performances of state-of-the-art machine learning solutions for real-world applications, such as social recommendations, targeted advertising, user search, etc. This article provides a comprehensive introduction to the graph representation learning domain, including common terminologies, deterministic and stochastic modeling techniques, taxonomy, evaluation methods, and applications."/>
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/intro-to-graph-representation-learning\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, graphs, embeddings","wordcount":  3400 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, graphs, embeddings","wordcount":  3401 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/intro-to-graph-representation-learning\/","datePublished": "2023-04-30T00:00:00+00:00","dateModified": "2023-04-30T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -185,11 +185,8 @@
         <li><a href="#network-reconstruction">Network Reconstruction</a></li>
         <li><a href="#node-classification">Node Classification</a></li>
         <li><a href="#link-prediction">Link Prediction</a></li>
-        <li><a href="#node-clustering">Node Clustering</a>
-          <ul>
-            <li><a href="#visualization">Visualization</a></li>
-          </ul>
-        </li>
+        <li><a href="#node-clustering">Node Clustering</a></li>
+        <li><a href="#visualization">Visualization</a></li>
       </ul>
     </li>
     <li><a href="#applications-of-graph-embedding">Applications of Graph Embedding</a></li>
@@ -202,7 +199,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/graph-learning/"><i class="far fa-folder fa-fw"></i>Graph Learning</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-30">2023-04-30</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-04-30">2023-04-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3400 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-30">2023-04-30</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-04-30">2023-04-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3401 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;16 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
@@ -277,11 +274,8 @@
         <li><a href="#network-reconstruction">Network Reconstruction</a></li>
         <li><a href="#node-classification">Node Classification</a></li>
         <li><a href="#link-prediction">Link Prediction</a></li>
-        <li><a href="#node-clustering">Node Clustering</a>
-          <ul>
-            <li><a href="#visualization">Visualization</a></li>
-          </ul>
-        </li>
+        <li><a href="#node-clustering">Node Clustering</a></li>
+        <li><a href="#visualization">Visualization</a></li>
       </ul>
     </li>
     <li><a href="#applications-of-graph-embedding">Applications of Graph Embedding</a></li>
@@ -290,7 +284,7 @@
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>In recent years, there has been a significant amount of research activity in the graph representation learning domain. These methods help in analyzing abstract graph structures in information networks and improve the performances of state-of-the-art machine learning solutions for real-world applications, such as social recommendations, targeted advertising, user search, etc. This article provides a comprehensive introduction to the graph representation learning domain, including common terminologies, deterministic and stochastic modeling techniques, taxonomy, evaluation methods, and applications.</p>
+            </div><div class="content" id="content"><p>In recent years, there has been a significant amount of research activity in the graph representation learning domain. These learning methods help in analyzing abstract graph structures in information networks and improve the performances of state-of-the-art machine learning solutions for real-world applications, such as social recommendations, targeted advertising, user search, etc. This article provides a comprehensive introduction to the graph representation learning domain, including common terminologies, deterministic and stochastic modeling techniques, taxonomy, evaluation methods, and applications.</p>
 <h2 id="learning-embeddings-from-graph-data" class="headerLink">
     <a href="#learning-embeddings-from-graph-data" class="header-mark"></a>Learning Embeddings from Graph Data</h2><p>A graph is a fundamental data structure that has a set of vertices (also called nodes, points, or entities) and edges (also called relationships, or connections) that are used to model relationships among a collection of objects. Graph structures are ubiquitous throughout the natural and social sciences. For example, to model a social network as a graph, we can use nodes to represent individuals and edges as an indication that the two individuals are friends. Similarly in e-commerce businesses like Amazon, users and items can be nodes and the buying and selling relationships can be the edges.</p>
 <p><figure><a class="lightgallery" href="/img/posts/2023/intro-to-graph-representation-learning/graph.png" title="Graph" data-thumbnail="/img/posts/2023/intro-to-graph-representation-learning/graph.png" data-sub-html="<h2>An Example of a Graph Structure from Wayne W. Zachary&#39;s famous Zachary Karate Club Network</h2><p>Graph</p>">
@@ -490,8 +484,8 @@
     <a href="#link-prediction" class="header-mark"></a>Link Prediction</h3><p>We first remove a small number of edges of the original network, and then use embeddings to predict the removed edges. Model performance on the Link Prediction task can be measured using AUC and precision@k.</p>
 <h3 id="node-clustering" class="headerLink">
     <a href="#node-clustering" class="header-mark"></a>Node Clustering</h3><p>We can apply k-means clustering on the learned embeddings and evaluate the detected communities. Metrics like accuracy and NMI can be used in this situation.</p>
-<h4 id="visualization" class="headerLink">
-    <a href="#visualization" class="header-mark"></a>Visualization</h4><p>The learned embedding space can be reduced to 2 or 3 dimensions by applying t-SNE or PCA. For good-quality embeddings, we should be able to see the nodes belonging to the same class or community clustered together.</p>
+<h3 id="visualization" class="headerLink">
+    <a href="#visualization" class="header-mark"></a>Visualization</h3><p>The learned embedding space can be reduced to 2 or 3 dimensions by applying t-SNE or PCA. For good-quality embeddings, we should be able to see the nodes belonging to the same class or community clustered together.</p>
 <h2 id="applications-of-graph-embedding" class="headerLink">
     <a href="#applications-of-graph-embedding" class="header-mark"></a>Applications of Graph Embedding</h2><p>The insights learned from the complex graph structures can be useful for various scientific and business use cases. This section highlights some of the applications<sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
 <ul>
