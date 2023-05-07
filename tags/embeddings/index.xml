@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/tags/embeddings/</link>
         <description>embeddings - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 30 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/embeddings/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 May 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/embeddings/" rel="self" type="application/rss+xml" /><item>
+    <title>Shallow Embedding Models for Homogeneous Graphs</title>
+    <link>https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/</link>
+    <pubDate>Sun, 07 May 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>The previous article &ldquo;A Guide to Graph Representation Learning&rdquo; provided a comprehensive introduction to the state of graph representation learning, along with a review of the basic terminologies, techniques, and applications. If you are new to the graph learning domain, I&rsquo;d highly recommend you read the previous article first. This article takes a closer look at different types of shallow graph embedding models of homogeneous graphs. It also highlights a few real-world applications that build upon some of these ideas.]]></description>
+</item><item>
     <title>A Guide to Graph Representation Learning</title>
     <link>https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/</link>
     <pubDate>Sun, 30 Apr 2023 00:00:00 &#43;0000</pubDate><author>

@@ -4,9 +4,18 @@
         <link>https://blog.reachsumit.com/</link>
         <description>Welcome to Sumit Kumar&#39;s Personal Blog!</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 30 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 May 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.reachsumit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Shallow Embedding Models for Homogeneous Graphs</title>
+    <link>https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/</link>
+    <pubDate>Sun, 07 May 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>The previous article &ldquo;A Guide to Graph Representation Learning&rdquo; provided a comprehensive introduction to the state of graph representation learning, along with a review of the basic terminologies, techniques, and applications. If you are new to the graph learning domain, I&rsquo;d highly recommend you read the previous article first. This article takes a closer look at different types of shallow graph embedding models of homogeneous graphs. It also highlights a few real-world applications that build upon some of these ideas.]]></description>
+</item><item>
     <title>A Guide to Graph Representation Learning</title>
     <link>https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/</link>
     <pubDate>Sun, 30 Apr 2023 00:00:00 &#43;0000</pubDate><author>
@@ -89,14 +98,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/03/reranking-on-edge/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems.]]></description>
-</item><item>
-    <title>Two Tower Model Architecture: Current State and Promising Extensions</title>
-    <link>https://blog.reachsumit.com/posts/2023/03/two-tower-model/</link>
-    <pubDate>Sat, 04 Mar 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/03/two-tower-model/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/03/two-tower-model/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state.]]></description>
 </item></channel>
 </rss>
