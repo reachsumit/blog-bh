@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="" />
+<meta property="og:description" content="Tuning Large Language Models for Recommendation TasksLarge Language Models Alignment for Recommendation Tasks
+Towards Large Language Models Aligned for Recommendation Tasks
+Last article had things about using ChatGPT and similar PLMs with prompt tuning. Moreover, the LLMs were used alongside traditional models. That is not enough. This article first highlights research works that use ChatGPT as a general purpose recommender and then describe the corresponding challenges and shortcomings. Then it introduces the instruction tuning paradigm." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/" /><meta property="og:image" content="https://blog.reachsumit.com/logo.png"/><meta property="article:section" content="posts" />
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Tuning Large Language Models for Recommendation TasksLarge Language Models Alignment for Recommendation Tasks
+Towards Large Language Models Aligned for Recommendation Tasks
+Last article had things about using ChatGPT and similar PLMs with prompt tuning. Moreover, the LLMs were used alongside traditional models. That is not enough. This article first highlights research works that use ChatGPT as a general purpose recommender and then describe the corresponding challenges and shortcomings. Then it introduces the instruction tuning paradigm."/>
+<meta name="application-name" content="Sumit&#39;s Diary">
+<meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/" /><link rel="next" href="https://blog.reachsumit.com/posts/2020/07/skip-list/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.reachsumit.com\/posts\/1\/01\/tuning-llm-for-recsys\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  4130 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/1\/01\/tuning-llm-for-recsys\/","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Sumit Kumar"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Sumit&#39;s Diary"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://reachsumit.com/#contact" rel="noopener noreferrer" target="_blank"> Contact </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search this blog" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="Switch Theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="black">Black</option>
+                        <option value="auto">Auto</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Sumit&#39;s Diary"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search this blog" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a href="#" class="menu-item theme-select" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="Switch Theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="black">Black</option>
+                    <option value="auto">Auto</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">Contents</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#using-llms-for-recommendations">Using LLMs for Recommendations</a>
+      <ul>
+        <li><a href="#advantages">Advantages</a></li>
+        <li><a href="#limitations">Limitations</a></li>
+      </ul>
+    </li>
+    <li><a href="#chatgpt-based-recommender-systems">ChatGPT-based Recommender Systems</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#uncovering-chatgpts-capabilities-in-recommender-systems-by-dai-et-al">&ldquo;Uncovering ChatGPT’s Capabilities in Recommender Systems&rdquo; by Dai et al.</a></li>
+          </ul>
+        </li>
+        <li><a href="#chatgpt-as-a-general-purpose-recommendation-model">ChatGPT as a General-Purpose Recommendation Model</a>
+          <ul>
+            <li><a href="#is-chatgpt-a-good-recommender-a-preliminary-study-by-liu-et-al">&ldquo;Is ChatGPT a Good Recommender? A Preliminary Study&rdquo; by Liu et al.</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#further-evaluations">Further Evaluations</a>
+      <ul>
+        <li><a href="#chatgpt-as-artificial-general-recommender">ChatGPT as Artificial General Recommender</a></li>
+        <li><a href="#fairness-in-chatgpts-recommendations">Fairness in ChatGPT&rsquo;s Recommendations</a></li>
+      </ul>
+    </li>
+    <li><a href="#pros-and-cons">Pros and Cons</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#disadvantages-of-in-context-methods">Disadvantages of In-context methods</a></li>
+    <li><a href="#bridge-the-gap-between-llms-and-the-recommendation-task-going-beyond-in-context-learning-to-tuning-llms">Bridge the gap between LLMs and the recommendation task (Going beyond in-context learning to Tuning LLMs)</a></li>
+    <li><a href="#tuning">Tuning</a></li>
+    <li><a href="#future-direction-to-explore">Future Direction to Explore</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;4130 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;20 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#using-llms-for-recommendations">Using LLMs for Recommendations</a>
+      <ul>
+        <li><a href="#advantages">Advantages</a></li>
+        <li><a href="#limitations">Limitations</a></li>
+      </ul>
+    </li>
+    <li><a href="#chatgpt-based-recommender-systems">ChatGPT-based Recommender Systems</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#uncovering-chatgpts-capabilities-in-recommender-systems-by-dai-et-al">&ldquo;Uncovering ChatGPT’s Capabilities in Recommender Systems&rdquo; by Dai et al.</a></li>
+          </ul>
+        </li>
+        <li><a href="#chatgpt-as-a-general-purpose-recommendation-model">ChatGPT as a General-Purpose Recommendation Model</a>
+          <ul>
+            <li><a href="#is-chatgpt-a-good-recommender-a-preliminary-study-by-liu-et-al">&ldquo;Is ChatGPT a Good Recommender? A Preliminary Study&rdquo; by Liu et al.</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#further-evaluations">Further Evaluations</a>
+      <ul>
+        <li><a href="#chatgpt-as-artificial-general-recommender">ChatGPT as Artificial General Recommender</a></li>
+        <li><a href="#fairness-in-chatgpts-recommendations">Fairness in ChatGPT&rsquo;s Recommendations</a></li>
+      </ul>
+    </li>
+    <li><a href="#pros-and-cons">Pros and Cons</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#disadvantages-of-in-context-methods">Disadvantages of In-context methods</a></li>
+    <li><a href="#bridge-the-gap-between-llms-and-the-recommendation-task-going-beyond-in-context-learning-to-tuning-llms">Bridge the gap between LLMs and the recommendation task (Going beyond in-context learning to Tuning LLMs)</a></li>
+    <li><a href="#tuning">Tuning</a></li>
+    <li><a href="#future-direction-to-explore">Future Direction to Explore</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="tuning-large-language-models-for-recommendation-tasks" class="headerLink">
+    <a href="#tuning-large-language-models-for-recommendation-tasks" class="header-mark"></a>Tuning Large Language Models for Recommendation Tasks</h1><p>Large Language Models Alignment for Recommendation Tasks</p>
+<p>Towards Large Language Models Aligned for Recommendation Tasks</p>
+<p>Last article had things about using ChatGPT and similar PLMs with prompt tuning. Moreover, the LLMs were used alongside traditional models. That is not enough. This article first highlights research works that use ChatGPT as a general purpose recommender and then describe the corresponding challenges and shortcomings. Then it introduces the instruction tuning paradigm.</p>
+<h2 id="using-llms-for-recommendations" class="headerLink">
+    <a href="#using-llms-for-recommendations" class="header-mark"></a>Using LLMs for Recommendations</h2><p>Language Models (LMs) have been a fundamental algorithm in Natural Language Processing (NLP) designed to understand and generate languages. The recent emergence of Large Language Models (LLMs) has led to state-of-the-art improvements in several NLP tasks, such as dialog generation, machine translation and summarization. LLMs are trained on massive amount of data that helps them encode real world knowledge. Their revolutionary success has inspired researchers to adapt LLMs to downstream recommendation tasks.</p>
+<p>Recommender systems are built on user behavior data, which is different from natural language text that the LMs work with. So the first step in building an LLM-based recommender system is to verbalize the recommendation task in the form of natural language text. This new format must describe the user needs, preferences, intentions, as well as the user interaction history using a natural language. In the previous article <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" target="_blank" rel="noopener noreferrer">Zero and Few Shot Recommender Systems based on Large Language Models</a>, I highlighted several recent approaches based on this theme.</p>
+<p>Prompt tuning is one such way to utilize LLMs, it simply assumes that LLMs have the capability to perform the target downstream task, and all we need to do is to trigger these capabilities through task-specific guidance (aka prompts). Pretrained Language Models (PLMs) use this guidance to adapt output for the target task without having to modify or retrain their structure. As described in <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" target="_blank" rel="noopener noreferrer">the previous article</a>, a lot of the methods utilize personalized prompts to convert recommendation tasks into natural language tasks in a zero-shot or few-shot manner.</p>
+<h3 id="advantages" class="headerLink">
+    <a href="#advantages" class="header-mark"></a>Advantages</h3><p>There are several pros for using LLMs for recommendations tasks.</p>
+<ul>
+<li>LLMs&rsquo; zero-shot and few-shot capabilities are helpful in alleviating sparsity scenarios (such as, cold start problems, long-tailed items). Experiments have shown that LLMs with over 100B parameters provide reasonable recommendations, comparable to decent heuristic-based baselines, under cold-start scenarios <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</li>
+<li>LLMs can adapt to new information without having to change the model architecture or retrain.</li>
+<li>LLMs can enable the users to freely and precisely express their needs through a chat-based interface via natural language instructions. Whereas in traditional methods users are only passively involved (through implicit feedback) in improving the recommendations.</li>
+<li>Existing recommendation algorithms are task-specific and require specific user-item interaction data for training. This means that they lack generalization ability to unseen settings. On the other hand, LLMs can use user interaction data represented as sequences to supplement their existing knowledge.</li>
+<li>Traditional approaches like collaborative filtering rely on a large volume of training data. Comparatively, LLMs demand considerably less data as they already maintain an extensive amount of world knowledge about items, such as tv shows or products.</li>
+<li>Current recommendation algorithms utilize complex feature processing methods like preprocessing strategies, embedding methods, custom architectures, etc. Prompts simplify these feature processing and modeling steps to a large extent.</li>
+</ul>
+<h3 id="limitations" class="headerLink">
+    <a href="#limitations" class="header-mark"></a>Limitations</h3><p>As listed below, there are also several shortcomings of using LLMs.</p>
+<ul>
+<li>
+<p>Due to stochastic nature of LLMs&rsquo; generative process, LLMs may recommend items that are not present in the candidate set. Some recent studies try to get around this issue by also feeding the candidate item set into the prompts <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+</li>
+<li>
+<p>LLMs can generate invalid or completely unexpected answers, even when prompts explicitly specify the set of possible answers under in-context (few-shot learning) settings.</p>
+<p>![ChatGPT invlid answer](D:\demo\GitHub Projects\blog-bh-source\static\img\posts\2023\tuning-llm-for-recsys\chatgpt_refusing_to_answer.png &ldquo;Example taken from <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>&rdquo;)</p>
+</li>
+<li>
+<p>LLMs can be highly sensitive to the input prompts and may not fully follow the instruction prompt. For example, in a paper <sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> by Google Brain team, the researchers had to add additional sentences, such as &ldquo;Give a single number as rating without explanation&rdquo; and &quot; Do not give reasoning&quot;, to input prompts to avoid LLM outputs other than the expected movie rating prediction.</p>
+</li>
+<li>
+<p>Recommendations can be highly dataset dependent. For example, the same movie can have different ratings on different platforms. Evaluations under such scenarios, might deem LLMs&rsquo; performance to be unacceptable for certain datasets.</p>
+</li>
+<li>
+<p>Recent studies have shown that there can be a huge gap between the universal knowledge encoded in LLMs and the specificity of user behavioral patterns in private domain data <sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. Hence, zero-shot an few-shot methods may be insufficient to deploy LLMs in private domain recommender systems.</p>
+</li>
+<li>
+<p>The pretraining objective of the currently popular LLMs do not include any recommendation objective. Hence these LLMs usually perform worse than existing task-specific models under zero-shot and few-shot settings for solving complex specialized tasks.</p>
+</li>
+<li>
+<p>LLMs are large, complex and costly to train. A lot of the popular LLMs today are behind private APIs, so modifying LLMs&rsquo; structure is not always possible.</p>
+</li>
+<li>
+<p>Limited context length in LLMs makes it hard to incorporate a substantial amount of user behavior sequences.</p>
+</li>
+</ul>
+<h2 id="chatgpt-based-recommender-systems" class="headerLink">
+    <a href="#chatgpt-based-recommender-systems" class="header-mark"></a>ChatGPT-based Recommender Systems</h2><p>![ChatGPT-based Recommender Systems](D:\demo\GitHub Projects\blog-bh-source\static\img\posts\2023\tuning-llm-for-recsys\chatgpt_for_recsys.png &ldquo;Using ChatGPT for Recommendations&rdquo;)</p>
+<p>ChatGPT is the state-of-the-art chatbot, built on top of GPT-3.5 and GPT-4 LLMs, developed by OpenAI. It has achieved impressive results in several NLP domains like text generation and dialogue systems. Recently, a line of research work have studied the application of ChatGPT to recommendation tasks. For example, <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/#chat-rec" target="_blank" rel="noopener noreferrer">Chat-REC</a> formulates a conversational recommender system using ChatGPT alongside a traditional recommender model. The traditional model generates set of candidate item and ChatGPT reranks the list through in-context learning. <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/#nir" target="_blank" rel="noopener noreferrer">NIR</a> also proposes a similar paradigm containing an LLM along with a traditional recommender system.</p>
+<p>ChatGPT for Ranking</p>
+<h4 id="uncovering-chatgpts-capabilities-in-recommender-systems-by-dai-et-al" class="headerLink">
+    <a href="#uncovering-chatgpts-capabilities-in-recommender-systems-by-dai-et-al" class="header-mark"></a>&ldquo;Uncovering ChatGPT’s Capabilities in Recommender Systems&rdquo; by Dai et al.</h4><p>This study conducts a similar empirical analysis of ChatGPT&rsquo;s recommendation ability. First, the authors reformulate the three ranking strategies: point-wise, pair-wise, and list-wise ranking, into a domain-specific prompt format. Then they utilize these prompts as input to, GPT-3.5s (text-davinci-002, text-davinci-003), and ChatGPT, to elicit each of the three ranking capabilities. The code for this paper is available <a href="https://github.com/rainym00d/LLM4RS" target="_blank" rel="noopener noreferrer">on Github</a>.</p>
+<p>![Overall Evaluation Frameworks of LLMs for Recommendations](D:\demo\GitHub Projects\blog-bh-source\static\img\posts\2023\tuning-llm-for-recsys\overall_evaluation_framework_of_llms_for_recsys.png &ldquo;Overall Evaluation Frameworks of LLMs for Recommendations&rdquo;)</p>
+<p>As shown in the figure above, the prompts used for in-context learning consists of three components: task description to help LLM&rsquo;s perception of the particular domain, demonstration examples to facilitate LLM&rsquo;s comprehension of the task, and an input query which needs to be answered by the LLM.</p>
+<p>Measuring Costs</p>
+<p>To measure the costs associated with performance improvements, the authors calculated the improvement per unit cost for each LLM as:</p>
+<p>$$ \frac{ \frac{V_{LLM} - V_{random}}{V_{random}}}{cost_{LLM}} $$</p>
+<p>where $V_{LLM}$ is the metric value of the LLM, $V_{random}$ is the metric value of random recommendation, and $cost_{LLM}$ is the cost of ranking one user&rsquo;s candidate item list. They found that almost all LLMs have the best improvement per unit cost in list-wise ranking.  Hence they recommend using LLMs for list-wise ranking due to its decent performance and lower cost.</p>
+<p>Zero-shot performance</p>
+<p>In initial experiments, all LLMs showed significantly inferior performance in zero-shot setting. The authors explored using OpenAI&rsquo;s API to control the logit bias of output tokens. They showed that by upweighting the logit bias of the indexes of answers, the compliance rate as well as the zero-shot performance of LLMs improved.</p>
+<p>Performance Under Different Shots</p>
+<p>The authors also showed that the in-context learning with maximum number of examples does not always lead to best results. While introducing additional example shots can provide more context, it may also introduce more noise leading to LLMs learning unhelpful patterns. Hence the optimal number of prompt shots has to learned through experimentations specific to the LLM, task and dataset at hand.</p>
+<p>Invalid Answers</p>
+<p>Due to their stochastic generative nature, LLMs may generate invalid or unexpected answers even in the in-context learning setting. For example, in the following pair-wise ranking task, ChatGPT identified that both the examples were negative samples and did not respond according to the instructions.</p>
+<p>![ChatGPT exceptions](D:\demo\GitHub Projects\blog-bh-source\static\img\posts\2023\tuning-llm-for-recsys\chatgpt_exceptions_case_study.png &ldquo;ChatGPT Exceptions. The green text is the ChatGPT response.&rdquo;)</p>
+<p>To account for the cases where an LLM generates an invalid output, i.e. results that are not in the candidate set, the authors introduce a metric &ldquo;Compliance Rate&rdquo; to compare this behavior between different models.</p>
+<p>$$ Compliance Rate = \frac{Number of Valid Answers}{Number of Test Samples} $$</p>
+<p>Through experiments, the authors show that ChatGPT and GPT3.5s performed better than random recommendations, while ChatGPT performed the best among all LLMs.</p>
+<p>Note that even though ChatGPT&rsquo;s response is non-compliant in the examples above, ChatGPT was able to understand that the two items are unrelated based on user interaction histories. This capability hints at ChatGPT&rsquo;s potential power in explainable recommendations.</p>
+<h3 id="chatgpt-as-a-general-purpose-recommendation-model" class="headerLink">
+    <a href="#chatgpt-as-a-general-purpose-recommendation-model" class="header-mark"></a>ChatGPT as a General-Purpose Recommendation Model</h3><p>One problem with methods like Chat-REC and NIR is that their performance is still intertwined with a traditional recommender model. In this section, we look at some latest proposals that employ ChatGPT as a general-purpose recommendation model that is self-contained and doesn&rsquo;t rely on any external systems. These methods can utilize ChatGPT&rsquo;s extensive linguistic and world knowledge to recommendation tasks in an end-to-end fashion.</p>
+<h4 id="is-chatgpt-a-good-recommender-a-preliminary-study-by-liu-et-al" class="headerLink">
+    <a href="#is-chatgpt-a-good-recommender-a-preliminary-study-by-liu-et-al" class="header-mark"></a>&ldquo;Is ChatGPT a Good Recommender? A Preliminary Study&rdquo; by Liu et al.</h4><p>In this work <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, authors designed a set of prompts and evaluated ChatGPT&rsquo;s performance on five recommendation tasks: rating prediction, sequential recommendation, direct recommendation, explanation generation, and review summarization.</p>
+<p>![ChatGPT as Recommender](D:\demo\GitHub Projects\blog-bh-source\static\img\posts\2023\tuning-llm-for-recsys\chatgpt_for_five_recommendation_tasks.png &ldquo;Overall workflow of utilizing ChatGPT as Recommender&rdquo;)</p>
+<p>First, they constructed prompts specific to these five task. Each prompt contains three parts: task description to adapt the task to NLP task, behavior injection to aid ChatGPT in capturing user preferences through user-item interaction, and a format indicator to constrain the output format.</p>
+<p>![Example Prompts](D:\demo\GitHub Projects\blog-bh-source\static\img\posts\2023\tuning-llm-for-recsys\example_prompts_1.png &ldquo;Example prompts for accuracy-based tasks&rdquo;)</p>
+<p>![Example Prompts](D:\demo\GitHub Projects\blog-bh-source\static\img\posts\2023\tuning-llm-for-recsys\chatgpt_example_prompts_2.png &ldquo;Example prompts for explainability-oriented tasks&rdquo;)</p>
+<p>These prompts are used as input to ChatGPT which generates the recommendation results as per the instructions. Finally, the output from ChatGPT is checked and refined to get the final set of recommendations. The output refinement module repeatedly feeds the prompt to ChatGPT until the output format requirements are met.</p>
+<p>If an item recommended by their model doesn&rsquo;t occur in the candidate set, the authors recommended using BERT-based embeddings of the recommended item title to find the similar items from the candidate set to get the corresponding corrected recommendation. Through experiments they showed that ChatGPT&rsquo;s performance was significantly inferior in zero-shot prompting. The performance improved under few-shot prompting setup but ChatGPT was still outperformed by the classical recommendation models. Interestingly, their experiments showed that even though ChatGPT performed unsatisfactorily on the explainability-oriented task metrics, it significantly outperformed state-of-the-art model in human evaluation for these tasks.</p>
+<h2 id="further-evaluations" class="headerLink">
+    <a href="#further-evaluations" class="header-mark"></a>Further Evaluations</h2><h3 id="chatgpt-as-artificial-general-recommender" class="headerLink">
+    <a href="#chatgpt-as-artificial-general-recommender" class="header-mark"></a>ChatGPT as Artificial General Recommender</h3><p>Lin et al.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> defined an Artificial General Recommender (AGR) that has the ability to engage in interactive, natural dialog with users (conversationality), and to generate recommendations across various domains (universality). They hypothesize that the recent advancements in large language models have enable the possible development of AGR. The authors proposed ten fundamental principles that an AGR should be capable of achieving. After defining each principle and corresponding testing protocol, the paper assesses whether ChatGPT can comply with the proposed principles by engaging it in a variety of recommendation-oriented dialogues.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Principle</th>
+<th>What AGR should do</th>
+<th>How ChatGPT actually performed</th>
+<th>Verditct</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Mixed Initiative</td>
+<td>Both the user and the system should be able to actively participate in the dialogue.</td>
+<td>ChatGPT sometimes failed to detect user&rsquo;s misunderstandings and accepted incorrect answers without posing follow-up questions.</td>
+<td>🤔</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Acquisition Strategy</td>
+<td>The system should avoid user fatigue from multi-turn dialogues and should aim to strike a balance between the number of questions posed and the relevance of the provided recommendations.</td>
+<td>ChatGPT sometimes provides imprecise reasoning but acknowledges oversights and apologizes.</td>
+<td>🤷‍♂️</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Contextual Memory</td>
+<td>Users may frequently refer to prior stated items without providing a full description. The system should be able to remember these prior utterances.</td>
+<td>ChatGPT exhibited good capacity to remember prior utterances across multiple rounds of interaction.</td>
+<td>👍</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Repair Mechanism</td>
+<td>Users should be given the possibility of modifying user stated information at a later stage of the dialogue by providing supplementary details, amending inaccuracies and even removing previous utterances.</td>
+<td>ChatGPT struggles to recognize the relationship between adjusted statements and the user&rsquo;s initial input.</td>
+<td>🤦‍♂️</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Feedback Mechanism</td>
+<td>AGR should adjust recommendations based on user feedback, whether it provides reasons or simply states dissatisfaction.</td>
+<td>ChatGPT successfully proposed recommendations based on user&rsquo;s personal taste and successfully updated its recommendation as user provided more explicit feedback.</td>
+<td>👏</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Entity Inference</td>
+<td>AGR should enable informed guesses when users can&rsquo;t recall specific names or titles.</td>
+<td>In an attempt to align with user&rsquo;s input, ChatGPT often exhibits hallucinations by suggesting non-existent items.</td>
+<td>😵‍💫</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Behavioral Analysis</td>
+<td>AGR should analyze user interaction history to understand evolving preferences and offer relevant recommendations in real-time.</td>
+<td>ChatGPT&rsquo;s recommendations sometimes contradict earlier emphasis on user preferences.</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Inconsistency Detection</td>
+<td>AGR should accurately identify logical, expectational, and factual inconsistencies in user statements.</td>
+<td>ChatGPT fails to detect factual inconsistencies and continues making recommendations.</td>
+<td>⚠️</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Personalized Recommendations</td>
+<td>AGR should integrate personalized information, like user history and metadata, and explain how it influences recommendations.</td>
+<td>ChatGPT generates statements lacking logical coherence and contradicts its approach to ranking movies based on user ratings.</td>
+<td>🤔</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Extrinsic Factors</td>
+<td>AGR should consider external factors like upcoming tasks, time of day, and recent events for tailored recommendations.</td>
+<td>ChatGPT doesn&rsquo;t possess this ability but displays speculative reasoning based on common sense and utilizes it effectively in recommendations.</td>
+<td>👍</td>
+</tr>
+</tbody>
+</table>
+<p>ChatGPT performed well in some areas, but it also showed inability to proactively seek clarifications, identify causal relationship between user inputs, identify factual inconsistencies, etc.</p>
+<h3 id="fairness-in-chatgpts-recommendations" class="headerLink">
+    <a href="#fairness-in-chatgpts-recommendations" class="header-mark"></a>Fairness in ChatGPT&rsquo;s Recommendations</h3><p>LLMs have been shown to generate harmful or offensive content, and reinforce social biases. Zhang et al. <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> argue that due to differences in their respective paradigms, LLMs-based recommender systems cannot directly use the fairness benchmark of traditional LLMs or recommenders. They propose a new benchmark called Fairness of Recommendation via LLM (FaiRLLM), and showed that ChatGPT exhibits unfairness to some sensitive attributes.</p>
+<p>![](D:\demo\GitHub Projects\blog-bh-source\static\img\posts\2023\tuning-llm-for-recsys\chatgpt_fairness.png &ldquo;fairness evaluation in music recommendation&rdquo;)</p>
+<p>Fairness is defined as the absence of any prejudice or favoritism towards user groups with specific values of sensitive attributes in the generated recommendations. To investigate this, the authors first constructed a reference set of recommendations by providing instruction to ChatGPT without any sensitive attributes.</p>
+<div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw"></i>prompt<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><strong>Netrual:</strong> “I am a fan of [names]. Please provide me with a list of 𝐾 song/movie titles&hellip;”</p>
+<p><strong>Sensitive:</strong> “I am a/an [sensitive feature] fan of [names]. Please provide me with a list of 𝐾 song/movie titles&hellip;”,</p>
+</div>
+        </div>
+    </div>
+<p>Next, they obtain recommendations via instructions with specific values of the 8 sensitive attributes: age, country, gender, continent, occupation, race, religion, and physics. The possible values for each attribute is listed in the figure above. For the &ldquo;[names]&rdquo; field, they choose 500 most popular singers from MTV data and 500 top directors from IMDB data. To quantify the degree of fairness, they computed similarities between the two sets using similarity metrics like Jaccard similarity, weighted Jaccard similarity, and Pairwise Ranking Accuracy Gap (PRAG).</p>
+<p>Through experiments the authors showed that ChatGPT exhibits unfairness across most of the sensitive attributes with varying degrees in its top-k recommendations. This unfairness persisted even when the length (k) of recommendations lists is changed, and also aligns with the inherent social biases in the real world.</p>
+<h2 id="pros-and-cons" class="headerLink">
+    <a href="#pros-and-cons" class="header-mark"></a>Pros and Cons</h2><p>Repurpose above advantages and disadvantages and add these:</p>
+<p>Dont&rsquo; have multimodal conversations.</p>
+<p>From 4: Order matters: It is worth noting that we discovered during the experiments that the construction of the item pool, specifically whether the item pool is shuffled or not, has a considerable impact on the direct recom- mendation performance. In an extreme scenario where the ground truth item is placed at the first position in the item pool, we found that the evaluation metrics were approximately ten times higher than when the item pool was shuffled. This finding suggests that ChatGPT exhibits a positional bias for the input item pool within the prompt, tending to consider items towards the beginning of the pool as more important, and thus more likely to be recommended. This additional bias introduced by the language model renders us- ing ChatGPT for direct recommendation a challenging endeavor.</p>
+<p>From 2: off-the-shelf LLMs-based recommenders don&rsquo;t work with zero-shot prompts</p>
+<p>Papers like [Language Models as Recommender Systems: Evaluations and Limitations] have tried to use BERT and GPT but show bias in zero-shot settings tho outperform random one and can&rsquo;t outperform traditional recsys baselines like GRU4Rec.</p>
+<h2 id="summary" class="headerLink">
+    <a href="#summary" class="header-mark"></a>Summary</h2><h2 id="disadvantages-of-in-context-methods" class="headerLink">
+    <a href="#disadvantages-of-in-context-methods" class="header-mark"></a>Disadvantages of In-context methods</h2><p>Papers like [Language Models as Recommender Systems: Evaluations and Limitations] have tried to use BERT and GPT but show bias in zero-shot settings tho outperform random one and can&rsquo;t outperform traditional recsys baselines like GRU4Rec.</p>
+<p>Initial attempts have leveraged the exceptional capabilities of LLMs, such as
+rich knowledge and strong generalization through In-context Learning, which involves phrasing the recommendation task as prompts. Nevertheless, the performance of LLMs in recommendation tasks remains suboptimal due to a substantial disparity between the training tasks for LLMs and recommendation tasks, as well as inadequate recommendation data during pre-training.</p>
+<p>[Add figure of LLM not answering]</p>
+<p>We postulate that the failure of using only In-context Learning is because of two reasons: 1) LLMs may not align well with the recommendation task due to the huge gap between language processing tasks for training LLMs and recommendation. Besides, recommendation oriented corpus is very limited during the training phase of LLMs. 2) The effect of LLMs is restricted by the underlying recommendation models, which may fail to include target items in their candidate lists due to their limited capacity.</p>
+<p>Why prompt methods is not enough?</p>
+<p>Existing applications of LLMs in recommender systems such as P5 [13] and M6-Rec [6] consider behavior modeling as language modeling, where recommendation tasks are formulated as natu- ral language expressions. M6-Rec reduces the reliance on user be- havioral data by incorporating and training on a wide range of contextual information via converting various kinds of context in- formation into a sequential text format, thereby achieving strong generalization across different interaction behaviors. P5 formulates</p>
+<p>multiple recommendation tasks with instruction-based prompts and demonstrates strong performance on multiple tasks. However, they mainly focus on task-specific formulations, while neglect the exploration of aligning LLMs with more diverse, detailed user needs in practical scenarios. In contrast, our approach designs and gen- erates recommendation-oriented instructions containing different types of preferences, intentions, and task forms, which can enhance the personalization in various interaction scenarios. The compar- ison of our approach and the two related studies is presented in Table 4.</p>
+<h2 id="bridge-the-gap-between-llms-and-the-recommendation-task-going-beyond-in-context-learning-to-tuning-llms" class="headerLink">
+    <a href="#bridge-the-gap-between-llms-and-the-recommendation-task-going-beyond-in-context-learning-to-tuning-llms" class="header-mark"></a>Bridge the gap between LLMs and the recommendation task (Going beyond in-context learning to Tuning LLMs)</h2><p>By tuning the LLM with these recommendation-oriented instruc- tion data, the base model can be well adapted to recommender systems, and learn to follow the user’s instructions for fulfilling the corresponding recommendation tasks.</p>
+<p>Instruction tuning is key to elicit the abil-
+ities of LLMs for the recommendation tasks, and it further enables the generalization of LLMs on diverse user needs or requests.</p>
+<p>Nevertheless, the introduc-
+tion of instruction tuning empowers our model with reasoning and generalization capabilities, thereby enabling it to perform complex interaction scenarios involving ambiguous instructions.
+To sum up, through instruction tuning, our model effectively integrates user behaviors in private domain with universal knowl- edge.</p>
+<h2 id="tuning" class="headerLink">
+    <a href="#tuning" class="header-mark"></a>Tuning</h2><p>Furthermore, despite ChatGPT’s unsatisfactory performance in accuracy-based recommendation tasks, it is worth noting that ChatGPT has not been specifically trained on any recommendation data. Thus, there is still signifi- cant potential for improvement in future research by incorporating more relevant training data and techniques.</p>
+<p>Further, we explore the use of few-shot prompting to inject interaction infor- mation that contains user potential interest to help ChatGPT better understand user needs and interests.</p>
+<p>Examples Papers go here</p>
+<p>TallRec</p>
+<p>Google Brain&rsquo;s: Do LLMs Understand User Preferences? Evaluating LLMs On User Rating Prediction</p>
+<p>InstructRec</p>
+<h2 id="future-direction-to-explore" class="headerLink">
+    <a href="#future-direction-to-explore" class="header-mark"></a>Future Direction to Explore</h2><p>Possible future research could develop automated approaches to prompt design, which would allow the system to design prompts more efficiently and independently.</p>
+<p>Although we only consider
+single-turn instruction following, it would be promising to extend the current approach to a multi-turn conversation scenario. Such a task specialization approach of LLMs can enhance the overall generalization ability of the recommendation models and improve the user experiences in recommender systems.</p>
+<p>It has been shown that instruction tuning enables LLMs to generalize to unseen tasks described in natural language instruction [27, 37]. Thus, such an approach can be potentially extended to fulfill more diverse tasks in application systems</p>
+<p>As future work, we will further scale the size of LLMs for in- struction tuning, and also consider extending the context length for modeling long behavior sequences. Besides, we will consider applying the current approach in a multi-turn interaction scenario, where users can communicate with the systems via a chit-chat way.</p>
+<p>Understanding users’ information needs. The  instructor should well capture users’ information needs and personalized preference from the multimodal instructions and user feedback. However, it is non-trivial to fully understand users’ multimodal instructions with limited turns of interactions and simultaneously combine the user feedback to estimate user preference.</p>
+<p>High-quality AIGC to supplement human-generated con- tent. The users’ information needs are diverse and personalized, requiring high-quality AIGC in multiple modalities. Besides, the content generated by the AI generator should supplement human- generated content instead of producing duplicate content.</p>
+<p>Extending the powerful ChatGPT to acquire users’ multimodal instructions  is  feasible.</p>
+<p>it is critical to learn
+users’  information  needs  from  users’  multimodal  instructions and feedback. In detail, GeneRec should learn to ask questions for  efficient  information  acquisition,  reduce  the  modality  gap to  understand  users’  multimodal  instructions,  and  utilize  user feedback to complement instructions for better generation guidance.</p>
+<p>Pretraining: P5</p>
+<p>However, different from P5, which relies on user IDs and item IDs [11] and may encounter challenges due to discrepancies between the semantic space of these IDs and that of the pre-trained language models, our approach PBNR describes users’ behaviors and news textually in the designed prompts.</p>
+<p>Currently, there have been several attempts to integrate language models (LMs) with recommendation systems. However, some of these attempts still rely on traditional user/item IDs to represent users/items, despite incorporating LMs [12, 27]. This approach fails to leverage the semantic understanding capabilities that LMs inherently possess, which could potentially enhance the accuracy and effectiveness of recommendation systems.</p>
+<p>Fine-Tuning: M6-Rec</p>
+<p>Prompt-Tuning: LMRecSys, NIR, Chat-REC</p>
+<p>==============================================================</p>
+<p>Pivotal Role of Language Modeling in Recommender Systems: Enriching Task-specific and Task-agnostic Representation Learning</p>
+<ul>
+<li>Paper is only about using LMs, not PLMs</li>
+</ul>
+<p>==============================================================</p>
+<p>Generative Recommendation: Towards Next-generation Recommender Paradigm</p>
+<ul>
+<li>makes a good point that the users can&rsquo;t refine their recommendations as their feedback is mostly passive</li>
+<li>use this paper to talk about the instructor module</li>
+</ul>
+<p>==============================================================</p>
+<p>PBNR:</p>
+<p>has several thoughts on how a prompt learning of LLM works</p>
+<p>LinkedIn:</p>
+<p>This article sheds light
+on the current status of LLM-based recommender systems, and in the future we will further look into improving the performance via methods like prompt tuning, and explore novel recommendation applications enabled by LLMs.</p>
+<p>The debut of ChatGPT has recently attracted the attention of the natural language processing (NLP) community and beyond.</p>
+<p>Furthermore, despite ChatGPT’s unsatisfactory performance in accuracy-based recommendation tasks, it is worth noting that ChatGPT has not been specifically trained on any recommendation data. Thus, there is still signifi- cant potential for improvement in future research by incorporating more relevant training data and techniques.</p>
+<p>Bridge the gap between LLMs and the recommendation task (Going beyond in-context learning to Tuning LLMs)</p>
+<p>Another line of work (Geng et al., 2022 P5; Cui et al., 2022 M6-Rec) tries to construct personalized prompts for build- ing versatile framework, i.e., “Here is the history of  {gender}  {age}:  {history  from  all  services}, The user is now recommended a {item}”.</p>
+<p>Therefore, we suggest exploring additional perspectives for evaluating LLMs as recommenders beyond learning to rank, as LLMs have the potential to play a larger role in explainable recommendation.</p>
+<p>ChatGPT generates unfair recommendations, indicating the potential risks of directly applying the RecLLM paradigm.</p>
+<h2 id="references" class="headerLink">
+    <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Kang, W., Ni, J., Mehta, N., Sathiamoorthy, M., Hong, L., Chi, E.H., &amp; Cheng, D.Z. (2023). Do LLMs Understand User Preferences? Evaluating LLMs On User Rating Prediction.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Zhang, J., Xie, R., Hou, Y., Zhao, W.X., Lin, L., &amp; Wen, J. (2023). Recommendation as Instruction Following: A Large Language Model Empowered Recommendation Approach.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Dai, S., Shao, N., Zhao, H., Yu, W., Si, Z., Xu, C., Sun, Z., Zhang, X., &amp; Xu, J. (2023). Uncovering ChatGPT&rsquo;s Capabilities in Recommender Systems. <em>ArXiv, abs/2305.02182</em>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Liu, J., Liu, C., Lv, R., Zhou, K., &amp; Zhang, Y.B. (2023). Is ChatGPT a Good Recommender? A Preliminary Study. <em>ArXiv, abs/2304.10149</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Lin, G., &amp; Zhang, Y. (2023). Sparks of Artificial General Recommender (AGR): Early Experiments with ChatGPT. <em>ArXiv, abs/2305.04518</em>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Zhang, J., Bao, K., Zhang, Y., Wang, W., Feng, F., &amp; He, X. (2023). Is ChatGPT Fair for Recommendation? Evaluating Fairness in Large Language Model Recommendation.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</div>
+		
+        
+
+
+        <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+      <form action="https://app.convertkit.com/forms/4932644/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="4932644" data-uid="e309c832a6" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800" style="background-color: rgb(249, 250, 251); border-radius: 4px;"><div class="formkit-background" style="opacity: 0.33;"></div><div data-style="minimal"><div class="formkit-header" data-element="header" style="color: rgb(77, 77, 77); font-size: 27px; font-weight: 700;"><h2>Be the First to Know</h2></div><div class="formkit-subheader" data-element="subheader" style="color: rgb(104, 104, 104); font-size: 18px;"><p>Subscribe to get notified when I write a new post.</p></div><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Subscribe</span></button></div><div class="formkit-guarantee" data-element="guarantee" style="color: rgb(77, 77, 77); font-size: 13px; font-weight: 400;"><p>We won't send you spam. Unsubscribe at any time.</p></div><div class="formkit-powered-by-convertkit-container"><a href="https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with ConvertKit</a></div></div><style>.formkit-form[data-uid="e309c832a6"] *{box-sizing:border-box;}.formkit-form[data-uid="e309c832a6"]{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.formkit-form[data-uid="e309c832a6"] legend{border:none;font-size:inherit;margin-bottom:10px;padding:0;position:relative;display:table;}.formkit-form[data-uid="e309c832a6"] fieldset{border:0;padding:0.01em 0 0 0;margin:0;min-width:0;}.formkit-form[data-uid="e309c832a6"] body:not(:-moz-handler-blocked) fieldset{display:table-cell;}.formkit-form[data-uid="e309c832a6"] h1,.formkit-form[data-uid="e309c832a6"] h2,.formkit-form[data-uid="e309c832a6"] h3,.formkit-form[data-uid="e309c832a6"] h4,.formkit-form[data-uid="e309c832a6"] h5,.formkit-form[data-uid="e309c832a6"] h6{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="e309c832a6"] h2{font-size:1.5em;margin:1em 0;}.formkit-form[data-uid="e309c832a6"] h3{font-size:1.17em;margin:1em 0;}.formkit-form[data-uid="e309c832a6"] p{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="e309c832a6"] ol:not([template-default]),.formkit-form[data-uid="e309c832a6"] ul:not([template-default]),.formkit-form[data-uid="e309c832a6"] blockquote:not([template-default]){text-align:left;}.formkit-form[data-uid="e309c832a6"] p:not([template-default]),.formkit-form[data-uid="e309c832a6"] hr:not([template-default]),.formkit-form[data-uid="e309c832a6"] blockquote:not([template-default]),.formkit-form[data-uid="e309c832a6"] ol:not([template-default]),.formkit-form[data-uid="e309c832a6"] ul:not([template-default]){color:inherit;font-style:initial;}.formkit-form[data-uid="e309c832a6"] .ordered-list,.formkit-form[data-uid="e309c832a6"] .unordered-list{list-style-position:outside !important;padding-left:1em;}.formkit-form[data-uid="e309c832a6"] .list-item{padding-left:0;}.formkit-form[data-uid="e309c832a6"][data-format="modal"]{display:none;}.formkit-form[data-uid="e309c832a6"][data-format="slide in"]{display:none;}.formkit-form[data-uid="e309c832a6"][data-format="sticky bar"]{display:none;}.formkit-sticky-bar .formkit-form[data-uid="e309c832a6"][data-format="sticky bar"]{display:block;}.formkit-form[data-uid="e309c832a6"] .formkit-input,.formkit-form[data-uid="e309c832a6"] .formkit-select,.formkit-form[data-uid="e309c832a6"] .formkit-checkboxes{width:100%;}.formkit-form[data-uid="e309c832a6"] .formkit-button,.formkit-form[data-uid="e309c832a6"] .formkit-submit{border:0;border-radius:5px;color:#ffffff;cursor:pointer;display:inline-block;text-align:center;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:15px;overflow:hidden;padding:0;position:relative;vertical-align:middle;}.formkit-form[data-uid="e309c832a6"] .formkit-button:hover,.formkit-form[data-uid="e309c832a6"] .formkit-submit:hover,.formkit-form[data-uid="e309c832a6"] .formkit-button:focus,.formkit-form[data-uid="e309c832a6"] .formkit-submit:focus{outline:none;}.formkit-form[data-uid="e309c832a6"] .formkit-button:hover > span,.formkit-form[data-uid="e309c832a6"] .formkit-submit:hover > span,.formkit-form[data-uid="e309c832a6"] .formkit-button:focus > span,.formkit-form[data-uid="e309c832a6"] .formkit-submit:focus > span{background-color:rgba(0,0,0,0.1);}.formkit-form[data-uid="e309c832a6"] .formkit-button > span,.formkit-form[data-uid="e309c832a6"] .formkit-submit > span{display:block;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;padding:12px 24px;}.formkit-form[data-uid="e309c832a6"] .formkit-input{background:#ffffff;font-size:15px;padding:12px;border:1px solid #e3e3e3;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;line-height:1.4;margin:0;-webkit-transition:border-color ease-out 300ms;transition:border-color ease-out 300ms;}.formkit-form[data-uid="e309c832a6"] .formkit-input:focus{outline:none;border-color:#1677be;-webkit-transition:border-color ease 300ms;transition:border-color ease 300ms;}.formkit-form[data-uid="e309c832a6"] .formkit-input::-webkit-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="e309c832a6"] .formkit-input::-moz-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="e309c832a6"] .formkit-input:-ms-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="e309c832a6"] .formkit-input::placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="e309c832a6"] [data-group="dropdown"]{position:relative;display:inline-block;width:100%;}.formkit-form[data-uid="e309c832a6"] [data-group="dropdown"]::before{content:"";top:calc(50% - 2.5px);right:10px;position:absolute;pointer-events:none;border-color:#4f4f4f transparent transparent transparent;border-style:solid;border-width:6px 6px 0 6px;height:0;width:0;z-index:999;}.formkit-form[data-uid="e309c832a6"] [data-group="dropdown"] select{height:auto;width:100%;cursor:pointer;color:#333333;line-height:1.4;margin-bottom:0;padding:0 6px;-webkit-appearance:none;-moz-appearance:none;appearance:none;font-size:15px;padding:12px;padding-right:25px;border:1px solid #e3e3e3;background:#ffffff;}.formkit-form[data-uid="e309c832a6"] [data-group="dropdown"] select:focus{outline:none;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"]{text-align:left;margin:0;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"]{margin-bottom:10px;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] *{cursor:pointer;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"]:last-of-type{margin-bottom:0;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]{display:none;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"] + label::after{content:none;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::after{border-color:#ffffff;content:"";}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::before{background:#10bf7a;border-color:#10bf7a;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label{position:relative;display:inline-block;padding-left:28px;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label::before,.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label::after{position:absolute;content:"";display:inline-block;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label::before{height:16px;width:16px;border:1px solid #e3e3e3;background:#ffffff;left:0px;top:3px;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label::after{height:4px;width:8px;border-left:2px solid #4d4d4d;border-bottom:2px solid #4d4d4d;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);left:4px;top:8px;}.formkit-form[data-uid="e309c832a6"] .formkit-alert{background:#f9fafb;border:1px solid #e3e3e3;border-radius:5px;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;list-style:none;margin:25px auto;padding:12px;text-align:center;width:100%;}.formkit-form[data-uid="e309c832a6"] .formkit-alert:empty{display:none;}.formkit-form[data-uid="e309c832a6"] .formkit-alert-success{background:#d3fbeb;border-color:#10bf7a;color:#0c905c;}.formkit-form[data-uid="e309c832a6"] .formkit-alert-error{background:#fde8e2;border-color:#f2643b;color:#ea4110;}.formkit-form[data-uid="e309c832a6"] .formkit-spinner{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:0px;width:0px;margin:0 auto;position:absolute;top:0;left:0;right:0;width:0px;overflow:hidden;text-align:center;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;}.formkit-form[data-uid="e309c832a6"] .formkit-spinner > div{margin:auto;width:12px;height:12px;background-color:#fff;opacity:0.3;border-radius:100%;display:inline-block;-webkit-animation:formkit-bouncedelay-formkit-form-data-uid-e309c832a6- 1.4s infinite ease-in-out both;animation:formkit-bouncedelay-formkit-form-data-uid-e309c832a6- 1.4s infinite ease-in-out both;}.formkit-form[data-uid="e309c832a6"] .formkit-spinner > div:nth-child(1){-webkit-animation-delay:-0.32s;animation-delay:-0.32s;}.formkit-form[data-uid="e309c832a6"] .formkit-spinner > div:nth-child(2){-webkit-animation-delay:-0.16s;animation-delay:-0.16s;}.formkit-form[data-uid="e309c832a6"] .formkit-submit[data-active] .formkit-spinner{opacity:1;height:100%;width:50px;}.formkit-form[data-uid="e309c832a6"] .formkit-submit[data-active] .formkit-spinner ~ span{opacity:0;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit-container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;z-index:5;margin:10px 0;position:relative;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit-container[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;border:1px solid #dde2e7;border-radius:4px;color:#373f45;cursor:pointer;display:block;height:36px;margin:0 auto;opacity:0.95;padding:0;-webkit-text-decoration:none;text-decoration:none;text-indent:100%;-webkit-transition:ease-in-out all 200ms;transition:ease-in-out all 200ms;white-space:nowrap;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:190px;background-repeat:no-repeat;background-position:center;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='162' height='20' viewBox='0 0 162 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M83.0561 15.2457C86.675 15.2457 89.4722 12.5154 89.4722 9.14749C89.4722 5.99211 86.8443 4.06563 85.1038 4.06563C82.6801 4.06563 80.7373 5.76407 80.4605 8.28551C80.4092 8.75244 80.0387 9.14403 79.5686 9.14069C78.7871 9.13509 77.6507 9.12841 76.9314 9.13092C76.6217 9.13199 76.3658 8.88106 76.381 8.57196C76.4895 6.38513 77.2218 4.3404 78.618 2.76974C80.1695 1.02445 82.4289 0 85.1038 0C89.5979 0 93.8406 4.07791 93.8406 9.14749C93.8406 14.7608 89.1832 19.3113 83.1517 19.3113C78.8502 19.3113 74.5179 16.5041 73.0053 12.5795C72.9999 12.565 72.9986 12.5492 73.0015 12.534C73.0218 12.4179 73.0617 12.3118 73.1011 12.2074C73.1583 12.0555 73.2143 11.907 73.2062 11.7359L73.18 11.1892C73.174 11.0569 73.2075 10.9258 73.2764 10.8127C73.3452 10.6995 73.4463 10.6094 73.5666 10.554L73.7852 10.4523C73.9077 10.3957 74.0148 10.3105 74.0976 10.204C74.1803 10.0974 74.2363 9.97252 74.2608 9.83983C74.3341 9.43894 74.6865 9.14749 75.0979 9.14749C75.7404 9.14749 76.299 9.57412 76.5088 10.1806C77.5188 13.1 79.1245 15.2457 83.0561 15.2457Z' fill='%23373F45'/%3E%3Cpath d='M155.758 6.91365C155.028 6.91365 154.804 6.47916 154.804 5.98857C154.804 5.46997 154.986 5.06348 155.758 5.06348C156.53 5.06348 156.712 5.46997 156.712 5.98857C156.712 6.47905 156.516 6.91365 155.758 6.91365ZM142.441 12.9304V9.32833L141.415 9.32323V8.90392C141.415 8.44719 141.786 8.07758 142.244 8.07986L142.441 8.08095V6.55306L144.082 6.09057V8.08073H145.569V8.50416C145.569 8.61242 145.548 8.71961 145.506 8.81961C145.465 8.91961 145.404 9.01047 145.328 9.08699C145.251 9.16351 145.16 9.2242 145.06 9.26559C144.96 9.30698 144.853 9.32826 144.745 9.32822H144.082V12.7201C144.082 13.2423 144.378 13.4256 144.76 13.4887C145.209 13.5629 145.583 13.888 145.583 14.343V14.9626C144.029 14.9626 142.441 14.8942 142.441 12.9304Z' fill='%23373F45'/%3E%3Cpath d='M110.058 7.92554C108.417 7.88344 106.396 8.92062 106.396 11.5137C106.396 14.0646 108.417 15.0738 110.058 15.0318C111.742 15.0738 113.748 14.0646 113.748 11.5137C113.748 8.92062 111.742 7.88344 110.058 7.92554ZM110.07 13.7586C108.878 13.7586 108.032 12.8905 108.032 11.461C108.032 10.1013 108.878 9.20569 110.071 9.20569C111.263 9.20569 112.101 10.0995 112.101 11.459C112.101 12.8887 111.263 13.7586 110.07 13.7586Z' fill='%23373F45'/%3E%3Cpath d='M118.06 7.94098C119.491 7.94098 120.978 8.33337 120.978 11.1366V14.893H120.063C119.608 14.893 119.238 14.524 119.238 14.0689V10.9965C119.238 9.66506 118.747 9.16047 117.891 9.16047C117.414 9.16047 116.797 9.52486 116.502 9.81915V14.069C116.502 14.1773 116.481 14.2845 116.44 14.3845C116.398 14.4845 116.337 14.5753 116.261 14.6519C116.184 14.7284 116.093 14.7891 115.993 14.8305C115.893 14.8719 115.786 14.8931 115.678 14.8931H114.847V8.10918H115.773C115.932 8.10914 116.087 8.16315 116.212 8.26242C116.337 8.36168 116.424 8.50033 116.46 8.65577C116.881 8.19328 117.428 7.94098 118.06 7.94098ZM122.854 8.09713C123.024 8.09708 123.19 8.1496 123.329 8.2475C123.468 8.34541 123.574 8.48391 123.631 8.64405L125.133 12.8486L126.635 8.64415C126.692 8.48402 126.798 8.34551 126.937 8.2476C127.076 8.1497 127.242 8.09718 127.412 8.09724H128.598L126.152 14.3567C126.091 14.5112 125.986 14.6439 125.849 14.7374C125.711 14.831 125.549 14.881 125.383 14.8809H124.333L121.668 8.09713H122.854Z' fill='%23373F45'/%3E%3Cpath d='M135.085 14.5514C134.566 14.7616 133.513 15.0416 132.418 15.0416C130.496 15.0416 129.024 13.9345 129.024 11.4396C129.024 9.19701 130.451 7.99792 132.191 7.99792C134.338 7.99792 135.254 9.4378 135.158 11.3979C135.139 11.8029 134.786 12.0983 134.38 12.0983H130.679C130.763 13.1916 131.562 13.7662 132.615 13.7662C133.028 13.7662 133.462 13.7452 133.983 13.6481C134.535 13.545 135.085 13.9375 135.085 14.4985V14.5514ZM133.673 10.949C133.785 9.87621 133.061 9.28752 132.191 9.28752C131.321 9.28752 130.734 9.93979 130.679 10.9489L133.673 10.949Z' fill='%23373F45'/%3E%3Cpath d='M137.345 8.11122C137.497 8.11118 137.645 8.16229 137.765 8.25635C137.884 8.35041 137.969 8.48197 138.005 8.62993C138.566 8.20932 139.268 7.94303 139.759 7.94303C139.801 7.94303 140.068 7.94303 140.489 7.99913V8.7265C140.489 9.11748 140.15 9.4147 139.759 9.4147C139.31 9.4147 138.651 9.5829 138.131 9.8773V14.8951H136.462V8.11112L137.345 8.11122ZM156.6 14.0508V8.09104H155.769C155.314 8.09104 154.944 8.45999 154.944 8.9151V14.8748H155.775C156.23 14.8748 156.6 14.5058 156.6 14.0508ZM158.857 12.9447V9.34254H157.749V8.91912C157.749 8.46401 158.118 8.09506 158.574 8.09506H158.857V6.56739L160.499 6.10479V8.09506H161.986V8.51848C161.986 8.97359 161.617 9.34254 161.161 9.34254H160.499V12.7345C160.499 13.2566 160.795 13.44 161.177 13.503C161.626 13.5774 162 13.9024 162 14.3574V14.977C160.446 14.977 158.857 14.9086 158.857 12.9447ZM98.1929 10.1124C98.2033 6.94046 100.598 5.16809 102.895 5.16809C104.171 5.16809 105.342 5.44285 106.304 6.12953L105.914 6.6631C105.654 7.02011 105.16 7.16194 104.749 6.99949C104.169 6.7702 103.622 6.7218 103.215 6.7218C101.335 6.7218 99.9169 7.92849 99.9068 10.1123C99.9169 12.2959 101.335 13.5201 103.215 13.5201C103.622 13.5201 104.169 13.4717 104.749 13.2424C105.16 13.0799 105.654 13.2046 105.914 13.5615L106.304 14.0952C105.342 14.7819 104.171 15.0566 102.895 15.0566C100.598 15.0566 98.2033 13.2842 98.1929 10.1124ZM147.619 5.21768C148.074 5.21768 148.444 5.58663 148.444 6.04174V9.81968L151.82 5.58131C151.897 5.47733 151.997 5.39282 152.112 5.3346C152.227 5.27638 152.355 5.24607 152.484 5.24611H153.984L150.166 10.0615L153.984 14.8749H152.484C152.355 14.8749 152.227 14.8446 152.112 14.7864C151.997 14.7281 151.897 14.6436 151.82 14.5397L148.444 10.3025V14.0508C148.444 14.5059 148.074 14.8749 147.619 14.8749H146.746V5.21768H147.619Z' fill='%23373F45'/%3E%3Cpath d='M0.773438 6.5752H2.68066C3.56543 6.5752 4.2041 6.7041 4.59668 6.96191C4.99219 7.21973 5.18994 7.62695 5.18994 8.18359C5.18994 8.55859 5.09326 8.87061 4.8999 9.11963C4.70654 9.36865 4.42822 9.52539 4.06494 9.58984V9.63379C4.51611 9.71875 4.84717 9.88721 5.05811 10.1392C5.27197 10.3882 5.37891 10.7266 5.37891 11.1543C5.37891 11.7314 5.17676 12.1841 4.77246 12.5122C4.37109 12.8374 3.81152 13 3.09375 13H0.773438V6.5752ZM1.82373 9.22949H2.83447C3.27393 9.22949 3.59473 9.16064 3.79688 9.02295C3.99902 8.88232 4.1001 8.64502 4.1001 8.31104C4.1001 8.00928 3.99023 7.79102 3.77051 7.65625C3.55371 7.52148 3.20801 7.4541 2.7334 7.4541H1.82373V9.22949ZM1.82373 10.082V12.1167H2.93994C3.37939 12.1167 3.71045 12.0332 3.93311 11.8662C4.15869 11.6963 4.27148 11.4297 4.27148 11.0664C4.27148 10.7324 4.15723 10.4849 3.92871 10.3237C3.7002 10.1626 3.35303 10.082 2.88721 10.082H1.82373Z' fill='%23373F45'/%3E%3Cpath d='M13.011 6.5752V10.7324C13.011 11.207 12.9084 11.623 12.7034 11.9805C12.5012 12.335 12.2068 12.6089 11.8201 12.8022C11.4363 12.9927 10.9763 13.0879 10.4402 13.0879C9.6433 13.0879 9.02368 12.877 8.5813 12.4551C8.13892 12.0332 7.91772 11.4531 7.91772 10.7148V6.5752H8.9724V10.6401C8.9724 11.1704 9.09546 11.5615 9.34155 11.8135C9.58765 12.0654 9.96557 12.1914 10.4753 12.1914C11.4656 12.1914 11.9607 11.6714 11.9607 10.6313V6.5752H13.011Z' fill='%23373F45'/%3E%3Cpath d='M15.9146 13V6.5752H16.9649V13H15.9146Z' fill='%23373F45'/%3E%3Cpath d='M19.9255 13V6.5752H20.9758V12.0991H23.696V13H19.9255Z' fill='%23373F45'/%3E%3Cpath d='M28.2828 13H27.2325V7.47607H25.3428V6.5752H30.1724V7.47607H28.2828V13Z' fill='%23373F45'/%3E%3Cpath d='M41.9472 13H40.8046L39.7148 9.16796C39.6679 9.00097 39.6093 8.76074 39.539 8.44727C39.4687 8.13086 39.4262 7.91113 39.4116 7.78809C39.3823 7.97559 39.3339 8.21875 39.2665 8.51758C39.2021 8.81641 39.1479 9.03905 39.1039 9.18554L38.0405 13H36.8979L36.0673 9.7832L35.2236 6.5752H36.2958L37.2143 10.3193C37.3578 10.9199 37.4604 11.4502 37.5219 11.9102C37.5541 11.6611 37.6025 11.3828 37.6669 11.0752C37.7314 10.7676 37.79 10.5186 37.8427 10.3281L38.8886 6.5752H39.9301L41.0024 10.3457C41.1049 10.6943 41.2133 11.2158 41.3276 11.9102C41.3715 11.4912 41.477 10.958 41.644 10.3105L42.558 6.5752H43.6215L41.9472 13Z' fill='%23373F45'/%3E%3Cpath d='M45.7957 13V6.5752H46.846V13H45.7957Z' fill='%23373F45'/%3E%3Cpath d='M52.0258 13H50.9755V7.47607H49.0859V6.5752H53.9155V7.47607H52.0258V13Z' fill='%23373F45'/%3E%3Cpath d='M61.2312 13H60.1765V10.104H57.2146V13H56.1643V6.5752H57.2146V9.20312H60.1765V6.5752H61.2312V13Z' fill='%23373F45'/%3E%3C/svg%3E");}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit:hover,.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit:focus{background-color:#ffffff;-webkit-transform:scale(1.025) perspective(1px);-ms-transform:scale(1.025) perspective(1px);transform:scale(1.025) perspective(1px);opacity:1;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit[data-variant="dark"],.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit[data-variant="light"]{background-color:transparent;border-color:transparent;width:166px;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit[data-variant="light"]{color:#ffffff;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='162' height='20' viewBox='0 0 162 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M83.0561 15.2457C86.675 15.2457 89.4722 12.5154 89.4722 9.14749C89.4722 5.99211 86.8443 4.06563 85.1038 4.06563C82.6801 4.06563 80.7373 5.76407 80.4605 8.28551C80.4092 8.75244 80.0387 9.14403 79.5686 9.14069C78.7871 9.13509 77.6507 9.12841 76.9314 9.13092C76.6217 9.13199 76.3658 8.88106 76.381 8.57196C76.4895 6.38513 77.2218 4.3404 78.618 2.76974C80.1695 1.02445 82.4289 0 85.1038 0C89.5979 0 93.8406 4.07791 93.8406 9.14749C93.8406 14.7608 89.1832 19.3113 83.1517 19.3113C78.8502 19.3113 74.5179 16.5041 73.0053 12.5795C72.9999 12.565 72.9986 12.5492 73.0015 12.534C73.0218 12.4179 73.0617 12.3118 73.1011 12.2074C73.1583 12.0555 73.2143 11.907 73.2062 11.7359L73.18 11.1892C73.174 11.0569 73.2075 10.9258 73.2764 10.8127C73.3452 10.6995 73.4463 10.6094 73.5666 10.554L73.7852 10.4523C73.9077 10.3957 74.0148 10.3105 74.0976 10.204C74.1803 10.0974 74.2363 9.97252 74.2608 9.83983C74.3341 9.43894 74.6865 9.14749 75.0979 9.14749C75.7404 9.14749 76.299 9.57412 76.5088 10.1806C77.5188 13.1 79.1245 15.2457 83.0561 15.2457Z' fill='white'/%3E%3Cpath d='M155.758 6.91365C155.028 6.91365 154.804 6.47916 154.804 5.98857C154.804 5.46997 154.986 5.06348 155.758 5.06348C156.53 5.06348 156.712 5.46997 156.712 5.98857C156.712 6.47905 156.516 6.91365 155.758 6.91365ZM142.441 12.9304V9.32833L141.415 9.32323V8.90392C141.415 8.44719 141.786 8.07758 142.244 8.07986L142.441 8.08095V6.55306L144.082 6.09057V8.08073H145.569V8.50416C145.569 8.61242 145.548 8.71961 145.506 8.81961C145.465 8.91961 145.404 9.01047 145.328 9.08699C145.251 9.16351 145.16 9.2242 145.06 9.26559C144.96 9.30698 144.853 9.32826 144.745 9.32822H144.082V12.7201C144.082 13.2423 144.378 13.4256 144.76 13.4887C145.209 13.5629 145.583 13.888 145.583 14.343V14.9626C144.029 14.9626 142.441 14.8942 142.441 12.9304Z' fill='white'/%3E%3Cpath d='M110.058 7.92554C108.417 7.88344 106.396 8.92062 106.396 11.5137C106.396 14.0646 108.417 15.0738 110.058 15.0318C111.742 15.0738 113.748 14.0646 113.748 11.5137C113.748 8.92062 111.742 7.88344 110.058 7.92554ZM110.07 13.7586C108.878 13.7586 108.032 12.8905 108.032 11.461C108.032 10.1013 108.878 9.20569 110.071 9.20569C111.263 9.20569 112.101 10.0995 112.101 11.459C112.101 12.8887 111.263 13.7586 110.07 13.7586Z' fill='white'/%3E%3Cpath d='M118.06 7.94098C119.491 7.94098 120.978 8.33337 120.978 11.1366V14.893H120.063C119.608 14.893 119.238 14.524 119.238 14.0689V10.9965C119.238 9.66506 118.747 9.16047 117.891 9.16047C117.414 9.16047 116.797 9.52486 116.502 9.81915V14.069C116.502 14.1773 116.481 14.2845 116.44 14.3845C116.398 14.4845 116.337 14.5753 116.261 14.6519C116.184 14.7284 116.093 14.7891 115.993 14.8305C115.893 14.8719 115.786 14.8931 115.678 14.8931H114.847V8.10918H115.773C115.932 8.10914 116.087 8.16315 116.212 8.26242C116.337 8.36168 116.424 8.50033 116.46 8.65577C116.881 8.19328 117.428 7.94098 118.06 7.94098ZM122.854 8.09713C123.024 8.09708 123.19 8.1496 123.329 8.2475C123.468 8.34541 123.574 8.48391 123.631 8.64405L125.133 12.8486L126.635 8.64415C126.692 8.48402 126.798 8.34551 126.937 8.2476C127.076 8.1497 127.242 8.09718 127.412 8.09724H128.598L126.152 14.3567C126.091 14.5112 125.986 14.6439 125.849 14.7374C125.711 14.831 125.549 14.881 125.383 14.8809H124.333L121.668 8.09713H122.854Z' fill='white'/%3E%3Cpath d='M135.085 14.5514C134.566 14.7616 133.513 15.0416 132.418 15.0416C130.496 15.0416 129.024 13.9345 129.024 11.4396C129.024 9.19701 130.451 7.99792 132.191 7.99792C134.338 7.99792 135.254 9.4378 135.158 11.3979C135.139 11.8029 134.786 12.0983 134.38 12.0983H130.679C130.763 13.1916 131.562 13.7662 132.615 13.7662C133.028 13.7662 133.462 13.7452 133.983 13.6481C134.535 13.545 135.085 13.9375 135.085 14.4985V14.5514ZM133.673 10.949C133.785 9.87621 133.061 9.28752 132.191 9.28752C131.321 9.28752 130.734 9.93979 130.679 10.9489L133.673 10.949Z' fill='white'/%3E%3Cpath d='M137.345 8.11122C137.497 8.11118 137.645 8.16229 137.765 8.25635C137.884 8.35041 137.969 8.48197 138.005 8.62993C138.566 8.20932 139.268 7.94303 139.759 7.94303C139.801 7.94303 140.068 7.94303 140.489 7.99913V8.7265C140.489 9.11748 140.15 9.4147 139.759 9.4147C139.31 9.4147 138.651 9.5829 138.131 9.8773V14.8951H136.462V8.11112L137.345 8.11122ZM156.6 14.0508V8.09104H155.769C155.314 8.09104 154.944 8.45999 154.944 8.9151V14.8748H155.775C156.23 14.8748 156.6 14.5058 156.6 14.0508ZM158.857 12.9447V9.34254H157.749V8.91912C157.749 8.46401 158.118 8.09506 158.574 8.09506H158.857V6.56739L160.499 6.10479V8.09506H161.986V8.51848C161.986 8.97359 161.617 9.34254 161.161 9.34254H160.499V12.7345C160.499 13.2566 160.795 13.44 161.177 13.503C161.626 13.5774 162 13.9024 162 14.3574V14.977C160.446 14.977 158.857 14.9086 158.857 12.9447ZM98.1929 10.1124C98.2033 6.94046 100.598 5.16809 102.895 5.16809C104.171 5.16809 105.342 5.44285 106.304 6.12953L105.914 6.6631C105.654 7.02011 105.16 7.16194 104.749 6.99949C104.169 6.7702 103.622 6.7218 103.215 6.7218C101.335 6.7218 99.9169 7.92849 99.9068 10.1123C99.9169 12.2959 101.335 13.5201 103.215 13.5201C103.622 13.5201 104.169 13.4717 104.749 13.2424C105.16 13.0799 105.654 13.2046 105.914 13.5615L106.304 14.0952C105.342 14.7819 104.171 15.0566 102.895 15.0566C100.598 15.0566 98.2033 13.2842 98.1929 10.1124ZM147.619 5.21768C148.074 5.21768 148.444 5.58663 148.444 6.04174V9.81968L151.82 5.58131C151.897 5.47733 151.997 5.39282 152.112 5.3346C152.227 5.27638 152.355 5.24607 152.484 5.24611H153.984L150.166 10.0615L153.984 14.8749H152.484C152.355 14.8749 152.227 14.8446 152.112 14.7864C151.997 14.7281 151.897 14.6436 151.82 14.5397L148.444 10.3025V14.0508C148.444 14.5059 148.074 14.8749 147.619 14.8749H146.746V5.21768H147.619Z' fill='white'/%3E%3Cpath d='M0.773438 6.5752H2.68066C3.56543 6.5752 4.2041 6.7041 4.59668 6.96191C4.99219 7.21973 5.18994 7.62695 5.18994 8.18359C5.18994 8.55859 5.09326 8.87061 4.8999 9.11963C4.70654 9.36865 4.42822 9.52539 4.06494 9.58984V9.63379C4.51611 9.71875 4.84717 9.88721 5.05811 10.1392C5.27197 10.3882 5.37891 10.7266 5.37891 11.1543C5.37891 11.7314 5.17676 12.1841 4.77246 12.5122C4.37109 12.8374 3.81152 13 3.09375 13H0.773438V6.5752ZM1.82373 9.22949H2.83447C3.27393 9.22949 3.59473 9.16064 3.79688 9.02295C3.99902 8.88232 4.1001 8.64502 4.1001 8.31104C4.1001 8.00928 3.99023 7.79102 3.77051 7.65625C3.55371 7.52148 3.20801 7.4541 2.7334 7.4541H1.82373V9.22949ZM1.82373 10.082V12.1167H2.93994C3.37939 12.1167 3.71045 12.0332 3.93311 11.8662C4.15869 11.6963 4.27148 11.4297 4.27148 11.0664C4.27148 10.7324 4.15723 10.4849 3.92871 10.3237C3.7002 10.1626 3.35303 10.082 2.88721 10.082H1.82373Z' fill='white'/%3E%3Cpath d='M13.011 6.5752V10.7324C13.011 11.207 12.9084 11.623 12.7034 11.9805C12.5012 12.335 12.2068 12.6089 11.8201 12.8022C11.4363 12.9927 10.9763 13.0879 10.4402 13.0879C9.6433 13.0879 9.02368 12.877 8.5813 12.4551C8.13892 12.0332 7.91772 11.4531 7.91772 10.7148V6.5752H8.9724V10.6401C8.9724 11.1704 9.09546 11.5615 9.34155 11.8135C9.58765 12.0654 9.96557 12.1914 10.4753 12.1914C11.4656 12.1914 11.9607 11.6714 11.9607 10.6313V6.5752H13.011Z' fill='white'/%3E%3Cpath d='M15.9146 13V6.5752H16.9649V13H15.9146Z' fill='white'/%3E%3Cpath d='M19.9255 13V6.5752H20.9758V12.0991H23.696V13H19.9255Z' fill='white'/%3E%3Cpath d='M28.2828 13H27.2325V7.47607H25.3428V6.5752H30.1724V7.47607H28.2828V13Z' fill='white'/%3E%3Cpath d='M41.9472 13H40.8046L39.7148 9.16796C39.6679 9.00097 39.6093 8.76074 39.539 8.44727C39.4687 8.13086 39.4262 7.91113 39.4116 7.78809C39.3823 7.97559 39.3339 8.21875 39.2665 8.51758C39.2021 8.81641 39.1479 9.03905 39.1039 9.18554L38.0405 13H36.8979L36.0673 9.7832L35.2236 6.5752H36.2958L37.2143 10.3193C37.3578 10.9199 37.4604 11.4502 37.5219 11.9102C37.5541 11.6611 37.6025 11.3828 37.6669 11.0752C37.7314 10.7676 37.79 10.5186 37.8427 10.3281L38.8886 6.5752H39.9301L41.0024 10.3457C41.1049 10.6943 41.2133 11.2158 41.3276 11.9102C41.3715 11.4912 41.477 10.958 41.644 10.3105L42.558 6.5752H43.6215L41.9472 13Z' fill='white'/%3E%3Cpath d='M45.7957 13V6.5752H46.846V13H45.7957Z' fill='white'/%3E%3Cpath d='M52.0258 13H50.9755V7.47607H49.0859V6.5752H53.9155V7.47607H52.0258V13Z' fill='white'/%3E%3Cpath d='M61.2312 13H60.1765V10.104H57.2146V13H56.1643V6.5752H57.2146V9.20312H60.1765V6.5752H61.2312V13Z' fill='white'/%3E%3C/svg%3E");}@-webkit-keyframes formkit-bouncedelay-formkit-form-data-uid-e309c832a6-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}@keyframes formkit-bouncedelay-formkit-form-data-uid-e309c832a6-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}.formkit-form[data-uid="e309c832a6"] blockquote{padding:10px 20px;margin:0 0 20px;border-left:5px solid #e1e1e1;}.formkit-form[data-uid="e309c832a6"] .seva-custom-content{padding:15px;font-size:16px;color:#fff;mix-blend-mode:difference;}.formkit-form[data-uid="e309c832a6"] .formkit-modal.guard{max-width:420px;width:100%;} .formkit-form[data-uid="e309c832a6"]{border:1px solid #e3e3e3;max-width:700px;position:relative;overflow:hidden;}.formkit-form[data-uid="e309c832a6"] .formkit-background{width:100%;height:100%;position:absolute;top:0;left:0;background-size:cover;background-position:center;opacity:0.3;}.formkit-form[data-uid="e309c832a6"] [data-style="minimal"]{padding:20px;width:100%;position:relative;}.formkit-form[data-uid="e309c832a6"] .formkit-header{margin:0 0 27px 0;text-align:center;}.formkit-form[data-uid="e309c832a6"] .formkit-subheader{margin:18px 0;text-align:center;}.formkit-form[data-uid="e309c832a6"] .formkit-guarantee{font-size:13px;margin:10px 0 15px 0;text-align:center;}.formkit-form[data-uid="e309c832a6"] .formkit-guarantee > p{margin:0;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit-container{margin-bottom:0;}.formkit-form[data-uid="e309c832a6"] .formkit-fields{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:25px auto 0 auto;}.formkit-form[data-uid="e309c832a6"] .formkit-field{min-width:220px;}.formkit-form[data-uid="e309c832a6"] .formkit-field,.formkit-form[data-uid="e309c832a6"] .formkit-submit{margin:0 0 15px 0;-webkit-flex:1 0 100%;-ms-flex:1 0 100%;flex:1 0 100%;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] [data-style="minimal"]{padding:40px;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"]{margin-left:-5px;margin-right:-5px;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-submit{margin:0 5px 15px 5px;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-field{-webkit-flex:100 1 auto;-ms-flex:100 1 auto;flex:100 1 auto;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-submit{-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;} </style></form>
+
+		<div class="sponsor">
+        <div class="sponsor-avatar"></div><p class="sponsor-bio"><em>Did you find this article helpful?</em></p><div class="sponsor-custom"><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="reachsumit" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/" data-title="" data-via="_reachsumit"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/" data-title="" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/" data-title=""><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/" data-title=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/" data-title=""><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/" data-title=""><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/1/01/tuning-llm-for-recsys/" data-title="" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/posts/2020/07/skip-list/" class="next" rel="next" title="Skip List Data Structure - Explained!">Skip List Data Structure - Explained!<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="Back to Top">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"0001-01-01T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":""}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-171612692-1');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-171612692-1" async></script></div>
+</body>
+
+</html>

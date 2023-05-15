@@ -4,9 +4,18 @@
         <link>https://blog.reachsumit.com/</link>
         <description>Welcome to Sumit Kumar&#39;s Personal Blog!</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 May 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 15 May 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.reachsumit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>ChatGPT-based Recommender Systems</title>
+    <link>https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/</link>
+    <pubDate>Mon, 15 May 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div><p>With its outstanding performance, ChatGPT has become a hot topic of discussion in the NLP community and beyond. This article delves into recent efforts to harness the power of ChatGPT for recommendation tasks.</p>]]></description>
+</item><item>
     <title>Shallow Embedding Models for Homogeneous Graphs</title>
     <link>https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/</link>
     <pubDate>Sun, 07 May 2023 00:00:00 &#43;0000</pubDate><author>
@@ -89,14 +98,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Large Language Models (LLMs), like GPT-x, PaLM, BLOOM, have shaken up the NLP domain and completely redefined the state-of-the-art for a variety of tasks. One reason for the popularity of these LLMs has been their out-of-the-box capability to produce excellent performance with none to little domain-specific labeled data. The information retrieval community is also witnessing a revolution due to LLMs. These large pre-trained models can understand task instructions specified in natural language and then perform well on tasks in a zero-shot or few-shot manner. In this article, I review this theme and some of the most prominent ideas proposed by researchers in the last few months to enable zero/few-shot learning in text retrieval and ranking applications like search ranking, question answering, fact verification, etc.]]></description>
-</item><item>
-    <title>Next Gen Recommender Systems: Real-time reranking on mobile devices</title>
-    <link>https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/</link>
-    <pubDate>Thu, 09 Mar 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/03/reranking-on-edge/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems.]]></description>
 </item></channel>
 </rss>

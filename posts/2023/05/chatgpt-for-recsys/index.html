@@ -5,33 +5,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title>Twitter&#39;s For You Recommendation Algorithm - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Twitter&#39;s For You Recommendation Algorithm" />
-<meta property="og:description" content="Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references." />
+    <title>ChatGPT-based Recommender Systems - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="ChatGPT-based Recommender Systems" />
+<meta property="og:description" content="With its outstanding performance, ChatGPT has become a hot topic of discussion in the NLP community and beyond. This article delves into recent efforts to harness the power of ChatGPT for recommendation tasks." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-04-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-04-04T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-15T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp"/>
-<meta name="twitter:title" content="Twitter&#39;s For You Recommendation Algorithm"/>
-<meta name="twitter:description" content="Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references."/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp"/>
+<meta name="twitter:title" content="ChatGPT-based Recommender Systems"/>
+<meta name="twitter:description" content="With its outstanding performance, ChatGPT has become a hot topic of discussion in the NLP community and beyond. This article delves into recent efforts to harness the power of ChatGPT for recommendation tasks."/>
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Twitter's For You Recommendation Algorithm",
+        "headline": "ChatGPT-based Recommender Systems",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/the-twitter-ml-algo\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  1967 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/the-twitter-ml-algo\/","datePublished": "2023-04-04T00:00:00+00:00","dateModified": "2023-04-04T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/05\/chatgpt-for-recsys\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, LLM","wordcount":  2523 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/05\/chatgpt-for-recsys\/","datePublished": "2023-05-15T00:00:00+00:00","dateModified": "2023-05-15T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -126,243 +126,345 @@
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
-    <li><a href="#twitter-releases-the-algorithm">Twitter Releases &ldquo;The Algorithm&rdquo;</a></li>
-    <li><a href="#the-algorithm">The Algorithm</a>
+    <li><a href="#using-llms-for-recommendations">Using LLMs for Recommendations</a></li>
+    <li><a href="#chatgpt-for-recommender-tasks">ChatGPT for Recommender Tasks</a>
       <ul>
-        <li><a href="#data-sourcing">Data Sourcing</a></li>
-        <li><a href="#candidate-generation">Candidate Generation</a>
+        <li><a href="#chatgpt-as-a-reranker">ChatGPT as a Reranker</a>
           <ul>
-            <li><a href="#in-network-tweets">In-Network Tweets</a></li>
-            <li><a href="#out-of-network-tweets">Out-of-Network Tweets</a>
-              <ul>
-                <li><a href="#social-graph">Social Graph</a></li>
-                <li><a href="#embedding-based-semantic-spaces">Embedding-based Semantic Spaces</a>
-                  <ul>
-                    <li><a href="#simclusters">SimClusters</a></li>
-                    <li><a href="#twhin">TwHIN</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
+            <li><a href="#measuring-costs">Measuring Costs</a></li>
+            <li><a href="#performance-under-different-shots">Performance Under Different Shots</a></li>
+            <li><a href="#invalid-answers">Invalid Answers</a></li>
+            <li><a href="#zero-shot-performance">Zero-shot performance</a></li>
           </ul>
         </li>
-        <li><a href="#ranking">Ranking</a>
+        <li><a href="#chatgpt-as-a-general-purpose-recommendation-model">ChatGPT as a General-Purpose Recommendation Model</a>
           <ul>
-            <li><a href="#light-ranking">Light Ranking</a></li>
-            <li><a href="#heavy-ranking">Heavy Ranking</a></li>
+            <li><a href="#handing-invalid-responses">Handing Invalid Responses</a></li>
+            <li><a href="#zero-shot-and-few-shot-performance">Zero-shot and Few-shot Performance</a></li>
           </ul>
         </li>
-        <li><a href="#heuristics--filtering">Heuristics &amp; Filtering</a></li>
-        <li><a href="#mixing">Mixing</a></li>
+      </ul>
+    </li>
+    <li><a href="#additional-evaluations">Additional Evaluations</a>
+      <ul>
+        <li><a href="#chatgpt-as-artificial-general-recommender">ChatGPT as Artificial General Recommender</a></li>
+        <li><a href="#fairness-in-chatgpts-recommendations">Fairness in ChatGPT&rsquo;s Recommendations</a></li>
+      </ul>
+    </li>
+    <li><a href="#advantages-and-disadvantages-of-using-chatgpt-for-recommendation-tasks">Advantages and Disadvantages of Using ChatGPT for Recommendation Tasks</a>
+      <ul>
+        <li><a href="#advantages">Advantages</a></li>
+        <li><a href="#disadvantages">Disadvantages</a></li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Twitter&#39;s For You Recommendation Algorithm</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">ChatGPT-based Recommender Systems</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-04">2023-04-04</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-04-04">2023-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1967 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-05-15">2023-05-15</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-05-15">2023-05-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2523 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
-        src="/posts/2023/04/the-twitter-ml-algo/featured-image.webp"
-        srcset="/posts/2023/04/the-twitter-ml-algo/featured-image.webp, /posts/2023/04/the-twitter-ml-algo/featured-image.webp 1.5x, /posts/2023/04/the-twitter-ml-algo/featured-image.webp 2x"
+        src="/posts/2023/05/chatgpt-for-recsys/featured-image.webp"
+        srcset="/posts/2023/05/chatgpt-for-recsys/featured-image.webp, /posts/2023/05/chatgpt-for-recsys/featured-image.webp 1.5x, /posts/2023/05/chatgpt-for-recsys/featured-image.webp 2x"
         sizes="auto"
-        alt="/posts/2023/04/the-twitter-ml-algo/featured-image.webp"
-        title="/posts/2023/04/the-twitter-ml-algo/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
+        alt="/posts/2023/05/chatgpt-for-recsys/featured-image.webp"
+        title="/posts/2023/05/chatgpt-for-recsys/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#twitter-releases-the-algorithm">Twitter Releases &ldquo;The Algorithm&rdquo;</a></li>
-    <li><a href="#the-algorithm">The Algorithm</a>
+    <li><a href="#using-llms-for-recommendations">Using LLMs for Recommendations</a></li>
+    <li><a href="#chatgpt-for-recommender-tasks">ChatGPT for Recommender Tasks</a>
       <ul>
-        <li><a href="#data-sourcing">Data Sourcing</a></li>
-        <li><a href="#candidate-generation">Candidate Generation</a>
+        <li><a href="#chatgpt-as-a-reranker">ChatGPT as a Reranker</a>
           <ul>
-            <li><a href="#in-network-tweets">In-Network Tweets</a></li>
-            <li><a href="#out-of-network-tweets">Out-of-Network Tweets</a>
-              <ul>
-                <li><a href="#social-graph">Social Graph</a></li>
-                <li><a href="#embedding-based-semantic-spaces">Embedding-based Semantic Spaces</a>
-                  <ul>
-                    <li><a href="#simclusters">SimClusters</a></li>
-                    <li><a href="#twhin">TwHIN</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
+            <li><a href="#measuring-costs">Measuring Costs</a></li>
+            <li><a href="#performance-under-different-shots">Performance Under Different Shots</a></li>
+            <li><a href="#invalid-answers">Invalid Answers</a></li>
+            <li><a href="#zero-shot-performance">Zero-shot performance</a></li>
           </ul>
         </li>
-        <li><a href="#ranking">Ranking</a>
+        <li><a href="#chatgpt-as-a-general-purpose-recommendation-model">ChatGPT as a General-Purpose Recommendation Model</a>
           <ul>
-            <li><a href="#light-ranking">Light Ranking</a></li>
-            <li><a href="#heavy-ranking">Heavy Ranking</a></li>
+            <li><a href="#handing-invalid-responses">Handing Invalid Responses</a></li>
+            <li><a href="#zero-shot-and-few-shot-performance">Zero-shot and Few-shot Performance</a></li>
           </ul>
         </li>
-        <li><a href="#heuristics--filtering">Heuristics &amp; Filtering</a></li>
-        <li><a href="#mixing">Mixing</a></li>
+      </ul>
+    </li>
+    <li><a href="#additional-evaluations">Additional Evaluations</a>
+      <ul>
+        <li><a href="#chatgpt-as-artificial-general-recommender">ChatGPT as Artificial General Recommender</a></li>
+        <li><a href="#fairness-in-chatgpts-recommendations">Fairness in ChatGPT&rsquo;s Recommendations</a></li>
+      </ul>
+    </li>
+    <li><a href="#advantages-and-disadvantages-of-using-chatgpt-for-recommendation-tasks">Advantages and Disadvantages of Using ChatGPT for Recommendation Tasks</a>
+      <ul>
+        <li><a href="#advantages">Advantages</a></li>
+        <li><a href="#disadvantages">Disadvantages</a></li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="twitter-releases-the-algorithm" class="headerLink">
-    <a href="#twitter-releases-the-algorithm" class="header-mark"></a>Twitter Releases &ldquo;The Algorithm&rdquo;</h2><p>Last week, Twitter released a lot of details about the recommendation algorithm that powers their For You feed. The release included an <a href="https://blog.twitter.com/en_us/topics/company/2023/a-new-era-of-transparency-for-twitter" target="_blank" rel="noopener noreferrer">announcement</a>, two new GitHub repositories (<a href="https://github.com/twitter/the-algorithm/" target="_blank" rel="noopener noreferrer">main repo</a>, <a href="https://github.com/twitter/the-algorithm-ml" target="_blank" rel="noopener noreferrer">ml repo</a>), and an accompanying <a href="https://blog.twitter.com/engineering/en_us/topics/open-source/2023/twitter-recommendation-algorithm" target="_blank" rel="noopener noreferrer">post on the engineering blog</a>. Their release also includes some model configs, hyperparameters, input feature descriptions, feature weights, combined score calculation formula, etc. that are immensely valuable for ML practitioners. This article gives an overview of the end-to-end machine learning components made public by Twitter.</p>
-<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Today marks a new era of transparency for Twitter. 🧵<br><br>We’re sharing much of the source code that powers our platform with the world. Visit our blog to learn more about this initiative: <a href="https://t.co/hTHVpuMDz8">https://t.co/hTHVpuMDz8</a></p>&mdash; Twitter Engineering (@TwitterEng) <a href="https://twitter.com/TwitterEng/status/1641872259320274944?ref_src=twsrc%5Etfw">March 31, 2023</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<h2 id="the-algorithm" class="headerLink">
-    <a href="#the-algorithm" class="header-mark"></a>The Algorithm</h2><p>At a broad level, we can think of Twitter&rsquo;s For You timeline generation as the sequence of following steps that are also common to large-scale recommendation systems.</p>
-<div class="mermaid" id="id-1"></div>
-<p>We will look at each of these components one by one. Note that while Twitter has shared a lot of information on the code and algorithms for most of these steps, they haven&rsquo;t still shared details about components such as input data processing, model configs, serving infrastructure, source code for modules like Candidate Generation, Trust &amp; Safety, Ads, etc.</p>
-<h3 id="data-sourcing" class="headerLink">
-    <a href="#data-sourcing" class="header-mark"></a>Data Sourcing</h3><p>Twitter has previously shared details about its data infrastructure in <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">another blog</a>. Twitter processes close to 500 million daily tweets, and 400 billion real-time events. The event data is sourced from various platforms, storage systems, and distributed databases. The user engagement data is collected from various real-time streams, server, and client-side logs, etc. They also utilize various proprietary tools such as <a href="https://github.com/twitter/scalding" target="_blank" rel="noopener noreferrer">Scalding</a> for batch processing, <a href="https://github.com/apache/incubator-heron" target="_blank" rel="noopener noreferrer">Heron</a> for streaming, and <a href="https://blog.twitter.com/engineering/en_us/a/2014/tsar-a-timeseries-aggregator" target="_blank" rel="noopener noreferrer">TSAR</a> (<strong>T</strong>imeSeries <strong>A</strong>ggregato<strong>R</strong>) for processing temporal signals. In their <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">recent redesign</a> (see figure below) proposal<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> they built an on-premise event processor along with deduplication and BigTable storage on the Google Cloud Platform (GCP). Note that Twitter exactly specified any data schema or preprocessing applied to the data for the recommender system.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png" title="Twitter Data Pipeline" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png" data-sub-html="<h2>Twitter&#39;s redesigned data pipeline. Source: [^1]</h2><p>Twitter Data Pipeline</p>">
+            </div><div class="content" id="content"><p>With its outstanding performance, ChatGPT has become a hot topic of discussion in the NLP community and beyond. This article delves into recent efforts to harness the power of ChatGPT for recommendation tasks.</p>
+<h2 id="using-llms-for-recommendations" class="headerLink">
+    <a href="#using-llms-for-recommendations" class="header-mark"></a>Using LLMs for Recommendations</h2><p>Language Models (LMs) have been a fundamental algorithm in Natural Language Processing (NLP) designed to understand and generate languages. The recent emergence of Large Language Models (LLMs) has led to state-of-the-art improvements in several NLP tasks, such as dialog generation, machine translation, and summarization. LLMs are trained on a massive amount of data that helps them encode real-world knowledge. Their revolutionary success has inspired researchers to adapt LLMs to downstream recommendation tasks.</p>
+<p>Recommender systems are built on user behavior data, which is different from the natural language text that the LMs work with. So the first step in building an LLM-based recommender system is to verbalize the recommendation task in the form of natural language text. This new format must describe the user&rsquo;s needs, preferences, and intentions, as well as the user interaction history using a natural language. In the previous article <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" target="_blank" rel="noopener noreferrer">Zero and Few Shot Recommender Systems based on Large Language Models</a>, I highlighted several recent approaches based on this theme.</p>
+<p>Prompt tuning is one such way to utilize LLMs, it simply assumes that LLMs have the capability to perform the target downstream task, and all we need to do is to trigger these capabilities through task-specific guidance (aka prompts). Pretrained Language Models (PLMs) use this guidance to adapt output for the target task without having to modify or retrain their structure. As described in <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" target="_blank" rel="noopener noreferrer">the previous article</a>, a lot of the methods utilize personalized prompts to convert recommendation tasks into natural language tasks in a zero-shot or few-shot manner.</p>
+<h2 id="chatgpt-for-recommender-tasks" class="headerLink">
+    <a href="#chatgpt-for-recommender-tasks" class="header-mark"></a>ChatGPT for Recommender Tasks</h2><p><figure><a class="lightgallery" href="/img/posts/2023/chatgpt-for-recsys/chatgpt_for_recsys.png" title="ChatGPT-based Recommender Systems" data-thumbnail="/img/posts/2023/chatgpt-for-recsys/chatgpt_for_recsys.png" data-sub-html="<h2>an example ChatGPT interface</h2><p>ChatGPT-based Recommender Systems</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png, /img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png 1.5x, /img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png 2x"
+            src="/img/posts/2023/chatgpt-for-recsys/chatgpt_for_recsys.png"
+            srcset="/img/posts/2023/chatgpt-for-recsys/chatgpt_for_recsys.png, /img/posts/2023/chatgpt-for-recsys/chatgpt_for_recsys.png 1.5x, /img/posts/2023/chatgpt-for-recsys/chatgpt_for_recsys.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png">
-    </a><figcaption class="image-caption">Twitter's redesigned data pipeline. Source: [^1]</figcaption>
+            alt="/img/posts/2023/chatgpt-for-recsys/chatgpt_for_recsys.png">
+    </a><figcaption class="image-caption">an example ChatGPT interface</figcaption>
     </figure></p>
-<h3 id="candidate-generation" class="headerLink">
-    <a href="#candidate-generation" class="header-mark"></a>Candidate Generation</h3><p>The job of the candidate generation module is to select 1500 most relevant tweets from various sources. The first half of these candidates are from the people that you follow (in-network tweets), while the other half is from the people who you do not follow (out-of-network tweets).</p>
-<h4 id="in-network-tweets" class="headerLink">
-    <a href="#in-network-tweets" class="header-mark"></a>In-Network Tweets</h4><p>Most of the in-network tweets are sourced from Twitter&rsquo;s RealGraph framework (originally deployed in 2012<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>). RealGraph framework uses a directed, weighted graph to model users (tweeps) as nodes. An edge from source to target node indicates that the source user follows the target user or the target user is in the source user&rsquo;s contact book, or the source user recently interacted with the target user. Each type of edge has its own set of features represented by weights, such as days since edge creation, days since last interaction, number of common friends, explicit and implicit engagement statistics, etc. Similarly, nodes have features such as the number of retweets in the last week, number of followers, demographics, PageRank on the follow graph, etc.</p>
-<p>Note that Twitter has also shared the implementation details of its PageRank algorithm called <a href="https://github.com/twitter/the-algorithm/blob/main/src/scala/com/twitter/graph/batch/job/tweepcred/README" target="_blank" rel="noopener noreferrer">TweepCred</a>. A logistic regression model is trained on all of these features to predict interaction in a future time window. Note that the graph itself is updated daily in batch mode. In their announcement, Twitter also mentioned that the logistic regression model was trained several years ago and is in the process of being redesigned.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/real_graph.png" title="Twitter&amp;rsquo;s RealGraph Framework" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/real_graph.png" data-sub-html="<h2>Twitter&#39;s RealGraph Framework. Source: [^2]</h2><p>Twitter&amp;rsquo;s RealGraph Framework</p>">
+<p>ChatGPT is a state-of-the-art chatbot, built on top of GPT-3.5 and GPT-4 LLMs, developed by OpenAI. It has achieved impressive results in several NLP domains like text generation and dialogue systems. In this section, we take a look at some of the most recent work utilizing ChatGPT for recommendation tasks.</p>
+<h3 id="chatgpt-as-a-reranker" class="headerLink">
+    <a href="#chatgpt-as-a-reranker" class="header-mark"></a>ChatGPT as a Reranker</h3><p>Recently, a line of research work has studied the application of ChatGPT to recommendation tasks. For example, <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/#chat-rec" target="_blank" rel="noopener noreferrer">Chat-REC</a> formulates a conversational recommender system using ChatGPT alongside a traditional recommender model. The traditional model generates a set of candidate items and ChatGPT reranks the list through in-context learning. <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/#nir" target="_blank" rel="noopener noreferrer">NIR</a> also proposes a similar paradigm containing an LLM along with a traditional recommender system.</p>
+<p>Dai et al.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> conducted an empirical analysis of ChatGPT&rsquo;s recommendation ability. First, the authors reformulate the three ranking strategies: point-wise, pair-wise, and list-wise ranking, into a domain-specific prompt format. Then they utilize these prompts as input to, GPT-3.5s (<em>text-davinci-002</em>, <em>text-davinci-003</em>), and ChatGPT (<em>gpt-3.5-turbo</em>), to elicit each of the three ranking capabilities. The code for this paper is available <a href="https://github.com/rainym00d/LLM4RS" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/chatgpt-for-recsys/overall_evaluation_framework_of_llms_for_recsys.png" title="Overall Evaluation Frameworks of LLMs for Recommendations" data-thumbnail="/img/posts/2023/chatgpt-for-recsys/overall_evaluation_framework_of_llms_for_recsys.png" data-sub-html="<h2>Overall Evaluation Frameworks of LLMs for Recommendations</h2><p>Overall Evaluation Frameworks of LLMs for Recommendations</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/real_graph.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/real_graph.png, /img/posts/2023/the-twitter-ml-algo/real_graph.png 1.5x, /img/posts/2023/the-twitter-ml-algo/real_graph.png 2x"
+            src="/img/posts/2023/chatgpt-for-recsys/overall_evaluation_framework_of_llms_for_recsys.png"
+            srcset="/img/posts/2023/chatgpt-for-recsys/overall_evaluation_framework_of_llms_for_recsys.png, /img/posts/2023/chatgpt-for-recsys/overall_evaluation_framework_of_llms_for_recsys.png 1.5x, /img/posts/2023/chatgpt-for-recsys/overall_evaluation_framework_of_llms_for_recsys.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/the-twitter-ml-algo/real_graph.png">
-    </a><figcaption class="image-caption">Twitter's RealGraph Framework. Source: [^2]</figcaption>
+            alt="/img/posts/2023/chatgpt-for-recsys/overall_evaluation_framework_of_llms_for_recsys.png">
+    </a><figcaption class="image-caption">Overall Evaluation Frameworks of LLMs for Recommendations</figcaption>
     </figure></p>
-<h4 id="out-of-network-tweets" class="headerLink">
-    <a href="#out-of-network-tweets" class="header-mark"></a>Out-of-Network Tweets</h4><h5 id="social-graph" class="headerLink">
-    <a href="#social-graph" class="header-mark"></a>Social Graph</h5><p>For some of the out-of-network tweets, the retrieval process uses a graph processing engine called GraphJet<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. GraphJet maintains a dynamic (real-time), undirected, bipartite graph between users and tweets in memory on a single server (no partitioning!) through clever edge encoding and dynamic memory allocation schemes. The nodes in the graph represent the users and the tweets, while the edges represent the actions (favorite, tweet, retweet, reply, click, etc.) within a rolling temporal window. To ensure the efficient growth of the graph structure, GraphJet maintains a list of temporally-ordered index segments such that only the latest segment can be written into (see the figure below).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/graphjet.png" title="GraphJet Architecture" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/graphjet.png" data-sub-html="<h2>GraphJet Architecture. Source: [^3]</h2><p>GraphJet Architecture</p>">
+<p>As shown in the figure above, the prompts used for in-context learning consist of three components: <em>task description</em> to help LLM&rsquo;s perception of the particular domain, <em>demonstration examples</em> to facilitate LLM&rsquo;s comprehension of the task, and an <em>input query</em> that needs to be answered by the LLM.</p>
+<h4 id="measuring-costs" class="headerLink">
+    <a href="#measuring-costs" class="header-mark"></a>Measuring Costs</h4><p>To measure the costs associated with performance improvements, the authors calculated the improvement per unit cost for each LLM as:</p>
+<p>$$ \frac{ \frac{V_{LLM} - V_{random}}{V_{random}}}{cost_{LLM}} $$</p>
+<p>where $V_{LLM}$ is the metric value of the LLM, $V_{random}$ is the metric value of random recommendation, and $cost_{LLM}$ is the cost of ranking one user&rsquo;s candidate item list. They found that almost all LLMs have the best improvement per unit cost in list-wise ranking. Hence they recommend using LLMs for list-wise ranking due to the decent performance and lower cost.</p>
+<h4 id="performance-under-different-shots" class="headerLink">
+    <a href="#performance-under-different-shots" class="header-mark"></a>Performance Under Different Shots</h4><p>The authors also showed that in-context learning with the maximum number of examples does not always lead to the best results. While introducing additional example shots can provide more context, it may also introduce more noise leading to LLMs learning unhelpful patterns. Hence the optimal number of prompt shots has to be learned through experimentations specific to the LLM, task, and dataset at hand.</p>
+<h4 id="invalid-answers" class="headerLink">
+    <a href="#invalid-answers" class="header-mark"></a>Invalid Answers</h4><p>Due to their stochastic generative nature, LLMs may generate invalid or unexpected answers even in the in-context learning setting. For example, in the following pair-wise ranking task, ChatGPT identified that both the examples were negative samples and did not respond according to the instructions.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/chatgpt-for-recsys/chatgpt_exceptions_case_study.png" title="ChatGPT exceptions" data-thumbnail="/img/posts/2023/chatgpt-for-recsys/chatgpt_exceptions_case_study.png" data-sub-html="<h2>ChatGPT Exceptions. The green text is the ChatGPT response.</h2><p>ChatGPT exceptions</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/graphjet.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/graphjet.png, /img/posts/2023/the-twitter-ml-algo/graphjet.png 1.5x, /img/posts/2023/the-twitter-ml-algo/graphjet.png 2x"
+            src="/img/posts/2023/chatgpt-for-recsys/chatgpt_exceptions_case_study.png"
+            srcset="/img/posts/2023/chatgpt-for-recsys/chatgpt_exceptions_case_study.png, /img/posts/2023/chatgpt-for-recsys/chatgpt_exceptions_case_study.png 1.5x, /img/posts/2023/chatgpt-for-recsys/chatgpt_exceptions_case_study.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/the-twitter-ml-algo/graphjet.png">
-    </a><figcaption class="image-caption">GraphJet Architecture. Source: [^3]</figcaption>
+            alt="/img/posts/2023/chatgpt-for-recsys/chatgpt_exceptions_case_study.png">
+    </a><figcaption class="image-caption">ChatGPT Exceptions. The green text is the ChatGPT response.</figcaption>
     </figure></p>
-<p>A SALSA (<strong>S</strong>tochastic <strong>A</strong>pproach for <strong>L</strong>ink-<strong>S</strong>tructure <strong>A</strong>nalysis) random walk over this graph is done to get the tweets that a might be interested in (for example, tweets that the user&rsquo;s connection recently engaged with). A seed set of user nodes called the circle of trust (personalized PageRank), is used for cold users or users with no recent engagement history. Similar to RealGraph, a logistic regression model is used to predict the probability of engagement. GraphJet is implemented in Java, and powers about 15% of tweets in the For You feed.</p>
-<h5 id="embedding-based-semantic-spaces" class="headerLink">
-    <a href="#embedding-based-semantic-spaces" class="header-mark"></a>Embedding-based Semantic Spaces</h5><p>The majority of out-of-network tweets are retrieved through embedding-based methods described below.</p>
-<h6 id="simclusters" class="headerLink">
-    <a href="#simclusters" class="header-mark"></a>SimClusters</h6><p>Twitter has used its SimClusters<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> embedding space to identify 145,000 communities that are either based on a common theme (such as &ldquo;machine learning&rdquo;, or &ldquo;K-pop&rdquo;), or social relationships (such as users who went to the same school). Using SimClusters, Twitter has a representation layer where both users and content are mapped in the same space. First, using a user-user graph (based on follow relationship) k number of possible overlapping communities are discovered. While this can be technically done using a sparse non-negative matrix factorization (NMF) technique, Twitter  devised a custom matrix factorization technique (called <a href="https://github.com/twitter/sbf" target="_blank" rel="noopener noreferrer">Sparse Binary Factorization</a> or SBF) that can also scale for large graphs. Next, an item representation can be calculated using a simple aggregation, such as an exponentially time-decayed average, over the representations of all the users who engaged with that item (see the figure below).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png" title="SimClusters" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png" data-sub-html="<h2>Overview of SimClusters. Source: [^4]</h2><p>SimClusters</p>">
+<p>To account for the cases where an LLM generates an invalid output, i.e. results that are not in the candidate set, the authors introduce a metric &ldquo;Compliance Rate&rdquo; to compare this behavior between different models.</p>
+<p>$$ Compliance Rate = \frac{Number of Valid Answers}{Number of Test Samples} $$</p>
+<p>Through experiments, the authors show that ChatGPT and GPT3.5s performed better than random recommendations, while ChatGPT performed the best among all LLMs.</p>
+<p>Note that even though ChatGPT&rsquo;s response is non-compliant in the examples above, ChatGPT was able to understand that the two items are unrelated based on user interaction histories. This capability hints at ChatGPT&rsquo;s potential power in explainable recommendations.</p>
+<h4 id="zero-shot-performance" class="headerLink">
+    <a href="#zero-shot-performance" class="header-mark"></a>Zero-shot performance</h4><p>In initial experiments, all LLMs showed significantly inferior performance in the zero-shot setting. The authors explored using OpenAI&rsquo;s API to control the logit bias of output tokens. They showed that by upweighting the logit bias of the indexes of answers, the compliance rate, as well as the zero-shot performance of LLMs, improved.</p>
+<h3 id="chatgpt-as-a-general-purpose-recommendation-model" class="headerLink">
+    <a href="#chatgpt-as-a-general-purpose-recommendation-model" class="header-mark"></a>ChatGPT as a General-Purpose Recommendation Model</h3><p>One problem with methods like Chat-REC and NIR is that their performance is still intertwined with a traditional recommender model. In this section, we look at some latest proposals that employ ChatGPT as a general-purpose recommendation model that is self-contained and doesn&rsquo;t rely on any external systems. These methods can utilize ChatGPT&rsquo;s extensive linguistic and world knowledge to recommendation tasks in an end-to-end fashion.</p>
+<p>In a recent paper, Liu et al.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> designed a set of prompts and evaluated ChatGPT&rsquo;s performance on five recommendation tasks: rating prediction, sequential recommendation, direct recommendation, explanation generation, and review summarization.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/chatgpt-for-recsys/chatgpt_for_five_recommendation_tasks.png" title="ChatGPT as Recommender" data-thumbnail="/img/posts/2023/chatgpt-for-recsys/chatgpt_for_five_recommendation_tasks.png" data-sub-html="<h2>Overall workflow of utilizing ChatGPT as Recommender</h2><p>ChatGPT as Recommender</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png, /img/posts/2023/the-twitter-ml-algo/simclusterspng.png 1.5x, /img/posts/2023/the-twitter-ml-algo/simclusterspng.png 2x"
+            src="/img/posts/2023/chatgpt-for-recsys/chatgpt_for_five_recommendation_tasks.png"
+            srcset="/img/posts/2023/chatgpt-for-recsys/chatgpt_for_five_recommendation_tasks.png, /img/posts/2023/chatgpt-for-recsys/chatgpt_for_five_recommendation_tasks.png 1.5x, /img/posts/2023/chatgpt-for-recsys/chatgpt_for_five_recommendation_tasks.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png">
-    </a><figcaption class="image-caption">Overview of SimClusters. Source: [^4]</figcaption>
+            alt="/img/posts/2023/chatgpt-for-recsys/chatgpt_for_five_recommendation_tasks.png">
+    </a><figcaption class="image-caption">Overall workflow of utilizing ChatGPT as Recommender</figcaption>
     </figure></p>
-<p>Twitter retrieves out-of-network tweets from these clusters by simply identifying the tweets that have the highest dot-product value with the interest representations, along with an item-based collaborative filtering technique. A high similarity score means that the corresponding tweet will be associated more with that community.</p>
-<h6 id="twhin" class="headerLink">
-    <a href="#twhin" class="header-mark"></a>TwHIN</h6><p>Twitter uses its knowledge graph embeddings, called TwHIN (<strong>Tw</strong>itter&rsquo;s <strong>H</strong>eterogeneous <strong>I</strong>nformation <strong>N</strong>etwork) embeddings<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, for candidate generation and also as features for ranking and prediction tasks. These are pretrained generalizable embeddings applicable to users, tweets, advertisements, etc. These embeddings are learned from disparate network data (heterogeneous relationships) to capture a diverse set of signals, such as social signals, content or advertisement engagement signals, etc while simultaneously addressing data sparsity. For the learning process, Twitter uses positive and negative triplets (source entity, edge type, target entity) with contrastive loss and the training objective to find entity representations that effectively predict which other entities are directly linked by a certain relation. Twitter has released the source code for training TwHIN embeddings <a href="https://github.com/twitter/the-algorithm-ml/tree/main/projects/twhin" target="_blank" rel="noopener noreferrer">here</a>.</p>
-<p>At this end of candidate retrieval, we have 1500 tweets ready to be ranked for the user&rsquo;s For You feed.</p>
-<h3 id="ranking" class="headerLink">
-    <a href="#ranking" class="header-mark"></a>Ranking</h3><h4 id="light-ranking" class="headerLink">
-    <a href="#light-ranking" class="header-mark"></a>Light Ranking</h4><p>A simple and efficient logistic-regression-based light ranker is used for ranking both in-network and out-of-network tweets. Twitter&rsquo;s core retrieval system (called EarlyBird<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>) builds and maintains inverted indexes required to perform the real-time search and retrieval of tweets. Instead of relying on the full social graph, In <a href="https://blog.twitter.com/engineering/en_us/a/2011/the-engineering-behind-twitter-s-new-search-experience" target="_blank" rel="noopener noreferrer">earlier iterations</a>, EarlyBird utilized Bloom Filter to compress relevant social graph information for each user. Apart from being space-efficient, this implementation also enabled constant-time set-membership operations. The logistic regression model uses various static and real-time features listed <a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/scripts/models/earlybird/README.md" target="_blank" rel="noopener noreferrer">here</a>. Twitter notes that &ldquo;<em>the current model was last trained several years ago, and uses some very strange features.</em>&rdquo; and they are working on training a new model.</p>
-<p>The source code for this light ranking is released <a href="https://github.com/twitter/the-algorithm/tree/main/src/python/twitter/deepbird/projects/timelines/scripts/models/earlybird" target="_blank" rel="noopener noreferrer">here</a>, along with the details about input features(<a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/configs/recap_earlybird/feature_config.py" target="_blank" rel="noopener noreferrer">in-network</a>, <a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/configs/rectweet_earlybird/feature_config.py" target="_blank" rel="noopener noreferrer">out-of-network</a>), <a href="https://github.com/twitter/the-algorithm/blob/main/cr-mixer/server/src/main/scala/com/twitter/cr_mixer/similarity_engine/EarlybirdTensorflowBasedSimilarityEngine.scala#L142" target="_blank" rel="noopener noreferrer">feature weights</a>, and <a href="https://github.com/twitter/the-algorithm/blob/ec83d01dcaebf369444d75ed04b3625a0a645eb9/src/thrift/com/twitter/search/common/ranking/ranking.thrift#L14-L21" target="_blank" rel="noopener noreferrer">time decay</a> used by the model. It is mentioned that EarlyBird ranks a lesser number of tweets than heavy ranker, but the exact order and counts corresponding to light ranker execution are not specified.</p>
-<h4 id="heavy-ranking" class="headerLink">
-    <a href="#heavy-ranking" class="header-mark"></a>Heavy Ranking</h4><p>Twitter uses MaskNet<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> to perform computationally costlier ranking for the 1500 retrieved tweets. Similar to a lot of other rankers in the Click-Through Rate (CTR) estimation domain, MaskNet emphasizes effectively capturing the high-order feature interactions in an explicit manner similar to the earlier Deep &amp; Cross Network (DCN). MaskNet introduces a basic building block called a MaskBlock that contains three components: an &ldquo;instance-guided mask&rdquo;, a feed-forward hidden layer, and a layer normalization module. The instance-guided mask performs element-wise product on feature embeddings and feed-forward layers to highlight the global context information. Twitter uses the parallel MaskNet variant (~48M parameters) where multiple MaskBlocks on feature embeddings are applied in parallel (similar to MMoE design).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/masknet.png" title="MaskNet" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/masknet.png" data-sub-html="<h2>Instance-guided Mask(left). Parallel variant of MaskNet (right). Souce: [^7]</h2><p>MaskNet</p>">
+<p>First, they constructed prompts specific to these five tasks. Each prompt contains three parts: a <em>task description</em> to adapt the task to an NLP task, <em>behavior injection</em> to aid ChatGPT in capturing user preferences through user-item interaction, and a <em>format indicator</em> to constrain the output format.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/chatgpt-for-recsys/example_prompts_1.png" title="Example Prompts" data-thumbnail="/img/posts/2023/chatgpt-for-recsys/example_prompts_1.png" data-sub-html="<h2>Example prompts for accuracy-based tasks</h2><p>Example Prompts</p>">
         <img
             
             loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/masknet.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/masknet.png, /img/posts/2023/the-twitter-ml-algo/masknet.png 1.5x, /img/posts/2023/the-twitter-ml-algo/masknet.png 2x"
+            src="/img/posts/2023/chatgpt-for-recsys/example_prompts_1.png"
+            srcset="/img/posts/2023/chatgpt-for-recsys/example_prompts_1.png, /img/posts/2023/chatgpt-for-recsys/example_prompts_1.png 1.5x, /img/posts/2023/chatgpt-for-recsys/example_prompts_1.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/the-twitter-ml-algo/masknet.png">
-    </a><figcaption class="image-caption">Instance-guided Mask(left). Parallel variant of MaskNet (right). Souce: [^7]</figcaption>
+            alt="/img/posts/2023/chatgpt-for-recsys/example_prompts_1.png">
+    </a><figcaption class="image-caption">Example prompts for accuracy-based tasks</figcaption>
     </figure></p>
-<p>Twitter has released its source code for MaskNet implementation <a href="https://github.com/twitter/the-algorithm-ml/tree/main/projects/home/recap" target="_blank" rel="noopener noreferrer">here</a>, along with <a href="https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/config/local_prod.yaml" target="_blank" rel="noopener noreferrer">model hyperparameters</a>, and the details of aggregate, non-aggregate, and embedding <a href="https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/FEATURES.md" target="_blank" rel="noopener noreferrer">input features</a> used by the model.</p>
-<p>MaskNet outputs 10 different probabilities, and the final score calculation is calculated by weighing the output probabilities as shown below. These weights are <a href="https://github.com/twitter/the-algorithm-ml/blob/78c3235eee5b4e111ccacb7d48e80eca019e480c/projects/home/recap/config/local_prod.yaml#L1" target="_blank" rel="noopener noreferrer">hard coded</a> and were likely fixed after a lot of A/B testing.</p>
-<p>$$ Combined Score = P(favorite) \times 0.5 + max(P(good click and reply or like), P(good click and stay for at least 2 minutes)) \times 11 + P(negative reaction) \times -74 + P(author profile clicked and profile engaged) \times 12 + P(reply) \times 27 + P(reply and author engaged) \times 75 + P(report) \times -369 + P(retweet) * 1 + P(watch half the video) \times 0.005 $$</p>
-<h3 id="heuristics--filtering" class="headerLink">
-    <a href="#heuristics--filtering" class="header-mark"></a>Heuristics &amp; Filtering</h3><p>Twitter applies a lot of heuristics and filters on the ranked list of tweets to create a balanced and diverse For You feed. The following list contains some prominent examples.</p>
-<ul>
-<li>The <a href="https://github.com/twitter/the-algorithm/tree/main/visibilitylib" target="_blank" rel="noopener noreferrer">Visibility Filtering module</a> removes <a href="https://github.com/twitter/the-algorithm/blob/main/visibilitylib/src/main/scala/com/twitter/visibility/rules/VisibilityPolicy.scala" target="_blank" rel="noopener noreferrer">various spam</a> along with the tweet from accounts you have blocked or muted.</li>
-<li>Remove out-of-network competitor URL tweets. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/functional_component/filter/OutOfNetworkCompetitorURLFilter.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
-<li>Infuse diversity by applying a penalty to too many consecutive tweets from the same author. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/product/scored_tweets/scorer/DiversityDiscountProvider.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
-<li>Lower the relevance score for tweets with the author or engaged audience for whom the user had given negative feedback in the past. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/functional_component/scorer/FeedbackFatigueScorer.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
-<li>Remove out-of-network tweets that do not have a second-degree connection. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/functional_component/scorer/OONTweetScalingScorer.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
-<li>Boost Twitter Blue Verified authors by a factor of 4.0 for in-network tweets and 2.0 for out-of-network tweets. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/param/HomeGlobalParams.scala#L89" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
+<p><figure><a class="lightgallery" href="/img/posts/2023/chatgpt-for-recsys/chatgpt_example_prompts_2.png" title="Example Prompts" data-thumbnail="/img/posts/2023/chatgpt-for-recsys/chatgpt_example_prompts_2.png" data-sub-html="<h2>Example prompts for explainability-oriented tasks</h2><p>Example Prompts</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/chatgpt-for-recsys/chatgpt_example_prompts_2.png"
+            srcset="/img/posts/2023/chatgpt-for-recsys/chatgpt_example_prompts_2.png, /img/posts/2023/chatgpt-for-recsys/chatgpt_example_prompts_2.png 1.5x, /img/posts/2023/chatgpt-for-recsys/chatgpt_example_prompts_2.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/chatgpt-for-recsys/chatgpt_example_prompts_2.png">
+    </a><figcaption class="image-caption">Example prompts for explainability-oriented tasks</figcaption>
+    </figure></p>
+<p>These prompts are used as input to ChatGPT (<em>gpt-3.5-turbo</em>) which generates the recommendation results as per the instructions. Finally, the output from ChatGPT is checked and refined to get the final set of recommendations. The output refinement module repeatedly feeds the prompt to ChatGPT until the output format requirements are met.</p>
+<h4 id="handing-invalid-responses" class="headerLink">
+    <a href="#handing-invalid-responses" class="header-mark"></a>Handing Invalid Responses</h4><p>If an item recommended by their model doesn&rsquo;t occur in the candidate set, the authors recommended using BERT-based embeddings of the recommended item title to find similar items from the candidate set to get the corresponding corrected recommendation.</p>
+<h4 id="zero-shot-and-few-shot-performance" class="headerLink">
+    <a href="#zero-shot-and-few-shot-performance" class="header-mark"></a>Zero-shot and Few-shot Performance</h4><p>Through experiments, they showed that ChatGPT&rsquo;s performance was significantly inferior in zero-shot prompting. The performance improved under the few-shot prompting setup but ChatGPT was still outperformed by the classical recommendation models. Interestingly, their experiments showed that even though ChatGPT performed unsatisfactorily on the explainability-oriented task metrics, it significantly outperformed state-of-the-art models in human evaluation for these tasks.</p>
+<h2 id="additional-evaluations" class="headerLink">
+    <a href="#additional-evaluations" class="header-mark"></a>Additional Evaluations</h2><h3 id="chatgpt-as-artificial-general-recommender" class="headerLink">
+    <a href="#chatgpt-as-artificial-general-recommender" class="header-mark"></a>ChatGPT as Artificial General Recommender</h3><p>Lin et al.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> defined an Artificial General Recommender (AGR) that has the ability to engage in interactive, natural dialog with users (conversationality), and to generate recommendations across various domains (universality). They hypothesize that the recent advancements in large language models have enabled the possible development of AGR. The authors proposed ten fundamental principles that an AGR should be capable of achieving. After defining each principle and corresponding testing protocol, the paper assesses whether ChatGPT can comply with the proposed principles by engaging it in a variety of recommendation-oriented dialogues.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Principle</th>
+<th>What AGR should do</th>
+<th>How ChatGPT actually performed</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Mixed Initiative</td>
+<td>Both the user and the system should be able to actively participate in the dialogue.</td>
+<td>ChatGPT sometimes failed to detect users&rsquo; misunderstandings and accepted incorrect answers without posing follow-up questions.</td>
+<td>🤔</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Acquisition Strategy</td>
+<td>The system should avoid user fatigue from multi-turn dialogues and should aim to strike a balance between the number of questions posed and the relevance of the provided recommendations.</td>
+<td>ChatGPT sometimes provides imprecise reasoning but acknowledges oversights and apologizes.</td>
+<td>🤷‍♂️</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Contextual Memory</td>
+<td>Users may frequently refer to prior stated items without providing a full description. The system should be able to remember these prior utterances.</td>
+<td>ChatGPT exhibited a good capacity to remember prior utterances across multiple rounds of interaction.</td>
+<td>👍</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Repair Mechanism</td>
+<td>Users should be given the possibility of modifying user-stated information at a later stage of the dialogue by providing supplementary details, amending inaccuracies and even removing previous utterances.</td>
+<td>ChatGPT struggles to recognize the relationship between adjusted statements and the user&rsquo;s initial input.</td>
+<td>🤦‍♂️</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Feedback Mechanism</td>
+<td>AGR should adjust recommendations based on user feedback, whether it provides reasons or simply states dissatisfaction.</td>
+<td>ChatGPT successfully proposed recommendations based on users&rsquo; personal taste and successfully updated its recommendation as users provided more explicit feedback.</td>
+<td>👏</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Entity Inference</td>
+<td>AGR should enable informed guesses when users can&rsquo;t recall specific names or titles.</td>
+<td>In an attempt to align with the user&rsquo;s input, ChatGPT often exhibits hallucinations by suggesting non-existent items.</td>
+<td>😵‍💫</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Behavioral Analysis</td>
+<td>AGR should analyze user interaction history to understand evolving preferences and offer relevant recommendations in real time.</td>
+<td>ChatGPT&rsquo;s recommendations sometimes contradict earlier emphasis on user preferences.</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Inconsistency Detection</td>
+<td>AGR should accurately identify logical, expectational, and factual inconsistencies in user statements.</td>
+<td>ChatGPT fails to detect factual inconsistencies and continues making recommendations.</td>
+<td>⚠️</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Personalized Recommendations</td>
+<td>AGR should integrate personalized information, like user history and metadata, and explain how it influences recommendations.</td>
+<td>ChatGPT generates statements lacking logical coherence and contradicts its approach to ranking movies based on user ratings.</td>
+<td>🤔</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Extrinsic Factors</td>
+<td>AGR should consider external factors like upcoming tasks, time of day, and recent events for tailored recommendations.</td>
+<td>ChatGPT doesn&rsquo;t possess this ability but displays speculative reasoning based on common sense and utilizes it effectively in recommendations.</td>
+<td>👍</td>
+</tr>
+</tbody>
+</table>
+<p>ChatGPT performed well in some areas, but it also showed the inability to proactively seek clarifications, identify causal relationships between user inputs, identify factual inconsistencies, etc.</p>
+<h3 id="fairness-in-chatgpts-recommendations" class="headerLink">
+    <a href="#fairness-in-chatgpts-recommendations" class="header-mark"></a>Fairness in ChatGPT&rsquo;s Recommendations</h3><p>LLMs have been shown to generate harmful or offensive content and reinforce social biases. Zhang et al. <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> argue that due to differences in their respective paradigms, LLMs-based recommender systems cannot directly use the fairness benchmark of traditional LLMs or recommenders. They propose a new benchmark called Fairness of Recommendation via LLM (FaiRLLM) and showed that ChatGPT exhibits unfairness to some sensitive attributes.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/chatgpt-for-recsys/chatgpt_fairness.png" title="fairness evaluation and sensitive attributes" data-thumbnail="/img/posts/2023/chatgpt-for-recsys/chatgpt_fairness.png" data-sub-html="<h2>Fairness evaluation in music recommendation (left). Sensitive attributes and their values (right).</h2><p>fairness evaluation and sensitive attributes</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/chatgpt-for-recsys/chatgpt_fairness.png"
+            srcset="/img/posts/2023/chatgpt-for-recsys/chatgpt_fairness.png, /img/posts/2023/chatgpt-for-recsys/chatgpt_fairness.png 1.5x, /img/posts/2023/chatgpt-for-recsys/chatgpt_fairness.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/chatgpt-for-recsys/chatgpt_fairness.png">
+    </a><figcaption class="image-caption">Fairness evaluation in music recommendation (left). Sensitive attributes and their values (right).</figcaption>
+    </figure></p>
+<p>Fairness is defined as the absence of any prejudice or favoritism towards user groups with specific values of sensitive attributes in the generated recommendations. To investigate this, the authors first constructed a reference set of recommendations by providing instructions to ChatGPT without any sensitive attributes.</p>
+<div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw"></i>prompt<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><strong>Netrual:</strong> “I am a fan of [names]. Please provide me with a list of 𝐾 song/movie titles&hellip;”</p>
+<p><strong>Sensitive:</strong> “I am a/an [sensitive feature] fan of [names]. Please provide me with a list of 𝐾 song/movie titles&hellip;”,</p>
+</div>
+        </div>
+    </div>
+<p>Next, they obtain recommendations via instructions with specific values of the 8 sensitive attributes: age, country, gender, continent, occupation, race, religion, and physics. The possible values for each attribute are listed in the figure above. For the &ldquo;[names]&rdquo; field, they choose the 500 most popular singers from MTV data and the 500 top directors from IMDB data. To quantify the degree of fairness, they computed similarities between the two sets using similarity metrics like Jaccard similarity, weighted Jaccard similarity, and Pairwise Ranking Accuracy Gap (PRAG).</p>
+<p>Through experiments, the authors showed that ChatGPT exhibits unfairness across most of the sensitive attributes with varying degrees in its top-K recommendations. This unfairness persisted even when the length (K) of recommendations lists is changed, and also aligns with the inherent social biases in the real world. The code and dataset for this research are available <a href="https://github.com/jizhi-zhang/FaiRLLM" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
+<h2 id="advantages-and-disadvantages-of-using-chatgpt-for-recommendation-tasks" class="headerLink">
+    <a href="#advantages-and-disadvantages-of-using-chatgpt-for-recommendation-tasks" class="header-mark"></a>Advantages and Disadvantages of Using ChatGPT for Recommendation Tasks</h2><h3 id="advantages" class="headerLink">
+    <a href="#advantages" class="header-mark"></a>Advantages</h3><ul>
+<li>Adaptive Learning: ChatGPT can dynamically adapt to new information without requiring model retraining. This in-context learning capability allows it to stay up-to-date and deliver relevant recommendations.</li>
+<li>User-Friendly Interface: With ChatGPT, users can express their diverse information needs quickly and efficiently using natural language instructions. This conversational approach makes it easy for users to interact and communicate their preferences.</li>
+<li>Utilization of User Interaction Data: In-context learning leverages user interaction data to enhance the recommendations provided by ChatGPT. This data supplements the extensive world knowledge already acquired by the model from web-scale sources, resulting in more accurate and personalized recommendations.</li>
+<li>Simplified Implementation: Prompt learning in ChatGPT eliminates the need for complex feature processing steps like generating embeddings. This streamlined approach simplifies the implementation process and reduces computational overhead.</li>
 </ul>
-<h3 id="mixing" class="headerLink">
-    <a href="#mixing" class="header-mark"></a>Mixing</h3><p>As the last step, the Home Mixer system blends together non-tweet content like ads, promotions, follow recommendations, etc. to the list of ranked and filtered tweets. The output of this step is the final feed that gets sent and displayed on the end-user device.</p>
+<h3 id="disadvantages" class="headerLink">
+    <a href="#disadvantages" class="header-mark"></a>Disadvantages</h3><ul>
+<li>General Performance in Recommendation Tasks: It&rsquo;s important to note that ChatGPT wasn&rsquo;t specifically trained on recommendation objectives. Consequently, its performance in recommendation tasks is generally unsatisfactory when compared to task-specific and specialized recommendation algorithms.</li>
+<li>Lack of Multimodal Support: To effectively understand users&rsquo; rich information needs, it is essential for ChatGPT to learn from multimodal instructions and feedback. However, currently, ChatGPT does not have public support for multimodal conversations, limiting its ability to process diverse types of input.</li>
+<li>Positional Bias: Certain experiments indicate that ChatGPT may exhibit a strong positional bias towards input items specified within a prompt <sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. This bias can pose challenges for tasks such as Direct Recommendations.</li>
+<li>Performance Compared to Baselines: Studies have shown that off-the-shelf Language Models, including ChatGPT, may perform worse or on par with simple baselines like random or popularity-based recommendations in zero-shot scenarios. This suggests that further fine-tuning or customization may be required for optimal performance.</li>
+<li>Stochastic Output Generation: ChatGPT&rsquo;s stochastic nature in generating outputs can sometimes lead to invalid recommendations. The variability in its responses may introduce occasional inaccuracies or irrelevant suggestions.</li>
+<li>Limited Accessibility: ChatGPT is currently available only through OpenAI&rsquo;s private API, which restricts researchers from retraining or modifying its structure. This lack of accessibility hinders the customization and experimentation potential for individual researchers.</li>
+</ul>
 <h2 id="summary" class="headerLink">
-    <a href="#summary" class="header-mark"></a>Summary</h2><p>Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references.</p>
+    <a href="#summary" class="header-mark"></a>Summary</h2><p>ChatGPT&rsquo;s remarkable state-of-the-art performance has attracted the attention of the NLP community and beyond. This article highlights some recent work done to apply ChatGPT for recommendation tasks. Early experiments show that while ChatGPT excels in explainable recommendations, its performance might lag behind more dedicated recommendation systems for accuracy-based tasks. These studies also surface several gaps in fairness within ChatGPT&rsquo;s response and its applicability as a general recommender.</p>
 <h2 id="references" class="headerLink">
     <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>Processing billions of events in real time at Twitter. Lu Zhang, Chukwudiuto Malife, 22 October 2021. <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Dai, S., Shao, N., Zhao, H., Yu, W., Si, Z., Xu, C., Sun, Z., Zhang, X., &amp; Xu, J. (2023). Uncovering ChatGPT&rsquo;s Capabilities in Recommender Systems. <em>ArXiv, abs/2305.02182</em>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>Kamath, K.Y., Sharma, A., Wang, D., &amp; Yin, Z. (2014). RealGraph: User Interaction Prediction at Twitter.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Liu, J., Liu, C., Lv, R., Zhou, K., &amp; Zhang, Y.B. (2023). Is ChatGPT a Good Recommender? A Preliminary Study. <em>ArXiv, abs/2304.10149</em>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Sharma, A., Jiang, J., Bommannavar, P., Larson, B., &amp; Lin, J.J. (2016). GraphJet: Real-Time Content Recommendations at Twitter. <em>Proc. VLDB Endow., 9</em>, 1281-1292.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Lin, G., &amp; Zhang, Y. (2023). Sparks of Artificial General Recommender (AGR): Early Experiments with ChatGPT. <em>ArXiv, abs/2305.04518</em>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Satuluri, V., Wu, Y., Zheng, X., Qian, Y., Wichers, B., Dai, Q., Tang, G.M., Jiang, J., &amp; Lin, J.J. (2020). SimClusters: Community-Based Representations for Heterogeneous Recommendations at Twitter. <em>Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:5">
-<p>El-Kishky, A., Markovich, T., Park, S., Verma, C.K., Kim, B., Eskander, R., Malkov, Y., Portman, F., Samaniego, S., Xiao, Y., &amp; Haghighi, A. (2022). TwHIN: Embedding the Twitter Heterogeneous Information Network for Personalized Recommendation. <em>Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</em>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:6">
-<p>Busch, M., Gade, K., Larson, B., Lok, P., Luckenbill, S.B., &amp; Lin, J.J. (2012). Earlybird: Real-Time Search at Twitter. <em>2012 IEEE 28th International Conference on Data Engineering</em>, 1360-1369.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:7">
-<p>Wang, Z., She, Q., &amp; Zhang, J. (2021). MaskNet: Introducing Feature-Wise Multiplication to CTR Ranking Models by Instance-Guided Mask. <em>ArXiv, abs/2102.07619</em>.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Zhang, J., Bao, K., Zhang, Y., Wang, W., Feng, F., &amp; He, X. (2023). Is ChatGPT Fair for Recommendation? Evaluating Fairness in Large Language Model Recommendation.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</div>
-</div>
+</div></div>
 		
         
 
 
 <h2>Related Content</h2>
 <div class="related-container">
-    <div class="related-item-container">
-            <div class="related-image">
-                <a href="/posts/2023/05/chatgpt-for-recsys/"><img
-        
-        loading="lazy"
-        src="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp"
-        srcset="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp, /posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp 2x"
-        sizes="auto"
-        alt="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp"
-        title="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp" height="200" width="400"></a>
-            </div><h2 class="related-title">
-                <a href="/posts/2023/05/chatgpt-for-recsys/">ChatGPT-based Recommender Systems</a>
-            </h2>
-        </div>
     <div class="related-item-container">
             <div class="related-image">
                 <a href="/posts/2023/05/shallow-homogeneous-graphs-rep/"><img
@@ -419,6 +521,20 @@
                 <a href="/posts/2023/04/diffusion-for-recsys/">Diffusion Modeling based Recommender Systems</a>
             </h2>
         </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/04/llm-for-recsys/"><img
+        
+        loading="lazy"
+        src="/posts/2023/04/llm-for-recsys/featured-image-preview.webp"
+        srcset="/posts/2023/04/llm-for-recsys/featured-image-preview.webp, /posts/2023/04/llm-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/04/llm-for-recsys/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/04/llm-for-recsys/featured-image-preview.webp"
+        title="/posts/2023/04/llm-for-recsys/featured-image-preview.webp" height="200" width="400"></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/04/llm-for-recsys/">Zero and Few Shot Recommender Systems based on Large Language Models</a>
+            </h2>
+        </div>
     
 
 </div>
@@ -432,27 +548,26 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-04-04</span>
+                <span>Updated on 2023-05-15</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-via="_reachsumit" data-hashtags="literature review,recsys,ranking"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
+                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" data-title="ChatGPT-based Recommender Systems" data-via="_reachsumit" data-hashtags="literature review,recsys,LLM"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" data-title="ChatGPT-based Recommender Systems" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" data-title="ChatGPT-based Recommender Systems"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" data-title="ChatGPT-based Recommender Systems"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" data-title="ChatGPT-based Recommender Systems" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" data-title="ChatGPT-based Recommender Systems"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" data-title="ChatGPT-based Recommender Systems" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/ranking/">ranking</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/llm/">LLM</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/2023/03/contrastive-video-representations/" class="prev" rel="prev" title="Self-Supervised Contrastive Approaches for Video Representation Learning"><i class="fas fa-angle-left fa-fw"></i>Self-Supervised Contrastive Approaches for Video Representation Learning</a>
-            <a href="/posts/2023/04/llm-for-recsys/" class="next" rel="next" title="Zero and Few Shot Recommender Systems based on Large Language Models">Zero and Few Shot Recommender Systems based on Large Language Models<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/2023/05/shallow-homogeneous-graphs-rep/" class="prev" rel="prev" title="Shallow Embedding Models for Homogeneous Graphs"><i class="fas fa-angle-left fa-fw"></i>Shallow Embedding Models for Homogeneous Graphs</a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
@@ -469,8 +584,8 @@
         </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/mermaid/mermaid.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-04-04T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Twitter's For You Recommendation Algorithm"}},"data":{"desktop-header-typeit":"Sumit's Diary","id-1":"graph LR;\r\n    A(Data Sourcing) --\u003e B(Candidate Generation)\r\n    B --\u003e C(Ranking)\r\n    C --\u003e D(Heuristics \u0026 Filtering)\r\n    D --\u003e E(Mixing)\r","mobile-header-typeit":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"mermaid":true,"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@8.13.3/dist/mermaid.min.js" defer></script><script type="text/javascript" src="/js/mermaid.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-05-15T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"ChatGPT-based Recommender Systems"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-171612692-1');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-171612692-1" async></script></div>

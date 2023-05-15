@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/tags/llm/</link>
         <description>LLM - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/llm/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 15 May 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/llm/" rel="self" type="application/rss+xml" /><item>
+    <title>ChatGPT-based Recommender Systems</title>
+    <link>https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/</link>
+    <pubDate>Mon, 15 May 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div><p>With its outstanding performance, ChatGPT has become a hot topic of discussion in the NLP community and beyond. This article delves into recent efforts to harness the power of ChatGPT for recommendation tasks.</p>]]></description>
+</item><item>
     <title>Zero and Few Shot Recommender Systems based on Large Language Models</title>
     <link>https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/</link>
     <pubDate>Mon, 10 Apr 2023 00:00:00 &#43;0000</pubDate><author>
