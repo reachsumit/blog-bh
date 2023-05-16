@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/05\/chatgpt-for-recsys\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, LLM","wordcount":  2530 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, LLM","wordcount":  2997 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/05\/chatgpt-for-recsys\/","datePublished": "2023-05-15T00:00:00+00:00","dateModified": "2023-05-15T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -137,6 +137,12 @@
             <li><a href="#zero-shot-performance">Zero-shot performance</a></li>
           </ul>
         </li>
+        <li><a href="#addressing-llm-biases">Addressing LLM Biases</a>
+          <ul>
+            <li><a href="#position-bias">Position Bias</a></li>
+            <li><a href="#popularity-bias">Popularity Bias</a></li>
+          </ul>
+        </li>
         <li><a href="#chatgpt-as-a-general-purpose-recommendation-model">ChatGPT as a General-Purpose Recommendation Model</a>
           <ul>
             <li><a href="#handing-invalid-responses">Handing Invalid Responses</a></li>
@@ -165,8 +171,8 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-05-15">2023-05-15</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-05-15">2023-05-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2530 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;12 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-05-15">2023-05-15</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-05-15">2023-05-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2997 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;15 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
@@ -190,6 +196,12 @@
             <li><a href="#performance-under-different-shots">Performance Under Different Shots</a></li>
             <li><a href="#invalid-answers">Invalid Answers</a></li>
             <li><a href="#zero-shot-performance">Zero-shot performance</a></li>
+          </ul>
+        </li>
+        <li><a href="#addressing-llm-biases">Addressing LLM Biases</a>
+          <ul>
+            <li><a href="#position-bias">Position Bias</a></li>
+            <li><a href="#popularity-bias">Popularity Bias</a></li>
           </ul>
         </li>
         <li><a href="#chatgpt-as-a-general-purpose-recommendation-model">ChatGPT as a General-Purpose Recommendation Model</a>
@@ -234,7 +246,7 @@
     </figure></p>
 <p>ChatGPT is a state-of-the-art chatbot, built on top of GPT-3.5 and GPT-4 LLMs, developed by OpenAI. It has achieved impressive results in several NLP domains like text generation and dialogue systems. In this section, we take a look at some of the most recent work utilizing ChatGPT for recommendation tasks.</p>
 <h3 id="chatgpt-as-a-reranker" class="headerLink">
-    <a href="#chatgpt-as-a-reranker" class="header-mark"></a>ChatGPT as a Reranker</h3><p>Recently, a line of research work has studied the application of ChatGPT to recommendation tasks. For example, <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/#chat-rec" target="_blank" rel="noopener noreferrer">Chat-REC</a> formulates a conversational recommender system using ChatGPT alongside a traditional recommender model. The traditional model generates a set of candidate items and ChatGPT reranks the list through in-context learning. <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/#nir" target="_blank" rel="noopener noreferrer">NIR</a> also proposes a similar paradigm containing an LLM along with a traditional recommender system.</p>
+    <a href="#chatgpt-as-a-reranker" class="header-mark"></a>ChatGPT as a Reranker</h3><p>Given that LLMs can be quite expensive to run on a large-scale candidate set, it makes a lot of sense to utilize ChatGPT at the ranking step of a multi-stage recommender system. On this theme, <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/#chat-rec" target="_blank" rel="noopener noreferrer">Chat-REC</a> formulated a conversational recommender system using ChatGPT alongside a traditional recommender model. In their work, the traditional model generates a set of candidate items and ChatGPT reranks the list through in-context learning. <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/#nir" target="_blank" rel="noopener noreferrer">NIR</a> also proposes a similar paradigm containing an LLM along with a traditional recommender system.</p>
 <p>Dai et al.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> conducted an empirical analysis of ChatGPT&rsquo;s recommendation ability. First, the authors reformulate the three ranking strategies: point-wise, pair-wise, and list-wise ranking, into a domain-specific prompt format. Then they utilize these prompts as input to, GPT-3.5s (<em>text-davinci-002</em>, <em>text-davinci-003</em>), and ChatGPT (<em>gpt-3.5-turbo</em>), to elicit each of the three ranking capabilities. The code for this paper is available <a href="https://github.com/rainym00d/LLM4RS" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
 <p><figure><a class="lightgallery" href="/img/posts/2023/chatgpt-for-recsys/overall_evaluation_framework_of_llms_for_recsys.png" title="Overall Evaluation Frameworks of LLMs for Recommendations" data-thumbnail="/img/posts/2023/chatgpt-for-recsys/overall_evaluation_framework_of_llms_for_recsys.png" data-sub-html="<h2>Overall Evaluation Frameworks of LLMs for Recommendations</h2><p>Overall Evaluation Frameworks of LLMs for Recommendations</p>">
         <img
@@ -270,10 +282,33 @@
 <p>Through experiments, the authors show that ChatGPT and GPT3.5s performed better than random recommendations, while ChatGPT performed the best among all LLMs.</p>
 <p>Note that even though ChatGPT&rsquo;s response is non-compliant in the examples above, ChatGPT was able to understand that the two items are unrelated based on user interaction histories. This capability hints at ChatGPT&rsquo;s potential power in explainable recommendations.</p>
 <h4 id="zero-shot-performance" class="headerLink">
-    <a href="#zero-shot-performance" class="header-mark"></a>Zero-shot performance</h4><p>In initial experiments, all LLMs showed significantly inferior performance in the zero-shot setting. The authors explored using OpenAI&rsquo;s API to control the logit bias of output tokens. They showed that by upweighting the logit bias of the indexes of answers, the compliance rate, as well as the zero-shot performance of LLMs, improved.</p>
+    <a href="#zero-shot-performance" class="header-mark"></a>Zero-shot performance</h4><p>In initial experiments, all LLMs showed significantly inferior performance in the zero-shot setting. The authors explored using OpenAI&rsquo;s API to control the logit bias of output tokens. They showed that by upweighting the logit bias of the indexes of answers, the compliance rate, as well as the zero-shot performance of LLMs, improved. Their zero-shot ranking performance was better than a random and popularity-based policy.</p>
+<h3 id="addressing-llm-biases" class="headerLink">
+    <a href="#addressing-llm-biases" class="header-mark"></a>Addressing LLM Biases</h3><p>Hou et al.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> from WeChat also investigated ChatGPT&rsquo;s ranking capability. In their work, they found that ChatGPT exhibited the following biases.</p>
+<h4 id="position-bias" class="headerLink">
+    <a href="#position-bias" class="header-mark"></a>Position Bias</h4><p>LLMs have been shown to be sensitive to the order of examples in input prompts. The output of the retrieval step does not specify a specific order for candidate items. So when ChatGPT is asked to rank a specified set of candidates, its performance is affected by the initial order of candidates. To fix this, the authors propose a bootstrapping approach where the candidate set is randomly shuffled a number of times and each time it is used as input to ChatGPT to perform ranking. The final ranking output merges the scores of these individual ranking results. This approach can become prohibitively expensive in large-scale systems.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/chatgpt-for-recsys/wechat_llm_for_ranking.png" title="WeChat&amp;rsquo;s LLM-based ranking proposal" data-thumbnail="/img/posts/2023/chatgpt-for-recsys/wechat_llm_for_ranking.png" data-sub-html="<h2>WeChat&#39;s LLM-based ranking proposal</h2><p>WeChat&amp;rsquo;s LLM-based ranking proposal</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/chatgpt-for-recsys/wechat_llm_for_ranking.png"
+            srcset="/img/posts/2023/chatgpt-for-recsys/wechat_llm_for_ranking.png, /img/posts/2023/chatgpt-for-recsys/wechat_llm_for_ranking.png 1.5x, /img/posts/2023/chatgpt-for-recsys/wechat_llm_for_ranking.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/chatgpt-for-recsys/wechat_llm_for_ranking.png">
+    </a><figcaption class="image-caption">WeChat's LLM-based ranking proposal</figcaption>
+    </figure></p>
+<p>To further make ChatGPT aware of the sequential nature of historical interactions, the authors proposed three kinds of prompting strategies:</p>
+<ul>
+<li><strong>Sequential Prompting:</strong> Simply arrange the historical interactions in chronological order.</li>
+<li><strong>Recency-focused Prompting:</strong> Add an additional sentence like &ldquo;<em>Note that my most recently watched movie is [&hellip;]</em>&rdquo; to the prompt to emphasize the most recent interaction.</li>
+<li><strong>In-context Learning:</strong> Includes a demonstration example to explicitly specify the interaction sequence. For example, &ldquo;<em>If I’ve watched the following movies in the past in order: [&hellip;] then you should recommend [&hellip;] to me and now that I’ve watched [&hellip;], then:</em> &ldquo;.</li>
+</ul>
+<p>The authors also show that the last two prompting strategies can also trigger LLMs to perceive the order of historical user behavior.</p>
+<h4 id="popularity-bias" class="headerLink">
+    <a href="#popularity-bias" class="header-mark"></a>Popularity Bias</h4><p>Certain popular items, such as best-selling books, might appear frequently in ChatGPT&rsquo;s pre-training corpora. Through experiments, the authors show that ChatGPT&rsquo;s recommendations also reflect biases toward ranking popular items at higher positions. They recommend using a shorter historical interaction sequence to alleviate this issue. The code for this paper is available <a href="https://github.com/RUCAIBox/LLMRank" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
 <h3 id="chatgpt-as-a-general-purpose-recommendation-model" class="headerLink">
     <a href="#chatgpt-as-a-general-purpose-recommendation-model" class="header-mark"></a>ChatGPT as a General-Purpose Recommendation Model</h3><p>One problem with methods like Chat-REC and NIR is that their performance is still intertwined with a traditional recommender model. In this section, we look at some latest proposals that employ ChatGPT as a general-purpose recommendation model that is self-contained and doesn&rsquo;t rely on any external systems. These methods can utilize ChatGPT&rsquo;s extensive linguistic and world knowledge to recommendation tasks in an end-to-end fashion.</p>
-<p>In a recent paper, Liu et al.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> designed a set of prompts and evaluated ChatGPT&rsquo;s performance on five recommendation tasks: rating prediction, sequential recommendation, direct recommendation, explanation generation, and review summarization.</p>
+<p>In a recent paper, Liu et al.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> designed a set of prompts and evaluated ChatGPT&rsquo;s performance on five recommendation tasks: rating prediction, sequential recommendation, direct recommendation, explanation generation, and review summarization.</p>
 <p><figure><a class="lightgallery" href="/img/posts/2023/chatgpt-for-recsys/chatgpt_for_five_recommendation_tasks.png" title="ChatGPT as Recommender" data-thumbnail="/img/posts/2023/chatgpt-for-recsys/chatgpt_for_five_recommendation_tasks.png" data-sub-html="<h2>Overall workflow of utilizing ChatGPT as Recommender</h2><p>ChatGPT as Recommender</p>">
         <img
             
@@ -312,7 +347,7 @@
     <a href="#zero-shot-and-few-shot-performance" class="header-mark"></a>Zero-shot and Few-shot Performance</h4><p>Through experiments, they showed that ChatGPT&rsquo;s performance was significantly inferior in zero-shot prompting. The performance improved under the few-shot prompting setup but ChatGPT was still outperformed by the classical recommendation models. Interestingly, their experiments showed that even though ChatGPT performed unsatisfactorily on the explainability-oriented task metrics, it significantly outperformed state-of-the-art models in human evaluation for these tasks.</p>
 <h2 id="additional-evaluations" class="headerLink">
     <a href="#additional-evaluations" class="header-mark"></a>Additional Evaluations</h2><h3 id="chatgpt-as-artificial-general-recommender" class="headerLink">
-    <a href="#chatgpt-as-artificial-general-recommender" class="header-mark"></a>ChatGPT as Artificial General Recommender</h3><p>Lin et al.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> defined an Artificial General Recommender (AGR) that has the ability to engage in interactive, natural dialog with users (conversationality), and to generate recommendations across various domains (universality). They hypothesize that the recent advancements in large language models have enabled the possible development of AGR. The authors proposed ten fundamental principles that an AGR should be capable of achieving. After defining each principle and corresponding testing protocol, the paper assesses whether ChatGPT can comply with the proposed principles by engaging it in a variety of recommendation-oriented dialogues.</p>
+    <a href="#chatgpt-as-artificial-general-recommender" class="header-mark"></a>ChatGPT as Artificial General Recommender</h3><p>Lin et al.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> defined an Artificial General Recommender (AGR) that has the ability to engage in interactive, natural dialog with users (conversationality), and to generate recommendations across various domains (universality). They hypothesize that the recent advancements in large language models have enabled the possible development of AGR. The authors proposed ten fundamental principles that an AGR should be capable of achieving. After defining each principle and corresponding testing protocol, the paper assesses whether ChatGPT can comply with the proposed principles by engaging it in a variety of recommendation-oriented dialogues.</p>
 <table>
 <thead>
 <tr>
@@ -398,7 +433,7 @@
 </table>
 <p>ChatGPT performed well in some areas, but it also showed the inability to proactively seek clarifications, identify causal relationships between user inputs, identify factual inconsistencies, etc.</p>
 <h3 id="fairness-in-chatgpts-recommendations" class="headerLink">
-    <a href="#fairness-in-chatgpts-recommendations" class="header-mark"></a>Fairness in ChatGPT&rsquo;s Recommendations</h3><p>LLMs have been shown to generate harmful or offensive content and reinforce social biases. Zhang et al. <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> argue that due to differences in their respective paradigms, LLMs-based recommender systems cannot directly use the fairness benchmark of traditional LLMs or recommenders. They propose a new benchmark called Fairness of Recommendation via LLM (FaiRLLM) and showed that ChatGPT exhibits unfairness to some sensitive attributes.</p>
+    <a href="#fairness-in-chatgpts-recommendations" class="header-mark"></a>Fairness in ChatGPT&rsquo;s Recommendations</h3><p>LLMs have been shown to generate harmful or offensive content and reinforce social biases. Zhang et al. <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> argue that due to differences in their respective paradigms, LLMs-based recommender systems cannot directly use the fairness benchmark of traditional LLMs or recommenders. They propose a new benchmark called Fairness of Recommendation via LLM (FaiRLLM) and showed that ChatGPT exhibits unfairness to some sensitive attributes.</p>
 <p><figure><a class="lightgallery" href="/img/posts/2023/chatgpt-for-recsys/chatgpt_fairness.png" title="fairness evaluation and sensitive attributes" data-thumbnail="/img/posts/2023/chatgpt-for-recsys/chatgpt_fairness.png" data-sub-html="<h2>Fairness evaluation in music recommendation (left). Sensitive attributes and their values (right).</h2><p>fairness evaluation and sensitive attributes</p>">
         <img
             
@@ -433,14 +468,15 @@
 <h3 id="disadvantages" class="headerLink">
     <a href="#disadvantages" class="header-mark"></a>Disadvantages</h3><ul>
 <li><strong>General Performance in Recommendation Tasks:</strong> It&rsquo;s important to note that ChatGPT wasn&rsquo;t specifically trained on recommendation objectives. Consequently, its performance in recommendation tasks is generally unsatisfactory when compared to task-specific and specialized recommendation algorithms.</li>
+<li><strong>Failure to recognize the sequential nature of historical behaviors:</strong> LLMs are shown to be not sensitive to the order of given historical user behaviors. Given a large number of historical items, ChatGPT might consider all of them to be equal, and can easily become overwhelmed which leads to a performance drop<sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. So, one might have to resort to keeping the length of the historical information sequence limited.</li>
 <li><strong>Lack of Multimodal Support:</strong> To effectively understand users&rsquo; rich information needs, it is essential for ChatGPT to learn from multimodal instructions and feedback. However, currently, ChatGPT does not have public support for multimodal conversations, limiting its ability to process diverse types of input.</li>
-<li><strong>Positional Bias:</strong> Certain experiments indicate that ChatGPT may exhibit a strong positional bias towards input items specified within a prompt <sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. This bias can pose challenges for tasks such as Direct Recommendations.</li>
+<li><strong>Positional Bias:</strong> Certain experiments indicate that ChatGPT may exhibit a strong positional bias toward input items specified within a prompt <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. Some studies show that ChatGPT suffers from popularity bias as well<sup id="fnref2:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</li>
 <li><strong>Performance Compared to Baselines:</strong> Studies have shown that off-the-shelf Language Models, including ChatGPT, may perform worse or on par with simple baselines like random or popularity-based recommendations in zero-shot scenarios. This suggests that further fine-tuning or customization may be required for optimal performance.</li>
-<li><strong>Stochastic Output Generation:</strong> ChatGPT&rsquo;s stochastic nature in generating outputs can sometimes lead to invalid recommendations. The variability in its responses may introduce occasional inaccuracies or irrelevant suggestions.</li>
+<li><strong>Stochastic Output Generation:</strong> ChatGPT&rsquo;s stochastic nature in generating outputs can sometimes lead to invalid recommendations. The variability in its responses may introduce occasional inaccuracies or irrelevant suggestions. A recent study showed that 3% of ChatGPT&rsquo;s outputs were invalid despite the candidate set being included in the prompts<sup id="fnref3:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</li>
 <li><strong>Limited Accessibility:</strong> ChatGPT is currently available only through OpenAI&rsquo;s private API, which restricts researchers from retraining or modifying its structure. This lack of accessibility hinders the customization and experimentation potential for individual researchers.</li>
 </ul>
 <h2 id="summary" class="headerLink">
-    <a href="#summary" class="header-mark"></a>Summary</h2><p>ChatGPT&rsquo;s remarkable state-of-the-art performance has attracted the attention of the NLP community and beyond. This article highlights some recent work done to apply ChatGPT for recommendation tasks. Early experiments show that while ChatGPT excels in explainable recommendations, its performance might lag behind more dedicated recommendation systems for accuracy-based tasks in zero-shot and few-shot settings. These studies also surface several gaps in fairness within ChatGPT&rsquo;s response and question its applicability as an artificial general recommender.</p>
+    <a href="#summary" class="header-mark"></a>Summary</h2><p>ChatGPT&rsquo;s remarkable state-of-the-art performance has attracted the attention of the NLP community and beyond. This article highlights some recent work done to apply ChatGPT for recommendation tasks. Early experiments show that ChatGPT excels in explainable recommendations and has a promising zero-shot ranking capability. However, its performance lags behind more dedicated recommendation systems for accuracy-based tasks when used as a general-purpose recommendation model in zero-shot and few-shot settings. These studies also surface several gaps in fairness within ChatGPT&rsquo;s response and question its applicability as an artificial general recommender.</p>
 <h2 id="references" class="headerLink">
     <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
 <hr>
@@ -449,13 +485,16 @@
 <p>Dai, S., Shao, N., Zhao, H., Yu, W., Si, Z., Xu, C., Sun, Z., Zhang, X., &amp; Xu, J. (2023). Uncovering ChatGPT&rsquo;s Capabilities in Recommender Systems. <em>ArXiv, abs/2305.02182</em>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>Liu, J., Liu, C., Lv, R., Zhou, K., &amp; Zhang, Y.B. (2023). Is ChatGPT a Good Recommender? A Preliminary Study. <em>ArXiv, abs/2304.10149</em>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Hou, Y., Zhang, J., Lin, Z., Lu, H., Xie, R., McAuley, J., &amp; Zhao, W. X. (2023). Large Language Models are Zero-Shot Rankers for Recommender Systems. <em>ArXiv</em>. /abs/2305.08845&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Lin, G., &amp; Zhang, Y. (2023). Sparks of Artificial General Recommender (AGR): Early Experiments with ChatGPT. <em>ArXiv, abs/2305.04518</em>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Liu, J., Liu, C., Lv, R., Zhou, K., &amp; Zhang, Y.B. (2023). Is ChatGPT a Good Recommender? A Preliminary Study. <em>ArXiv, abs/2304.10149</em>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Zhang, J., Bao, K., Zhang, Y., Wang, W., Feng, F., &amp; He, X. (2023). Is ChatGPT Fair for Recommendation? Evaluating Fairness in Large Language Model Recommendation.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Lin, G., &amp; Zhang, Y. (2023). Sparks of Artificial General Recommender (AGR): Early Experiments with ChatGPT. <em>ArXiv, abs/2305.04518</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Zhang, J., Bao, K., Zhang, Y., Wang, W., Feng, F., &amp; He, X. (2023). Is ChatGPT Fair for Recommendation? Evaluating Fairness in Large Language Model Recommendation.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div></div>
