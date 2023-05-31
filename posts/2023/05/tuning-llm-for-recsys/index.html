@@ -19,7 +19,7 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/05\/tuning-llm-for-recsys\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, LLM","wordcount":  2409 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, LLM","wordcount":  2395 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/05\/tuning-llm-for-recsys\/","datePublished": "2023-05-21T00:00:00+00:00","dateModified": "2023-05-21T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -151,7 +151,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-05-21">2023-05-21</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-05-21">2023-05-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2409 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-05-21">2023-05-21</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-05-21">2023-05-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2395 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
@@ -263,7 +263,7 @@
             alt="/img/posts/2023/tuning-llm-for-recsys/tallrec_instructions.png">
     </a><figcaption class="image-caption">An example of instruction tuning data in a translation task</figcaption>
     </figure></p>
-<p>Next, they train the LLM in two tuning stages: instruction tuning (instruct-tuning) and recommendation tuning (rec-tuning). The instruction tuning stage is a standard training process of LLM that enhances the LLM&rsquo;s generalization ability. The authors used the self-instruct data from Stanford Alpaca for this tuning. For Rec-tuning, they construct &ldquo;Rec Instructions&rdquo; by transforming a restricted amount of users&rsquo; historical interactions into instructions of the form: &ldquo;User Preference: $item_1$, $item_4$, &hellip;, $item_n$. User Unpreferenced: $item_2$, $item_3$, &hellip;, $item_{n-1}$. Will the user enjoy the target movie/book: $item_{n+1}$. [yes/no]&rdquo;. Here &ldquo;unreferenced&rdquo; is referring to a set of items that the user didn&rsquo;t like.</p>
+<p>Next, they train the LLM in two tuning stages: instruction tuning (instruct-tuning) and recommendation tuning (rec-tuning). The instruction tuning stage is a standard training process of LLM that enhances the LLM&rsquo;s generalization ability. The authors used the self-instruct data from Stanford Alpaca for this tuning. For Rec-tuning, they construct &ldquo;Rec Instructions&rdquo; by transforming a restricted amount of users&rsquo; historical interactions into instructions of the form: &ldquo;User Preference: $item_1$, $item_4$, &hellip;, $item_n$. User Unpreferenced: $item_2$, $item_3$, &hellip;, $item_{n-1}$. Will the user enjoy the target movie/book: $item_{n+1}$. [yes/no]&rdquo;. Here &ldquo;unpreferenced&rdquo; is referring to a set of items that the user didn&rsquo;t like.</p>
 <p><figure><a class="lightgallery" href="/img/posts/2023/tuning-llm-for-recsys/tallrec_framework.png" title="TALLRec Framework" data-thumbnail="/img/posts/2023/tuning-llm-for-recsys/tallrec_framework.png" data-sub-html="<h2>TALLRec Framework</h2><p>TALLRec Framework</p>">
         <img
             
@@ -274,7 +274,7 @@
             alt="/img/posts/2023/tuning-llm-for-recsys/tallrec_framework.png">
     </a><figcaption class="image-caption">TALLRec Framework</figcaption>
     </figure></p>
-<p>The authors employed LoRA to facilitate efficient lightweight fine-tuning which can be done with low GPU cost and few tuning samples (less than 100). They picked LLaMA LLM to conduct their experiments and showed that their trained model outperformed previous baselines in the few-shot setting. Their trained model also exhibited strong cross-domain transfer capabilities. One downside of this approach is that it still uses IDs in historical sequences. The code and data for TALLRec are available <a href="https://github.com/SAI990323/TALLRec" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
+<p>The authors employed LoRA to facilitate efficient lightweight fine-tuning which can be done with low GPU cost and few tuning samples (less than 100). They picked LLaMA LLM to conduct their experiments and showed that their trained model outperformed previous baselines in the few-shot setting. Their trained model also exhibited strong cross-domain transfer capabilities. The code and data for TALLRec are available <a href="https://github.com/SAI990323/TALLRec" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
 <h3 id="flan-t5-tuned-for-recommendation" class="headerLink">
     <a href="#flan-t5-tuned-for-recommendation" class="header-mark"></a>Flan-T5 Tuned for Recommendation</h3><p>Google Brain team conducted a study<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> to evaluate various LLMs, with sizes ranging from 250M to 540B parameters, on user rating prediction tasks in zero-shot, few-shot, and fine-tuning scenarios. For finetuning experiments, they used Flan-T5-Base (250M) and Flan-U-PaLM (540B), while for zero-shot and few-shot experiments, they used GPT-3 models from OpenAI and 540B Flan-U-PaLM.</p>
 <p><figure><a class="lightgallery" href="/img/posts/2023/tuning-llm-for-recsys/google_brain_prompts.png" title="Zero-shot and Few-shot prompts for rating prediction" data-thumbnail="/img/posts/2023/tuning-llm-for-recsys/google_brain_prompts.png" data-sub-html="<h2>Zero-shot and Few-shot prompts for rating prediction</h2><p>Zero-shot and Few-shot prompts for rating prediction</p>">
@@ -457,7 +457,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/2023/05/chatgpt-for-recsys/" class="prev" rel="prev" title="ChatGPT-based Recommender Systems"><i class="fas fa-angle-left fa-fw"></i>ChatGPT-based Recommender Systems</a></div>
+    <div class="post-nav"><a href="/posts/2023/05/chatgpt-for-recsys/" class="prev" rel="prev" title="ChatGPT-based Recommender Systems"><i class="fas fa-angle-left fa-fw"></i>ChatGPT-based Recommender Systems</a>
+            <a href="/posts/2023/05/shallow-heterogeneous-graphs-rep/" class="next" rel="next" title="Shallow Embedding Models for Heterogeneous Graphs">Shallow Embedding Models for Heterogeneous Graphs<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.

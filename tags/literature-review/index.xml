@@ -4,7 +4,17 @@
         <link>https://blog.reachsumit.com/tags/literature-review/</link>
         <description>literature review - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 21 May 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/literature-review/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 30 May 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/literature-review/" rel="self" type="application/rss+xml" /><item>
+    <title>Shallow Embedding Models for Heterogeneous Graphs</title>
+    <link>https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/</link>
+    <pubDate>Tue, 30 May 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>In previous articles, I gave an introduction to graph representation learning and highlighted several shallow methods for learning homogeneous graph embeddings. This article focuses on shallow representation learning methods for heterogeneous graphs.
+While homogeneous networks have only one type of nodes and edges, heterogeneous networks contain different types of nodes or edges. So, a homogeneous network can also be considered as a special case of a heterogeneous network. Heterogeneous networks, also called heterogeneous information networks (HIN), are ubiquitous in real-world scenarios.]]></description>
+</item><item>
     <title>Tuning Large Language Models for Recommendation Tasks</title>
     <link>https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/</link>
     <pubDate>Sun, 21 May 2023 00:00:00 &#43;0000</pubDate><author>
@@ -87,14 +97,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/03/contrastive-video-representations/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Advances in the contrastive learning domain have made it possible to reduce the performance gap between self-supervised and supervised learning methods. Consequently, it has enabled the potential of utilizing the vast amount of unlabeled big data. This article goes over state-of-the-art contrastive learning methods for effective video representation learning.]]></description>
-</item><item>
-    <title>Positive and Negative Sampling Strategies for Representation Learning in Semantic Search</title>
-    <link>https://blog.reachsumit.com/posts/2023/03/pairing-for-representation/</link>
-    <pubDate>Wed, 22 Mar 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/03/pairing-for-representation/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/03/pairing-for-representation/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Defining positive and negative labels for a retrieval task in a search ranking system is a non-trivial problem. This article goes over various sampling strategies for creating negative and positive pairs for effective representation learning. It introduces the concept of mining hard examples, followed by various strategies to sample hard positive and hard negative pairs. The article includes a lot of tips and learnings based on heuristics and empirical results from a comprehensive set of research papers published across the industry and academia.]]></description>
 </item></channel>
 </rss>
