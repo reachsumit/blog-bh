@@ -70,16 +70,6 @@
                 <img src="/posts/2023/03/reranking-on-edge/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems.]]></description>
 </item><item>
-    <title>Recommender Systems for Modeling Feature Interactions under Sparse Settings</title>
-    <link>https://blog.reachsumit.com/posts/2022/11/sparse-recsys/</link>
-    <pubDate>Sun, 06 Nov 2022 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2022/11/sparse-recsys/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2022/11/sparse-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Many machine learning domains, such as recommender systems, targeted advertisement, search ranking, and text analysis contain highly sparse data because of the large categorical variable domains. This sparsity makes it hard for ML algorithms to model second-order and above feature interactions. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed for estimating interactions from sparse data.
-IntroductionProblem with sparse inputsA variety of Information Retrieval and Data Mining tasks, such as Recommender Systems, Targeted Advertising, Search Ranking, etc.]]></description>
-</item><item>
     <title>Collaborative Filtering based Recommender Systems for Implicit Feedback Data</title>
     <link>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</link>
     <pubDate>Sun, 25 Sep 2022 00:00:00 &#43;0000</pubDate><author>

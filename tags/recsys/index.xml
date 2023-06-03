@@ -79,15 +79,14 @@
                 <img src="/posts/2023/03/two-tower-model/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state.]]></description>
 </item><item>
-    <title>Recommender Systems for Modeling Feature Interactions under Sparse Settings</title>
-    <link>https://blog.reachsumit.com/posts/2022/11/sparse-recsys/</link>
+    <title>Feature-Interactions Based Information Retrieval Models</title>
+    <link>https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/</link>
     <pubDate>Sun, 06 Nov 2022 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2022/11/sparse-recsys/</guid>
+    </author><guid>https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2022/11/sparse-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Many machine learning domains, such as recommender systems, targeted advertisement, search ranking, and text analysis contain highly sparse data because of the large categorical variable domains. This sparsity makes it hard for ML algorithms to model second-order and above feature interactions. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed for estimating interactions from sparse data.
-IntroductionProblem with sparse inputsA variety of Information Retrieval and Data Mining tasks, such as Recommender Systems, Targeted Advertising, Search Ranking, etc.]]></description>
+                <img src="/posts/2022/11/feature-interactions-ir/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>IntroductionLarge-scale information retrieval applications, such as recommender systems, search ranking, and text analysis often leverage feature interactions for effective modeling. These models are commonly deployed at the ranking stage of the cascade-style systems. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second or higher-order feature interactions.]]></description>
 </item><item>
     <title>Collaborative Filtering based Recommender Systems for Implicit Feedback Data</title>
     <link>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</link>
