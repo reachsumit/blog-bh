@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/tags/recsys/</link>
         <description>recsys - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 21 May 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/recsys/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 18 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/recsys/" rel="self" type="application/rss+xml" /><item>
+    <title>Representing Users and Items in Large Language Models based Recommender Systems</title>
+    <link>https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/</link>
+    <pubDate>Sun, 18 Jun 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Large Language Models (LLMs) have emerged as viable tools for various recommendation tasks. This article highlights various methods for incorporating users, items, and behavior data into the instructions for LLMs.]]></description>
+</item><item>
     <title>Tuning Large Language Models for Recommendation Tasks</title>
     <link>https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/</link>
     <pubDate>Sun, 21 May 2023 00:00:00 &#43;0000</pubDate><author>
@@ -87,14 +96,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2022/11/feature-interactions-ir/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>IntroductionLarge-scale information retrieval applications, such as recommender systems, search ranking, and text analysis often leverage feature interactions for effective modeling. These models are commonly deployed at the ranking stage of the cascade-style systems. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second or higher-order feature interactions.]]></description>
-</item><item>
-    <title>Collaborative Filtering based Recommender Systems for Implicit Feedback Data</title>
-    <link>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</link>
-    <pubDate>Sun, 25 Sep 2022 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2022/09/explicit-implicit-cf/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>This article explains what explicit and implicit feedback data means for recommender systems. We discuss their characteristics and peculiarities concerning collaborative filtering based algorithms. Then we go over one of the most popular collaborative filtering algorithms for implicit data and implement it in Python with an example dataset.]]></description>
 </item></channel>
 </rss>

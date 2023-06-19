@@ -4,9 +4,18 @@
         <link>https://blog.reachsumit.com/</link>
         <description>Welcome to Sumit Kumar&#39;s Personal Blog!</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 30 May 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 18 Jun 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.reachsumit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Representing Users and Items in Large Language Models based Recommender Systems</title>
+    <link>https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/</link>
+    <pubDate>Sun, 18 Jun 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Large Language Models (LLMs) have emerged as viable tools for various recommendation tasks. This article highlights various methods for incorporating users, items, and behavior data into the instructions for LLMs.]]></description>
+</item><item>
     <title>Shallow Embedding Models for Heterogeneous Graphs</title>
     <link>https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/</link>
     <pubDate>Tue, 30 May 2023 00:00:00 &#43;0000</pubDate><author>
@@ -90,14 +99,5 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references.]]></description>
-</item><item>
-    <title>Self-Supervised Contrastive Approaches for Video Representation Learning</title>
-    <link>https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/</link>
-    <pubDate>Mon, 27 Mar 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/03/contrastive-video-representations/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Advances in the contrastive learning domain have made it possible to reduce the performance gap between self-supervised and supervised learning methods. Consequently, it has enabled the potential of utilizing the vast amount of unlabeled big data. This article goes over state-of-the-art contrastive learning methods for effective video representation learning.]]></description>
 </item></channel>
 </rss>
