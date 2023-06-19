@@ -127,7 +127,7 @@
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
     <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#to-use-id-features-or-not">To Use ID Features or Not?</a></li>
+    <li><a href="#should-you-use-id-features-or-not">Should You Use ID Features or Not?</a></li>
     <li><a href="#natural-language-representations">Natural Language Representations</a></li>
     <li><a href="#id-based-representations">ID-Based Representations</a>
       <ul>
@@ -173,7 +173,7 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#to-use-id-features-or-not">To Use ID Features or Not?</a></li>
+    <li><a href="#should-you-use-id-features-or-not">Should You Use ID Features or Not?</a></li>
     <li><a href="#natural-language-representations">Natural Language Representations</a></li>
     <li><a href="#id-based-representations">ID-Based Representations</a>
       <ul>
@@ -202,8 +202,8 @@
     <a href="#introduction" class="header-mark"></a>Introduction</h2><p>Recommendation systems play a vital role in several online platforms like search engines, e-commerce websites, content streaming, targeted advertising, etc. These systems use information about the users, items and their past interactions to make personalized recommendations.</p>
 <p>Recently, there has been a growing interest in research community to utilize large language models (LLMs) for building recommender systems. LLMs rely on instruction data in natural language for their pre-training, prompting and fine-turning. Hence they require recommendation tasks to be rephrased as language generation task, and the user, item and interaction data to be transformed into natural language corpora.</p>
 <p>However, effectively representing users, items and their interactions into natural language can be challenging. This article explains such representation methods along with some recent research work that aim to create LLM-compatible representations.</p>
-<h2 id="to-use-id-features-or-not" class="headerLink">
-    <a href="#to-use-id-features-or-not" class="header-mark"></a>To Use ID Features or Not?</h2><p>Traditionally, users and items in recommender systems are represented with ID tags, such as user ID, movie ID, that inherently do not contain any semantic information. These unique IDs represent distinct users and items and have been a critical component of state-of-the-art recommendation solutions. For example, factorization-based methods use user IDs to build user-item associations and item-based collaborative filtering methods use item IDs to calculate similarities between items from user-item behavior data. Deep Learning based recommender systems subsequently convert these IDs into learned embedding vectors.</p>
+<h2 id="should-you-use-id-features-or-not" class="headerLink">
+    <a href="#should-you-use-id-features-or-not" class="header-mark"></a>Should You Use ID Features or Not?</h2><p>Traditionally, users and items in recommender systems are represented with ID tags, such as user ID, movie ID, that inherently do not contain any semantic information. These unique IDs represent distinct users and items and have been a critical component of state-of-the-art recommendation solutions. For example, factorization-based methods use user IDs to build user-item associations and item-based collaborative filtering methods use item IDs to calculate similarities between items from user-item behavior data. Deep Learning based recommender systems subsequently convert these IDs into learned embedding vectors.</p>
 <p>Although these ID features are ubiquitous in recommender systems, they also have several shortcomings. For example, these ID features fail to provide enough information for cold-start items, do not leverage technical advances in other communities like NLP and Computer Vision, and lack interpretability <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. These IDs are also non-transferable across different domains, so they hinder cross-domain recommendation capabilities.</p>
 <p>Some prior research has indicated that LLM-based recommenders can get better at in-domain recommendations by using ID features. However, a desirable goal for training these large language models is to be able to have a foundational model that can be directly used for various downstream recommendation tasks. And, by using ID features these models sacrifice some of the cross-domain generalization ability. So whether to use the ID features or not remains an open question <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
 <h2 id="natural-language-representations" class="headerLink">
@@ -247,7 +247,7 @@
     </figure></p>
 <p>However, this approach leads to a lot of overlaps between unrelated items after tokenization. In the above example a SentencePiece tokenizer will split <code>item_3148</code> into tokens <code>items</code>, <code>_</code>, <code>31</code>, <code>48</code> and <code>item_3179</code> into <code>item</code>, <code>_</code>, <code>31</code>, <code>79</code>. The two items will share a common sub-token <code>31</code> even when the two items may be completely unrelated. This unintended overlap can bias LLMs to learn arbitrary relationships.</p>
 <h4 id="independent-tokens" class="headerLink">
-    <a href="#independent-tokens" class="header-mark"></a>Independent Tokens</h4><p>The P5 paper also points out that we can represent users and items by single and independent extra tokens, such as <code>&lt;item_3148&gt;</code> and <code>&lt;item_3179&gt;</code>. The P5 model architecture has a whole-word embedding input layer that assigns the same whole-word embedding for tokens from the same ID. The whole word embedding can also be added to the token embeddings.</p>
+    <a href="#independent-tokens" class="header-mark"></a>Independent Tokens</h4><p>The P5 paper also points out that we can represent users and items by single and independent extra tokens, such as <code>&lt;item_3148&gt;</code> and <code>&lt;item_3179&gt;</code>. The <a href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/#pretraining-foundation-language-model-on-recommendation-tasks" rel="">P5 model architecture</a> has a whole-word embedding input layer that assigns the same whole-word embedding for tokens from the same ID. The whole word embedding can also be added to the token embeddings.</p>
 <p>This strategy does not make any prior assumption about the items, and suffers from the fact that all items are considered independent from each other for assigning IDs. Also, these extra tokens can significantly increase the size of vocabulary in large datasets leading to additional training time and suboptimal performance.</p>
 <h4 id="sequential-indexing" class="headerLink">
     <a href="#sequential-indexing" class="header-mark"></a>Sequential Indexing</h4><p>Hua et al.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> proposed an approach where items in users&rsquo; interaction history data are assigned consecutive numerical indices starting from the first user and all the way to the last one.</p>
@@ -301,7 +301,7 @@
 <h3 id="hybrid-indexing" class="headerLink">
     <a href="#hybrid-indexing" class="header-mark"></a>Hybrid Indexing</h3><p>A lot of the approaches described above can be combined to create a hybrid indexing strategy to increase the expressiveness of the representations. Through experimentation, Hua et al.<sup id="fnref2:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> recommend combining Collaborative Indexing or Semantic Indexing with Independent Tokens (by appending an independent extra token at the end of the collaborative or semantic ID).</p>
 <h2 id="summary" class="headerLink">
-    <a href="#summary" class="header-mark"></a>Summary</h2><p>LLMs have emerged as powerful tools for recommendation tasks due to their vast amount of encoded external knowledge and high-quality textural feature representations. These LLMs are given textual instructions for the pretraining, prompt tuning and fine tuning. This article highlighted different techniques for representing users and items into personalized prompt templates for generating those instructions.</p>
+    <a href="#summary" class="header-mark"></a>Summary</h2><p>LLMs have emerged as powerful tools for recommendation tasks due to their vast amount of encoded external knowledge and high-quality textural feature representations. These LLMs are given textual instructions for pretraining, prompt tuning and fine tuning. This article highlighted different techniques for representing users and items into personalized prompt templates for generating those instructions.</p>
 <h2 id="related-content" class="headerLink">
     <a href="#related-content" class="header-mark"></a>Related Content</h2>
 <div class="showcase-box column-2">
