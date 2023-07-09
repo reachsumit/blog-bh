@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-06-18T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-06-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-07-08T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"/>
@@ -30,8 +30,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/06\/llms-for-recsys-entity-representation\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, LLM","wordcount":  1600 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/06\/llms-for-recsys-entity-representation\/","datePublished": "2023-06-18T00:00:00+00:00","dateModified": "2023-06-18T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, LLM","wordcount":  2000 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/06\/llms-for-recsys-entity-representation\/","datePublished": "2023-06-18T00:00:00+00:00","dateModified": "2023-07-08T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -131,7 +131,7 @@
     <li><a href="#natural-language-representations">Natural Language Representations</a></li>
     <li><a href="#id-based-representations">ID-Based Representations</a>
       <ul>
-        <li><a href="#heuristic-based-representations">Heuristic-based Representations</a>
+        <li><a href="#rule-based-representations">Rule-based Representations</a>
           <ul>
             <li><a href="#random-numbers">Random Numbers</a></li>
             <li><a href="#independent-tokens">Independent Tokens</a></li>
@@ -141,6 +141,12 @@
         </li>
         <li><a href="#learned-representations">Learned Representations</a>
           <ul>
+            <li><a href="#applying-quantization-to-embeddings">Applying Quantization to Embeddings</a>
+              <ul>
+                <li><a href="#rq-vae-based-method">RQ-VAE based Method</a></li>
+                <li><a href="#svd-based-method">SVD based Method</a></li>
+              </ul>
+            </li>
             <li><a href="#collaborative-indexing">Collaborative Indexing</a></li>
           </ul>
         </li>
@@ -156,8 +162,8 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-06-18">2023-06-18</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-18">2023-06-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1600 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;8 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-06-18">2023-06-18</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-07-08">2023-07-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2000 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
@@ -177,7 +183,7 @@
     <li><a href="#natural-language-representations">Natural Language Representations</a></li>
     <li><a href="#id-based-representations">ID-Based Representations</a>
       <ul>
-        <li><a href="#heuristic-based-representations">Heuristic-based Representations</a>
+        <li><a href="#rule-based-representations">Rule-based Representations</a>
           <ul>
             <li><a href="#random-numbers">Random Numbers</a></li>
             <li><a href="#independent-tokens">Independent Tokens</a></li>
@@ -187,6 +193,12 @@
         </li>
         <li><a href="#learned-representations">Learned Representations</a>
           <ul>
+            <li><a href="#applying-quantization-to-embeddings">Applying Quantization to Embeddings</a>
+              <ul>
+                <li><a href="#rq-vae-based-method">RQ-VAE based Method</a></li>
+                <li><a href="#svd-based-method">SVD based Method</a></li>
+              </ul>
+            </li>
             <li><a href="#collaborative-indexing">Collaborative Indexing</a></li>
           </ul>
         </li>
@@ -232,8 +244,8 @@
 <p>Using such metadata-based representations can lead to cross-domain recommendation capabilities. But there are also several downsides of using these natural language representations. For example, excessively long item titles can lead LLMs to hallucinate when generating title for the recommended item. Also, some title overlaps could be misleading from semantic perspective, for example, The Ring and The Lord of the Rings are very different movies despite some token overlap in their titles.</p>
 <h2 id="id-based-representations" class="headerLink">
     <a href="#id-based-representations" class="header-mark"></a>ID-Based Representations</h2><p>The following discussion assumes that the user is being represented using the sequence of items from their historical interactions. Hence, the focus of this section is mainly on different ways to represent items in an textual ID like format.</p>
-<h3 id="heuristic-based-representations" class="headerLink">
-    <a href="#heuristic-based-representations" class="header-mark"></a>Heuristic-based Representations</h3><h4 id="random-numbers" class="headerLink">
+<h3 id="rule-based-representations" class="headerLink">
+    <a href="#rule-based-representations" class="header-mark"></a>Rule-based Representations</h3><h4 id="random-numbers" class="headerLink">
     <a href="#random-numbers" class="header-mark"></a>Random Numbers</h4><p>We can assign a randomly generated unique number as ID for each item in the corpus. For example, in the P5 paper<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> the authors represent users and items as random IDs in input prompts as shown below.</p>
 <p><figure><a class="lightgallery" href="/img/posts/2023/llms-for-recsys-entity-representation/P5_sequential_example.png" title="P5&amp;rsquo;s Sequential Recommendations Prompt Template" data-thumbnail="/img/posts/2023/llms-for-recsys-entity-representation/P5_sequential_example.png" data-sub-html="<h2>P5&#39;s personalized prompt template for building input-output pairs for sequential recommendations</h2><p>P5&amp;rsquo;s Sequential Recommendations Prompt Template</p>">
         <img
@@ -275,9 +287,46 @@
     </a></p>
 <p>The model leads to a better performance is the item categories naturally lead to a hierarchical structure.</p>
 <h3 id="learned-representations" class="headerLink">
-    <a href="#learned-representations" class="header-mark"></a>Learned Representations</h3><p>We can also learn ID representations for items through model-based methods. Similar to the Sequential Indexing method, the main motivation behind these strategies is to integrate prior information to ensure that similar items share more tokens and dissimilar items share a minimal amount of tokens. Hua et al.<sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> proposed a transductive method described below.</p>
+    <a href="#learned-representations" class="header-mark"></a>Learned Representations</h3><p>We can also learn ID representations for items through model-based methods. Similar to the Sequential Indexing method, the main motivation behind these strategies is to ensure that similar items share more tokens and dissimilar items share a minimal amount of tokens.</p>
+<h4 id="applying-quantization-to-embeddings" class="headerLink">
+    <a href="#applying-quantization-to-embeddings" class="header-mark"></a>Applying Quantization to Embeddings</h4><p>This line of work focuses on assigning an ID to each entity by applying a vector quantization scheme over its dense embeddings. The quantization process converts the embedding vectors into a small set of semantic tokens or (integer) codewords.</p>
+<h5 id="rq-vae-based-method" class="headerLink">
+    <a href="#rq-vae-based-method" class="header-mark"></a>RQ-VAE based Method</h5><p>Rajput et al.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> proposed a method TIGER (<strong>T</strong>ransformer <strong>I</strong>ndex for <strong>GE</strong>nerative <strong>R</strong>ecommenders) that represents items using unique &lsquo;Semantic IDs&rsquo;. These IDs are semantically meaningful tuples of codewords that serve as unique identifiers for respective items. To create these IDs, first, the associated content information (such as titles, descriptions, etc.) is used to generate item embeddings via a pretrained content encoder, such as the Sentence-T5 model. These semantic IDs are then quantized to generate a semantic ID for each item.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/llms-for-recsys-entity-representation/semantic_id_generation.png" title="Overview of TIGER&amp;rsquo;s Semantic ID Generation Process" data-thumbnail="/img/posts/2023/llms-for-recsys-entity-representation/semantic_id_generation.png" data-sub-html="<h2>Overview of TIGER&#39;s Semantic ID Generation Process</h2><p>Overview of TIGER&amp;rsquo;s Semantic ID Generation Process</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/llms-for-recsys-entity-representation/semantic_id_generation.png"
+            srcset="/img/posts/2023/llms-for-recsys-entity-representation/semantic_id_generation.png, /img/posts/2023/llms-for-recsys-entity-representation/semantic_id_generation.png 1.5x, /img/posts/2023/llms-for-recsys-entity-representation/semantic_id_generation.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/llms-for-recsys-entity-representation/semantic_id_generation.png">
+    </a><figcaption class="image-caption">Overview of TIGER's Semantic ID Generation Process</figcaption>
+    </figure></p>
+<p>The quantization scheme is implemented through a Residual-Quantized Variational AutoEncoder (RQ-VAE) model. First, the encoder encodes the input embedding <code>x</code> into a latent representation which is then passed to a quantizer. The quantizer learns <code>m</code> number of codebooks to iteratively generate a semantic ID. At each step of the quantizer, the input is mapped to the nearest vector in the codebook, and the corresponding index of the codebook is used to create the next codeword in the semantic ID. The residual of the two vectors is then passed to the next iteration. Finally, a decoder uses the quantized vector to recreate the input <code>x</code>. The three RQ-VAE components are jointly trained, and the authors show that the learned IDs approximate the input from a coarse-to-fine granularity in a hierarchical fashion.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/llms-for-recsys-entity-representation/rq-vae.png" title="RQ-VAE" data-thumbnail="/img/posts/2023/llms-for-recsys-entity-representation/rq-vae.png" data-sub-html="<h2>RQ-VAE: Generating Semantic IDs through Residual Quantization</h2><p>RQ-VAE</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/llms-for-recsys-entity-representation/rq-vae.png"
+            srcset="/img/posts/2023/llms-for-recsys-entity-representation/rq-vae.png, /img/posts/2023/llms-for-recsys-entity-representation/rq-vae.png 1.5x, /img/posts/2023/llms-for-recsys-entity-representation/rq-vae.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/llms-for-recsys-entity-representation/rq-vae.png">
+    </a><figcaption class="image-caption">RQ-VAE: Generating Semantic IDs through Residual Quantization</figcaption>
+    </figure></p>
+<h5 id="svd-based-method" class="headerLink">
+    <a href="#svd-based-method" class="header-mark"></a>SVD based Method</h5><p>Petrov et al.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> proposed GPTRec, a generative sequential recommendation model (based on GPT-2) which also applies a quantization scheme, but unlike TIGER doesn&rsquo;t rely on any side information about the items. Their algorithm takes a user-item interaction matrix and performs a truncated SVD decomposition of it. The resulting item embeddings are normalized to <code>[0, 1]</code> interval, and a small amount of Gaussian noise is added to it. Next, the algorithm quantizes each dimension of the item embeddings into <code>v</code> values. Finally, every $i$th dimension of the quantized embeddings is offset by $v * (i-1)$</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/llms-for-recsys-entity-representation/gptrec_tokenization.png" title="GPTRec: Tokenization" data-thumbnail="/img/posts/2023/llms-for-recsys-entity-representation/gptrec_tokenization.png" data-sub-html="<h2>GPTRec: SVD Tokenization Algorithm</h2><p>GPTRec: Tokenization</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/llms-for-recsys-entity-representation/gptrec_tokenization.png"
+            srcset="/img/posts/2023/llms-for-recsys-entity-representation/gptrec_tokenization.png, /img/posts/2023/llms-for-recsys-entity-representation/gptrec_tokenization.png 1.5x, /img/posts/2023/llms-for-recsys-entity-representation/gptrec_tokenization.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/llms-for-recsys-entity-representation/gptrec_tokenization.png">
+    </a><figcaption class="image-caption">GPTRec: SVD Tokenization Algorithm</figcaption>
+    </figure></p>
 <h4 id="collaborative-indexing" class="headerLink">
-    <a href="#collaborative-indexing" class="header-mark"></a>Collaborative Indexing</h4><p>This method captures the collaborative signals more effectively by assigning more overlapping tokens to items with more frequent co-occurrences. First, a co-occurrence graph of items is created with edge weights indicating the frequency of co-occurrence. The Laplacian matrix of this graph is then used to group nodes into clusters through the spectral clustering method.</p>
+    <a href="#collaborative-indexing" class="header-mark"></a>Collaborative Indexing</h4><p>Hua et al.<sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> proposed a method which captures the collaborative signals more effectively by assigning more overlapping tokens to items with more frequent co-occurrences. First, a co-occurrence graph of items is created with edge weights indicating the frequency of co-occurrence. The Laplacian matrix of this graph is then used to group nodes into clusters through the spectral clustering method.</p>
 <p><a class="lightgallery" href="/img/posts/2023/llms-for-recsys-entity-representation/spectral_clustering.png" title="Spectral Clustering" data-thumbnail="/img/posts/2023/llms-for-recsys-entity-representation/spectral_clustering.png">
         <img
             
@@ -364,10 +413,16 @@
 <p>Li, J., Wang, M., Li, J., Fu, J., Shen, X., Shang, J., &amp; McAuley, J. (2023). Text Is All You Need: Learning Language Representations for Sequential Recommendation. <em>ArXiv, abs/2305.13731</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>Geng, S., Liu, S., Fu, Z., Ge, Y., &amp; Zhang, Y. (2022). Recommendation as Language Processing (RLP): A Unified Pretrain, Personalized Prompt &amp; Predict Paradigm (P5). <em>Proceedings of the 16th ACM Conference on Recommender Systems</em>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Geng, S., Liu, S., Fu, Z., Ge, Y., &amp; Zhang, Y. (2022). Recommendation as Language Processing (RLP): A Unified Pretrain, Personalized Prompt &amp; Predict Paradigm (P5). ArXiv. /abs/2203.13366&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
 <p>Hua, W., Xu, S., Ge, Y., &amp; Zhang, Y. (2023). How to Index Item IDs for Recommendation Foundation Models. <em>ArXiv, abs/2305.06569</em>.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Rajput, S., Mehta, N., Singh, A., Keshavan, R.H., Vu, T.H., Heldt, L., Hong, L., Tay, Y., Tran, V.Q., Samost, J., Kula, M., Chi, E.H., &amp; Sathiamoorthy, M. (2023). Recommender Systems with Generative Retrieval. <em>ArXiv, abs/2305.05065</em>.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>Petrov, A., &amp; Macdonald, C. (2023). Generative Sequential Recommendation with GPTRec. <em>ArXiv, abs/2306.11114</em>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
@@ -382,7 +437,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-06-18</span>
+                <span>Updated on 2023-07-08</span>
             </div>
             <div class="post-info-license"></div>
         </div>
