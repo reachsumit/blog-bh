@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>Generative Retrieval for End-to-End Search Systems - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Generative Retrieval for End-to-End Search Systems" />
+<meta property="og:description" content="Auto-regressive search engines emerge as a promising paradigm for next-gen information retrieval systems. This article introduces this generative retrieval and the various latest techniques that have been proposed to improve its effectiveness." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/featured-image-preview.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-09-06T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/featured-image-preview.webp"/>
+<meta name="twitter:title" content="Generative Retrieval for End-to-End Search Systems"/>
+<meta name="twitter:description" content="Auto-regressive search engines emerge as a promising paradigm for next-gen information retrieval systems. This article introduces this generative retrieval and the various latest techniques that have been proposed to improve its effectiveness."/>
+<meta name="application-name" content="Sumit&#39;s Diary">
+<meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Generative Retrieval for End-to-End Search Systems",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/09\/generative-retrieval\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, retrieval","wordcount":  5629 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/09\/generative-retrieval\/","datePublished": "2023-09-06T00:00:00+00:00","dateModified": "2023-09-06T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Sumit Kumar"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Sumit&#39;s Diary"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://reachsumit.com/#contact" rel="noopener noreferrer" target="_blank"> Contact </a><a class="menu-item" href="/newsletter/"> Newsletter(s) </a><a class="menu-item" href="/talks/"> Talks </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search this blog" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="Switch Theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="black">Black</option>
+                        <option value="auto">Auto</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Sumit&#39;s Diary"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search this blog" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a class="menu-item" href="/newsletter/" title="">Newsletter(s)</a><a class="menu-item" href="/talks/" title="">Talks</a><a href="#" class="menu-item theme-select" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="Switch Theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="black">Black</option>
+                    <option value="auto">Auto</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">Contents</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#towards-index-free-and-model-based-generative-retrieval">Towards Index-free and Model-based Generative Retrieval</a>
+      <ul>
+        <li><a href="#text-retrieval">Text Retrieval</a></li>
+        <li><a href="#traditional-ir-framework">Traditional IR Framework</a>
+          <ul>
+            <li><a href="#sparse-retrieval-with-inverted-indexes">Sparse Retrieval with Inverted Indexes</a></li>
+            <li><a href="#dense-retrieval-with-vectorized-indexes">Dense Retrieval with Vectorized Indexes</a></li>
+            <li><a href="#ranking">Ranking</a></li>
+          </ul>
+        </li>
+        <li><a href="#shortcomings-of-the-traditional-paradigm">Shortcomings of the Traditional Paradigm</a></li>
+        <li><a href="#generative-retrieval">Generative Retrieval</a></li>
+      </ul>
+    </li>
+    <li><a href="#inputs-and-outputs">Inputs and Outputs</a>
+      <ul>
+        <li><a href="#document-representation">Document Representation</a></li>
+        <li><a href="#output-representation">Output Representation</a></li>
+        <li><a href="#document-identifiers">Document Identifiers</a>
+          <ul>
+            <li><a href="#unstructured-atomic-identifiers">Unstructured Atomic Identifiers</a></li>
+            <li><a href="#naively-structured-string-identifiers">Naively Structured String Identifiers</a></li>
+            <li><a href="#semantically-structured-identifiers">Semantically Structured Identifiers</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#modes-of-operation">Modes of Operation</a>
+      <ul>
+        <li><a href="#indexing--phase">Indexing  Phase</a></li>
+        <li><a href="#retrieval-phase">Retrieval Phase</a></li>
+      </ul>
+    </li>
+    <li><a href="#model-training">Model Training</a></li>
+    <li><a href="#optimizations">Optimizations</a>
+      <ul>
+        <li><a href="#query-generation">Query Generation</a></li>
+        <li><a href="#external-memory">External Memory</a></li>
+        <li><a href="#distillation">Distillation</a></li>
+        <li><a href="#learning-to-rank">Learning To Rank</a></li>
+      </ul>
+    </li>
+    <li><a href="#continual-learning">Continual Learning</a></li>
+    <li><a href="#comparative-performance">Comparative Performance</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Generative Retrieval for End-to-End Search Systems</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><i class="far fa-folder fa-fw"></i>Information Retrieval</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-09-06">2023-09-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-09-06">2023-09-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;5629 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;27 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        
+        loading="eager"
+        src="/posts/2023/09/generative-retrieval/featured-image.webp"
+        srcset="/posts/2023/09/generative-retrieval/featured-image.webp, /posts/2023/09/generative-retrieval/featured-image.webp 1.5x, /posts/2023/09/generative-retrieval/featured-image.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/09/generative-retrieval/featured-image.webp"
+        title="/posts/2023/09/generative-retrieval/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#towards-index-free-and-model-based-generative-retrieval">Towards Index-free and Model-based Generative Retrieval</a>
+      <ul>
+        <li><a href="#text-retrieval">Text Retrieval</a></li>
+        <li><a href="#traditional-ir-framework">Traditional IR Framework</a>
+          <ul>
+            <li><a href="#sparse-retrieval-with-inverted-indexes">Sparse Retrieval with Inverted Indexes</a></li>
+            <li><a href="#dense-retrieval-with-vectorized-indexes">Dense Retrieval with Vectorized Indexes</a></li>
+            <li><a href="#ranking">Ranking</a></li>
+          </ul>
+        </li>
+        <li><a href="#shortcomings-of-the-traditional-paradigm">Shortcomings of the Traditional Paradigm</a></li>
+        <li><a href="#generative-retrieval">Generative Retrieval</a></li>
+      </ul>
+    </li>
+    <li><a href="#inputs-and-outputs">Inputs and Outputs</a>
+      <ul>
+        <li><a href="#document-representation">Document Representation</a></li>
+        <li><a href="#output-representation">Output Representation</a></li>
+        <li><a href="#document-identifiers">Document Identifiers</a>
+          <ul>
+            <li><a href="#unstructured-atomic-identifiers">Unstructured Atomic Identifiers</a></li>
+            <li><a href="#naively-structured-string-identifiers">Naively Structured String Identifiers</a></li>
+            <li><a href="#semantically-structured-identifiers">Semantically Structured Identifiers</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#modes-of-operation">Modes of Operation</a>
+      <ul>
+        <li><a href="#indexing--phase">Indexing  Phase</a></li>
+        <li><a href="#retrieval-phase">Retrieval Phase</a></li>
+      </ul>
+    </li>
+    <li><a href="#model-training">Model Training</a></li>
+    <li><a href="#optimizations">Optimizations</a>
+      <ul>
+        <li><a href="#query-generation">Query Generation</a></li>
+        <li><a href="#external-memory">External Memory</a></li>
+        <li><a href="#distillation">Distillation</a></li>
+        <li><a href="#learning-to-rank">Learning To Rank</a></li>
+      </ul>
+    </li>
+    <li><a href="#continual-learning">Continual Learning</a></li>
+    <li><a href="#comparative-performance">Comparative Performance</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>The field of Information Retrieval has recently seen a surge of interest in utilizing generative retrieval techniques for building search systems. These methods employ autoregressive Seq2Seq models to directly map each query to the relevant document. Hence, these models are also end-to-end differentiable and eliminate the need for traditional search indexes. Accordingly, the corresponding systems have also been called <strong>Autoregressive Search Engines</strong> or <strong>Model-based Retrieval</strong> Frameworks. This article provides a gentle introduction and a literature review of the current state of progress of this new paradigm.</p>
+<h2 id="towards-index-free-and-model-based-generative-retrieval" class="headerLink">
+    <a href="#towards-index-free-and-model-based-generative-retrieval" class="header-mark"></a>Towards Index-free and Model-based Generative Retrieval</h2><h3 id="text-retrieval" class="headerLink">
+    <a href="#text-retrieval" class="header-mark"></a>Text Retrieval</h3><p>Text Retrieval is a fundamental task in the Information Retrieval (IR) domain that, given a query, finds relevant textual information from a massive document corpus. It represents a crucial component of various language-based systems, such as search ranking and question answering. This task usually entails retrieving a single most relevant paragraph or document to the given query (i.e., <em>no-hop retrieval</em>), or multiple documents that together provide the information required to answer the query (i.e., <em>multi-hop retrieval</em>). Next, we review some of the most commonly adopted strategies for text retrieval.</p>
+<h3 id="traditional-ir-framework" class="headerLink">
+    <a href="#traditional-ir-framework" class="header-mark"></a>Traditional IR Framework</h3><p>Most of the existing IR systems follow a three-step paradigm, i.e. &ldquo;<em>index-retrieve-then-rank</em>&rdquo;. Document representations are learned during indexing, the relevant document corresponding to a given query is found during retrieval and the documents are sorted in the order of relevance during ranking. For the indexing and retrieval stage, the existing approaches can be divided into the following two categories with respect to the type of representation and mode of indexing.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/generative-retrieval/sparse_vs_dense_retrieval.png" title="Sparse vs Dense Retrieval" data-thumbnail="/img/posts/2023/generative-retrieval/sparse_vs_dense_retrieval.png" data-sub-html="<h2>Source: [^3]</h2><p>Sparse vs Dense Retrieval</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/generative-retrieval/sparse_vs_dense_retrieval.png"
+            srcset="/img/posts/2023/generative-retrieval/sparse_vs_dense_retrieval.png, /img/posts/2023/generative-retrieval/sparse_vs_dense_retrieval.png 1.5x, /img/posts/2023/generative-retrieval/sparse_vs_dense_retrieval.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/generative-retrieval/sparse_vs_dense_retrieval.png">
+    </a><figcaption class="image-caption">Source: [^3]</figcaption>
+    </figure></p>
+<h4 id="sparse-retrieval-with-inverted-indexes" class="headerLink">
+    <a href="#sparse-retrieval-with-inverted-indexes" class="header-mark"></a>Sparse Retrieval with Inverted Indexes</h4><p>This traditional retrieval and indexing method provides a great trade-off between accuracy and efficiency. First, an inverted index is built based on all of the documents in the corpus. This index encodes term-based features like term frequencies, term positions, document structure information, and document length. For retrieval, this method fetches documents based on matching between query terms and document terms. To measure this term relevance and weights for different terms, it uses classical techniques like TF-IDF, BM25, and some graph-based approaches that employ term frequencies and precise word matching.</p>
+<p>There have also been works that utilize neural networks to enhance the performance of sparse retrieval from a semantic aspect. For example, word embedding techniques like word2vec are used to get a better measure of semantic similarity between query and document terms, pre-trained models like BERT and DeepCT are used to predict term weights (&ldquo;importance&rdquo;) instead of traditional term frequency, and term expansion methods are used to improve recall.</p>
+<h4 id="dense-retrieval-with-vectorized-indexes" class="headerLink">
+    <a href="#dense-retrieval-with-vectorized-indexes" class="header-mark"></a>Dense Retrieval with Vectorized Indexes</h4><p>In Dense Retrieval, each of the documents in the corpus is encoded into a dense vector through a neural network. These low-dimensional dense representations are used to build a vectorized index. During retrieval, it embeds the input query into the same latent space and calculates embedding similarities between the query and documents, through methods like inner product, cosine similarity, and efficient K-nearest neighbor search. These similarity scores are utilized as estimated relevance scores for effective retrieval. Techniques like Approximate Nearest Neighbor Search (ANNS) and Product Quantization (PQ) can be used to improve the retrieval efficiency.</p>
+<p>Dense retrieval models have been further enhanced with optimizations such as negative sampling strategies such as in-batch negatives and hard negative mining, lightweight interaction layers, knowledge distillation, pre-training on pseudo-query and document pairs, fine-tuning with large-scale pre-trained language models, etc. resulting in state-of-the-art performance and an industry-wide adoption of dense retrieval. The most common dense retrieval methods use bi-encoders (also called, <em>dual encoders</em>) which are often based on a pretrained language model such as BERT. These bi-encoders encode queries and documents into low-dimensional dense representations instead of the high-dimensional sparse representations found in techniques like BM25. These bi-encoders perform some of the heavy computations like extracting the dense embeddings of items in the corps in an offline fashion, which combined with low latency inference using ANNS or maximum inner product search (MIPS) has made them the current de facto implementation of document retrieval.</p>
+<h4 id="ranking" class="headerLink">
+    <a href="#ranking" class="header-mark"></a>Ranking</h4><p>The goal of the ranking model is to determine the relevance degree of each candidate document given a query. There has been a wide variety of ranking algorithms proposed over the years, such as vector space models, probabilistic models, learning-to-rank models, and neural ranking models. Additionally, several pre-training tasks, such as the Inverse Cloze Task (ICT) and Representative Words Prediction (ROP), have been proposed to enhance the performance of downstream ranking tasks.</p>
+<h3 id="shortcomings-of-the-traditional-paradigm" class="headerLink">
+    <a href="#shortcomings-of-the-traditional-paradigm" class="header-mark"></a>Shortcomings of the Traditional Paradigm</h3><p>Sparse retrieval techniques are known for their simplicity and effectiveness, but they often fail to capture rich semantic connections between queries and documents. Methods like BM25 rely on lexical overlap, term frequency heuristics, and inverse document frequency, thereby failing to match documents that have minor word overlap but are semantically related. On the other hand, dense retrieval goes beyond lexical overlap and captures rich semantic and contextual information as a way to alleviate the vocabulary mismatch problem. But it can also suffer from low precision as the precise match between tokens is ignored.</p>
+<p>Despite their wide adoption and popularity, bi-encoder models suffer from issues such as embedding space bottleneck, information loss, and limited expressiveness due to fixed-size embeddings, and lack of fine-grained interactions between embeddings. Overall, the following issues with the traditional &ldquo;<em>index-retrieve-then-rank</em>&rdquo; framework build the motivation for generative retrieval systems.</p>
+<ul>
+<li>During training, the heterogeneous components in the traditional pipeline are difficult to jointly optimize in an end-to-end way towards a global objective. It also leads to errors accumulating and propagating among the sequential components.</li>
+<li>At the inference stage, it requires a large document index to search over the corpus, leading to significant memory consumption. This memory footprint further increases linearly with the corpus size.</li>
+<li>In a dual encoder setup, the representation for the queries and documents are obtained independently allowing for only shallow interactions between them.</li>
+<li>ANN algorithms require a strong assumption for the Euclidean space, so bi-encoders have to adopt simple functions such as cosine similarity which is unable to incorporate deep query-document interactions.</li>
+<li>By limiting the query and document representations to a single fixed-size dense vector, dual encoders also potentially miss fine-grained information when capturing the similarity between two vector representations. The problem is even more critical in the case of multi-hop retrieval <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</li>
+<li>An appropriately hard set of negative data has to be subsampled at training time.</li>
+</ul>
+<h3 id="generative-retrieval" class="headerLink">
+    <a href="#generative-retrieval" class="header-mark"></a>Generative Retrieval</h3><p>Generative Retrieval is fundamentally different from the long-standing &ldquo;<em>index-retrieve-then-rank</em>&rdquo; paradigm. This model-based IR system collapses the indexing, retrieval, and ranking components to a single consolidated model <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. In this framework, a single generative model, such as a Transformer-based model, is used to directly return relevant information corresponding to a query, without utilizing any explicit document indexes. The model parameters encode the semantic information of documents and hence it can be regarded as a <em>differentiable indexer</em> which can be optimized end-to-end <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. This design employs the sequence-to-sequence paradigm with an encoder-decoder architecture, such as T5 and BART, and generates the output left-to-right, token-by-token in an autoregressive fashion conditioned on context. Different research groups have referred to this paradigm with different names, such as Autoregressive Search Engine <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, Differentiable Search Index (DSI) <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, and Neural Corpus Indexer (NCI) <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>. Interested readers may refer to the blueprint that Metzler et al. proposed for model-based IR paradigm<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/generative-retrieval/generative_retrieval_intro.png" title="Traditional IR pipeline vs Genrative Retrieval" data-thumbnail="/img/posts/2023/generative-retrieval/generative_retrieval_intro.png" data-sub-html="<h2>Traditional IR pipeline vs Genrative Retrieval. Source: [^7]</h2><p>Traditional IR pipeline vs Genrative Retrieval</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/generative-retrieval/generative_retrieval_intro.png"
+            srcset="/img/posts/2023/generative-retrieval/generative_retrieval_intro.png, /img/posts/2023/generative-retrieval/generative_retrieval_intro.png 1.5x, /img/posts/2023/generative-retrieval/generative_retrieval_intro.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/generative-retrieval/generative_retrieval_intro.png">
+    </a><figcaption class="image-caption">Traditional IR pipeline vs Genrative Retrieval. Source: [^7]</figcaption>
+    </figure></p>
+<p>Generative Retrieval offers the following advantages:</p>
+<ul>
+<li>It simplifies the retrieval pipeline by replacing the large external index with an internal index (i.e., model parameters), thereby greatly reducing the memory cost.</li>
+<li>The knowledge of all documents in the corpus, that is encoded into the model parameters, can be optimized during the model training end-to-end towards a global objective for IR tasks <sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>.</li>
+<li>It improves generalization ability by forcing the model to explain every token in the question and document using cross-attentions and enables complete capture of relevance between queries and documents.</li>
+<li>Dense Retrieval models rely on contrastive learning to distinguish positives from negatives, which is inconsistent with the language models&rsquo; training objective. Generative retrieval allows for better exploitation of the capabilities of large language models, such as exploiting the knowledge learned during pre-training.</li>
+</ul>
+<h2 id="inputs-and-outputs" class="headerLink">
+    <a href="#inputs-and-outputs" class="header-mark"></a>Inputs and Outputs</h2><p>During training, the model learns to map the textual representation of documents to output targets, such as document identifiers or an entire text sequence like a title, while also learning to fetch the same targets when it receives a relevant query as input. Different lines of research have explored multiple design choices here.</p>
+<h3 id="document-representation" class="headerLink">
+    <a href="#document-representation" class="header-mark"></a>Document Representation</h3><p>A straightforward way to represent a document is to use a text span from the document. For example, DSI<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> uses a strategy called <em>FirstP</em> which utilizes the first 64 tokens from each document. The authors also propose a Set Indexing strategy that de-duplicates repeated terms and removes stopwords and an Inverted Index strategy that maps chunked documents (as opposed to entire documents) to identifiers. Similarly, NCI<sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> leverages a method called <em>Document As Query</em> (DaQ), which randomly selects 10 chunks of 64 consecutive tokens.</p>
+<h3 id="output-representation" class="headerLink">
+    <a href="#output-representation" class="header-mark"></a>Output Representation</h3><p>Current generative retrieval methods either predict a unique identifier corresponding to each document, or take semantic text pieces, such as titles, URLs, and substrings as identifiers. The former approach requires additional memorization of one-to-one mappings between identifiers and corresponding documents, while the latter approach usually requires a heuristic function to transform predicted identifiers into a ranked passage list <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
+<ul>
+<li>
+<p>De Cao et al. <sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> proposed one of the earliest generative retrieval models called <strong>GENRE</strong> (Generative Entity Retrieval) in which they used the autoregressive BART model to perform entity retrieval. GENRE retrieves entities by generating their names (such as Wikipedia page titles) of documents through a sequence-to-sequence model.</p>
+</li>
+<li>
+<p>Chen et al. <sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup> proposed a generative model called <strong>GERE</strong> (Generative Evidence Retrieval) for fact-checking tasks, which generates the document titles as well as evidence sentence identifiers.</p>
+</li>
+<li>
+<p>Tay et al. <sup id="fnref2:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> devised the <strong>DSI</strong> (Differentiable Search Index) that first assigns a unique ID to each item in the corpus, and then performs retrieval with a T5 model by directly generating relevant document identifiers corresponding to the query. The authors also explored different ways to obtain these document identifiers.</p>
+</li>
+<li>
+<p>Bevilacqua et al. <sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> proposed the <strong>SEAL</strong> (Search Engines with Autoregressive LMs) model which considers all n-grams in the passage as identifiers and retrieves an item (paragraph or document) by finding the item containing the generated n-gram using an FM index.</p>
+</li>
+<li>
+<p>Lee et al. <sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> proposed <strong>GMR</strong> (Generative Multi-hop Retrieval) for applying generative retrieval to multi-hop retrieval tasks. Their model generates the entire text of the target paragraph.</p>
+</li>
+<li>
+<p>Li et al. <sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> proposed <strong>MINDER</strong> ( Multiview Identifiers Enhanced Generative Retrieval) that simultaneously utilized multiple types of identifiers, including titles, substrings, and pseudo-queries.</p>
+</li>
+<li>
+<p>Zhou et al. <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> proposed <strong>Ultron</strong> (Ultimate Retriever on Corpus) that suggested using either document URLs (split by <code>/</code> and reversed), document title and domain, or a quantization-based semantic ID as target.</p>
+<p>$docid_{URL} = \begin{cases} \text{reversed URL}, &amp; \text{if}\ \text{title length} \le L \ \text{title+domain}, &amp; \text{otherwise} \end{cases} $</p>
+</li>
+<li>
+<p>Ren et al.<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup> proposed <strong>TOME</strong> (Two-stage Model-based Retrieval) that solely utilizes tokenized URLs as the identifier, without any additional processing. <strong>LLM-URL</strong> proposed by Ziems et al.<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup> uses Wikipedia URLs with <code>https://en.wikipedia.org/wiki/</code> appended to the end of the prompt to encourage the generation of URLs.</p>
+</li>
+</ul>
+<h3 id="document-identifiers" class="headerLink">
+    <a href="#document-identifiers" class="header-mark"></a>Document Identifiers</h3><p>Autoregressively generating document identifiers token-by-token as output, instead of generating strings of passages directly, can help in reducing useless information in the output while also making it easier for the model to memorize and learn during training. However, the identifiers must be distinctive enough to represent a passage. DSI was the first system to assign an identifier for each document as the target. Since then several researchers have proposed different ways to create high-quality identifiers for effective generative retrieval.</p>
+<h4 id="unstructured-atomic-identifiers" class="headerLink">
+    <a href="#unstructured-atomic-identifiers" class="header-mark"></a>Unstructured Atomic Identifiers</h4><p>One of the simplest methods that DSI suggested was to assign each document an arbitrary random integer identifier. The role of decoding is then to learn a probability distribution over the identifiers. Similar to the output layer of a standard language model, one logit is used for each unique document identifier (docid). To retrieve a list of top-k documents, these output logits can simply be sorted.</p>
+<h4 id="naively-structured-string-identifiers" class="headerLink">
+    <a href="#naively-structured-string-identifiers" class="header-mark"></a>Naively Structured String Identifiers</h4><p>DSI also tried treating the above unique integer identifier as tokenizable strings. In this approach, the docid string is sequentially decoded one token at a time, thereby eliminating the need for a large softmax output space or learning embeddings for each individual docid. An approximation (partial beam search tree) can be used to construct the top-k retrieval scores.</p>
+<h4 id="semantically-structured-identifiers" class="headerLink">
+    <a href="#semantically-structured-identifiers" class="header-mark"></a>Semantically Structured Identifiers</h4><p><strong>DSI</strong> authors hypothesized that enriching the docids with semantic structure can lead to better retrieval performance. They proposed an unsupervised preprocessing step that employed a hierarchical k-means clustering algorithm over document embeddings to create 10 clusters. Each document is assigned an identifier based on its cluster number and the number of documents within the cluster.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/generative-retrieval/dsi_hierarchical_clustering.png" title="DSI Hierarchical Clustering" data-thumbnail="/img/posts/2023/generative-retrieval/dsi_hierarchical_clustering.png" data-sub-html="<h2>DSI&#39;s Hierarchical Clustering</h2><p>DSI Hierarchical Clustering</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/generative-retrieval/dsi_hierarchical_clustering.png"
+            srcset="/img/posts/2023/generative-retrieval/dsi_hierarchical_clustering.png, /img/posts/2023/generative-retrieval/dsi_hierarchical_clustering.png 1.5x, /img/posts/2023/generative-retrieval/dsi_hierarchical_clustering.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/generative-retrieval/dsi_hierarchical_clustering.png">
+    </a><figcaption class="image-caption">DSI's Hierarchical Clustering</figcaption>
+    </figure></p>
+<p><strong>NCI</strong> further extended DSI&rsquo;s semantic identifier method by prepending each digit in the docid with a position number and proposed a novel prefix-aware weight-adaptive auto-regressive decoder that specifically takes into account the prefixes in semantic docids. By doing this, the same token will be assigned different embedding vectors at different positions in the identifiers.</p>
+<p>In <strong>MINDER</strong> <sup id="fnref1:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>, the authors argue that a single type of identifier is usually not sufficient to accurately represent a document. So they propose generating a multiview identifier that combines information from complementary sources, such as titles, substrings, and pseudo-queries to facilitate holistic ranking of documents from multiple perspectives. Title information could help with general queries, substring can respond to more detailed ones, and the synthetic text could cover some complex and difficult queries.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/generative-retrieval/minder_overview.png" title="Overview of MINDER Method" data-thumbnail="/img/posts/2023/generative-retrieval/minder_overview.png" data-sub-html="<h2>Overview of MINDER Method</h2><p>Overview of MINDER Method</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/generative-retrieval/minder_overview.png"
+            srcset="/img/posts/2023/generative-retrieval/minder_overview.png, /img/posts/2023/generative-retrieval/minder_overview.png 1.5x, /img/posts/2023/generative-retrieval/minder_overview.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/generative-retrieval/minder_overview.png">
+    </a><figcaption class="image-caption">Overview of MINDER Method</figcaption>
+    </figure></p>
+<p>Some researchers have also utilized learned quantization for constructing document identifiers. For example, <strong>Ultron</strong> <sup id="fnref2:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> suggested dividing the <code>D</code>-dimensional document vectors into <code>m</code> groups and then performing k-means clustering to obtain <code>k</code> cluster centers. Each document is then represented as a set of <code>m</code> cluster IDs. In <strong>GENRET</strong>, Sun et al. <sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup> used an auto-encoding framework to learn semantic docids in an end-to-end manner. In <strong>TIGER</strong> (Transformer Index for Generative Recommenders), Rajput et al. <sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup> proposed generative retrieval for building a sequential recommender system. They used a hierarchical method called RQ-VAE to generate a tuple of codewords, called semantic ID, for each item.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/generative-retrieval/tiger_overview.png" title="TIGER Framework for Sequential Recommendations" data-thumbnail="/img/posts/2023/generative-retrieval/tiger_overview.png" data-sub-html="<h2>TIGER Framework for Sequential Recommendations</h2><p>TIGER Framework for Sequential Recommendations</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/generative-retrieval/tiger_overview.png"
+            srcset="/img/posts/2023/generative-retrieval/tiger_overview.png, /img/posts/2023/generative-retrieval/tiger_overview.png 1.5x, /img/posts/2023/generative-retrieval/tiger_overview.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/generative-retrieval/tiger_overview.png">
+    </a><figcaption class="image-caption">TIGER Framework for Sequential Recommendations</figcaption>
+    </figure></p>
+<p>In <strong>AutoTSG</strong> (Auto-regressive Search Engine with Term-Set Generation), Zhang et al.<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup> proposed an unordered term-based document identifier. The authors introduced a set-oriented strategy in which any permutation of the term-set identifier will lead to the retrieval of the corresponding document. This relieves the seq2seq of the requirement for the exact generation of the document identifier. It also prevents cascading errors where an incorrect prediction made at any step of the generation process leads to an incorrect or invalid retrieval result.</p>
+<h2 id="modes-of-operation" class="headerLink">
+    <a href="#modes-of-operation" class="header-mark"></a>Modes of Operation</h2><p>This section describes how generative retrieval unifies the two basic modes of operation, i.e., indexing and retrieval in an end-to-end way by leveraging two sequence-to-sequence tasks.</p>
+<h3 id="indexing--phase" class="headerLink">
+    <a href="#indexing--phase" class="header-mark"></a>Indexing  Phase</h3><p>During training, the model learns to generate the document identifier given the document content. This learned mapping between the document&rsquo;s content and the corresponding identifier is encoded in the parameters of the model. The two main objectives at this stage are:</p>
+<ol>
+<li>
+<p><em>Generate identifiers for documents</em>: We looked at different ways to do this in the previous section.</p>
+</li>
+<li>
+<p><em>Establish a semantic mapping from documents to identifiers</em>: During the indexing phase, the generative model aims to memorize the mapping of document collections with corresponding identifiers. Various researchers have suggested different ways to enhance this association.</p>
+<ul>
+<li>
+<p><strong>DSI</strong>: The authors of DSI also proposed some variants of sequence-to-sequence tasks for indexing: <em>Inputs2Target</em> (learn mapping from document tokens to identifiers), <em>Targets2Inputs</em> (learn mapping from identifiers to document tokens), <em>Bidirectional</em> (use both <em>Inputs2Target</em> and <em>Targets2Inputs</em> distinguished with a prefix token), <em>Span Corruption</em> (prefix identifiers to documents tokens and learn with span correction objective).</p>
+</li>
+<li>
+<p><strong>CorpusBrain</strong>: In CorpusBrain, Chen et al. <sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup> showed that a strong generative retrieval model can be learned with a set of adequately designed pre-training tasks, and be adopted to improve a variety of downstream tasks with further fine-tuning. The pre-training data in this context is the positive pairs of query and document identifiers. They propose three pre-training tasks: <em>Inner Sentence Selection</em> (treat sentences randomly drawn from a document as a pseudo-query), <em>Lead Paragraph Selection</em> (treat top paragraph randomly drawn from documents as pseudo-queries), and <em>Hyperlink Identifier Prediction</em> (treats anchor text as pseudo-queries).</p>
+</li>
+<li>
+<p><strong>Ultron</strong>: In Ultron, the authors propose two stages of pre-training to learn more enriched mappings. In the &ldquo;<em>General Pretraining</em>&rdquo; step, each document is segmented into passages by fixed-size windows, and passages to identifier pairs are used for training. The paper also extracts important words (based on tf-idf) and learns to map this set of terms to identifiers within the same training step. In the &ldquo;<em>Search-oriented Pretraining</em>&rdquo; step, a DocT5Query model is used to generate queries for the first passage in documents, and the corresponding query and document identifiers pairs are used for training the model. Finally, to adapt the model to downstream tasks, it is fine-tuned on the downstream dataset in a supervised fashion.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/generative-retrieval/ultron_training_workflow.png" title="Ultron&amp;rsquo;s Training Workflow" data-thumbnail="/img/posts/2023/generative-retrieval/ultron_training_workflow.png" data-sub-html="<h2>Ultron&#39;s Training Workflow</h2><p>Ultron&amp;rsquo;s Training Workflow</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/generative-retrieval/ultron_training_workflow.png"
+            srcset="/img/posts/2023/generative-retrieval/ultron_training_workflow.png, /img/posts/2023/generative-retrieval/ultron_training_workflow.png 1.5x, /img/posts/2023/generative-retrieval/ultron_training_workflow.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/generative-retrieval/ultron_training_workflow.png">
+    </a><figcaption class="image-caption">Ultron's Training Workflow</figcaption>
+    </figure></p>
+</li>
+<li>
+<p><strong>DynamicRetriever</strong>: Similarly, Zhou et al. <sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup> proposed 3 pre-training tasks: learning passage to identifier mapping, learning sampled words to identifiers mapping, and learning n-grams (that are common across documents) to identifiers mapping. These tasks are helpful for the model to get a local view of document content and to distinguish between similar documents. The authors also propose a variant called <em>OverDense</em> that uses a dual encoder model (fine-tuned with query-document pairs) to initialize the projection matrix of the decoder with dense vectors of each document, before learning the query-identifier mapping.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>A common idea among these works is that the model is pretrained to memorize the document collection while aligning it with corresponding identifiers. At the fine-tuning stage, the model learns to generate identifiers from query text (retrieval phase).</p>
+<h3 id="retrieval-phase" class="headerLink">
+    <a href="#retrieval-phase" class="header-mark"></a>Retrieval Phase</h3><p>As mentioned above, during retrieval the trained model gets an input query and autoregressively generates a document identifier. The efficiency of the decoding step is greatly influenced by how document identifiers are structured. The generated identifier may not always be a valid identifier. Hence, the constrained beam search algorithm is used to decode the most likely document identifiers from the predefined candidate set. The generation probability of each identifier is used for ranking the documents <sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup>.</p>
+<h2 id="model-training" class="headerLink">
+    <a href="#model-training" class="header-mark"></a>Model Training</h2><p>Generative Retrieval is implemented through a sequence-to-sequence modeling technique with a pre-trained language model like T5 as the backbone. The model training is optimized cross-entropy loss and is trained with teacher forcing. Note that the DSI paper reported that indexing and fine-tuning together in a multi-task setup yields better results than training these tasks separately. The multi-task learning is:</p>
+<p>$$ L_{DSI}^{\theta} = \sum_{d_i \in D} log_{P(i|T5_{\theta}(d_i))} + \sum_{q_j \in Q} log_{P(i|T5_{\theta}(q_j))} $$</p>
+<p>Both indexing and fine-tuning use the sequence-to-sequence cross-entropy loss with teacher forcing to update the model&rsquo;s parameters and the generation stops when decoding a special EOS token. Given a text query or document as input, the basic &ldquo;text-to-id&rdquo; task can be denoted as: $ score(d|q) = p_{\theta}(y|q) = \prod_{i=1}^{N} p_{\theta}(y_i|y_{&lt;i},q) $, where <code>y</code> is the string docid of a document <code>d</code> with <code>N</code> tokens, and $\theta$ model parameters.</p>
+<p>More specifically, we can think of this paradigm in terms of two tasks: mapping a unique identifier set $\textit{I}(D)$ to each document $D$, and mapping $\Theta(.)$. For an input query $Q$, the model estimates the relevance between $Q$ and $D$ based on the following generation likelihood:</p>
+<p>$$ Rel(Q,D) = Agg({\prod_{i=1}^{|I|} Pr(I_i | I_{&lt;i} Q;\Theta): I \in \textit{I}}) $$</p>
+<p>where $I$ is an element of $\textit{I}(D)$; $Pr(I_i | I_{&lt;i}Q;\Theta)$ indicates the generation probability of $i$th element $I_i$, given the prefix $I_{&lt;i}$, the query $Q$, and the Seq2Seq model $\Theta$. The function $Agg(.)$ stands for Aggregation of the likelihood for sequences within $\textit{I}(D)$. Methods like DSI use a single sequence for document identification, hence their $Agg(.)$ will simply be the identity function, while SEAL uses an intersective scoring function to aggregate the generation likelihood of different n-grams <sup id="fnref:21"><a href="#fn:21" class="footnote-ref" role="doc-noteref">21</a></sup>.</p>
+<p>Free-form generation might result in an invalid output identifier. To ensure that the generated ID exists in the corpus, a constrained beam search is applied to guide the decoder to search in limited token space at each step. These constraints can be defined based on a prefix tree built on all docid strings. Decoding along the prefix tree ensures that the generated docid exists in the corpus. Finally, the autoregressive scores during beam search a ranked list of top-k results can be returned <sup id="fnref3:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. A recent study found that less than 1 out of 20 DSI-based generation beams were invalid <sup id="fnref:22"><a href="#fn:22" class="footnote-ref" role="doc-noteref">22</a></sup>.</p>
+<h2 id="optimizations" class="headerLink">
+    <a href="#optimizations" class="header-mark"></a>Optimizations</h2><p>This section lists some of the ideas proposed by researchers to improve the efficiency and effectiveness of generative retrieval models.</p>
+<h3 id="query-generation" class="headerLink">
+    <a href="#query-generation" class="header-mark"></a>Query Generation</h3><p>Some recent research works have shown that generative retrieval can greatly benefit from performing indexing with generated synthetic queries <sup id="fnref:23"><a href="#fn:23" class="footnote-ref" role="doc-noteref">23</a></sup>. The key idea here is that at inference time the generative retrieval model does not explicitly know about the content of each document. So it is critical for the identifiers to be aware of document semantics. There also exists a mismatch between the training data distributions of indexing and retrieval. At indexing time, long text from documents is fed as input, while queries at retrieval time are usually much shorter. The docT5query is one of the most commonly utilized models for generating synthetic queries from documents to augment the training data. These pseudo-queries combined with pre-training tasks help to tackle the limited availability of labeled data.</p>
+<p><strong>NCI</strong> paper showed that training with augmented queries allowed the model to better understand the semantic meanings of each document. <strong>Ultron</strong> also utilized generated queries in the &ldquo;<em>Search-oriented Pretraining</em>&rdquo; step. Similarly in <strong>DSI-QG</strong>, Zhuang et al. <sup id="fnref1:23"><a href="#fn:23" class="footnote-ref" role="doc-noteref">23</a></sup> replace the indexing phase in DSI with a new indexing method in which only the pairs of pseudo-queries (generated from documents) and document identifiers are used for training the model. This is done so that during both indexing and retrieval, the model only sees short queries as input data. The authors also generalize their framework with cross-lingual query generation and suggest an extension in which a cross-encoder ranker is used to rank all the generated queries and only the top-k ranked queries are used to represent the original document. In <strong>SE-DSI</strong> (Semantically-Enhanced DSI), Tang et al.<sup id="fnref:24"><a href="#fn:24" class="footnote-ref" role="doc-noteref">24</a></sup> perform elaboration by concatenating each document with a query generated from it and helping the model do rehearsal (document memorization) with important parts of the document.</p>
+<h3 id="external-memory" class="headerLink">
+    <a href="#external-memory" class="header-mark"></a>External Memory</h3><p>Lee et al.<sup id="fnref:25"><a href="#fn:25" class="footnote-ref" role="doc-noteref">25</a></sup> argued that the generative retrieval models are limited in their capacity because they solely rely on encoding all the information about the document corpus in their parameters. To overcome this limitation, they proposed using nonparametric contextualized vocab embeddings (external memory) rather than vanilla vocab embedding matrix as decoder vocab embeddings for both the training and the inference steps. This allows the model to use both the parametric and nonparametric space, and a token can now also have multiple token embeddings. The authors also propose three different contextualized embedding encoders.</p>
+<h3 id="distillation" class="headerLink">
+    <a href="#distillation" class="header-mark"></a>Distillation</h3><p>Chen et al.<sup id="fnref:26"><a href="#fn:26" class="footnote-ref" role="doc-noteref">26</a></sup> proposed a multi-task distillation approach to improve the generative retriever model without altering its structure. The authors utilized a dense retrieval approach to provide effective supervision signals for training the DSI model. A dense retrieval model first selects the top-k text fragments that effectively recall the original documents. These fragments are then added to the training data to provide more unique and comprehensive information.</p>
+<h3 id="learning-to-rank" class="headerLink">
+    <a href="#learning-to-rank" class="header-mark"></a>Learning To Rank</h3><p>Li et al.<sup id="fnref1:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> proposed training the generative retrieval model with an additional passage rank loss for it to learn how to rank passages directly. The authors utilized a margin-based rank loss to assign higher scores to positive passages than to negative passages. This method only requires an additional training step and does not burden the inference stage.</p>
+<h2 id="continual-learning" class="headerLink">
+    <a href="#continual-learning" class="header-mark"></a>Continual Learning</h2><p>To add a new document to the dual encoder system, it is first mapped to the joined space using the trained document encoder and then the corresponding vector is included in the nearest neighbor search. Generative Retrieval methods have a significant limitation in that it is not easy to add new documents after a model is trained. Naively retraining the model on all new and old datasets on a regular basis can be very costly and it can also lead to catastrophic forgetting of existing documents (prediction for documents goes from correct to incorrect over the course of learning). The fact that the generative retrieval problem setup has only one labeled example per class makes this problem even worse. Moreover, most of the real-world applications of search systems expect the new documents to be indexed and available in real-time. To address this, several researchers have proposed solutions for continual learning where past information is preserved and used to efficiently learn new concepts.</p>
+<p>In <strong>DSI++</strong>, Mehta et al.<sup id="fnref:27"><a href="#fn:27" class="footnote-ref" role="doc-noteref">27</a></sup> experimented with the DSI model and showed that almost 88% of documents went through forgetting at least once, and continuously updating with the indexing objective led to forgetting on the retrieval task. They proposed two methods to enable fast model updates and prevent forgetting. First, they suggested modifying the training dynamics by optimizing for flatter loss basins using the Sharpness-Aware Minimization (SAM) optimizer. Recent research has shown that models in flatter loss basins tend to undergo less forgetting. Additionally, they proposed using a &ldquo;<em>generative memory</em>&rdquo; for training by sampling pseudo-queries for the already indexed documents and also for the incoming batch of new documents. They showed that with their enhancements, the DSI model memorized 12% more documents.</p>
+<p>In <strong>StreamingIR</strong>, Yoon et al.<sup id="fnref:28"><a href="#fn:28" class="footnote-ref" role="doc-noteref">28</a></sup> proposed a benchmark to quantify the generalizability of retrieval methods on dynamically changing corpora. In <strong>IncDSI</strong>, Kishore et al.<sup id="fnref:29"><a href="#fn:29" class="footnote-ref" role="doc-noteref">29</a></sup> formulate the addition of new documents as a constrained optimization problem that makes minimal changes to the network parameters. They leverage the fact that the output classification layer of the DSI model can be viewed as a matrix where each row corresponds to a document vector. The independence among these vectors allows them to formulate the problem to find the optimal document vector for each new document. Adding a new document class is then done by using pseudo-queries for the new document and ensuring those queries map to the new document. With their method, they are able to add documents in real time (about 20-50ms per document) without retraining the model on the entire or partial dataset.</p>
+<p>In <strong>CLEVER</strong> (Continual-Learner for generative Retrieval), Chen et al.<sup id="fnref:30"><a href="#fn:30" class="footnote-ref" role="doc-noteref">30</a></sup> a method called <em>Incremental Product Quantization</em> which updates a partial quantization codebook based on two adaptive thresholds. They use quantization to generate PQ codes for documents as docids and represented documents using quantization centroids. The thresholds dictate the updates for centroid representations based on the distance between old and new documents in the representation space. Additionally, they also propose using memory-augmented learning to form meaningful connections between old and new documents.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/generative-retrieval/clever_ipq.png" title="CLEVER&amp;rsquo;s IPQ" data-thumbnail="/img/posts/2023/generative-retrieval/clever_ipq.png" data-sub-html="<h2>CLEVER&#39;s IPQ method for updating quantization centroids to add new documents</h2><p>CLEVER&amp;rsquo;s IPQ</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/generative-retrieval/clever_ipq.png"
+            srcset="/img/posts/2023/generative-retrieval/clever_ipq.png, /img/posts/2023/generative-retrieval/clever_ipq.png 1.5x, /img/posts/2023/generative-retrieval/clever_ipq.png 2x"
+            sizes="auto"
+            alt="/img/posts/2023/generative-retrieval/clever_ipq.png">
+    </a><figcaption class="image-caption">CLEVER's IPQ method for updating quantization centroids to add new documents</figcaption>
+    </figure></p>
+<h2 id="comparative-performance" class="headerLink">
+    <a href="#comparative-performance" class="header-mark"></a>Comparative Performance</h2><p>The memory footprint of generative models is much smaller than that of traditional sparse or dense retrieval methods. The memory footprint of generative methods is only dependent on the model parameters, while for traditional methods it increases linearly with the size of the document collection <sup id="fnref1:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. Several studies have suggested that the generative retrieval methods when compared with bi-encoders, perform worse when only supervised data is used, perform better when only unsupervised data is available, and perform competitively when both unsupervised and supervised data is used and a continual learning strategy is employed <sup id="fnref1:28"><a href="#fn:28" class="footnote-ref" role="doc-noteref">28</a></sup>. Query augmentation<sup id="fnref2:23"><a href="#fn:23" class="footnote-ref" role="doc-noteref">23</a></sup> and pre-training<sup id="fnref4:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> techniques mentioned above have also been shown to help improve the otherwise lackluster vanilla DSI model performance (when compared with dual encoders).</p>
+<p>Several studies offer ablation experiments to identify performance and efficiency metrics corresponding to different components in generative retrieval <sup id="fnref1:22"><a href="#fn:22" class="footnote-ref" role="doc-noteref">22</a></sup> <sup id="fnref2:28"><a href="#fn:28" class="footnote-ref" role="doc-noteref">28</a></sup>. Pradeep et al.<sup id="fnref2:22"><a href="#fn:22" class="footnote-ref" role="doc-noteref">22</a></sup> also pointed out that a majority of work research work in generative retrieval only evaluated the model performances on small corpora (order of 100K document), but the retrieval performance drops significantly when the evaluation is done on large corpora. Other evaluations also confirm that the generative retrieval performance still lags behind the state-of-the-art retrieval models <sup id="fnref1:24"><a href="#fn:24" class="footnote-ref" role="doc-noteref">24</a></sup> <sup id="fnref1:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>. Liu et al.<sup id="fnref:31"><a href="#fn:31" class="footnote-ref" role="doc-noteref">31</a></sup> measured the out-of-distribution (OOD) generalization capability of several representative generative retrieval models against dense retrieval models and concluded that generative models still require a lot of enhancements.</p>
+<h2 id="summary" class="headerLink">
+    <a href="#summary" class="header-mark"></a>Summary</h2><p>Model-based generative retrieval has emerged as a new paradigm in text retrieval. This framework eliminates the large corpus index used in traditional retrieval methods and memorizes the corpus in its model parameters. It employs a sequence-to-sequence generator to directly generate document identifiers or explicit terms as output, which improves the capturing of relevance between queries and documents and also offers an end-to-end differentiable architecture. Despite simplifying retrieval and reducing the memory footprint of retrieval systems, generative retrieval has a lot of room for improvement when compared with state-of-the-art models. This article provides an introduction to generative retrieval as well as a deep dive into the latest research works being done to optimize, extend, and evaluate this paradigm.</p>
+<h2 id="references" class="headerLink">
+    <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Lee, H., Yang, S., Oh, H., &amp; Seo, M. (2022). Generative Multi-hop Retrieval. <em>Conference on Empirical Methods in Natural Language Processing</em>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Chen, J., Zhang, R., Guo, J., Liu, Y., Fan, Y., &amp; Cheng, X. (2022). CorpusBrain: Pre-train a Generative Retrieval Model for Knowledge-Intensive Language Tasks. <em>Proceedings of the 31st ACM International Conference on Information &amp; Knowledge Management</em>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Zhou, Y., Yao, J., Dou, Z., Wu, L.Y., Zhang, P., &amp; Wen, J. (2022). Ultron: An Ultimate Retriever on Corpus with a Model-based Indexer. <em>ArXiv, abs/2208.09257</em>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref4:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Bevilacqua, M., Ottaviano, G., Lewis, P., Yih, W., Riedel, S., &amp; Petroni, F. (2022). Autoregressive Search Engines: Generating Substrings as Document Identifiers. <em>ArXiv, abs/2204.10628</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Tay, Y., Tran, V.Q., Dehghani, M., Ni, J., Bahri, D., Mehta, H., Qin, Z., Hui, K., Zhao, Z., Gupta, J., Schuster, T., Cohen, W.W., &amp; Metzler, D. (2022). Transformer Memory as a Differentiable Search Index. <em>ArXiv, abs/2202.06991</em>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Wang, Y., Hou, Y., Wang, H., Miao, Z., Wu, S., Sun, H., Chen, Q., Xia, Y., Chi, C., Zhao, G., Liu, Z., Xie, X., Sun, H., Deng, W., Zhang, Q., &amp; Yang, M. (2022). A Neural Corpus Indexer for Document Retrieval. <em>ArXiv, abs/2206.02743</em>.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Metzler, D., Tay, Y., Bahri, D., &amp; Najork, M. (2021). Rethinking Search: Making Experts out of Dilettantes. <em>ArXiv, abs/2105.02274</em>.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>Chen, J., Zhang, R., Guo, J., de Rijke, M., Chen, W., Fan, Y., &amp; Cheng, X. (2023). Continual Learning for Generative Retrieval over Dynamic Corpora.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>Li, Y., Yang, N., Wang, L., Wei, F., &amp; Li, W. (2023). Learning to Rank in Generative Retrieval. <em>ArXiv, abs/2306.15222</em>.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>De Cao, N., Izacard, G., Riedel, S., &amp; Petroni, F. (2020). Autoregressive Entity Retrieval. <em>ArXiv, abs/2010.00904</em>.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>Chen, J., Zhang, R., Guo, J., Fan, Y., &amp; Cheng, X. (2022). GERE: Generative Evidence Retrieval for Fact Verification. <em>Proceedings of the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval</em>.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p>Li, Y., Yang, N., Wang, L., Wei, F., &amp; Li, W. (2023). Multiview Identifiers Enhanced Generative Retrieval. <em>Annual Meeting of the Association for Computational Linguistics</em>.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p>Ren, R., Zhao, W.X., Liu, J., Wu, H., Wen, J., &amp; Wang, H. (2023). TOME: A Two-stage Approach for Model-based Retrieval. <em>ArXiv, abs/2305.11161</em>.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:14">
+<p>Ziems, N., Yu, W., Zhang, Z., &amp; Jiang, M. (2023). Large Language Models are Built-in Autoregressive Search Engines. <em>ArXiv, abs/2305.09612</em>.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:15">
+<p>Sun, W., Yan, L., Chen, Z., Wang, S., Zhu, H., Ren, P., Chen, Z., Yin, D., de Rijke, M., &amp; Ren, Z. (2023). Learning to Tokenize for Generative Retrieval. <em>ArXiv, abs/2304.04171</em>.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:16">
+<p>Rajput, S., Mehta, N., Singh, A., Keshavan, R.H., Vu, T.H., Heldt, L., Hong, L., Tay, Y., Tran, V.Q., Samost, J., Kula, M., Chi, E.H., &amp; Sathiamoorthy, M. (2023). Recommender Systems with Generative Retrieval. <em>ArXiv, abs/2305.05065</em>.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:17">
+<p>Zhang, P., Liu, Z., Zhou, Y., Dou, Z., &amp; Cao, Z. (2023). Term-Sets Can Be Strong Document Identifiers For Auto-Regressive Search Engines. <em>ArXiv, abs/2305.13859</em>.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:18">
+<p>Chen, J., Zhang, R., Guo, J., Liu, Y., Fan, Y., &amp; Cheng, X. (2022). CorpusBrain: Pre-train a Generative Retrieval Model for Knowledge-Intensive Language Tasks. <em>Proceedings of the 31st ACM International Conference on Information &amp; Knowledge Management</em>.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:19">
+<p>Zhou, Y., Yao, J., Dou, Z., Wu, L.Y., &amp; Wen, J. (2022). DynamicRetriever: A Pre-training Model-based IR System with Neither Sparse nor Dense Index. <em>ArXiv, abs/2203.00537</em>.&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:20">
+<p>Nguyen, T., &amp; Yates, A. (2023). Generative Retrieval as Dense Retrieval. <em>ArXiv, abs/2306.11397</em>.&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:21">
+<p>Zhang, P., Liu, Z., Zhou, Y., Dou, Z., &amp; Cao, Z. (2023). Term-Sets Can Be Strong Document Identifiers For Auto-Regressive Search Engines. <em>ArXiv, abs/2305.13859</em>.&#160;<a href="#fnref:21" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:22">
+<p>Pradeep, R., Hui, K., Gupta, J., Lelkes, Á.D., Zhuang, H., Lin, J., Metzler, D., &amp; Tran, V.Q. (2023). How Does Generative Retrieval Scale to Millions of Passages? <em>ArXiv, abs/2305.11841</em>.&#160;<a href="#fnref:22" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:22" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:22" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:23">
+<p>Zhuang, S., Ren, H., Shou, L., Pei, J., Gong, M., Zuccon, G., &amp; Jiang, D. (2022). Bridging the Gap Between Indexing and Retrieval for Differentiable Search Index with Query Generation. <em>ArXiv, abs/2206.10128</em>.&#160;<a href="#fnref:23" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:23" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:23" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:24">
+<p>Tang, Y., Zhang, R., Guo, J., Chen, J., Zhu, Z., Wang, S., Yin, D., &amp; Cheng, X. (2023). Semantic-Enhanced Differentiable Search Index Inspired by Learning Strategies. <em>Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</em>.&#160;<a href="#fnref:24" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:24" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:25">
+<p>Lee, H., Kim, J., Chang, H., Oh, H., Yang, S., Karpukhin, V., Lu, Y., &amp; Seo, M. (2022). Nonparametric Decoding for Generative Retrieval. <em>Annual Meeting of the Association for Computational Linguistics</em>.&#160;<a href="#fnref:25" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:26">
+<p>Chen, X., Liu, Y., He, B., Sun, L., &amp; Sun, Y. (2023). Understanding Differential Search Index for Text Retrieval. <em>ArXiv, abs/2305.02073</em>.&#160;<a href="#fnref:26" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:27">
+<p>Mehta, S., Gupta, J., Tay, Y., Dehghani, M., Tran, V.Q., Rao, J., Najork, M., Strubell, E., &amp; Metzler, D. (2022). DSI++: Updating Transformer Memory with New Documents. <em>ArXiv, abs/2212.09744</em>.&#160;<a href="#fnref:27" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:28">
+<p>Yoon, S., Kim, C., Lee, H., Jang, J., &amp; Seo, M. (2023). Continually Updating Generative Retrieval on Dynamic Corpora. <em>ArXiv, abs/2305.18952</em>.&#160;<a href="#fnref:28" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:28" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:28" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:29">
+<p>Kishore, V., Wan, C., Lovelace, J., Artzi, Y., &amp; Weinberger, K.Q. (2023). IncDSI: Incrementally Updatable Document Retrieval. <em>ArXiv, abs/2307.10323</em>.&#160;<a href="#fnref:29" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:30">
+<p>Chen, J., Zhang, R., Guo, J., de Rijke, M., Chen, W., Fan, Y., &amp; Cheng, X. (2023). Continual Learning for Generative Retrieval over Dynamic Corpora. <em>ArXiv, abs/2308.14968</em>.&#160;<a href="#fnref:30" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:31">
+<p>Liu, Y., Zhang, R., Guo, J., Chen, W., &amp; Cheng, X. (2023). On the Robustness of Generative Retrieval Models: An Out-of-Distribution Perspective. <em>ArXiv, abs/2306.12756</em>.&#160;<a href="#fnref:31" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</div>
+		
+        
+
+
+<h2>Related Content</h2>
+<div class="related-container">
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/06/llms-for-recsys-entity-representation/"><img
+        
+        loading="lazy"
+        src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
+        srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
+        title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200" width="400"></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/06/llms-for-recsys-entity-representation/">Representing Users and Items in Large Language Models based Recommender Systems</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/05/shallow-heterogeneous-graphs-rep/"><img
+        
+        loading="lazy"
+        src="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp"
+        srcset="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp, /posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp 1.5x, /posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp"
+        title="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp" height="200" width="400"></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/05/shallow-heterogeneous-graphs-rep/">Shallow Embedding Models for Heterogeneous Graphs</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/05/tuning-llm-for-recsys/"><img
+        
+        loading="lazy"
+        src="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp"
+        srcset="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp, /posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp"
+        title="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp" height="200" width="400"></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/05/tuning-llm-for-recsys/">Tuning Large Language Models for Recommendation Tasks</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/05/chatgpt-for-recsys/"><img
+        
+        loading="lazy"
+        src="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp"
+        srcset="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp, /posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp"
+        title="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp" height="200" width="400"></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/05/chatgpt-for-recsys/">ChatGPT-based Recommender Systems</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/05/shallow-homogeneous-graphs-rep/"><img
+        
+        loading="lazy"
+        src="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp"
+        srcset="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp, /posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp 1.5x, /posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp"
+        title="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp" height="200" width="400"></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/05/shallow-homogeneous-graphs-rep/">Shallow Embedding Models for Homogeneous Graphs</a>
+            </h2>
+        </div>
+    
+
+</div>
+
+
+        <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+      <form action="https://app.convertkit.com/forms/4932644/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="4932644" data-uid="e309c832a6" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800" style="background-color: rgb(249, 250, 251); border-radius: 4px;"><div class="formkit-background" style="opacity: 0.33;"></div><div data-style="minimal"><div class="formkit-header" data-element="header" style="color: rgb(77, 77, 77); font-size: 27px; font-weight: 700;"><h2>Be the First to Know</h2></div><div class="formkit-subheader" data-element="subheader" style="color: rgb(104, 104, 104); font-size: 18px;"><p>Subscribe to get notified when I write a new post.</p></div><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Subscribe</span></button></div><div class="formkit-guarantee" data-element="guarantee" style="color: rgb(77, 77, 77); font-size: 13px; font-weight: 400;"><p>We won't send you spam. Unsubscribe at any time.</p></div><div class="formkit-powered-by-convertkit-container"><a href="https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with ConvertKit</a></div></div><style>.formkit-form[data-uid="e309c832a6"] *{box-sizing:border-box;}.formkit-form[data-uid="e309c832a6"]{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.formkit-form[data-uid="e309c832a6"] legend{border:none;font-size:inherit;margin-bottom:10px;padding:0;position:relative;display:table;}.formkit-form[data-uid="e309c832a6"] fieldset{border:0;padding:0.01em 0 0 0;margin:0;min-width:0;}.formkit-form[data-uid="e309c832a6"] body:not(:-moz-handler-blocked) fieldset{display:table-cell;}.formkit-form[data-uid="e309c832a6"] h1,.formkit-form[data-uid="e309c832a6"] h2,.formkit-form[data-uid="e309c832a6"] h3,.formkit-form[data-uid="e309c832a6"] h4,.formkit-form[data-uid="e309c832a6"] h5,.formkit-form[data-uid="e309c832a6"] h6{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="e309c832a6"] h2{font-size:1.5em;margin:1em 0;}.formkit-form[data-uid="e309c832a6"] h3{font-size:1.17em;margin:1em 0;}.formkit-form[data-uid="e309c832a6"] p{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="e309c832a6"] ol:not([template-default]),.formkit-form[data-uid="e309c832a6"] ul:not([template-default]),.formkit-form[data-uid="e309c832a6"] blockquote:not([template-default]){text-align:left;}.formkit-form[data-uid="e309c832a6"] p:not([template-default]),.formkit-form[data-uid="e309c832a6"] hr:not([template-default]),.formkit-form[data-uid="e309c832a6"] blockquote:not([template-default]),.formkit-form[data-uid="e309c832a6"] ol:not([template-default]),.formkit-form[data-uid="e309c832a6"] ul:not([template-default]){color:inherit;font-style:initial;}.formkit-form[data-uid="e309c832a6"] .ordered-list,.formkit-form[data-uid="e309c832a6"] .unordered-list{list-style-position:outside !important;padding-left:1em;}.formkit-form[data-uid="e309c832a6"] .list-item{padding-left:0;}.formkit-form[data-uid="e309c832a6"][data-format="modal"]{display:none;}.formkit-form[data-uid="e309c832a6"][data-format="slide in"]{display:none;}.formkit-form[data-uid="e309c832a6"][data-format="sticky bar"]{display:none;}.formkit-sticky-bar .formkit-form[data-uid="e309c832a6"][data-format="sticky bar"]{display:block;}.formkit-form[data-uid="e309c832a6"] .formkit-input,.formkit-form[data-uid="e309c832a6"] .formkit-select,.formkit-form[data-uid="e309c832a6"] .formkit-checkboxes{width:100%;}.formkit-form[data-uid="e309c832a6"] .formkit-button,.formkit-form[data-uid="e309c832a6"] .formkit-submit{border:0;border-radius:5px;color:#ffffff;cursor:pointer;display:inline-block;text-align:center;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:15px;overflow:hidden;padding:0;position:relative;vertical-align:middle;}.formkit-form[data-uid="e309c832a6"] .formkit-button:hover,.formkit-form[data-uid="e309c832a6"] .formkit-submit:hover,.formkit-form[data-uid="e309c832a6"] .formkit-button:focus,.formkit-form[data-uid="e309c832a6"] .formkit-submit:focus{outline:none;}.formkit-form[data-uid="e309c832a6"] .formkit-button:hover > span,.formkit-form[data-uid="e309c832a6"] .formkit-submit:hover > span,.formkit-form[data-uid="e309c832a6"] .formkit-button:focus > span,.formkit-form[data-uid="e309c832a6"] .formkit-submit:focus > span{background-color:rgba(0,0,0,0.1);}.formkit-form[data-uid="e309c832a6"] .formkit-button > span,.formkit-form[data-uid="e309c832a6"] .formkit-submit > span{display:block;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;padding:12px 24px;}.formkit-form[data-uid="e309c832a6"] .formkit-input{background:#ffffff;font-size:15px;padding:12px;border:1px solid #e3e3e3;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;line-height:1.4;margin:0;-webkit-transition:border-color ease-out 300ms;transition:border-color ease-out 300ms;}.formkit-form[data-uid="e309c832a6"] .formkit-input:focus{outline:none;border-color:#1677be;-webkit-transition:border-color ease 300ms;transition:border-color ease 300ms;}.formkit-form[data-uid="e309c832a6"] .formkit-input::-webkit-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="e309c832a6"] .formkit-input::-moz-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="e309c832a6"] .formkit-input:-ms-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="e309c832a6"] .formkit-input::placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="e309c832a6"] [data-group="dropdown"]{position:relative;display:inline-block;width:100%;}.formkit-form[data-uid="e309c832a6"] [data-group="dropdown"]::before{content:"";top:calc(50% - 2.5px);right:10px;position:absolute;pointer-events:none;border-color:#4f4f4f transparent transparent transparent;border-style:solid;border-width:6px 6px 0 6px;height:0;width:0;z-index:999;}.formkit-form[data-uid="e309c832a6"] [data-group="dropdown"] select{height:auto;width:100%;cursor:pointer;color:#333333;line-height:1.4;margin-bottom:0;padding:0 6px;-webkit-appearance:none;-moz-appearance:none;appearance:none;font-size:15px;padding:12px;padding-right:25px;border:1px solid #e3e3e3;background:#ffffff;}.formkit-form[data-uid="e309c832a6"] [data-group="dropdown"] select:focus{outline:none;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"]{text-align:left;margin:0;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"]{margin-bottom:10px;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] *{cursor:pointer;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"]:last-of-type{margin-bottom:0;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]{display:none;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"] + label::after{content:none;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::after{border-color:#ffffff;content:"";}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::before{background:#10bf7a;border-color:#10bf7a;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label{position:relative;display:inline-block;padding-left:28px;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label::before,.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label::after{position:absolute;content:"";display:inline-block;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label::before{height:16px;width:16px;border:1px solid #e3e3e3;background:#ffffff;left:0px;top:3px;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label::after{height:4px;width:8px;border-left:2px solid #4d4d4d;border-bottom:2px solid #4d4d4d;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);left:4px;top:8px;}.formkit-form[data-uid="e309c832a6"] .formkit-alert{background:#f9fafb;border:1px solid #e3e3e3;border-radius:5px;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;list-style:none;margin:25px auto;padding:12px;text-align:center;width:100%;}.formkit-form[data-uid="e309c832a6"] .formkit-alert:empty{display:none;}.formkit-form[data-uid="e309c832a6"] .formkit-alert-success{background:#d3fbeb;border-color:#10bf7a;color:#0c905c;}.formkit-form[data-uid="e309c832a6"] .formkit-alert-error{background:#fde8e2;border-color:#f2643b;color:#ea4110;}.formkit-form[data-uid="e309c832a6"] .formkit-spinner{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:0px;width:0px;margin:0 auto;position:absolute;top:0;left:0;right:0;width:0px;overflow:hidden;text-align:center;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;}.formkit-form[data-uid="e309c832a6"] .formkit-spinner > div{margin:auto;width:12px;height:12px;background-color:#fff;opacity:0.3;border-radius:100%;display:inline-block;-webkit-animation:formkit-bouncedelay-formkit-form-data-uid-e309c832a6- 1.4s infinite ease-in-out both;animation:formkit-bouncedelay-formkit-form-data-uid-e309c832a6- 1.4s infinite ease-in-out both;}.formkit-form[data-uid="e309c832a6"] .formkit-spinner > div:nth-child(1){-webkit-animation-delay:-0.32s;animation-delay:-0.32s;}.formkit-form[data-uid="e309c832a6"] .formkit-spinner > div:nth-child(2){-webkit-animation-delay:-0.16s;animation-delay:-0.16s;}.formkit-form[data-uid="e309c832a6"] .formkit-submit[data-active] .formkit-spinner{opacity:1;height:100%;width:50px;}.formkit-form[data-uid="e309c832a6"] .formkit-submit[data-active] .formkit-spinner ~ span{opacity:0;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit-container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;z-index:5;margin:10px 0;position:relative;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit-container[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;border:1px solid #dde2e7;border-radius:4px;color:#373f45;cursor:pointer;display:block;height:36px;margin:0 auto;opacity:0.95;padding:0;-webkit-text-decoration:none;text-decoration:none;text-indent:100%;-webkit-transition:ease-in-out all 200ms;transition:ease-in-out all 200ms;white-space:nowrap;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:190px;background-repeat:no-repeat;background-position:center;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='162' height='20' viewBox='0 0 162 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M83.0561 15.2457C86.675 15.2457 89.4722 12.5154 89.4722 9.14749C89.4722 5.99211 86.8443 4.06563 85.1038 4.06563C82.6801 4.06563 80.7373 5.76407 80.4605 8.28551C80.4092 8.75244 80.0387 9.14403 79.5686 9.14069C78.7871 9.13509 77.6507 9.12841 76.9314 9.13092C76.6217 9.13199 76.3658 8.88106 76.381 8.57196C76.4895 6.38513 77.2218 4.3404 78.618 2.76974C80.1695 1.02445 82.4289 0 85.1038 0C89.5979 0 93.8406 4.07791 93.8406 9.14749C93.8406 14.7608 89.1832 19.3113 83.1517 19.3113C78.8502 19.3113 74.5179 16.5041 73.0053 12.5795C72.9999 12.565 72.9986 12.5492 73.0015 12.534C73.0218 12.4179 73.0617 12.3118 73.1011 12.2074C73.1583 12.0555 73.2143 11.907 73.2062 11.7359L73.18 11.1892C73.174 11.0569 73.2075 10.9258 73.2764 10.8127C73.3452 10.6995 73.4463 10.6094 73.5666 10.554L73.7852 10.4523C73.9077 10.3957 74.0148 10.3105 74.0976 10.204C74.1803 10.0974 74.2363 9.97252 74.2608 9.83983C74.3341 9.43894 74.6865 9.14749 75.0979 9.14749C75.7404 9.14749 76.299 9.57412 76.5088 10.1806C77.5188 13.1 79.1245 15.2457 83.0561 15.2457Z' fill='%23373F45'/%3E%3Cpath d='M155.758 6.91365C155.028 6.91365 154.804 6.47916 154.804 5.98857C154.804 5.46997 154.986 5.06348 155.758 5.06348C156.53 5.06348 156.712 5.46997 156.712 5.98857C156.712 6.47905 156.516 6.91365 155.758 6.91365ZM142.441 12.9304V9.32833L141.415 9.32323V8.90392C141.415 8.44719 141.786 8.07758 142.244 8.07986L142.441 8.08095V6.55306L144.082 6.09057V8.08073H145.569V8.50416C145.569 8.61242 145.548 8.71961 145.506 8.81961C145.465 8.91961 145.404 9.01047 145.328 9.08699C145.251 9.16351 145.16 9.2242 145.06 9.26559C144.96 9.30698 144.853 9.32826 144.745 9.32822H144.082V12.7201C144.082 13.2423 144.378 13.4256 144.76 13.4887C145.209 13.5629 145.583 13.888 145.583 14.343V14.9626C144.029 14.9626 142.441 14.8942 142.441 12.9304Z' fill='%23373F45'/%3E%3Cpath d='M110.058 7.92554C108.417 7.88344 106.396 8.92062 106.396 11.5137C106.396 14.0646 108.417 15.0738 110.058 15.0318C111.742 15.0738 113.748 14.0646 113.748 11.5137C113.748 8.92062 111.742 7.88344 110.058 7.92554ZM110.07 13.7586C108.878 13.7586 108.032 12.8905 108.032 11.461C108.032 10.1013 108.878 9.20569 110.071 9.20569C111.263 9.20569 112.101 10.0995 112.101 11.459C112.101 12.8887 111.263 13.7586 110.07 13.7586Z' fill='%23373F45'/%3E%3Cpath d='M118.06 7.94098C119.491 7.94098 120.978 8.33337 120.978 11.1366V14.893H120.063C119.608 14.893 119.238 14.524 119.238 14.0689V10.9965C119.238 9.66506 118.747 9.16047 117.891 9.16047C117.414 9.16047 116.797 9.52486 116.502 9.81915V14.069C116.502 14.1773 116.481 14.2845 116.44 14.3845C116.398 14.4845 116.337 14.5753 116.261 14.6519C116.184 14.7284 116.093 14.7891 115.993 14.8305C115.893 14.8719 115.786 14.8931 115.678 14.8931H114.847V8.10918H115.773C115.932 8.10914 116.087 8.16315 116.212 8.26242C116.337 8.36168 116.424 8.50033 116.46 8.65577C116.881 8.19328 117.428 7.94098 118.06 7.94098ZM122.854 8.09713C123.024 8.09708 123.19 8.1496 123.329 8.2475C123.468 8.34541 123.574 8.48391 123.631 8.64405L125.133 12.8486L126.635 8.64415C126.692 8.48402 126.798 8.34551 126.937 8.2476C127.076 8.1497 127.242 8.09718 127.412 8.09724H128.598L126.152 14.3567C126.091 14.5112 125.986 14.6439 125.849 14.7374C125.711 14.831 125.549 14.881 125.383 14.8809H124.333L121.668 8.09713H122.854Z' fill='%23373F45'/%3E%3Cpath d='M135.085 14.5514C134.566 14.7616 133.513 15.0416 132.418 15.0416C130.496 15.0416 129.024 13.9345 129.024 11.4396C129.024 9.19701 130.451 7.99792 132.191 7.99792C134.338 7.99792 135.254 9.4378 135.158 11.3979C135.139 11.8029 134.786 12.0983 134.38 12.0983H130.679C130.763 13.1916 131.562 13.7662 132.615 13.7662C133.028 13.7662 133.462 13.7452 133.983 13.6481C134.535 13.545 135.085 13.9375 135.085 14.4985V14.5514ZM133.673 10.949C133.785 9.87621 133.061 9.28752 132.191 9.28752C131.321 9.28752 130.734 9.93979 130.679 10.9489L133.673 10.949Z' fill='%23373F45'/%3E%3Cpath d='M137.345 8.11122C137.497 8.11118 137.645 8.16229 137.765 8.25635C137.884 8.35041 137.969 8.48197 138.005 8.62993C138.566 8.20932 139.268 7.94303 139.759 7.94303C139.801 7.94303 140.068 7.94303 140.489 7.99913V8.7265C140.489 9.11748 140.15 9.4147 139.759 9.4147C139.31 9.4147 138.651 9.5829 138.131 9.8773V14.8951H136.462V8.11112L137.345 8.11122ZM156.6 14.0508V8.09104H155.769C155.314 8.09104 154.944 8.45999 154.944 8.9151V14.8748H155.775C156.23 14.8748 156.6 14.5058 156.6 14.0508ZM158.857 12.9447V9.34254H157.749V8.91912C157.749 8.46401 158.118 8.09506 158.574 8.09506H158.857V6.56739L160.499 6.10479V8.09506H161.986V8.51848C161.986 8.97359 161.617 9.34254 161.161 9.34254H160.499V12.7345C160.499 13.2566 160.795 13.44 161.177 13.503C161.626 13.5774 162 13.9024 162 14.3574V14.977C160.446 14.977 158.857 14.9086 158.857 12.9447ZM98.1929 10.1124C98.2033 6.94046 100.598 5.16809 102.895 5.16809C104.171 5.16809 105.342 5.44285 106.304 6.12953L105.914 6.6631C105.654 7.02011 105.16 7.16194 104.749 6.99949C104.169 6.7702 103.622 6.7218 103.215 6.7218C101.335 6.7218 99.9169 7.92849 99.9068 10.1123C99.9169 12.2959 101.335 13.5201 103.215 13.5201C103.622 13.5201 104.169 13.4717 104.749 13.2424C105.16 13.0799 105.654 13.2046 105.914 13.5615L106.304 14.0952C105.342 14.7819 104.171 15.0566 102.895 15.0566C100.598 15.0566 98.2033 13.2842 98.1929 10.1124ZM147.619 5.21768C148.074 5.21768 148.444 5.58663 148.444 6.04174V9.81968L151.82 5.58131C151.897 5.47733 151.997 5.39282 152.112 5.3346C152.227 5.27638 152.355 5.24607 152.484 5.24611H153.984L150.166 10.0615L153.984 14.8749H152.484C152.355 14.8749 152.227 14.8446 152.112 14.7864C151.997 14.7281 151.897 14.6436 151.82 14.5397L148.444 10.3025V14.0508C148.444 14.5059 148.074 14.8749 147.619 14.8749H146.746V5.21768H147.619Z' fill='%23373F45'/%3E%3Cpath d='M0.773438 6.5752H2.68066C3.56543 6.5752 4.2041 6.7041 4.59668 6.96191C4.99219 7.21973 5.18994 7.62695 5.18994 8.18359C5.18994 8.55859 5.09326 8.87061 4.8999 9.11963C4.70654 9.36865 4.42822 9.52539 4.06494 9.58984V9.63379C4.51611 9.71875 4.84717 9.88721 5.05811 10.1392C5.27197 10.3882 5.37891 10.7266 5.37891 11.1543C5.37891 11.7314 5.17676 12.1841 4.77246 12.5122C4.37109 12.8374 3.81152 13 3.09375 13H0.773438V6.5752ZM1.82373 9.22949H2.83447C3.27393 9.22949 3.59473 9.16064 3.79688 9.02295C3.99902 8.88232 4.1001 8.64502 4.1001 8.31104C4.1001 8.00928 3.99023 7.79102 3.77051 7.65625C3.55371 7.52148 3.20801 7.4541 2.7334 7.4541H1.82373V9.22949ZM1.82373 10.082V12.1167H2.93994C3.37939 12.1167 3.71045 12.0332 3.93311 11.8662C4.15869 11.6963 4.27148 11.4297 4.27148 11.0664C4.27148 10.7324 4.15723 10.4849 3.92871 10.3237C3.7002 10.1626 3.35303 10.082 2.88721 10.082H1.82373Z' fill='%23373F45'/%3E%3Cpath d='M13.011 6.5752V10.7324C13.011 11.207 12.9084 11.623 12.7034 11.9805C12.5012 12.335 12.2068 12.6089 11.8201 12.8022C11.4363 12.9927 10.9763 13.0879 10.4402 13.0879C9.6433 13.0879 9.02368 12.877 8.5813 12.4551C8.13892 12.0332 7.91772 11.4531 7.91772 10.7148V6.5752H8.9724V10.6401C8.9724 11.1704 9.09546 11.5615 9.34155 11.8135C9.58765 12.0654 9.96557 12.1914 10.4753 12.1914C11.4656 12.1914 11.9607 11.6714 11.9607 10.6313V6.5752H13.011Z' fill='%23373F45'/%3E%3Cpath d='M15.9146 13V6.5752H16.9649V13H15.9146Z' fill='%23373F45'/%3E%3Cpath d='M19.9255 13V6.5752H20.9758V12.0991H23.696V13H19.9255Z' fill='%23373F45'/%3E%3Cpath d='M28.2828 13H27.2325V7.47607H25.3428V6.5752H30.1724V7.47607H28.2828V13Z' fill='%23373F45'/%3E%3Cpath d='M41.9472 13H40.8046L39.7148 9.16796C39.6679 9.00097 39.6093 8.76074 39.539 8.44727C39.4687 8.13086 39.4262 7.91113 39.4116 7.78809C39.3823 7.97559 39.3339 8.21875 39.2665 8.51758C39.2021 8.81641 39.1479 9.03905 39.1039 9.18554L38.0405 13H36.8979L36.0673 9.7832L35.2236 6.5752H36.2958L37.2143 10.3193C37.3578 10.9199 37.4604 11.4502 37.5219 11.9102C37.5541 11.6611 37.6025 11.3828 37.6669 11.0752C37.7314 10.7676 37.79 10.5186 37.8427 10.3281L38.8886 6.5752H39.9301L41.0024 10.3457C41.1049 10.6943 41.2133 11.2158 41.3276 11.9102C41.3715 11.4912 41.477 10.958 41.644 10.3105L42.558 6.5752H43.6215L41.9472 13Z' fill='%23373F45'/%3E%3Cpath d='M45.7957 13V6.5752H46.846V13H45.7957Z' fill='%23373F45'/%3E%3Cpath d='M52.0258 13H50.9755V7.47607H49.0859V6.5752H53.9155V7.47607H52.0258V13Z' fill='%23373F45'/%3E%3Cpath d='M61.2312 13H60.1765V10.104H57.2146V13H56.1643V6.5752H57.2146V9.20312H60.1765V6.5752H61.2312V13Z' fill='%23373F45'/%3E%3C/svg%3E");}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit:hover,.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit:focus{background-color:#ffffff;-webkit-transform:scale(1.025) perspective(1px);-ms-transform:scale(1.025) perspective(1px);transform:scale(1.025) perspective(1px);opacity:1;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit[data-variant="dark"],.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit[data-variant="light"]{background-color:transparent;border-color:transparent;width:166px;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit[data-variant="light"]{color:#ffffff;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='162' height='20' viewBox='0 0 162 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M83.0561 15.2457C86.675 15.2457 89.4722 12.5154 89.4722 9.14749C89.4722 5.99211 86.8443 4.06563 85.1038 4.06563C82.6801 4.06563 80.7373 5.76407 80.4605 8.28551C80.4092 8.75244 80.0387 9.14403 79.5686 9.14069C78.7871 9.13509 77.6507 9.12841 76.9314 9.13092C76.6217 9.13199 76.3658 8.88106 76.381 8.57196C76.4895 6.38513 77.2218 4.3404 78.618 2.76974C80.1695 1.02445 82.4289 0 85.1038 0C89.5979 0 93.8406 4.07791 93.8406 9.14749C93.8406 14.7608 89.1832 19.3113 83.1517 19.3113C78.8502 19.3113 74.5179 16.5041 73.0053 12.5795C72.9999 12.565 72.9986 12.5492 73.0015 12.534C73.0218 12.4179 73.0617 12.3118 73.1011 12.2074C73.1583 12.0555 73.2143 11.907 73.2062 11.7359L73.18 11.1892C73.174 11.0569 73.2075 10.9258 73.2764 10.8127C73.3452 10.6995 73.4463 10.6094 73.5666 10.554L73.7852 10.4523C73.9077 10.3957 74.0148 10.3105 74.0976 10.204C74.1803 10.0974 74.2363 9.97252 74.2608 9.83983C74.3341 9.43894 74.6865 9.14749 75.0979 9.14749C75.7404 9.14749 76.299 9.57412 76.5088 10.1806C77.5188 13.1 79.1245 15.2457 83.0561 15.2457Z' fill='white'/%3E%3Cpath d='M155.758 6.91365C155.028 6.91365 154.804 6.47916 154.804 5.98857C154.804 5.46997 154.986 5.06348 155.758 5.06348C156.53 5.06348 156.712 5.46997 156.712 5.98857C156.712 6.47905 156.516 6.91365 155.758 6.91365ZM142.441 12.9304V9.32833L141.415 9.32323V8.90392C141.415 8.44719 141.786 8.07758 142.244 8.07986L142.441 8.08095V6.55306L144.082 6.09057V8.08073H145.569V8.50416C145.569 8.61242 145.548 8.71961 145.506 8.81961C145.465 8.91961 145.404 9.01047 145.328 9.08699C145.251 9.16351 145.16 9.2242 145.06 9.26559C144.96 9.30698 144.853 9.32826 144.745 9.32822H144.082V12.7201C144.082 13.2423 144.378 13.4256 144.76 13.4887C145.209 13.5629 145.583 13.888 145.583 14.343V14.9626C144.029 14.9626 142.441 14.8942 142.441 12.9304Z' fill='white'/%3E%3Cpath d='M110.058 7.92554C108.417 7.88344 106.396 8.92062 106.396 11.5137C106.396 14.0646 108.417 15.0738 110.058 15.0318C111.742 15.0738 113.748 14.0646 113.748 11.5137C113.748 8.92062 111.742 7.88344 110.058 7.92554ZM110.07 13.7586C108.878 13.7586 108.032 12.8905 108.032 11.461C108.032 10.1013 108.878 9.20569 110.071 9.20569C111.263 9.20569 112.101 10.0995 112.101 11.459C112.101 12.8887 111.263 13.7586 110.07 13.7586Z' fill='white'/%3E%3Cpath d='M118.06 7.94098C119.491 7.94098 120.978 8.33337 120.978 11.1366V14.893H120.063C119.608 14.893 119.238 14.524 119.238 14.0689V10.9965C119.238 9.66506 118.747 9.16047 117.891 9.16047C117.414 9.16047 116.797 9.52486 116.502 9.81915V14.069C116.502 14.1773 116.481 14.2845 116.44 14.3845C116.398 14.4845 116.337 14.5753 116.261 14.6519C116.184 14.7284 116.093 14.7891 115.993 14.8305C115.893 14.8719 115.786 14.8931 115.678 14.8931H114.847V8.10918H115.773C115.932 8.10914 116.087 8.16315 116.212 8.26242C116.337 8.36168 116.424 8.50033 116.46 8.65577C116.881 8.19328 117.428 7.94098 118.06 7.94098ZM122.854 8.09713C123.024 8.09708 123.19 8.1496 123.329 8.2475C123.468 8.34541 123.574 8.48391 123.631 8.64405L125.133 12.8486L126.635 8.64415C126.692 8.48402 126.798 8.34551 126.937 8.2476C127.076 8.1497 127.242 8.09718 127.412 8.09724H128.598L126.152 14.3567C126.091 14.5112 125.986 14.6439 125.849 14.7374C125.711 14.831 125.549 14.881 125.383 14.8809H124.333L121.668 8.09713H122.854Z' fill='white'/%3E%3Cpath d='M135.085 14.5514C134.566 14.7616 133.513 15.0416 132.418 15.0416C130.496 15.0416 129.024 13.9345 129.024 11.4396C129.024 9.19701 130.451 7.99792 132.191 7.99792C134.338 7.99792 135.254 9.4378 135.158 11.3979C135.139 11.8029 134.786 12.0983 134.38 12.0983H130.679C130.763 13.1916 131.562 13.7662 132.615 13.7662C133.028 13.7662 133.462 13.7452 133.983 13.6481C134.535 13.545 135.085 13.9375 135.085 14.4985V14.5514ZM133.673 10.949C133.785 9.87621 133.061 9.28752 132.191 9.28752C131.321 9.28752 130.734 9.93979 130.679 10.9489L133.673 10.949Z' fill='white'/%3E%3Cpath d='M137.345 8.11122C137.497 8.11118 137.645 8.16229 137.765 8.25635C137.884 8.35041 137.969 8.48197 138.005 8.62993C138.566 8.20932 139.268 7.94303 139.759 7.94303C139.801 7.94303 140.068 7.94303 140.489 7.99913V8.7265C140.489 9.11748 140.15 9.4147 139.759 9.4147C139.31 9.4147 138.651 9.5829 138.131 9.8773V14.8951H136.462V8.11112L137.345 8.11122ZM156.6 14.0508V8.09104H155.769C155.314 8.09104 154.944 8.45999 154.944 8.9151V14.8748H155.775C156.23 14.8748 156.6 14.5058 156.6 14.0508ZM158.857 12.9447V9.34254H157.749V8.91912C157.749 8.46401 158.118 8.09506 158.574 8.09506H158.857V6.56739L160.499 6.10479V8.09506H161.986V8.51848C161.986 8.97359 161.617 9.34254 161.161 9.34254H160.499V12.7345C160.499 13.2566 160.795 13.44 161.177 13.503C161.626 13.5774 162 13.9024 162 14.3574V14.977C160.446 14.977 158.857 14.9086 158.857 12.9447ZM98.1929 10.1124C98.2033 6.94046 100.598 5.16809 102.895 5.16809C104.171 5.16809 105.342 5.44285 106.304 6.12953L105.914 6.6631C105.654 7.02011 105.16 7.16194 104.749 6.99949C104.169 6.7702 103.622 6.7218 103.215 6.7218C101.335 6.7218 99.9169 7.92849 99.9068 10.1123C99.9169 12.2959 101.335 13.5201 103.215 13.5201C103.622 13.5201 104.169 13.4717 104.749 13.2424C105.16 13.0799 105.654 13.2046 105.914 13.5615L106.304 14.0952C105.342 14.7819 104.171 15.0566 102.895 15.0566C100.598 15.0566 98.2033 13.2842 98.1929 10.1124ZM147.619 5.21768C148.074 5.21768 148.444 5.58663 148.444 6.04174V9.81968L151.82 5.58131C151.897 5.47733 151.997 5.39282 152.112 5.3346C152.227 5.27638 152.355 5.24607 152.484 5.24611H153.984L150.166 10.0615L153.984 14.8749H152.484C152.355 14.8749 152.227 14.8446 152.112 14.7864C151.997 14.7281 151.897 14.6436 151.82 14.5397L148.444 10.3025V14.0508C148.444 14.5059 148.074 14.8749 147.619 14.8749H146.746V5.21768H147.619Z' fill='white'/%3E%3Cpath d='M0.773438 6.5752H2.68066C3.56543 6.5752 4.2041 6.7041 4.59668 6.96191C4.99219 7.21973 5.18994 7.62695 5.18994 8.18359C5.18994 8.55859 5.09326 8.87061 4.8999 9.11963C4.70654 9.36865 4.42822 9.52539 4.06494 9.58984V9.63379C4.51611 9.71875 4.84717 9.88721 5.05811 10.1392C5.27197 10.3882 5.37891 10.7266 5.37891 11.1543C5.37891 11.7314 5.17676 12.1841 4.77246 12.5122C4.37109 12.8374 3.81152 13 3.09375 13H0.773438V6.5752ZM1.82373 9.22949H2.83447C3.27393 9.22949 3.59473 9.16064 3.79688 9.02295C3.99902 8.88232 4.1001 8.64502 4.1001 8.31104C4.1001 8.00928 3.99023 7.79102 3.77051 7.65625C3.55371 7.52148 3.20801 7.4541 2.7334 7.4541H1.82373V9.22949ZM1.82373 10.082V12.1167H2.93994C3.37939 12.1167 3.71045 12.0332 3.93311 11.8662C4.15869 11.6963 4.27148 11.4297 4.27148 11.0664C4.27148 10.7324 4.15723 10.4849 3.92871 10.3237C3.7002 10.1626 3.35303 10.082 2.88721 10.082H1.82373Z' fill='white'/%3E%3Cpath d='M13.011 6.5752V10.7324C13.011 11.207 12.9084 11.623 12.7034 11.9805C12.5012 12.335 12.2068 12.6089 11.8201 12.8022C11.4363 12.9927 10.9763 13.0879 10.4402 13.0879C9.6433 13.0879 9.02368 12.877 8.5813 12.4551C8.13892 12.0332 7.91772 11.4531 7.91772 10.7148V6.5752H8.9724V10.6401C8.9724 11.1704 9.09546 11.5615 9.34155 11.8135C9.58765 12.0654 9.96557 12.1914 10.4753 12.1914C11.4656 12.1914 11.9607 11.6714 11.9607 10.6313V6.5752H13.011Z' fill='white'/%3E%3Cpath d='M15.9146 13V6.5752H16.9649V13H15.9146Z' fill='white'/%3E%3Cpath d='M19.9255 13V6.5752H20.9758V12.0991H23.696V13H19.9255Z' fill='white'/%3E%3Cpath d='M28.2828 13H27.2325V7.47607H25.3428V6.5752H30.1724V7.47607H28.2828V13Z' fill='white'/%3E%3Cpath d='M41.9472 13H40.8046L39.7148 9.16796C39.6679 9.00097 39.6093 8.76074 39.539 8.44727C39.4687 8.13086 39.4262 7.91113 39.4116 7.78809C39.3823 7.97559 39.3339 8.21875 39.2665 8.51758C39.2021 8.81641 39.1479 9.03905 39.1039 9.18554L38.0405 13H36.8979L36.0673 9.7832L35.2236 6.5752H36.2958L37.2143 10.3193C37.3578 10.9199 37.4604 11.4502 37.5219 11.9102C37.5541 11.6611 37.6025 11.3828 37.6669 11.0752C37.7314 10.7676 37.79 10.5186 37.8427 10.3281L38.8886 6.5752H39.9301L41.0024 10.3457C41.1049 10.6943 41.2133 11.2158 41.3276 11.9102C41.3715 11.4912 41.477 10.958 41.644 10.3105L42.558 6.5752H43.6215L41.9472 13Z' fill='white'/%3E%3Cpath d='M45.7957 13V6.5752H46.846V13H45.7957Z' fill='white'/%3E%3Cpath d='M52.0258 13H50.9755V7.47607H49.0859V6.5752H53.9155V7.47607H52.0258V13Z' fill='white'/%3E%3Cpath d='M61.2312 13H60.1765V10.104H57.2146V13H56.1643V6.5752H57.2146V9.20312H60.1765V6.5752H61.2312V13Z' fill='white'/%3E%3C/svg%3E");}@-webkit-keyframes formkit-bouncedelay-formkit-form-data-uid-e309c832a6-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}@keyframes formkit-bouncedelay-formkit-form-data-uid-e309c832a6-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}.formkit-form[data-uid="e309c832a6"] blockquote{padding:10px 20px;margin:0 0 20px;border-left:5px solid #e1e1e1;}.formkit-form[data-uid="e309c832a6"] .seva-custom-content{padding:15px;font-size:16px;color:#fff;mix-blend-mode:difference;}.formkit-form[data-uid="e309c832a6"] .formkit-modal.guard{max-width:420px;width:100%;} .formkit-form[data-uid="e309c832a6"]{border:1px solid #e3e3e3;max-width:700px;position:relative;overflow:hidden;}.formkit-form[data-uid="e309c832a6"] .formkit-background{width:100%;height:100%;position:absolute;top:0;left:0;background-size:cover;background-position:center;opacity:0.3;}.formkit-form[data-uid="e309c832a6"] [data-style="minimal"]{padding:20px;width:100%;position:relative;}.formkit-form[data-uid="e309c832a6"] .formkit-header{margin:0 0 27px 0;text-align:center;}.formkit-form[data-uid="e309c832a6"] .formkit-subheader{margin:18px 0;text-align:center;}.formkit-form[data-uid="e309c832a6"] .formkit-guarantee{font-size:13px;margin:10px 0 15px 0;text-align:center;}.formkit-form[data-uid="e309c832a6"] .formkit-guarantee > p{margin:0;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit-container{margin-bottom:0;}.formkit-form[data-uid="e309c832a6"] .formkit-fields{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:25px auto 0 auto;}.formkit-form[data-uid="e309c832a6"] .formkit-field{min-width:220px;}.formkit-form[data-uid="e309c832a6"] .formkit-field,.formkit-form[data-uid="e309c832a6"] .formkit-submit{margin:0 0 15px 0;-webkit-flex:1 0 100%;-ms-flex:1 0 100%;flex:1 0 100%;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] [data-style="minimal"]{padding:40px;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"]{margin-left:-5px;margin-right:-5px;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-submit{margin:0 5px 15px 5px;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-field{-webkit-flex:100 1 auto;-ms-flex:100 1 auto;flex:100 1 auto;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-submit{-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;} </style></form>
+
+		<div class="sponsor">
+        <div class="sponsor-avatar"></div><p class="sponsor-bio"><em>Did you find this article helpful?</em></p><div class="sponsor-custom"><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="reachsumit" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-09-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems" data-via="_reachsumit" data-hashtags="literature review,retrieval"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/retrieval/">retrieval</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/2023/06/llms-for-recsys-entity-representation/" class="prev" rel="prev" title="Representing Users and Items in Large Language Models based Recommender Systems"><i class="fas fa-angle-left fa-fw"></i>Representing Users and Items in Large Language Models based Recommender Systems</a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="Back to Top">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-09-06T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Generative Retrieval for End-to-End Search Systems"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-TGH87J92Z3');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3" async></script></div>
+</body>
+
+</html>
