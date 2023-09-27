@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +21,8 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" />
+<link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -38,16 +41,17 @@
                 "name": "Sumit Kumar"
             },"description": ""
     }
-    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 </head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
-        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
         if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
         let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
         getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+        window.switchThemeEventSet = new Set()
     </script>
     <div id="back-to-top"></div>
     <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
@@ -58,16 +62,16 @@
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://reachsumit.com/#contact" rel="noopener noreferrer" target="_blank"> Contact </a><a class="menu-item" href="/newsletter/"> Newsletter(s) </a><a class="menu-item" href="/talks/"> Talks </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search this blog" id="search-input-desktop">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
-                    </span><a href="#" class="menu-item theme-select" title="Switch Theme">
+                    </span><a href="javascript:void(0);" class="menu-item theme-select" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw"></i>
                     <select class="color-theme-select" id="theme-select-desktop" title="Switch Theme">
                         <option value="light">Light</option>
@@ -91,20 +95,20 @@
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="Search this blog" id="search-input-mobile">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </div>
-                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a class="menu-item" href="/newsletter/" title="">Newsletter(s)</a><a class="menu-item" href="/talks/" title="">Talks</a><a href="#" class="menu-item theme-select" title="Switch Theme">
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a class="menu-item" href="/newsletter/" title="">Newsletter(s)</a><a class="menu-item" href="/talks/" title="">Talks</a><a href="javascript:void(0);" class="menu-item theme-select" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="Switch Theme">
                     <option value="light">Light</option>
@@ -168,12 +172,11 @@
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Next Gen Recommender Systems: Real-time reranking on mobile devices</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Next Gen Recommender Systems: Real-time reranking on mobile devices</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+                <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-09">2023-03-09</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-09">2023-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2779 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;14 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-09">2023-03-09</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-09">2023-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2779 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;14 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
@@ -181,7 +184,7 @@
         srcset="/posts/2023/03/reranking-on-edge/featured-image.webp, /posts/2023/03/reranking-on-edge/featured-image.webp 1.5x, /posts/2023/03/reranking-on-edge/featured-image.webp 2x"
         sizes="auto"
         alt="/posts/2023/03/reranking-on-edge/featured-image.webp"
-        title="/posts/2023/03/reranking-on-edge/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
+        title="/posts/2023/03/reranking-on-edge/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
@@ -277,33 +280,33 @@
             src="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png"
             srcset="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png, /img/posts/2023/reranking-on-edge/kuaishou_overall_system.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_overall_system.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png">
+            alt="Kuaishou overall system">
     </a><figcaption class="image-caption">Kuaishou real-time short video recommender system architecture</figcaption>
     </figure></p>
 <p>On the cloud side, we have a traditional recommender system along with a Mobile Ranking Model Training module that uses the input features generated from the access logs from user devices and trains a ranking model. This trained model is exported to TFLite format periodically and sent to the user device for deployment. While responding to the initial paging request, the server also sends the item features for the recommended candidates along with the candidate videos. The client uses these features along with the client-specific features (watched videos and corresponding feedback along with real-time features like network signal) for inference using the on-device ranking model.</p>
 <h5 id="what-input-features-are-used" class="headerLink">
     <a href="#what-input-features-are-used" class="header-mark"></a>What input features are used?</h5><p>The server-side model primarily focuses on modeling users&rsquo; long-term interests and uses a lot of ID features (user id, video id, crossing features), users&rsquo; watch history, etc. The following table shows the features used by the on-device reranking model. Apart from these, the model also used some engineered cross features such as time since last impression, pXTR, and impression position diffs between with preceding historical item. Note that the server-side features are not used in the on-device model because the offline experiments showed that their information has already been distilled into the predictions from the server model.</p>
-<p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png" title="Kuaishou client-side features" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png">
+<p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png" title="Kuaishou client-side features" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png">
         <img
             
             loading="lazy"
             src="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png"
             srcset="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png, /img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png">
-    </a></p>
+            alt="Kuaishou client-side features">
+    </a></figure></p>
 <h5 id="when-is-the-on-device-reranking-triggered" class="headerLink">
     <a href="#when-is-the-on-device-reranking-triggered" class="header-mark"></a>When is the on-device reranking triggered?</h5><p>Kuaishou&rsquo;s interface allows for only one video to occupy the current screen space. At each user swipe, the client system performs reranking with the remaining candidate videos and inserts the top-ranked candidate video at the next position.</p>
 <h5 id="model-architecture" class="headerLink">
-    <a href="#model-architecture" class="header-mark"></a>Model Architecture</h5><p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png" title="Kuaishou model architecture" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png">
+    <a href="#model-architecture" class="header-mark"></a>Model Architecture</h5><p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png" title="Kuaishou model architecture" data-thumbnail="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png">
         <img
             
             loading="lazy"
             src="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png"
             srcset="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png, /img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png">
-    </a></p>
+            alt="Kuaishou model architecture">
+    </a></figure></p>
 <p>Their model also considers interaction among candidate videos. The watch history sequence is modeled using a multi-head attention (MHA) mechanism with Q projected from candidate item features and K, V projected from watch history sequence features. Only one candidate video is considered at a time. Outputs of the two MHA modules are concatenated with target features and other features and passed to a Multi-gate Mixture of Experts (MMoE) to calculate probabilities of the user continuing to watch the next video, watching the video for longer than a threshold like 3 seconds, and liking the video. The loss function is defined as the sum of log losses of each target averaged by the number of training samples. They also proposed a novel beam search strategy to further optimize evaluating all candidates in the target list.</p>
 <h5 id="results" class="headerLink">
     <a href="#results" class="header-mark"></a>Results</h5><p>Kuaishou deployed this architecture in production to serve over a billion users, and improved effective view, like, and follow by 1.28%, 8.22%, and 13.6% respectively. Their studies also show that each inference had an average cost of 120 ms on the Android platform and 50 ms on the iOS platform. The increase in CPU and memory usage was about 2% each on Android and 0.5% and 1.5% respectively on the iOS platform.</p>
@@ -316,7 +319,7 @@
             src="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png"
             srcset="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png, /img/posts/2023/reranking-on-edge/edgerec_system_overview.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_system_overview.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png">
+            alt="EdgeRec System Overview">
     </a><figcaption class="image-caption">EdgeRec system overview. The module on the left was deployed in mobile client and the one of the right was deployed on cloud.</figcaption>
     </figure></p>
 <p>As shown above, the Client Native module collects user behavior logs (e.g. browsing and click records) and triggers model serving. It also initiates the paging request to the server and stores the features returned from the server along with the corresponding candidate items. It also updates the UI upon receiving the reranked list from the on-device model. The cloud server also uses a versioning strategy to keep the updated model synchronized with the edge devices.</p>
@@ -328,22 +331,22 @@
             src="/img/posts/2023/reranking-on-edge/edgerec_features.png"
             srcset="/img/posts/2023/reranking-on-edge/edgerec_features.png, /img/posts/2023/reranking-on-edge/edgerec_features.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_features.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/edgerec_features.png">
+            alt="EdgeRec Input Features">
     </a><figcaption class="image-caption">Features used in EdgeRec Model</figcaption>
     </figure></p>
 <p>The figure above shows the collection of features used in EdgeRec. Variables $e_{1}$ to $e_{7}$ are &ldquo;Item Exposure User Action&rdquo; features used in the server-side recommender system that describes how the user behaves upon exposure to an item. Variables $d_{1}$ to $d_{12}$ are &ldquo;Item Page-View User Action&rdquo; features used in the mobile side model that describes how the user behaves on the item detail page after clicking an item. Variables $p_{1}$ to $p_{7}$ are the item features.</p>
 <h5 id="when-is-the-on-device-reranking-triggered-1" class="headerLink">
     <a href="#when-is-the-on-device-reranking-triggered-1" class="header-mark"></a>When is the on-device reranking triggered?</h5><p>EdgeRec system sets the following three trigger points for invoking reranking of &ldquo;unseen&rdquo; candidate items: (1) the user clicks an item, (2) the user deletes an item (i.e. long press) and (3) k items have been exposed without being clicked.</p>
 <h5 id="model-architecture-1" class="headerLink">
-    <a href="#model-architecture-1" class="header-mark"></a>Model Architecture</h5><p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/edgerec_architecture.png" title="EdgeRec Architecture" data-thumbnail="/img/posts/2023/reranking-on-edge/edgerec_architecture.png">
+    <a href="#model-architecture-1" class="header-mark"></a>Model Architecture</h5><p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/edgerec_architecture.png" title="EdgeRec Architecture" data-thumbnail="/img/posts/2023/reranking-on-edge/edgerec_architecture.png">
         <img
             
             loading="lazy"
             src="/img/posts/2023/reranking-on-edge/edgerec_architecture.png"
             srcset="/img/posts/2023/reranking-on-edge/edgerec_architecture.png, /img/posts/2023/reranking-on-edge/edgerec_architecture.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_architecture.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/edgerec_architecture.png">
-    </a></p>
+            alt="EdgeRec Architecture">
+    </a></figure></p>
 <p>As shown in the figure above, EdgeRec models &ldquo;Item Exposure Behavior Sequence&rdquo; and &ldquo;Item Page-View Behavior Sequence&rdquo; separately because the item clicks are more sparse than the item exposures. A simple GRU layer is used as the Encoder. The context-aware reranking module uses the attention technique to automatically find parts of user behavior context that are relevant to ranking the encoded candidate items. This behavior attention also employs Item Exposure (IE) and Item Page-View (IPV) contexts.</p>
 <h5 id="results-1" class="headerLink">
     <a href="#results-1" class="header-mark"></a>Results</h5><p>Using EdgeRec Taobao was able to achieve up to an additional 1.6% views, 7.2% click-through rate, 8.9% clicks, and 10.9% purchase amount in an online A/B experiment. The delay time for capturing user behavior was reduced from 1 minute to 300 ms. On average, the on-device model size was around 3 MB.</p>
@@ -354,15 +357,15 @@
 <p>In DCCL Yao et al.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> proposed an alternative &ldquo;model-over-models&rdquo; paradigm to model the collaboration between the device and the cloud. Under this framework, the cloud model is frozen and the edge devices use patch learning method <sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> to learn the parameters of a trainable patch function using sparse local samples. These patches are then sent to the server where the cloud model uses a distillation process with these patches as meaningful priors to optimize the cloud model.</p>
 <h4 id="collaborative-learning-with-data-augmentation-coda" class="headerLink">
     <a href="#collaborative-learning-with-data-augmentation-coda" class="header-mark"></a>Collaborative learning with Data Augmentation (CoDA)</h4><p>Gu et al. proposed a device-cloud collaborative learning framework called CoDA where the edge model also receives extra samples from the cloud&rsquo;s global pool of data to augment their local dataset for training the on-device model. The edge device also maintains a personalized sample classifier for further filtering out some of the samples received from the cloud. Global models are trained with all users&rsquo; data but do inferences over each user&rsquo;s local data. CoDA attempts to address this data discrepancy so that the model can be made optimal for each user. In the CoDA framework, an on-device model is trained with both local data and the augmentation data received from the server.</p>
-<p><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/coda.png" title="CoDA workflow" data-thumbnail="/img/posts/2023/reranking-on-edge/coda.png">
+<p><figure><a class="lightgallery" href="/img/posts/2023/reranking-on-edge/coda.png" title="CoDA workflow" data-thumbnail="/img/posts/2023/reranking-on-edge/coda.png">
         <img
             
             loading="lazy"
             src="/img/posts/2023/reranking-on-edge/coda.png"
             srcset="/img/posts/2023/reranking-on-edge/coda.png, /img/posts/2023/reranking-on-edge/coda.png 1.5x, /img/posts/2023/reranking-on-edge/coda.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/reranking-on-edge/coda.png">
-    </a></p>
+            alt="CoDA workflow">
+    </a></figure></p>
 <p>The cloud server uses a K nearest-neighbor (KNN) method on user feature vectors to find samples similar to the current user behavior. The server then desensitizes and anonymizes these samples before sending them to the end user&rsquo;s device. The user device uses this augmented data and the local data for training and evaluating a personalized binary classifier. This classifier is trained to identify local samples from the combined data, and the augmentation samples with high scores (i.e. false positives) are considered close enough to be used for the on-device reranking model. The remaining augmentation data is dropped. Both classification and reranking inference tasks use models based on Deep Interest Network architecture <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
 <h2 id="summary" class="headerLink">
     <a href="#summary" class="header-mark"></a>Summary</h2><p>This article explained the shortcomings of a cloud server model trained on global data for serving personalized recommendations. It introduced on-device inference and on-device learning paradigms which aim to timely capture rich user behavior and respond to users&rsquo; changing demands in real time. We also looked at system design choices and implementation details of some exemplar systems from different industrial applications that have served recommendations to billions of users.</p>
@@ -415,7 +418,7 @@
         srcset="/posts/2023/09/generative-retrieval/featured-image-preview.webp, /posts/2023/09/generative-retrieval/featured-image-preview.webp 1.5x, /posts/2023/09/generative-retrieval/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
-        title="/posts/2023/09/generative-retrieval/featured-image-preview.webp" height="200" width="400"></a>
+        title="/posts/2023/09/generative-retrieval/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/09/generative-retrieval/">Generative Retrieval for End-to-End Search Systems</a>
             </h2>
@@ -429,7 +432,7 @@
         srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
-        title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200" width="400"></a>
+        title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/06/llms-for-recsys-entity-representation/">Representing Users and Items in Large Language Models based Recommender Systems</a>
             </h2>
@@ -443,7 +446,7 @@
         srcset="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp, /posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp 1.5x, /posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp"
-        title="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp" height="200" width="400"></a>
+        title="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/05/shallow-heterogeneous-graphs-rep/">Shallow Embedding Models for Heterogeneous Graphs</a>
             </h2>
@@ -457,7 +460,7 @@
         srcset="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp, /posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp"
-        title="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp" height="200" width="400"></a>
+        title="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/05/tuning-llm-for-recsys/">Tuning Large Language Models for Recommendation Tasks</a>
             </h2>
@@ -471,7 +474,7 @@
         srcset="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp, /posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp"
-        title="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp" height="200" width="400"></a>
+        title="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/05/chatgpt-for-recsys/">ChatGPT-based Recommender Systems</a>
             </h2>
@@ -495,9 +498,7 @@
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
-            <div class="post-info-share">
-                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-via="_reachsumit" data-hashtags="literature review,recsys,ranking"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
-            </div>
+            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-via="_reachsumit" data-hashtags="literature review,recsys,ranking"><span class="fab fa-twitter fa-fw"></span></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-hashtag="literature review"><span class="fab fa-facebook-square fa-fw"></span></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><span class="fab fa-linkedin fa-fw"></span></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-web><span class="fab fa-whatsapp fa-fw"></span></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><span class="fab fa-hacker-news fa-fw"></span></button><button title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><span class="fab fa-reddit fa-fw"></span></button><button title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><span data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></span></button><button title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"><span class="fab fa-get-pocket fa-fw"></span></button><button title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-image="featured-image.webp"><span class="fab fa-weibo fa-fw"></span></button><button title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices"><span class="fab fa-evernote fa-fw"></span></button><button title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" data-title="Next Gen Recommender Systems: Real-time reranking on mobile devices" data-description=""><span class="fab fa-trello fa-fw"></span></button></div>
         </div>
     </div>
 
@@ -527,7 +528,7 @@
             <i class="fas fa-comment fa-fw"></i>
         </a>
     </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-03-09T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Next Gen Recommender Systems: Real-time reranking on mobile devices"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-03-09T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Next Gen Recommender Systems: Real-time reranking on mobile devices"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3" async></script></div>

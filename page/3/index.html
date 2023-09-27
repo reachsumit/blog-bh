@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +22,8 @@
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sumit&#39;s Diary">
-    <link rel="feed" href="/index.xml" type="application/rss+xml" title="Sumit&#39;s Diary"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <link rel="feed" href="/index.xml" type="application/rss+xml" title="Sumit&#39;s Diary">
+<link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -31,16 +34,17 @@
                 "name": "Sumit Kumar"
             },"description": "Welcome to Sumit Kumar's Personal Blog!","image": "https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png","thumbnailUrl": "https:\/\/blog.reachsumit.com\/images\/screenshot.png","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","name": "Sumit's Diary"
     }
-    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 </head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
-        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
         if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
         let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
         getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+        window.switchThemeEventSet = new Set()
     </script>
     <div id="back-to-top"></div>
     <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
@@ -51,16 +55,16 @@
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://reachsumit.com/#contact" rel="noopener noreferrer" target="_blank"> Contact </a><a class="menu-item" href="/newsletter/"> Newsletter(s) </a><a class="menu-item" href="/talks/"> Talks </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search this blog" id="search-input-desktop">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
-                    </span><a href="#" class="menu-item theme-select" title="Switch Theme">
+                    </span><a href="javascript:void(0);" class="menu-item theme-select" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw"></i>
                     <select class="color-theme-select" id="theme-select-desktop" title="Switch Theme">
                         <option value="light">Light</option>
@@ -84,20 +88,20 @@
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="Search this blog" id="search-input-mobile">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </div>
-                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a class="menu-item" href="/newsletter/" title="">Newsletter(s)</a><a class="menu-item" href="/talks/" title="">Talks</a><a href="#" class="menu-item theme-select" title="Switch Theme">
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a class="menu-item" href="/newsletter/" title="">Newsletter(s)</a><a class="menu-item" href="/talks/" title="">Talks</a><a href="javascript:void(0);" class="menu-item theme-select" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="Switch Theme">
                     <option value="light">Light</option>
@@ -122,7 +126,7 @@
         srcset="/img/avatar/apple-touch-icon.png, /img/avatar/apple-touch-icon.png 1.5x, /img/avatar/apple-touch-icon.png 2x"
         sizes="auto"
         alt="/img/avatar/apple-touch-icon.png"
-        title="/img/avatar/apple-touch-icon.png" height="100" width="100"></a></div><div class="links"><a href="https://linkedin.com/in/reachsumit" title="LinkedIn" target="_blank" rel="noopener noreferrer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="https://twitter.com/_reachsumit" title="Twitter" target="_blank" rel="noopener noreferrer me"><i class="fab fa-twitter fa-fw"></i></a><a href="https://medium.com/@sumit-arora" title="Medium" target="_blank" rel="noopener noreferrer me"><i class="fab fa-medium fa-fw"></i></a><a href="https://ko-fi.com/reachsumit" title="Ko-Fi" target="_blank" rel="noopener noreferrer me"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/kofi.svg"></i></a><a href="https://www.buymeacoffee.com/reachsumit" title="BuyMeaCoffee" target="_blank" rel="noopener noreferrer me"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/buymeacoffee.svg"></i></a><a href="mailto:hello@reachsumit.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreferrer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
+        title="/img/avatar/apple-touch-icon.png" height="100"   width="100" ></a></div><div class="links"><a href="https://linkedin.com/in/reachsumit" title="LinkedIn" target="_blank" rel="noopener noreferrer me"><span class="fab fa-linkedin fa-fw"></span></a><a href="https://twitter.com/_reachsumit" title="Twitter" target="_blank" rel="noopener noreferrer me"><span class="fab fa-twitter fa-fw"></span></a><a href="https://medium.com/@sumit-arora" title="Medium" target="_blank" rel="noopener noreferrer me"><span class="fab fa-medium fa-fw"></span></a><a href="https://ko-fi.com/reachsumit" title="Ko-Fi" target="_blank" rel="noopener noreferrer me"><span data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/kofi.svg"></span></a><a href="https://www.buymeacoffee.com/reachsumit" title="BuyMeaCoffee" target="_blank" rel="noopener noreferrer me"><span data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/buymeacoffee.svg"></span></a><a href="mailto:hello@reachsumit.com" title="Email" rel=" me"><span class="far fa-envelope fa-fw"></span></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreferrer me"><span class="fas fa-rss fa-fw"></span></a></div></div>
 <div class="single">
                 <div class="content" id="content"><p>Welcome to my blog!</p>
 </div>
@@ -134,11 +138,11 @@
         srcset="/posts/2023/03/pairing-for-representation/featured-image-preview.webp, /posts/2023/03/pairing-for-representation/featured-image-preview.webp 1.5x, /posts/2023/03/pairing-for-representation/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/03/pairing-for-representation/featured-image-preview.webp"
-        title="/posts/2023/03/pairing-for-representation/featured-image-preview.webp" height="300" width="1000"></a>
+        title="/posts/2023/03/pairing-for-representation/featured-image-preview.webp" height="300"   width="1000" ></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/posts/2023/03/pairing-for-representation/">Positive and Negative Sampling Strategies for Representation Learning in Semantic Search</a>
     </h1><div class="post-meta">
-        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+        <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
         </span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-22">2023-03-22</time></span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><i class="far fa-folder fa-fw"></i>Information Retrieval</a></span></div><div class="content">Defining positive and negative labels for a retrieval task in a search ranking system is a non-trivial problem. This article goes over various sampling strategies for creating negative and positive pairs for effective representation learning. It introduces the concept of mining hard examples, followed by various strategies to sample hard positive and hard negative pairs. The article includes a lot of tips and learnings based on heuristics and empirical results from a comprehensive set of research papers published across the industry and academia.</div><div class="post-footer">
         <a href="/posts/2023/03/pairing-for-representation/">Read more...</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/retrieval/">retrieval</a>,&nbsp;<a href="/tags/ranking/">ranking</a></div></div>
@@ -150,11 +154,11 @@
         srcset="/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp, /posts/2023/03/llm-for-text-ranking/featured-image-preview.webp 1.5x, /posts/2023/03/llm-for-text-ranking/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp"
-        title="/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp" height="300" width="1000"></a>
+        title="/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp" height="300"   width="1000" ></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/posts/2023/03/llm-for-text-ranking/">Zero and Few Shot Text Retrieval and Ranking Using Large Language Models</a>
     </h1><div class="post-meta">
-        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+        <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
         </span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-16">2023-03-16</time></span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><i class="far fa-folder fa-fw"></i>Information Retrieval</a></span></div><div class="content">Large Language Models (LLMs), like GPT-x, PaLM, BLOOM, have shaken up the NLP domain and completely redefined the state-of-the-art for a variety of tasks. One reason for the popularity of these LLMs has been their out-of-the-box capability to produce excellent performance with none to little domain-specific labeled data. The information retrieval community is also witnessing a revolution due to LLMs. These large pre-trained models can understand task instructions specified in natural language and then perform well on tasks in a zero-shot or few-shot manner. In this article, I review this theme and some of the most prominent ideas proposed by researchers in the last few months to enable zero/few-shot learning in text retrieval and ranking applications like search ranking, question answering, fact verification, etc.</div><div class="post-footer">
         <a href="/posts/2023/03/llm-for-text-ranking/">Read more...</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/retrieval/">retrieval</a>,&nbsp;<a href="/tags/ranking/">ranking</a>,&nbsp;<a href="/tags/llm/">LLM</a></div></div>
@@ -166,11 +170,11 @@
         srcset="/posts/2023/03/reranking-on-edge/featured-image-preview.webp, /posts/2023/03/reranking-on-edge/featured-image-preview.webp 1.5x, /posts/2023/03/reranking-on-edge/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/03/reranking-on-edge/featured-image-preview.webp"
-        title="/posts/2023/03/reranking-on-edge/featured-image-preview.webp" height="300" width="1000"></a>
+        title="/posts/2023/03/reranking-on-edge/featured-image-preview.webp" height="300"   width="1000" ></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/posts/2023/03/reranking-on-edge/">Next Gen Recommender Systems: Real-time reranking on mobile devices</a>
     </h1><div class="post-meta">
-        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+        <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
         </span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-09">2023-03-09</time></span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div><div class="content">A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems.</div><div class="post-footer">
         <a href="/posts/2023/03/reranking-on-edge/">Read more...</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/ranking/">ranking</a></div></div>
@@ -182,11 +186,11 @@
         srcset="/posts/2023/03/two-tower-model/featured-image-preview.webp, /posts/2023/03/two-tower-model/featured-image-preview.webp 1.5x, /posts/2023/03/two-tower-model/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/03/two-tower-model/featured-image-preview.webp"
-        title="/posts/2023/03/two-tower-model/featured-image-preview.webp" height="300" width="1000"></a>
+        title="/posts/2023/03/two-tower-model/featured-image-preview.webp" height="300"   width="1000" ></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/posts/2023/03/two-tower-model/">Two Tower Model Architecture: Current State and Promising Extensions</a>
     </h1><div class="post-meta">
-        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+        <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
         </span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-04">2023-03-04</time></span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><i class="far fa-folder fa-fw"></i>Information Retrieval</a></span></div><div class="content">Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state.</div><div class="post-footer">
         <a href="/posts/2023/03/two-tower-model/">Read more...</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/ranking/">ranking</a></div></div>
@@ -198,11 +202,11 @@
         srcset="/posts/2023/01/dl-for-forecasting/featured-image-preview.webp, /posts/2023/01/dl-for-forecasting/featured-image-preview.webp 1.5x, /posts/2023/01/dl-for-forecasting/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/01/dl-for-forecasting/featured-image-preview.webp"
-        title="/posts/2023/01/dl-for-forecasting/featured-image-preview.webp" height="300" width="1000"></a>
+        title="/posts/2023/01/dl-for-forecasting/featured-image-preview.webp" height="300"   width="1000" ></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/posts/2023/01/dl-for-forecasting/">Specialized Deep Learning Architectures for Time Series Forecasting</a>
     </h1><div class="post-meta">
-        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+        <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
         </span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-21">2023-01-21</time></span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/time-series/"><i class="far fa-folder fa-fw"></i>Time Series</a></span></div><div class="content">Modern time series forecasting requires a model to learn from multiple related time series. These time series often number in thousands or millions. Traditional statistical models do not scale well to these settings because they learn individual series in isolation and do not share parameters across series. Various deep learning models have been proposed recently with different inductive biases to work effectively under these settings. This article explores some of the most popular advances in deep learning architectures for modern time series forecasting.</div><div class="post-footer">
         <a href="/posts/2023/01/dl-for-forecasting/">Read more...</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/forecasting/">forecasting</a>,&nbsp;<a href="/tags/literature-review/">literature review</a></div></div>
@@ -214,11 +218,11 @@
         srcset="/posts/2022/12/stats-vs-ml-for-ts/featured-image-preview.webp, /posts/2022/12/stats-vs-ml-for-ts/featured-image-preview.webp 1.5x, /posts/2022/12/stats-vs-ml-for-ts/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2022/12/stats-vs-ml-for-ts/featured-image-preview.webp"
-        title="/posts/2022/12/stats-vs-ml-for-ts/featured-image-preview.webp" height="300" width="1000"></a>
+        title="/posts/2022/12/stats-vs-ml-for-ts/featured-image-preview.webp" height="300"   width="1000" ></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/posts/2022/12/stats-vs-ml-for-ts/">Statistical vs Machine Learning vs Deep Learning Modeling for Time Series Forecasting</a>
     </h1><div class="post-meta">
-        <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+        <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
         </span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-20">2022-12-20</time></span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/time-series/"><i class="far fa-folder fa-fw"></i>Time Series</a></span></div><div class="content">Statistical methods have been used in the time series domain for multiple decades. But given the recent advances in Machine Learning and especially its sub-domain Deep Learning, are statistical methods still superior for forecasting? In this article, we will do a deep dive into literature and recent time series competitions to do a multifaceted comparison between Statistical, Machine Learning, and Deep Learning methods for time series forecasting.</div><div class="post-footer">
         <a href="/posts/2022/12/stats-vs-ml-for-ts/">Read more...</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/forecasting/">forecasting</a>,&nbsp;<a href="/tags/literature-review/">literature review</a></div></div>

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +21,8 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/" /><link rel="next" href="https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/" /><link rel="next" href="https://blog.reachsumit.com/posts/2022/12/stats-vs-ml-for-ts/" />
+<link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -38,16 +41,17 @@
                 "name": "Sumit Kumar"
             },"description": "Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions."
     }
-    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 </head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
-        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
         if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
         let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
         getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+        window.switchThemeEventSet = new Set()
     </script>
     <div id="back-to-top"></div>
     <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
@@ -58,16 +62,16 @@
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://reachsumit.com/#contact" rel="noopener noreferrer" target="_blank"> Contact </a><a class="menu-item" href="/newsletter/"> Newsletter(s) </a><a class="menu-item" href="/talks/"> Talks </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search this blog" id="search-input-desktop">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
-                    </span><a href="#" class="menu-item theme-select" title="Switch Theme">
+                    </span><a href="javascript:void(0);" class="menu-item theme-select" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw"></i>
                     <select class="color-theme-select" id="theme-select-desktop" title="Switch Theme">
                         <option value="light">Light</option>
@@ -91,20 +95,20 @@
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="Search this blog" id="search-input-mobile">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </div>
-                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a class="menu-item" href="/newsletter/" title="">Newsletter(s)</a><a class="menu-item" href="/talks/" title="">Talks</a><a href="#" class="menu-item theme-select" title="Switch Theme">
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a class="menu-item" href="/newsletter/" title="">Newsletter(s)</a><a class="menu-item" href="/talks/" title="">Talks</a><a href="javascript:void(0);" class="menu-item theme-select" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="Switch Theme">
                     <option value="light">Light</option>
@@ -183,20 +187,19 @@
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Feature-Interactions Based Information Retrieval Models</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Feature-Interactions Based Information Retrieval Models</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+                <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><i class="far fa-folder fa-fw"></i>Information Retrieval</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-11-06">2022-11-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-03">2023-06-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2750 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;13 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-11-06">2022-11-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-03">2023-06-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2750 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;13 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
         src="/posts/2022/11/feature-interactions-ir/featured-image.webp"
         srcset="/posts/2022/11/feature-interactions-ir/featured-image.webp, /posts/2022/11/feature-interactions-ir/featured-image.webp 1.5x, /posts/2022/11/feature-interactions-ir/featured-image.webp 2x"
         sizes="auto"
-        alt="/posts/2022/11/feature-interactions-ir/featured-image.webp"
-        title="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
+        alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions."
+        title="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
@@ -264,15 +267,15 @@
     <a href="#introduction" class="header-mark"></a>Introduction</h2><p>Large-scale information retrieval applications, such as recommender systems, search ranking, and text analysis often leverage feature interactions for effective modeling. These models are commonly deployed at the ranking stage of <a href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system" rel="">the cascade-style systems</a>. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second or higher-order feature interactions.</p>
 <h3 id="why-should-we-model-feature-interactions" class="headerLink">
     <a href="#why-should-we-model-feature-interactions" class="header-mark"></a>Why Should We Model Feature Interactions?</h3><p>As an example, consider an artificial Click-through rate (CTR) dataset shown in the table below, where + and - represent the number of clicked and unclicked impressions respectively.</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/table_1_ctr_example.png" title="Using Factor Matrices" data-thumbnail="/img/posts/2022/feature-interactions-ir/table_1_ctr_example.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/table_1_ctr_example.png" title="Using Factor Matrices" data-thumbnail="/img/posts/2022/feature-interactions-ir/table_1_ctr_example.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/table_1_ctr_example.png"
             srcset="/img/posts/2022/feature-interactions-ir/table_1_ctr_example.png, /img/posts/2022/feature-interactions-ir/table_1_ctr_example.png 1.5x, /img/posts/2022/feature-interactions-ir/table_1_ctr_example.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/table_1_ctr_example.png">
-    </a></p>
+            alt="Using Factor Matrices">
+    </a></figure></p>
 <p>We can see that an ad from Gucci has a high CTR on Vogue. It is difficult for linear models to learn this information because they learn the two weights Gucci and Vogue separately. To address this problem, a machine learning model will have to learn the effect of their feature interaction. Algorithms such as Poly2 (degree-2 polynomial) do this by learning a dedicated weight for each feature conjunction ($O(n^{2})$ time complexity).</p>
 <h3 id="order-of-interaction" class="headerLink">
     <a href="#order-of-interaction" class="header-mark"></a>Order of Interaction</h3><p>An order-2 interaction can be between two features, such as app category and timestamp. For example, people often download Uber apps for food delivery at meal-time. Similarly, an order-3 interaction can be between app category, user gender, and age. For example, a report showed that male teenagers like shooting and RPG games. Some research works argue that considering low- and high-order feature interactions simultaneously brings additional improvement over the cases of considering either alone<cite><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite>. For a highly sparse dataset, these feature interactions are often hidden and difficult to identify a priori.</p>
@@ -295,15 +298,15 @@
     <a href="#model-architectures" class="header-mark"></a>Model Architectures</h2><p>In this article, I will introduce, implement and compare seven popular model architectures that try to balance both memorization and generalization to some degree. Each of the model implementations is done in its standalone Jupyter Notebook file and is linked in the corresponding section below. Every notebook contains code for data preprocessing, model definition, training, and evaluation as applicable to the respective model.</p>
 <h3 id="1-factorization-machine-fm" class="headerLink">
     <a href="#1-factorization-machine-fm" class="header-mark"></a>1. Factorization Machine (FM)</h3><p>Factorization Machines (FMs) were originally purposed in 2010 as a supervised machine-learning method for collaborative recommendations. FMs allow parameter estimation under very sparse data where its predecessors, like SVMs failed, and unlike Matrix Factorization it isn&rsquo;t limited to modeling the relation of two entities only. FMs learn second-order feature interactions on top of a linear model by modeling all interactions between each pair of features. They can also be optimized to work in linear time complexity. While in principle, FM can model high-order feature interaction, in practice usually only order-2 features are considered due to high complexity.</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_equation_1.png" title="FM equation 1" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_equation_1.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_equation_1.png" title="FM equation 1" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_equation_1.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/fm_equation_1.png"
             srcset="/img/posts/2022/feature-interactions-ir/fm_equation_1.png, /img/posts/2022/feature-interactions-ir/fm_equation_1.png 1.5x, /img/posts/2022/feature-interactions-ir/fm_equation_1.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/fm_equation_1.png">
-    </a></p>
+            alt="FM equation 1">
+    </a></figure></p>
 <p>where $w_{0}$ is the global bias, $w_{i}$ denotes the weight of the i-th feature, and $ŵ_{ij}$ denotes the weight of the cross feature $x_{i}x_{j}$, which is factorized as: $ŵ_{ij} = v_{i}^{T} v_{j}$, where $v_{i} \in R^{k}$ denotes the embedding vector for feature i, and k denotes the size of the embedding vector.</p>
 <p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_example.png" title="FM example" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_example.png" data-sub-html="<h2>Example: a movie review system dataset</h2><p>FM example</p>">
         <img
@@ -312,65 +315,65 @@
             src="/img/posts/2022/feature-interactions-ir/fm_example.png"
             srcset="/img/posts/2022/feature-interactions-ir/fm_example.png, /img/posts/2022/feature-interactions-ir/fm_example.png 1.5x, /img/posts/2022/feature-interactions-ir/fm_example.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/fm_example.png">
+            alt="FM example">
     </a><figcaption class="image-caption">Example: a movie review system dataset</figcaption>
     </figure></p>
 <p>The example above shows a sparse input feature vector x with corresponding target y. We have binary indicator variables for the user, movie, and the last movie rated, along with a normalized rating for other movies and timestamps. Let&rsquo;s say we want to estimate the interaction between the user Alice (A) and the movie Star Trek (ST). You will notice that we do not have any example in x with an interaction between A and ST. FM can still estimate this by using the factorized interaction parameters $\langle v_{A}, v_{ST} \rangle$ even in this case.</p>
 <h4 id="implementation" class="headerLink">
     <a href="#implementation" class="header-mark"></a>Implementation</h4><p>Suppose we have M training examples, n features and we want to factorize feature interaction with vectors of size k i.e. dimensionality of $v_{i}$. Let us denote our trainset as $X \in R^{M×n}$, and matrix of $v_{i}$ (the ith row is $v_{i}$) as $V \in R^{n×k}$. Also, let&rsquo;s denote the feature vector for the jth object as $x_{j}$. So:</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_equation_3.png" title="FM equation 3" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_equation_3.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_equation_3.png" title="FM equation 3" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_equation_3.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/fm_equation_3.png"
             srcset="/img/posts/2022/feature-interactions-ir/fm_equation_3.png, /img/posts/2022/feature-interactions-ir/fm_equation_3.png 1.5x, /img/posts/2022/feature-interactions-ir/fm_equation_3.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/fm_equation_3.png">
-    </a></p>
+            alt="FM equation 3">
+    </a></figure></p>
 <p>The number in brackets indicates the index of the sample for x and the index of the feature for v. Also, the FM equation can be expressed as:</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_equation_2.png" title="FM equation 2" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_equation_2.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_equation_2.png" title="FM equation 2" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_equation_2.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/fm_equation_2.png"
             srcset="/img/posts/2022/feature-interactions-ir/fm_equation_2.png, /img/posts/2022/feature-interactions-ir/fm_equation_2.png 1.5x, /img/posts/2022/feature-interactions-ir/fm_equation_2.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/fm_equation_2.png">
-    </a></p>
+            alt="FM equation 2">
+    </a></figure></p>
 <p>$S_{1}$ is a dot product of feature vector $x_{j}$ and ith column of V. If we multiply X and V, we get:</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_equation_4.png" title="FM equation 4" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_equation_4.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_equation_4.png" title="FM equation 4" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_equation_4.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/fm_equation_4.png"
             srcset="/img/posts/2022/feature-interactions-ir/fm_equation_4.png, /img/posts/2022/feature-interactions-ir/fm_equation_4.png 1.5x, /img/posts/2022/feature-interactions-ir/fm_equation_4.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/fm_equation_4.png">
-    </a></p>
+            alt="FM equation 4">
+    </a></figure></p>
 <p>So if square XV element-wise and then find the sum of each row, we obtain a vector of $S_{1}^{2}$ terms for each training sample. Also, if we first square X and V element-wise, then multiply them, and finally sum by rows, we&rsquo;ll get $S_{2}$ term for each training object. So, conceptually, we can express the final term like this:</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_equation_6.png" title="FM equation 6" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_equation_6.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_equation_6.png" title="FM equation 6" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_equation_6.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/fm_equation_6.png"
             srcset="/img/posts/2022/feature-interactions-ir/fm_equation_6.png, /img/posts/2022/feature-interactions-ir/fm_equation_6.png 1.5x, /img/posts/2022/feature-interactions-ir/fm_equation_6.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/fm_equation_6.png">
-    </a></p>
+            alt="FM equation 6">
+    </a></figure></p>
 <p><strong>PyTorch Code</strong></p>
 <p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/2a639276fc781870c4dcd480a3417bf9" target="_blank" rel="noopener noreferrer">https://gist.github.com/reachsumit/2a639276fc781870c4dcd480a3417bf9</a></p>
 <p>You can read more about FMs in the <a href="https://ieeexplore.ieee.org/document/5694074" target="_blank" rel="noopener noreferrer">original paper</a> and the <a href="https://github.com/srendle/libfm" target="_blank" rel="noopener noreferrer">official codebase</a>.</p>
 <h3 id="2-field-aware-factorization-machine-ffm" class="headerLink">
     <a href="#2-field-aware-factorization-machine-ffm" class="header-mark"></a>2. Field-Aware Factorization Machine (FFM)</h3><p>Let&rsquo;s revisit the artificial dataset example from earlier and add another column Gender to it. One observation of such a dataset might look like this:</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/ffm_example.png" title="FFM example" data-thumbnail="/img/posts/2022/feature-interactions-ir/ffm_example.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/ffm_example.png" title="FFM example" data-thumbnail="/img/posts/2022/feature-interactions-ir/ffm_example.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/ffm_example.png"
             srcset="/img/posts/2022/feature-interactions-ir/ffm_example.png, /img/posts/2022/feature-interactions-ir/ffm_example.png 1.5x, /img/posts/2022/feature-interactions-ir/ffm_example.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/ffm_example.png">
-    </a></p>
+            alt="FFM example">
+    </a></figure></p>
 <p>FMs will model the effect of feature conjunction as: $w_{ESPN} \cdot w_{Nike} + w_{ESPN} \cdot w_{Male} + w_{Nike} \cdot w_{Male}$. Field-aware factorization machines (FFMs) extend FMs by introducing the concept of fields and features. With the same example, Publisher, Advertiser, and Gender will be called fields, while values like ESPN, Nike, and Male will be called their features. Note that in FMs every feature has only one latent vector to learn the latent effect with any other features. For example, for ESPN $w_{ESPN}$ is used to learn the latent effect with Nike ($w_{ESPN} \cdot w_{Nike}$) and Male ($w_{ESPN} \cdot w_{Male}$). However, because Nike and Male belong to different fields, the latent effects of (EPSN, Nike) and (EPSN, Male) may be different.</p>
 <p>In FFMs, each feature has several latent vectors. Depending on the field of other features, one of them is used to do the inner product. So, for the same example, the feature interaction effect is modeled by FFM as: $w_{ESPN,A} \cdot w_{Nike,P} + w_{ESPN,G} \cdot w_{Male,P} + w_{Nike,G} \cdot w_{Male,A}$. To learn the latent effect of (ESPN, NIKE), for example, $w_{ESPN,A}$ is used because Nike belongs to the field Advertiser, and $w_{Nike,P}$ is used because ESPN belongs to the field Publisher.</p>
 <p>If f is the number of fields, then the number of variables of FFMs is nfk, and the time complexity is $O(\bar{n}^{2}k)$. Note that because each latent vector in FFMs only needs to learn the effect with a specific field, usually: $k_{FFM} \ll k_{FM}$. FFM authors empirically show that for large, sparse datasets with many categorical features, FFMs perform better than FMs. Whereas for small and dense datasets or numerical datasets, FMs perform better than FFMs.</p>
@@ -380,15 +383,15 @@
 <p>You can read more about FFMs in the <a href="https://dl.acm.org/doi/10.1145/2959100.2959134" target="_blank" rel="noopener noreferrer">original paper</a> and the <a href="https://github.com/ycjuan/libffm" target="_blank" rel="noopener noreferrer">official codebase</a>.</p>
 <h3 id="3-attentional-factorization-machine-afm" class="headerLink">
     <a href="#3-attentional-factorization-machine-afm" class="header-mark"></a>3. Attentional Factorization Machine (AFM)</h3><p>However, despite its effectiveness, FMs model all feature interactions with the same weight, but not all feature interactions are equally useful and predictive. For example, the interactions with useless features may even introduce noise leading to degraded model performance. Attentional Factorization Machines (AFMs) fix this by learning the importance of each feature interaction from data via a neural attention network.</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/afm_arch.png" title="AFM architecture" data-thumbnail="/img/posts/2022/feature-interactions-ir/afm_arch.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/afm_arch.png" title="AFM architecture" data-thumbnail="/img/posts/2022/feature-interactions-ir/afm_arch.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/afm_arch.png"
             srcset="/img/posts/2022/feature-interactions-ir/afm_arch.png, /img/posts/2022/feature-interactions-ir/afm_arch.png 1.5x, /img/posts/2022/feature-interactions-ir/afm_arch.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/afm_arch.png">
-    </a></p>
+            alt="AFM architecture">
+    </a></figure></p>
 <p>AFM starts with sparse input and embedding layer and inspired by FM&rsquo;s inner product, it expands m vectors to $\frac{m(m-1)}{2}$  interacted vectors, where each interacted vector is the element-wise product of two distinct vectors to encode their interaction. The output of the pair-wise interaction layer is fed into an attention-based pooling layer, the idea here is to allow different parts to contribute differently when compressing them to a single representation. An attention mechanism is applied to feature interactions by performing a weighted sum on the interacted vectors. This weight or attention score can be thought of as the importance of weight $\hat{w}_{ij}$ in predicting the target. One shortcoming of AFM architecture is that it models only second-order feature interactions.</p>
 <h4 id="implementation-2" class="headerLink">
     <a href="#implementation-2" class="header-mark"></a>Implementation</h4><p><strong>PyTorch Code</strong></p>
@@ -396,15 +399,15 @@
 <p>You can read more about AFMs in the <a href="https://arxiv.org/abs/1708.04617" target="_blank" rel="noopener noreferrer">original paper</a> and the <a href="https://github.com/hexiangnan/neural_factorization_machine" target="_blank" rel="noopener noreferrer">official codebase</a>.</p>
 <h3 id="4-wide--deep-learning" class="headerLink">
     <a href="#4-wide--deep-learning" class="header-mark"></a>4. Wide &amp; Deep Learning</h3><p>The Wide &amp; Deep learning framework was proposed by Google to achieve both memorization and generalization in one model, by jointly training a linear model component and a neural network component. The wide component is a generalized linear model to which raw input features and transformed features (such as cross-product transformations) are supplied. The deep component is a feed-forward neural network, which consumes sparse categorical features in embedding vector form. The wide and deep parts are combined using a weighted sum of their output log odds as the prediction which is then fed to a common loss function for joint training.</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/wnd_arch.png" title="W&amp;amp;D architecture" data-thumbnail="/img/posts/2022/feature-interactions-ir/wnd_arch.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/wnd_arch.png" title="W&amp;amp;D architecture" data-thumbnail="/img/posts/2022/feature-interactions-ir/wnd_arch.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/wnd_arch.png"
             srcset="/img/posts/2022/feature-interactions-ir/wnd_arch.png, /img/posts/2022/feature-interactions-ir/wnd_arch.png 1.5x, /img/posts/2022/feature-interactions-ir/wnd_arch.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/wnd_arch.png">
-    </a></p>
+            alt="W&amp;amp;D architecture">
+    </a></figure></p>
 <p>The authors claim that wide linear models can effectively memorize sparse feature interactions using cross-product feature transformations, while deep neural networks can generalize to previously unseen feature interactions through low-dimensional embeddings. Note that the wide and deep parts work with two different inputs and the input to the wide part still relies on expertise feature engineering. The model also suffers from the same problem as the linear models like Polynomial Regression that feature interactions can not be learned for unobserved cross features.</p>
 <h4 id="implementation-3" class="headerLink">
     <a href="#implementation-3" class="header-mark"></a>Implementation</h4><p><strong>PyTorch Code</strong></p>
@@ -412,45 +415,45 @@
 <p>You can read more about Wide&amp;Deep in the <a href="https://arxiv.org/abs/1606.07792" target="_blank" rel="noopener noreferrer">original paper</a> and the <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/DNNLinearCombinedClassifier" target="_blank" rel="noopener noreferrer">official codebase</a>.</p>
 <h3 id="5-deepfm" class="headerLink">
     <a href="#5-deepfm" class="header-mark"></a>5. DeepFM</h3><p>DeepFM model architecture combines the power of FMs and deep learning to overcome the issues with Wide&amp;Deep networks. DeepFM uses a single shared input to its wide and deep parts, with no need for any special feature engineering besides raw features. It models low-order feature interactions like FM and models high-order feature interactions like DNN.</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/deepfm_arch.png" title="DeepFM architecture" data-thumbnail="/img/posts/2022/feature-interactions-ir/deepfm_arch.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/deepfm_arch.png" title="DeepFM architecture" data-thumbnail="/img/posts/2022/feature-interactions-ir/deepfm_arch.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/deepfm_arch.png"
             srcset="/img/posts/2022/feature-interactions-ir/deepfm_arch.png, /img/posts/2022/feature-interactions-ir/deepfm_arch.png 1.5x, /img/posts/2022/feature-interactions-ir/deepfm_arch.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/deepfm_arch.png">
-    </a></p>
+            alt="DeepFM architecture">
+    </a></figure></p>
 <h4 id="implementation-4" class="headerLink">
     <a href="#implementation-4" class="header-mark"></a>Implementation</h4><p><strong>PyTorch Code</strong></p>
 <p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/79237a4de62b4033e2576c55df3dc056" target="_blank" rel="noopener noreferrer">https://gist.github.com/reachsumit/79237a4de62b4033e2576c55df3dc056</a></p>
 <p>You can read more about DeepFM in the <a href="https://arxiv.org/abs/1703.04247" target="_blank" rel="noopener noreferrer">original paper</a>.</p>
 <h3 id="6-neural-factorization-machine-nfm" class="headerLink">
     <a href="#6-neural-factorization-machine-nfm" class="header-mark"></a>6. Neural Factorization Machine (NFM)</h3><p>Neural Factorization Machine (NFM) model architecture was also proposed by the authors of the AFM paper with the same goal of overcoming the insufficient linear modeling of feature interactions in FM. After the sparse input and embedding layer, this time the authors propose a Bi-Interaction layer that models the second-order feature interactions. This layer is a pooling layer that converts a set of the embedding vectors set input to one vector by performing an element-wise product of vectors: $\sum_{i=1}^{n} \sum_{j=i+1}^{n} x_{i}v_{i} \odot  x_{j}v_{j}$, and passes it on to another set of fully connected layers.</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/nfm_arch.png" title="NFM architecture" data-thumbnail="/img/posts/2022/feature-interactions-ir/nfm_arch.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/nfm_arch.png" title="NFM architecture" data-thumbnail="/img/posts/2022/feature-interactions-ir/nfm_arch.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/nfm_arch.png"
             srcset="/img/posts/2022/feature-interactions-ir/nfm_arch.png, /img/posts/2022/feature-interactions-ir/nfm_arch.png 1.5x, /img/posts/2022/feature-interactions-ir/nfm_arch.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/nfm_arch.png">
-    </a></p>
+            alt="NFM architecture">
+    </a></figure></p>
 <h4 id="implementation-5" class="headerLink">
     <a href="#implementation-5" class="header-mark"></a>Implementation</h4><p><strong>PyTorch Code</strong></p>
 <p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/f29d7001b7687785f33636c9bca302c3" target="_blank" rel="noopener noreferrer">https://gist.github.com/reachsumit/f29d7001b7687785f33636c9bca302c3</a></p>
 <p>You can read more about NFM in the <a href="https://arxiv.org/abs/1708.05027" target="_blank" rel="noopener noreferrer">original paper</a> and the <a href="https://github.com/hexiangnan/neural_factorization_machine" target="_blank" rel="noopener noreferrer">official codebase</a>.</p>
 <h3 id="7-deep-learning-recommendation-model-dlrm" class="headerLink">
     <a href="#7-deep-learning-recommendation-model-dlrm" class="header-mark"></a>7. Deep Learning Recommendation Model (DLRM)</h3><p>The Deep Learning Recommendation Model (DLRM) was proposed by Facebook in 2019. The DLRM architecture can be thought of as a simplified version of DeepFM architecture. DLRM tries to stay away from high-order interactions by not passing the embedded categorical features through an MLP layer. First, it makes the continuous features go through a &ldquo;bottom&rdquo; MLP layer such that they have the same length as the embedding vectors. Then, it computes the dot product between all combinations of embedding vectors and the bottom MLP output from the previous step. The dot product output is then concatenated with the bottom MLP output and is passed to a &ldquo;top&rdquo; MLP layer to compute the final output.</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/dlrm_arch.png" title="DLRM architecture" data-thumbnail="/img/posts/2022/feature-interactions-ir/dlrm_arch.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/dlrm_arch.png" title="DLRM architecture" data-thumbnail="/img/posts/2022/feature-interactions-ir/dlrm_arch.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/dlrm_arch.png"
             srcset="/img/posts/2022/feature-interactions-ir/dlrm_arch.png, /img/posts/2022/feature-interactions-ir/dlrm_arch.png 1.5x, /img/posts/2022/feature-interactions-ir/dlrm_arch.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/dlrm_arch.png">
-    </a></p>
+            alt="DLRM architecture">
+    </a></figure></p>
 <p>This architecture design is tailored to mimic the way Factorization Machines compute the second-order interactions between the embeddings, and the paper also says:</p>
 <blockquote>
 <p>We argue that higher-order interactions beyond second-order found in other networks may not necessarily be worth the additional computational/memory cost.</p>
@@ -473,27 +476,27 @@
 <li>The dataset was split into train-test with an 80-20 ratio.</li>
 </ul>
 <p>The following diagram shows the various features generated through preprocessing. Some or all of these features are used during experimentation depending upon the specific model architecture.</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/input_features.png" title="input features" data-thumbnail="/img/posts/2022/feature-interactions-ir/input_features.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/input_features.png" title="input features" data-thumbnail="/img/posts/2022/feature-interactions-ir/input_features.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/input_features.png"
             srcset="/img/posts/2022/feature-interactions-ir/input_features.png, /img/posts/2022/feature-interactions-ir/input_features.png 1.5x, /img/posts/2022/feature-interactions-ir/input_features.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/input_features.png">
-    </a></p>
+            alt="input features">
+    </a></figure></p>
 <p>Refer to the respective notebook for data preprocessing steps specific to each model.</p>
 <h3 id="comparison-results" class="headerLink">
     <a href="#comparison-results" class="header-mark"></a>Comparison Results</h3><p>The mean rank of the test set examples was computed using each model, and the following chart shows their comparison based on the best rank achieved on the test set. In short, for this experiment: AFM &gt; FFM &raquo; DeepFM &gt; DLRM_simplified &gt; Wide &amp; Deep &gt; NFM &gt; FM.</p>
-<p><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/final_comparison.png" title="Comparing all models" data-thumbnail="/img/posts/2022/feature-interactions-ir/final_comparison.png">
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/final_comparison.png" title="Comparing all models" data-thumbnail="/img/posts/2022/feature-interactions-ir/final_comparison.png">
         <img
             
             loading="lazy"
             src="/img/posts/2022/feature-interactions-ir/final_comparison.png"
             srcset="/img/posts/2022/feature-interactions-ir/final_comparison.png, /img/posts/2022/feature-interactions-ir/final_comparison.png 1.5x, /img/posts/2022/feature-interactions-ir/final_comparison.png 2x"
             sizes="auto"
-            alt="/img/posts/2022/feature-interactions-ir/final_comparison.png">
-    </a></p>
+            alt="Comparing all models">
+    </a></figure></p>
 <h2 id="summary" class="headerLink">
     <a href="#summary" class="header-mark"></a>Summary</h2><p>In this article, we defined the need for modeling feature interactions and then looked at some of the most popular machine-learning algorithms designed to estimate feature interactions under sparse settings. We implemented all of the algorithms in Python and compared their results on a toy dataset.</p>
 <h2 id="references" class="headerLink">
@@ -523,8 +526,8 @@
         src="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         srcset="/posts/2023/09/generative-retrieval/featured-image-preview.webp, /posts/2023/09/generative-retrieval/featured-image-preview.webp 1.5x, /posts/2023/09/generative-retrieval/featured-image-preview.webp 2x"
         sizes="auto"
-        alt="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
-        title="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
+        alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions."
+        title="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/09/generative-retrieval/">Generative Retrieval for End-to-End Search Systems</a>
             </h2>
@@ -537,8 +540,8 @@
         src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
         sizes="auto"
-        alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
-        title="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
+        alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions."
+        title="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/06/llms-for-recsys-entity-representation/">Representing Users and Items in Large Language Models based Recommender Systems</a>
             </h2>
@@ -551,8 +554,8 @@
         src="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp"
         srcset="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp, /posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp 1.5x, /posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp 2x"
         sizes="auto"
-        alt="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp"
-        title="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
+        alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions."
+        title="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/05/shallow-heterogeneous-graphs-rep/">Shallow Embedding Models for Heterogeneous Graphs</a>
             </h2>
@@ -565,8 +568,8 @@
         src="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp"
         srcset="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp, /posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp 2x"
         sizes="auto"
-        alt="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp"
-        title="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
+        alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions."
+        title="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/05/tuning-llm-for-recsys/">Tuning Large Language Models for Recommendation Tasks</a>
             </h2>
@@ -579,8 +582,8 @@
         src="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp"
         srcset="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp, /posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp 2x"
         sizes="auto"
-        alt="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp"
-        title="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
+        alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions."
+        title="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/05/chatgpt-for-recsys/">ChatGPT-based Recommender Systems</a>
             </h2>
@@ -604,9 +607,7 @@
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
-            <div class="post-info-share">
-                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models" data-via="_reachsumit" data-hashtags="recsys,literature review"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-hashtag="recsys"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models" data-description="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions."><i class="fab fa-trello fa-fw"></i></a></span>
-            </div>
+            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models" data-via="_reachsumit" data-hashtags="recsys,literature review"><span class="fab fa-twitter fa-fw"></span></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-hashtag="recsys"><span class="fab fa-facebook-square fa-fw"></span></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/"><span class="fab fa-linkedin fa-fw"></span></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models" data-web><span class="fab fa-whatsapp fa-fw"></span></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models"><span class="fab fa-hacker-news fa-fw"></span></button><button title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/"><span class="fab fa-reddit fa-fw"></span></button><button title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models"><span data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></span></button><button title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/"><span class="fab fa-get-pocket fa-fw"></span></button><button title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models" data-image="featured-image.webp"><span class="fab fa-weibo fa-fw"></span></button><button title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models"><span class="fab fa-evernote fa-fw"></span></button><button title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models" data-description="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions."><span class="fab fa-trello fa-fw"></span></button></div>
         </div>
     </div>
 
@@ -636,7 +637,7 @@
             <i class="fas fa-comment fa-fw"></i>
         </a>
     </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2022-11-06T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Feature-Interactions Based Information Retrieval Models"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2022-11-06T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Feature-Interactions Based Information Retrieval Models"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3" async></script></div>

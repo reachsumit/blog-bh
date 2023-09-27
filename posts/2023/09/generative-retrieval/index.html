@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +21,8 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/" />
+<link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -38,16 +41,17 @@
                 "name": "Sumit Kumar"
             },"description": ""
     }
-    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 </head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
-        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
         if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
         let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
         getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+        window.switchThemeEventSet = new Set()
     </script>
     <div id="back-to-top"></div>
     <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
@@ -58,16 +62,16 @@
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://reachsumit.com/#contact" rel="noopener noreferrer" target="_blank"> Contact </a><a class="menu-item" href="/newsletter/"> Newsletter(s) </a><a class="menu-item" href="/talks/"> Talks </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search this blog" id="search-input-desktop">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
-                    </span><a href="#" class="menu-item theme-select" title="Switch Theme">
+                    </span><a href="javascript:void(0);" class="menu-item theme-select" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw"></i>
                     <select class="color-theme-select" id="theme-select-desktop" title="Switch Theme">
                         <option value="light">Light</option>
@@ -91,20 +95,20 @@
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="Search this blog" id="search-input-mobile">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </div>
-                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a class="menu-item" href="/newsletter/" title="">Newsletter(s)</a><a class="menu-item" href="/talks/" title="">Talks</a><a href="#" class="menu-item theme-select" title="Switch Theme">
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a class="menu-item" href="/newsletter/" title="">Newsletter(s)</a><a class="menu-item" href="/talks/" title="">Talks</a><a href="javascript:void(0);" class="menu-item theme-select" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="Switch Theme">
                     <option value="light">Light</option>
@@ -174,12 +178,11 @@
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Generative Retrieval for End-to-End Search Systems</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Generative Retrieval for End-to-End Search Systems</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+                <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><i class="far fa-folder fa-fw"></i>Information Retrieval</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-09-06">2023-09-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-09-06">2023-09-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;5629 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;27 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-09-06">2023-09-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-09-06">2023-09-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;5629 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;27 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
@@ -187,7 +190,7 @@
         srcset="/posts/2023/09/generative-retrieval/featured-image.webp, /posts/2023/09/generative-retrieval/featured-image.webp 1.5x, /posts/2023/09/generative-retrieval/featured-image.webp 2x"
         sizes="auto"
         alt="/posts/2023/09/generative-retrieval/featured-image.webp"
-        title="/posts/2023/09/generative-retrieval/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
+        title="/posts/2023/09/generative-retrieval/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
@@ -255,7 +258,7 @@
             src="/img/posts/2023/generative-retrieval/sparse_vs_dense_retrieval.png"
             srcset="/img/posts/2023/generative-retrieval/sparse_vs_dense_retrieval.png, /img/posts/2023/generative-retrieval/sparse_vs_dense_retrieval.png 1.5x, /img/posts/2023/generative-retrieval/sparse_vs_dense_retrieval.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/generative-retrieval/sparse_vs_dense_retrieval.png">
+            alt="Sparse vs Dense Retrieval">
     </a><figcaption class="image-caption">Source: [^3]</figcaption>
     </figure></p>
 <h4 id="sparse-retrieval-with-inverted-indexes" class="headerLink">
@@ -286,7 +289,7 @@
             src="/img/posts/2023/generative-retrieval/generative_retrieval_intro.png"
             srcset="/img/posts/2023/generative-retrieval/generative_retrieval_intro.png, /img/posts/2023/generative-retrieval/generative_retrieval_intro.png 1.5x, /img/posts/2023/generative-retrieval/generative_retrieval_intro.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/generative-retrieval/generative_retrieval_intro.png">
+            alt="Traditional IR pipeline vs Genrative Retrieval">
     </a><figcaption class="image-caption">Traditional IR pipeline vs Genrative Retrieval. Source: [^7]</figcaption>
     </figure></p>
 <p>Generative Retrieval offers the following advantages:</p>
@@ -344,7 +347,7 @@
             src="/img/posts/2023/generative-retrieval/dsi_hierarchical_clustering.png"
             srcset="/img/posts/2023/generative-retrieval/dsi_hierarchical_clustering.png, /img/posts/2023/generative-retrieval/dsi_hierarchical_clustering.png 1.5x, /img/posts/2023/generative-retrieval/dsi_hierarchical_clustering.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/generative-retrieval/dsi_hierarchical_clustering.png">
+            alt="DSI Hierarchical Clustering">
     </a><figcaption class="image-caption">DSI's Hierarchical Clustering</figcaption>
     </figure></p>
 <p><strong>NCI</strong> further extended DSI&rsquo;s semantic identifier method by prepending each digit in the docid with a position number and proposed a novel prefix-aware weight-adaptive auto-regressive decoder that specifically takes into account the prefixes in semantic docids. By doing this, the same token will be assigned different embedding vectors at different positions in the identifiers.</p>
@@ -356,7 +359,7 @@
             src="/img/posts/2023/generative-retrieval/minder_overview.png"
             srcset="/img/posts/2023/generative-retrieval/minder_overview.png, /img/posts/2023/generative-retrieval/minder_overview.png 1.5x, /img/posts/2023/generative-retrieval/minder_overview.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/generative-retrieval/minder_overview.png">
+            alt="Overview of MINDER Method">
     </a><figcaption class="image-caption">Overview of MINDER Method</figcaption>
     </figure></p>
 <p>Some researchers have also utilized learned quantization for constructing document identifiers. For example, <strong>Ultron</strong> <sup id="fnref2:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> suggested dividing the <code>D</code>-dimensional document vectors into <code>m</code> groups and then performing k-means clustering to obtain <code>k</code> cluster centers. Each document is then represented as a set of <code>m</code> cluster IDs. In <strong>GENRET</strong>, Sun et al. <sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup> used an auto-encoding framework to learn semantic docids in an end-to-end manner. In <strong>TIGER</strong> (Transformer Index for Generative Recommenders), Rajput et al. <sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup> proposed generative retrieval for building a sequential recommender system. They used a hierarchical method called RQ-VAE to generate a tuple of codewords, called semantic ID, for each item.</p>
@@ -367,7 +370,7 @@
             src="/img/posts/2023/generative-retrieval/tiger_overview.png"
             srcset="/img/posts/2023/generative-retrieval/tiger_overview.png, /img/posts/2023/generative-retrieval/tiger_overview.png 1.5x, /img/posts/2023/generative-retrieval/tiger_overview.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/generative-retrieval/tiger_overview.png">
+            alt="TIGER Framework for Sequential Recommendations">
     </a><figcaption class="image-caption">TIGER Framework for Sequential Recommendations</figcaption>
     </figure></p>
 <p>In <strong>AutoTSG</strong> (Auto-regressive Search Engine with Term-Set Generation), Zhang et al.<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup> proposed an unordered term-based document identifier. The authors introduced a set-oriented strategy in which any permutation of the term-set identifier will lead to the retrieval of the corresponding document. This relieves the seq2seq of the requirement for the exact generation of the document identifier. It also prevents cascading errors where an incorrect prediction made at any step of the generation process leads to an incorrect or invalid retrieval result.</p>
@@ -397,7 +400,7 @@
             src="/img/posts/2023/generative-retrieval/ultron_training_workflow.png"
             srcset="/img/posts/2023/generative-retrieval/ultron_training_workflow.png, /img/posts/2023/generative-retrieval/ultron_training_workflow.png 1.5x, /img/posts/2023/generative-retrieval/ultron_training_workflow.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/generative-retrieval/ultron_training_workflow.png">
+            alt="Ultron&amp;rsquo;s Training Workflow">
     </a><figcaption class="image-caption">Ultron's Training Workflow</figcaption>
     </figure></p>
 </li>
@@ -441,7 +444,7 @@
             src="/img/posts/2023/generative-retrieval/clever_ipq.png"
             srcset="/img/posts/2023/generative-retrieval/clever_ipq.png, /img/posts/2023/generative-retrieval/clever_ipq.png 1.5x, /img/posts/2023/generative-retrieval/clever_ipq.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/generative-retrieval/clever_ipq.png">
+            alt="CLEVER&amp;rsquo;s IPQ">
     </a><figcaption class="image-caption">CLEVER's IPQ method for updating quantization centroids to add new documents</figcaption>
     </figure></p>
 <h2 id="comparative-performance" class="headerLink">
@@ -564,7 +567,7 @@
         srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
-        title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200" width="400"></a>
+        title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/06/llms-for-recsys-entity-representation/">Representing Users and Items in Large Language Models based Recommender Systems</a>
             </h2>
@@ -578,7 +581,7 @@
         srcset="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp, /posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp 1.5x, /posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp"
-        title="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp" height="200" width="400"></a>
+        title="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/05/shallow-heterogeneous-graphs-rep/">Shallow Embedding Models for Heterogeneous Graphs</a>
             </h2>
@@ -592,7 +595,7 @@
         srcset="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp, /posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp"
-        title="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp" height="200" width="400"></a>
+        title="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/05/tuning-llm-for-recsys/">Tuning Large Language Models for Recommendation Tasks</a>
             </h2>
@@ -606,7 +609,7 @@
         srcset="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp, /posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp"
-        title="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp" height="200" width="400"></a>
+        title="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/05/chatgpt-for-recsys/">ChatGPT-based Recommender Systems</a>
             </h2>
@@ -620,7 +623,7 @@
         srcset="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp, /posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp 1.5x, /posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp 2x"
         sizes="auto"
         alt="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp"
-        title="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp" height="200" width="400"></a>
+        title="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/05/shallow-homogeneous-graphs-rep/">Shallow Embedding Models for Homogeneous Graphs</a>
             </h2>
@@ -644,9 +647,7 @@
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
-            <div class="post-info-share">
-                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems" data-via="_reachsumit" data-hashtags="literature review,retrieval"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
-            </div>
+            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems" data-via="_reachsumit" data-hashtags="literature review,retrieval"><span class="fab fa-twitter fa-fw"></span></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-hashtag="literature review"><span class="fab fa-facebook-square fa-fw"></span></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/"><span class="fab fa-linkedin fa-fw"></span></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems" data-web><span class="fab fa-whatsapp fa-fw"></span></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems"><span class="fab fa-hacker-news fa-fw"></span></button><button title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/"><span class="fab fa-reddit fa-fw"></span></button><button title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems"><span data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></span></button><button title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/"><span class="fab fa-get-pocket fa-fw"></span></button><button title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems" data-image="featured-image.webp"><span class="fab fa-weibo fa-fw"></span></button><button title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems"><span class="fab fa-evernote fa-fw"></span></button><button title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/09/generative-retrieval/" data-title="Generative Retrieval for End-to-End Search Systems" data-description=""><span class="fab fa-trello fa-fw"></span></button></div>
         </div>
     </div>
 
@@ -675,7 +676,7 @@
             <i class="fas fa-comment fa-fw"></i>
         </a>
     </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-09-06T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Generative Retrieval for End-to-End Search Systems"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-09-06T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Generative Retrieval for End-to-End Search Systems"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3" async></script></div>

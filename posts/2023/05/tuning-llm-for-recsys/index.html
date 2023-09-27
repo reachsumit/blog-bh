@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +21,8 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/" />
+<link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -38,16 +41,17 @@
                 "name": "Sumit Kumar"
             },"description": ""
     }
-    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 </head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
-        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
         if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
         let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
         getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+        window.switchThemeEventSet = new Set()
     </script>
     <div id="back-to-top"></div>
     <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
@@ -58,16 +62,16 @@
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://reachsumit.com/#contact" rel="noopener noreferrer" target="_blank"> Contact </a><a class="menu-item" href="/newsletter/"> Newsletter(s) </a><a class="menu-item" href="/talks/"> Talks </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search this blog" id="search-input-desktop">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
-                    </span><a href="#" class="menu-item theme-select" title="Switch Theme">
+                    </span><a href="javascript:void(0);" class="menu-item theme-select" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw"></i>
                     <select class="color-theme-select" id="theme-select-desktop" title="Switch Theme">
                         <option value="light">Light</option>
@@ -91,20 +95,20 @@
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="Search this blog" id="search-input-mobile">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </div>
-                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a class="menu-item" href="/newsletter/" title="">Newsletter(s)</a><a class="menu-item" href="/talks/" title="">Talks</a><a href="#" class="menu-item theme-select" title="Switch Theme">
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a class="menu-item" href="/newsletter/" title="">Newsletter(s)</a><a class="menu-item" href="/talks/" title="">Talks</a><a href="javascript:void(0);" class="menu-item theme-select" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="Switch Theme">
                     <option value="light">Light</option>
@@ -147,12 +151,11 @@
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Tuning Large Language Models for Recommendation Tasks</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Tuning Large Language Models for Recommendation Tasks</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+                <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-05-21">2023-05-21</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-05-21">2023-05-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2395 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;12 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-05-21">2023-05-21</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-05-21">2023-05-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2395 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
@@ -160,7 +163,7 @@
         srcset="/posts/2023/05/tuning-llm-for-recsys/featured-image.webp, /posts/2023/05/tuning-llm-for-recsys/featured-image.webp 1.5x, /posts/2023/05/tuning-llm-for-recsys/featured-image.webp 2x"
         sizes="auto"
         alt="/posts/2023/05/tuning-llm-for-recsys/featured-image.webp"
-        title="/posts/2023/05/tuning-llm-for-recsys/featured-image.webp" height="600" width="1200"></div><div class="details toc" id="toc-static"  kept="">
+        title="/posts/2023/05/tuning-llm-for-recsys/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
@@ -217,7 +220,7 @@
             src="/img/posts/2023/tuning-llm-for-recsys/chatgpt_refusing_to_answer.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/chatgpt_refusing_to_answer.png, /img/posts/2023/tuning-llm-for-recsys/chatgpt_refusing_to_answer.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/chatgpt_refusing_to_answer.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/tuning-llm-for-recsys/chatgpt_refusing_to_answer.png">
+            alt="ChatGPT invlid answer">
     </a><figcaption class="image-caption">Example taken from [^2]</figcaption>
     </figure></p>
 </li>
@@ -260,7 +263,7 @@
             src="/img/posts/2023/tuning-llm-for-recsys/tallrec_instructions.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/tallrec_instructions.png, /img/posts/2023/tuning-llm-for-recsys/tallrec_instructions.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/tallrec_instructions.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/tuning-llm-for-recsys/tallrec_instructions.png">
+            alt="Instruction Tuning Data">
     </a><figcaption class="image-caption">An example of instruction tuning data in a translation task</figcaption>
     </figure></p>
 <p>Next, they train the LLM in two tuning stages: instruction tuning (instruct-tuning) and recommendation tuning (rec-tuning). The instruction tuning stage is a standard training process of LLM that enhances the LLM&rsquo;s generalization ability. The authors used the self-instruct data from Stanford Alpaca for this tuning. For Rec-tuning, they construct &ldquo;Rec Instructions&rdquo; by transforming a restricted amount of users&rsquo; historical interactions into instructions of the form: &ldquo;User Preference: $item_1$, $item_4$, &hellip;, $item_n$. User Unpreferenced: $item_2$, $item_3$, &hellip;, $item_{n-1}$. Will the user enjoy the target movie/book: $item_{n+1}$. [yes/no]&rdquo;. Here &ldquo;unpreferenced&rdquo; is referring to a set of items that the user didn&rsquo;t like.</p>
@@ -271,7 +274,7 @@
             src="/img/posts/2023/tuning-llm-for-recsys/tallrec_framework.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/tallrec_framework.png, /img/posts/2023/tuning-llm-for-recsys/tallrec_framework.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/tallrec_framework.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/tuning-llm-for-recsys/tallrec_framework.png">
+            alt="TALLRec Framework">
     </a><figcaption class="image-caption">TALLRec Framework</figcaption>
     </figure></p>
 <p>The authors employed LoRA to facilitate efficient lightweight fine-tuning which can be done with low GPU cost and few tuning samples (less than 100). They picked LLaMA LLM to conduct their experiments and showed that their trained model outperformed previous baselines in the few-shot setting. Their trained model also exhibited strong cross-domain transfer capabilities. The code and data for TALLRec are available <a href="https://github.com/SAI990323/TALLRec" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
@@ -284,7 +287,7 @@
             src="/img/posts/2023/tuning-llm-for-recsys/google_brain_prompts.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/google_brain_prompts.png, /img/posts/2023/tuning-llm-for-recsys/google_brain_prompts.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/google_brain_prompts.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/tuning-llm-for-recsys/google_brain_prompts.png">
+            alt="Zero-shot and Few-shot prompts for rating prediction">
     </a><figcaption class="image-caption">Zero-shot and Few-shot prompts for rating prediction</figcaption>
     </figure></p>
 <p>Through experiments, the authors show that the zero-shot LLM performance lags far behind traditional recommender models. But fine-tuned LLM achieves comparable or even better performance while using only a small fraction of training data.</p>
@@ -297,7 +300,7 @@
             src="/img/posts/2023/tuning-llm-for-recsys/instructrec_instructions.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/instructrec_instructions.png, /img/posts/2023/tuning-llm-for-recsys/instructrec_instructions.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/instructrec_instructions.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/tuning-llm-for-recsys/instructrec_instructions.png">
+            alt="InstructRec Instructions">
     </a><figcaption class="image-caption">InstructRec Instructions</figcaption>
     </figure></p>
 <p>User preference refers to users&rsquo; personalized taste toward item attributes. User Intention refers to users&rsquo; more immediate demands for certain types of items, and Task form is the corresponding recommendation task. Additionally, contextual information like time and place are also utilized. The authors introduced 39 coarse-grained instruction templates to cover all interaction scenarios such as recommendation, retrieval, and personalized search.</p>
@@ -308,7 +311,7 @@
             src="/img/posts/2023/tuning-llm-for-recsys/instructrec_example_instructions.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/instructrec_example_instructions.png, /img/posts/2023/tuning-llm-for-recsys/instructrec_example_instructions.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/instructrec_example_instructions.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/tuning-llm-for-recsys/instructrec_example_instructions.png">
+            alt="InstructRec Example Instructions">
     </a><figcaption class="image-caption">InstructRec Example Instructions</figcaption>
     </figure></p>
 <p>Inspired by automatic prompting strategies, like self-instruct, the authors prompted a teacher-LLM (GPT-3.5) with users&rsquo; historical interactions and reviews to automatically generate 252K fine-grained instructions in the preference/intention/task format. To further increase the diversity of instructions, they propose manual strategies like flipping the input and output structure of the instructions, enforcing the relatedness between preference and intention, and adding Chain-of-through (CoT) like intermediate reasoning.</p>
@@ -319,7 +322,7 @@
             src="/img/posts/2023/tuning-llm-for-recsys/instructrec_framework.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/instructrec_framework.png, /img/posts/2023/tuning-llm-for-recsys/instructrec_framework.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/instructrec_framework.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/tuning-llm-for-recsys/instructrec_framework.png">
+            alt="InstructRec Framework">
     </a><figcaption class="image-caption">InstructRec Framework</figcaption>
     </figure></p>
 <p>For Instruction tuning, the authors selected the 3B Flan-T5-XL model. Input lengths longer than the model&rsquo;s 512 token length limit were truncated. For longer context lengths, the authors recommend experimenting with the LLaMA model. In accordance with the computational efficiency and model capacity, the LLM was used as a reranker. At inference time, an appropriate instruction template is selected to create an instruction by using operations like concatenation, insertion and, persona shift. This instruction is then supplemented with the candidate set of items and given to the LLM for ranking.</p>
@@ -332,7 +335,7 @@
             src="/img/posts/2023/tuning-llm-for-recsys/recllm_overview.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/recllm_overview.png, /img/posts/2023/tuning-llm-for-recsys/recllm_overview.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/recllm_overview.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/tuning-llm-for-recsys/recllm_overview.png">
+            alt="RecLLM Overview">
     </a><figcaption class="image-caption">Overview of RecLLM. LLMs are used for dialogue management, retrieval, ranking, as well as a user simulator for generating synthetic tuning data.</figcaption>
     </figure></p>
 <p>CRS gives users the flexibility to control their recommendations by engaging in a real-time multi-turn dialogue. The system learns to refine recommendations based on users&rsquo; direct feedback, and can also engage in tasks that are tangential to recommendations, such as undirected chitchat and question-answering. Due to the lack of existing conversational datasets, they used a controllable LLM-based user simulator to generate synthetic conversations. Instead of utilizing interaction history for user preference understanding, the authors use LLMs that consume user profiles as interpretable natural language and use them to personalize sessions.</p>
@@ -343,7 +346,7 @@
             src="/img/posts/2023/tuning-llm-for-recsys/recllm_modules.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/recllm_modules.png, /img/posts/2023/tuning-llm-for-recsys/recllm_modules.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/recllm_modules.png 2x"
             sizes="auto"
-            alt="/img/posts/2023/tuning-llm-for-recsys/recllm_modules.png">
+            alt="RecLLM Modules">
     </a><figcaption class="image-caption">Retrieval and Ranking modules in RecLLM</figcaption>
     </figure></p>
 <p>In the paper, one of the recommended approaches for retrieval is to use a dual-encoder architecture where LLMs are used as context encoders. LLM used for ranking also performs intermediate reasoning to generate natural language explanations for why an item is being selected. The retrieval model, ranking model, as well as dialogue manager, are fine-tuned on recommendation data that includes generated synthetic sessions. As a proof-of-concept, the authors build a CRS (using LaMDA as the underlying LLM) that serves recommendations from the corpus of all public YouTube videos.</p>
@@ -368,8 +371,8 @@
         src="/posts/2023/04/llm-for-recsys/featured-image.webp"
         srcset="/posts/2023/04/llm-for-recsys/featured-image.webp, /posts/2023/04/llm-for-recsys/featured-image.webp 1.5x, /posts/2023/04/llm-for-recsys/featured-image.webp 2x"
         sizes="auto"
-        alt="/posts/2023/04/llm-for-recsys/featured-image.webp"
-        title="Zero and Few Shot Recommender Systems based on Large Language Models" height="200" width="400"></a>
+        alt="Zero and Few Shot Recommender Systems based on Large Language Models"
+        title="Zero and Few Shot Recommender Systems based on Large Language Models" height="200"   width="400" ></a>
     </div>
     <h2 class="showcase-title">
         <a href=/posts/2023/04/llm-for-recsys>Zero and Few Shot Recommender Systems based on Large Language Models</a>
@@ -390,8 +393,8 @@
         src="/posts/2023/05/chatgpt-for-recsys/featured-image.webp"
         srcset="/posts/2023/05/chatgpt-for-recsys/featured-image.webp, /posts/2023/05/chatgpt-for-recsys/featured-image.webp 1.5x, /posts/2023/05/chatgpt-for-recsys/featured-image.webp 2x"
         sizes="auto"
-        alt="/posts/2023/05/chatgpt-for-recsys/featured-image.webp"
-        title="ChatGPT-based Recommender Systems" height="200" width="400"></a>
+        alt="ChatGPT-based Recommender Systems"
+        title="ChatGPT-based Recommender Systems" height="200"   width="400" ></a>
     </div>
     <h2 class="showcase-title">
         <a href=/posts/2023/05/chatgpt-for-recsys>ChatGPT-based Recommender Systems</a>
@@ -444,9 +447,7 @@
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
-            <div class="post-info-share">
-                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks" data-via="_reachsumit" data-hashtags="literature review,recsys,LLM"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-hashtag="literature review"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="#" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></i></a><a href="#" title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="#" title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks" data-image="featured-image.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="#" title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks"><i class="fab fa-evernote fa-fw"></i></a><a href="#" title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks" data-description=""><i class="fab fa-trello fa-fw"></i></a></span>
-            </div>
+            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks" data-via="_reachsumit" data-hashtags="literature review,recsys,LLM"><span class="fab fa-twitter fa-fw"></span></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-hashtag="literature review"><span class="fab fa-facebook-square fa-fw"></span></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/"><span class="fab fa-linkedin fa-fw"></span></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks" data-web><span class="fab fa-whatsapp fa-fw"></span></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks"><span class="fab fa-hacker-news fa-fw"></span></button><button title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/"><span class="fab fa-reddit fa-fw"></span></button><button title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks"><span data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></span></button><button title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/"><span class="fab fa-get-pocket fa-fw"></span></button><button title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks" data-image="featured-image.webp"><span class="fab fa-weibo fa-fw"></span></button><button title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks"><span class="fab fa-evernote fa-fw"></span></button><button title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" data-title="Tuning Large Language Models for Recommendation Tasks" data-description=""><span class="fab fa-trello fa-fw"></span></button></div>
         </div>
     </div>
 
@@ -476,7 +477,7 @@
             <i class="fas fa-comment fa-fw"></i>
         </a>
     </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-05-21T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Tuning Large Language Models for Recommendation Tasks"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-05-21T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Tuning Large Language Models for Recommendation Tasks"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3" async></script></div>
