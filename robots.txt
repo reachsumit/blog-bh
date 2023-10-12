@@ -1,6 +1,15 @@
 User-agent: *
 Allow: /
 
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: CCBot
+User-agent: Google-Extended
+User-agent: Omgilibot
+User-agent: Omgili
+User-agent: FacebookBot
+Disallow: /posts/
+
 User-agent: MJ12bot
 Disallow: /
 
