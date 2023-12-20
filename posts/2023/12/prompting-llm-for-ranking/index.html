@@ -32,7 +32,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/12\/prompting-llm-for-ranking\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, retrieval, ranking, LLM","wordcount":  3591 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, retrieval, ranking, LLM","wordcount":  3596 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/12\/prompting-llm-for-ranking\/","datePublished": "2023-12-20T00:00:00+00:00","dateModified": "2023-12-20T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -165,7 +165,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><i class="far fa-folder fa-fw"></i>Information Retrieval</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-12-20">2023-12-20</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-12-20">2023-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3591 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;17 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-12-20">2023-12-20</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-12-20">2023-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3596 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;17 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
@@ -216,7 +216,7 @@
 <h2 id="text-retrieval-with-llms" class="headerLink">
     <a href="#text-retrieval-with-llms" class="header-mark"></a>Text Retrieval with LLMs</h2><p>Text Retrieval is a central component in several knowledge-intensive Natural Language Processing (NLP) applications. It refers to the task of identifying and ranking the most relevant documents, passages, sentences, or any arbitrary information snippet, in response to a given user query. The quality of text retrieval plays a crucial role in various downstream knowledge-intensive decision-making tasks, such as web search, open-domain question answering, fact verification, etc. by incorporating factual knowledge for decision-making. In large-scale industrial applications, this task is implemented as a multi-stage ranking pipeline composed of a retriever and a reranker. Popular choices for retrievers include BM25, a traditional zero-shot lexical retriever, and Contriver, an unsupervised dense retriever. {<em>BM25</em>, <em>Contriver</em>} + <em>UPR</em> form one of the state-of-the-art zero-shot multi-stage ranking pipeline<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <p>Given a corpus $C = {D_1, D_2,\ldots, D_n}$  that contains a collection of documents and a query $q$, the retriever model efficiently returns a list of $k$ documents from $C$ (where $k \ll n$) that are most relevant to the query $q$ according to some metric, such as <em>normalized Discounted Cumulative Gain</em> (nDCG) or <em>average precision</em>. The reranker then improves the relevance order by further reranking the list of $k$ candidates in the order of relevance according to either the same or a different metric. The reranker is usually a more effective but computationally more expensive model compared to the retriever.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/gpt4_zero_shot_reranking.png" title="zero-shot instructional permutation based reranking results" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/gpt4_zero_shot_reranking.png" data-sub-html="<h2>Average results of ChatGPT and GPT-4 on passage reranking benchmarks compared with BM25 and supervised monoT5</h2><p>zero-shot instructional permutation based reranking results</p>">
+<p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/gpt4_zero_shot_reranking.png" title="zero-shot instructional permutation based reranking results" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/gpt4_zero_shot_reranking.png" data-sub-html="<h2>Average results of ChatGPT and GPT-4 on passage reranking benchmarks compared with BM25 and supervised monoT5. Source:[^3]</h2><p>zero-shot instructional permutation based reranking results</p>">
         <img
             
             loading="lazy"
@@ -224,7 +224,7 @@
             srcset="/img/posts/2023/prompting-llm-for-ranking/gpt4_zero_shot_reranking.png, /img/posts/2023/prompting-llm-for-ranking/gpt4_zero_shot_reranking.png 1.5x, /img/posts/2023/prompting-llm-for-ranking/gpt4_zero_shot_reranking.png 2x"
             sizes="auto"
             alt="zero-shot instructional permutation based reranking results">
-    </a><figcaption class="image-caption">Average results of ChatGPT and GPT-4 on passage reranking benchmarks compared with BM25 and supervised monoT5</figcaption>
+    </a><figcaption class="image-caption">Average results of ChatGPT and GPT-4 on passage reranking benchmarks compared with BM25 and supervised monoT5. Source:[^3]</figcaption>
     </figure></p>
 <p>Large Language Models (LLMs) have demonstrated impressive performance on a wide range of NLP tasks. LLM-based text retrievers excel in contextualizing user queries and documents in natural language, often handling long-form or even conversational inputs<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. These LLMs have also been adapted for zero-shot and few-shot document ranking tasks through various prompting strategies. Sun et al.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> showed that GPT-4 with zero-shot prompting surpassed previous state-of-the-art models by an average nDCG improvement of 2.7, 2.3, and 2.7 on TREC, BEIR, and My.TyDi, respectively.  Among the proprietary LLMs, GPT-4 outperformed Cohere&rsquo;s Rerank, Anthropic&rsquo;s Claude-2, and Google&rsquo;s BARD.</p>
 <p>Recent works, such as <strong>InPars</strong>, <strong>Promptagator</strong>, <strong>HyDE</strong>, use LLMs as auxiliary tools to generate synthetic queries or documents to augment the training data for retrievers or rerankers. Interested readers can refer to the article linked below to read more about these unsupervised methods. The focus of this article instead will be on the methods that directly use LLMs as rerankers in the multi-stage pipeline.</p>
@@ -257,7 +257,7 @@
     <a href="#pointwise-ranking" class="header-mark"></a>Pointwise Ranking</h3><p>In the pointwise ranking method, the reranker takes both the query and a candidate document to directly generate a relevance score. These independent scores assigned to each document $d_i$ are then used to reorder the candidate set $D$. The relevance score is typically calculated based on how likely the document is relevant to the query or how likely the query can be generated from the document.</p>
 <p>This method can be further classified into two popular approaches based on how the ranking score is calculated.</p>
 <h4 id="instructional-relevance-generation" class="headerLink">
-    <a href="#instructional-relevance-generation" class="header-mark"></a>Instructional Relevance Generation</h4><p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/relevance_generation.png" title="the pointwise relevance generation approach" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/relevance_generation.png" data-sub-html="<h2>The pointwise relevance generation approach</h2><p>the pointwise relevance generation approach</p>">
+    <a href="#instructional-relevance-generation" class="header-mark"></a>Instructional Relevance Generation</h4><p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/relevance_generation.png" title="the pointwise relevance generation approach" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/relevance_generation.png" data-sub-html="<h2>The pointwise relevance generation approach. Source:[^11]</h2><p>the pointwise relevance generation approach</p>">
         <img
             
             loading="lazy"
@@ -265,7 +265,7 @@
             srcset="/img/posts/2023/prompting-llm-for-ranking/relevance_generation.png, /img/posts/2023/prompting-llm-for-ranking/relevance_generation.png 1.5x, /img/posts/2023/prompting-llm-for-ranking/relevance_generation.png 2x"
             sizes="auto"
             alt="the pointwise relevance generation approach">
-    </a><figcaption class="image-caption">The pointwise relevance generation approach</figcaption>
+    </a><figcaption class="image-caption">The pointwise relevance generation approach. Source:[^11]</figcaption>
     </figure></p>
 <p>ln instructional relevance generation approaches, like Liang et al.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, the LLMs are generally prompted to output either &ldquo;Yes&rdquo; or &ldquo;No&rdquo; to determine the relevance of the candidates to a given query. The generation probability is then converted to the relevance score:</p>
 <p>$$ s_i = \begin{cases}
@@ -290,7 +290,7 @@
 <p>where $\Theta$ denotes the PLM parameters, and $|q|$ denotes the number of question tokens. The candidate set of documents is then sorted based on $\log p(q | z)$. UPR codebase including data and checkpoints is available <a href="https://github.com/DevSinghSachan/unsupervised-passage-reranking" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
 <h3 id="pairwise-ranking" class="headerLink">
     <a href="#pairwise-ranking" class="header-mark"></a>Pairwise Ranking</h3><p>In pairwise ranking strategy, a pair of candidate items ($d_i, d_j$) along with the user query ($q$) serve as prompts to guide the LLMs to determine which document is the most relevant to the given query.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/pairwise_methods.png" title="Pairwise Ranking Prompting" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/pairwise_methods.png" data-sub-html="<h2>Pairwise ranking can either directly use generated text or log-likelihood of the model generating the text given the prompt</h2><p>Pairwise Ranking Prompting</p>">
+<p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/pairwise_methods.png" title="Pairwise Ranking Prompting" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/pairwise_methods.png" data-sub-html="<h2>Pairwise ranking can either directly use generated text or log-likelihood of the model generating the text given the prompt. Source:[^11]</h2><p>Pairwise Ranking Prompting</p>">
         <img
             
             loading="lazy"
@@ -298,7 +298,7 @@
             srcset="/img/posts/2023/prompting-llm-for-ranking/pairwise_methods.png, /img/posts/2023/prompting-llm-for-ranking/pairwise_methods.png 1.5x, /img/posts/2023/prompting-llm-for-ranking/pairwise_methods.png 2x"
             sizes="auto"
             alt="Pairwise Ranking Prompting">
-    </a><figcaption class="image-caption">Pairwise ranking can either directly use generated text or log-likelihood of the model generating the text given the prompt</figcaption>
+    </a><figcaption class="image-caption">Pairwise ranking can either directly use generated text or log-likelihood of the model generating the text given the prompt. Source:[^11]</figcaption>
     </figure></p>
 <p>$$ c_{i,j} = \begin{cases}
 1, &amp; \text{if } f(I_{\text{PRP}}(q, d_i, d_j)) = i \
@@ -346,7 +346,7 @@
 </li>
 <li>
 <p>Zhuang et al.<sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> proposed a Setwise prompting technique that improves the efficiency of pairwise models. Their work is based on a simple realization that the sorting algorithm employed by pairwise approaches, like PRP, can be accelerated by comparing multiple documents at each step, as opposed to just a pair. Their experiments show that incorporating the setwise prompting significantly improves the efficiency of both pairwise and listwise approaches, while also enhancing the robustness to initial document ordering.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/setwise_prompting.png" title="Setwise prompting approach" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/setwise_prompting.png" data-sub-html="<h2>Setwise prompting approach</h2><p>Setwise prompting approach</p>">
+<p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/setwise_prompting.png" title="Setwise prompting approach" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/setwise_prompting.png" data-sub-html="<h2>Setwise prompting approach.</h2><p>Setwise prompting approach</p>">
         <img
             
             loading="lazy"
@@ -354,7 +354,7 @@
             srcset="/img/posts/2023/prompting-llm-for-ranking/setwise_prompting.png, /img/posts/2023/prompting-llm-for-ranking/setwise_prompting.png 1.5x, /img/posts/2023/prompting-llm-for-ranking/setwise_prompting.png 2x"
             sizes="auto"
             alt="Setwise prompting approach">
-    </a><figcaption class="image-caption">Setwise prompting approach</figcaption>
+    </a><figcaption class="image-caption">Setwise prompting approach.</figcaption>
     </figure></p>
 </li>
 </ul>
@@ -371,7 +371,7 @@
     <a href="#listwise-ranking" class="header-mark"></a>Listwise Ranking</h3><p>The listwise paradigm generalizes the pairwise paradigm. In the listwise ranking strategy, a set of candidate documents is fed to the LLM. This means that the model can attend to all the candidate documents simultaneously while reranking. Each document is identified by a unique identifier like [1], [2], etc. The LLM is then instructed to generate a ranked permutation of these documents, such as <code>[2] &gt; [3] &gt; [1]</code>. $Perm = f(I_{LIST}(q,d_1,d_2,\ldots,d_n))$ <sup id="fnref2:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. By framing its goal as text generation, this approach fuses well with the existing techniques based on generative models.</p>
 <p>Some work also refer to this approach as the <strong>Instructional Permutation Generation</strong> approach<sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> as it instructs the LLM to directly output the permutations of a group of passages. LLMs that are used as rerankers in a multi-stage pipeline, with prompt engineering being the primary means to accomplish the listwise reranking tasks, have also been referred to as the &ldquo;<em>prompt decoders</em>&rdquo;<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>. Listwise approaches can be inefficient because of the substantial number of required tokens in the output as each additional token generated by LLM requires an extra inference step.</p>
 <p>The relevance score for each candidate is simply defined as the reciprocal of its rank $s_i = \frac{1}{r_i}$. So the generated permutation can be readily transformed into ranking results $R$.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/listwise_methods.png" title="the listwise permutation approach" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/listwise_methods.png" data-sub-html="<h2>The listwise permutation approach</h2><p>the listwise permutation approach</p>">
+<p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/listwise_methods.png" title="the listwise permutation approach" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/listwise_methods.png" data-sub-html="<h2>The listwise permutation approach. Source:[^11]</h2><p>the listwise permutation approach</p>">
         <img
             
             loading="lazy"
@@ -379,11 +379,11 @@
             srcset="/img/posts/2023/prompting-llm-for-ranking/listwise_methods.png, /img/posts/2023/prompting-llm-for-ranking/listwise_methods.png 1.5x, /img/posts/2023/prompting-llm-for-ranking/listwise_methods.png 2x"
             sizes="auto"
             alt="the listwise permutation approach">
-    </a><figcaption class="image-caption">The listwise permutation approach</figcaption>
+    </a><figcaption class="image-caption">The listwise permutation approach. Source:[^11]</figcaption>
     </figure></p>
 <h4 id="sliding-window-strategy" class="headerLink">
     <a href="#sliding-window-strategy" class="header-mark"></a>Sliding Window Strategy</h4><p>Due to the token limit on input context, LLMs can only rank a limited number of passages using the listwise ranking approach. To overcome this, a sliding window strategy is employed to allow the LLM to rank an arbitrary number of passages.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/sliding_window.png" title="Illustration of using a sliding window" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/sliding_window.png" data-sub-html="<h2>Illustration of using a sliding window</h2><p>Illustration of using a sliding window</p>">
+<p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/sliding_window.png" title="Illustration of using a sliding window" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/sliding_window.png" data-sub-html="<h2>Illustration of using a sliding window.</h2><p>Illustration of using a sliding window</p>">
         <img
             
             loading="lazy"
@@ -391,7 +391,7 @@
             srcset="/img/posts/2023/prompting-llm-for-ranking/sliding_window.png, /img/posts/2023/prompting-llm-for-ranking/sliding_window.png 1.5x, /img/posts/2023/prompting-llm-for-ranking/sliding_window.png 2x"
             sizes="auto"
             alt="Illustration of using a sliding window">
-    </a><figcaption class="image-caption">Illustration of using a sliding window</figcaption>
+    </a><figcaption class="image-caption">Illustration of using a sliding window.</figcaption>
     </figure></p>
 <p>The above figure shows an example of reranking 8 passages using a sliding window of size 4, and a step size of 2, being applied in back-to-first order<sup id="fnref2:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. The first two windows are shown using blue color and the last window is shown in yellow color. The first two passages in the previous window will participate in the reranking of the next window. Formally, for reranking $M$ passages, we define two hyperparameters: window size $(w)$ and step size $(s)$. LLM is used first to rank the candidates from $(M-w)$  to $M-th$ passage, and then we slide the window in step size of $s$. Then we rerank the passages in $(M-w-s)$ to $(M-s)$ range. In each step, the top $(w-s)$ candidates are preserved and form the next sliding window together with the next $s$ documents. We repeat this process of ranking $w$ passages while sliding the window forward with the step size $s$ until all the passages have been reranked. Recent studies have shown that the top-ranked passages by listwise rerankers come from a wide range of positions, compared to the pointwise methods<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup>. While pairwise approaches may elevate a poorly ranked relevant document to a high position, they usually fail to reorder multiple items effectively. On the other hand, listwise methods, with large context windows, excel at concurrently promoting several poorly ranked documents into higher position <sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>.</p>
 <p>Listwise-ranking strategy is highly efficient, but using off-the-shelf models it has mostly been effective with some powerful LLMs, such as Claude and GPT4 as the smaller models seem to lack the capability to effectively reorder a list of input documents. This strategy also relies heavily on intricate prompt engineering and has been shown to generate malformed outputs, such as:</p>
@@ -414,7 +414,7 @@
             <div class="admonition-content">Note that both of these methods require access to the output logits of the LLM to be able to compute the likelihood scores. Hence it is not possible to use closed-sourced LLMs, like GPT-4, to implement these approaches when the corresponding APIs do not expose the logit values.</div>
         </div>
     </div>
-<p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/generation_vs_scoring.png" title="Generation vs Scoring" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/generation_vs_scoring.png" data-sub-html="<h2>Generation and Scoring strategies a) Pointwise b) Pairwise, and c) Listwise</h2><p>Generation vs Scoring</p>">
+<p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/generation_vs_scoring.png" title="Generation vs Scoring" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/generation_vs_scoring.png" data-sub-html="<h2>Generation and Scoring strategies a) Pointwise b) Pairwise, and c) Listwise. Source:[^4]</h2><p>Generation vs Scoring</p>">
         <img
             
             loading="lazy"
@@ -422,7 +422,7 @@
             srcset="/img/posts/2023/prompting-llm-for-ranking/generation_vs_scoring.png, /img/posts/2023/prompting-llm-for-ranking/generation_vs_scoring.png 1.5x, /img/posts/2023/prompting-llm-for-ranking/generation_vs_scoring.png 2x"
             sizes="auto"
             alt="Generation vs Scoring">
-    </a><figcaption class="image-caption">Generation and Scoring strategies a) Pointwise b) Pairwise, and c) Listwise</figcaption>
+    </a><figcaption class="image-caption">Generation and Scoring strategies a) Pointwise b) Pairwise, and c) Listwise. Source:[^4]</figcaption>
     </figure></p>
 <p>Pairwise ranking naturally supports both generation and scoring LLM APIs. Listwise ranking approaches follow the more efficient permutation generation process for directly generating the ranked list of document identifiers<sup id="fnref2:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> without producing any intermediate relevance score.</p>
 <table>
