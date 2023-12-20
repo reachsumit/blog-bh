@@ -32,7 +32,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/12\/prompting-llm-for-ranking\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, retrieval, ranking, LLM","wordcount":  3604 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, retrieval, ranking, LLM","wordcount":  3628 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/12\/prompting-llm-for-ranking\/","datePublished": "2023-12-20T00:00:00+00:00","dateModified": "2023-12-20T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -165,7 +165,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><i class="far fa-folder fa-fw"></i>Information Retrieval</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-12-20">2023-12-20</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-12-20">2023-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3604 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;17 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-12-20">2023-12-20</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-12-20">2023-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3628 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;18 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
@@ -345,7 +345,7 @@
 <p>Their experiments show that the PRP-based FLAN UL2 model with 20B parameters matches and often outperforms blackbox commercial GPT-4 which has a 50x (estimated) model size.</p>
 </li>
 <li>
-<p>Zhuang et al.<sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> proposed a Setwise prompting technique that improves the efficiency of pairwise models. Their work is based on a simple realization that the sorting algorithm employed by pairwise approaches, like PRP, can be accelerated by comparing multiple documents at each step, as opposed to just a pair. Their experiments show that incorporating the setwise prompting significantly improves the efficiency of both pairwise and listwise approaches, while also enhancing the robustness to initial document ordering.</p>
+<p>Zhuang et al.<sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> proposed a Setwise prompting technique that improves the efficiency of pairwise models. Their work is based on a simple realization that the sorting algorithm employed by pairwise approaches, like PRP, can be accelerated by comparing multiple documents at each step, as opposed to just a pair. Their experiments show that incorporating the setwise prompting significantly improves the efficiency of both pairwise and listwise approaches, while also enhancing the robustness to initial document ordering. The authors also share a systematic evaluation of all existing LLM-based zero-shot approaches under consistent experimental conditions.</p>
 <p><figure><a class="lightgallery" href="/img/posts/2023/prompting-llm-for-ranking/setwise_prompting.png" title="Setwise prompting approach" data-thumbnail="/img/posts/2023/prompting-llm-for-ranking/setwise_prompting.png" data-sub-html="<h2>Setwise prompting approach.</h2><p>Setwise prompting approach</p>">
         <img
             
@@ -393,7 +393,9 @@
             alt="Illustration of using a sliding window">
     </a><figcaption class="image-caption">Illustration of using a sliding window.</figcaption>
     </figure></p>
-<p>The above figure shows an example of reranking 8 passages using a sliding window of size 4, and a step size of 2, being applied in back-to-first order<sup id="fnref2:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. The first two windows are shown using blue color and the last window is shown in yellow color. The first two passages in the previous window will participate in the reranking of the next window. Formally, for reranking $M$ passages, we define two hyperparameters: window size $(w)$ and step size $(s)$. LLM is used first to rank the candidates from $(M-w)$  to $M-th$ passage, and then we slide the window in step size of $s$. Then we rerank the passages in $(M-w-s)$ to $(M-s)$ range. In each step, the top $(w-s)$ candidates are preserved and form the next sliding window together with the next $s$ documents. We repeat this process of ranking $w$ passages while sliding the window forward with the step size $s$ until all the passages have been reranked. Recent studies have shown that the top-ranked passages by listwise rerankers come from a wide range of positions, compared to the pointwise methods<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup>. While pairwise approaches may elevate a poorly ranked relevant document to a high position, they usually fail to reorder multiple items effectively. On the other hand, listwise methods, with large context windows, excel at concurrently promoting several poorly ranked documents into higher position <sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>.</p>
+<p>The above figure shows an example of reranking 8 passages using a sliding window of size 4, and a step size of 2, being applied in back-to-first order<sup id="fnref2:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. The first two windows are shown using blue color and the last window is shown in yellow color. The first two passages in the previous window will participate in the reranking of the next window.</p>
+<p>Formally, for reranking $M$ passages, we define two hyperparameters: window size $(w)$ and step size $(s)$. LLM is used first to rank the candidates from $(M-w)$  to $M-th$ passage, and then we slide the window in step size of $s$. Then we rerank the passages in $(M-w-s)$ to $(M-s)$ range. In each step, the top $(w-s)$ candidates are preserved and form the next sliding window together with the next $s$ documents. We repeat this process of ranking $w$ passages while sliding the window forward with the step size $s$ until all the passages have been reranked.</p>
+<p>Recent studies have shown that the top-ranked passages by listwise rerankers come from a wide range of positions, compared to the pointwise methods<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup>. While pairwise approaches may elevate a poorly ranked relevant document to a high position, they usually fail to reorder multiple items effectively. On the other hand, listwise methods, with large context windows, excel at concurrently promoting several poorly ranked documents into higher position <sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>.</p>
 <p>Listwise-ranking strategy is highly efficient, but using off-the-shelf models it has mostly been effective with some powerful LLMs, such as Claude and GPT4 as the smaller models seem to lack the capability to effectively reorder a list of input documents. This strategy also relies heavily on intricate prompt engineering and has been shown to generate malformed outputs, such as:</p>
 <ul>
 <li><strong>Incorrect output format</strong>: LLM outputs may not follow the requested format</li>
@@ -446,12 +448,20 @@
 <td>Yes</td>
 </tr>
 <tr>
-<td>Pairwise</td>
-<td>$O(n^2), O(n \log{n}), O(n)$</td>
+<td>Pairwise - all pairs</td>
+<td>$O(n^2 - n)$</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
-<td>Yes (when comparing all pairs)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Pairwise - heasort</td>
+<td>$O(n \log_{2}{n})$</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
 </tr>
 <tr>
 <td>Listwise</td>
