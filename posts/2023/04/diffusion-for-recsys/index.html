@@ -13,7 +13,6 @@
 <meta property="og:url" content="https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/featured-image-preview.webp"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-04-17T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-04-17T00:00:00+00:00" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/featured-image-preview.webp"/>
 <meta name="twitter:title" content="Diffusion Modeling based Recommender Systems"/>
@@ -218,7 +217,7 @@
 <p>where $t$ is the diffusion step, $\mathcal{N}$ is the Gaussian distribution, $I$ is an identity matrix, and $\beta_t \in (0,1)$ is the noise scale at each step. $\beta_{t}$ can also be defined using a linear, quadratic, sqrt, or cosine variance schedule. For $T\to\infty$, $x_T$ approaches a standard Gaussian distribution. Thanks to the reparameterization trick and additivity of two Gaussian noises, we can directly obtain $x_{t}$ from $x_{0}$.</p>
 </li>
 <li>
-<p>Reverse Process: In this step, a neural network (parameterized by $p_{\theta}$), such as a Transformer or a U-Net, learns to remove the added noises from $x_t$ to recover $x_{t-1}$ . The network takes $x_t$ as input and learns to denoise it to $x_{t-1}$, iteratively by: 
+<p>Reverse Process: In this step, a neural network (parameterized by $p_{\theta}$), such as a Transformer or a U-Net, learns to remove the added noises from $x_t$ to recover $x_{t-1}$ . The network takes $x_t$ as input and learns to denoise it to $x_{t-1}$, iteratively by:
 $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\theta}(x_t, t))$$</p>
 <p>where $\mu_{\theta(x_t,t)}$ and ${\Sigma}_\theta({x}_t,t)$ are the mean and covariance of the Gaussian distribution predicted by the network with parameters $\theta$.</p>
 </li>
@@ -334,6 +333,20 @@ $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\
 <div class="related-container">
     <div class="related-item-container">
             <div class="related-image">
+                <a href="/posts/2023/12/prompting-llm-for-ranking/"><img
+        
+        loading="lazy"
+        src="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
+        srcset="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 1.5x, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
+        title="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp" height="200"   width="400" ></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/12/prompting-llm-for-ranking/">Prompting-based Methods for Text Ranking Using Large Language Models</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <div class="related-image">
                 <a href="/posts/2023/09/generative-retrieval/"><img
         
         loading="lazy"
@@ -386,20 +399,6 @@ $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\
         title="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
                 <a href="/posts/2023/05/tuning-llm-for-recsys/">Tuning Large Language Models for Recommendation Tasks</a>
-            </h2>
-        </div>
-    <div class="related-item-container">
-            <div class="related-image">
-                <a href="/posts/2023/05/chatgpt-for-recsys/"><img
-        
-        loading="lazy"
-        src="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp"
-        srcset="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp, /posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp 1.5x, /posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp 2x"
-        sizes="auto"
-        alt="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp"
-        title="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
-            </div><h2 class="related-title">
-                <a href="/posts/2023/05/chatgpt-for-recsys/">ChatGPT-based Recommender Systems</a>
             </h2>
         </div>
     

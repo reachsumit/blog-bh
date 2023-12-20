@@ -1,0 +1,8 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Authors - Author - Sumit&#39;s Diary</title>
+        <link>https://blog.reachsumit.com/authors/</link>
+        <description>Authors - Author - Sumit&#39;s Diary</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><atom:link href="https://blog.reachsumit.com/authors/" rel="self" type="application/rss+xml" /></channel>
+</rss>

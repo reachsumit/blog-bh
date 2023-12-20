@@ -1,0 +1,78 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tags - Tag - Sumit&#39;s Diary</title>
+        <link>https://blog.reachsumit.com/tags/</link>
+        <description>Tags - Tag - Sumit&#39;s Diary</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 19 Dec 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>literature review</title>
+    <link>https://blog.reachsumit.com/tags/literature-review/</link>
+    <pubDate>Tue, 19 Dec 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/literature-review/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>LLM</title>
+    <link>https://blog.reachsumit.com/tags/llm/</link>
+    <pubDate>Tue, 19 Dec 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/llm/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>ranking</title>
+    <link>https://blog.reachsumit.com/tags/ranking/</link>
+    <pubDate>Tue, 19 Dec 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/ranking/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>retrieval</title>
+    <link>https://blog.reachsumit.com/tags/retrieval/</link>
+    <pubDate>Tue, 19 Dec 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/retrieval/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>recsys</title>
+    <link>https://blog.reachsumit.com/tags/recsys/</link>
+    <pubDate>Sun, 18 Jun 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/recsys/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>embeddings</title>
+    <link>https://blog.reachsumit.com/tags/embeddings/</link>
+    <pubDate>Tue, 30 May 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/embeddings/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>graphs</title>
+    <link>https://blog.reachsumit.com/tags/graphs/</link>
+    <pubDate>Tue, 30 May 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/graphs/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Mixture-of-experts</title>
+    <link>https://blog.reachsumit.com/tags/mixture-of-experts/</link>
+    <pubDate>Sun, 23 Apr 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/mixture-of-experts/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>diffusion</title>
+    <link>https://blog.reachsumit.com/tags/diffusion/</link>
+    <pubDate>Mon, 17 Apr 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/diffusion/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>forecasting</title>
+    <link>https://blog.reachsumit.com/tags/forecasting/</link>
+    <pubDate>Sat, 21 Jan 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/forecasting/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
+</rss>

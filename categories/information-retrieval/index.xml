@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/categories/information-retrieval/</link>
         <description>Information Retrieval - Category - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 06 Sep 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/information-retrieval/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 19 Dec 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/information-retrieval/" rel="self" type="application/rss+xml" /><item>
+    <title>Prompting-based Methods for Text Ranking Using Large Language Models</title>
+    <link>https://blog.reachsumit.com/posts/2023/12/prompting-llm-for-ranking/</link>
+    <pubDate>Tue, 19 Dec 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/12/prompting-llm-for-ranking/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Large Language Models (LLMs) have demonstrated impressive zero-shot performance on a wide variety of NLP tasks. Recently, there has been a growing interest in applying LLMs to zero-shot text ranking. This article describes a recent paradigm that uses prompting-based approaches to directly utilize LLMs as rerankers in a multi-stage ranking pipeline.]]></description>
+</item><item>
     <title>Generative Retrieval for End-to-End Search Systems</title>
     <link>https://blog.reachsumit.com/posts/2023/09/generative-retrieval/</link>
     <pubDate>Wed, 06 Sep 2023 00:00:00 &#43;0000</pubDate><author>
