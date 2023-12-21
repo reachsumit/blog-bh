@@ -32,7 +32,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/12\/prompting-llm-for-ranking\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, retrieval, ranking, LLM","wordcount":  3628 ,
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, retrieval, ranking, LLM","wordcount":  3625 ,
         "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/12\/prompting-llm-for-ranking\/","datePublished": "2023-12-20T00:00:00+00:00","dateModified": "2023-12-20T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
@@ -130,7 +130,7 @@
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
     <li><a href="#text-retrieval-with-llms">Text Retrieval with LLMs</a></li>
-    <li><a href="#prompting-strategies-for-llm-based-unsupervised-ranking">Prompting Strategies for LLM-based Unsupervised Ranking</a>
+    <li><a href="#prompting-strategies-for-llm-based-ranking">Prompting Strategies for LLM-based Ranking</a>
       <ul>
         <li><a href="#pointwise-ranking">Pointwise Ranking</a>
           <ul>
@@ -165,7 +165,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><i class="far fa-folder fa-fw"></i>Information Retrieval</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-12-20">2023-12-20</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-12-20">2023-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3628 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;18 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-12-20">2023-12-20</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-12-20">2023-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3625 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;18 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
@@ -181,7 +181,7 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#text-retrieval-with-llms">Text Retrieval with LLMs</a></li>
-    <li><a href="#prompting-strategies-for-llm-based-unsupervised-ranking">Prompting Strategies for LLM-based Unsupervised Ranking</a>
+    <li><a href="#prompting-strategies-for-llm-based-ranking">Prompting Strategies for LLM-based Ranking</a>
       <ul>
         <li><a href="#pointwise-ranking">Pointwise Ranking</a>
           <ul>
@@ -227,7 +227,7 @@
     </a><figcaption class="image-caption">Average results of ChatGPT and GPT-4 on passage reranking benchmarks compared with BM25 and supervised monoT5. Source:[^3]</figcaption>
     </figure></p>
 <p>Large Language Models (LLMs) have demonstrated impressive performance on a wide range of NLP tasks. LLM-based text retrievers excel in contextualizing user queries and documents in natural language, often handling long-form or even conversational inputs<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. These LLMs have also been adapted for zero-shot and few-shot document ranking tasks through various prompting strategies. Sun et al.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> showed that GPT-4 with zero-shot prompting surpassed supervised systems on nearly all datasets and outperformed previous state-of-the-art models by an average nDCG improvement of 2.7, 2.3, and 2.7 on TREC, BEIR, and My.TyDi, respectively.  Among the proprietary LLMs, GPT-4 outperformed Cohere&rsquo;s Rerank, Anthropic&rsquo;s Claude-2, and Google&rsquo;s BARD.</p>
-<p>Recent works, such as <strong>InPars</strong>, <strong>Promptagator</strong>, <strong>HyDE</strong>, use LLMs as auxiliary tools to generate synthetic queries or documents to augment the training data for retrievers or rerankers. Interested readers can refer to the article linked below to read more about these unsupervised methods. The focus of this article instead will be on the methods that directly use LLMs as rerankers in the multi-stage pipeline.</p>
+<p>Recent works, such as <strong>InPars</strong>, <strong>Promptagator</strong>, <strong>HyDE</strong>, use LLMs as auxiliary tools to generate synthetic queries or documents to augment the training data for retrievers or rerankers. Interested readers can refer to the article linked below to read more about these methods. The focus of this article instead will be on the methods that directly use LLMs as rerankers in the multi-stage pipeline.</p>
 
 <div class="showcase-box column-1">
     <div class="showcase-image">
@@ -250,8 +250,8 @@
         Read more...
     </a>
 </div>
-<h2 id="prompting-strategies-for-llm-based-unsupervised-ranking" class="headerLink">
-    <a href="#prompting-strategies-for-llm-based-unsupervised-ranking" class="header-mark"></a>Prompting Strategies for LLM-based Unsupervised Ranking</h2><p>Based on the type of instruction employed, the ranking strategies for utilizing LLMs in ranking tasks can be broadly categorized into three main approaches: Pointwise, Pairwise, and Listwise methods. Given the user query and candidate documents as input, these methods employ different prompting methodologies to instruct the LLM to output a relevance estimation for each candidate document<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
+<h2 id="prompting-strategies-for-llm-based-ranking" class="headerLink">
+    <a href="#prompting-strategies-for-llm-based-ranking" class="header-mark"></a>Prompting Strategies for LLM-based Ranking</h2><p>Based on the type of instruction employed, the ranking strategies for utilizing LLMs in ranking tasks can be broadly categorized into three main approaches: Pointwise, Pairwise, and Listwise methods. Given the user query and candidate documents as input, these methods employ different prompting methodologies to instruct the LLM to output a relevance estimation for each candidate document<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
 <p>Given a query $q$ and a set of candidate items $D={d_1, d_2, \ldots, d_n}$, the objective is to determine the ranking of these candidates, represented as $R={r_1, r_2, \ldots, r_n}$. Here, $r_i \in {1,2,\ldots,n}$ denotes the rank of the candidate $d_{i}$. For example, $r_i=3$, means that the document $d_i$ is ranked third among the $n$ candidates. A ranking model $f(.)$ assigns scores to the candidates based on their relevance to the query: $s_{i}=f(q,d_i)$, and the candidates are then ranked according to these relevance scores: $r_i= arg sort_i(s_1,s_2,\ldots,s_n)$<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
 <h3 id="pointwise-ranking" class="headerLink">
     <a href="#pointwise-ranking" class="header-mark"></a>Pointwise Ranking</h3><p>In the pointwise ranking method, the reranker takes both the query and a candidate document to directly generate a relevance score. These independent scores assigned to each document $d_i$ are then used to reorder the candidate set $D$. The relevance score is typically calculated based on how likely the document is relevant to the query or how likely the query can be generated from the document.</p>
@@ -474,7 +474,7 @@
 </tbody>
 </table>
 <h2 id="conclusion" class="headerLink">
-    <a href="#conclusion" class="header-mark"></a>Conclusion</h2><p>The emergence of LLMs has brought a paradigm shift in natural language processing. And, there has been a growing interest in harnessing LLM powers for text ranking. Most existing approaches exploit LLMs as an auxiliary tool for content generation (e.g. query or passage). This article reviewed recent research direction that directly prompts LLMs to perform unsupervised ranking using pointwise, pairwise, or listwise techniques. In the next article, we will take a closer look at some of the challenges associated with this theme and strategies toward more effective and efficient LLM-based reranking. We will also explore the latest efforts to train ranking-aware LLMs.</p>
+    <a href="#conclusion" class="header-mark"></a>Conclusion</h2><p>The emergence of LLMs has brought a paradigm shift in natural language processing. And, there has been a growing interest in harnessing LLM powers for text ranking. Most existing approaches exploit LLMs as an auxiliary tool for content generation (e.g. query or passage). This article reviewed recent research direction that directly prompts LLMs to perform reranking using pointwise, pairwise, or listwise techniques. In the next article, we will take a closer look at some of the challenges associated with this theme and strategies toward more effective and efficient LLM-based reranking. We will also explore the latest efforts to train ranking-aware LLMs.</p>
 <h2 id="references" class="headerLink">
     <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
 <hr>
