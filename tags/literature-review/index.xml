@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/tags/literature-review/</link>
         <description>literature review - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 20 Dec 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/literature-review/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 26 Dec 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/literature-review/" rel="self" type="application/rss+xml" /><item>
+    <title>Strategies for Effective and Efficient Ranking Using Large Language Models</title>
+    <link>https://blog.reachsumit.com/posts/2023/12/towards-ranking-aware-llms/</link>
+    <pubDate>Tue, 26 Dec 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2023/12/towards-ranking-aware-llms/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>The previous article did a deep dive into the prompting-based pointwise, pairwise, and listwise techniques that directly use LLMs to perform reranking. In this article, we will take a closer look at some of the shortcomings of the prompting methods and explore the latest efforts to train ranking-aware LLMs. The article also describes several strategies to build effective and efficient LLM-based rerankers.]]></description>
+</item><item>
     <title>Prompting-based Methods for Text Ranking Using Large Language Models</title>
     <link>https://blog.reachsumit.com/posts/2023/12/prompting-llm-for-ranking/</link>
     <pubDate>Wed, 20 Dec 2023 00:00:00 &#43;0000</pubDate><author>
@@ -86,14 +95,5 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/04/moe-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>The Mixture-of-Experts (MoE) is a classical ensemble learning technique originally proposed by Jacobs et. al1 in 1991. MoEs have the capability to substantially scale up the model capacity and only introduce small computation overhead. This ability combined with recent innovations in the deep learning domain has led to the wide-scale adoption of MoEs in healthcare, finance, pattern recognition, etc. They have been successfully utilized in large-scale applications such as Large Language Modeling (LLM), Machine Translation, and Recommendations.]]></description>
-</item><item>
-    <title>Diffusion Modeling based Recommender Systems</title>
-    <link>https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/</link>
-    <pubDate>Mon, 17 Apr 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/04/diffusion-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Diffusion Models have exhibited state-of-the-art results in image and audio synthesis domains. A recent line of research has started to adopt Diffusion for recommender systems. This article introduces Diffusion and its relevance to the recommendations domain and also highlights some of the most recent proposals on this novel theme.]]></description>
 </item></channel>
 </rss>
