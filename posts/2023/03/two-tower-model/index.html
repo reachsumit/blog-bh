@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/03/two-tower-model/featured-image-preview.webp"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-03-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-02T00:00:00+00:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/03/two-tower-model/featured-image-preview.webp"/>
 <meta name="twitter:title" content="Two Tower Model Architecture: Current State and Promising Extensions"/>
@@ -32,8 +32,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/two-tower-model\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  1964 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/two-tower-model\/","datePublished": "2023-03-04T00:00:00+00:00","dateModified": "2023-03-04T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  2373 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/two-tower-model\/","datePublished": "2023-03-04T00:00:00+00:00","dateModified": "2024-01-02T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -133,6 +133,7 @@
     <li><a href="#cascade-ranking-system">Cascade Ranking System</a></li>
     <li><a href="#two-tower-model">Two Tower Model</a></li>
     <li><a href="#related-dnn-paradigms">Related DNN Paradigms</a></li>
+    <li><a href="#comparing-dual-encoder-architectures">Comparing Dual Encoder Architectures</a></li>
     <li><a href="#enhancing-two-tower-model">Enhancing Two Tower Model</a>
       <ul>
         <li><a href="#dual-augmented-two-tower-model-dat">Dual Augmented Two-Tower Model (DAT)</a></li>
@@ -146,7 +147,7 @@
         </li>
       </ul>
     </li>
-    <li><a href="#alternatives-to-two-tower-model">Alternatives to Two Tower Model</a></li>
+    <li><a href="#other-alternatives-to-two-tower-model">Other Alternatives to Two Tower Model</a></li>
     <li><a href="#conclusion">Conclusion</a></li>
     <li><a href="#references">References</a></li>
   </ul>
@@ -155,7 +156,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><i class="far fa-folder fa-fw"></i>Information Retrieval</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-04">2023-03-04</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-04">2023-03-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1964 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-04">2023-03-04</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2024-01-02">2024-01-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2373 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
@@ -174,6 +175,7 @@
     <li><a href="#cascade-ranking-system">Cascade Ranking System</a></li>
     <li><a href="#two-tower-model">Two Tower Model</a></li>
     <li><a href="#related-dnn-paradigms">Related DNN Paradigms</a></li>
+    <li><a href="#comparing-dual-encoder-architectures">Comparing Dual Encoder Architectures</a></li>
     <li><a href="#enhancing-two-tower-model">Enhancing Two Tower Model</a>
       <ul>
         <li><a href="#dual-augmented-two-tower-model-dat">Dual Augmented Two-Tower Model (DAT)</a></li>
@@ -187,7 +189,7 @@
         </li>
       </ul>
     </li>
-    <li><a href="#alternatives-to-two-tower-model">Alternatives to Two Tower Model</a></li>
+    <li><a href="#other-alternatives-to-two-tower-model">Other Alternatives to Two Tower Model</a></li>
     <li><a href="#conclusion">Conclusion</a></li>
     <li><a href="#references">References</a></li>
   </ul>
@@ -196,44 +198,154 @@
     <a href="#introduction" class="header-mark"></a>Introduction</h2><p>Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state.</p>
 <h2 id="cascade-ranking-system" class="headerLink">
     <a href="#cascade-ranking-system" class="header-mark"></a>Cascade Ranking System</h2><p>Large-scale information retrieval and item recommendation services often contain tens of millions of candidate items or documents. A search query on Google may have matching keywords in millions of documents (web pages), and Instagram may have thousands or even millions of candidate videos for generating a recommended feed for a user. Designing such systems often has to deal with the additional challenge of strict strict latency constraints. Studies have shown that even a 100ms increase in response time leads to degraded user experience and a measurable impact on revenue <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. A single, complex ranking algorithm cannot efficiently rank such large sets of candidates. Hence, a multi-stage ranking system is commonly adopted to balance efficiency and effectiveness.</p>
-<img src="/img/posts/2023/two-tower-model/cascade_ranking_system.png" alt="Cascade ranking architecture">
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/cascade_ranking_system.png" title="Cascade ranking architecture" data-thumbnail="/img/posts/2023/two-tower-model/cascade_ranking_system.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/cascade_ranking_system.png"
+            srcset="/img/posts/2023/two-tower-model/cascade_ranking_system.png, /img/posts/2023/two-tower-model/cascade_ranking_system.png 1.5x, /img/posts/2023/two-tower-model/cascade_ranking_system.png 2x"
+            sizes="auto"
+            alt="Cascade ranking architecture">
+    </a></figure></p>
 <p>In this system, simpler and faster algorithms that focus on recall metrics are employed at earlier steps (Recall and Pre-Ranking). Whereas the large-scale deep neural networks are employed at the later steps (Ranking and Re-Ranking). Keeping latency expectations and accuracy tradeoffs in mind, an appropriate algorithm is used at each step. Each algorithm calculates some form of relevance or similarity value for every single candidate and passes the most relevant candidate set onto the next step.</p>
 <p>In an earlier blog post <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, I introduced several interaction-focused DNN algorithms that can be used for the ranking stage. I recommend going through <a href="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" target="_blank" rel="noopener noreferrer">that article</a> for developing a good understanding of these algorithms. This current article will mainly talk about the Two Tower model in the context of the pre-ranking stage.</p>
 <h2 id="two-tower-model" class="headerLink">
     <a href="#two-tower-model" class="header-mark"></a>Two Tower Model</h2><p>The pre-ranking stage does the initial filtering of the candidates received from the preceding recall or retrieval stage. Compared to the ranking stage, the pre-ranking model has to evaluate a larger number of candidates and therefore a faster approach is preferred here. The following figure shows the development history of pre-ranking systems from an ads recommendation modeling perspective <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
-<img src="/img/posts/2023/two-tower-model/pre_ranking_generations.png" alt="pre-ranking generations">
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/pre_ranking_generations.png" title="pre-ranking generations" data-thumbnail="/img/posts/2023/two-tower-model/pre_ranking_generations.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/pre_ranking_generations.png"
+            srcset="/img/posts/2023/two-tower-model/pre_ranking_generations.png, /img/posts/2023/two-tower-model/pre_ranking_generations.png 1.5x, /img/posts/2023/two-tower-model/pre_ranking_generations.png 2x"
+            sizes="auto"
+            alt="pre-ranking generations">
+    </a></figure></p>
 <p>Here $x_{u}$, $x_{a}$, $x_{ua}$ are the raw user features, ad features, and cross features. The first generation calculated the pre-rank score in a non-personalized way by averaging the recent click-through rate of each ad. Logistic regression used in the second generation is also a lightweight algorithm that can be deployed in online learning and serving manner. The third generation commonly used a Two Tower model which is a vector-produced based DNN. In this method, user and ad features pass through embedding and DNN layers to generate a latent vector representation for both the user and the ad. Then an inner product of the two vectors is calculated to obtain the pre-ranking score. This Two Tower structure was originally developed in search systems as a means to map a query to the most relevant documents<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
-<img src="/img/posts/2023/two-tower-model/two_tower_model.png" alt="Two Tower model architecture">
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/two_tower_model.png" title="Two Tower model architecture" data-thumbnail="/img/posts/2023/two-tower-model/two_tower_model.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/two_tower_model.png"
+            srcset="/img/posts/2023/two-tower-model/two_tower_model.png, /img/posts/2023/two-tower-model/two_tower_model.png 1.5x, /img/posts/2023/two-tower-model/two_tower_model.png 2x"
+            sizes="auto"
+            alt="Two Tower model architecture">
+    </a></figure></p>
 <p>The reason why the Two Tower model rose to popularity was its accuracy as well as its inference efficiency-focused design. The two towers generate latent representations independently in parallel and interact only at the output layer (referred to as &ldquo;late interaction&rdquo;). Often the learned ad or item tower embeddings are also frozen after training and stored in an indexing service for a quicker operation at inference time.</p>
 <h2 id="related-dnn-paradigms" class="headerLink">
     <a href="#related-dnn-paradigms" class="header-mark"></a>Related DNN Paradigms</h2><p>The information retrieval domain has several other DNN paradigms related to the Two Tower model. The following figure shows some examples in the context of neural matching applications (query to document matching)<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
-<img src="/img/posts/2023/two-tower-model/related_dnn_paradigms.png" alt="Related DNN Paradigms">
-<p>As you can see, the Two Tower model is a representation-based ranker architecture, which independently computes embeddings for the query and documents and estimates their similarity via interaction between them at the output layer. The other paradigms represent more interaction-focused rankers. Models like DRMM, and KNRM model word- and phrase-level relationships across query and document using an interaction matrix and then feed it to a neural network like CNN or MLP. Similarly, models like BERT are much more powerful as they model interactions between words as well as across the query and documents at the same time. On the other hand, models like ColBERT (<strong>Co</strong>ntextualized <strong>l</strong>ater interactions over <strong>BERT</strong>) keep interactions within the query and document features while delaying the query-document interaction to the output layer. This allows the model to preserve the &ldquo;query-document decoupling&rdquo; (or &ldquo;user-item decoupling&rdquo;) architecture paradigm, and the document or item embeddings can be frozen after training and served through an index at the inference time as shown on the left in the figure below. Inference costs can be further reduced if the application can work with freezing both towers. For example, as shown on the right in the following figure, Alibaba creates indexes out of the learned embeddings from both towers and retrains the model offline on a daily frequency <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
-<img src="/img/posts/2023/two-tower-model/related_dnn_paradigms_2.png" alt="related dnn paradigms - 2">
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/related_dnn_paradigms.png" title="Related DNN Paradigms" data-thumbnail="/img/posts/2023/two-tower-model/related_dnn_paradigms.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/related_dnn_paradigms.png"
+            srcset="/img/posts/2023/two-tower-model/related_dnn_paradigms.png, /img/posts/2023/two-tower-model/related_dnn_paradigms.png 1.5x, /img/posts/2023/two-tower-model/related_dnn_paradigms.png 2x"
+            sizes="auto"
+            alt="Related DNN Paradigms">
+    </a></figure></p>
+<p>As you can see, the Two Tower model (Figure a) is a representation-based ranker architecture, which independently computes embeddings for the query and documents and estimates their similarity via interaction between them at the output layer. The other paradigms represent more interaction-focused rankers. Models like <em>DRMM</em>, and <em>KNRM</em> (Figure b) model word- and phrase-level relationships across query and document using an interaction matrix and then feed it to a neural network like CNN or MLP. Similarly, models like <em>BERT</em> (Figure c), also called cross-encoders, are much more powerful as they model interactions between words as well as across the query and documents at the same time. On the other hand, models like <em>ColBERT</em> (<strong>Co</strong>ntextualized <strong>l</strong>ater interactions over <strong>BERT</strong>) (Figure d) keep interactions within the query and document features while delaying the query-document interaction to the output layer. This allows the model to preserve the &ldquo;query-document decoupling&rdquo; (or &ldquo;user-item decoupling&rdquo;) architecture paradigm, and the document or item embeddings can be frozen after training and served through an index at the inference time as shown on the left in the figure below. Inference costs can be further reduced if the application can work with freezing both towers. For example, as shown on the right in the following figure, Alibaba creates indexes out of the learned embeddings from both towers and retrains the model offline on a daily frequency <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/related_dnn_paradigms_2.png" title="Related DNN Paradigms - 2" data-thumbnail="/img/posts/2023/two-tower-model/related_dnn_paradigms_2.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/related_dnn_paradigms_2.png"
+            srcset="/img/posts/2023/two-tower-model/related_dnn_paradigms_2.png, /img/posts/2023/two-tower-model/related_dnn_paradigms_2.png 1.5x, /img/posts/2023/two-tower-model/related_dnn_paradigms_2.png 2x"
+            sizes="auto"
+            alt="Related DNN Paradigms - 2">
+    </a></figure></p>
+<h2 id="comparing-dual-encoder-architectures" class="headerLink">
+    <a href="#comparing-dual-encoder-architectures" class="header-mark"></a>Comparing Dual Encoder Architectures</h2><p>Two tower models, like DSSM, are also called the <strong>dual encoder</strong> or <strong>bi-encoder</strong> architecture as they encode the input (such as a query, an image, or a document) into an embedding using the two sub-networks (&quot;<em>towers</em>&quot; or &ldquo;<em>encoders</em>&rdquo;). The model is then optimized based on similarity metrics in the embedding space. Dual encoders have shown excellent performance in a wide range of information retrieval tasks, such as question-answering, entity linking, dense retrieval, etc. They are also easy to productionize because the embedding for new or updated documents can be dynamically added to the embedding index, without retraining the encoders<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
+<p>A <strong>Siamese encoder</strong> model is a type of dual encoder that consists of two identical sub-networks joined at their outputs. Generally, the two sub-networks also share their parameters. The Siamese architecture was originally proposed by Bromley et al.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> for signature verification application. It processes two inputs concurrently and maps them onto a single scalar output representing the distance or similarity between the inputs. On the other hand, an asymmetric dual encoder (<em>ADE</em>) refers to a model with two distinctly parameterized encoders. In practice, ADEs are used when a certain asymmetry is required in the dual encoders. Dong et al.<sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> conducted a study to explore the different ways dual encoders can be structured and compared their efficacy on the question-answering retrieval task.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/dual_encoder_architectures.png" title="Dual encoder architectures" data-thumbnail="/img/posts/2023/two-tower-model/dual_encoder_architectures.png" data-sub-html="<h2>Dual encoders architectures. SDE: Siamese Dual Encoder, ADE: Asymmetric Dual Encoder, ADE-STE: ADE with shared token embedder, ADE-FTE: ADE with frozen token embedder, ADE-SPL: ADE with shared projection layer.</h2><p>Dual encoder architectures</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/dual_encoder_architectures.png"
+            srcset="/img/posts/2023/two-tower-model/dual_encoder_architectures.png, /img/posts/2023/two-tower-model/dual_encoder_architectures.png 1.5x, /img/posts/2023/two-tower-model/dual_encoder_architectures.png 2x"
+            sizes="auto"
+            alt="Dual encoder architectures">
+    </a><figcaption class="image-caption">Dual encoders architectures. SDE: Siamese Dual Encoder, ADE: Asymmetric Dual Encoder, ADE-STE: ADE with shared token embedder, ADE-FTE: ADE with frozen token embedder, ADE-SPL: ADE with shared projection layer.</figcaption>
+    </figure></p>
+<p>The study concluded that the Siamese Dual Encoders (<em>SDE</em>s) perform significantly better than Asymmetric Dual Encoders (<em>ADE</em>s) because ADEs tend to embed the two inputs into disjoint embedding spaces, which hurts the retrieval quality. They also found that ADE performance can be enhanced to be on par or even better than SDEs by sharing a projection layer between the two encoders (<em>ADE-SPL</em>). However, sharing the token embedders between the two towers (<em>ADE-STE</em>) or freezing the token embedders during training (<em>ADE-FTE</em>) only brings marginal improvements.</p>
 <h2 id="enhancing-two-tower-model" class="headerLink">
     <a href="#enhancing-two-tower-model" class="header-mark"></a>Enhancing Two Tower Model</h2><p>In this section, we look at some of the proposals from different researchers for extending the Two Tower model. One common problem with the Two Tower model that this research works focus on is the lack of information interaction between the two towers. As we saw earlier, the Two Tower model trains the latent embeddings in both towers independently and without using any enriching information from the other tower. This limitation hinders the model&rsquo;s performance.</p>
 <h3 id="dual-augmented-two-tower-model-dat" class="headerLink">
-    <a href="#dual-augmented-two-tower-model-dat" class="header-mark"></a>Dual Augmented Two-Tower Model (DAT)</h3><p>To model feature interactions between two towers, Yu et al.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> proposed augmenting the embedding input of each tower with a vector ($a_{u}$ and $a_{v}$ in the figure below) that captures historical positive interaction information from the other tower. $a_{u}$ and $a_{v}$ vectors get updated during the training process and are used to model the information interaction between the two towers by regarding them as the input feature of the two towers. This paper also proposes a new category alignment loss to handle the imbalance among different categories of items by transferring the knowledge learned from the category with a large amount of data to other categories. Later research showed that the gains achieved by the DAT model are still limited.</p>
-<img src="/img/posts/2023/two-tower-model/dat_model.png" alt="DAT model">
+    <a href="#dual-augmented-two-tower-model-dat" class="header-mark"></a>Dual Augmented Two-Tower Model (DAT)</h3><p>To model feature interactions between two towers, Yu et al.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> proposed augmenting the embedding input of each tower with a vector ($a_{u}$ and $a_{v}$ in the figure below) that captures historical positive interaction information from the other tower. $a_{u}$ and $a_{v}$ vectors get updated during the training process and are used to model the information interaction between the two towers by regarding them as the input feature of the two towers. This paper also proposes a new category alignment loss to handle the imbalance among different categories of items by transferring the knowledge learned from the category with a large amount of data to other categories. Later research showed that the gains achieved by the DAT model are still limited.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/dat_model.png" title="DAT model" data-thumbnail="/img/posts/2023/two-tower-model/dat_model.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/dat_model.png"
+            srcset="/img/posts/2023/two-tower-model/dat_model.png, /img/posts/2023/two-tower-model/dat_model.png 1.5x, /img/posts/2023/two-tower-model/dat_model.png 2x"
+            sizes="auto"
+            alt="DAT model">
+    </a></figure></p>
 <h3 id="interaction-enhanced-two-tower-model-inttower" class="headerLink">
-    <a href="#interaction-enhanced-two-tower-model-inttower" class="header-mark"></a>Interaction Enhanced Two Tower Model (IntTower)</h3><p>The authors of this research design a two-tower model that emphasizes both information interactions and inference efficiency <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>. Their proposed model consists of three new blocks, as mentioned below.</p>
+    <a href="#interaction-enhanced-two-tower-model-inttower" class="header-mark"></a>Interaction Enhanced Two Tower Model (IntTower)</h3><p>The authors of this research design a two-tower model that emphasizes both information interactions and inference efficiency <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>. Their proposed model consists of three new blocks, as mentioned below.</p>
 <h4 id="light-se-block" class="headerLink">
-    <a href="#light-se-block" class="header-mark"></a>Light-SE Block</h4><p>This module is used to identify the importance of different features and obtain refined feature representations in each tower. The design of this module is based on the SENET model proposed in the &ldquo;Squeeze-and-Excitation Networks&rdquo; paper <sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>. SENET is used in the computer vision domain to explicitly model the interdependencies between the image channels through feature recalibration, i.e. selectively emphasizing informative features and suppressing less useful ones. The basic structure of the SE building block is shown in the next figure.</p>
-<img src="/img/posts/2023/two-tower-model/senet_block.png" alt="SENET block">
+    <a href="#light-se-block" class="header-mark"></a>Light-SE Block</h4><p>This module is used to identify the importance of different features and obtain refined feature representations in each tower. The design of this module is based on the SENET model proposed in the &ldquo;Squeeze-and-Excitation Networks&rdquo; paper <sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>. SENET is used in the computer vision domain to explicitly model the interdependencies between the image channels through feature recalibration, i.e. selectively emphasizing informative features and suppressing less useful ones. The basic structure of the SE building block is shown in the next figure.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/senet_block.png" title="SENET block" data-thumbnail="/img/posts/2023/two-tower-model/senet_block.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/senet_block.png"
+            srcset="/img/posts/2023/two-tower-model/senet_block.png, /img/posts/2023/two-tower-model/senet_block.png 1.5x, /img/posts/2023/two-tower-model/senet_block.png 2x"
+            sizes="auto"
+            alt="SENET block">
+    </a></figure></p>
 <p>First, a squeeze operation aggregates the feature maps across spatial dimensions to produce a channel descriptor. An excitation operation then excites informative features by a self-gating mechanism based on channel dependence (similar to calculating attention weights). The final output of the block is obtained through a scaling step by rescaling the transformation output with the learned activations. The authors of the IntTower paper adopt a more lightweight approach with a single FC layer to obtain the feature importance. The following figure shows the SENET and Light-SE blocks side-by-side.</p>
-<img src="/img/posts/2023/two-tower-model/senet_lightse.png" alt="SENET vs LightSE">
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/senet_lightse.png" title="SENET vs LightSE" data-thumbnail="/img/posts/2023/two-tower-model/senet_lightse.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/senet_lightse.png"
+            srcset="/img/posts/2023/two-tower-model/senet_lightse.png, /img/posts/2023/two-tower-model/senet_lightse.png 1.5x, /img/posts/2023/two-tower-model/senet_lightse.png 2x"
+            sizes="auto"
+            alt="SENET vs LightSE">
+    </a></figure></p>
 <h4 id="fe-block" class="headerLink">
     <a href="#fe-block" class="header-mark"></a>FE-Block</h4><p>The purposed FE (Fine-grained and Early Feature Interaction) Block is inspired by the later interaction style of ColBERT. It performs fine-grained early feature interaction between multi-layer user representations and the last layer of item representation.</p>
-<img src="/img/posts/2023/two-tower-model/fe_block_cir_block.png" alt="FE block and CIR module">
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/fe_block_cir_block.png" title="FE block and CIR module" data-thumbnail="/img/posts/2023/two-tower-model/fe_block_cir_block.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/fe_block_cir_block.png"
+            srcset="/img/posts/2023/two-tower-model/fe_block_cir_block.png, /img/posts/2023/two-tower-model/fe_block_cir_block.png 1.5x, /img/posts/2023/two-tower-model/fe_block_cir_block.png 2x"
+            sizes="auto"
+            alt="FE block and CIR module">
+    </a></figure></p>
 <h4 id="cir-module" class="headerLink">
-    <a href="#cir-module" class="header-mark"></a>CIR Module</h4><p>A Contrastive Interaction Regularization (CIR) module was also purposed to shorten the distance between a user and positive items using InfoNCE loss function <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>. During training, this loss value is combined with the logloss between the model prediction scores and the true labels.</p>
+    <a href="#cir-module" class="header-mark"></a>CIR Module</h4><p>A Contrastive Interaction Regularization (CIR) module was also purposed to shorten the distance between a user and positive items using InfoNCE loss function <sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>. During training, this loss value is combined with the logloss between the model prediction scores and the true labels.</p>
 <h4 id="inttower-model-architecture" class="headerLink">
-    <a href="#inttower-model-architecture" class="header-mark"></a>IntTower Model Architecture</h4><img src="/img/posts/2023/two-tower-model/inttower_arch.png" alt="IntTower architecture">
+    <a href="#inttower-model-architecture" class="header-mark"></a>IntTower Model Architecture</h4><p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/inttower_arch.png" title="IntTower architecture" data-thumbnail="/img/posts/2023/two-tower-model/inttower_arch.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/inttower_arch.png"
+            srcset="/img/posts/2023/two-tower-model/inttower_arch.png, /img/posts/2023/two-tower-model/inttower_arch.png 1.5x, /img/posts/2023/two-tower-model/inttower_arch.png 2x"
+            sizes="auto"
+            alt="IntTower architecture">
+    </a></figure></p>
 <p>As shown in the figure above, the IntTower model architecture combines the three blocks described earlier. Through experimentation, the authors show that the IntTower model outperforms other pre-ranking algorithms (Logistic Regression, Two-Tower, DAT, COLD) and even performs comparably to some ranking algorithms (Wide&amp;Deep, DeepFM, DCN, AutoInt). Compared with the Two Tower model, the increased parameters count and training time of IntTower are negligible and the serving latency is also acceptable. The authors also investigate the user and item representations generated by Two Tower and IntTower models by projecting them into 2-dimensions using t-SNE. As shown in the next figure, the IntTower representations have the user and positive items in the same cluster while negative items are far away from the user.</p>
-<img src="/img/posts/2023/two-tower-model/embedding_reps.png" alt="Embedding representations">
-<h2 id="alternatives-to-two-tower-model" class="headerLink">
-    <a href="#alternatives-to-two-tower-model" class="header-mark"></a>Alternatives to Two Tower Model</h2><p>Apart from Two Tower models, there has been some research work with single-tower structures to fully model feature interactions and further improve prediction accuracy. However, due to the lack of a &ldquo;user-item decoupling architecture&rdquo; paradigm, these models have to employ several optimization tricks to alleviate efficiency degradations. For example, the COLD (<strong>C</strong>omputing power cost-aware <strong>O</strong>nline and <strong>L</strong>ightweight <strong>D</strong>eep pre-ranking system) model <cite><sup id="fnref2:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite> performs offline feature selection experiments to find out a set of important features for the ranking algorithm that are optimal concerning metrics such as QPS (queries per second) and RT (return time). Similarly, FSCD (<strong>F</strong>eature Selection method based on feature <strong>C</strong>omplexity and variational <strong>D</strong>ropout) model <sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> uses learnable dropout parameters to perform feature-wise regularization such that the pre-ranking model is effectively inherited from that of the ranking model.</p>
-<img src="/img/posts/2023/two-tower-model/single_towers.png" alt="Single Tower Models">
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/embedding_reps.png" title="Embedding representations" data-thumbnail="/img/posts/2023/two-tower-model/embedding_reps.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/embedding_reps.png"
+            srcset="/img/posts/2023/two-tower-model/embedding_reps.png, /img/posts/2023/two-tower-model/embedding_reps.png 1.5x, /img/posts/2023/two-tower-model/embedding_reps.png 2x"
+            sizes="auto"
+            alt="Embedding representations">
+    </a></figure></p>
+<h2 id="other-alternatives-to-two-tower-model" class="headerLink">
+    <a href="#other-alternatives-to-two-tower-model" class="header-mark"></a>Other Alternatives to Two Tower Model</h2><p>Apart from Two Tower models, there has been some research work with single-tower structures to fully model feature interactions and further improve prediction accuracy. However, due to the lack of a &ldquo;user-item decoupling architecture&rdquo; paradigm, these models have to employ several optimization tricks to alleviate efficiency degradations. For example, the COLD (<strong>C</strong>omputing power cost-aware <strong>O</strong>nline and <strong>L</strong>ightweight <strong>D</strong>eep pre-ranking system) model <cite><sup id="fnref2:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite> performs offline feature selection experiments to find out a set of important features for the ranking algorithm that are optimal concerning metrics such as QPS (queries per second) and RT (return time). Similarly, FSCD (<strong>F</strong>eature Selection method based on feature <strong>C</strong>omplexity and variational <strong>D</strong>ropout) model <sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> uses learnable dropout parameters to perform feature-wise regularization such that the pre-ranking model is effectively inherited from that of the ranking model.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/single_towers.png" title="Single Tower Models" data-thumbnail="/img/posts/2023/two-tower-model/single_towers.png">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2023/two-tower-model/single_towers.png"
+            srcset="/img/posts/2023/two-tower-model/single_towers.png, /img/posts/2023/two-tower-model/single_towers.png 1.5x, /img/posts/2023/two-tower-model/single_towers.png 2x"
+            sizes="auto"
+            alt="Single Tower Models">
+    </a></figure></p>
 <h2 id="conclusion" class="headerLink">
     <a href="#conclusion" class="header-mark"></a>Conclusion</h2><p>This article introduced the historical evolution of pre-ranking approaches in the context of cascade ranking-based systems. We learned how the balance of efficiency and effectiveness makes Two Tower models an excellent choice for several information retrieval use cases. We also explored several recent research proposals that combine ideas from related domains to enhance the Two Tower model. We wrapped up the article with a look at some of the available alternatives to the Two Tower model architecture.</p>
 <h2 id="references" class="headerLink">
@@ -256,19 +368,25 @@
 <p>Khattab, O., &amp; Zaharia, M.A. (2020). ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT. <em>Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval</em>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>Yu, Y., Wang, W., Feng, Z., Xue, D., Meituan, &amp; Beijing (2021). A Dual Augmented Two-tower Model for Online Large-scale Recommendation.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Dong, Z., Ni, J., Bikel, D. M., Alfonseca, E., Wang, Y., Qu, C., &amp; Zitouni, I. (2022). Exploring Dual Encoder Architectures for Question Answering. <em>ArXiv</em>. /abs/2204.07120&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
-<p>Li, X., Chen, B., Guo, H., Li, J., Zhu, C., Long, X., Li, S., Wang, Y., Guo, W., Mao, L., Liu, J., Dong, Z., &amp; Tang, R. (2022). IntTower: The Next Generation of Two-Tower Model for Pre-Ranking System. <em>Proceedings of the 31st ACM International Conference on Information &amp; Knowledge Management</em>.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Bromley, J., Bentz, J.W., Bottou, L., Guyon, I.M., LeCun, Y., Moore, C., Säckinger, E., &amp; Shah, R. (1993). Signature Verification Using A &ldquo;Siamese&rdquo; Time Delay Neural Network. <em>Int. J. Pattern Recognit. Artif. Intell., 7</em>, 669-688.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:8">
-<p>Hu, J., Shen, L., Albanie, S., Sun, G., &amp; Wu, E. (2017). Squeeze-and-Excitation Networks. <em>IEEE Transactions on Pattern Analysis and Machine Intelligence, 42</em>, 2011-2023.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Yu, Y., Wang, W., Feng, Z., Xue, D., Meituan, &amp; Beijing (2021). A Dual Augmented Two-tower Model for Online Large-scale Recommendation.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:9">
-<p><a href="https://lilianweng.github.io/posts/2021-05-31-contrastive/#infonce" target="_blank" rel="noopener noreferrer">https://lilianweng.github.io/posts/2021-05-31-contrastive/#infonce</a>&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Li, X., Chen, B., Guo, H., Li, J., Zhu, C., Long, X., Li, S., Wang, Y., Guo, W., Mao, L., Liu, J., Dong, Z., &amp; Tang, R. (2022). IntTower: The Next Generation of Two-Tower Model for Pre-Ranking System. <em>Proceedings of the 31st ACM International Conference on Information &amp; Knowledge Management</em>.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:10">
-<p>Ma, X., Wang, P., Zhao, H., Liu, S., Zhao, C., Lin, W., Lee, K., Xu, J., &amp; Zheng, B. (2021). Towards a Better Tradeoff between Effectiveness and Efficiency in Pre-Ranking: A Learnable Feature Selection based Approach. <em>Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</em>.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Hu, J., Shen, L., Albanie, S., Sun, G., &amp; Wu, E. (2017). Squeeze-and-Excitation Networks. <em>IEEE Transactions on Pattern Analysis and Machine Intelligence, 42</em>, 2011-2023.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p><a href="https://lilianweng.github.io/posts/2021-05-31-contrastive/#infonce" target="_blank" rel="noopener noreferrer">https://lilianweng.github.io/posts/2021-05-31-contrastive/#infonce</a>&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p>Ma, X., Wang, P., Zhao, H., Liu, S., Zhao, C., Lin, W., Lee, K., Xu, J., &amp; Zheng, B. (2021). Towards a Better Tradeoff between Effectiveness and Efficiency in Pre-Ranking: A Learnable Feature Selection based Approach. <em>Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</em>.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
@@ -362,7 +480,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-03-04</span>
+                <span>Updated on 2024-01-02</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -386,7 +504,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
             </noscript></div></article></div>
         </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
@@ -397,8 +515,8 @@
         </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-03-04T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Two Tower Model Architecture: Current State and Promising Extensions"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript">
+    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-03-04T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Two Tower Model Architecture: Current State and Promising Extensions"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3" async></script></div>
