@@ -4,12 +4,26 @@
         <link>https://blog.reachsumit.com/tags/</link>
         <description>Tags - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 26 Dec 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>behavior modeling</title>
+    <link>https://blog.reachsumit.com/tags/behavior-modeling/</link>
+    <pubDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/behavior-modeling/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>literature review</title>
     <link>https://blog.reachsumit.com/tags/literature-review/</link>
-    <pubDate>Tue, 26 Dec 2023 00:00:00 &#43;0000</pubDate><author>
+    <pubDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/tags/literature-review/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>recsys</title>
+    <link>https://blog.reachsumit.com/tags/recsys/</link>
+    <pubDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/recsys/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>LLM</title>
@@ -31,13 +45,6 @@
     <pubDate>Tue, 26 Dec 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/tags/retrieval/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>recsys</title>
-    <link>https://blog.reachsumit.com/tags/recsys/</link>
-    <pubDate>Sun, 18 Jun 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/tags/recsys/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>embeddings</title>
@@ -66,13 +73,6 @@
     <pubDate>Mon, 17 Apr 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/tags/diffusion/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>forecasting</title>
-    <link>https://blog.reachsumit.com/tags/forecasting/</link>
-    <pubDate>Sat, 21 Jan 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/tags/forecasting/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

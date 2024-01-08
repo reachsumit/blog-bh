@@ -1,0 +1,638 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>A Guide to User Behavior Modeling - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="A Guide to User Behavior Modeling" />
+<meta property="og:description" content="Modeling users&rsquo; past historical interactions or behavior sequences is an essential task for domains like recommender systems, click-through rate prediction, targeted advertisement, and more. This article provides a comprehensive introduction to the user behavior modeling paradigm along with highlighting several relevant and recent research works." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-07T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"/>
+<meta name="twitter:title" content="A Guide to User Behavior Modeling"/>
+<meta name="twitter:description" content="Modeling users&rsquo; past historical interactions or behavior sequences is an essential task for domains like recommender systems, click-through rate prediction, targeted advertisement, and more. This article provides a comprehensive introduction to the user behavior modeling paradigm along with highlighting several relevant and recent research works."/>
+<meta name="application-name" content="Sumit&#39;s Diary">
+<meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/12/towards-ranking-aware-llms/" />
+<link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "A Guide to User Behavior Modeling",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.reachsumit.com\/posts\/2024\/01\/user-behavior-modeling-recsys\/"
+        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, behavior modeling","wordcount":  3819 ,
+        "url": "https:\/\/blog.reachsumit.com\/posts\/2024\/01\/user-behavior-modeling-recsys\/","datePublished": "2024-01-07T00:00:00+00:00","dateModified": "2024-01-07T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Sumit Kumar"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+        window.switchThemeEventSet = new Set()
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Sumit&#39;s Diary"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://reachsumit.com/#contact" rel="noopener noreferrer" target="_blank"> Contact </a><a class="menu-item" href="/newsletter/"> Newsletter(s) </a><a class="menu-item" href="/talks/"> Talks </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search this blog" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-select" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="Switch Theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="black">Black</option>
+                        <option value="auto">Auto</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Sumit&#39;s Diary"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search this blog" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://reachsumit.com/#contact" title="" rel="noopener noreferrer" target="_blank">Contact</a><a class="menu-item" href="/newsletter/" title="">Newsletter(s)</a><a class="menu-item" href="/talks/" title="">Talks</a><a href="javascript:void(0);" class="menu-item theme-select" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="Switch Theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="black">Black</option>
+                    <option value="auto">Auto</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">Contents</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#conceptual-definitions">Conceptual Definitions</a></li>
+    <li><a href="#static-vs-dynamic-behavior-modeling">Static v/s Dynamic Behavior Modeling</a>
+      <ul>
+        <li><a href="#static-representation-learning">Static Representation Learning</a></li>
+        <li><a href="#dynamic-representation-learning">Dynamic Representation Learning</a></li>
+      </ul>
+    </li>
+    <li><a href="#common-challenges-with-modeling-user-behavior">Common Challenges with Modeling User Behavior</a></li>
+    <li><a href="#types-of-behavior-sequences">Types of Behavior Sequences</a>
+      <ul>
+        <li><a href="#experience-based-behavior-sequence">Experience-based Behavior Sequence</a>
+          <ul>
+            <li><a href="#modeling-paradigms">Modeling Paradigms</a></li>
+          </ul>
+        </li>
+        <li><a href="#transaction-based-behavior-sequence">Transaction-based Behavior Sequence</a>
+          <ul>
+            <li><a href="#modeling-paradigms-1">Modeling Paradigms</a></li>
+          </ul>
+        </li>
+        <li><a href="#interaction-based-behavior-sequence">Interaction-based Behavior Sequence</a>
+          <ul>
+            <li><a href="#modeling-paradigm">Modeling Paradigm</a></li>
+            <li><a href="#multi-behavior-predictions">Multi-Behavior Predictions</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#advanced-topics">Advanced Topics</a>
+      <ul>
+        <li><a href="#modeling-longer-user-behavior-sequences">Modeling Longer User Behavior Sequences</a></li>
+        <li><a href="#modeling-user-behavior-with-side-information">Modeling User Behavior with Side Information</a>
+          <ul>
+            <li><a href="#side-information-utilization">Side Information Utilization</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">A Guide to User Behavior Modeling</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2024-01-07">2024-01-07</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2024-01-07">2024-01-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3819 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;18 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        
+        loading="eager"
+        src="/posts/2024/01/user-behavior-modeling-recsys/featured-image.webp"
+        srcset="/posts/2024/01/user-behavior-modeling-recsys/featured-image.webp, /posts/2024/01/user-behavior-modeling-recsys/featured-image.webp 1.5x, /posts/2024/01/user-behavior-modeling-recsys/featured-image.webp 2x"
+        sizes="auto"
+        alt="/posts/2024/01/user-behavior-modeling-recsys/featured-image.webp"
+        title="/posts/2024/01/user-behavior-modeling-recsys/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#conceptual-definitions">Conceptual Definitions</a></li>
+    <li><a href="#static-vs-dynamic-behavior-modeling">Static v/s Dynamic Behavior Modeling</a>
+      <ul>
+        <li><a href="#static-representation-learning">Static Representation Learning</a></li>
+        <li><a href="#dynamic-representation-learning">Dynamic Representation Learning</a></li>
+      </ul>
+    </li>
+    <li><a href="#common-challenges-with-modeling-user-behavior">Common Challenges with Modeling User Behavior</a></li>
+    <li><a href="#types-of-behavior-sequences">Types of Behavior Sequences</a>
+      <ul>
+        <li><a href="#experience-based-behavior-sequence">Experience-based Behavior Sequence</a>
+          <ul>
+            <li><a href="#modeling-paradigms">Modeling Paradigms</a></li>
+          </ul>
+        </li>
+        <li><a href="#transaction-based-behavior-sequence">Transaction-based Behavior Sequence</a>
+          <ul>
+            <li><a href="#modeling-paradigms-1">Modeling Paradigms</a></li>
+          </ul>
+        </li>
+        <li><a href="#interaction-based-behavior-sequence">Interaction-based Behavior Sequence</a>
+          <ul>
+            <li><a href="#modeling-paradigm">Modeling Paradigm</a></li>
+            <li><a href="#multi-behavior-predictions">Multi-Behavior Predictions</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#advanced-topics">Advanced Topics</a>
+      <ul>
+        <li><a href="#modeling-longer-user-behavior-sequences">Modeling Longer User Behavior Sequences</a></li>
+        <li><a href="#modeling-user-behavior-with-side-information">Modeling User Behavior with Side Information</a>
+          <ul>
+            <li><a href="#side-information-utilization">Side Information Utilization</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>With the growing number of online services, recommender systems have become an essential tool for cutting through information overload and personalizing customer experience in various applications like online shopping or movie recommendations. Recommender systems predict customers&rsquo; interests using various data sources and give suggestions for future actions based on the inferred interests. Data sources include information about the users, items, and the interaction between users and items. The user-item interaction is of particular importance as it can identify user preferences and interests. This article describes how the users&rsquo; historical interactions can be used to characterize user behavior and build effective recommender systems.</p>
+<h2 id="conceptual-definitions" class="headerLink">
+    <a href="#conceptual-definitions" class="header-mark"></a>Conceptual Definitions</h2><p>Recommender systems (RecSys) customize and adapt to the users&rsquo; specific needs through explicit or implicit feedback from users. Explicit feedback regarding users&rsquo; preferences is usually scarce and considered a major bottleneck in RecSys domain. Hence the user interest is often modeled through feedback implicitly recorded in past user behavior, such as user behavior history and search patterns. These strategies for learning user interest have also been employed in other information retrieval domains, such as online advertising, web search, etc.</p>
+<p>Next, we define the associated terms that will help in understanding and distinguishing the various types of user behavior<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<ul>
+<li>
+<p><strong>Behavior Object</strong> is the item or service that the user interacts with. It is usually an item or a set of items. It may also have associated information such as text descriptions, images, and interaction time.</p>
+</li>
+<li>
+<p><strong>Behavior Type</strong> is the action or the way the user interacts with the items or services. It may include, for example, search, click, add-to-cart, buy, share, etc. These logged behavior types are also called &ldquo;<strong>channels</strong>&rdquo;, through which user feedback is collected.</p>
+</li>
+<li>
+<p><strong>Behavior</strong> is the combination of a behavior type and a behavior object, i.e. a user interacting with a behavior object through a behavior type.</p>
+</li>
+<li>
+<p><strong>Behavior Sequence</strong> (or behavior session) is the trajectory consisting of multiple user behaviors.</p>
+</li>
+</ul>
+<p>The following figure shows a general framework of user behavior modeling<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/user-behavior-modeling-recsys/user_behavior_modeling_general_framework.png" title="General Framework of user behavior modeling" data-thumbnail="/img/posts/2024/user-behavior-modeling-recsys/user_behavior_modeling_general_framework.png" data-sub-html="<h2>General Framework of User Behavior Modeling</h2><p>General Framework of user behavior modeling</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/user-behavior-modeling-recsys/user_behavior_modeling_general_framework.png"
+            srcset="/img/posts/2024/user-behavior-modeling-recsys/user_behavior_modeling_general_framework.png, /img/posts/2024/user-behavior-modeling-recsys/user_behavior_modeling_general_framework.png 1.5x, /img/posts/2024/user-behavior-modeling-recsys/user_behavior_modeling_general_framework.png 2x"
+            sizes="auto"
+            alt="General Framework of user behavior modeling">
+    </a><figcaption class="image-caption">General Framework of User Behavior Modeling</figcaption>
+    </figure></p>
+<p>User behaviors contain crucial patterns of user interests. Categorizing behavior sequences based on these patterns and exploring their respective modeling paradigm will be the theme of this article.</p>
+<h2 id="static-vs-dynamic-behavior-modeling" class="headerLink">
+    <a href="#static-vs-dynamic-behavior-modeling" class="header-mark"></a>Static v/s Dynamic Behavior Modeling</h2><p>In user behavior modeling (UBM) applications, the logged user data is usually organized as either structured static datasets (e.g., user-movie rating matrix) or unstructured sequences (e.g., the purchase history of customers)<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. Traditional recommender systems are built using collaborative filtering or content-based filtering methods. These methods model the user-item interaction in a static way and only capture users&rsquo; general preferences<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
+<p>In contrast, Sequential Recommender Systems (SRSs) model the sequential dependencies over the user-item interactions by treating the user-item interactions as a dynamic sequence. Hence, while conventional static methods treat the behavior information as static data, like tabular data, SRSs model them as sequential data, like time-series data.</p>
+<h3 id="static-representation-learning" class="headerLink">
+    <a href="#static-representation-learning" class="header-mark"></a>Static Representation Learning</h3><p>In static user behavior modeling, latent user representations are learned from static data, such as the user-item interaction matrix or user-advertisement response matrix. These simplified methods do not utilize any temporal information.</p>
+<ul>
+<li><strong>Shallow Learning Based Models</strong>: Traditional shallow learning models usually rely on statistical assumptions and learn low-dimensional linear or non-linear subspaces from high-dimensional data. Matrix factorization, an effective solution to collaborative filtering, is the most representative example of this approach. It works by decomposing a user response matrix into latent factor matrices. While it is a promising approach, it also suffers from the cold-start problem. Hence, more advanced factorization methods incorporate side information to learn latent factors. These factorization methods include <em>Bayesian Matrix Factorization</em> (BMF), <em>Cross-domain Triadic Factorization</em> (CDTF), <em>Factorization Machine</em> (FM), and <em>Contextual Collaborative Filtering</em> (CCF). These algorithms are simple, effective, and easy to implement and deploy, but they also have limited capability in modeling complex user behavior data.</li>
+<li><strong>Deep Learning Based Models</strong>: Methods based on deep learning employ neural networks to extract latent information from input data. For use behavior modeling, these methods focus on learning latent representations for the user from the corresponding behavior data. These methods include algorithms such as Restricted Boltzmann Machine (RBM) based <em>Ordinal RBM</em>, <em>Deep Belief Nets</em> (DBN), auto-encoder based <em>Deep Collaborative Filtering</em> (DCF), <em>Probabilistic Matrix Factorization</em> (PMF), <em>Marginalized Denoising Auto-Encoders</em> (mDA). and feed-forward neural network based <em>Neural Collaborative Filtering</em> (NCF), <em>Neural Factorization Machine</em> (NFM). Compared with shallow learning, these methods are better at exploiting complex feature interactions, but they also struggle with issues like explainability and learning effective embeddings for categorical features.</li>
+</ul>
+<h3 id="dynamic-representation-learning" class="headerLink">
+    <a href="#dynamic-representation-learning" class="header-mark"></a>Dynamic Representation Learning</h3><p>It is important to note that the behavior and preferences of users are dynamic and may change over time. Conventional systems like content-based or collaborative filtering cannot capture these sequential dependencies. They make the assumption that all user-item interactions in the historical sequences are equally important<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. But in real-world scenarios, users&rsquo; next action depends on static long-term preference as well as the current intent which could be influenced by a small set of recent interactions.</p>
+<p>Unlike static methods, dynamic representation learning methods, like Sequential Recommender Systems (SRSs), take the evolving nature of user behavior sequence into consideration. SRSs learn the evolution of user preferences and item popularity over time by modeling the sequential dependencies over the user-item interactions. This strategy leads to a more accurate characterization of user intent and item consumption trends, leading to more accurate and dynamic recommendations <sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/user-behavior-modeling-recsys/sequential_recommender_systems_example.png" title="Two examples of SRSs" data-thumbnail="/img/posts/2024/user-behavior-modeling-recsys/sequential_recommender_systems_example.png" data-sub-html="<h2>In the real world, users&#39; shopping behaviors aren&#39;t isolated and usually have some sequential dependencies.</h2><p>Two examples of SRSs</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/user-behavior-modeling-recsys/sequential_recommender_systems_example.png"
+            srcset="/img/posts/2024/user-behavior-modeling-recsys/sequential_recommender_systems_example.png, /img/posts/2024/user-behavior-modeling-recsys/sequential_recommender_systems_example.png 1.5x, /img/posts/2024/user-behavior-modeling-recsys/sequential_recommender_systems_example.png 2x"
+            sizes="auto"
+            alt="Two examples of SRSs">
+    </a><figcaption class="image-caption">In the real world, users' shopping behaviors aren't isolated and usually have some sequential dependencies.</figcaption>
+    </figure></p>
+<p>By treating the user-item interactions as a dynamic sequence, SRSs can capture the current and recent preferences of the user more effectively and flexibly through temporal factors. Session-based (or session-aware) recommendations are a subdomain of sequential (or sequence-aware) recommendations. SRSs can also simultaneously model users&rsquo; short-term interest in a session as well as the correlation of behavior patterns across different sessions<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>The rest of the article will focus on dynamic user behavior modeling. Traditionally, non-deep learning methods, such as Frequent Pattern Mining (Association Rules), Item-/session-based KNNs, Markov Chains, Dynamic Matrix Factorization, and Tensor Factorization have been utilized. However, Deep Learning based methods have been significantly more robust and performant. So, the article will mainly discuss recent deep learning based approaches.</p>
+<p>Next, we define two representative SRS tasks that take behavior trajectories as input:</p>
+<ul>
+<li>In the <strong>next-item recommendation</strong>, a behavior contains only one object or item, such as a product, a song, a movie, or a location.</li>
+<li>In the <strong>next-basket recommendation</strong>, a behavior contains more than one object.</li>
+</ul>
+<p>Despite the difference in input, both tasks have the same goal of predicting the next item(s) for the user. The most popular form of the output is the top-N ranked item list. The rank could be determined by probabilities, absolute values, or relative rankings. Assuming $V_i$ refers to $i$-th item, the following figure depicts the two tasks<sup id="fnref3:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/user-behavior-modeling-recsys/sequential_recommendation_tasks.png" title="Next-item and next-basket recommendation" data-thumbnail="/img/posts/2024/user-behavior-modeling-recsys/sequential_recommendation_tasks.png" data-sub-html="<h2>Next-item and next-basket recommendation</h2><p>Next-item and next-basket recommendation</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/user-behavior-modeling-recsys/sequential_recommendation_tasks.png"
+            srcset="/img/posts/2024/user-behavior-modeling-recsys/sequential_recommendation_tasks.png, /img/posts/2024/user-behavior-modeling-recsys/sequential_recommendation_tasks.png 1.5x, /img/posts/2024/user-behavior-modeling-recsys/sequential_recommendation_tasks.png 2x"
+            sizes="auto"
+            alt="Next-item and next-basket recommendation">
+    </a><figcaption class="image-caption">Next-item and next-basket recommendation</figcaption>
+    </figure></p>
+<p>Formally, we define the sequential recommendation task as generating a personalized item list given user behavior sequence as input, i.e. $ (p_1, p_2, p_3, \dots, p_I ) = f(a_1, a_2, a_3, \dots, a_t,u)$, where ${a_1, a_2, a_3, \dots, a_t}$ is the input behavior sequence, $u$ refers to the corresponding user, $I$ is the number of candidate items, and $p_i$ is the probability that item $i$ will be liked by user $u$ at time $t+1$. Our goal is to learn a complex function $f$ to accurately predict the probability $p_i$.</p>
+<h2 id="common-challenges-with-modeling-user-behavior" class="headerLink">
+    <a href="#common-challenges-with-modeling-user-behavior" class="header-mark"></a>Common Challenges with Modeling User Behavior</h2><p>In real-world scenarios, the user behaviors are often diverse and complex. In this section, we take a look at some of the common challenges with modeling user behavior based on different data characteristics.</p>
+<ul>
+<li><strong>Long Sequences</strong>: Long behavior sequences have higher chances of containing complex dependencies over multiple interactions. Such higher-order sequential dependencies are hard to capture using conventional models like Markov Chains and Factorization Machines. While deep learning models like RNNs can be used to handle moderately long sequences, these models also suffer from overly strong order assumptions <sup id="fnref2:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</li>
+<li><strong>Flexible Order</strong>: In real-world data, not all adjacent interactions in a behavior sequence are sequentially dependent. For example, in a shopping sequence of {<em>milk, butter, flour</em>}, the order of &lsquo;milk&rsquo; and &lsquo;butter&rsquo; doesn&rsquo;t matter, but the purchase of both items leads to a higher probability of buying &lsquo;flour&rsquo; next. Models like CNNs with skip-connections have been used to avoid assuming strict order over user-item interactions.</li>
+<li><strong>Noisy Items</strong>: A lot of behavior sequences may contain noisy and irrelevant interactions which impacts the quality of next-item prediction. For example, in a shopping sequence of {<em>bacon, rose, eggs, bread</em>}, the item &lsquo;rose&rsquo; may be noisy and unlike &rsquo;eggs&rsquo; and &lsquo;bread&rsquo; may not be a good predictor of the next item like &lsquo;milk&rsquo;. Attention models and retrieval-based models alleviate this problem by selectively utilizing information from behavior sequences.</li>
+<li><strong>Heterogeneous Relations</strong>: A behavior sequence may contain different types of relations that convey different information and should be modeled differently.  This is a rather less explored problem, and mixture models are the only solutions proposed to alleviate it.</li>
+<li><strong>Hierarchical Relations</strong>: There could also be hierarchical dependencies in user-item interactions or their sub-sequences. Specialized models like hierarchical RNNs, hierarchical attention networks, hierarchical embedding models, and session-based recommenders have been devised to learn hierarchical dependencies.</li>
+</ul>
+<h2 id="types-of-behavior-sequences" class="headerLink">
+    <a href="#types-of-behavior-sequences" class="header-mark"></a>Types of Behavior Sequences</h2><p>The behavior sequences of pre-defined sizes are fetched from users&rsquo; historical information, e.g., the previous 7-day logs. The behavior sequence consists of item IDs, contextual information, and the corresponding item features (if any). As shown in the next figure, the behavior feature is usually sorted sequentially in the temporal order<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/user-behavior-modeling-recsys/sequence_aware_recommenders_overview.png" title="High-level Overview of Sequence-Aware Recommenders" data-thumbnail="/img/posts/2024/user-behavior-modeling-recsys/sequence_aware_recommenders_overview.png" data-sub-html="<h2>High-level Overview of Sequence-Aware Recommenders</h2><p>High-level Overview of Sequence-Aware Recommenders</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/user-behavior-modeling-recsys/sequence_aware_recommenders_overview.png"
+            srcset="/img/posts/2024/user-behavior-modeling-recsys/sequence_aware_recommenders_overview.png, /img/posts/2024/user-behavior-modeling-recsys/sequence_aware_recommenders_overview.png 1.5x, /img/posts/2024/user-behavior-modeling-recsys/sequence_aware_recommenders_overview.png 2x"
+            sizes="auto"
+            alt="High-level Overview of Sequence-Aware Recommenders">
+    </a><figcaption class="image-caption">High-level Overview of Sequence-Aware Recommenders</figcaption>
+    </figure></p>
+<p>Implicit user behavior modeling is a broad topic and can be interpreted through various dimensions. In this section, we will categorize the existing algorithms in terms of three types of behavior sequences as per the taxonomy suggested by Fang et al<sup id="fnref4:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<h3 id="experience-based-behavior-sequence" class="headerLink">
+    <a href="#experience-based-behavior-sequence" class="header-mark"></a>Experience-based Behavior Sequence</h3><p>In an experience-based behavior sequence, a user may interact with the same object (e.g., item $v_i$ in the next figure) multiple times by different behavior types. Here ${a_1,a_2,\dots,a_n}$ is the behavior sequence, with each behavior ($a_i$) represented by a tuple of behavior type and behavior object.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/user-behavior-modeling-recsys/experience_based_behavior_sequence.png" title="Experience-based behavior sequence" data-thumbnail="/img/posts/2024/user-behavior-modeling-recsys/experience_based_behavior_sequence.png" data-sub-html="<h2>Experience-based behavior sequence (&#39;single item, multiple behavior types&#39;)</h2><p>Experience-based behavior sequence</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/user-behavior-modeling-recsys/experience_based_behavior_sequence.png"
+            srcset="/img/posts/2024/user-behavior-modeling-recsys/experience_based_behavior_sequence.png, /img/posts/2024/user-behavior-modeling-recsys/experience_based_behavior_sequence.png 1.5x, /img/posts/2024/user-behavior-modeling-recsys/experience_based_behavior_sequence.png 2x"
+            sizes="auto"
+            alt="Experience-based behavior sequence">
+    </a><figcaption class="image-caption">Experience-based behavior sequence ('single item, multiple behavior types')</figcaption>
+    </figure></p>
+<p>For example, a user may search for an item, click on the item in the search results, then view the details of the item. The user may also share the item with their contacts, add the item to the cart, and purchase the item. All these behavior types and their order may indicate different user intentions. A sequence with only click and view behavior may indicate a low degree of user interest. Similarly, sharing the item before a purchase might imply a desire to obtain the item, whereas sharing an item after the purchase could indicate satisfaction with the item. Here, a recommender system (sometimes also called a multi-behavior recommendation model) is expected to capture the user&rsquo;s underlying intentions and predict the next behavior type given an item.</p>
+<h4 id="modeling-paradigms" class="headerLink">
+    <a href="#modeling-paradigms" class="header-mark"></a>Modeling Paradigms</h4><p>Conventional approaches to modeling experience-based behavior sequences include <em>Collective Matrix Factorization</em> (CMF), <em>Behavioral Factorization</em> used by topic recommender at Google+<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, <em>Multi-feedback Bayesian Personalized Ranking</em> (MF-BPR), <em>Bayesian Personalized Ranking for Heterogeneous Implicit Feedback</em> (BPRH), <em>Element-wise Alternating Least Squares</em> (eALS). These approaches leverage unary user feedback drawn from different channels.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/user-behavior-modeling-recsys/multi_behavior_recommendation.png" title="DL-based Multi-behavior Recommenders" data-thumbnail="/img/posts/2024/user-behavior-modeling-recsys/multi_behavior_recommendation.png" data-sub-html="<h2>DL-based Multi-behavior Recommender Systems</h2><p>DL-based Multi-behavior Recommenders</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/user-behavior-modeling-recsys/multi_behavior_recommendation.png"
+            srcset="/img/posts/2024/user-behavior-modeling-recsys/multi_behavior_recommendation.png, /img/posts/2024/user-behavior-modeling-recsys/multi_behavior_recommendation.png 1.5x, /img/posts/2024/user-behavior-modeling-recsys/multi_behavior_recommendation.png 2x"
+            sizes="auto"
+            alt="DL-based Multi-behavior Recommenders">
+    </a><figcaption class="image-caption">DL-based Multi-behavior Recommender Systems</figcaption>
+    </figure></p>
+<p>Deep learning techniques have also been explored for multi-behavior recommendation. For example, <em>Neural Multi-task Recommendation</em><sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> (NMTR) performs a joint optimization based on the multi-task learning (MTL) framework, where optimization on each behavior is treated as a task. NMTR combines the advances in <em>Neural Collaborative Filtering</em> (NCF) and MTL in a design where a user and an item have shared embeddings across multiple types of behaviors. Similarly, Xia et al.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> proposed an MTL model with LSTM to explicitly model users&rsquo; purchase decision process by predicting the stage and decision of a user at a specific time.</p>
+<h3 id="transaction-based-behavior-sequence" class="headerLink">
+    <a href="#transaction-based-behavior-sequence" class="header-mark"></a>Transaction-based Behavior Sequence</h3><p>A transaction-based behavior sequence consists of different behavior objects that a user interacts with but with the same behavior type. In practice, buying an item is the most common behavior type of concern for recommenders in the e-commerce domain. Therefore, the goal of the recommender model here is to recommend the next item that a user will buy given the user&rsquo;s historical transaction. This setup represents a conventional user behavior modeling task<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/user-behavior-modeling-recsys/transaction_based_behavior_sequence.png" title="Transaction-based Behavior Sequence" data-thumbnail="/img/posts/2024/user-behavior-modeling-recsys/transaction_based_behavior_sequence.png" data-sub-html="<h2>Transaction-based Behavior Sequence (&#39;multiple items, single behavior type&#39;)</h2><p>Transaction-based Behavior Sequence</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/user-behavior-modeling-recsys/transaction_based_behavior_sequence.png"
+            srcset="/img/posts/2024/user-behavior-modeling-recsys/transaction_based_behavior_sequence.png, /img/posts/2024/user-behavior-modeling-recsys/transaction_based_behavior_sequence.png 1.5x, /img/posts/2024/user-behavior-modeling-recsys/transaction_based_behavior_sequence.png 2x"
+            sizes="auto"
+            alt="Transaction-based Behavior Sequence">
+    </a><figcaption class="image-caption">Transaction-based Behavior Sequence ('multiple items, single behavior type')</figcaption>
+    </figure></p>
+<h4 id="modeling-paradigms-1" class="headerLink">
+    <a href="#modeling-paradigms-1" class="header-mark"></a>Modeling Paradigms</h4><p>For transaction-based behavior modeling, a recommender models the sequential dependency relationship between different items as well as user preferences. A significant amount of deep learning research has been done under this category.</p>
+<ul>
+<li><strong>RNN-based models</strong>: RNNs naturally capture the short and long-term dependencies of a sequence. <em>GRU4Rec</em><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> is one of the earliest models to apply RNN to model behavior sequences containing items from a session. Several follow-up studies extended the GRU4Rec model, for example, with data augmentation techniques or improving ranking loss function.</li>
+<li><strong>CNN-based models</strong>: CNN-based models have been used to partially alleviate some of the shortcomings of RNN-based models, such as expensive computing costs and the inability to model long sequences. For example, <em>3D-CNNs</em> have been applied in the e-commerce domain to predict the items that users might want to add to their shopping carts. Similarly, CNN-based <em>Caser</em>, <em>CNN-Rec</em>, and <em>NextItNet</em> models have been used to capture both short-term and long-term item dependencies.</li>
+<li><strong>Attention-based models</strong>: Attention-based models have been successfully applied to identify more relevant items to users given their historical behavior. <em>Neural Attentive Recommendation Machine</em> (NARM), <em>Deep Interest Network</em> (DIN), <em>Deep Interest Evolution Network</em> (DIEN) and <em>Attention-based Transaction Embedding Model</em> (ATEM) are some of the representative examples of vanilla attention models in this category. Self-attention models for transaction-based behavior sequences have also attracted a lot of research work. Popular examples in this category include <em>Sequential Deep Matching</em> (SDM), <em>Self-Attention based Sequential Recommendation Model</em> (SASRec)<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>, <em>Time interval aware SASRec</em> (TiSASRec), <em>Self-attention network for session-based recommendation</em> (SANSR), <em>Deep Session Interest Network</em> (DSIN), <em>Behavior Sequence Transformer</em> (BST) and <em>BERT4Rec</em>.</li>
+</ul>
+<p><figure><a class="lightgallery" href="/img/posts/2024/user-behavior-modeling-recsys/transaction_behavior_recommendation.png" title="Recommender Systems for Transaction-based Behavior Sequences" data-thumbnail="/img/posts/2024/user-behavior-modeling-recsys/transaction_behavior_recommendation.png" data-sub-html="<h2>Recommender Systems for Transaction-based Behavior Sequences</h2><p>Recommender Systems for Transaction-based Behavior Sequences</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/user-behavior-modeling-recsys/transaction_behavior_recommendation.png"
+            srcset="/img/posts/2024/user-behavior-modeling-recsys/transaction_behavior_recommendation.png, /img/posts/2024/user-behavior-modeling-recsys/transaction_behavior_recommendation.png 1.5x, /img/posts/2024/user-behavior-modeling-recsys/transaction_behavior_recommendation.png 2x"
+            sizes="auto"
+            alt="Recommender Systems for Transaction-based Behavior Sequences">
+    </a><figcaption class="image-caption">Recommender Systems for Transaction-based Behavior Sequences</figcaption>
+    </figure></p>
+<h3 id="interaction-based-behavior-sequence" class="headerLink">
+    <a href="#interaction-based-behavior-sequence" class="header-mark"></a>Interaction-based Behavior Sequence</h3><p>An interaction-based behavior sequence represents a mixture of experience-based and transaction-based behavior sequences, i.e. it consists of different behavior objects and different behavior types simultaneously.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/user-behavior-modeling-recsys/interaction_based_behavior_sequence.png" title="Interaction-based Behavior Sequence" data-thumbnail="/img/posts/2024/user-behavior-modeling-recsys/interaction_based_behavior_sequence.png" data-sub-html="<h2>Interaction-based Behavior Sequence (&#39;multiple items, multiple behavior types&#39;)</h2><p>Interaction-based Behavior Sequence</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/user-behavior-modeling-recsys/interaction_based_behavior_sequence.png"
+            srcset="/img/posts/2024/user-behavior-modeling-recsys/interaction_based_behavior_sequence.png, /img/posts/2024/user-behavior-modeling-recsys/interaction_based_behavior_sequence.png 1.5x, /img/posts/2024/user-behavior-modeling-recsys/interaction_based_behavior_sequence.png 2x"
+            sizes="auto"
+            alt="Interaction-based Behavior Sequence">
+    </a><figcaption class="image-caption">Interaction-based Behavior Sequence ('multiple items, multiple behavior types')</figcaption>
+    </figure></p>
+<p>This setup is much closer to real-world scenarios. The recommender model here is expected to learn different user interests expressed by different behavior types and preferences implied by different items. The goal of the model is to predict the next item that the user will interact with.</p>
+<h4 id="modeling-paradigm" class="headerLink">
+    <a href="#modeling-paradigm" class="header-mark"></a>Modeling Paradigm</h4><p>Recommender systems for interaction-based sequences are expected to capture both the sequential dependencies among different behaviors, and different items, as well as behaviors and items respectively. These methods aim to explicitly model subtle differences in behavior types. This is important as, for example, in e-commerce applications, purchase behavior is a stronger indicator of interest than click behavior. Similarly positive and negative ratings convey opposite semantics in product reviews. Existing research can be classified into the following categories based on how the cross-behavior relations are fused with intra-behavior relations<sup id="fnref1:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
+<ul>
+<li><strong>Late-fusion Models</strong>: Late-fusion models use a two-step process to model the cross-behavior and intra-behavior relations. Representative examples of algorithms in this category include <em>Neural Multi-task Recommendation</em> (NMTR), <em>Deep Multifaceted Transformers</em> (DMT), <em>Zoo of ranking models for multiple scenarios</em> (ZEUS), and <em>Graph Heterogenous Collaborative Filtering</em> (GHCF). A common shortcoming with these methods is that they ignore the item-level cross-behavior modeling.</li>
+<li><strong>Early-fusion Models</strong>: Early-fusion models learn the cross-behavior and intra-behavior relations jointly in a hybrid manner. Some of the works in this category include <em>Recommendation framework from micro behavior perspective</em> (RIB), <em>Multi-Behavior Sequential Transformer Recommender</em> (MB-STR), <em>Parallel Information Sharing Network</em> ($\pi$-Net), and graph learning methods like <em>Multi-behavior Graph Convolutional Network</em> (MBGCN), and <em>Multi-behavior Graph Meta Network</em> (MB-GMN). These models tend to perform well due to the exploration of cross- and intra-level dependencies at the item level. However, they also tend to be computationally expensive due to the model complexity.</li>
+</ul>
+<p><figure><a class="lightgallery" href="/img/posts/2024/user-behavior-modeling-recsys/interaction_based_behavior_sequence_example.png" title="An example of a multi-item multi-behavior sequence" data-thumbnail="/img/posts/2024/user-behavior-modeling-recsys/interaction_based_behavior_sequence_example.png" data-sub-html="<h2>An example of a multi-item multi-behavior sequence. Arrows indicate plausible explanations for the final purchasing decision. [Source: MB-STR paper]</h2><p>An example of a multi-item multi-behavior sequence</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/user-behavior-modeling-recsys/interaction_based_behavior_sequence_example.png"
+            srcset="/img/posts/2024/user-behavior-modeling-recsys/interaction_based_behavior_sequence_example.png, /img/posts/2024/user-behavior-modeling-recsys/interaction_based_behavior_sequence_example.png 1.5x, /img/posts/2024/user-behavior-modeling-recsys/interaction_based_behavior_sequence_example.png 2x"
+            sizes="auto"
+            alt="An example of a multi-item multi-behavior sequence">
+    </a><figcaption class="image-caption">An example of a multi-item multi-behavior sequence. Arrows indicate plausible explanations for the final purchasing decision. [Source: MB-STR paper]</figcaption>
+    </figure></p>
+<h4 id="multi-behavior-predictions" class="headerLink">
+    <a href="#multi-behavior-predictions" class="header-mark"></a>Multi-Behavior Predictions</h4><p>A unique challenge in modeling interaction-based behavior sequences is to predict multiple types of behaviors in the same model. This joint prediction is hard because label distributions of different behaviors may not be aligned in the same space or even mutually exlusive<sup id="fnref2:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>. Methods like GHCF, <em>Deep Intent Prediction Network</em> (DIPN), and <em>Domain-Aware GCN</em> (DACGN) construct separate prediction modules (or MTL &ldquo;heads&rdquo;) for different behavior types. However, this strategy performs sub-optimally as it neglects task relations. Approaches like <em>Multi-gate Mixture-of-Experts</em> (MMoE) and <em>Progressive Layer Extraction</em> (PLE) alleviate the issue by promoting task relevance and suppressing task conflicts. Examples of such solutions include DMT, ZEUS, and MB-STR<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>.</p>
+<h2 id="advanced-topics" class="headerLink">
+    <a href="#advanced-topics" class="header-mark"></a>Advanced Topics</h2><h3 id="modeling-longer-user-behavior-sequences" class="headerLink">
+    <a href="#modeling-longer-user-behavior-sequences" class="header-mark"></a>Modeling Longer User Behavior Sequences</h3><p>Online platforms, such as e-commerce websites, often accumulate a massive amount of user behavior data. Therefore, It is lucrative for several applications to mine patterns in more distant user history by inputting a very large history of user-item interactions. These interactions are usually very long (at least in thousands) hence the modeling process can also become prohibitively expensive in terms of computational requirements and latency. Longer sequences also tend to contain more noise. The solutions proposed to mitigate these challenges can be divided into the following two categories.</p>
+<ul>
+<li>
+<p><strong>Memory-Augmented Models</strong>: Inspired by the memory-augmented networks in NLP, several recommender models employ external memory to store user representations, which are read and updated by a tailored neural network. For example, <em>Neural Memory Recommender Networks</em> (NMRN) proposed a GAN-based recommender that uses external memory to capture and store long-term interests and short-term dynamic interests in a streaming data scenario. <em>Recommender Systems with External User Memory Networks</em> (RUM) uses a FIFO-based memory to explicitly store user history, and applies an attention-mechanism over the matrix to compute next-item recommendation. Other examples of such models include <em>Knowledge-enhanced Sequential Recommender</em> (KSR), <em>Hierarchical Periodic Memory Networks</em> (HPMN)<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>, <em>Memory-Augmented Transformer Networks</em> (MATN), and <em>User Interest Center</em> (UIC).</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/user-behavior-modeling-recsys/lifelong_sequential_modeling_hpmn.png" title="Lifelong Sequential Modeling framework proposed by HPMN" data-thumbnail="/img/posts/2024/user-behavior-modeling-recsys/lifelong_sequential_modeling_hpmn.png" data-sub-html="<h2>Lifelong Sequential Modeling framework proposed by HPMN</h2><p>Lifelong Sequential Modeling framework proposed by HPMN</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/user-behavior-modeling-recsys/lifelong_sequential_modeling_hpmn.png"
+            srcset="/img/posts/2024/user-behavior-modeling-recsys/lifelong_sequential_modeling_hpmn.png, /img/posts/2024/user-behavior-modeling-recsys/lifelong_sequential_modeling_hpmn.png 1.5x, /img/posts/2024/user-behavior-modeling-recsys/lifelong_sequential_modeling_hpmn.png 2x"
+            sizes="auto"
+            alt="Lifelong Sequential Modeling framework proposed by HPMN">
+    </a><figcaption class="image-caption">Lifelong Sequential Modeling framework proposed by HPMN</figcaption>
+    </figure></p>
+</li>
+<li>
+<p><strong>Retrieval-based Models</strong>: Retrieval-based models provide an alternative to memory-augmented models that are more efficient, and easier to scale and deploy. Instead of using the large consecutive behavior sequence, retrieval-based techniques only retrieve the most relevant behavior. Hence, this approach alleviates the problems with time complexity for handling long sequences as well as the noisy signals in long sequences. For example, <em>User Behavior Retrieval for CTR Prediction</em> (UBR4CTR<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup>) uses search engine techniques to retrieve the top-k relevant historical behaviors. It generates a query based on the target by using a parametric process and then uses the query to perform retrieval. Other representative models in this category include the <em>Search-based Interest Model</em> (SIM), <em>End-to-End Target Attention</em> (ETA), <em>Sampling-based Deep Interest Modeling</em> (SDIM) and <em>Adversarial Filtering Model</em> (ADFM).</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/user-behavior-modeling-recsys/ubr_framework.png" title="UBR Framework" data-thumbnail="/img/posts/2024/user-behavior-modeling-recsys/ubr_framework.png" data-sub-html="<h2>User Behavior Retrieval for CTR Prediction (UBR4CTR) Framework</h2><p>UBR Framework</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/user-behavior-modeling-recsys/ubr_framework.png"
+            srcset="/img/posts/2024/user-behavior-modeling-recsys/ubr_framework.png, /img/posts/2024/user-behavior-modeling-recsys/ubr_framework.png 1.5x, /img/posts/2024/user-behavior-modeling-recsys/ubr_framework.png 2x"
+            sizes="auto"
+            alt="UBR Framework">
+    </a><figcaption class="image-caption">User Behavior Retrieval for CTR Prediction (UBR4CTR) Framework</figcaption>
+    </figure></p>
+</li>
+</ul>
+<h3 id="modeling-user-behavior-with-side-information" class="headerLink">
+    <a href="#modeling-user-behavior-with-side-information" class="header-mark"></a>Modeling User Behavior with Side Information</h3><p>User behavior sequences often contain rich side information with each behavior record. It could include information about the items, such as category, images, text descriptions, reviews, information related to behavior, such as dwell time, or any other contextual information. We can categorize the modeling approaches based on the following types of side information.</p>
+<ul>
+<li><strong>Time information</strong>: In methods like SASRec, and BERT4Rec, time information is used to sort the behavior records, which influences the position encoding before the sequence modeling. <em>Time Slice Self-Attention</em> (TiSSA) and TiSASRec use the time interval between item pairs for attentive weight calculation. Several other approaches utilize dwell time to measure the importance of behavior objects.</li>
+<li><strong>Item Attributes</strong>: Models like <em>Feature-level Deeper Self-Attention Network</em> (FDSA) and <em>Transformer with Attention2D layer</em> (Trans2D) propose approaches to jointly model item IDs and item attributes like category, brand, price, and description text for sequential recommendations.</li>
+<li><strong>Multi-modal Information</strong>: Using multi-modal side information is a bit more complex. For example, the <em>Parallel-RNN</em> (p-RNN) model first extracts image features from video thumbnails and text features from product descriptions. Then, it applies NLP and Computer Vision (CV) approaches to learn multi-modal feature representations separately. Similarly, <em>Sequential Multi-modal Information Transfer Network</em> (SEMI) obtains video and text representations through pre-trained NLP and CV models.</li>
+</ul>
+<h4 id="side-information-utilization" class="headerLink">
+    <a href="#side-information-utilization" class="header-mark"></a>Side Information Utilization</h4><p>Models like <em>Parallel-RNN</em> (p-RNN) directly concatenate the learned vectors for item IDs and side information. However, fusing side information using simple operators like addition or concatenation may negatively impact the original item ID representations due to the heterogeneous nature of the side information. To address this, <em>Non-invasive self-attention with BERT</em> (NOVA-BERT) and <em>Decoupled Side Information Fusion for Sequential Recommendation</em> (DIF-SR) utilize side information to learn better attention distribution. Several self-supervised learning frameworks have also been proposed for effectively utilizing the side information<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>.</p>
+<h2 id="summary" class="headerLink">
+    <a href="#summary" class="header-mark"></a>Summary</h2><p>Recommender systems have become an integral part of a wide range of online services, such as news, entertainment, e-commerce, etc. These recommenders help in customizing and adapting the services to users&rsquo; specific needs. To achieve this personalization, deep learning models learn user intentions and preferences from behavior logs. The process of modeling user behavior or past user-item interactions has also been extended to other domains, such as CTR prediction and targeted advertisement. This article provided a comprehensive introduction to user behavior taxonomy, modeling strategies, representative works, open problems, and recent advancements.</p>
+<h2 id="references" class="headerLink">
+    <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Fang, H., Zhang, D., Shu, Y., &amp; Guo, G. (2019). Deep Learning for Sequential Recommendation: Algorithms, Influential Factors, and Evaluations. <em>ArXiv</em>. /abs/1905.01997&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref4:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Zhang, W., Qin, J., Guo, W., Tang, R., &amp; He, X. (2021). Deep Learning for Click-Through Rate Estimation. <em>ArXiv</em>. /abs/2104.10584&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Li, S., &amp; Zhao, H. (2020). A Survey on Representation Learning for User Modeling. <em>International Joint Conference on Artificial Intelligence</em>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Wang, S., Hu, L., Wang, Y., Cao, L., Sheng, Q. Z., &amp; Orgun, M. (2019). Sequential Recommender Systems: Challenges, Progress and Prospects. <em>ArXiv</em>. <a href="https://doi.org/10.24963/ijcai.2019/883" target="_blank" rel="noopener noreferrer">https://doi.org/10.24963/ijcai.2019/883</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Quadrana, M., Cremonesi, P., &amp; Jannach, D. (2018). Sequence-Aware Recommender Systems. <em>ArXiv</em>. /abs/1802.08452&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Zhao, Z., Cheng, Z., Hong, L., &amp; Chi, E.H. (2015). Improving User Topic Interest Profiles by Behavior Factorization. <em>Proceedings of the 24th International Conference on World Wide Web</em>.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Gao, C., He, X., Gan, D., Chen, X., Feng, F., Li, Y., Chua, T., Yao, L., Song, Y., &amp; Jin, D. (2018). Learning to Recommend with Multiple Cascading Behaviors. <em>ArXiv</em>. <a href="https://doi.org/10.1109/TKDE.2019.2958808" target="_blank" rel="noopener noreferrer">https://doi.org/10.1109/TKDE.2019.2958808</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>Xia, Q., Jiang, P., Sun, F., Zhang, Y., Wang, X., &amp; Sui, Z. (2018). Modeling Consumer Buying Decision for Recommendation Based on Multi-Task Deep Learning. <em>Proceedings of the 27th ACM International Conference on Information and Knowledge Management</em>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>He, Z., Liu, W., Guo, W., Qin, J., Zhang, Y., Hu, Y., &amp; Tang, R. (2023). A Survey on User Behavior Modeling in Recommender Systems. <em>ArXiv</em>. /abs/2302.11087&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>Hidasi, B., Karatzoglou, A., Baltrunas, L., &amp; Tikk, D. (2015). Session-based Recommendations with Recurrent Neural Networks. <em>ArXiv</em>. /abs/1511.06939&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>Kang, W., &amp; McAuley, J. (2018). Self-Attentive Sequential Recommendation. <em>ArXiv</em>. /abs/1808.09781&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p>Yuan, Enming &amp; Guo, Wei &amp; He, Zhicheng &amp; Guo, Huifeng &amp; Liu, Chengkai &amp; Tang, Ruiming. (2022). Multi-Behavior Sequential Transformer Recommender. 1642-1652. 10.1145/3477495.3532023.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p>Ren, K., Qin, J., Fang, Y., Zhang, W., Zheng, L., Bian, W., Zhou, G., Xu, J., Yu, Y., Zhu, X., &amp; Gai, K. (2019). Lifelong Sequential Modeling with Personalized Memorization for User Response Prediction. <em>ArXiv</em>. <a href="https://doi.org/10.1145/3331184.3331230" target="_blank" rel="noopener noreferrer">https://doi.org/10.1145/3331184.3331230</a>&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:14">
+<p>Qin, J., Zhang, W., Wu, X., Jin, J., Fang, Y., &amp; Yu, Y. (2020). User Behavior Retrieval for Click-Through Rate Prediction. <em>ArXiv</em>. <a href="https://doi.org/10.1145/3397271.3401440" target="_blank" rel="noopener noreferrer">https://doi.org/10.1145/3397271.3401440</a>&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:15">
+<p>Yoon, J.H., &amp; Jang, B. (2023). Evolution of Deep Learning-Based Sequential Recommender Systems: From Current Trends to New Perspectives. <em>IEEE Access, 11</em>, 54265-54279.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</div>
+		
+        
+
+
+<h2>Related Content</h2>
+<div class="related-container">
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/12/towards-ranking-aware-llms/"><img
+        
+        loading="lazy"
+        src="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
+        srcset="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 1.5x, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
+        title="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp" height="200"   width="400" ></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/12/towards-ranking-aware-llms/">Strategies for Effective and Efficient Text Ranking Using Large Language Models</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/12/prompting-llm-for-ranking/"><img
+        
+        loading="lazy"
+        src="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
+        srcset="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 1.5x, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
+        title="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp" height="200"   width="400" ></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/12/prompting-llm-for-ranking/">Prompting-based Methods for Text Ranking Using Large Language Models</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/09/generative-retrieval/"><img
+        
+        loading="lazy"
+        src="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
+        srcset="/posts/2023/09/generative-retrieval/featured-image-preview.webp, /posts/2023/09/generative-retrieval/featured-image-preview.webp 1.5x, /posts/2023/09/generative-retrieval/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
+        title="/posts/2023/09/generative-retrieval/featured-image-preview.webp" height="200"   width="400" ></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/09/generative-retrieval/">Generative Retrieval for End-to-End Search Systems</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/06/llms-for-recsys-entity-representation/"><img
+        
+        loading="lazy"
+        src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
+        srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
+        title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200"   width="400" ></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/06/llms-for-recsys-entity-representation/">Representing Users and Items in Large Language Models based Recommender Systems</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/05/shallow-heterogeneous-graphs-rep/"><img
+        
+        loading="lazy"
+        src="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp"
+        srcset="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp, /posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp 1.5x, /posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp 2x"
+        sizes="auto"
+        alt="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp"
+        title="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp" height="200"   width="400" ></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/05/shallow-heterogeneous-graphs-rep/">Shallow Embedding Models for Heterogeneous Graphs</a>
+            </h2>
+        </div>
+    
+
+</div>
+
+
+        <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+      <form action="https://app.convertkit.com/forms/4932644/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="4932644" data-uid="e309c832a6" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800" style="background-color: rgb(249, 250, 251); border-radius: 4px;"><div class="formkit-background" style="opacity: 0.33;"></div><div data-style="minimal"><div class="formkit-header" data-element="header" style="color: rgb(77, 77, 77); font-size: 27px; font-weight: 700;"><h2>Be the First to Know</h2></div><div class="formkit-subheader" data-element="subheader" style="color: rgb(104, 104, 104); font-size: 18px;"><p>Subscribe to get notified when I write a new post.</p></div><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Subscribe</span></button></div><div class="formkit-guarantee" data-element="guarantee" style="color: rgb(77, 77, 77); font-size: 13px; font-weight: 400;"><p>We won't send you spam. Unsubscribe at any time.</p></div><div class="formkit-powered-by-convertkit-container"><a href="https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with ConvertKit</a></div></div><style>.formkit-form[data-uid="e309c832a6"] *{box-sizing:border-box;}.formkit-form[data-uid="e309c832a6"]{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.formkit-form[data-uid="e309c832a6"] legend{border:none;font-size:inherit;margin-bottom:10px;padding:0;position:relative;display:table;}.formkit-form[data-uid="e309c832a6"] fieldset{border:0;padding:0.01em 0 0 0;margin:0;min-width:0;}.formkit-form[data-uid="e309c832a6"] body:not(:-moz-handler-blocked) fieldset{display:table-cell;}.formkit-form[data-uid="e309c832a6"] h1,.formkit-form[data-uid="e309c832a6"] h2,.formkit-form[data-uid="e309c832a6"] h3,.formkit-form[data-uid="e309c832a6"] h4,.formkit-form[data-uid="e309c832a6"] h5,.formkit-form[data-uid="e309c832a6"] h6{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="e309c832a6"] h2{font-size:1.5em;margin:1em 0;}.formkit-form[data-uid="e309c832a6"] h3{font-size:1.17em;margin:1em 0;}.formkit-form[data-uid="e309c832a6"] p{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="e309c832a6"] ol:not([template-default]),.formkit-form[data-uid="e309c832a6"] ul:not([template-default]),.formkit-form[data-uid="e309c832a6"] blockquote:not([template-default]){text-align:left;}.formkit-form[data-uid="e309c832a6"] p:not([template-default]),.formkit-form[data-uid="e309c832a6"] hr:not([template-default]),.formkit-form[data-uid="e309c832a6"] blockquote:not([template-default]),.formkit-form[data-uid="e309c832a6"] ol:not([template-default]),.formkit-form[data-uid="e309c832a6"] ul:not([template-default]){color:inherit;font-style:initial;}.formkit-form[data-uid="e309c832a6"] .ordered-list,.formkit-form[data-uid="e309c832a6"] .unordered-list{list-style-position:outside !important;padding-left:1em;}.formkit-form[data-uid="e309c832a6"] .list-item{padding-left:0;}.formkit-form[data-uid="e309c832a6"][data-format="modal"]{display:none;}.formkit-form[data-uid="e309c832a6"][data-format="slide in"]{display:none;}.formkit-form[data-uid="e309c832a6"][data-format="sticky bar"]{display:none;}.formkit-sticky-bar .formkit-form[data-uid="e309c832a6"][data-format="sticky bar"]{display:block;}.formkit-form[data-uid="e309c832a6"] .formkit-input,.formkit-form[data-uid="e309c832a6"] .formkit-select,.formkit-form[data-uid="e309c832a6"] .formkit-checkboxes{width:100%;}.formkit-form[data-uid="e309c832a6"] .formkit-button,.formkit-form[data-uid="e309c832a6"] .formkit-submit{border:0;border-radius:5px;color:#ffffff;cursor:pointer;display:inline-block;text-align:center;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:15px;overflow:hidden;padding:0;position:relative;vertical-align:middle;}.formkit-form[data-uid="e309c832a6"] .formkit-button:hover,.formkit-form[data-uid="e309c832a6"] .formkit-submit:hover,.formkit-form[data-uid="e309c832a6"] .formkit-button:focus,.formkit-form[data-uid="e309c832a6"] .formkit-submit:focus{outline:none;}.formkit-form[data-uid="e309c832a6"] .formkit-button:hover > span,.formkit-form[data-uid="e309c832a6"] .formkit-submit:hover > span,.formkit-form[data-uid="e309c832a6"] .formkit-button:focus > span,.formkit-form[data-uid="e309c832a6"] .formkit-submit:focus > span{background-color:rgba(0,0,0,0.1);}.formkit-form[data-uid="e309c832a6"] .formkit-button > span,.formkit-form[data-uid="e309c832a6"] .formkit-submit > span{display:block;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;padding:12px 24px;}.formkit-form[data-uid="e309c832a6"] .formkit-input{background:#ffffff;font-size:15px;padding:12px;border:1px solid #e3e3e3;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;line-height:1.4;margin:0;-webkit-transition:border-color ease-out 300ms;transition:border-color ease-out 300ms;}.formkit-form[data-uid="e309c832a6"] .formkit-input:focus{outline:none;border-color:#1677be;-webkit-transition:border-color ease 300ms;transition:border-color ease 300ms;}.formkit-form[data-uid="e309c832a6"] .formkit-input::-webkit-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="e309c832a6"] .formkit-input::-moz-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="e309c832a6"] .formkit-input:-ms-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="e309c832a6"] .formkit-input::placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="e309c832a6"] [data-group="dropdown"]{position:relative;display:inline-block;width:100%;}.formkit-form[data-uid="e309c832a6"] [data-group="dropdown"]::before{content:"";top:calc(50% - 2.5px);right:10px;position:absolute;pointer-events:none;border-color:#4f4f4f transparent transparent transparent;border-style:solid;border-width:6px 6px 0 6px;height:0;width:0;z-index:999;}.formkit-form[data-uid="e309c832a6"] [data-group="dropdown"] select{height:auto;width:100%;cursor:pointer;color:#333333;line-height:1.4;margin-bottom:0;padding:0 6px;-webkit-appearance:none;-moz-appearance:none;appearance:none;font-size:15px;padding:12px;padding-right:25px;border:1px solid #e3e3e3;background:#ffffff;}.formkit-form[data-uid="e309c832a6"] [data-group="dropdown"] select:focus{outline:none;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"]{text-align:left;margin:0;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"]{margin-bottom:10px;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] *{cursor:pointer;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"]:last-of-type{margin-bottom:0;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]{display:none;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"] + label::after{content:none;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::after{border-color:#ffffff;content:"";}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::before{background:#10bf7a;border-color:#10bf7a;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label{position:relative;display:inline-block;padding-left:28px;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label::before,.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label::after{position:absolute;content:"";display:inline-block;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label::before{height:16px;width:16px;border:1px solid #e3e3e3;background:#ffffff;left:0px;top:3px;}.formkit-form[data-uid="e309c832a6"] [data-group="checkboxes"] [data-group="checkbox"] label::after{height:4px;width:8px;border-left:2px solid #4d4d4d;border-bottom:2px solid #4d4d4d;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);left:4px;top:8px;}.formkit-form[data-uid="e309c832a6"] .formkit-alert{background:#f9fafb;border:1px solid #e3e3e3;border-radius:5px;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;list-style:none;margin:25px auto;padding:12px;text-align:center;width:100%;}.formkit-form[data-uid="e309c832a6"] .formkit-alert:empty{display:none;}.formkit-form[data-uid="e309c832a6"] .formkit-alert-success{background:#d3fbeb;border-color:#10bf7a;color:#0c905c;}.formkit-form[data-uid="e309c832a6"] .formkit-alert-error{background:#fde8e2;border-color:#f2643b;color:#ea4110;}.formkit-form[data-uid="e309c832a6"] .formkit-spinner{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:0px;width:0px;margin:0 auto;position:absolute;top:0;left:0;right:0;width:0px;overflow:hidden;text-align:center;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;}.formkit-form[data-uid="e309c832a6"] .formkit-spinner > div{margin:auto;width:12px;height:12px;background-color:#fff;opacity:0.3;border-radius:100%;display:inline-block;-webkit-animation:formkit-bouncedelay-formkit-form-data-uid-e309c832a6- 1.4s infinite ease-in-out both;animation:formkit-bouncedelay-formkit-form-data-uid-e309c832a6- 1.4s infinite ease-in-out both;}.formkit-form[data-uid="e309c832a6"] .formkit-spinner > div:nth-child(1){-webkit-animation-delay:-0.32s;animation-delay:-0.32s;}.formkit-form[data-uid="e309c832a6"] .formkit-spinner > div:nth-child(2){-webkit-animation-delay:-0.16s;animation-delay:-0.16s;}.formkit-form[data-uid="e309c832a6"] .formkit-submit[data-active] .formkit-spinner{opacity:1;height:100%;width:50px;}.formkit-form[data-uid="e309c832a6"] .formkit-submit[data-active] .formkit-spinner ~ span{opacity:0;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit-container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;z-index:5;margin:10px 0;position:relative;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit-container[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;border:1px solid #dde2e7;border-radius:4px;color:#373f45;cursor:pointer;display:block;height:36px;margin:0 auto;opacity:0.95;padding:0;-webkit-text-decoration:none;text-decoration:none;text-indent:100%;-webkit-transition:ease-in-out all 200ms;transition:ease-in-out all 200ms;white-space:nowrap;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:190px;background-repeat:no-repeat;background-position:center;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='162' height='20' viewBox='0 0 162 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M83.0561 15.2457C86.675 15.2457 89.4722 12.5154 89.4722 9.14749C89.4722 5.99211 86.8443 4.06563 85.1038 4.06563C82.6801 4.06563 80.7373 5.76407 80.4605 8.28551C80.4092 8.75244 80.0387 9.14403 79.5686 9.14069C78.7871 9.13509 77.6507 9.12841 76.9314 9.13092C76.6217 9.13199 76.3658 8.88106 76.381 8.57196C76.4895 6.38513 77.2218 4.3404 78.618 2.76974C80.1695 1.02445 82.4289 0 85.1038 0C89.5979 0 93.8406 4.07791 93.8406 9.14749C93.8406 14.7608 89.1832 19.3113 83.1517 19.3113C78.8502 19.3113 74.5179 16.5041 73.0053 12.5795C72.9999 12.565 72.9986 12.5492 73.0015 12.534C73.0218 12.4179 73.0617 12.3118 73.1011 12.2074C73.1583 12.0555 73.2143 11.907 73.2062 11.7359L73.18 11.1892C73.174 11.0569 73.2075 10.9258 73.2764 10.8127C73.3452 10.6995 73.4463 10.6094 73.5666 10.554L73.7852 10.4523C73.9077 10.3957 74.0148 10.3105 74.0976 10.204C74.1803 10.0974 74.2363 9.97252 74.2608 9.83983C74.3341 9.43894 74.6865 9.14749 75.0979 9.14749C75.7404 9.14749 76.299 9.57412 76.5088 10.1806C77.5188 13.1 79.1245 15.2457 83.0561 15.2457Z' fill='%23373F45'/%3E%3Cpath d='M155.758 6.91365C155.028 6.91365 154.804 6.47916 154.804 5.98857C154.804 5.46997 154.986 5.06348 155.758 5.06348C156.53 5.06348 156.712 5.46997 156.712 5.98857C156.712 6.47905 156.516 6.91365 155.758 6.91365ZM142.441 12.9304V9.32833L141.415 9.32323V8.90392C141.415 8.44719 141.786 8.07758 142.244 8.07986L142.441 8.08095V6.55306L144.082 6.09057V8.08073H145.569V8.50416C145.569 8.61242 145.548 8.71961 145.506 8.81961C145.465 8.91961 145.404 9.01047 145.328 9.08699C145.251 9.16351 145.16 9.2242 145.06 9.26559C144.96 9.30698 144.853 9.32826 144.745 9.32822H144.082V12.7201C144.082 13.2423 144.378 13.4256 144.76 13.4887C145.209 13.5629 145.583 13.888 145.583 14.343V14.9626C144.029 14.9626 142.441 14.8942 142.441 12.9304Z' fill='%23373F45'/%3E%3Cpath d='M110.058 7.92554C108.417 7.88344 106.396 8.92062 106.396 11.5137C106.396 14.0646 108.417 15.0738 110.058 15.0318C111.742 15.0738 113.748 14.0646 113.748 11.5137C113.748 8.92062 111.742 7.88344 110.058 7.92554ZM110.07 13.7586C108.878 13.7586 108.032 12.8905 108.032 11.461C108.032 10.1013 108.878 9.20569 110.071 9.20569C111.263 9.20569 112.101 10.0995 112.101 11.459C112.101 12.8887 111.263 13.7586 110.07 13.7586Z' fill='%23373F45'/%3E%3Cpath d='M118.06 7.94098C119.491 7.94098 120.978 8.33337 120.978 11.1366V14.893H120.063C119.608 14.893 119.238 14.524 119.238 14.0689V10.9965C119.238 9.66506 118.747 9.16047 117.891 9.16047C117.414 9.16047 116.797 9.52486 116.502 9.81915V14.069C116.502 14.1773 116.481 14.2845 116.44 14.3845C116.398 14.4845 116.337 14.5753 116.261 14.6519C116.184 14.7284 116.093 14.7891 115.993 14.8305C115.893 14.8719 115.786 14.8931 115.678 14.8931H114.847V8.10918H115.773C115.932 8.10914 116.087 8.16315 116.212 8.26242C116.337 8.36168 116.424 8.50033 116.46 8.65577C116.881 8.19328 117.428 7.94098 118.06 7.94098ZM122.854 8.09713C123.024 8.09708 123.19 8.1496 123.329 8.2475C123.468 8.34541 123.574 8.48391 123.631 8.64405L125.133 12.8486L126.635 8.64415C126.692 8.48402 126.798 8.34551 126.937 8.2476C127.076 8.1497 127.242 8.09718 127.412 8.09724H128.598L126.152 14.3567C126.091 14.5112 125.986 14.6439 125.849 14.7374C125.711 14.831 125.549 14.881 125.383 14.8809H124.333L121.668 8.09713H122.854Z' fill='%23373F45'/%3E%3Cpath d='M135.085 14.5514C134.566 14.7616 133.513 15.0416 132.418 15.0416C130.496 15.0416 129.024 13.9345 129.024 11.4396C129.024 9.19701 130.451 7.99792 132.191 7.99792C134.338 7.99792 135.254 9.4378 135.158 11.3979C135.139 11.8029 134.786 12.0983 134.38 12.0983H130.679C130.763 13.1916 131.562 13.7662 132.615 13.7662C133.028 13.7662 133.462 13.7452 133.983 13.6481C134.535 13.545 135.085 13.9375 135.085 14.4985V14.5514ZM133.673 10.949C133.785 9.87621 133.061 9.28752 132.191 9.28752C131.321 9.28752 130.734 9.93979 130.679 10.9489L133.673 10.949Z' fill='%23373F45'/%3E%3Cpath d='M137.345 8.11122C137.497 8.11118 137.645 8.16229 137.765 8.25635C137.884 8.35041 137.969 8.48197 138.005 8.62993C138.566 8.20932 139.268 7.94303 139.759 7.94303C139.801 7.94303 140.068 7.94303 140.489 7.99913V8.7265C140.489 9.11748 140.15 9.4147 139.759 9.4147C139.31 9.4147 138.651 9.5829 138.131 9.8773V14.8951H136.462V8.11112L137.345 8.11122ZM156.6 14.0508V8.09104H155.769C155.314 8.09104 154.944 8.45999 154.944 8.9151V14.8748H155.775C156.23 14.8748 156.6 14.5058 156.6 14.0508ZM158.857 12.9447V9.34254H157.749V8.91912C157.749 8.46401 158.118 8.09506 158.574 8.09506H158.857V6.56739L160.499 6.10479V8.09506H161.986V8.51848C161.986 8.97359 161.617 9.34254 161.161 9.34254H160.499V12.7345C160.499 13.2566 160.795 13.44 161.177 13.503C161.626 13.5774 162 13.9024 162 14.3574V14.977C160.446 14.977 158.857 14.9086 158.857 12.9447ZM98.1929 10.1124C98.2033 6.94046 100.598 5.16809 102.895 5.16809C104.171 5.16809 105.342 5.44285 106.304 6.12953L105.914 6.6631C105.654 7.02011 105.16 7.16194 104.749 6.99949C104.169 6.7702 103.622 6.7218 103.215 6.7218C101.335 6.7218 99.9169 7.92849 99.9068 10.1123C99.9169 12.2959 101.335 13.5201 103.215 13.5201C103.622 13.5201 104.169 13.4717 104.749 13.2424C105.16 13.0799 105.654 13.2046 105.914 13.5615L106.304 14.0952C105.342 14.7819 104.171 15.0566 102.895 15.0566C100.598 15.0566 98.2033 13.2842 98.1929 10.1124ZM147.619 5.21768C148.074 5.21768 148.444 5.58663 148.444 6.04174V9.81968L151.82 5.58131C151.897 5.47733 151.997 5.39282 152.112 5.3346C152.227 5.27638 152.355 5.24607 152.484 5.24611H153.984L150.166 10.0615L153.984 14.8749H152.484C152.355 14.8749 152.227 14.8446 152.112 14.7864C151.997 14.7281 151.897 14.6436 151.82 14.5397L148.444 10.3025V14.0508C148.444 14.5059 148.074 14.8749 147.619 14.8749H146.746V5.21768H147.619Z' fill='%23373F45'/%3E%3Cpath d='M0.773438 6.5752H2.68066C3.56543 6.5752 4.2041 6.7041 4.59668 6.96191C4.99219 7.21973 5.18994 7.62695 5.18994 8.18359C5.18994 8.55859 5.09326 8.87061 4.8999 9.11963C4.70654 9.36865 4.42822 9.52539 4.06494 9.58984V9.63379C4.51611 9.71875 4.84717 9.88721 5.05811 10.1392C5.27197 10.3882 5.37891 10.7266 5.37891 11.1543C5.37891 11.7314 5.17676 12.1841 4.77246 12.5122C4.37109 12.8374 3.81152 13 3.09375 13H0.773438V6.5752ZM1.82373 9.22949H2.83447C3.27393 9.22949 3.59473 9.16064 3.79688 9.02295C3.99902 8.88232 4.1001 8.64502 4.1001 8.31104C4.1001 8.00928 3.99023 7.79102 3.77051 7.65625C3.55371 7.52148 3.20801 7.4541 2.7334 7.4541H1.82373V9.22949ZM1.82373 10.082V12.1167H2.93994C3.37939 12.1167 3.71045 12.0332 3.93311 11.8662C4.15869 11.6963 4.27148 11.4297 4.27148 11.0664C4.27148 10.7324 4.15723 10.4849 3.92871 10.3237C3.7002 10.1626 3.35303 10.082 2.88721 10.082H1.82373Z' fill='%23373F45'/%3E%3Cpath d='M13.011 6.5752V10.7324C13.011 11.207 12.9084 11.623 12.7034 11.9805C12.5012 12.335 12.2068 12.6089 11.8201 12.8022C11.4363 12.9927 10.9763 13.0879 10.4402 13.0879C9.6433 13.0879 9.02368 12.877 8.5813 12.4551C8.13892 12.0332 7.91772 11.4531 7.91772 10.7148V6.5752H8.9724V10.6401C8.9724 11.1704 9.09546 11.5615 9.34155 11.8135C9.58765 12.0654 9.96557 12.1914 10.4753 12.1914C11.4656 12.1914 11.9607 11.6714 11.9607 10.6313V6.5752H13.011Z' fill='%23373F45'/%3E%3Cpath d='M15.9146 13V6.5752H16.9649V13H15.9146Z' fill='%23373F45'/%3E%3Cpath d='M19.9255 13V6.5752H20.9758V12.0991H23.696V13H19.9255Z' fill='%23373F45'/%3E%3Cpath d='M28.2828 13H27.2325V7.47607H25.3428V6.5752H30.1724V7.47607H28.2828V13Z' fill='%23373F45'/%3E%3Cpath d='M41.9472 13H40.8046L39.7148 9.16796C39.6679 9.00097 39.6093 8.76074 39.539 8.44727C39.4687 8.13086 39.4262 7.91113 39.4116 7.78809C39.3823 7.97559 39.3339 8.21875 39.2665 8.51758C39.2021 8.81641 39.1479 9.03905 39.1039 9.18554L38.0405 13H36.8979L36.0673 9.7832L35.2236 6.5752H36.2958L37.2143 10.3193C37.3578 10.9199 37.4604 11.4502 37.5219 11.9102C37.5541 11.6611 37.6025 11.3828 37.6669 11.0752C37.7314 10.7676 37.79 10.5186 37.8427 10.3281L38.8886 6.5752H39.9301L41.0024 10.3457C41.1049 10.6943 41.2133 11.2158 41.3276 11.9102C41.3715 11.4912 41.477 10.958 41.644 10.3105L42.558 6.5752H43.6215L41.9472 13Z' fill='%23373F45'/%3E%3Cpath d='M45.7957 13V6.5752H46.846V13H45.7957Z' fill='%23373F45'/%3E%3Cpath d='M52.0258 13H50.9755V7.47607H49.0859V6.5752H53.9155V7.47607H52.0258V13Z' fill='%23373F45'/%3E%3Cpath d='M61.2312 13H60.1765V10.104H57.2146V13H56.1643V6.5752H57.2146V9.20312H60.1765V6.5752H61.2312V13Z' fill='%23373F45'/%3E%3C/svg%3E");}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit:hover,.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit:focus{background-color:#ffffff;-webkit-transform:scale(1.025) perspective(1px);-ms-transform:scale(1.025) perspective(1px);transform:scale(1.025) perspective(1px);opacity:1;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit[data-variant="dark"],.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit[data-variant="light"]{background-color:transparent;border-color:transparent;width:166px;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit[data-variant="light"]{color:#ffffff;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='162' height='20' viewBox='0 0 162 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M83.0561 15.2457C86.675 15.2457 89.4722 12.5154 89.4722 9.14749C89.4722 5.99211 86.8443 4.06563 85.1038 4.06563C82.6801 4.06563 80.7373 5.76407 80.4605 8.28551C80.4092 8.75244 80.0387 9.14403 79.5686 9.14069C78.7871 9.13509 77.6507 9.12841 76.9314 9.13092C76.6217 9.13199 76.3658 8.88106 76.381 8.57196C76.4895 6.38513 77.2218 4.3404 78.618 2.76974C80.1695 1.02445 82.4289 0 85.1038 0C89.5979 0 93.8406 4.07791 93.8406 9.14749C93.8406 14.7608 89.1832 19.3113 83.1517 19.3113C78.8502 19.3113 74.5179 16.5041 73.0053 12.5795C72.9999 12.565 72.9986 12.5492 73.0015 12.534C73.0218 12.4179 73.0617 12.3118 73.1011 12.2074C73.1583 12.0555 73.2143 11.907 73.2062 11.7359L73.18 11.1892C73.174 11.0569 73.2075 10.9258 73.2764 10.8127C73.3452 10.6995 73.4463 10.6094 73.5666 10.554L73.7852 10.4523C73.9077 10.3957 74.0148 10.3105 74.0976 10.204C74.1803 10.0974 74.2363 9.97252 74.2608 9.83983C74.3341 9.43894 74.6865 9.14749 75.0979 9.14749C75.7404 9.14749 76.299 9.57412 76.5088 10.1806C77.5188 13.1 79.1245 15.2457 83.0561 15.2457Z' fill='white'/%3E%3Cpath d='M155.758 6.91365C155.028 6.91365 154.804 6.47916 154.804 5.98857C154.804 5.46997 154.986 5.06348 155.758 5.06348C156.53 5.06348 156.712 5.46997 156.712 5.98857C156.712 6.47905 156.516 6.91365 155.758 6.91365ZM142.441 12.9304V9.32833L141.415 9.32323V8.90392C141.415 8.44719 141.786 8.07758 142.244 8.07986L142.441 8.08095V6.55306L144.082 6.09057V8.08073H145.569V8.50416C145.569 8.61242 145.548 8.71961 145.506 8.81961C145.465 8.91961 145.404 9.01047 145.328 9.08699C145.251 9.16351 145.16 9.2242 145.06 9.26559C144.96 9.30698 144.853 9.32826 144.745 9.32822H144.082V12.7201C144.082 13.2423 144.378 13.4256 144.76 13.4887C145.209 13.5629 145.583 13.888 145.583 14.343V14.9626C144.029 14.9626 142.441 14.8942 142.441 12.9304Z' fill='white'/%3E%3Cpath d='M110.058 7.92554C108.417 7.88344 106.396 8.92062 106.396 11.5137C106.396 14.0646 108.417 15.0738 110.058 15.0318C111.742 15.0738 113.748 14.0646 113.748 11.5137C113.748 8.92062 111.742 7.88344 110.058 7.92554ZM110.07 13.7586C108.878 13.7586 108.032 12.8905 108.032 11.461C108.032 10.1013 108.878 9.20569 110.071 9.20569C111.263 9.20569 112.101 10.0995 112.101 11.459C112.101 12.8887 111.263 13.7586 110.07 13.7586Z' fill='white'/%3E%3Cpath d='M118.06 7.94098C119.491 7.94098 120.978 8.33337 120.978 11.1366V14.893H120.063C119.608 14.893 119.238 14.524 119.238 14.0689V10.9965C119.238 9.66506 118.747 9.16047 117.891 9.16047C117.414 9.16047 116.797 9.52486 116.502 9.81915V14.069C116.502 14.1773 116.481 14.2845 116.44 14.3845C116.398 14.4845 116.337 14.5753 116.261 14.6519C116.184 14.7284 116.093 14.7891 115.993 14.8305C115.893 14.8719 115.786 14.8931 115.678 14.8931H114.847V8.10918H115.773C115.932 8.10914 116.087 8.16315 116.212 8.26242C116.337 8.36168 116.424 8.50033 116.46 8.65577C116.881 8.19328 117.428 7.94098 118.06 7.94098ZM122.854 8.09713C123.024 8.09708 123.19 8.1496 123.329 8.2475C123.468 8.34541 123.574 8.48391 123.631 8.64405L125.133 12.8486L126.635 8.64415C126.692 8.48402 126.798 8.34551 126.937 8.2476C127.076 8.1497 127.242 8.09718 127.412 8.09724H128.598L126.152 14.3567C126.091 14.5112 125.986 14.6439 125.849 14.7374C125.711 14.831 125.549 14.881 125.383 14.8809H124.333L121.668 8.09713H122.854Z' fill='white'/%3E%3Cpath d='M135.085 14.5514C134.566 14.7616 133.513 15.0416 132.418 15.0416C130.496 15.0416 129.024 13.9345 129.024 11.4396C129.024 9.19701 130.451 7.99792 132.191 7.99792C134.338 7.99792 135.254 9.4378 135.158 11.3979C135.139 11.8029 134.786 12.0983 134.38 12.0983H130.679C130.763 13.1916 131.562 13.7662 132.615 13.7662C133.028 13.7662 133.462 13.7452 133.983 13.6481C134.535 13.545 135.085 13.9375 135.085 14.4985V14.5514ZM133.673 10.949C133.785 9.87621 133.061 9.28752 132.191 9.28752C131.321 9.28752 130.734 9.93979 130.679 10.9489L133.673 10.949Z' fill='white'/%3E%3Cpath d='M137.345 8.11122C137.497 8.11118 137.645 8.16229 137.765 8.25635C137.884 8.35041 137.969 8.48197 138.005 8.62993C138.566 8.20932 139.268 7.94303 139.759 7.94303C139.801 7.94303 140.068 7.94303 140.489 7.99913V8.7265C140.489 9.11748 140.15 9.4147 139.759 9.4147C139.31 9.4147 138.651 9.5829 138.131 9.8773V14.8951H136.462V8.11112L137.345 8.11122ZM156.6 14.0508V8.09104H155.769C155.314 8.09104 154.944 8.45999 154.944 8.9151V14.8748H155.775C156.23 14.8748 156.6 14.5058 156.6 14.0508ZM158.857 12.9447V9.34254H157.749V8.91912C157.749 8.46401 158.118 8.09506 158.574 8.09506H158.857V6.56739L160.499 6.10479V8.09506H161.986V8.51848C161.986 8.97359 161.617 9.34254 161.161 9.34254H160.499V12.7345C160.499 13.2566 160.795 13.44 161.177 13.503C161.626 13.5774 162 13.9024 162 14.3574V14.977C160.446 14.977 158.857 14.9086 158.857 12.9447ZM98.1929 10.1124C98.2033 6.94046 100.598 5.16809 102.895 5.16809C104.171 5.16809 105.342 5.44285 106.304 6.12953L105.914 6.6631C105.654 7.02011 105.16 7.16194 104.749 6.99949C104.169 6.7702 103.622 6.7218 103.215 6.7218C101.335 6.7218 99.9169 7.92849 99.9068 10.1123C99.9169 12.2959 101.335 13.5201 103.215 13.5201C103.622 13.5201 104.169 13.4717 104.749 13.2424C105.16 13.0799 105.654 13.2046 105.914 13.5615L106.304 14.0952C105.342 14.7819 104.171 15.0566 102.895 15.0566C100.598 15.0566 98.2033 13.2842 98.1929 10.1124ZM147.619 5.21768C148.074 5.21768 148.444 5.58663 148.444 6.04174V9.81968L151.82 5.58131C151.897 5.47733 151.997 5.39282 152.112 5.3346C152.227 5.27638 152.355 5.24607 152.484 5.24611H153.984L150.166 10.0615L153.984 14.8749H152.484C152.355 14.8749 152.227 14.8446 152.112 14.7864C151.997 14.7281 151.897 14.6436 151.82 14.5397L148.444 10.3025V14.0508C148.444 14.5059 148.074 14.8749 147.619 14.8749H146.746V5.21768H147.619Z' fill='white'/%3E%3Cpath d='M0.773438 6.5752H2.68066C3.56543 6.5752 4.2041 6.7041 4.59668 6.96191C4.99219 7.21973 5.18994 7.62695 5.18994 8.18359C5.18994 8.55859 5.09326 8.87061 4.8999 9.11963C4.70654 9.36865 4.42822 9.52539 4.06494 9.58984V9.63379C4.51611 9.71875 4.84717 9.88721 5.05811 10.1392C5.27197 10.3882 5.37891 10.7266 5.37891 11.1543C5.37891 11.7314 5.17676 12.1841 4.77246 12.5122C4.37109 12.8374 3.81152 13 3.09375 13H0.773438V6.5752ZM1.82373 9.22949H2.83447C3.27393 9.22949 3.59473 9.16064 3.79688 9.02295C3.99902 8.88232 4.1001 8.64502 4.1001 8.31104C4.1001 8.00928 3.99023 7.79102 3.77051 7.65625C3.55371 7.52148 3.20801 7.4541 2.7334 7.4541H1.82373V9.22949ZM1.82373 10.082V12.1167H2.93994C3.37939 12.1167 3.71045 12.0332 3.93311 11.8662C4.15869 11.6963 4.27148 11.4297 4.27148 11.0664C4.27148 10.7324 4.15723 10.4849 3.92871 10.3237C3.7002 10.1626 3.35303 10.082 2.88721 10.082H1.82373Z' fill='white'/%3E%3Cpath d='M13.011 6.5752V10.7324C13.011 11.207 12.9084 11.623 12.7034 11.9805C12.5012 12.335 12.2068 12.6089 11.8201 12.8022C11.4363 12.9927 10.9763 13.0879 10.4402 13.0879C9.6433 13.0879 9.02368 12.877 8.5813 12.4551C8.13892 12.0332 7.91772 11.4531 7.91772 10.7148V6.5752H8.9724V10.6401C8.9724 11.1704 9.09546 11.5615 9.34155 11.8135C9.58765 12.0654 9.96557 12.1914 10.4753 12.1914C11.4656 12.1914 11.9607 11.6714 11.9607 10.6313V6.5752H13.011Z' fill='white'/%3E%3Cpath d='M15.9146 13V6.5752H16.9649V13H15.9146Z' fill='white'/%3E%3Cpath d='M19.9255 13V6.5752H20.9758V12.0991H23.696V13H19.9255Z' fill='white'/%3E%3Cpath d='M28.2828 13H27.2325V7.47607H25.3428V6.5752H30.1724V7.47607H28.2828V13Z' fill='white'/%3E%3Cpath d='M41.9472 13H40.8046L39.7148 9.16796C39.6679 9.00097 39.6093 8.76074 39.539 8.44727C39.4687 8.13086 39.4262 7.91113 39.4116 7.78809C39.3823 7.97559 39.3339 8.21875 39.2665 8.51758C39.2021 8.81641 39.1479 9.03905 39.1039 9.18554L38.0405 13H36.8979L36.0673 9.7832L35.2236 6.5752H36.2958L37.2143 10.3193C37.3578 10.9199 37.4604 11.4502 37.5219 11.9102C37.5541 11.6611 37.6025 11.3828 37.6669 11.0752C37.7314 10.7676 37.79 10.5186 37.8427 10.3281L38.8886 6.5752H39.9301L41.0024 10.3457C41.1049 10.6943 41.2133 11.2158 41.3276 11.9102C41.3715 11.4912 41.477 10.958 41.644 10.3105L42.558 6.5752H43.6215L41.9472 13Z' fill='white'/%3E%3Cpath d='M45.7957 13V6.5752H46.846V13H45.7957Z' fill='white'/%3E%3Cpath d='M52.0258 13H50.9755V7.47607H49.0859V6.5752H53.9155V7.47607H52.0258V13Z' fill='white'/%3E%3Cpath d='M61.2312 13H60.1765V10.104H57.2146V13H56.1643V6.5752H57.2146V9.20312H60.1765V6.5752H61.2312V13Z' fill='white'/%3E%3C/svg%3E");}@-webkit-keyframes formkit-bouncedelay-formkit-form-data-uid-e309c832a6-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}@keyframes formkit-bouncedelay-formkit-form-data-uid-e309c832a6-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}.formkit-form[data-uid="e309c832a6"] blockquote{padding:10px 20px;margin:0 0 20px;border-left:5px solid #e1e1e1;}.formkit-form[data-uid="e309c832a6"] .seva-custom-content{padding:15px;font-size:16px;color:#fff;mix-blend-mode:difference;}.formkit-form[data-uid="e309c832a6"] .formkit-modal.guard{max-width:420px;width:100%;} .formkit-form[data-uid="e309c832a6"]{border:1px solid #e3e3e3;max-width:700px;position:relative;overflow:hidden;}.formkit-form[data-uid="e309c832a6"] .formkit-background{width:100%;height:100%;position:absolute;top:0;left:0;background-size:cover;background-position:center;opacity:0.3;}.formkit-form[data-uid="e309c832a6"] [data-style="minimal"]{padding:20px;width:100%;position:relative;}.formkit-form[data-uid="e309c832a6"] .formkit-header{margin:0 0 27px 0;text-align:center;}.formkit-form[data-uid="e309c832a6"] .formkit-subheader{margin:18px 0;text-align:center;}.formkit-form[data-uid="e309c832a6"] .formkit-guarantee{font-size:13px;margin:10px 0 15px 0;text-align:center;}.formkit-form[data-uid="e309c832a6"] .formkit-guarantee > p{margin:0;}.formkit-form[data-uid="e309c832a6"] .formkit-powered-by-convertkit-container{margin-bottom:0;}.formkit-form[data-uid="e309c832a6"] .formkit-fields{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:25px auto 0 auto;}.formkit-form[data-uid="e309c832a6"] .formkit-field{min-width:220px;}.formkit-form[data-uid="e309c832a6"] .formkit-field,.formkit-form[data-uid="e309c832a6"] .formkit-submit{margin:0 0 15px 0;-webkit-flex:1 0 100%;-ms-flex:1 0 100%;flex:1 0 100%;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] [data-style="minimal"]{padding:40px;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"]{margin-left:-5px;margin-right:-5px;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-submit{margin:0 5px 15px 5px;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-field{-webkit-flex:100 1 auto;-ms-flex:100 1 auto;flex:100 1 auto;}.formkit-form[data-uid="e309c832a6"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-submit{-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;} </style></form>
+
+		<div class="sponsor">
+        <div class="sponsor-avatar"></div><p class="sponsor-bio"><em>Did you find this article helpful?</em></p><div class="sponsor-custom"><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="reachsumit" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-01-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/" data-title="A Guide to User Behavior Modeling" data-via="_reachsumit" data-hashtags="literature review,recsys,behavior modeling"><span class="fab fa-twitter fa-fw"></span></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/" data-hashtag="literature review"><span class="fab fa-facebook-square fa-fw"></span></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/"><span class="fab fa-linkedin fa-fw"></span></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/" data-title="A Guide to User Behavior Modeling" data-web><span class="fab fa-whatsapp fa-fw"></span></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/" data-title="A Guide to User Behavior Modeling"><span class="fab fa-hacker-news fa-fw"></span></button><button title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/"><span class="fab fa-reddit fa-fw"></span></button><button title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/" data-title="A Guide to User Behavior Modeling"><span data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></span></button><button title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/"><span class="fab fa-get-pocket fa-fw"></span></button><button title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/" data-title="A Guide to User Behavior Modeling" data-image="featured-image.webp"><span class="fab fa-weibo fa-fw"></span></button><button title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/" data-title="A Guide to User Behavior Modeling"><span class="fab fa-evernote fa-fw"></span></button><button title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/" data-title="A Guide to User Behavior Modeling" data-description=""><span class="fab fa-trello fa-fw"></span></button></div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/behavior-modeling/">behavior modeling</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/2023/12/towards-ranking-aware-llms/" class="prev" rel="prev" title="Strategies for Effective and Efficient Text Ranking Using Large Language Models"><i class="fas fa-angle-left fa-fw"></i>Strategies for Effective and Efficient Text Ranking Using Large Language Models</a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="Back to Top">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2024-01-07T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"A Guide to User Behavior Modeling"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-TGH87J92Z3');
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3" async></script></div>
+</body>
+
+</html>

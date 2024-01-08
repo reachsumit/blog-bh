@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/categories/recommender-systems/</link>
         <description>Recommender systems - Category - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 18 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/recommender-systems/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/recommender-systems/" rel="self" type="application/rss+xml" /><item>
+    <title>A Guide to User Behavior Modeling</title>
+    <link>https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/</link>
+    <pubDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Modeling users&rsquo; past historical interactions or behavior sequences is an essential task for domains like recommender systems, click-through rate prediction, targeted advertisement, and more. This article provides a comprehensive introduction to the user behavior modeling paradigm along with highlighting several relevant and recent research works.]]></description>
+</item><item>
     <title>Representing Users and Items in Large Language Models based Recommender Systems</title>
     <link>https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/</link>
     <pubDate>Sun, 18 Jun 2023 00:00:00 &#43;0000</pubDate><author>

@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/posts/</link>
         <description>All Posts | Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 26 Dec 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>A Guide to User Behavior Modeling</title>
+    <link>https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/</link>
+    <pubDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Modeling users&rsquo; past historical interactions or behavior sequences is an essential task for domains like recommender systems, click-through rate prediction, targeted advertisement, and more. This article provides a comprehensive introduction to the user behavior modeling paradigm along with highlighting several relevant and recent research works.]]></description>
+</item><item>
     <title>Strategies for Effective and Efficient Text Ranking Using Large Language Models</title>
     <link>https://blog.reachsumit.com/posts/2023/12/towards-ranking-aware-llms/</link>
     <pubDate>Tue, 26 Dec 2023 00:00:00 &#43;0000</pubDate><author>
@@ -86,14 +95,5 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/04/intro-to-graph-representation-learning/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>In recent years, there has been a significant amount of research activity in the graph representation learning domain. These learning methods help in analyzing abstract graph structures in information networks and improve the performances of state-of-the-art machine learning solutions for real-world applications, such as social recommendations, targeted advertising, user search, etc. This article provides a comprehensive introduction to the graph representation learning domain, including common terminologies, deterministic and stochastic modeling techniques, taxonomy, evaluation methods, and applications.]]></description>
-</item><item>
-    <title>Mixture-of-Experts based Recommender Systems</title>
-    <link>https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/</link>
-    <pubDate>Sun, 23 Apr 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/04/moe-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>The Mixture-of-Experts (MoE) is a classical ensemble learning technique originally proposed by Jacobs et. al1 in 1991. MoEs have the capability to substantially scale up the model capacity and only introduce small computation overhead. This ability combined with recent innovations in the deep learning domain has led to the wide-scale adoption of MoEs in healthcare, finance, pattern recognition, etc. They have been successfully utilized in large-scale applications such as Large Language Modeling (LLM), Machine Translation, and Recommendations.]]></description>
 </item></channel>
 </rss>
