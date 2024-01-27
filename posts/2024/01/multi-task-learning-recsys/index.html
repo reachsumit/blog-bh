@@ -7,33 +7,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title>Twitter&#39;s For You Recommendation Algorithm - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Twitter&#39;s For You Recommendation Algorithm" />
-<meta property="og:description" content="Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references." />
+    <title>An Introduction to Multi-Task Learning based Recommender Systems - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="An Introduction to Multi-Task Learning based Recommender Systems" />
+<meta property="og:description" content="This article provides an introduction and literature review for multi-task learning based recommender systems. We learn how to discover task relations, design MTL architectures and overcome some of the associated challenges." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-04-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-04-04T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-26T00:00:00+00:00" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/featured-image-preview.webp"/>
-<meta name="twitter:title" content="Twitter&#39;s For You Recommendation Algorithm"/>
-<meta name="twitter:description" content="Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references."/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp"/>
+<meta name="twitter:title" content="An Introduction to Multi-Task Learning based Recommender Systems"/>
+<meta name="twitter:description" content="This article provides an introduction and literature review for multi-task learning based recommender systems. We learn how to discover task relations, design MTL architectures and overcome some of the associated challenges."/>
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Twitter's For You Recommendation Algorithm",
+        "headline": "An Introduction to Multi-Task Learning based Recommender Systems",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"
-        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  1984 ,
-        "url": "https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/","datePublished": "2023-04-04T00:00:00+00:00","dateModified": "2023-04-04T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, multi-task learning","wordcount":  2412 ,
+        "url": "https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/","datePublished": "2024-01-26T00:00:00+00:00","dateModified": "2024-01-26T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
@@ -128,220 +128,197 @@
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
-    <li><a href="#twitter-releases-the-algorithm">Twitter Releases &ldquo;The Algorithm&rdquo;</a></li>
-    <li><a href="#the-algorithm">The Algorithm</a>
+    <li><a href="#introduction">Introduction</a>
       <ul>
-        <li><a href="#data-sourcing">Data Sourcing</a></li>
-        <li><a href="#candidate-generation">Candidate Generation</a>
-          <ul>
-            <li><a href="#in-network-tweets">In-Network Tweets</a></li>
-            <li><a href="#out-of-network-tweets">Out-of-Network Tweets</a>
-              <ul>
-                <li><a href="#social-graph">Social Graph</a></li>
-                <li><a href="#embedding-based-semantic-spaces">Embedding-based Semantic Spaces</a>
-                  <ul>
-                    <li><a href="#simclusters">SimClusters</a></li>
-                    <li><a href="#twhin">TwHIN</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="#ranking">Ranking</a>
-          <ul>
-            <li><a href="#light-ranking">Light Ranking</a></li>
-            <li><a href="#heavy-ranking">Heavy Ranking</a></li>
-          </ul>
-        </li>
-        <li><a href="#heuristics--filtering">Heuristics &amp; Filtering</a></li>
-        <li><a href="#mixing">Mixing</a></li>
+        <li><a href="#why-should-you-apply-multi-task-paradigm-to-recommenders">Why Should You Apply Multi-task Paradigm to Recommenders?</a></li>
+        <li><a href="#formal-definition">Formal Definition</a></li>
       </ul>
     </li>
+    <li><a href="#discovering-task-relations">Discovering Task Relations</a></li>
+    <li><a href="#model-architectures">Model Architectures</a>
+      <ul>
+        <li><a href="#parameter-sharing">Parameter Sharing</a></li>
+        <li><a href="#other-architectures">Other Architectures</a></li>
+      </ul>
+    </li>
+    <li><a href="#negative-transfer">Negative Transfer</a></li>
+    <li><a href="#future-research-directions">Future Research Directions</a></li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Twitter&#39;s For You Recommendation Algorithm</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">An Introduction to Multi-Task Learning based Recommender Systems</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-04">2023-04-04</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-04-04">2023-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1984 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2024-01-26">2024-01-26</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2024-01-26">2024-01-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2412 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
-        src="/posts/2023/04/the-twitter-ml-algo/featured-image.webp"
-        srcset="/posts/2023/04/the-twitter-ml-algo/featured-image.webp, /posts/2023/04/the-twitter-ml-algo/featured-image.webp 1.5x, /posts/2023/04/the-twitter-ml-algo/featured-image.webp 2x"
+        src="/posts/2024/01/multi-task-learning-recsys/featured-image.webp"
+        srcset="/posts/2024/01/multi-task-learning-recsys/featured-image.webp, /posts/2024/01/multi-task-learning-recsys/featured-image.webp 1.5x, /posts/2024/01/multi-task-learning-recsys/featured-image.webp 2x"
         
-        alt="/posts/2023/04/the-twitter-ml-algo/featured-image.webp"
-        title="/posts/2023/04/the-twitter-ml-algo/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
+        alt="/posts/2024/01/multi-task-learning-recsys/featured-image.webp"
+        title="/posts/2024/01/multi-task-learning-recsys/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#twitter-releases-the-algorithm">Twitter Releases &ldquo;The Algorithm&rdquo;</a></li>
-    <li><a href="#the-algorithm">The Algorithm</a>
+    <li><a href="#introduction">Introduction</a>
       <ul>
-        <li><a href="#data-sourcing">Data Sourcing</a></li>
-        <li><a href="#candidate-generation">Candidate Generation</a>
-          <ul>
-            <li><a href="#in-network-tweets">In-Network Tweets</a></li>
-            <li><a href="#out-of-network-tweets">Out-of-Network Tweets</a>
-              <ul>
-                <li><a href="#social-graph">Social Graph</a></li>
-                <li><a href="#embedding-based-semantic-spaces">Embedding-based Semantic Spaces</a>
-                  <ul>
-                    <li><a href="#simclusters">SimClusters</a></li>
-                    <li><a href="#twhin">TwHIN</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="#ranking">Ranking</a>
-          <ul>
-            <li><a href="#light-ranking">Light Ranking</a></li>
-            <li><a href="#heavy-ranking">Heavy Ranking</a></li>
-          </ul>
-        </li>
-        <li><a href="#heuristics--filtering">Heuristics &amp; Filtering</a></li>
-        <li><a href="#mixing">Mixing</a></li>
+        <li><a href="#why-should-you-apply-multi-task-paradigm-to-recommenders">Why Should You Apply Multi-task Paradigm to Recommenders?</a></li>
+        <li><a href="#formal-definition">Formal Definition</a></li>
       </ul>
     </li>
+    <li><a href="#discovering-task-relations">Discovering Task Relations</a></li>
+    <li><a href="#model-architectures">Model Architectures</a>
+      <ul>
+        <li><a href="#parameter-sharing">Parameter Sharing</a></li>
+        <li><a href="#other-architectures">Other Architectures</a></li>
+      </ul>
+    </li>
+    <li><a href="#negative-transfer">Negative Transfer</a></li>
+    <li><a href="#future-research-directions">Future Research Directions</a></li>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="twitter-releases-the-algorithm" class="headerLink">
-    <a href="#twitter-releases-the-algorithm" class="header-mark"></a>Twitter Releases &ldquo;The Algorithm&rdquo;</h2><p>Last week, Twitter released a lot of details about the recommendation algorithm that powers their For You feed. The release included an <a href="https://blog.twitter.com/en_us/topics/company/2023/a-new-era-of-transparency-for-twitter" target="_blank" rel="noopener noreferrer">announcement</a>, two new GitHub repositories (<a href="https://github.com/twitter/the-algorithm/" target="_blank" rel="noopener noreferrer">main repo</a>, <a href="https://github.com/twitter/the-algorithm-ml" target="_blank" rel="noopener noreferrer">ml repo</a>), and an accompanying <a href="https://blog.twitter.com/engineering/en_us/topics/open-source/2023/twitter-recommendation-algorithm" target="_blank" rel="noopener noreferrer">post on the engineering blog</a>. Their release also includes some model configs, hyperparameters, input feature descriptions, feature weights, combined score calculation formula, etc. that are immensely valuable for ML practitioners. This article gives an overview of the end-to-end machine learning components made public by Twitter.</p>
-<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Today marks a new era of transparency for Twitter. 🧵<br><br>We’re sharing much of the source code that powers our platform with the world. Visit our blog to learn more about this initiative: <a href="https://t.co/hTHVpuMDz8">https://t.co/hTHVpuMDz8</a></p>&mdash; Engineering (@XEng) <a href="https://twitter.com/XEng/status/1641872259320274944?ref_src=twsrc%5Etfw">March 31, 2023</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-<h2 id="the-algorithm" class="headerLink">
-    <a href="#the-algorithm" class="header-mark"></a>The Algorithm</h2><p>At a broad level, we can think of Twitter&rsquo;s For You timeline generation as the sequence of following steps that are also common to large-scale recommendation systems.</p>
-<pre class="mermaid">graph LR;
-    A(Data Sourcing) --> B(Candidate Generation)
-    B --> C(Ranking)
-    C --> D(Heuristics & Filtering)
-    D --> E(Mixing)
-
-</pre>
-<p>We will look at each of these components one by one. Note that while Twitter has shared a lot of information on the code and algorithms for most of these steps, they haven&rsquo;t still shared details about components such as input data processing, model configs, serving infrastructure, source code for modules like Candidate Generation, Trust &amp; Safety, Ads, etc.</p>
-<h3 id="data-sourcing" class="headerLink">
-    <a href="#data-sourcing" class="header-mark"></a>Data Sourcing</h3><p>Twitter has previously shared details about its data infrastructure in <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">another blog</a>. Twitter processes close to 500 million daily tweets, and 400 billion real-time events. The event data is sourced from various platforms, storage systems, and distributed databases. The user engagement data is collected from various real-time streams, server, and client-side logs, etc. They also utilize various proprietary tools such as <a href="https://github.com/twitter/scalding" target="_blank" rel="noopener noreferrer">Scalding</a> for batch processing, <a href="https://github.com/apache/incubator-heron" target="_blank" rel="noopener noreferrer">Heron</a> for streaming, and <a href="https://blog.twitter.com/engineering/en_us/a/2014/tsar-a-timeseries-aggregator" target="_blank" rel="noopener noreferrer">TSAR</a> (<strong>T</strong>imeSeries <strong>A</strong>ggregato<strong>R</strong>) for processing temporal signals. In their <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">recent redesign</a> (see figure below) proposal<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> they built an on-premise event processor along with deduplication and BigTable storage on the Google Cloud Platform (GCP). Note that Twitter exactly specified any data schema or preprocessing applied to the data for the recommender system.</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png"
-        srcset="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png, /img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png 1.5x, /img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png 2x"
-        
-        alt="Twitter Data Pipeline"
-        title="Twitter Data Pipeline" ><figcaption class="image-caption">Twitter's redesigned data pipeline. Source: [^1]</figcaption>
-    </figure></p>
-<h3 id="candidate-generation" class="headerLink">
-    <a href="#candidate-generation" class="header-mark"></a>Candidate Generation</h3><p>The job of the candidate generation module is to select 1500 most relevant tweets from various sources. The first half of these candidates are from the people that you follow (in-network tweets), while the other half is from the people who you do not follow (out-of-network tweets).</p>
-<h4 id="in-network-tweets" class="headerLink">
-    <a href="#in-network-tweets" class="header-mark"></a>In-Network Tweets</h4><p>Most of the in-network tweets are sourced from Twitter&rsquo;s RealGraph framework (originally deployed in 2012<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>). RealGraph framework uses a directed, weighted graph to model users (tweeps) as nodes. An edge from source to target node indicates that the source user follows the target user or the target user is in the source user&rsquo;s contact book, or the source user recently interacted with the target user. Each type of edge has its own set of features represented by weights, such as days since edge creation, days since last interaction, number of common friends, explicit and implicit engagement statistics, etc. Similarly, nodes have features such as the number of retweets in the last week, number of followers, demographics, PageRank on the follow graph, etc.</p>
-<p>Note that Twitter has also shared the implementation details of its PageRank algorithm called <a href="https://github.com/twitter/the-algorithm/blob/main/src/scala/com/twitter/graph/batch/job/tweepcred/README" target="_blank" rel="noopener noreferrer">TweepCred</a>. A logistic regression model is trained on all of these features to predict interaction in a future time window. Note that the graph itself is updated daily in batch mode. In their announcement, Twitter also mentioned that the logistic regression model was trained several years ago and is in the process of being redesigned.</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="/img/posts/2023/the-twitter-ml-algo/real_graph.png"
-        srcset="/img/posts/2023/the-twitter-ml-algo/real_graph.png, /img/posts/2023/the-twitter-ml-algo/real_graph.png 1.5x, /img/posts/2023/the-twitter-ml-algo/real_graph.png 2x"
-        
-        alt="Twitter&amp;rsquo;s RealGraph Framework"
-        title="Twitter&amp;rsquo;s RealGraph Framework" ><figcaption class="image-caption">Twitter's RealGraph Framework. Source: [^2]</figcaption>
-    </figure></p>
-<h4 id="out-of-network-tweets" class="headerLink">
-    <a href="#out-of-network-tweets" class="header-mark"></a>Out-of-Network Tweets</h4><h5 id="social-graph" class="headerLink">
-    <a href="#social-graph" class="header-mark"></a>Social Graph</h5><p>For some of the out-of-network tweets, the retrieval process uses a graph processing engine called GraphJet<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. GraphJet maintains a dynamic (real-time), undirected, bipartite graph between users and tweets in memory on a single server (no partitioning!) through clever edge encoding and dynamic memory allocation schemes. The nodes in the graph represent the users and the tweets, while the edges represent the actions (favorite, tweet, retweet, reply, click, etc.) within a rolling temporal window. To ensure the efficient growth of the graph structure, GraphJet maintains a list of temporally-ordered index segments such that only the latest segment can be written into (see the figure below).</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="/img/posts/2023/the-twitter-ml-algo/graphjet.png"
-        srcset="/img/posts/2023/the-twitter-ml-algo/graphjet.png, /img/posts/2023/the-twitter-ml-algo/graphjet.png 1.5x, /img/posts/2023/the-twitter-ml-algo/graphjet.png 2x"
-        
-        alt="GraphJet Architecture"
-        title="GraphJet Architecture" ><figcaption class="image-caption">GraphJet Architecture. Source: [^3]</figcaption>
-    </figure></p>
-<p>A SALSA (<strong>S</strong>tochastic <strong>A</strong>pproach for <strong>L</strong>ink-<strong>S</strong>tructure <strong>A</strong>nalysis) random walk over this graph is done to get the tweets that a might be interested in (for example, tweets that the user&rsquo;s connection recently engaged with). A seed set of user nodes called the circle of trust (personalized PageRank), is used for cold users or users with no recent engagement history. Similar to RealGraph, a logistic regression model is used to predict the probability of engagement. GraphJet is implemented in Java, and powers about 15% of tweets in the For You feed.</p>
-<h5 id="embedding-based-semantic-spaces" class="headerLink">
-    <a href="#embedding-based-semantic-spaces" class="header-mark"></a>Embedding-based Semantic Spaces</h5><p>The majority of out-of-network tweets are retrieved through embedding-based methods described below.</p>
-<h6 id="simclusters" class="headerLink">
-    <a href="#simclusters" class="header-mark"></a>SimClusters</h6><p>Twitter has used its SimClusters<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> embedding space to identify 145,000 communities that are either based on a common theme (such as &ldquo;machine learning&rdquo;, or &ldquo;K-pop&rdquo;), or social relationships (such as users who went to the same school). Using SimClusters, Twitter has a representation layer where both users and content are mapped in the same space. First, using a user-user graph (based on follow relationship) k number of possible overlapping communities are discovered. While this can be technically done using a sparse non-negative matrix factorization (NMF) technique, Twitter  devised a custom matrix factorization technique (called <a href="https://github.com/twitter/sbf" target="_blank" rel="noopener noreferrer">Sparse Binary Factorization</a> or SBF) that can also scale for large graphs. Next, an item representation can be calculated using a simple aggregation, such as an exponentially time-decayed average, over the representations of all the users who engaged with that item (see the figure below).</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png"
-        srcset="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png, /img/posts/2023/the-twitter-ml-algo/simclusterspng.png 1.5x, /img/posts/2023/the-twitter-ml-algo/simclusterspng.png 2x"
-        
-        alt="SimClusters"
-        title="SimClusters" ><figcaption class="image-caption">Overview of SimClusters. Source: [^4]</figcaption>
-    </figure></p>
-<p>Twitter retrieves out-of-network tweets from these clusters by simply identifying the tweets that have the highest dot-product value with the interest representations, along with an item-based collaborative filtering technique. A high similarity score means that the corresponding tweet will be associated more with that community.</p>
-<h6 id="twhin" class="headerLink">
-    <a href="#twhin" class="header-mark"></a>TwHIN</h6><p>Twitter uses its knowledge graph embeddings, called TwHIN (<strong>Tw</strong>itter&rsquo;s <strong>H</strong>eterogeneous <strong>I</strong>nformation <strong>N</strong>etwork) embeddings<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, for candidate generation and also as features for ranking and prediction tasks. These are pretrained generalizable embeddings applicable to users, tweets, advertisements, etc. These embeddings are learned from disparate network data (heterogeneous relationships) to capture a diverse set of signals, such as social signals, content or advertisement engagement signals, etc while simultaneously addressing data sparsity. For the learning process, Twitter uses positive and negative triplets (source entity, edge type, target entity) with contrastive loss and the training objective to find entity representations that effectively predict which other entities are directly linked by a certain relation. Twitter has released the source code for training TwHIN embeddings <a href="https://github.com/twitter/the-algorithm-ml/tree/main/projects/twhin" target="_blank" rel="noopener noreferrer">here</a>.</p>
-<p>At this end of candidate retrieval, we have 1500 tweets ready to be ranked for the user&rsquo;s For You feed.</p>
-<h3 id="ranking" class="headerLink">
-    <a href="#ranking" class="header-mark"></a>Ranking</h3><h4 id="light-ranking" class="headerLink">
-    <a href="#light-ranking" class="header-mark"></a>Light Ranking</h4><p>A simple and efficient logistic-regression-based light ranker is used for ranking both in-network and out-of-network tweets. Twitter&rsquo;s core retrieval system (called EarlyBird<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>) builds and maintains inverted indexes required to perform the real-time search and retrieval of tweets. Instead of relying on the full social graph, In <a href="https://blog.twitter.com/engineering/en_us/a/2011/the-engineering-behind-twitter-s-new-search-experience" target="_blank" rel="noopener noreferrer">earlier iterations</a>, EarlyBird utilized Bloom Filter to compress relevant social graph information for each user. Apart from being space-efficient, this implementation also enabled constant-time set-membership operations. The logistic regression model uses various static and real-time features listed <a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/scripts/models/earlybird/README.md" target="_blank" rel="noopener noreferrer">here</a>. Twitter notes that &ldquo;<em>the current model was last trained several years ago, and uses some very strange features.</em>&rdquo; and they are working on training a new model.</p>
-<p>The source code for this light ranking is released <a href="https://github.com/twitter/the-algorithm/tree/main/src/python/twitter/deepbird/projects/timelines/scripts/models/earlybird" target="_blank" rel="noopener noreferrer">here</a>, along with the details about input features(<a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/configs/recap_earlybird/feature_config.py" target="_blank" rel="noopener noreferrer">in-network</a>, <a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/configs/rectweet_earlybird/feature_config.py" target="_blank" rel="noopener noreferrer">out-of-network</a>), <a href="https://github.com/twitter/the-algorithm/blob/main/cr-mixer/server/src/main/scala/com/twitter/cr_mixer/similarity_engine/EarlybirdTensorflowBasedSimilarityEngine.scala#L142" target="_blank" rel="noopener noreferrer">feature weights</a>, and <a href="https://github.com/twitter/the-algorithm/blob/ec83d01dcaebf369444d75ed04b3625a0a645eb9/src/thrift/com/twitter/search/common/ranking/ranking.thrift#L14-L21" target="_blank" rel="noopener noreferrer">time decay</a> used by the model. It is mentioned that EarlyBird ranks a lesser number of tweets than heavy ranker, but the exact order and counts corresponding to light ranker execution are not specified.</p>
-<h4 id="heavy-ranking" class="headerLink">
-    <a href="#heavy-ranking" class="header-mark"></a>Heavy Ranking</h4><p>Twitter uses MaskNet<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> to perform computationally costlier ranking for the 1500 retrieved tweets. Similar to a lot of other rankers in the Click-Through Rate (CTR) estimation domain, MaskNet emphasizes effectively capturing the high-order feature interactions in an explicit manner similar to the earlier Deep &amp; Cross Network (DCN). MaskNet introduces a basic building block called a MaskBlock that contains three components: an &ldquo;instance-guided mask&rdquo;, a feed-forward hidden layer, and a layer normalization module. The instance-guided mask performs element-wise product on feature embeddings and feed-forward layers to highlight the global context information. Twitter uses the parallel MaskNet variant (~48M parameters) where multiple MaskBlocks on feature embeddings are applied in parallel (similar to MMoE design).</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="/img/posts/2023/the-twitter-ml-algo/masknet.png"
-        srcset="/img/posts/2023/the-twitter-ml-algo/masknet.png, /img/posts/2023/the-twitter-ml-algo/masknet.png 1.5x, /img/posts/2023/the-twitter-ml-algo/masknet.png 2x"
-        
-        alt="MaskNet"
-        title="MaskNet" ><figcaption class="image-caption">Instance-guided Mask(left). Parallel variant of MaskNet (right). Souce: [^7]</figcaption>
-    </figure></p>
-<p>Twitter has released its source code for MaskNet implementation <a href="https://github.com/twitter/the-algorithm-ml/tree/main/projects/home/recap" target="_blank" rel="noopener noreferrer">here</a>, along with <a href="https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/config/local_prod.yaml" target="_blank" rel="noopener noreferrer">model hyperparameters</a>, and the details of aggregate, non-aggregate, and embedding <a href="https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/FEATURES.md" target="_blank" rel="noopener noreferrer">input features</a> used by the model.</p>
-<p>MaskNet outputs 10 different probabilities, and the final score calculation is calculated by weighing the output probabilities as shown below. These weights are <a href="https://github.com/twitter/the-algorithm-ml/blob/78c3235eee5b4e111ccacb7d48e80eca019e480c/projects/home/recap/config/local_prod.yaml#L1" target="_blank" rel="noopener noreferrer">hard coded</a> and were likely fixed after a lot of A/B testing.</p>
-<p>$$ Combined Score = P(favorite) \times 0.5 + max(P(good click and reply or like), P(good click and stay for at least 2 minutes)) \times 11 + P(negative reaction) \times -74 + P(author profile clicked and profile engaged) \times 12 + P(reply) \times 27 + P(reply and author engaged) \times 75 + P(report) \times -369 + P(retweet) * 1 + P(watch half the video) \times 0.005 $$</p>
-<h3 id="heuristics--filtering" class="headerLink">
-    <a href="#heuristics--filtering" class="header-mark"></a>Heuristics &amp; Filtering</h3><p>Twitter applies a lot of heuristics and filters on the ranked list of tweets to create a balanced and diverse For You feed. The following list contains some prominent examples.</p>
+            </div><div class="content" id="content"><p>Multi-task Learning (MTL) has been widely adopted in domains like Computer Vision, Natural Language Processing, etc. There has also been a significant interest in the recommender systems community to utilize the multi-task learning paradigm. MTL-based approaches model multiple aspects of user behavior to deliver more personalized and relevant recommendations. This article introduces the MTL paradigm in the context of recommender systems and provides a comprehensive review of the existing strategies to build more effective MTL-based recommender systems.</p>
+<h2 id="introduction" class="headerLink">
+    <a href="#introduction" class="header-mark"></a>Introduction</h2><p>Traditional recommender systems model a single task, such as predicting ratings, clicks, etc. These systems do not utilize the shared knowledge contained in related tasks and do not perform well when the training data for their target task is sparse. With Multi-task Learning (MTL) recommendation models can learn multiple related tasks in a unified model to effectively utilize their shared knowledge and achieve mutual improvement.</p>
+<h3 id="why-should-you-apply-multi-task-paradigm-to-recommenders" class="headerLink">
+    <a href="#why-should-you-apply-multi-task-paradigm-to-recommenders" class="header-mark"></a>Why Should You Apply Multi-task Paradigm to Recommenders?</h3><p>In real-world applications, users exhibit multiple and diverse types of behaviors towards behavior objects (or &ldquo;items&rdquo;). For example, on a video-sharing platform like YouTube, a user may engage with a video in different ways, such as clicking, viewing, liking, sharing, commenting, etc. The user may have different levels of propensity towards each of these actions for the given video. A recommender system that only models users&rsquo; click behavior may fail to capture true preferences. By adding additional tasks, such as likes, shares, and dwell time, the model can potentially predict user&rsquo;s short-term intent and long-term interests and content&rsquo;s engagement trajectory more accurately.</p>
+<p>Using MTL techniques in the recommendation domain can lead to the following improvements<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <ul>
-<li>The <a href="https://github.com/twitter/the-algorithm/tree/main/visibilitylib" target="_blank" rel="noopener noreferrer">Visibility Filtering module</a> removes <a href="https://github.com/twitter/the-algorithm/blob/main/visibilitylib/src/main/scala/com/twitter/visibility/rules/VisibilityPolicy.scala" target="_blank" rel="noopener noreferrer">various spam</a> along with the tweet from accounts you have blocked or muted.</li>
-<li>Remove out-of-network competitor URL tweets. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/functional_component/filter/OutOfNetworkCompetitorURLFilter.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
-<li>Infuse diversity by applying a penalty to too many consecutive tweets from the same author. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/product/scored_tweets/scorer/DiversityDiscountProvider.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
-<li>Lower the relevance score for tweets with the author or engaged audience for whom the user had given negative feedback in the past. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/functional_component/scorer/FeedbackFatigueScorer.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
-<li>Remove out-of-network tweets that do not have a second-degree connection. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/functional_component/scorer/OONTweetScalingScorer.scala" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
-<li>Boost Twitter Blue Verified authors by a factor of 4.0 for in-network tweets and 2.0 for out-of-network tweets. (<a href="https://github.com/twitter/the-algorithm/blob/main/home-mixer/server/src/main/scala/com/twitter/home_mixer/param/HomeGlobalParams.scala#L89" target="_blank" rel="noopener noreferrer">code reference</a>)</li>
+<li><strong>Improve Performance</strong>: Modeling multiple related factors, for example, click-through rates, completion rates, shares, favorites, etc. gives a multi-faceted perspective of user interest. In an ideal setup, the tasks are also supposed to be mutually beneficial leading to enhanced recommendation performance.</li>
+<li><strong>Promote Generalization</strong>: MTL strategies, like learning auxiliary tasks, can bring a regularization effect. This can help reduce overfitting and hence develop a model that is robust and generalizable in a variety of scenarios.</li>
+<li><strong>Mitigate Bias</strong>: When learning multiple tasks together, the task with more training data can be instructive for the task with less data. In such cases, the data distribution gap between training and inference space can be reduced, which effectively reduces issues like sample selection bias.</li>
+<li><strong>Handle Data Sparsity</strong>: Jointly training the recommender model with a main task and a few auxiliary tasks can also allow the model to capture more informative features and tackle the sparsity of user behavior data for the main task.</li>
+<li><strong>Alleviate Cold Start</strong>: By leveraging data from related tasks or domains MTL techniques can alleviate the cold start problem. For example, if a new user does not have any purchase data in the main task, auxiliary tasks like click history, shares, or comments can help in understanding the user preferences.</li>
+<li><strong>Cost-effectiveness</strong>: The MTL framework enables parameter sharing and unifying the data pipelines for the different tasks. Therefore, the maintenance cost and computing resources can be greatly reduced.</li>
+<li><strong>Interpretability</strong>: Several researchers have also proposed to utilize the task proportions through learned weights of the different tasks to generate explanations for the recommendations.</li>
 </ul>
-<h3 id="mixing" class="headerLink">
-    <a href="#mixing" class="header-mark"></a>Mixing</h3><p>As the last step, the Home Mixer system blends together non-tweet content like ads, promotions, follow recommendations, etc. to the list of ranked and filtered tweets. The output of this step is the final feed that gets sent and displayed on the end-user device.</p>
+<p>Despite the above-listed advantages, MTL techniques may also face several challenges, such as complex task relationships, data sparsity, and sequential dependencies in user behavior.</p>
+<h3 id="formal-definition" class="headerLink">
+    <a href="#formal-definition" class="header-mark"></a>Formal Definition</h3><p>Assume a dataset $\mathcal{D}$ of $k$-tasks containing $N$ user-item interactions along with the corresponding feature vectors of observed impressions. The dataset can be represented as: $\mathcal{D} := { x_n, (y_{1n}, \ldots, y_{kn})}_{n=1}^N$. Here, $x_n$ is the concatenation of the $n$-th user-item ID pair and the feature vector. Each record has $y^1,\ldots,y^k$ i.e. $k$ labels corresponding to the $k$ tasks. Our goal is to learn an MTL model with task-specific parameters ${\theta^1,\ldots,\theta^k}$ and shared parameter $\theta^s$. The model outputs $k$​​ task-wise predictions with a loss function defined as the weighted sum of losses, such as Binary Cross Entropy (BCE).</p>
+<p>The optimization problem can be written as<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>:</p>
+<p>$$ \argmin\limits_{\{\theta^1, \ldots, \theta^K\}} \mathcal{L}(\theta^s, \theta^1, \ldots, \theta^K) = \argmin\limits_{\{\theta^1, \ldots, \theta^K\}} \sum_{k=1}^{K} \omega^k L^k(\theta^s, \theta^k) $$</p>
+<p>where $\mathcal{L}(\theta^s,\theta^{k})$ is the loss function for $k$-th task with parameters $\theta^{s}, \theta^{k},$ and the $\omega^{k}$ loss weight for the $k$-th task. The objective function can be a linear scalarization of the $k$ losses, or the corresponding loss weights can be updatable and learned. The tasks are usually formulated as score predictions, hence the loss function $L^k(\theta^s, \theta^k)$ for the $k$-th task is generally the BCE loss.</p>
+<h2 id="discovering-task-relations" class="headerLink">
+    <a href="#discovering-task-relations" class="header-mark"></a>Discovering Task Relations</h2><p>As we are learning simultaneously from multiple tasks in one network, a strong correlation between multiple tasks will lead to better performance. However, if the tasks are weakly correlated or even irrelevant, it may lead to performance degradation (also called the &lsquo;seesaw phenomenon&rsquo;). A lot of earlier MTL research assumed the knowledge about the tasks being related. In the absence of such prior knowledge, several research works have proposed automatic task relationship discovery. Hence one way to categorize the existing research in MTL-based recommender systems is to consider how the task relations are modeled.</p>
+<ul>
+<li>
+<p><strong>Parallel Task Relations</strong>: One MTL strategy is to independently model various tasks without considering the sequential dependency of their results. Such a model usually defines its objective function as the weighted sum of losses with constant loss weights. Some of the research work also uses attention mechanisms to extract general features that will be shared among the tasks. Representative research for this category includes Rank and Rate (RnR)<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, Multi-Task Explainable Recommendation (MTER), Co-Attentive Multi-Task Learning (CAML), Deep Item Network for Online Promotions (DINOP), Deep User Perception Network (DUPN), Multiple Relational Attention Network (MRAN)<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, Multiple-level Sparse Sharing Mode (MSSM).</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/multi-task-learning-recsys/parallel_task_relations.png" title="Parallel Task Relations: Example Architectures" data-thumbnail="/img/posts/2024/multi-task-learning-recsys/parallel_task_relations.png" data-sub-html="<h2>Parallel Task Relations: Example Architectures</h2><p>Parallel Task Relations: Example Architectures</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-learning-recsys/parallel_task_relations.png"
+            srcset="/img/posts/2024/multi-task-learning-recsys/parallel_task_relations.png, /img/posts/2024/multi-task-learning-recsys/parallel_task_relations.png 1.5x, /img/posts/2024/multi-task-learning-recsys/parallel_task_relations.png 2x"
+            
+            alt="Parallel Task Relations: Example Architectures">
+    </a><figcaption class="image-caption">Parallel Task Relations: Example Architectures</figcaption>
+    </figure></p>
+</li>
+<li>
+<p><strong>Cascaded Task Relations</strong>: Several MTL techniques model the sequential dependency between the tasks such that the computation of the current task depends on the previous one. These models have been adopted in e-commerce, advertising, and financial service domains, and they usually assume sequential patterns based on a behavior pattern, such as &ldquo;impression $\rightarrow$ click $\rightarrow$​ conversion&rdquo;. Adaptive Pattern Extraction Multi-task (APEM)<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, Adaptive Information Transfer Multi-task (AITM), and Entire Space Multi-task Model (ESMM) are some of the representative examples in this category.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/multi-task-learning-recsys/cascaded_task_relations.png" title="Cascaded Task Relations: An example of a sequential dependency" data-thumbnail="/img/posts/2024/multi-task-learning-recsys/cascaded_task_relations.png" data-sub-html="<h2>Cascaded Task Relations: An example of a sequential dependency in financial domain</h2><p>Cascaded Task Relations: An example of a sequential dependency</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-learning-recsys/cascaded_task_relations.png"
+            srcset="/img/posts/2024/multi-task-learning-recsys/cascaded_task_relations.png, /img/posts/2024/multi-task-learning-recsys/cascaded_task_relations.png 1.5x, /img/posts/2024/multi-task-learning-recsys/cascaded_task_relations.png 2x"
+            
+            alt="Cascaded Task Relations: An example of a sequential dependency">
+    </a><figcaption class="image-caption">Cascaded Task Relations: An example of a sequential dependency in financial domain</figcaption>
+    </figure></p>
+</li>
+<li>
+<p><strong>Auxiliary Task Learning</strong>: In this MTL technique, one task is defined as the main task, while other associated auxiliary tasks help to improve its performance. During joint optimization of several tasks, it can be difficult to achieve a win-win situation for all tasks. Hence, several MTL techniques aim to enhance the performance of the main task, while sacrificing the performance of auxiliary tasks. Using the entire space with auxiliary tasks enables richer context when estimating the probability of the main task. Research work in this category includes Multi-gate Mixture-of-Experts (MMoE), Progressive Layered Extraction (PLE), Multi-task Inverse Propensity Weighting estimator (Multi-IPW), Multi-task Doubly Robust estimator (Multi-DR), Distillation based Multi-task Learning (DMTL), Multi-task framework for Recommendation over HIN (MTRec), Cross-Task Knowledge Distillation (Cross-Distill), and Contrastive Sharing Recommendation model in MTL learning (CSRec).</p>
+</li>
+</ul>
+<h2 id="model-architectures" class="headerLink">
+    <a href="#model-architectures" class="header-mark"></a>Model Architectures</h2><p>Another way to categorize MTL techniques is to look at the network architectures and learning strategies that have been developed over the years. Next, we will review three categories of MTL research. Note that this is not a strict classification, so some models can be classified into more than one category.</p>
+<h3 id="parameter-sharing" class="headerLink">
+    <a href="#parameter-sharing" class="header-mark"></a>Parameter Sharing</h3><p>A common MTL strategy is to share parameters in the bottom or tower layers. We classify the parameter-sharing paradigm as shown below.</p>
+<p>​	<figure><a class="lightgallery" href="/img/posts/2024/multi-task-learning-recsys/parameter_sharing_1.png" title="Parameter Sharing Paradigms" data-thumbnail="/img/posts/2024/multi-task-learning-recsys/parameter_sharing_1.png" data-sub-html="<h2>Parameter Sharing Paradigms. Blue represents shared parameters, pink and green represent task-specific parameters.</h2><p>Parameter Sharing Paradigms</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-learning-recsys/parameter_sharing_1.png"
+            srcset="/img/posts/2024/multi-task-learning-recsys/parameter_sharing_1.png, /img/posts/2024/multi-task-learning-recsys/parameter_sharing_1.png 1.5x, /img/posts/2024/multi-task-learning-recsys/parameter_sharing_1.png 2x"
+            
+            alt="Parameter Sharing Paradigms">
+    </a><figcaption class="image-caption">Parameter Sharing Paradigms. Blue represents shared parameters, pink and green represent task-specific parameters.</figcaption>
+    </figure></p>
+<ul>
+<li>
+<p><strong>Hard Sharing</strong>: Hard parameter sharing refers to the shared bottom layers that extract the same information for different tasks. Task-specific layers are then used to extract different features for each task. These models are computationally efficient, can alleviate over-fitting, and tend to perform well when the tasks have strong dependencies. However, the limited sharing degrades performance when tasks are noisy or weakly related. Meta AI&rsquo;s MetaBalance, Tencent&rsquo;s Multi-Faceted Hierarchical MTL model (MFH), and Task-wise Adaptive Learning (AdaTask) belong to this category.</p>
+</li>
+<li>
+<p><strong>Sparse Sharing</strong>: Sparse parameter sharing is a special case of hard parameter sharing that handles computational and memory inefficiencies, and also flexibly handles the weakly related tasks. This technique connects sub-networks from the shared parameter space using independent parameter masks. With the help of network pruning techniques, each task can then extract the related knowledge for its own subnetwork and avoid the issue of having an excessive number of parameters. Ant Group&rsquo;s Multiple-level Sparse Sharing Model (MSSM) is one example of this sparse sharing technique.</p>
+</li>
+<li>
+<p><strong>Contrastive Sharing</strong>: Sparse parameter sharing methods may still run into negative transfer issues where parameter sharing introduces noise leading to degraded performance for some tasks. A contrastive parameter sharing method, like the Contrastive Sharing Recommendation model (CSRec), has been proposed to address this by only updating the parameters that have more impact on specific tasks. Similar to sparse methods, it learns each task from the subnet using the independent parameter mask, but the contrastive mask is carefully designed to evaluate the contribution of the parameter to a specific task<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/multi-task-learning-recsys/parameter_sharing_2.png" title="Parameter Sharing Paradigms" data-thumbnail="/img/posts/2024/multi-task-learning-recsys/parameter_sharing_2.png" data-sub-html="<h2>Parameter Sharing Paradigms. Blue represents shared parameters, pink and green represent task-specific parameters.</h2><p>Parameter Sharing Paradigms</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-learning-recsys/parameter_sharing_2.png"
+            srcset="/img/posts/2024/multi-task-learning-recsys/parameter_sharing_2.png, /img/posts/2024/multi-task-learning-recsys/parameter_sharing_2.png 1.5x, /img/posts/2024/multi-task-learning-recsys/parameter_sharing_2.png 2x"
+            
+            alt="Parameter Sharing Paradigms">
+    </a><figcaption class="image-caption">Parameter Sharing Paradigms. Blue represents shared parameters, pink and green represent task-specific parameters.</figcaption>
+    </figure></p>
+</li>
+<li>
+<p><strong>Soft Sharing</strong>: Soft parameter sharing methods model different tasks separately and share information between tasks through fusion using relevant weights or attention mechanisms. Compared with the hard sharing strategy, this model architecture offers higher flexibility in parameter sharing but also incurs higher computational costs. Examples of such architecture include Deep Item Network for Online Promotions (DINOP), Gating-enhanced Multi-task Neural Networks (GemNN), Co-Attentive Multi-Task Learning (CAML), Causal Feature Selection Mechanism for Multi-t ask Learning (CFS-MTL), and Multi-objective Risk-aware Route Recommendation (MARRS).</p>
+</li>
+<li>
+<p><strong>Expert Sharing</strong>: Expert parameter sharing architecture is a special case of soft sharing that fuses expert knowledge through task-specific weights. It utilizes several expert networks to extract knowledge from the shared bottom layer. Then the knowledge is fed into task-specific modules like gates to learn useful information. Finally, the assembled information is passed into task-specific towers. Multi-gate Mixture-of-Experts (MMoE), and Progressive Layered Extraction (PLE) are some of the popular methods with this architecture. Other examples include Distillation based Multi-task Learning (DMTL), Meta Hybrid Experts and Critics (MetaHeac), Prototype Feature Extraction (PFE),  Mixture of Virtual-Kernel Experts (MVKE), Mixture of Sequential Experts (MoSE), Deep Multifaceted Transformers (DMT), and Elaborated Entire Space Supervised Multi-task Model (ESM$^2$).</p>
+</li>
+<li>
+<p><strong>Hierarchical Sharing</strong>: To deal with heterogeneous tasks, hierarchical parameter sharing architectures share parts of the network among tasks by putting different tasks in different layers. Designing an effective hierarchical sharing architecture can be time-consuming. Some of the representative research work in this category include the Multi-Faceted Hierarchical MTL model (MFH), and Hierarchical Multi-Task Graph Recurrent Network (HMT-GRN).</p>
+</li>
+</ul>
+<h3 id="other-architectures" class="headerLink">
+    <a href="#other-architectures" class="header-mark"></a>Other Architectures</h3><p>The majority of MTL-based recommender systems follow the parameter-sharing architecture described above. However, there are also a few alternate architectures, such as adversarial learning. Models like CnGAN and CLOVER introduce Generative Adversarial Network (GAN) based recommender models that utilize MTL techniques. There are also a few Reinforcement Learning (RL) based MTL models, such as the Batch Reinforcement Learning based Multi-Task Fusion framework (BatchRL-MTF), that have been proposed to build recommender systems.</p>
+<h2 id="negative-transfer" class="headerLink">
+    <a href="#negative-transfer" class="header-mark"></a>Negative Transfer</h2><p>During joint optimization, transferring unrelated information among tasks can also result in performance degradation and a seesaw phenomenon. In such cases, the performance of a task or a subset of tasks gets improved at the cost of others&rsquo; results. A common materialization of negative transfer can be observed through Gradient Conflicts. Gradient conflict refers to a scenario where the gradient directions of different tasks form an angle greater than 90 degrees. Several gradient correction approaches, like Projecting Conflicting Gradients (PCGrad), and Conflict-Averse Gradient Descent (CAGrad) have been proposed to alleviate this problem. Models like Progressive Layered Extraction (PLE), and Contrastive Sharing Recommendation model in MTL learning (CSRec) also propose custom solutions. Gradient magnitudes of the different tasks may also vary significantly, which can lead to performance degradation. Methods like Gradient Normalization (GradNorm) and MetaBalance help in controlling the gradient magnitudes. Task-wise Adaptive Learning (AdaTask) model also proposed adaptive learning solutions.</p>
+<p>Similar to negative transfer, another multi-objective problem is the tuning of loss weights. A common MTL strategy is to combine the loss values from multiple tasks by taking a weighted sum of the losses. The importance of a specific task, among all other tasks, can be tuned by changing the loss weight corresponding to the task. Designing an automated task-balancing mechanism to weigh task losses can be challenging.</p>
+<h2 id="future-research-directions" class="headerLink">
+    <a href="#future-research-directions" class="header-mark"></a>Future Research Directions</h2><p>In this section, we take a look at some of the newer research directions that are being explored for MTL-based recommender systems.</p>
+<ul>
+<li><strong>Multi-task Fusion</strong>: Several researchers have proposed sophisticated methods to optimally combine the outputs of different tasks. Methods like Genetic Algorithms, Bayesian Optimization, and Reinforcement Learning have been investigated for multi-task fusion.</li>
+<li><strong>Explainability</strong>: There have been several efforts to generate explanations to interpret the recommendations. Usually, the goal here is to improve transparency and user statisfaction. Explanation generation can be one of the multiple tasks learned alongside recommendation tasks. Alternatively, a knowledge graph can be employed to assist generative explanations.</li>
+<li><strong>AutoML</strong>: Designing and tuning an MTL-based system can be exhausting. Several automated machine learning approaches, like Neural Architecture Search (NAS), have tried to automatically find flexible parameter-sharing architectures.</li>
+</ul>
+<p>Other research directions include ensuring fairness, and scalability, and utilizing large pre-trained models.</p>
 <h2 id="summary" class="headerLink">
-    <a href="#summary" class="header-mark"></a>Summary</h2><p>Twitter has open-sourced a majority of its recommendation algorithm. It offers an exciting opportunity for researchers, industry practitioners, and RecSys enthusiasts to take a close look at how Twitter computes the recommended feed for the For You page. This article described Twitter&rsquo;s end-to-end recommender system along with relevant literature and code references.</p>
+    <a href="#summary" class="header-mark"></a>Summary</h2><p>Multi-task learning (MTL) has garnered significant interest in the recommender systems community. This article provided an overview and classification of the existing research works that build MTL-based recommenders. In a future article, we will go more in-depth and learn from MTL-based industrial-scale recommender system implementations that target specific applications.</p>
 <h2 id="references" class="headerLink">
     <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>Processing billions of events in real time at Twitter. Lu Zhang, Chukwudiuto Malife, 22 October 2021. <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Zhang, M., Yin, R., Yang, Z., Wang, Y., &amp; Li, K. (2023). Advances and Challenges of Multi-task Learning Method in Recommender System: A Survey. <em>ArXiv</em>. /abs/2305.13843&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>Kamath, K.Y., Sharma, A., Wang, D., &amp; Yin, Z. (2014). RealGraph: User Interaction Prediction at Twitter.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Wang, Y., Lam, H. T., Wong, Y., Liu, Z., Zhao, X., Wang, Y., Chen, B., Guo, H., &amp; Tang, R. (2023). Multi-Task Deep Recommender Systems: A Survey. <em>ArXiv</em>. /abs/2302.03525&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Sharma, A., Jiang, J., Bommannavar, P., Larson, B., &amp; Lin, J.J. (2016). GraphJet: Real-Time Content Recommendations at Twitter. <em>Proc. VLDB Endow., 9</em>, 1281-1292.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Hadash, G., Shalom, O. S., &amp; Osadchy, R. (2018). Rank and Rate: Multi-task Learning for Recommender Systems. <em>ArXiv</em>. <a href="https://doi.org/10.1145/3240323.3240406" target="_blank" rel="noopener noreferrer">https://doi.org/10.1145/3240323.3240406</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Satuluri, V., Wu, Y., Zheng, X., Qian, Y., Wichers, B., Dai, Q., Tang, G.M., Jiang, J., &amp; Lin, J.J. (2020). SimClusters: Community-Based Representations for Heterogeneous Recommendations at Twitter. <em>Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Zhao, J., Du, B., Sun, L., Zhuang, F., Lv, W., &amp; Xiong, H. (2019). Multiple Relational Attention Network for Multi-task Learning. <em>Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>El-Kishky, A., Markovich, T., Park, S., Verma, C.K., Kim, B., Eskander, R., Malkov, Y., Portman, F., Samaniego, S., Xiao, Y., &amp; Haghighi, A. (2022). TwHIN: Embedding the Twitter Heterogeneous Information Network for Personalized Recommendation. <em>Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</em>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Tao, X., Ha, M., Guo, X., Ma, Q., Cheng, H., &amp; Lin, W. (2023). Adaptive Pattern Extraction Multi-Task Learning for Multi-Step Conversion Estimations. <em>ArXiv</em>. /abs/2301.02494&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>Busch, M., Gade, K., Larson, B., Lok, P., Luckenbill, S.B., &amp; Lin, J.J. (2012). Earlybird: Real-Time Search at Twitter. <em>2012 IEEE 28th International Conference on Data Engineering</em>, 1360-1369.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:7">
-<p>Wang, Z., She, Q., &amp; Zhang, J. (2021). MaskNet: Introducing Feature-Wise Multiplication to CTR Ranking Models by Instance-Guided Mask. <em>ArXiv, abs/2102.07619</em>.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Bai, T., Xiao, Y., Wu, B., Yang, G., Yu, H., &amp; Nie, J. (2022). A Contrastive Sharing Model for Multi-Task Recommendation. <em>Proceedings of the ACM Web Conference 2022</em>.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
@@ -352,20 +329,6 @@
 
 <h2>Related Content</h2>
 <div class="related-container">
-    <div class="related-item-container">
-            <div class="related-image">
-                <a href="/posts/2024/01/multi-task-learning-recsys/"><img
-        
-        loading="lazy"
-        src="/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp"
-        srcset="/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp, /posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp 1.5x, /posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp 2x"
-        
-        alt="/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp"
-        title="/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
-            </div><h2 class="related-title">
-                <a href="/posts/2024/01/multi-task-learning-recsys/">An Introduction to Multi-Task Learning based Recommender Systems</a>
-            </h2>
-        </div>
     <div class="related-item-container">
             <div class="related-image">
                 <a href="/posts/2024/01/user-behavior-modeling-recsys/"><img
@@ -422,6 +385,20 @@
                 <a href="/posts/2023/09/generative-retrieval/">Generative Retrieval for End-to-End Search Systems</a>
             </h2>
         </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/06/llms-for-recsys-entity-representation/"><img
+        
+        loading="lazy"
+        src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
+        srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
+        
+        alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
+        title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200"   width="400" ></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/06/llms-for-recsys-entity-representation/">Representing Users and Items in Large Language Models based Recommender Systems</a>
+            </h2>
+        </div>
     
 
 </div>
@@ -435,25 +412,24 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-04-04</span>
+                <span>Updated on 2024-01-26</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
-            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-via="_reachsumit" data-hashtags="literature review,recsys,ranking"><span class="fab fa-twitter fa-fw"></span></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-hashtag="literature review"><span class="fab fa-facebook-square fa-fw"></span></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"><span class="fab fa-linkedin fa-fw"></span></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-web><span class="fab fa-whatsapp fa-fw"></span></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm"><span class="fab fa-hacker-news fa-fw"></span></button><button title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"><span class="fab fa-reddit fa-fw"></span></button><button title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm"><span data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></span></button><button title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"><span class="fab fa-get-pocket fa-fw"></span></button><button title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-image="featured-image.webp"><span class="fab fa-weibo fa-fw"></span></button><button title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm"><span class="fab fa-evernote fa-fw"></span></button><button title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" data-title="Twitter&#39;s For You Recommendation Algorithm" data-description=""><span class="fab fa-trello fa-fw"></span></button></div>
+            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/" data-title="An Introduction to Multi-Task Learning based Recommender Systems" data-via="_reachsumit" data-hashtags="literature review,recsys,multi-task learning"><span class="fab fa-twitter fa-fw"></span></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/" data-hashtag="literature review"><span class="fab fa-facebook-square fa-fw"></span></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/"><span class="fab fa-linkedin fa-fw"></span></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/" data-title="An Introduction to Multi-Task Learning based Recommender Systems" data-web><span class="fab fa-whatsapp fa-fw"></span></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/" data-title="An Introduction to Multi-Task Learning based Recommender Systems"><span class="fab fa-hacker-news fa-fw"></span></button><button title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/"><span class="fab fa-reddit fa-fw"></span></button><button title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/" data-title="An Introduction to Multi-Task Learning based Recommender Systems"><span data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></span></button><button title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/"><span class="fab fa-get-pocket fa-fw"></span></button><button title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/" data-title="An Introduction to Multi-Task Learning based Recommender Systems" data-image="featured-image.webp"><span class="fab fa-weibo fa-fw"></span></button><button title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/" data-title="An Introduction to Multi-Task Learning based Recommender Systems"><span class="fab fa-evernote fa-fw"></span></button><button title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/" data-title="An Introduction to Multi-Task Learning based Recommender Systems" data-description=""><span class="fab fa-trello fa-fw"></span></button></div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/ranking/">ranking</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/multi-task-learning/">multi-task learning</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/2023/03/contrastive-video-representations/" class="prev" rel="prev" title="Self-Supervised Contrastive Approaches for Video Representation Learning"><i class="fas fa-angle-left fa-fw"></i>Self-Supervised Contrastive Approaches for Video Representation Learning</a>
-            <a href="/posts/2023/04/llm-for-recsys/" class="next" rel="next" title="Zero and Few Shot Recommender Systems based on Large Language Models">Zero and Few Shot Recommender Systems based on Large Language Models<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/2024/01/user-behavior-modeling-recsys/" class="prev" rel="prev" title="A Guide to User Behavior Modeling"><i class="fas fa-angle-left fa-fw"></i>A Guide to User Behavior Modeling</a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
@@ -470,11 +446,8 @@
         </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true, theme: (window.theme === 'dark' ? 'dark' : 'default') });
-</script><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-04-04T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Twitter's For You Recommendation Algorithm"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript">
+    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2024-01-26T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"An Introduction to Multi-Task Learning based Recommender Systems"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3" async></script></div>

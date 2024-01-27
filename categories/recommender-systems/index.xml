@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/categories/recommender-systems/</link>
         <description>Recommender systems - Category - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/recommender-systems/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 26 Jan 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/recommender-systems/" rel="self" type="application/rss+xml" /><item>
+    <title>An Introduction to Multi-Task Learning based Recommender Systems</title>
+    <link>https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/</link>
+    <pubDate>Fri, 26 Jan 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This article provides an introduction and literature review for multi-task learning based recommender systems. We learn how to discover task relations, design MTL architectures and overcome some of the associated challenges.]]></description>
+</item><item>
     <title>A Guide to User Behavior Modeling</title>
     <link>https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/</link>
     <pubDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</pubDate><author>
@@ -87,14 +96,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/03/reranking-on-edge/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems.]]></description>
-</item><item>
-    <title>Collaborative Filtering based Recommender Systems for Implicit Feedback Data</title>
-    <link>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</link>
-    <pubDate>Sun, 25 Sep 2022 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2022/09/explicit-implicit-cf/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2022/09/explicit-implicit-cf/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>This article explains what explicit and implicit feedback data means for recommender systems. We discuss their characteristics and peculiarities concerning collaborative filtering based algorithms. Then we go over one of the most popular collaborative filtering algorithms for implicit data and implement it in Python with an example dataset.]]></description>
 </item></channel>
 </rss>

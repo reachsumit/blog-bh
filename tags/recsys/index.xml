@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/tags/recsys/</link>
         <description>recsys - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/recsys/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 26 Jan 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/recsys/" rel="self" type="application/rss+xml" /><item>
+    <title>An Introduction to Multi-Task Learning based Recommender Systems</title>
+    <link>https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/</link>
+    <pubDate>Fri, 26 Jan 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This article provides an introduction and literature review for multi-task learning based recommender systems. We learn how to discover task relations, design MTL architectures and overcome some of the associated challenges.]]></description>
+</item><item>
     <title>A Guide to User Behavior Modeling</title>
     <link>https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/</link>
     <pubDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</pubDate><author>
@@ -87,14 +96,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/03/reranking-on-edge/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>A traditional cloud-to-edge recommender system can&rsquo;t respond to user engagement and interests in real time. This article introduces on-device inference and on-device learning paradigms that can capture rich user behavior and respond to users&rsquo; changing interests in real time. The article also goes through system design choices and implementation details of different industrial applications that have served recommendations to billions of users, such as Kuaishou&rsquo;s Short Video Recommendation on Mobile Devices, and Taobao&rsquo;s (Alibaba) on-device recommender systems.]]></description>
-</item><item>
-    <title>Two Tower Model Architecture: Current State and Promising Extensions</title>
-    <link>https://blog.reachsumit.com/posts/2023/03/two-tower-model/</link>
-    <pubDate>Sat, 04 Mar 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/03/two-tower-model/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/03/two-tower-model/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state.]]></description>
 </item></channel>
 </rss>
