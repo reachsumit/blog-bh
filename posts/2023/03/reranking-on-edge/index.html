@@ -20,7 +20,7 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
@@ -31,17 +31,16 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/reranking-on-edge\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  2779 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/reranking-on-edge\/","datePublished": "2023-03-09T00:00:00+00:00","dateModified": "2023-03-09T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  2779 ,
+        "url": "https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/","datePublished": "2023-03-09T00:00:00+00:00","dateModified": "2023-03-09T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
-            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+            "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
                 "name": "Sumit Kumar"
             },"description": ""
     }
-    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-</head>
+    </script></head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
         function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
@@ -181,7 +180,7 @@
         loading="eager"
         src="/posts/2023/03/reranking-on-edge/featured-image.webp"
         srcset="/posts/2023/03/reranking-on-edge/featured-image.webp, /posts/2023/03/reranking-on-edge/featured-image.webp 1.5x, /posts/2023/03/reranking-on-edge/featured-image.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/03/reranking-on-edge/featured-image.webp"
         title="/posts/2023/03/reranking-on-edge/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -278,7 +277,7 @@
             loading="lazy"
             src="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png"
             srcset="/img/posts/2023/reranking-on-edge/kuaishou_overall_system.png, /img/posts/2023/reranking-on-edge/kuaishou_overall_system.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_overall_system.png 2x"
-            sizes="auto"
+            
             alt="Kuaishou overall system">
     </a><figcaption class="image-caption">Kuaishou real-time short video recommender system architecture</figcaption>
     </figure></p>
@@ -291,7 +290,7 @@
             loading="lazy"
             src="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png"
             srcset="/img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png, /img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_client_side_features.png 2x"
-            sizes="auto"
+            
             alt="Kuaishou client-side features">
     </a></figure></p>
 <h5 id="when-is-the-on-device-reranking-triggered" class="headerLink">
@@ -303,7 +302,7 @@
             loading="lazy"
             src="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png"
             srcset="/img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png, /img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png 1.5x, /img/posts/2023/reranking-on-edge/kuaishou_model_architecture.png 2x"
-            sizes="auto"
+            
             alt="Kuaishou model architecture">
     </a></figure></p>
 <p>Their model also considers interaction among candidate videos. The watch history sequence is modeled using a multi-head attention (MHA) mechanism with Q projected from candidate item features and K, V projected from watch history sequence features. Only one candidate video is considered at a time. Outputs of the two MHA modules are concatenated with target features and other features and passed to a Multi-gate Mixture of Experts (MMoE) to calculate probabilities of the user continuing to watch the next video, watching the video for longer than a threshold like 3 seconds, and liking the video. The loss function is defined as the sum of log losses of each target averaged by the number of training samples. They also proposed a novel beam search strategy to further optimize evaluating all candidates in the target list.</p>
@@ -317,7 +316,7 @@
             loading="lazy"
             src="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png"
             srcset="/img/posts/2023/reranking-on-edge/edgerec_system_overview.png, /img/posts/2023/reranking-on-edge/edgerec_system_overview.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_system_overview.png 2x"
-            sizes="auto"
+            
             alt="EdgeRec System Overview">
     </a><figcaption class="image-caption">EdgeRec system overview. The module on the left was deployed in mobile client and the one of the right was deployed on cloud.</figcaption>
     </figure></p>
@@ -329,7 +328,7 @@
             loading="lazy"
             src="/img/posts/2023/reranking-on-edge/edgerec_features.png"
             srcset="/img/posts/2023/reranking-on-edge/edgerec_features.png, /img/posts/2023/reranking-on-edge/edgerec_features.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_features.png 2x"
-            sizes="auto"
+            
             alt="EdgeRec Input Features">
     </a><figcaption class="image-caption">Features used in EdgeRec Model</figcaption>
     </figure></p>
@@ -343,7 +342,7 @@
             loading="lazy"
             src="/img/posts/2023/reranking-on-edge/edgerec_architecture.png"
             srcset="/img/posts/2023/reranking-on-edge/edgerec_architecture.png, /img/posts/2023/reranking-on-edge/edgerec_architecture.png 1.5x, /img/posts/2023/reranking-on-edge/edgerec_architecture.png 2x"
-            sizes="auto"
+            
             alt="EdgeRec Architecture">
     </a></figure></p>
 <p>As shown in the figure above, EdgeRec models &ldquo;Item Exposure Behavior Sequence&rdquo; and &ldquo;Item Page-View Behavior Sequence&rdquo; separately because the item clicks are more sparse than the item exposures. A simple GRU layer is used as the Encoder. The context-aware reranking module uses the attention technique to automatically find parts of user behavior context that are relevant to ranking the encoded candidate items. This behavior attention also employs Item Exposure (IE) and Item Page-View (IPV) contexts.</p>
@@ -362,7 +361,7 @@
             loading="lazy"
             src="/img/posts/2023/reranking-on-edge/coda.png"
             srcset="/img/posts/2023/reranking-on-edge/coda.png, /img/posts/2023/reranking-on-edge/coda.png 1.5x, /img/posts/2023/reranking-on-edge/coda.png 2x"
-            sizes="auto"
+            
             alt="CoDA workflow">
     </a></figure></p>
 <p>The cloud server uses a K nearest-neighbor (KNN) method on user feature vectors to find samples similar to the current user behavior. The server then desensitizes and anonymizes these samples before sending them to the end user&rsquo;s device. The user device uses this augmented data and the local data for training and evaluating a personalized binary classifier. This classifier is trained to identify local samples from the combined data, and the augmentation samples with high scores (i.e. false positives) are considered close enough to be used for the on-device reranking model. The remaining augmentation data is dropped. Both classification and reranking inference tasks use models based on Deep Interest Network architecture <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
@@ -415,7 +414,7 @@
         loading="lazy"
         src="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         srcset="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 1.5x, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         title="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -429,7 +428,7 @@
         loading="lazy"
         src="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         srcset="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 1.5x, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         title="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -443,7 +442,7 @@
         loading="lazy"
         src="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         srcset="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 1.5x, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         title="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -457,7 +456,7 @@
         loading="lazy"
         src="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         srcset="/posts/2023/09/generative-retrieval/featured-image-preview.webp, /posts/2023/09/generative-retrieval/featured-image-preview.webp 1.5x, /posts/2023/09/generative-retrieval/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         title="/posts/2023/09/generative-retrieval/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -471,7 +470,7 @@
         loading="lazy"
         src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">

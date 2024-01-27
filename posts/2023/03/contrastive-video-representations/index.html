@@ -20,7 +20,7 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/pairing-for-representation/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/pairing-for-representation/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
@@ -31,17 +31,16 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/contrastive-video-representations\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, embeddings","wordcount":  2040 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/contrastive-video-representations\/","datePublished": "2023-03-27T00:00:00+00:00","dateModified": "2023-03-27T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, embeddings","wordcount":  2040 ,
+        "url": "https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/","datePublished": "2023-03-27T00:00:00+00:00","dateModified": "2023-03-27T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
-            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+            "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
                 "name": "Sumit Kumar"
             },"description": ""
     }
-    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-</head>
+    </script></head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
         function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
@@ -152,7 +151,7 @@
         loading="eager"
         src="/posts/2023/03/contrastive-video-representations/featured-image.webp"
         srcset="/posts/2023/03/contrastive-video-representations/featured-image.webp, /posts/2023/03/contrastive-video-representations/featured-image.webp 1.5x, /posts/2023/03/contrastive-video-representations/featured-image.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/03/contrastive-video-representations/featured-image.webp"
         title="/posts/2023/03/contrastive-video-representations/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -189,40 +188,37 @@
     <a href="#googles-contrastive-video-representation-learning-cvrl" class="header-mark"></a>Google&rsquo;s Contrastive Video Representation Learning (CVRL)</h3><p>In the CVRL paper<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, researchers at Google built a framework to promote spatial self-supervision signals in videos. They noted that since both spatial and temporal information is crucial for learning video representation, only applying spatial augmentation independent of video frames breaks the natural motion along the time dimension.</p>
 <p>Instead, they recommended a temporally consistent spatial augmentation method by fixing the randomness across frames. They hypothesized that a pair of positive clips (taken from the same video) that are temporally distant, may contain very different visual content, leading to a low similarity that will be indistinguishable from negative pairs. At the same time, disregarding timewise distant clips reduces the temporal augmentation effect.</p>
 <p>So their recommended sampling method ensured that the time difference between two positive clips, sampled from the same input video, follows a monotonically decreasing distribution. Effectively, temporally close clips are a much stronger basis for learning as compared to distant clips. It also ensures that the model doesn&rsquo;t learn temporally invariant features, which is the problem with previous temporal augmentation techniques like sorting video frames or clips, altering playback rates, etc.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/contrastive-video-representations/cvrl.png" title="Google&amp;rsquo;s CVRL framework" data-thumbnail="/img/posts/2023/contrastive-video-representations/cvrl.png" data-sub-html="<h2>Google&#39;s CVRL Framework</h2><p>Google&amp;rsquo;s CVRL framework</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/contrastive-video-representations/cvrl.png"
-            srcset="/img/posts/2023/contrastive-video-representations/cvrl.png, /img/posts/2023/contrastive-video-representations/cvrl.png 1.5x, /img/posts/2023/contrastive-video-representations/cvrl.png 2x"
-            sizes="auto"
-            alt="Google&amp;rsquo;s CVRL framework">
-    </a><figcaption class="image-caption">Google's CVRL Framework</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/contrastive-video-representations/cvrl.png"
+        srcset="/img/posts/2023/contrastive-video-representations/cvrl.png, /img/posts/2023/contrastive-video-representations/cvrl.png 1.5x, /img/posts/2023/contrastive-video-representations/cvrl.png 2x"
+        
+        alt="Google&amp;rsquo;s CVRL framework"
+        title="Google&amp;rsquo;s CVRL framework" ><figcaption class="image-caption">Google's CVRL Framework</figcaption>
     </figure></p>
 <p>These sampled clips are then spatially augmented. Previous spatial augmentation techniques like random cropping, color jittering, and blurring break the motion cues across frames that negatively affect the representation learning along the temporal dimension. To address this, the authors designed the following algorithm that makes the spatial augmentation consistent along the temporal dimension.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png" title="CVRL - Spatial Augmentation Algorithm" data-thumbnail="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png" data-sub-html="<h2>CVRL&#39;s Spatial Augmentation Algorithm</h2><p>CVRL - Spatial Augmentation Algorithm</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png"
-            srcset="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png, /img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png 1.5x, /img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png 2x"
-            sizes="auto"
-            alt="CVRL - Spatial Augmentation Algorithm">
-    </a><figcaption class="image-caption">CVRL's Spatial Augmentation Algorithm</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png"
+        srcset="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png, /img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png 1.5x, /img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png 2x"
+        
+        alt="CVRL - Spatial Augmentation Algorithm"
+        title="CVRL - Spatial Augmentation Algorithm" ><figcaption class="image-caption">CVRL's Spatial Augmentation Algorithm</figcaption>
     </figure></p>
 <p>Following this, a video encoder maps the input video clip to a 2048-dimensional latent representation using 3D-ResNets as backbones. This network is a minor modification (different stride and kernel size) of the &ldquo;slow&rdquo; pathway of the SlowFast network<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>. An MLP layer further reduces this representation to a 128-dimensional feature vector that is used to compute InfoNCE loss. As per the standard convention, the MLP is discarded during evaluation. Their representations outperformed all existing baselines for self-supervised learning and they also showed that the CVRL framework benefits from larger datasets and larger networks. The official TensorFlow implementation of CVRL is available <a href="https://github.com/tensorflow/models/tree/master/official/projects/video_ssl" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
 <h3 id="facebooks-rho-momentum-contrast-rho-moco" class="headerLink">
     <a href="#facebooks-rho-momentum-contrast-rho-moco" class="header-mark"></a>Facebook&rsquo;s $\rho$-Momentum Contrast ($\rho$-MoCo)</h3><p>Facebook AI Research (FAIR) proposed a simple method to learn video representations that generalized existing image-based frameworks to space-time. The authors argue that visual content is often temporally-persistent along a timespan in a given video. For example, persistency may involve a person dancing, transitioning from running to walking, etc. covering short to long spans, with different levels of visual invariance. Hence they use an encoder to produce embeddings that are persistent in space-time, over multiple ($\rho$) temporally distant clips of the same video. Their experiments showed that it is beneficial to sample positives with longer timespans between them.</p>
 <p>The authors used an encoder design that is similar to Google&rsquo;s CVRL, i.e. a 3D ResNet-50 ConvNet without temporal pooling in convolutional feature maps, followed by an MLP projection head. For their experiments, they used 2 contrastive approaches which use both positive and negative samples: SimCLR and MoCo, and 2 other methods that only use positive samples: BYOL and SwAV. The original objective of these methods was to learn invariant features for images across different views (augmentations). The authors extended this objective to the temporal domain for videos.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/contrastive-video-representations/moco_frameworks.png" title="Four Frameworks" data-thumbnail="/img/posts/2023/contrastive-video-representations/moco_frameworks.png" data-sub-html="<h2>The four conceptual frameworks</h2><p>Four Frameworks</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/contrastive-video-representations/moco_frameworks.png"
-            srcset="/img/posts/2023/contrastive-video-representations/moco_frameworks.png, /img/posts/2023/contrastive-video-representations/moco_frameworks.png 1.5x, /img/posts/2023/contrastive-video-representations/moco_frameworks.png 2x"
-            sizes="auto"
-            alt="Four Frameworks">
-    </a><figcaption class="image-caption">The four conceptual frameworks</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/contrastive-video-representations/moco_frameworks.png"
+        srcset="/img/posts/2023/contrastive-video-representations/moco_frameworks.png, /img/posts/2023/contrastive-video-representations/moco_frameworks.png 1.5x, /img/posts/2023/contrastive-video-representations/moco_frameworks.png 2x"
+        
+        alt="Four Frameworks"
+        title="Four Frameworks" ><figcaption class="image-caption">The four conceptual frameworks</figcaption>
     </figure></p>
 <p>SimCLR uses the in-batch negative embeddings of other videos, while MoCo maintains a queue that stores embeddings from previous iterations to fetch negatives. BYOL can be thought of as a form of MoCo without the negative samples but with an extra predictor MLP ($\theta_p$ in the figure), whereas SwAV can be viewed as a form of SimCLR without the negative samples that also has Sinkhorn-Knopp (SK) transformation step for the targets. Through an extensive set of experiments, the authors share the following findings:</p>
 <ul>
@@ -234,26 +230,24 @@
 </ul>
 <h3 id="amazons-inter-intra-video-contrastive-learning-iivcl" class="headerLink">
     <a href="#amazons-inter-intra-video-contrastive-learning-iivcl" class="header-mark"></a>Amazon&rsquo;s Inter-Intra Video Contrastive Learning (IIVCL)</h3><p>The authors of <strong>N</strong>earest-<strong>N</strong>eighbor <strong>C</strong>ontrastive <strong>L</strong>earning of Visual <strong>R</strong>epresentations (NNCLR)<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> proposed a nearest-neighbor-based approach to sampling the nearest neighbor as a positive sample for images. The authors of IIVCL<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> extended this idea to the video domain to provision extra positive samples in addition to the previous CVRL and $\rho$-MoCo models&rsquo; approach of fetching two positive clips from the same video. The authors argue that by only considering clips from the same video to be positive, the previous methods neglect other semantically related videos that may also be useful and relevant as positives for contrastive learning. For example: in the following samples clip A and B are from the same skiing video, hence they are positives, while video 2 and video 3 are negatives for both. But this assumption ignores the fact that video 3 (snowboarding) is more similar to video 1 (skiing) than video 2 (push-ups).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/contrastive-video-representations/iivcl_example.png" title="IIVCL Example" data-thumbnail="/img/posts/2023/contrastive-video-representations/iivcl_example.png" data-sub-html="<h2>Contrastive Learning in CVRL and ρ-MoCo neglects that video 3 is more similar to video 1 than video 2</h2><p>IIVCL Example</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/contrastive-video-representations/iivcl_example.png"
-            srcset="/img/posts/2023/contrastive-video-representations/iivcl_example.png, /img/posts/2023/contrastive-video-representations/iivcl_example.png 1.5x, /img/posts/2023/contrastive-video-representations/iivcl_example.png 2x"
-            sizes="auto"
-            alt="IIVCL Example">
-    </a><figcaption class="image-caption">Contrastive Learning in CVRL and ρ-MoCo neglects that video 3 is more similar to video 1 than video 2</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/contrastive-video-representations/iivcl_example.png"
+        srcset="/img/posts/2023/contrastive-video-representations/iivcl_example.png, /img/posts/2023/contrastive-video-representations/iivcl_example.png 1.5x, /img/posts/2023/contrastive-video-representations/iivcl_example.png 2x"
+        
+        alt="IIVCL Example"
+        title="IIVCL Example" ><figcaption class="image-caption">Contrastive Learning in CVRL and ρ-MoCo neglects that video 3 is more similar to video 1 than video 2</figcaption>
     </figure></p>
 <p>Hence there is a need to look beyond just the local intra-video similarities and consider global inter-video similarities as well. This ensures additional diversity in viewpoint and scene orientation that cannot be expressed through sampling sub-clips from the same video. And, it also makes it possible to learn from weaker yet relevant and useful positive pairs. However, only using global inter-video semantics will lead to losing granular details that are also important for video understanding. So an effective approach must use both local and global similarities. To achieve this, IIVCL creates a dynamically evolving queue from which the most similar videos (nearest neighbors) are found. Note that the intra-video clips are randomly sampled and there is no temporal ordering among them.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/contrastive-video-representations/iivcl_overall.png" title="IIVCL Overview" data-thumbnail="/img/posts/2023/contrastive-video-representations/iivcl_overall.png" data-sub-html="<h2>Current state-of-the-art (a) vs. inter-video nearest neighbor sampled from a queue(b) vs. IIVCL(c)</h2><p>IIVCL Overview</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/contrastive-video-representations/iivcl_overall.png"
-            srcset="/img/posts/2023/contrastive-video-representations/iivcl_overall.png, /img/posts/2023/contrastive-video-representations/iivcl_overall.png 1.5x, /img/posts/2023/contrastive-video-representations/iivcl_overall.png 2x"
-            sizes="auto"
-            alt="IIVCL Overview">
-    </a><figcaption class="image-caption">Current state-of-the-art (a) vs. inter-video nearest neighbor sampled from a queue(b) vs. IIVCL(c)</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/contrastive-video-representations/iivcl_overall.png"
+        srcset="/img/posts/2023/contrastive-video-representations/iivcl_overall.png, /img/posts/2023/contrastive-video-representations/iivcl_overall.png 1.5x, /img/posts/2023/contrastive-video-representations/iivcl_overall.png 2x"
+        
+        alt="IIVCL Overview"
+        title="IIVCL Overview" ><figcaption class="image-caption">Current state-of-the-art (a) vs. inter-video nearest neighbor sampled from a queue(b) vs. IIVCL(c)</figcaption>
     </figure></p>
 <p>As contrastive learning requires large batch sizes and computing video embeddings can be very expensive, the FIFO-style queue is updated with embeddings from a momentum encoder. The queue is updated at the end of each training setup (forward pass) by taking the n (batch size) embeddings from the current training step and inserting them into the end of the queue. The nearest neighbors are calculated from this queue by calculating the cosine similarities between the input video and the queue. Over the course of pretraining, the model continually evolves its notion of semantic similarity and becomes better at picking semantically similar nearest-neighbor clips. Hence, no clustering or separate training is required to get the global support set. Separate MLP projection heads are used to process the intra-video and nearest-neighbor positive pairs. Both of these pretext tasks are then combined using a multi-task loss. Similar to other methods, the trained model is evaluated using linear evaluation and fine-tuning protocols.</p>
 <h2 id="summary" class="headerLink">
@@ -302,7 +296,7 @@
         loading="lazy"
         src="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         srcset="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 1.5x, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         title="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -316,7 +310,7 @@
         loading="lazy"
         src="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         srcset="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 1.5x, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         title="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -330,7 +324,7 @@
         loading="lazy"
         src="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         srcset="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 1.5x, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         title="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -344,7 +338,7 @@
         loading="lazy"
         src="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         srcset="/posts/2023/09/generative-retrieval/featured-image-preview.webp, /posts/2023/09/generative-retrieval/featured-image-preview.webp 1.5x, /posts/2023/09/generative-retrieval/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         title="/posts/2023/09/generative-retrieval/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -358,7 +352,7 @@
         loading="lazy"
         src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">

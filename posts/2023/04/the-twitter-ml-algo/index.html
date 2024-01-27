@@ -20,7 +20,7 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
@@ -31,17 +31,16 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/the-twitter-ml-algo\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  1984 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/the-twitter-ml-algo\/","datePublished": "2023-04-04T00:00:00+00:00","dateModified": "2023-04-04T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  1984 ,
+        "url": "https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/","datePublished": "2023-04-04T00:00:00+00:00","dateModified": "2023-04-04T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
-            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+            "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
                 "name": "Sumit Kumar"
             },"description": ""
     }
-    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-</head>
+    </script></head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
         function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
@@ -173,7 +172,7 @@
         loading="eager"
         src="/posts/2023/04/the-twitter-ml-algo/featured-image.webp"
         srcset="/posts/2023/04/the-twitter-ml-algo/featured-image.webp, /posts/2023/04/the-twitter-ml-algo/featured-image.webp 1.5x, /posts/2023/04/the-twitter-ml-algo/featured-image.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/04/the-twitter-ml-algo/featured-image.webp"
         title="/posts/2023/04/the-twitter-ml-algo/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -234,58 +233,54 @@
 <p>We will look at each of these components one by one. Note that while Twitter has shared a lot of information on the code and algorithms for most of these steps, they haven&rsquo;t still shared details about components such as input data processing, model configs, serving infrastructure, source code for modules like Candidate Generation, Trust &amp; Safety, Ads, etc.</p>
 <h3 id="data-sourcing" class="headerLink">
     <a href="#data-sourcing" class="header-mark"></a>Data Sourcing</h3><p>Twitter has previously shared details about its data infrastructure in <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">another blog</a>. Twitter processes close to 500 million daily tweets, and 400 billion real-time events. The event data is sourced from various platforms, storage systems, and distributed databases. The user engagement data is collected from various real-time streams, server, and client-side logs, etc. They also utilize various proprietary tools such as <a href="https://github.com/twitter/scalding" target="_blank" rel="noopener noreferrer">Scalding</a> for batch processing, <a href="https://github.com/apache/incubator-heron" target="_blank" rel="noopener noreferrer">Heron</a> for streaming, and <a href="https://blog.twitter.com/engineering/en_us/a/2014/tsar-a-timeseries-aggregator" target="_blank" rel="noopener noreferrer">TSAR</a> (<strong>T</strong>imeSeries <strong>A</strong>ggregato<strong>R</strong>) for processing temporal signals. In their <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2021/processing-billions-of-events-in-real-time-at-twitter-" target="_blank" rel="noopener noreferrer">recent redesign</a> (see figure below) proposal<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> they built an on-premise event processor along with deduplication and BigTable storage on the Google Cloud Platform (GCP). Note that Twitter exactly specified any data schema or preprocessing applied to the data for the recommender system.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png" title="Twitter Data Pipeline" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png" data-sub-html="<h2>Twitter&#39;s redesigned data pipeline. Source: [^1]</h2><p>Twitter Data Pipeline</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png, /img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png 1.5x, /img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png 2x"
-            sizes="auto"
-            alt="Twitter Data Pipeline">
-    </a><figcaption class="image-caption">Twitter's redesigned data pipeline. Source: [^1]</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png"
+        srcset="/img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png, /img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png 1.5x, /img/posts/2023/the-twitter-ml-algo/twitter_data_pipeline_redesign.png 2x"
+        
+        alt="Twitter Data Pipeline"
+        title="Twitter Data Pipeline" ><figcaption class="image-caption">Twitter's redesigned data pipeline. Source: [^1]</figcaption>
     </figure></p>
 <h3 id="candidate-generation" class="headerLink">
     <a href="#candidate-generation" class="header-mark"></a>Candidate Generation</h3><p>The job of the candidate generation module is to select 1500 most relevant tweets from various sources. The first half of these candidates are from the people that you follow (in-network tweets), while the other half is from the people who you do not follow (out-of-network tweets).</p>
 <h4 id="in-network-tweets" class="headerLink">
     <a href="#in-network-tweets" class="header-mark"></a>In-Network Tweets</h4><p>Most of the in-network tweets are sourced from Twitter&rsquo;s RealGraph framework (originally deployed in 2012<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>). RealGraph framework uses a directed, weighted graph to model users (tweeps) as nodes. An edge from source to target node indicates that the source user follows the target user or the target user is in the source user&rsquo;s contact book, or the source user recently interacted with the target user. Each type of edge has its own set of features represented by weights, such as days since edge creation, days since last interaction, number of common friends, explicit and implicit engagement statistics, etc. Similarly, nodes have features such as the number of retweets in the last week, number of followers, demographics, PageRank on the follow graph, etc.</p>
 <p>Note that Twitter has also shared the implementation details of its PageRank algorithm called <a href="https://github.com/twitter/the-algorithm/blob/main/src/scala/com/twitter/graph/batch/job/tweepcred/README" target="_blank" rel="noopener noreferrer">TweepCred</a>. A logistic regression model is trained on all of these features to predict interaction in a future time window. Note that the graph itself is updated daily in batch mode. In their announcement, Twitter also mentioned that the logistic regression model was trained several years ago and is in the process of being redesigned.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/real_graph.png" title="Twitter&amp;rsquo;s RealGraph Framework" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/real_graph.png" data-sub-html="<h2>Twitter&#39;s RealGraph Framework. Source: [^2]</h2><p>Twitter&amp;rsquo;s RealGraph Framework</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/real_graph.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/real_graph.png, /img/posts/2023/the-twitter-ml-algo/real_graph.png 1.5x, /img/posts/2023/the-twitter-ml-algo/real_graph.png 2x"
-            sizes="auto"
-            alt="Twitter&amp;rsquo;s RealGraph Framework">
-    </a><figcaption class="image-caption">Twitter's RealGraph Framework. Source: [^2]</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/the-twitter-ml-algo/real_graph.png"
+        srcset="/img/posts/2023/the-twitter-ml-algo/real_graph.png, /img/posts/2023/the-twitter-ml-algo/real_graph.png 1.5x, /img/posts/2023/the-twitter-ml-algo/real_graph.png 2x"
+        
+        alt="Twitter&amp;rsquo;s RealGraph Framework"
+        title="Twitter&amp;rsquo;s RealGraph Framework" ><figcaption class="image-caption">Twitter's RealGraph Framework. Source: [^2]</figcaption>
     </figure></p>
 <h4 id="out-of-network-tweets" class="headerLink">
     <a href="#out-of-network-tweets" class="header-mark"></a>Out-of-Network Tweets</h4><h5 id="social-graph" class="headerLink">
     <a href="#social-graph" class="header-mark"></a>Social Graph</h5><p>For some of the out-of-network tweets, the retrieval process uses a graph processing engine called GraphJet<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. GraphJet maintains a dynamic (real-time), undirected, bipartite graph between users and tweets in memory on a single server (no partitioning!) through clever edge encoding and dynamic memory allocation schemes. The nodes in the graph represent the users and the tweets, while the edges represent the actions (favorite, tweet, retweet, reply, click, etc.) within a rolling temporal window. To ensure the efficient growth of the graph structure, GraphJet maintains a list of temporally-ordered index segments such that only the latest segment can be written into (see the figure below).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/graphjet.png" title="GraphJet Architecture" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/graphjet.png" data-sub-html="<h2>GraphJet Architecture. Source: [^3]</h2><p>GraphJet Architecture</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/graphjet.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/graphjet.png, /img/posts/2023/the-twitter-ml-algo/graphjet.png 1.5x, /img/posts/2023/the-twitter-ml-algo/graphjet.png 2x"
-            sizes="auto"
-            alt="GraphJet Architecture">
-    </a><figcaption class="image-caption">GraphJet Architecture. Source: [^3]</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/the-twitter-ml-algo/graphjet.png"
+        srcset="/img/posts/2023/the-twitter-ml-algo/graphjet.png, /img/posts/2023/the-twitter-ml-algo/graphjet.png 1.5x, /img/posts/2023/the-twitter-ml-algo/graphjet.png 2x"
+        
+        alt="GraphJet Architecture"
+        title="GraphJet Architecture" ><figcaption class="image-caption">GraphJet Architecture. Source: [^3]</figcaption>
     </figure></p>
 <p>A SALSA (<strong>S</strong>tochastic <strong>A</strong>pproach for <strong>L</strong>ink-<strong>S</strong>tructure <strong>A</strong>nalysis) random walk over this graph is done to get the tweets that a might be interested in (for example, tweets that the user&rsquo;s connection recently engaged with). A seed set of user nodes called the circle of trust (personalized PageRank), is used for cold users or users with no recent engagement history. Similar to RealGraph, a logistic regression model is used to predict the probability of engagement. GraphJet is implemented in Java, and powers about 15% of tweets in the For You feed.</p>
 <h5 id="embedding-based-semantic-spaces" class="headerLink">
     <a href="#embedding-based-semantic-spaces" class="header-mark"></a>Embedding-based Semantic Spaces</h5><p>The majority of out-of-network tweets are retrieved through embedding-based methods described below.</p>
 <h6 id="simclusters" class="headerLink">
     <a href="#simclusters" class="header-mark"></a>SimClusters</h6><p>Twitter has used its SimClusters<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> embedding space to identify 145,000 communities that are either based on a common theme (such as &ldquo;machine learning&rdquo;, or &ldquo;K-pop&rdquo;), or social relationships (such as users who went to the same school). Using SimClusters, Twitter has a representation layer where both users and content are mapped in the same space. First, using a user-user graph (based on follow relationship) k number of possible overlapping communities are discovered. While this can be technically done using a sparse non-negative matrix factorization (NMF) technique, Twitter  devised a custom matrix factorization technique (called <a href="https://github.com/twitter/sbf" target="_blank" rel="noopener noreferrer">Sparse Binary Factorization</a> or SBF) that can also scale for large graphs. Next, an item representation can be calculated using a simple aggregation, such as an exponentially time-decayed average, over the representations of all the users who engaged with that item (see the figure below).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png" title="SimClusters" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png" data-sub-html="<h2>Overview of SimClusters. Source: [^4]</h2><p>SimClusters</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png, /img/posts/2023/the-twitter-ml-algo/simclusterspng.png 1.5x, /img/posts/2023/the-twitter-ml-algo/simclusterspng.png 2x"
-            sizes="auto"
-            alt="SimClusters">
-    </a><figcaption class="image-caption">Overview of SimClusters. Source: [^4]</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png"
+        srcset="/img/posts/2023/the-twitter-ml-algo/simclusterspng.png, /img/posts/2023/the-twitter-ml-algo/simclusterspng.png 1.5x, /img/posts/2023/the-twitter-ml-algo/simclusterspng.png 2x"
+        
+        alt="SimClusters"
+        title="SimClusters" ><figcaption class="image-caption">Overview of SimClusters. Source: [^4]</figcaption>
     </figure></p>
 <p>Twitter retrieves out-of-network tweets from these clusters by simply identifying the tweets that have the highest dot-product value with the interest representations, along with an item-based collaborative filtering technique. A high similarity score means that the corresponding tweet will be associated more with that community.</p>
 <h6 id="twhin" class="headerLink">
@@ -297,15 +292,14 @@
 <p>The source code for this light ranking is released <a href="https://github.com/twitter/the-algorithm/tree/main/src/python/twitter/deepbird/projects/timelines/scripts/models/earlybird" target="_blank" rel="noopener noreferrer">here</a>, along with the details about input features(<a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/configs/recap_earlybird/feature_config.py" target="_blank" rel="noopener noreferrer">in-network</a>, <a href="https://github.com/twitter/the-algorithm/blob/main/src/python/twitter/deepbird/projects/timelines/configs/rectweet_earlybird/feature_config.py" target="_blank" rel="noopener noreferrer">out-of-network</a>), <a href="https://github.com/twitter/the-algorithm/blob/main/cr-mixer/server/src/main/scala/com/twitter/cr_mixer/similarity_engine/EarlybirdTensorflowBasedSimilarityEngine.scala#L142" target="_blank" rel="noopener noreferrer">feature weights</a>, and <a href="https://github.com/twitter/the-algorithm/blob/ec83d01dcaebf369444d75ed04b3625a0a645eb9/src/thrift/com/twitter/search/common/ranking/ranking.thrift#L14-L21" target="_blank" rel="noopener noreferrer">time decay</a> used by the model. It is mentioned that EarlyBird ranks a lesser number of tweets than heavy ranker, but the exact order and counts corresponding to light ranker execution are not specified.</p>
 <h4 id="heavy-ranking" class="headerLink">
     <a href="#heavy-ranking" class="header-mark"></a>Heavy Ranking</h4><p>Twitter uses MaskNet<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> to perform computationally costlier ranking for the 1500 retrieved tweets. Similar to a lot of other rankers in the Click-Through Rate (CTR) estimation domain, MaskNet emphasizes effectively capturing the high-order feature interactions in an explicit manner similar to the earlier Deep &amp; Cross Network (DCN). MaskNet introduces a basic building block called a MaskBlock that contains three components: an &ldquo;instance-guided mask&rdquo;, a feed-forward hidden layer, and a layer normalization module. The instance-guided mask performs element-wise product on feature embeddings and feed-forward layers to highlight the global context information. Twitter uses the parallel MaskNet variant (~48M parameters) where multiple MaskBlocks on feature embeddings are applied in parallel (similar to MMoE design).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/the-twitter-ml-algo/masknet.png" title="MaskNet" data-thumbnail="/img/posts/2023/the-twitter-ml-algo/masknet.png" data-sub-html="<h2>Instance-guided Mask(left). Parallel variant of MaskNet (right). Souce: [^7]</h2><p>MaskNet</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/the-twitter-ml-algo/masknet.png"
-            srcset="/img/posts/2023/the-twitter-ml-algo/masknet.png, /img/posts/2023/the-twitter-ml-algo/masknet.png 1.5x, /img/posts/2023/the-twitter-ml-algo/masknet.png 2x"
-            sizes="auto"
-            alt="MaskNet">
-    </a><figcaption class="image-caption">Instance-guided Mask(left). Parallel variant of MaskNet (right). Souce: [^7]</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/the-twitter-ml-algo/masknet.png"
+        srcset="/img/posts/2023/the-twitter-ml-algo/masknet.png, /img/posts/2023/the-twitter-ml-algo/masknet.png 1.5x, /img/posts/2023/the-twitter-ml-algo/masknet.png 2x"
+        
+        alt="MaskNet"
+        title="MaskNet" ><figcaption class="image-caption">Instance-guided Mask(left). Parallel variant of MaskNet (right). Souce: [^7]</figcaption>
     </figure></p>
 <p>Twitter has released its source code for MaskNet implementation <a href="https://github.com/twitter/the-algorithm-ml/tree/main/projects/home/recap" target="_blank" rel="noopener noreferrer">here</a>, along with <a href="https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/config/local_prod.yaml" target="_blank" rel="noopener noreferrer">model hyperparameters</a>, and the details of aggregate, non-aggregate, and embedding <a href="https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/FEATURES.md" target="_blank" rel="noopener noreferrer">input features</a> used by the model.</p>
 <p>MaskNet outputs 10 different probabilities, and the final score calculation is calculated by weighing the output probabilities as shown below. These weights are <a href="https://github.com/twitter/the-algorithm-ml/blob/78c3235eee5b4e111ccacb7d48e80eca019e480c/projects/home/recap/config/local_prod.yaml#L1" target="_blank" rel="noopener noreferrer">hard coded</a> and were likely fixed after a lot of A/B testing.</p>
@@ -365,7 +359,7 @@
         loading="lazy"
         src="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         srcset="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 1.5x, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         title="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -379,7 +373,7 @@
         loading="lazy"
         src="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         srcset="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 1.5x, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         title="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -393,7 +387,7 @@
         loading="lazy"
         src="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         srcset="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 1.5x, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         title="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -407,7 +401,7 @@
         loading="lazy"
         src="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         srcset="/posts/2023/09/generative-retrieval/featured-image-preview.webp, /posts/2023/09/generative-retrieval/featured-image-preview.webp 1.5x, /posts/2023/09/generative-retrieval/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         title="/posts/2023/09/generative-retrieval/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -421,7 +415,7 @@
         loading="lazy"
         src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">

@@ -20,7 +20,7 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
@@ -31,17 +31,16 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/05\/tuning-llm-for-recsys\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, LLM","wordcount":  2395 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/05\/tuning-llm-for-recsys\/","datePublished": "2023-05-21T00:00:00+00:00","dateModified": "2023-05-21T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, LLM","wordcount":  2395 ,
+        "url": "https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/","datePublished": "2023-05-21T00:00:00+00:00","dateModified": "2023-05-21T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
-            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+            "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
                 "name": "Sumit Kumar"
             },"description": ""
     }
-    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-</head>
+    </script></head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
         function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
@@ -160,7 +159,7 @@
         loading="eager"
         src="/posts/2023/05/tuning-llm-for-recsys/featured-image.webp"
         srcset="/posts/2023/05/tuning-llm-for-recsys/featured-image.webp, /posts/2023/05/tuning-llm-for-recsys/featured-image.webp 1.5x, /posts/2023/05/tuning-llm-for-recsys/featured-image.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/05/tuning-llm-for-recsys/featured-image.webp"
         title="/posts/2023/05/tuning-llm-for-recsys/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -218,7 +217,7 @@
             loading="lazy"
             src="/img/posts/2023/tuning-llm-for-recsys/chatgpt_refusing_to_answer.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/chatgpt_refusing_to_answer.png, /img/posts/2023/tuning-llm-for-recsys/chatgpt_refusing_to_answer.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/chatgpt_refusing_to_answer.png 2x"
-            sizes="auto"
+            
             alt="ChatGPT invlid answer">
     </a><figcaption class="image-caption">Example taken from [^2]</figcaption>
     </figure></p>
@@ -261,7 +260,7 @@
             loading="lazy"
             src="/img/posts/2023/tuning-llm-for-recsys/tallrec_instructions.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/tallrec_instructions.png, /img/posts/2023/tuning-llm-for-recsys/tallrec_instructions.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/tallrec_instructions.png 2x"
-            sizes="auto"
+            
             alt="Instruction Tuning Data">
     </a><figcaption class="image-caption">An example of instruction tuning data in a translation task</figcaption>
     </figure></p>
@@ -272,7 +271,7 @@
             loading="lazy"
             src="/img/posts/2023/tuning-llm-for-recsys/tallrec_framework.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/tallrec_framework.png, /img/posts/2023/tuning-llm-for-recsys/tallrec_framework.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/tallrec_framework.png 2x"
-            sizes="auto"
+            
             alt="TALLRec Framework">
     </a><figcaption class="image-caption">TALLRec Framework</figcaption>
     </figure></p>
@@ -285,7 +284,7 @@
             loading="lazy"
             src="/img/posts/2023/tuning-llm-for-recsys/google_brain_prompts.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/google_brain_prompts.png, /img/posts/2023/tuning-llm-for-recsys/google_brain_prompts.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/google_brain_prompts.png 2x"
-            sizes="auto"
+            
             alt="Zero-shot and Few-shot prompts for rating prediction">
     </a><figcaption class="image-caption">Zero-shot and Few-shot prompts for rating prediction</figcaption>
     </figure></p>
@@ -298,7 +297,7 @@
             loading="lazy"
             src="/img/posts/2023/tuning-llm-for-recsys/instructrec_instructions.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/instructrec_instructions.png, /img/posts/2023/tuning-llm-for-recsys/instructrec_instructions.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/instructrec_instructions.png 2x"
-            sizes="auto"
+            
             alt="InstructRec Instructions">
     </a><figcaption class="image-caption">InstructRec Instructions</figcaption>
     </figure></p>
@@ -309,7 +308,7 @@
             loading="lazy"
             src="/img/posts/2023/tuning-llm-for-recsys/instructrec_example_instructions.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/instructrec_example_instructions.png, /img/posts/2023/tuning-llm-for-recsys/instructrec_example_instructions.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/instructrec_example_instructions.png 2x"
-            sizes="auto"
+            
             alt="InstructRec Example Instructions">
     </a><figcaption class="image-caption">InstructRec Example Instructions</figcaption>
     </figure></p>
@@ -320,7 +319,7 @@
             loading="lazy"
             src="/img/posts/2023/tuning-llm-for-recsys/instructrec_framework.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/instructrec_framework.png, /img/posts/2023/tuning-llm-for-recsys/instructrec_framework.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/instructrec_framework.png 2x"
-            sizes="auto"
+            
             alt="InstructRec Framework">
     </a><figcaption class="image-caption">InstructRec Framework</figcaption>
     </figure></p>
@@ -333,7 +332,7 @@
             loading="lazy"
             src="/img/posts/2023/tuning-llm-for-recsys/recllm_overview.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/recllm_overview.png, /img/posts/2023/tuning-llm-for-recsys/recllm_overview.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/recllm_overview.png 2x"
-            sizes="auto"
+            
             alt="RecLLM Overview">
     </a><figcaption class="image-caption">Overview of RecLLM. LLMs are used for dialogue management, retrieval, ranking, as well as a user simulator for generating synthetic tuning data.</figcaption>
     </figure></p>
@@ -344,7 +343,7 @@
             loading="lazy"
             src="/img/posts/2023/tuning-llm-for-recsys/recllm_modules.png"
             srcset="/img/posts/2023/tuning-llm-for-recsys/recllm_modules.png, /img/posts/2023/tuning-llm-for-recsys/recllm_modules.png 1.5x, /img/posts/2023/tuning-llm-for-recsys/recllm_modules.png 2x"
-            sizes="auto"
+            
             alt="RecLLM Modules">
     </a><figcaption class="image-caption">Retrieval and Ranking modules in RecLLM</figcaption>
     </figure></p>
@@ -369,7 +368,7 @@
         loading="lazy"
         src="/posts/2023/04/llm-for-recsys/featured-image.webp"
         srcset="/posts/2023/04/llm-for-recsys/featured-image.webp, /posts/2023/04/llm-for-recsys/featured-image.webp 1.5x, /posts/2023/04/llm-for-recsys/featured-image.webp 2x"
-        sizes="auto"
+        
         alt="Zero and Few Shot Recommender Systems based on Large Language Models"
         title="Zero and Few Shot Recommender Systems based on Large Language Models" height="200"   width="400" ></a>
     </div>
@@ -391,7 +390,7 @@
         loading="lazy"
         src="/posts/2023/05/chatgpt-for-recsys/featured-image.webp"
         srcset="/posts/2023/05/chatgpt-for-recsys/featured-image.webp, /posts/2023/05/chatgpt-for-recsys/featured-image.webp 1.5x, /posts/2023/05/chatgpt-for-recsys/featured-image.webp 2x"
-        sizes="auto"
+        
         alt="ChatGPT-based Recommender Systems"
         title="ChatGPT-based Recommender Systems" height="200"   width="400" ></a>
     </div>

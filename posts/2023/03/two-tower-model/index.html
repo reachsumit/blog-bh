@@ -20,7 +20,7 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/01/dl-for-forecasting/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/03/reranking-on-edge/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
@@ -31,17 +31,16 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/two-tower-model\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  2373 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/two-tower-model\/","datePublished": "2023-03-04T00:00:00+00:00","dateModified": "2024-01-02T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/2023/03/two-tower-model/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, ranking","wordcount":  2373 ,
+        "url": "https://blog.reachsumit.com/posts/2023/03/two-tower-model/","datePublished": "2023-03-04T00:00:00+00:00","dateModified": "2024-01-02T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
-            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+            "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
                 "name": "Sumit Kumar"
             },"description": ""
     }
-    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-</head>
+    </script></head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
         function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
@@ -162,7 +161,7 @@
         loading="eager"
         src="/posts/2023/03/two-tower-model/featured-image.webp"
         srcset="/posts/2023/03/two-tower-model/featured-image.webp, /posts/2023/03/two-tower-model/featured-image.webp 1.5x, /posts/2023/03/two-tower-model/featured-image.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/03/two-tower-model/featured-image.webp"
         title="/posts/2023/03/two-tower-model/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -204,7 +203,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/cascade_ranking_system.png"
             srcset="/img/posts/2023/two-tower-model/cascade_ranking_system.png, /img/posts/2023/two-tower-model/cascade_ranking_system.png 1.5x, /img/posts/2023/two-tower-model/cascade_ranking_system.png 2x"
-            sizes="auto"
+            
             alt="Cascade ranking architecture">
     </a></figure></p>
 <p>In this system, simpler and faster algorithms that focus on recall metrics are employed at earlier steps (Recall and Pre-Ranking). Whereas the large-scale deep neural networks are employed at the later steps (Ranking and Re-Ranking). Keeping latency expectations and accuracy tradeoffs in mind, an appropriate algorithm is used at each step. Each algorithm calculates some form of relevance or similarity value for every single candidate and passes the most relevant candidate set onto the next step.</p>
@@ -217,7 +216,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/pre_ranking_generations.png"
             srcset="/img/posts/2023/two-tower-model/pre_ranking_generations.png, /img/posts/2023/two-tower-model/pre_ranking_generations.png 1.5x, /img/posts/2023/two-tower-model/pre_ranking_generations.png 2x"
-            sizes="auto"
+            
             alt="pre-ranking generations">
     </a></figure></p>
 <p>Here $x_{u}$, $x_{a}$, $x_{ua}$ are the raw user features, ad features, and cross features. The first generation calculated the pre-rank score in a non-personalized way by averaging the recent click-through rate of each ad. Logistic regression used in the second generation is also a lightweight algorithm that can be deployed in online learning and serving manner. The third generation commonly used a Two Tower model which is a vector-produced based DNN. In this method, user and ad features pass through embedding and DNN layers to generate a latent vector representation for both the user and the ad. Then an inner product of the two vectors is calculated to obtain the pre-ranking score. This Two Tower structure was originally developed in search systems as a means to map a query to the most relevant documents<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
@@ -227,7 +226,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/two_tower_model.png"
             srcset="/img/posts/2023/two-tower-model/two_tower_model.png, /img/posts/2023/two-tower-model/two_tower_model.png 1.5x, /img/posts/2023/two-tower-model/two_tower_model.png 2x"
-            sizes="auto"
+            
             alt="Two Tower model architecture">
     </a></figure></p>
 <p>The reason why the Two Tower model rose to popularity was its accuracy as well as its inference efficiency-focused design. The two towers generate latent representations independently in parallel and interact only at the output layer (referred to as &ldquo;late interaction&rdquo;). Often the learned ad or item tower embeddings are also frozen after training and stored in an indexing service for a quicker operation at inference time.</p>
@@ -239,7 +238,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/related_dnn_paradigms.png"
             srcset="/img/posts/2023/two-tower-model/related_dnn_paradigms.png, /img/posts/2023/two-tower-model/related_dnn_paradigms.png 1.5x, /img/posts/2023/two-tower-model/related_dnn_paradigms.png 2x"
-            sizes="auto"
+            
             alt="Related DNN Paradigms">
     </a></figure></p>
 <p>As you can see, the Two Tower model (Figure a) is a representation-based ranker architecture, which independently computes embeddings for the query and documents and estimates their similarity via interaction between them at the output layer. The other paradigms represent more interaction-focused rankers. Models like <em>DRMM</em>, and <em>KNRM</em> (Figure b) model word- and phrase-level relationships across query and document using an interaction matrix and then feed it to a neural network like CNN or MLP. Similarly, models like <em>BERT</em> (Figure c), also called cross-encoders, are much more powerful as they model interactions between words as well as across the query and documents at the same time. On the other hand, models like <em>ColBERT</em> (<strong>Co</strong>ntextualized <strong>l</strong>ater interactions over <strong>BERT</strong>) (Figure d) keep interactions within the query and document features while delaying the query-document interaction to the output layer. This allows the model to preserve the &ldquo;query-document decoupling&rdquo; (or &ldquo;user-item decoupling&rdquo;) architecture paradigm, and the document or item embeddings can be frozen after training and served through an index at the inference time as shown on the left in the figure below. Inference costs can be further reduced if the application can work with freezing both towers. For example, as shown on the right in the following figure, Alibaba creates indexes out of the learned embeddings from both towers and retrains the model offline on a daily frequency <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
@@ -249,7 +248,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/related_dnn_paradigms_2.png"
             srcset="/img/posts/2023/two-tower-model/related_dnn_paradigms_2.png, /img/posts/2023/two-tower-model/related_dnn_paradigms_2.png 1.5x, /img/posts/2023/two-tower-model/related_dnn_paradigms_2.png 2x"
-            sizes="auto"
+            
             alt="Related DNN Paradigms - 2">
     </a></figure></p>
 <h2 id="comparing-dual-encoder-architectures" class="headerLink">
@@ -261,7 +260,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/dual_encoder_architectures.png"
             srcset="/img/posts/2023/two-tower-model/dual_encoder_architectures.png, /img/posts/2023/two-tower-model/dual_encoder_architectures.png 1.5x, /img/posts/2023/two-tower-model/dual_encoder_architectures.png 2x"
-            sizes="auto"
+            
             alt="Dual encoder architectures">
     </a><figcaption class="image-caption">Dual encoders architectures. SDE: Siamese Dual Encoder, ADE: Asymmetric Dual Encoder, ADE-STE: ADE with shared token embedder, ADE-FTE: ADE with frozen token embedder, ADE-SPL: ADE with shared projection layer.</figcaption>
     </figure></p>
@@ -276,7 +275,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/dat_model.png"
             srcset="/img/posts/2023/two-tower-model/dat_model.png, /img/posts/2023/two-tower-model/dat_model.png 1.5x, /img/posts/2023/two-tower-model/dat_model.png 2x"
-            sizes="auto"
+            
             alt="DAT model">
     </a></figure></p>
 <h3 id="interaction-enhanced-two-tower-model-inttower" class="headerLink">
@@ -289,7 +288,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/senet_block.png"
             srcset="/img/posts/2023/two-tower-model/senet_block.png, /img/posts/2023/two-tower-model/senet_block.png 1.5x, /img/posts/2023/two-tower-model/senet_block.png 2x"
-            sizes="auto"
+            
             alt="SENET block">
     </a></figure></p>
 <p>First, a squeeze operation aggregates the feature maps across spatial dimensions to produce a channel descriptor. An excitation operation then excites informative features by a self-gating mechanism based on channel dependence (similar to calculating attention weights). The final output of the block is obtained through a scaling step by rescaling the transformation output with the learned activations. The authors of the IntTower paper adopt a more lightweight approach with a single FC layer to obtain the feature importance. The following figure shows the SENET and Light-SE blocks side-by-side.</p>
@@ -299,7 +298,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/senet_lightse.png"
             srcset="/img/posts/2023/two-tower-model/senet_lightse.png, /img/posts/2023/two-tower-model/senet_lightse.png 1.5x, /img/posts/2023/two-tower-model/senet_lightse.png 2x"
-            sizes="auto"
+            
             alt="SENET vs LightSE">
     </a></figure></p>
 <h4 id="fe-block" class="headerLink">
@@ -310,7 +309,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/fe_block_cir_block.png"
             srcset="/img/posts/2023/two-tower-model/fe_block_cir_block.png, /img/posts/2023/two-tower-model/fe_block_cir_block.png 1.5x, /img/posts/2023/two-tower-model/fe_block_cir_block.png 2x"
-            sizes="auto"
+            
             alt="FE block and CIR module">
     </a></figure></p>
 <h4 id="cir-module" class="headerLink">
@@ -322,7 +321,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/inttower_arch.png"
             srcset="/img/posts/2023/two-tower-model/inttower_arch.png, /img/posts/2023/two-tower-model/inttower_arch.png 1.5x, /img/posts/2023/two-tower-model/inttower_arch.png 2x"
-            sizes="auto"
+            
             alt="IntTower architecture">
     </a></figure></p>
 <p>As shown in the figure above, the IntTower model architecture combines the three blocks described earlier. Through experimentation, the authors show that the IntTower model outperforms other pre-ranking algorithms (Logistic Regression, Two-Tower, DAT, COLD) and even performs comparably to some ranking algorithms (Wide&amp;Deep, DeepFM, DCN, AutoInt). Compared with the Two Tower model, the increased parameters count and training time of IntTower are negligible and the serving latency is also acceptable. The authors also investigate the user and item representations generated by Two Tower and IntTower models by projecting them into 2-dimensions using t-SNE. As shown in the next figure, the IntTower representations have the user and positive items in the same cluster while negative items are far away from the user.</p>
@@ -332,7 +331,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/embedding_reps.png"
             srcset="/img/posts/2023/two-tower-model/embedding_reps.png, /img/posts/2023/two-tower-model/embedding_reps.png 1.5x, /img/posts/2023/two-tower-model/embedding_reps.png 2x"
-            sizes="auto"
+            
             alt="Embedding representations">
     </a></figure></p>
 <h2 id="other-alternatives-to-two-tower-model" class="headerLink">
@@ -343,7 +342,7 @@
             loading="lazy"
             src="/img/posts/2023/two-tower-model/single_towers.png"
             srcset="/img/posts/2023/two-tower-model/single_towers.png, /img/posts/2023/two-tower-model/single_towers.png 1.5x, /img/posts/2023/two-tower-model/single_towers.png 2x"
-            sizes="auto"
+            
             alt="Single Tower Models">
     </a></figure></p>
 <h2 id="conclusion" class="headerLink">
@@ -404,7 +403,7 @@
         loading="lazy"
         src="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         srcset="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 1.5x, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         title="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -418,7 +417,7 @@
         loading="lazy"
         src="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         srcset="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 1.5x, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         title="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -432,7 +431,7 @@
         loading="lazy"
         src="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         srcset="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 1.5x, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         title="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -446,7 +445,7 @@
         loading="lazy"
         src="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         srcset="/posts/2023/09/generative-retrieval/featured-image-preview.webp, /posts/2023/09/generative-retrieval/featured-image-preview.webp 1.5x, /posts/2023/09/generative-retrieval/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         title="/posts/2023/09/generative-retrieval/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -460,7 +459,7 @@
         loading="lazy"
         src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">

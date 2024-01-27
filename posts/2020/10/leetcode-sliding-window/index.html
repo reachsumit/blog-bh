@@ -20,7 +20,7 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/" /><link rel="next" href="https://blog.reachsumit.com/posts/2020/12/generating-empathetic-responses/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/" /><link rel="next" href="https://blog.reachsumit.com/posts/2020/12/generating-empathetic-responses/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
@@ -31,17 +31,16 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2020\/10\/leetcode-sliding-window\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "leetcode, algorithms","wordcount":  2819 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2020\/10\/leetcode-sliding-window\/","datePublished": "2020-10-26T00:00:00+00:00","dateModified": "2020-10-29T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "leetcode, algorithms","wordcount":  2819 ,
+        "url": "https://blog.reachsumit.com/posts/2020/10/leetcode-sliding-window/","datePublished": "2020-10-26T00:00:00+00:00","dateModified": "2020-10-29T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
-            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+            "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
                 "name": "Sumit Kumar"
             },"description": "Identifying patterns among questions is quite an effective strategy when you are grinding LeetCode in preparation for your upcoming software engineering interviews. In this article, you will develop intuitions about Sliding Window pattern. You will also get a template approach to write code to solve these problems. I will also walk you through some LeetCode questions to show how to apply the template and at the end, there will be some LeetCode exercises for you to practice what you learn."
     }
-    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-</head>
+    </script></head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
         function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
@@ -157,7 +156,7 @@
         loading="eager"
         src="/posts/2020/10/leetcode-sliding-window/featured-image.webp"
         srcset="/posts/2020/10/leetcode-sliding-window/featured-image.webp, /posts/2020/10/leetcode-sliding-window/featured-image.webp 1.5x, /posts/2020/10/leetcode-sliding-window/featured-image.webp 2x"
-        sizes="auto"
+        
         alt="Identifying patterns among questions is quite an effective strategy when you are grinding LeetCode in preparation for your upcoming software engineering interviews. In this article, you will develop intuitions about Sliding Window pattern. You will also get a template approach to write code to solve these problems. I will also walk you through some LeetCode questions to show how to apply the template and at the end, there will be some LeetCode exercises for you to practice what you learn."
         title="Identifying patterns among questions is quite an effective strategy when you are grinding LeetCode in preparation for your upcoming software engineering interviews. In this article, you will develop intuitions about Sliding Window pattern. You will also get a template approach to write code to solve these problems. I will also walk you through some LeetCode questions to show how to apply the template and at the end, there will be some LeetCode exercises for you to practice what you learn." height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -192,174 +191,158 @@
     <a href="#sliding-window-pattern" class="header-mark"></a>Sliding Window Pattern</h2><p>Generally speaking, in sliding window problems, you would be given a sequence of values, and your task will be to return the best solution given a limiting constraint. The best solution would be defined in terms of a maximum or minimum value that occurs in a range or &ldquo;window&rdquo; over the given sequence. I know, it sounds a bit too generic. So, let&rsquo;s try to materialize the idea with a fun example.</p>
 <h3 id="an-intuitive-analogy" class="headerLink">
     <a href="#an-intuitive-analogy" class="header-mark"></a>An Intuitive Analogy</h3><p>Let&rsquo;s assume you are playing an Animal-Crossing-meets-SIMS game. And you are in-charge of many cute little characters currently living on different islands in the game doing some fun tasks.</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/intro.png" title="Islands intro" data-thumbnail="/img/posts/leetcode-sliding-window/intro.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/intro.png"
-            srcset="/img/posts/leetcode-sliding-window/intro.png, /img/posts/leetcode-sliding-window/intro.png 1.5x, /img/posts/leetcode-sliding-window/intro.png 2x"
-            sizes="auto"
-            alt="Islands intro">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/intro.png"
+        srcset="/img/posts/leetcode-sliding-window/intro.png, /img/posts/leetcode-sliding-window/intro.png 1.5x, /img/posts/leetcode-sliding-window/intro.png 2x"
+        
+        alt="Islands intro"
+        title="Islands intro" ></figure></p>
 <p>This game allows these characters to collaborate such that they can visit other islands and do tasks together. However, in order to connect any two islands, you will have to make some standard-length connecting bridges. And, some of the islands may be farther away from each other, so they may require more than one connecting bridge. For simplicity, we are going to assume that the islands are located linearly as shown in the figure.</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/intro_bridges.png" title="Bridges intro" data-thumbnail="/img/posts/leetcode-sliding-window/intro_bridges.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/intro_bridges.png"
-            srcset="/img/posts/leetcode-sliding-window/intro_bridges.png, /img/posts/leetcode-sliding-window/intro_bridges.png 1.5x, /img/posts/leetcode-sliding-window/intro_bridges.png 2x"
-            sizes="auto"
-            alt="Bridges intro">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/intro_bridges.png"
+        srcset="/img/posts/leetcode-sliding-window/intro_bridges.png, /img/posts/leetcode-sliding-window/intro_bridges.png 1.5x, /img/posts/leetcode-sliding-window/intro_bridges.png 2x"
+        
+        alt="Bridges intro"
+        title="Bridges intro" ></figure></p>
 <p>As you play new quests in the game, and finish daily tasks, you can unlock more of these connecting bridges. But at any given point of time, you will have a limited number of bridges in your collection.</p>
 <p>Now your task is to use the available bridge count and connect the islands such that you end up with maximum possible number of characters connected with each other.</p>
 <p>Say if you had 2 bridges available, would you choose move 1 or move 2 from below?</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/two_actions.png" title="The two moves" data-thumbnail="/img/posts/leetcode-sliding-window/two_actions.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/two_actions.png"
-            srcset="/img/posts/leetcode-sliding-window/two_actions.png, /img/posts/leetcode-sliding-window/two_actions.png 1.5x, /img/posts/leetcode-sliding-window/two_actions.png 2x"
-            sizes="auto"
-            alt="The two moves">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/two_actions.png"
+        srcset="/img/posts/leetcode-sliding-window/two_actions.png, /img/posts/leetcode-sliding-window/two_actions.png 1.5x, /img/posts/leetcode-sliding-window/two_actions.png 2x"
+        
+        alt="The two moves"
+        title="The two moves" ></figure></p>
 <p>With move 1, you connect the first two islands and the two characters on those islands together. However, with move 2, you connect the last three islands and four of your characters together. So the second move give you the best answer. As an exercise, can you think of any other moves in the above setting? What results would you get in those?</p>
 <p>While thinking of a solution to the above questions, you were given a constraint (limited number of available bridges) and you found an optimized solution (maximum number of characters connected). Because there were a limited number of islands and characters, you were able to simply eyeball and easily come up with a solution that was the best with the given constraint. But as you can imagine, the things can get a lot trickier if you have tens of thousands of islands with thousands of characters living on them and maybe hundreds of bridges available at your disposal. So, let&rsquo;s summon the coder in you and formulate this problem as a programming challenge.</p>
 <h3 id="the-sliding-window-approach" class="headerLink">
     <a href="#the-sliding-window-approach" class="header-mark"></a>The Sliding Window Approach</h3><p>First, we are going to represent the arrangement of islands, bridges and characters in terms of a sequence of values, i.e. an array. So, let&rsquo;s assume that an index in array with value -1 mean an empty location between islands where you could build a bridge, value 0 signifies the presence of a bridge at that location, and any other number is simply a count of the number of characters on the island at that index.</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/make_array.png" title="Make It Array" data-thumbnail="/img/posts/leetcode-sliding-window/make_array.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/make_array.png"
-            srcset="/img/posts/leetcode-sliding-window/make_array.png, /img/posts/leetcode-sliding-window/make_array.png 1.5x, /img/posts/leetcode-sliding-window/make_array.png 2x"
-            sizes="auto"
-            alt="Make It Array">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/make_array.png"
+        srcset="/img/posts/leetcode-sliding-window/make_array.png, /img/posts/leetcode-sliding-window/make_array.png 1.5x, /img/posts/leetcode-sliding-window/make_array.png 2x"
+        
+        alt="Make It Array"
+        title="Make It Array" ></figure></p>
 <p>So your goal is to find the maximum count for connected characters given a fixed number of bridges, B (for example, B=2). Before jumping into code, we need to first develop solid intuitions about Sliding Window approach and how it can help us in this problem.</p>
 <p>As you saw in the last section, we got our solution from a contiguous subsequence, i.e. a subarray.</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/subarray.png" title="The subarray" data-thumbnail="/img/posts/leetcode-sliding-window/subarray.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/subarray.png"
-            srcset="/img/posts/leetcode-sliding-window/subarray.png, /img/posts/leetcode-sliding-window/subarray.png 1.5x, /img/posts/leetcode-sliding-window/subarray.png 2x"
-            sizes="auto"
-            alt="The subarray">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/subarray.png"
+        srcset="/img/posts/leetcode-sliding-window/subarray.png, /img/posts/leetcode-sliding-window/subarray.png 1.5x, /img/posts/leetcode-sliding-window/subarray.png 2x"
+        
+        alt="The subarray"
+        title="The subarray" ></figure></p>
 <p>This subarray highlighted in red, is what we call a window. The left end, L, of the window is at index 3 and right end, R, is at index 7 (assuming index start at 0). This window spans over 5 array elements, so we can also say that the window length is 5. In Sliding Window pattern problems, we will calculate multiple solutions over varying length of the window, but we will only save the most optimal solution.</p>
 <p>A naïve approach could be to evaluate the input array for all possible length of windows, i.e. all possible placements for windows of length 1, 2, 3, 4, &hellip; , 8 (size of array), and calculate the result for each window, but save only the optimal value (maximum, in our example). However, as any seasoned LeetCode-er will tell you, your program will easily hit a Time Limit Exceeded wall even with a moderate sized array, because you have way too many potential solutions in your search space. So we need a better solution.</p>
 <p>Let&rsquo;s solve the above problem that had a constraint of 2 bridges with a Sliding Window approach.</p>
 <p>In a sliding Window based solution, we will generally start from the left of the array and with a window of size 1, i.e. both the left and right ends, L and R respectively, of the window will be at index 0. At each step, we also calculate the current answer, i.e. the current number of connected characters inside the window, and save the most optimal solution, i.e. the maximum count so far.</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/step_1.png" title="step 1" data-thumbnail="/img/posts/leetcode-sliding-window/step_1.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/step_1.png"
-            srcset="/img/posts/leetcode-sliding-window/step_1.png, /img/posts/leetcode-sliding-window/step_1.png 1.5x, /img/posts/leetcode-sliding-window/step_1.png 2x"
-            sizes="auto"
-            alt="step 1">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/step_1.png"
+        srcset="/img/posts/leetcode-sliding-window/step_1.png, /img/posts/leetcode-sliding-window/step_1.png 1.5x, /img/posts/leetcode-sliding-window/step_1.png 2x"
+        
+        alt="step 1"
+        title="step 1" ></figure></p>
 <p>Now, let&rsquo;s expand the window by moving the right end, R, as much as our constraint allows us (<em>think of this as an outer loop in the code</em>). The constraint in this example being the count of available bridges (B = 2).</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/step_2_1.png" title="step 2_1" data-thumbnail="/img/posts/leetcode-sliding-window/step_2_1.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/step_2_1.png"
-            srcset="/img/posts/leetcode-sliding-window/step_2_1.png, /img/posts/leetcode-sliding-window/step_2_1.png 1.5x, /img/posts/leetcode-sliding-window/step_2_1.png 2x"
-            sizes="auto"
-            alt="step 2_1">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/step_2_1.png"
+        srcset="/img/posts/leetcode-sliding-window/step_2_1.png, /img/posts/leetcode-sliding-window/step_2_1.png 1.5x, /img/posts/leetcode-sliding-window/step_2_1.png 2x"
+        
+        alt="step 2_1"
+        title="step 2_1" ></figure></p>
 <p>We used one bridge, but we do have one more left. So we keep expanding to right.</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/step_2_2.png" title="step 2_2" data-thumbnail="/img/posts/leetcode-sliding-window/step_2_2.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/step_2_2.png"
-            srcset="/img/posts/leetcode-sliding-window/step_2_2.png, /img/posts/leetcode-sliding-window/step_2_2.png 1.5x, /img/posts/leetcode-sliding-window/step_2_2.png 2x"
-            sizes="auto"
-            alt="step 2_2">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/step_2_2.png"
+        srcset="/img/posts/leetcode-sliding-window/step_2_2.png, /img/posts/leetcode-sliding-window/step_2_2.png 1.5x, /img/posts/leetcode-sliding-window/step_2_2.png 2x"
+        
+        alt="step 2_2"
+        title="step 2_2" ></figure></p>
 <p>We are out of bridges to use, but we can still move to the right, as there&rsquo;s an island there and our constraint will still hold (max 2 bridges).</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/step_2_3.png" title="step 2_3" data-thumbnail="/img/posts/leetcode-sliding-window/step_2_3.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/step_2_3.png"
-            srcset="/img/posts/leetcode-sliding-window/step_2_3.png, /img/posts/leetcode-sliding-window/step_2_3.png 1.5x, /img/posts/leetcode-sliding-window/step_2_3.png 2x"
-            sizes="auto"
-            alt="step 2_3">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/step_2_3.png"
+        srcset="/img/posts/leetcode-sliding-window/step_2_3.png, /img/posts/leetcode-sliding-window/step_2_3.png 1.5x, /img/posts/leetcode-sliding-window/step_2_3.png 2x"
+        
+        alt="step 2_3"
+        title="step 2_3" ></figure></p>
 <p>We now have 2 connected characters, which is also our best answer so far. But we also have a problem, we can&rsquo;t move to the right because that&rsquo;s an empty slot and we are out of bridges to use. So now we will start to shrink our window from the left marker one step at a time, and keep doing it until we are allowed to move R to the right and still satisfy our constraint (<em>think of it as another loop inside the outer one</em>).</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/step_2_4.png" title="step 2_4" data-thumbnail="/img/posts/leetcode-sliding-window/step_2_4.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/step_2_4.png"
-            srcset="/img/posts/leetcode-sliding-window/step_2_4.png, /img/posts/leetcode-sliding-window/step_2_4.png 1.5x, /img/posts/leetcode-sliding-window/step_2_4.png 2x"
-            sizes="auto"
-            alt="step 2_4">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/step_2_4.png"
+        srcset="/img/posts/leetcode-sliding-window/step_2_4.png, /img/posts/leetcode-sliding-window/step_2_4.png 1.5x, /img/posts/leetcode-sliding-window/step_2_4.png 2x"
+        
+        alt="step 2_4"
+        title="step 2_4" ></figure></p>
 <p>At this point, we still can&rsquo;t move R to the right, because we are out of bridges. So let&rsquo;s move L to the right one more time and reclaim one bridge.</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/step_2_5.png" title="step 2_5" data-thumbnail="/img/posts/leetcode-sliding-window/step_2_5.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/step_2_5.png"
-            srcset="/img/posts/leetcode-sliding-window/step_2_5.png, /img/posts/leetcode-sliding-window/step_2_5.png 1.5x, /img/posts/leetcode-sliding-window/step_2_5.png 2x"
-            sizes="auto"
-            alt="step 2_5">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/step_2_5.png"
+        srcset="/img/posts/leetcode-sliding-window/step_2_5.png, /img/posts/leetcode-sliding-window/step_2_5.png 1.5x, /img/posts/leetcode-sliding-window/step_2_5.png 2x"
+        
+        alt="step 2_5"
+        title="step 2_5" ></figure></p>
 <p>Now we&rsquo;re back on track. Moving R to the right requires a new bridge, but we do have that in inventory.</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/step_2_6.png" title="step 2_6" data-thumbnail="/img/posts/leetcode-sliding-window/step_2_6.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/step_2_6.png"
-            srcset="/img/posts/leetcode-sliding-window/step_2_6.png, /img/posts/leetcode-sliding-window/step_2_6.png 1.5x, /img/posts/leetcode-sliding-window/step_2_6.png 2x"
-            sizes="auto"
-            alt="step 2_6">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/step_2_6.png"
+        srcset="/img/posts/leetcode-sliding-window/step_2_6.png, /img/posts/leetcode-sliding-window/step_2_6.png 1.5x, /img/posts/leetcode-sliding-window/step_2_6.png 2x"
+        
+        alt="step 2_6"
+        title="step 2_6" ></figure></p>
 <p>Moving R to the right is still valid, so let&rsquo;s do it.</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/step_2_7.png" title="step 2_7" data-thumbnail="/img/posts/leetcode-sliding-window/step_2_7.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/step_2_7.png"
-            srcset="/img/posts/leetcode-sliding-window/step_2_7.png, /img/posts/leetcode-sliding-window/step_2_7.png 1.5x, /img/posts/leetcode-sliding-window/step_2_7.png 2x"
-            sizes="auto"
-            alt="step 2_7">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/step_2_7.png"
+        srcset="/img/posts/leetcode-sliding-window/step_2_7.png, /img/posts/leetcode-sliding-window/step_2_7.png 1.5x, /img/posts/leetcode-sliding-window/step_2_7.png 2x"
+        
+        alt="step 2_7"
+        title="step 2_7" ></figure></p>
 <p>Moving R requires a bridge. So we go back to moving L to the right, and reclaim one bridge with the very first move.</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/step_2_8.png" title="step 2_8" data-thumbnail="/img/posts/leetcode-sliding-window/step_2_8.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/step_2_8.png"
-            srcset="/img/posts/leetcode-sliding-window/step_2_8.png, /img/posts/leetcode-sliding-window/step_2_8.png 1.5x, /img/posts/leetcode-sliding-window/step_2_8.png 2x"
-            sizes="auto"
-            alt="step 2_8">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/step_2_8.png"
+        srcset="/img/posts/leetcode-sliding-window/step_2_8.png, /img/posts/leetcode-sliding-window/step_2_8.png 1.5x, /img/posts/leetcode-sliding-window/step_2_8.png 2x"
+        
+        alt="step 2_8"
+        title="step 2_8" ></figure></p>
 <p>Moving R will make us use the bridge that we have in inventory.</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/step_2_9.png" title="step 2_9" data-thumbnail="/img/posts/leetcode-sliding-window/step_2_9.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/step_2_9.png"
-            srcset="/img/posts/leetcode-sliding-window/step_2_9.png, /img/posts/leetcode-sliding-window/step_2_9.png 1.5x, /img/posts/leetcode-sliding-window/step_2_9.png 2x"
-            sizes="auto"
-            alt="step 2_9">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/step_2_9.png"
+        srcset="/img/posts/leetcode-sliding-window/step_2_9.png, /img/posts/leetcode-sliding-window/step_2_9.png 1.5x, /img/posts/leetcode-sliding-window/step_2_9.png 2x"
+        
+        alt="step 2_9"
+        title="step 2_9" ></figure></p>
 <p>We can still move R more to the right.</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/step_2_10.png" title="step 2_10" data-thumbnail="/img/posts/leetcode-sliding-window/step_2_10.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/step_2_10.png"
-            srcset="/img/posts/leetcode-sliding-window/step_2_10.png, /img/posts/leetcode-sliding-window/step_2_10.png 1.5x, /img/posts/leetcode-sliding-window/step_2_10.png 2x"
-            sizes="auto"
-            alt="step 2_10">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/step_2_10.png"
+        srcset="/img/posts/leetcode-sliding-window/step_2_10.png, /img/posts/leetcode-sliding-window/step_2_10.png 1.5x, /img/posts/leetcode-sliding-window/step_2_10.png 2x"
+        
+        alt="step 2_10"
+        title="step 2_10" ></figure></p>
 <p>We can&rsquo;t move R anymore. That brings us to the end of our algorithm. The best answer that we have is 4, which is also the most optimal answer. 😊</p>
 <p><strong>Notice the followings:</strong></p>
 <ul>
@@ -369,15 +352,14 @@
 <li>At each state during this process, we save the current answer and update the best answer variable if this value is better than the previous one</li>
 </ul>
 <p>You can also think of the approach in terms of a template like this:</p>
-<p><figure><a class="lightgallery" href="/img/posts/leetcode-sliding-window/template.png" title="template" data-thumbnail="/img/posts/leetcode-sliding-window/template.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/leetcode-sliding-window/template.png"
-            srcset="/img/posts/leetcode-sliding-window/template.png, /img/posts/leetcode-sliding-window/template.png 1.5x, /img/posts/leetcode-sliding-window/template.png 2x"
-            sizes="auto"
-            alt="template">
-    </a></figure></p>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/leetcode-sliding-window/template.png"
+        srcset="/img/posts/leetcode-sliding-window/template.png, /img/posts/leetcode-sliding-window/template.png 1.5x, /img/posts/leetcode-sliding-window/template.png 2x"
+        
+        alt="template"
+        title="template" ></figure></p>
 <p>&hellip; and that&rsquo;s it. That&rsquo;s all you need to write a program that uses Sliding Window approach to find an optimal solution. Let&rsquo;s make this understanding more concrete with the help of an actual LeetCode question.</p>
 <h2 id="solving-leetcode-problems-with-sliding-window-pattern" class="headerLink">
     <a href="#solving-leetcode-problems-with-sliding-window-pattern" class="header-mark"></a>Solving LeetCode Problems with Sliding Window Pattern</h2><h3 id="leetcode-1004-max-consecutive-ones-iii" class="headerLink">

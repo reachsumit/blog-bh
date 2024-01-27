@@ -20,7 +20,7 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2020/07/skip-list/" /><link rel="next" href="https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2020/07/skip-list/" /><link rel="next" href="https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
@@ -31,17 +31,16 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2020\/07\/spell-checker-fasttext\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "embeddings","wordcount":  2339 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2020\/07\/spell-checker-fasttext\/","datePublished": "2020-07-18T00:00:00+00:00","dateModified": "2020-07-18T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "embeddings","wordcount":  2339 ,
+        "url": "https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/","datePublished": "2020-07-18T00:00:00+00:00","dateModified": "2020-07-18T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
-            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+            "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
                 "name": "Sumit Kumar"
             },"description": "Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig's spell-corrector? Let's find out!"
     }
-    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-</head>
+    </script></head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
         function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
@@ -157,7 +156,7 @@
         loading="eager"
         src="/posts/2020/07/spell-checker-fasttext/featured-image.webp"
         srcset="/posts/2020/07/spell-checker-fasttext/featured-image.webp, /posts/2020/07/spell-checker-fasttext/featured-image.webp 1.5x, /posts/2020/07/spell-checker-fasttext/featured-image.webp 2x"
-        sizes="auto"
+        
         alt="Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&#39;s spell-corrector? Let&#39;s find out!"
         title="Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&#39;s spell-corrector? Let&#39;s find out!" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -194,15 +193,14 @@
     <a href="#what-are-subword-embeddings" class="header-mark"></a>What are subword embeddings?</h3><p>Suppose you have a deep learning NLP model, say a chatbot, running in production. Your customers are directly interacting with the ML model. The model is being fed the vector values, such that each word from the customer is queried against a hashmap and the value corresponding to the word is the input vector. All of the keys in your hashmap represents the vocabulary, i.e. all the words you know. Now, how would you handle a case where the customer uses a word that is not already present in your vocabulary?</p>
 <p>There are many ways to solve this <strong>out-of-vocabulary (OOV) problem</strong>. One popular approach is to split the words into &ldquo;subword&rdquo; units, and use those subwords to learn your hashmap during model training stage. At the time of inference, you would again divide each incoming word into smaller subword units, find the word vector corresponding to each subword unit using the hashmap, then aggregate each subword vector to get the vector representation for the complete word.</p>
 <p>For example, let&rsquo;s say we have the word <code>tiktok</code>, the corresponding subwords could be <code>tik</code>, <code>ikt</code>, <code>kto</code>, <code>tok</code>, <code>tikt</code>, <code>ikto</code>, <code>ktok</code> etc.  This is the character n-gram division for the input word, where n is the subword sequence length, and is fixed by the modeler.</p>
-<div id="id-1"><figure><a class="lightgallery" href="/img/posts/spell-checker-fasttext/subword.png" title="subword-example" data-thumbnail="/img/posts/spell-checker-fasttext/subword.png">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/spell-checker-fasttext/subword.png"
-            srcset="/img/posts/spell-checker-fasttext/subword.png, /img/posts/spell-checker-fasttext/subword.png 1.5x, /img/posts/spell-checker-fasttext/subword.png 2x"
-            sizes="auto"
-            alt="subword-example">
-    </a></figure><br>
+<div id="id-1"><figure><img
+        
+        loading="lazy"
+        src="/img/posts/spell-checker-fasttext/subword.png"
+        srcset="/img/posts/spell-checker-fasttext/subword.png, /img/posts/spell-checker-fasttext/subword.png 1.5x, /img/posts/spell-checker-fasttext/subword.png 2x"
+        
+        alt="subword-example"
+        title="subword-example" ></figure><br>
 Figure: example subword representations</div>
 <h3 id="what-is-fasttext" class="headerLink">
     <a href="#what-is-fasttext" class="header-mark"></a>What is FastText?</h3><p><a href="https://fasttext.cc/" target="_blank" rel="noopener noreferrer">FastText <i class="fa fa-link"></i></a> is an <a href="https://github.com/facebookresearch/fastText" target="_blank" rel="noopener noreferrer">open-source project</a> from Facebook Research. It is a library for fast text-representations and classifications. It is written in C++ and supports multiprocessing. It can be used to train unsupervised word vectors and supervised classification tasks. For learning word-vectors it supports both skipgram and continuous bag-of-words approaches.</p>
@@ -638,7 +636,7 @@ Edited goegraphicaly to geographical, but the correct word is: geographically<br
         loading="lazy"
         src="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp"
         srcset="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp, /posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp 1.5x, /posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&#39;s spell-corrector? Let&#39;s find out!"
         title="Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&#39;s spell-corrector? Let&#39;s find out!" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -652,7 +650,7 @@ Edited goegraphicaly to geographical, but the correct word is: geographically<br
         loading="lazy"
         src="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp"
         srcset="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp, /posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp 1.5x, /posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&#39;s spell-corrector? Let&#39;s find out!"
         title="Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&#39;s spell-corrector? Let&#39;s find out!" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -666,7 +664,7 @@ Edited goegraphicaly to geographical, but the correct word is: geographically<br
         loading="lazy"
         src="/posts/2023/04/intro-to-graph-representation-learning/featured-image-preview.webp"
         srcset="/posts/2023/04/intro-to-graph-representation-learning/featured-image-preview.webp, /posts/2023/04/intro-to-graph-representation-learning/featured-image-preview.webp 1.5x, /posts/2023/04/intro-to-graph-representation-learning/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&#39;s spell-corrector? Let&#39;s find out!"
         title="Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&#39;s spell-corrector? Let&#39;s find out!" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -680,7 +678,7 @@ Edited goegraphicaly to geographical, but the correct word is: geographically<br
         loading="lazy"
         src="/posts/2023/03/contrastive-video-representations/featured-image-preview.webp"
         srcset="/posts/2023/03/contrastive-video-representations/featured-image-preview.webp, /posts/2023/03/contrastive-video-representations/featured-image-preview.webp 1.5x, /posts/2023/03/contrastive-video-representations/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&#39;s spell-corrector? Let&#39;s find out!"
         title="Word vector representations with subword information are great for NLP modeling. But can we make lexical corrections using a trained embeddings space? Can its accuracy be high enough to beat Peter Norvig&#39;s spell-corrector? Let&#39;s find out!" height="200"   width="400" ></a>
             </div><h2 class="related-title">

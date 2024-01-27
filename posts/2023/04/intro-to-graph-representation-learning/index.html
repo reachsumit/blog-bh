@@ -20,7 +20,7 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
@@ -31,17 +31,16 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/intro-to-graph-representation-learning\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, graphs, embeddings","wordcount":  3401 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/intro-to-graph-representation-learning\/","datePublished": "2023-04-30T00:00:00+00:00","dateModified": "2023-04-30T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, graphs, embeddings","wordcount":  3401 ,
+        "url": "https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/","datePublished": "2023-04-30T00:00:00+00:00","dateModified": "2023-04-30T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
-            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+            "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
                 "name": "Sumit Kumar"
             },"description": ""
     }
-    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-</head>
+    </script></head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
         function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
@@ -208,7 +207,7 @@
         loading="eager"
         src="/posts/2023/04/intro-to-graph-representation-learning/featured-image.webp"
         srcset="/posts/2023/04/intro-to-graph-representation-learning/featured-image.webp, /posts/2023/04/intro-to-graph-representation-learning/featured-image.webp 1.5x, /posts/2023/04/intro-to-graph-representation-learning/featured-image.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/04/intro-to-graph-representation-learning/featured-image.webp"
         title="/posts/2023/04/intro-to-graph-representation-learning/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -295,7 +294,7 @@
             loading="lazy"
             src="/img/posts/2023/intro-to-graph-representation-learning/graph.png"
             srcset="/img/posts/2023/intro-to-graph-representation-learning/graph.png, /img/posts/2023/intro-to-graph-representation-learning/graph.png 1.5x, /img/posts/2023/intro-to-graph-representation-learning/graph.png 2x"
-            sizes="auto"
+            
             alt="Graph">
     </a><figcaption class="image-caption">An Example of a Graph Structure from Wayne W. Zachary's famous Zachary Karate Club Network</figcaption>
     </figure></p>
@@ -315,7 +314,7 @@
             loading="lazy"
             src="/img/posts/2023/intro-to-graph-representation-learning/node_embeddings.png"
             srcset="/img/posts/2023/intro-to-graph-representation-learning/node_embeddings.png, /img/posts/2023/intro-to-graph-representation-learning/node_embeddings.png 1.5x, /img/posts/2023/intro-to-graph-representation-learning/node_embeddings.png 2x"
-            sizes="auto"
+            
             alt="Node Embeddings">
     </a><figcaption class="image-caption">Our goal is to learn a set of transformations through an encoder (ENC) that maps high-dimensional nodes to a low-dimensional space</figcaption>
     </figure></p>
@@ -332,7 +331,7 @@
             loading="lazy"
             src="/img/posts/2023/intro-to-graph-representation-learning/preserve_structure.png"
             srcset="/img/posts/2023/intro-to-graph-representation-learning/preserve_structure.png, /img/posts/2023/intro-to-graph-representation-learning/preserve_structure.png 1.5x, /img/posts/2023/intro-to-graph-representation-learning/preserve_structure.png 2x"
-            sizes="auto"
+            
             alt="Embeddings must preserve structural information">
     </a><figcaption class="image-caption">Embedding dimension d is usually much smaller than the number of nodes |V| in the network</figcaption>
     </figure></p>
@@ -363,7 +362,7 @@
             loading="lazy"
             src="/img/posts/2023/intro-to-graph-representation-learning/tripartite.png"
             srcset="/img/posts/2023/intro-to-graph-representation-learning/tripartite.png, /img/posts/2023/intro-to-graph-representation-learning/tripartite.png 1.5x, /img/posts/2023/intro-to-graph-representation-learning/tripartite.png 2x"
-            sizes="auto"
+            
             alt="Tri-partite Graph">
     </a><figcaption class="image-caption">An example of a tri-partite graph</figcaption>
     </figure></p>
@@ -417,7 +416,7 @@
             loading="lazy"
             src="/img/posts/2023/intro-to-graph-representation-learning/enc_dec.png"
             srcset="/img/posts/2023/intro-to-graph-representation-learning/enc_dec.png, /img/posts/2023/intro-to-graph-representation-learning/enc_dec.png 1.5x, /img/posts/2023/intro-to-graph-representation-learning/enc_dec.png 2x"
-            sizes="auto"
+            
             alt="Overview of the encoder-decoder approach">
     </a><figcaption class="image-caption">Overview of the encoder-decoder approach</figcaption>
     </figure></p>
@@ -430,7 +429,7 @@
             loading="lazy"
             src="/img/posts/2023/intro-to-graph-representation-learning/matrix_factorization.png"
             srcset="/img/posts/2023/intro-to-graph-representation-learning/matrix_factorization.png, /img/posts/2023/intro-to-graph-representation-learning/matrix_factorization.png 1.5x, /img/posts/2023/intro-to-graph-representation-learning/matrix_factorization.png 2x"
-            sizes="auto"
+            
             alt="Matrix Factorization">
     </a><figcaption class="image-caption">Matrix Factorization</figcaption>
     </figure></p>
@@ -445,7 +444,7 @@
             loading="lazy"
             src="/img/posts/2023/intro-to-graph-representation-learning/random_walk_overview.png"
             srcset="/img/posts/2023/intro-to-graph-representation-learning/random_walk_overview.png, /img/posts/2023/intro-to-graph-representation-learning/random_walk_overview.png 1.5x, /img/posts/2023/intro-to-graph-representation-learning/random_walk_overview.png 2x"
-            sizes="auto"
+            
             alt="Random Walk based approach">
     </a><figcaption class="image-caption">Random Walk based Approach</figcaption>
     </figure></p>
@@ -456,7 +455,7 @@
             loading="lazy"
             src="/img/posts/2023/intro-to-graph-representation-learning/random_walk_methods.png"
             srcset="/img/posts/2023/intro-to-graph-representation-learning/random_walk_methods.png, /img/posts/2023/intro-to-graph-representation-learning/random_walk_methods.png 1.5x, /img/posts/2023/intro-to-graph-representation-learning/random_walk_methods.png 2x"
-            sizes="auto"
+            
             alt="Transition Probability based Random Walks">
     </a><figcaption class="image-caption">Transition Probability based Random Walks</figcaption>
     </figure></p>
@@ -472,7 +471,7 @@
             loading="lazy"
             src="/img/posts/2023/intro-to-graph-representation-learning/taxonomy.png"
             srcset="/img/posts/2023/intro-to-graph-representation-learning/taxonomy.png, /img/posts/2023/intro-to-graph-representation-learning/taxonomy.png 1.5x, /img/posts/2023/intro-to-graph-representation-learning/taxonomy.png 2x"
-            sizes="auto"
+            
             alt="GRL taxonomy">
     </a><figcaption class="image-caption">A Taxonomy for Graph Representation Learning</figcaption>
     </figure></p>
@@ -552,7 +551,7 @@
         loading="lazy"
         src="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         srcset="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 1.5x, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         title="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -566,7 +565,7 @@
         loading="lazy"
         src="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         srcset="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 1.5x, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         title="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -580,7 +579,7 @@
         loading="lazy"
         src="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         srcset="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 1.5x, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         title="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -594,7 +593,7 @@
         loading="lazy"
         src="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         srcset="/posts/2023/09/generative-retrieval/featured-image-preview.webp, /posts/2023/09/generative-retrieval/featured-image-preview.webp 1.5x, /posts/2023/09/generative-retrieval/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         title="/posts/2023/09/generative-retrieval/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -608,7 +607,7 @@
         loading="lazy"
         src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">

@@ -20,7 +20,7 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/pairing-for-representation/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/pairing-for-representation/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
@@ -31,17 +31,16 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/pairing-for-representation\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, retrieval, ranking","wordcount":  4068 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/03\/pairing-for-representation\/","datePublished": "2023-03-22T00:00:00+00:00","dateModified": "2023-03-22T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/2023/03/pairing-for-representation/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, retrieval, ranking","wordcount":  4068 ,
+        "url": "https://blog.reachsumit.com/posts/2023/03/pairing-for-representation/","datePublished": "2023-03-22T00:00:00+00:00","dateModified": "2023-03-22T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
-            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+            "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
                 "name": "Sumit Kumar"
             },"description": ""
     }
-    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-</head>
+    </script></head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
         function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
@@ -199,7 +198,7 @@
         loading="eager"
         src="/posts/2023/03/pairing-for-representation/featured-image.webp"
         srcset="/posts/2023/03/pairing-for-representation/featured-image.webp, /posts/2023/03/pairing-for-representation/featured-image.webp 1.5x, /posts/2023/03/pairing-for-representation/featured-image.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/03/pairing-for-representation/featured-image.webp"
         title="/posts/2023/03/pairing-for-representation/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -272,27 +271,25 @@
     <a href="#introduction" class="header-mark"></a>Introduction</h2><h3 id="encoders-for-learning-representations" class="headerLink">
     <a href="#encoders-for-learning-representations" class="header-mark"></a>Encoders for Learning Representations</h3><p>Information retrieval problems usually take a query as input and return the most relevant documents from a large corpus. For example, in open-domain question answering, a query represents a question, and documents represent evidence passages containing the answer. In Recommender systems, the query might represent a user query and documents could be a set of candidate items to recommend. A scoring function is commonly used in these approaches to quantify the relevance of a pair containing a query q and document d.</p>
 <p>As explained in <a href="https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/#syntactic-vs-semantic-approaches" target="_blank" rel="noopener noreferrer">the previous post</a>, these systems are often implemented in a cascade fashion where a less powerful but more efficient &ldquo;retriever&rdquo; algorithm (such as ElasticSearch, BM25, or Dual Encoder) first reduces the search space for candidates and then a more complex but powerful &ldquo;reranker&rdquo; algorithm (such as a Cross-Encoder) re-ranks the retrieved documents. To balance the efficiency and effectiveness tradeoff, the retriever model is focused on optimizing a high recall as otherwise the most relevant documents will not even be considered in the latter stage<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. And, the reranker model focuses more on precision. This article will mainly focus on discussions around the dual-encoder-based dense retriever.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/pairing-for-representation/two_encoders.png" title="Two types of encoders" data-thumbnail="/img/posts/2023/pairing-for-representation/two_encoders.png" data-sub-html="<h2>BERT-based Dual Encoder (left) and Cross-Encoder (right). Source: [^1]</h2><p>Two types of encoders</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/pairing-for-representation/two_encoders.png"
-            srcset="/img/posts/2023/pairing-for-representation/two_encoders.png, /img/posts/2023/pairing-for-representation/two_encoders.png 1.5x, /img/posts/2023/pairing-for-representation/two_encoders.png 2x"
-            sizes="auto"
-            alt="Two types of encoders">
-    </a><figcaption class="image-caption">BERT-based Dual Encoder (left) and Cross-Encoder (right). Source: [^1]</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/pairing-for-representation/two_encoders.png"
+        srcset="/img/posts/2023/pairing-for-representation/two_encoders.png, /img/posts/2023/pairing-for-representation/two_encoders.png 1.5x, /img/posts/2023/pairing-for-representation/two_encoders.png 2x"
+        
+        alt="Two types of encoders"
+        title="Two types of encoders" ><figcaption class="image-caption">BERT-based Dual Encoder (left) and Cross-Encoder (right). Source: [^1]</figcaption>
     </figure></p>
 <p>BM25 is a widely used approach that is based on token matching and TF-IDF weights. However, it lacks semantic context and can&rsquo;t be optimized for a specific task. On the other hand, Dual-encoder is an embedding-based method that embeds queries and documents in the same space (aggregating just the <code>[CLS]</code> output) and uses a similarity measure, like the inner product, Euclidean L2 or cosine distance, to measure the similarity between learned representations for queries and documents. The model is usually trained to optimize binary cross entropy (BCE), hinge loss, or negative log-likelihood (NLL) loss.</p>
 <p>Apart from using just the textual data for query and document towers, we can also add extra contextual information as input. For example, in Facebook Search<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> the authors use character n-gram representations for text inputs due to its smaller vocabulary size and robustness to the out-of-vocabulary problem. Additionally, the authors used location signals, like city, region, country, and language for queries, and tagged locations for documents. They also leveraged embeddings generated via a separate model to embed users and entities based on their social graph. Adding location and social features gave their model&rsquo;s recall an additional boost of 2.20% and 1.77% respectively.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/pairing-for-representation/facebook_search_dual_encoder.png" title="Facebook Search&amp;rsquo;s Dual Encoder" data-thumbnail="/img/posts/2023/pairing-for-representation/facebook_search_dual_encoder.png" data-sub-html="<h2>Dual Encoder model inputs for embedding-based retrieval in Facebook search</h2><p>Facebook Search&amp;rsquo;s Dual Encoder</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/pairing-for-representation/facebook_search_dual_encoder.png"
-            srcset="/img/posts/2023/pairing-for-representation/facebook_search_dual_encoder.png, /img/posts/2023/pairing-for-representation/facebook_search_dual_encoder.png 1.5x, /img/posts/2023/pairing-for-representation/facebook_search_dual_encoder.png 2x"
-            sizes="auto"
-            alt="Facebook Search&amp;rsquo;s Dual Encoder">
-    </a><figcaption class="image-caption">Dual Encoder model inputs for embedding-based retrieval in Facebook search</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/pairing-for-representation/facebook_search_dual_encoder.png"
+        srcset="/img/posts/2023/pairing-for-representation/facebook_search_dual_encoder.png, /img/posts/2023/pairing-for-representation/facebook_search_dual_encoder.png 1.5x, /img/posts/2023/pairing-for-representation/facebook_search_dual_encoder.png 2x"
+        
+        alt="Facebook Search&amp;rsquo;s Dual Encoder"
+        title="Facebook Search&amp;rsquo;s Dual Encoder" ><figcaption class="image-caption">Dual Encoder model inputs for embedding-based retrieval in Facebook search</figcaption>
     </figure></p>
 <h3 id="need-for-effective-sampling" class="headerLink">
     <a href="#need-for-effective-sampling" class="header-mark"></a>Need for Effective Sampling</h3><p>Sampling instances for such information retrieval systems is not straightforward. In systems with a large amount of data, it is infeasible to annotate all candidates for a given query. Annotators are usually given top-k candidates from a simplistic approach like BM25. So it is very likely to have a lot of unlabeled positive data<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
@@ -320,15 +317,14 @@
 <p>While in-batch negatives can be memory-efficient to use (because we reuse the examples already loaded in a mini-batch), some research work shows that this sampling technique requires extremely large batch sizes to work well<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>. Xiong et al.<sup id="fnref1:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> argued that it is unlikely that in-batch negatives can provide meaningful samples. They hypothesized that because the majority of the corpus is only trivially related, and the batch size is much smaller than the corpus size, the probability of a random mini-batch containing meaningful negative is almost zero.</p>
 <h3 id="cross-batch-negatives" class="headerLink">
     <a href="#cross-batch-negatives" class="header-mark"></a>Cross-batch Negatives</h3><p>Qu et al.<sup id="fnref3:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> proposed a cross-batch negative sampling method in a multi-GPU environment (shown at the bottom in the figure below). By using their approach, for a given query q, we sample in-batch negatives on the same GPU along with sampling negatives from all other GPUs. So for a setup with A number of GPUs and B batch size, we can sample up to $A \times B-1$ negatives for a given question. Their experiments showed improved results with negligible additional costs from using cross-batch negatives over the vanilla in-batch negative sampling method.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/pairing-for-representation/cross_batch_negatives.png" title="Cross-batch negatives" data-thumbnail="/img/posts/2023/pairing-for-representation/cross_batch_negatives.png" data-sub-html="<h2>In-batch Negative (top) vs Cross-batch Negative (bottom) Sampling</h2><p>Cross-batch negatives</p>">
-        <img
-            
-            loading="lazy"
-            src="/img/posts/2023/pairing-for-representation/cross_batch_negatives.png"
-            srcset="/img/posts/2023/pairing-for-representation/cross_batch_negatives.png, /img/posts/2023/pairing-for-representation/cross_batch_negatives.png 1.5x, /img/posts/2023/pairing-for-representation/cross_batch_negatives.png 2x"
-            sizes="auto"
-            alt="Cross-batch negatives">
-    </a><figcaption class="image-caption">In-batch Negative (top) vs Cross-batch Negative (bottom) Sampling</figcaption>
+<p><figure><img
+        
+        loading="lazy"
+        src="/img/posts/2023/pairing-for-representation/cross_batch_negatives.png"
+        srcset="/img/posts/2023/pairing-for-representation/cross_batch_negatives.png, /img/posts/2023/pairing-for-representation/cross_batch_negatives.png 1.5x, /img/posts/2023/pairing-for-representation/cross_batch_negatives.png 2x"
+        
+        alt="Cross-batch negatives"
+        title="Cross-batch negatives" ><figcaption class="image-caption">In-batch Negative (top) vs Cross-batch Negative (bottom) Sampling</figcaption>
     </figure></p>
 <p>There have been several alternative approaches for sampling negatives across batches. Wu et al.<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup> proposed storing document representations from previous batches in a queue to be used as negative examples. While this allows for a smaller batch size to be used, it could also lead to a drop in performance when the network changes rapidly from the previous iteration to the next. He et al.<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>  proposed a related approach called MoCo (Momentum Contrast) that uses a queue of min-batches that stored representations generated by a separate network called the momentum encoder network. Meng et al.<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> showed that the MoCo method is quite against noisy pairs, while the in-batch negatives method works better with queries of better quality. They also showed that MoCo&rsquo;s generalization capability can be improved by using it along with data augmentation methods.</p>
 <h3 id="approximate-nearest-neighbors" class="headerLink">
@@ -459,7 +455,7 @@
         loading="lazy"
         src="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         srcset="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 1.5x, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         title="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -473,7 +469,7 @@
         loading="lazy"
         src="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         srcset="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 1.5x, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         title="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -487,7 +483,7 @@
         loading="lazy"
         src="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         srcset="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 1.5x, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         title="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -501,7 +497,7 @@
         loading="lazy"
         src="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         srcset="/posts/2023/09/generative-retrieval/featured-image-preview.webp, /posts/2023/09/generative-retrieval/featured-image-preview.webp 1.5x, /posts/2023/09/generative-retrieval/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         title="/posts/2023/09/generative-retrieval/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -515,7 +511,7 @@
         loading="lazy"
         src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">

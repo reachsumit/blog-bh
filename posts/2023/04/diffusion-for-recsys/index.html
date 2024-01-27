@@ -20,7 +20,7 @@
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
@@ -31,17 +31,16 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/diffusion-for-recsys\/"
-        },"image": ["https:\/\/blog.reachsumit.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, diffusion","wordcount":  2169 ,
-        "url": "https:\/\/blog.reachsumit.com\/posts\/2023\/04\/diffusion-for-recsys\/","datePublished": "2023-04-17T00:00:00+00:00","dateModified": "2023-04-17T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, diffusion","wordcount":  2169 ,
+        "url": "https://blog.reachsumit.com/posts/2023/04/diffusion-for-recsys/","datePublished": "2023-04-17T00:00:00+00:00","dateModified": "2023-04-17T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
-            "name": "xxxx","logo": "https:\/\/blog.reachsumit.com\/images\/avatar.png"},"author": {
+            "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
                 "name": "Sumit Kumar"
             },"description": ""
     }
-    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-</head>
+    </script></head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
         function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
@@ -157,7 +156,7 @@
         loading="eager"
         src="/posts/2023/04/diffusion-for-recsys/featured-image.webp"
         srcset="/posts/2023/04/diffusion-for-recsys/featured-image.webp, /posts/2023/04/diffusion-for-recsys/featured-image.webp 1.5x, /posts/2023/04/diffusion-for-recsys/featured-image.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/04/diffusion-for-recsys/featured-image.webp"
         title="/posts/2023/04/diffusion-for-recsys/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -205,7 +204,7 @@
             loading="lazy"
             src="/img/posts/2023/diffusion-for-recsys/vdm.png"
             srcset="/img/posts/2023/diffusion-for-recsys/vdm.png, /img/posts/2023/diffusion-for-recsys/vdm.png 1.5x, /img/posts/2023/diffusion-for-recsys/vdm.png 2x"
-            sizes="auto"
+            
             alt="Diffusion Model">
     </a><figcaption class="image-caption">Visual representation of a Variational Diffusion Model</figcaption>
     </figure></p>
@@ -230,7 +229,7 @@ $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\
             loading="lazy"
             src="/img/posts/2023/diffusion-for-recsys/elbo.png"
             srcset="/img/posts/2023/diffusion-for-recsys/elbo.png, /img/posts/2023/diffusion-for-recsys/elbo.png 1.5x, /img/posts/2023/diffusion-for-recsys/elbo.png 2x"
-            sizes="auto"
+            
             alt="ELBO">
     </a><figcaption class="image-caption">ELBO</figcaption>
     </figure></p>
@@ -255,7 +254,7 @@ $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\
             loading="lazy"
             src="/img/posts/2023/diffusion-for-recsys/diffrec_additional_transitions.png"
             srcset="/img/posts/2023/diffusion-for-recsys/diffrec_additional_transitions.png, /img/posts/2023/diffusion-for-recsys/diffrec_additional_transitions.png 1.5x, /img/posts/2023/diffusion-for-recsys/diffrec_additional_transitions.png 2x"
-            sizes="auto"
+            
             alt="DiffRec: Additional Transitions">
     </a><figcaption class="image-caption">Additional transitions proposed by DiffRec converts discrete item v to hidden representation h in the forward step and convert h to probability distribution over the items in the reverse step</figcaption>
     </figure></p>
@@ -272,7 +271,7 @@ $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\
             loading="lazy"
             src="/img/posts/2023/diffusion-for-recsys/l_diffrec.png"
             srcset="/img/posts/2023/diffusion-for-recsys/l_diffrec.png, /img/posts/2023/diffusion-for-recsys/l_diffrec.png 1.5x, /img/posts/2023/diffusion-for-recsys/l_diffrec.png 2x"
-            sizes="auto"
+            
             alt="L-DiffRec">
     </a></figure></p>
 <p>In L-DiffRec, the k-means method is used to cluster the item set into $C$ categories using the item embeddings learned from a LightGCN algorithm. The user interaction vector $x_0$ is then divided into $C$ parts according to the clusters. A variational encoder is then used to compress these interactions by predicting the mean and variance of the variational distribution. The diffusion process is conducted over these latent space representations. This method significantly reduces the model parameters and memory costs for deploying diffusion models for large-scale recommender systems.</p>
@@ -286,7 +285,7 @@ $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\
             loading="lazy"
             src="/img/posts/2023/diffusion-for-recsys/diffurec.png"
             srcset="/img/posts/2023/diffusion-for-recsys/diffurec.png, /img/posts/2023/diffusion-for-recsys/diffurec.png 1.5x, /img/posts/2023/diffusion-for-recsys/diffurec.png 2x"
-            sizes="auto"
+            
             alt="DiffuRec">
     </a><figcaption class="image-caption">DiffuRec Architecture</figcaption>
     </figure></p>
@@ -338,7 +337,7 @@ $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\
         loading="lazy"
         src="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         srcset="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 1.5x, /posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp"
         title="/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -352,7 +351,7 @@ $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\
         loading="lazy"
         src="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         srcset="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 1.5x, /posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp"
         title="/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -366,7 +365,7 @@ $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\
         loading="lazy"
         src="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         srcset="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 1.5x, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
         title="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -380,7 +379,7 @@ $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\
         loading="lazy"
         src="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         srcset="/posts/2023/09/generative-retrieval/featured-image-preview.webp, /posts/2023/09/generative-retrieval/featured-image-preview.webp 1.5x, /posts/2023/09/generative-retrieval/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/09/generative-retrieval/featured-image-preview.webp"
         title="/posts/2023/09/generative-retrieval/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
@@ -394,7 +393,7 @@ $$p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma_{\
         loading="lazy"
         src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         srcset="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 1.5x, /posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp 2x"
-        sizes="auto"
+        
         alt="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp"
         title="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" height="200"   width="400" ></a>
             </div><h2 class="related-title">
