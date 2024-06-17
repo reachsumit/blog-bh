@@ -4,9 +4,18 @@
         <link>https://blog.reachsumit.com/</link>
         <description>Welcome to Sumit Kumar&#39;s Personal Blog!</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 26 Jan 2024 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 16 Jun 2024 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.reachsumit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>The Evolution of Multi-task Learning Based Video Recommender Systems - Part 1</title>
+    <link>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p1/</link>
+    <pubDate>Sun, 16 Jun 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This article introduces the multi-task learning paradigm adopted by various large-scale video recommender systems. It introduces a general setup for such an MTL-based recommender. It highlights several associated challenges and describes solutions adopted by various state-of-the-art recommenders in the industry.]]></description>
+</item><item>
     <title>An Introduction to Multi-Task Learning based Recommender Systems</title>
     <link>https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/</link>
     <pubDate>Fri, 26 Jan 2024 00:00:00 &#43;0000</pubDate><author>
@@ -88,14 +97,5 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div><p>With its outstanding performance, ChatGPT has become a hot topic of discussion in the NLP community and beyond. This article delves into recent efforts to harness the power of ChatGPT for recommendation tasks.</p>]]></description>
-</item><item>
-    <title>Shallow Embedding Models for Homogeneous Graphs</title>
-    <link>https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/</link>
-    <pubDate>Sun, 07 May 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>The previous article &ldquo;A Guide to Graph Representation Learning&rdquo; provided a comprehensive introduction to the state of graph representation learning, along with a review of the basic terminologies, techniques, and applications. If you are new to the graph learning domain, I&rsquo;d highly recommend you read the previous article first. This article takes a closer look at different types of shallow graph embedding models of homogeneous graphs. It also highlights a few real-world applications that build upon some of these ideas.]]></description>
 </item></channel>
 </rss>
