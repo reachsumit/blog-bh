@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/tags/literature-review/</link>
         <description>literature review - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 16 Jun 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/literature-review/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Jun 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/literature-review/" rel="self" type="application/rss+xml" /><item>
+    <title>The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</title>
+    <link>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/</link>
+    <pubDate>Sat, 22 Jun 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This article continues the discussion on the evolution of multi-task learning-based large-scale recommender systems. We take a look at strategies from Kuaishou, Tencent, YouTube, Facebook, and Amazon Prime Video to disentangle input space and address systematic biases. The article ends with sharing several tips and learnings for professionals working in this domain.]]></description>
+</item><item>
     <title>The Evolution of Multi-task Learning Based Video Recommender Systems - Part 1</title>
     <link>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p1/</link>
     <pubDate>Sun, 16 Jun 2024 00:00:00 &#43;0000</pubDate><author>
@@ -86,14 +95,5 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Instruction-tuning methods enable open-source Large Language Models (LLMs) usage for building highly effective recommender systems on private data. This article highlights the latest research work on this paradigm of using LLMs for recommendation tasks.]]></description>
-</item><item>
-    <title>ChatGPT-based Recommender Systems</title>
-    <link>https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/</link>
-    <pubDate>Mon, 15 May 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/05/chatgpt-for-recsys/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/05/chatgpt-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div><p>With its outstanding performance, ChatGPT has become a hot topic of discussion in the NLP community and beyond. This article delves into recent efforts to harness the power of ChatGPT for recommendation tasks.</p>]]></description>
 </item></channel>
 </rss>

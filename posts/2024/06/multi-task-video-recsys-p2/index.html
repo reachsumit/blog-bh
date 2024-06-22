@@ -7,33 +7,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title>Self-Supervised Contrastive Approaches for Video Representation Learning - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="Self-Supervised Contrastive Approaches for Video Representation Learning" />
-<meta property="og:description" content="Advances in the contrastive learning domain have made it possible to reduce the performance gap between self-supervised and supervised learning methods. Consequently, it has enabled the potential of utilizing the vast amount of unlabeled big data. This article goes over state-of-the-art contrastive learning methods for effective video representation learning." />
+    <title>The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2 - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:title" content="The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2" />
+<meta property="og:description" content="This article continues the discussion on the evolution of multi-task learning-based large-scale recommender systems. We take a look at strategies from Kuaishou, Tencent, YouTube, Facebook, and Amazon Prime Video to disentangle input space and address systematic biases. The article ends with sharing several tips and learnings for professionals working in this domain." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/featured-image-preview.webp"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-27T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-03-27T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/" /><meta property="og:image" content="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-06-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-06-22T00:00:00+00:00" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/featured-image-preview.webp"/>
-<meta name="twitter:title" content="Self-Supervised Contrastive Approaches for Video Representation Learning"/>
-<meta name="twitter:description" content="Advances in the contrastive learning domain have made it possible to reduce the performance gap between self-supervised and supervised learning methods. Consequently, it has enabled the potential of utilizing the vast amount of unlabeled big data. This article goes over state-of-the-art contrastive learning methods for effective video representation learning."/>
+<meta name="twitter:image" content="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp"/>
+<meta name="twitter:title" content="The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2"/>
+<meta name="twitter:description" content="This article continues the discussion on the evolution of multi-task learning-based large-scale recommender systems. We take a look at strategies from Kuaishou, Tencent, YouTube, Facebook, and Amazon Prime Video to disentangle input space and address systematic biases. The article ends with sharing several tips and learnings for professionals working in this domain."/>
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2023/03/pairing-for-representation/" /><link rel="next" href="https://blog.reachsumit.com/posts/2023/04/the-twitter-ml-algo/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p1/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Self-Supervised Contrastive Approaches for Video Representation Learning",
+        "headline": "The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/"
-        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, embeddings","wordcount":  2040 ,
-        "url": "https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/","datePublished": "2023-03-27T00:00:00+00:00","dateModified": "2023-03-27T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","keywords": "literature review, recsys, multi-task learning","wordcount":  2686 ,
+        "url": "https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/","datePublished": "2024-06-22T00:00:00+00:00","dateModified": "2024-06-22T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
@@ -128,157 +128,267 @@
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
-    <li><a href="#need-for-self-supervised-learning">Need for self-supervised learning</a></li>
-    <li><a href="#the-emergence-of-contrastive-learning">The emergence of contrastive learning</a></li>
-    <li><a href="#contrastive-learning-from-unlabeled-videos">Contrastive learning from unlabeled videos</a>
+    <li><a href="#disentangling-input-space">Disentangling Input Space</a>
       <ul>
-        <li><a href="#googles-contrastive-video-representation-learning-cvrl">Google&rsquo;s Contrastive Video Representation Learning (CVRL)</a></li>
-        <li><a href="#facebooks-rho-momentum-contrast-rho-moco">Facebook&rsquo;s $\rho$-Momentum Contrast ($\rho$-MoCo)</a></li>
-        <li><a href="#amazons-inter-intra-video-contrastive-learning-iivcl">Amazon&rsquo;s Inter-Intra Video Contrastive Learning (IIVCL)</a></li>
+        <li><a href="#prototype-feature-extraction-from-kuaishou">Prototype Feature Extraction from Kuaishou</a></li>
+        <li><a href="#tencents-embedding-level-disentanglement">Tencent&rsquo;s Embedding-level Disentanglement</a></li>
       </ul>
     </li>
-    <li><a href="#summary">Summary</a></li>
+    <li><a href="#addressing-biases">Addressing Biases</a>
+      <ul>
+        <li><a href="#youtubes-position-bias-fix">YouTube&rsquo;s Position Bias Fix</a></li>
+        <li><a href="#facebook-watchs-conformity-bias-fix">Facebook Watch&rsquo;s Conformity Bias Fix</a></li>
+        <li><a href="#amazon-primes-popularity-bias-fix">Amazon Prime&rsquo;s Popularity Bias Fix</a></li>
+      </ul>
+    </li>
+    <li><a href="#other-useful-takeaways">Other Useful Takeaways</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Self-Supervised Contrastive Approaches for Video Representation Learning</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/computer-vision/"><i class="far fa-folder fa-fw"></i>Computer Vision</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-27">2023-03-27</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-27">2023-03-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2040 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><i class="far fa-folder fa-fw"></i>Recommender systems</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2024-06-22">2024-06-22</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2024-06-22">2024-06-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2686 words&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;13 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         
         loading="eager"
-        src="/posts/2023/03/contrastive-video-representations/featured-image.webp"
-        srcset="/posts/2023/03/contrastive-video-representations/featured-image.webp, /posts/2023/03/contrastive-video-representations/featured-image.webp 1.5x, /posts/2023/03/contrastive-video-representations/featured-image.webp 2x"
+        src="/posts/2024/06/multi-task-video-recsys-p2/featured-image.webp"
+        srcset="/posts/2024/06/multi-task-video-recsys-p2/featured-image.webp, /posts/2024/06/multi-task-video-recsys-p2/featured-image.webp 1.5x, /posts/2024/06/multi-task-video-recsys-p2/featured-image.webp 2x"
         
-        alt="/posts/2023/03/contrastive-video-representations/featured-image.webp"
-        title="/posts/2023/03/contrastive-video-representations/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
+        alt="/posts/2024/06/multi-task-video-recsys-p2/featured-image.webp"
+        title="/posts/2024/06/multi-task-video-recsys-p2/featured-image.webp" height="600"   width="1200" ></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#need-for-self-supervised-learning">Need for self-supervised learning</a></li>
-    <li><a href="#the-emergence-of-contrastive-learning">The emergence of contrastive learning</a></li>
-    <li><a href="#contrastive-learning-from-unlabeled-videos">Contrastive learning from unlabeled videos</a>
+    <li><a href="#disentangling-input-space">Disentangling Input Space</a>
       <ul>
-        <li><a href="#googles-contrastive-video-representation-learning-cvrl">Google&rsquo;s Contrastive Video Representation Learning (CVRL)</a></li>
-        <li><a href="#facebooks-rho-momentum-contrast-rho-moco">Facebook&rsquo;s $\rho$-Momentum Contrast ($\rho$-MoCo)</a></li>
-        <li><a href="#amazons-inter-intra-video-contrastive-learning-iivcl">Amazon&rsquo;s Inter-Intra Video Contrastive Learning (IIVCL)</a></li>
+        <li><a href="#prototype-feature-extraction-from-kuaishou">Prototype Feature Extraction from Kuaishou</a></li>
+        <li><a href="#tencents-embedding-level-disentanglement">Tencent&rsquo;s Embedding-level Disentanglement</a></li>
       </ul>
     </li>
-    <li><a href="#summary">Summary</a></li>
+    <li><a href="#addressing-biases">Addressing Biases</a>
+      <ul>
+        <li><a href="#youtubes-position-bias-fix">YouTube&rsquo;s Position Bias Fix</a></li>
+        <li><a href="#facebook-watchs-conformity-bias-fix">Facebook Watch&rsquo;s Conformity Bias Fix</a></li>
+        <li><a href="#amazon-primes-popularity-bias-fix">Amazon Prime&rsquo;s Popularity Bias Fix</a></li>
+      </ul>
+    </li>
+    <li><a href="#other-useful-takeaways">Other Useful Takeaways</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="need-for-self-supervised-learning" class="headerLink">
-    <a href="#need-for-self-supervised-learning" class="header-mark"></a>Need for self-supervised learning</h2><p>Supervised deep learning approaches have shown remarkable success in various domains, such as Computer Vision. With the advent of big data, some of these approaches have lagged as the amount of labeled data is often minuscule compared to large-scale unlabeled data, like text, photos, and videos. To address this challenge, a number of algorithms have been proposed in the self-supervised domain that learn robust representations without any labels.</p>
-<p>A common approach to training such models is to learn a pretext task, which is solved only for the purpose of learning effective data representations to be used in downstream tasks. Some of the pretext tasks for learning image representations include predicting the rotation of images, relative positions or tracking of patches in an image,  image colorization, solving jigsaw puzzles, and counting visual primitives.</p>
-<p>Pretext tasks for video representation learning are more complex due to the presence of temporal dimensions. Some of the pretext tasks in the video domain include predicting future frames or the correct order of shuffled frames, shuffled clips, video rotations, motion and appearance statistics, tracking patches, objects, pixels, etc. These approaches have achieved great performance in learning image/video representations. However, they do not perform competitively with supervised methods because some of these tasks can be trivially solved through learned shortcuts.</p>
-<h2 id="the-emergence-of-contrastive-learning" class="headerLink">
-    <a href="#the-emergence-of-contrastive-learning" class="header-mark"></a>The emergence of contrastive learning</h2><p>Contrastive learning is one of the categories of the self-supervised learning paradigm. These methods learn a latent space that draws positive samples together (e.g. frames from the same video) while pushing part negative samples (e.g. frames from different videos). Various contrastive learning algorithms usually differ in the way they define positive and negative samples. For example, algorithms could use multiple augmented views of the same image, clustering methods to find semantically similar examples, sub-clips of the same or different lengths from the same video, etc. In some cases, these methods can also work without explicit negatives<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. In video representation learning, contrastive methods could use pretext tasks such as pace prediction, clip shuffling, etc.</p>
-<p>A lot of recent approaches use a variant of contrastive learning called Instance Discrimination to further close the gap with supervised learning methods. These approaches include data augmentation, contrastive losses, momentum encoders<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, and memory banks<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. Data augmentation is commonly used by several image-based methods like SimCLR<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> to generate positive samples. For example, random image transformations, like random crops, can be applied to an image to obtain multiple views of the same image, which are assumed to be positives. The downside of using such a transformation is that the onus of generalization lies heavily on the data augmentation pipeline which can not cover all possible variances<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
-<p>InfoNCE is one of the most commonly used contrastive loss functions. Given an embedded video $z$  and corresponding positive embedded video $k^+$ (for example, a random augmentation of $z$) and many negative embedded videos $k^- \in \mathcal{N}_i$ respectively, infoNCE loss is defined as:</p>
-<p>$$ \mathcal{L}^{\text{InfoNCE}} = -\log \frac{\exp(z_i \cdot z_i^+ / \tau)}{\exp(z_i \cdot z_i^+ / \tau) + \sum\limits_{z^- \in \mathcal{N}_i} \exp(z_i \cdot z^- / \tau)} $$</p>
-<p>where $\tau$ is the temperature hyperparameter. Similarity among the positive $(z_{i}, z_{i}^+)$ and negative $(z_i, z^-)$ pair is usually defined as dot product (cosine distance) and the embedded vectors are usually $\ell_2$-normalized.</p>
-<h2 id="contrastive-learning-from-unlabeled-videos" class="headerLink">
-    <a href="#contrastive-learning-from-unlabeled-videos" class="header-mark"></a>Contrastive learning from unlabeled videos</h2><h3 id="googles-contrastive-video-representation-learning-cvrl" class="headerLink">
-    <a href="#googles-contrastive-video-representation-learning-cvrl" class="header-mark"></a>Google&rsquo;s Contrastive Video Representation Learning (CVRL)</h3><p>In the CVRL paper<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, researchers at Google built a framework to promote spatial self-supervision signals in videos. They noted that since both spatial and temporal information is crucial for learning video representation, only applying spatial augmentation independent of video frames breaks the natural motion along the time dimension.</p>
-<p>Instead, they recommended a temporally consistent spatial augmentation method by fixing the randomness across frames. They hypothesized that a pair of positive clips (taken from the same video) that are temporally distant, may contain very different visual content, leading to a low similarity that will be indistinguishable from negative pairs. At the same time, disregarding timewise distant clips reduces the temporal augmentation effect.</p>
-<p>So their recommended sampling method ensured that the time difference between two positive clips, sampled from the same input video, follows a monotonically decreasing distribution. Effectively, temporally close clips are a much stronger basis for learning as compared to distant clips. It also ensures that the model doesn&rsquo;t learn temporally invariant features, which is the problem with previous temporal augmentation techniques like sorting video frames or clips, altering playback rates, etc.</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="/img/posts/2023/contrastive-video-representations/cvrl.png"
-        srcset="/img/posts/2023/contrastive-video-representations/cvrl.png, /img/posts/2023/contrastive-video-representations/cvrl.png 1.5x, /img/posts/2023/contrastive-video-representations/cvrl.png 2x"
-        
-        alt="Google&amp;rsquo;s CVRL framework"
-        title="Google&amp;rsquo;s CVRL framework" ><figcaption class="image-caption">Google's CVRL Framework</figcaption>
+            </div><div class="content" id="content"><p>This article continues the discussion on the evolution of multi-task learning based large-scale recommender systems. Refer to the <a href="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p1/" title="Part 1" rel="">this link</a> to read the previous article.</p>
+<h2 id="disentangling-input-space" class="headerLink">
+    <a href="#disentangling-input-space" class="header-mark"></a>Disentangling Input Space</h2><p>Intuitively, input features work differently for different tasks. For example, device type (mobile phone or desktop computer) and connection type (mobile network or WiFi) could be good features for predicting multimedia clicks and consumption but they may not help a lot with tasks like upvoting/downvoting. The models that we have seen so far, like MMoE, and PLE, use the original input data and feed them to all experts. Some researchers argue that this approach is still likely to face negative transfer because the problem not only happens on the shared bottom layer but is also a result of input features. As a solution, they have proposed methods that disentangle representations for multiple tasks before gating networks.</p>
+<h3 id="prototype-feature-extraction-from-kuaishou" class="headerLink">
+    <a href="#prototype-feature-extraction-from-kuaishou" class="header-mark"></a>Prototype Feature Extraction from Kuaishou</h3><p>Xin et al.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> proposed a method called Prototype Feature Extraction (PFE) to explicitly capture complicated task correlations. PFE extracts disentangled prototype features from original features for each sample as shared information. The core idea is that the extracted features fuse various features from different tasks to better learn inter-task relationships. The model then utilizes learned prototype features and task-specific experts for MTL.</p>
+<p>PFE is based on the Ordinary Feature Extraction (FE) process that builds derived features intended to be informative and non-redundant to be used for learning. It dynamically identifies latent factors, called prototype feature centers, which can be used to disentangle input data into different types. Each center is learned from a cluster of similar features and is intended to extract better features.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/multi-task-video-recsys/prototype_features.png" title="Prototype Features" data-thumbnail="/img/posts/2024/multi-task-video-recsys/prototype_features.png" data-sub-html="<h2>Prototype Centers and Prototype Features</h2><p>Prototype Features</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-video-recsys/prototype_features.png"
+            srcset="/img/posts/2024/multi-task-video-recsys/prototype_features.png, /img/posts/2024/multi-task-video-recsys/prototype_features.png 1.5x, /img/posts/2024/multi-task-video-recsys/prototype_features.png 2x"
+            
+            alt="Prototype Features">
+    </a><figcaption class="image-caption">Prototype Centers and Prototype Features</figcaption>
     </figure></p>
-<p>These sampled clips are then spatially augmented. Previous spatial augmentation techniques like random cropping, color jittering, and blurring break the motion cues across frames that negatively affect the representation learning along the temporal dimension. To address this, the authors designed the following algorithm that makes the spatial augmentation consistent along the temporal dimension.</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png"
-        srcset="/img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png, /img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png 1.5x, /img/posts/2023/contrastive-video-representations/cvrl_spatial_augmentation.png 2x"
-        
-        alt="CVRL - Spatial Augmentation Algorithm"
-        title="CVRL - Spatial Augmentation Algorithm" ><figcaption class="image-caption">CVRL's Spatial Augmentation Algorithm</figcaption>
+<p>PFE uses an Expectation-Maximization (EM) algorithm for clustering to iteratively update prototype features and prototype feature centers. Overall, network architecture combines the shared information from extracted prototype features and task-specific information from task-specific experts.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/multi-task-video-recsys/pfe.png" title="Prototype Feature Extraction" data-thumbnail="/img/posts/2024/multi-task-video-recsys/pfe.png" data-sub-html="<h2>Prototype Feature Extraction (PFE) Architecture</h2><p>Prototype Feature Extraction</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-video-recsys/pfe.png"
+            srcset="/img/posts/2024/multi-task-video-recsys/pfe.png, /img/posts/2024/multi-task-video-recsys/pfe.png 1.5x, /img/posts/2024/multi-task-video-recsys/pfe.png 2x"
+            
+            alt="Prototype Feature Extraction">
+    </a><figcaption class="image-caption">Prototype Feature Extraction (PFE) Architecture</figcaption>
     </figure></p>
-<p>Following this, a video encoder maps the input video clip to a 2048-dimensional latent representation using 3D-ResNets as backbones. This network is a minor modification (different stride and kernel size) of the &ldquo;slow&rdquo; pathway of the SlowFast network<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>. An MLP layer further reduces this representation to a 128-dimensional feature vector that is used to compute InfoNCE loss. As per the standard convention, the MLP is discarded during evaluation. Their representations outperformed all existing baselines for self-supervised learning and they also showed that the CVRL framework benefits from larger datasets and larger networks. The official TensorFlow implementation of CVRL is available <a href="https://github.com/tensorflow/models/tree/master/official/projects/video_ssl" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
-<h3 id="facebooks-rho-momentum-contrast-rho-moco" class="headerLink">
-    <a href="#facebooks-rho-momentum-contrast-rho-moco" class="header-mark"></a>Facebook&rsquo;s $\rho$-Momentum Contrast ($\rho$-MoCo)</h3><p>Facebook AI Research (FAIR) proposed a simple method to learn video representations that generalized existing image-based frameworks to space-time. The authors argue that visual content is often temporally-persistent along a timespan in a given video. For example, persistency may involve a person dancing, transitioning from running to walking, etc. covering short to long spans, with different levels of visual invariance. Hence they use an encoder to produce embeddings that are persistent in space-time, over multiple ($\rho$) temporally distant clips of the same video. Their experiments showed that it is beneficial to sample positives with longer timespans between them.</p>
-<p>The authors used an encoder design that is similar to Google&rsquo;s CVRL, i.e. a 3D ResNet-50 ConvNet without temporal pooling in convolutional feature maps, followed by an MLP projection head. For their experiments, they used 2 contrastive approaches which use both positive and negative samples: SimCLR and MoCo, and 2 other methods that only use positive samples: BYOL and SwAV. The original objective of these methods was to learn invariant features for images across different views (augmentations). The authors extended this objective to the temporal domain for videos.</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="/img/posts/2023/contrastive-video-representations/moco_frameworks.png"
-        srcset="/img/posts/2023/contrastive-video-representations/moco_frameworks.png, /img/posts/2023/contrastive-video-representations/moco_frameworks.png 1.5x, /img/posts/2023/contrastive-video-representations/moco_frameworks.png 2x"
-        
-        alt="Four Frameworks"
-        title="Four Frameworks" ><figcaption class="image-caption">The four conceptual frameworks</figcaption>
+<p>As shown above, the gating networks combine the extracted prototype features and task-specific experts from the bottom module. The top module has task-specific towers that output the results of each task.</p>
+<h3 id="tencents-embedding-level-disentanglement" class="headerLink">
+    <a href="#tencents-embedding-level-disentanglement" class="header-mark"></a>Tencent&rsquo;s Embedding-level Disentanglement</h3><p>Su et al.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> empirically show that in MTL settings, two tasks benefit from joint modeling when one task has limited positive feedback compared to the other. However, negative transfer is observed when both tasks have a comparable amount of feedback due to possible contradictory user preferences captured by the two tasks. To fix this, they proposed a Shared and Task-specific Embeddings (STEM) paradigm, that incorporates both shared and task-specific embeddings, as opposed to shared embedding models that we have seen so far. Such a paradigm can capture the diversity of task-specific user preferences.</p>
+<p>The STEM-net model performs a lookup operation for each feature ID to retrieve both shared and task-specific embeddings. Then it constructs a set of shared and task-specific experts corresponding to these embeddings. The core idea is that parameter interference can be avoided by keeping separate embedding tables for task-specific and shared experts.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/multi-task-video-recsys/stem_net.png" title="STEM-Net Architecture" data-thumbnail="/img/posts/2024/multi-task-video-recsys/stem_net.png" data-sub-html="<h2>STEM-Net Architecture</h2><p>STEM-Net Architecture</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-video-recsys/stem_net.png"
+            srcset="/img/posts/2024/multi-task-video-recsys/stem_net.png, /img/posts/2024/multi-task-video-recsys/stem_net.png 1.5x, /img/posts/2024/multi-task-video-recsys/stem_net.png 2x"
+            
+            alt="STEM-Net Architecture">
+    </a><figcaption class="image-caption">STEM-Net Architecture</figcaption>
     </figure></p>
-<p>SimCLR uses the in-batch negative embeddings of other videos, while MoCo maintains a queue that stores embeddings from previous iterations to fetch negatives. BYOL can be thought of as a form of MoCo without the negative samples but with an extra predictor MLP ($\theta_p$ in the figure), whereas SwAV can be viewed as a form of SimCLR without the negative samples that also has Sinkhorn-Knopp (SK) transformation step for the targets. Through an extensive set of experiments, the authors share the following findings:</p>
+<p>The model also uses stop-gradient operations on experts from other tasks to ensure the learning of task-specific embeddings. This operation prevents the gradients from flowing back to the experts of other tasks, pushing the task-specific tower to exclusively update its corresponding embeddings. Shared and task-specific embeddings are concatenated across all features. The next figure shows the comparison of the gating mechanism in STEM-Net compared to MMoE and PLE.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/multi-task-video-recsys/mmoe_vs_ple_vs_stem_gates.png" title="Comparison of different gating mechanisms" data-thumbnail="/img/posts/2024/multi-task-video-recsys/mmoe_vs_ple_vs_stem_gates.png" data-sub-html="<h2>Comparison of different gating mechanisms</h2><p>Comparison of different gating mechanisms</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-video-recsys/mmoe_vs_ple_vs_stem_gates.png"
+            srcset="/img/posts/2024/multi-task-video-recsys/mmoe_vs_ple_vs_stem_gates.png, /img/posts/2024/multi-task-video-recsys/mmoe_vs_ple_vs_stem_gates.png 1.5x, /img/posts/2024/multi-task-video-recsys/mmoe_vs_ple_vs_stem_gates.png 2x"
+            
+            alt="Comparison of different gating mechanisms">
+    </a><figcaption class="image-caption">Comparison of different gating mechanisms</figcaption>
+    </figure></p>
+<p>MMoE updates all experts without distinction, while STEM-Net is optimized for shared and task-specific updates. PLE requires shared experts as intermediaries for knowledge transfer which could result in information loss, but STEM-Net allows towers to directly transfer knowledge from other task experts.</p>
+<h2 id="addressing-biases" class="headerLink">
+    <a href="#addressing-biases" class="header-mark"></a>Addressing Biases</h2><p>In this section, we take a look at some of the proposals to tackle biases in MTL-based video recommender systems.</p>
+<h3 id="youtubes-position-bias-fix" class="headerLink">
+    <a href="#youtubes-position-bias-fix" class="header-mark"></a>YouTube&rsquo;s Position Bias Fix</h3><p>Our training data is extracted from user logs and is based on user behavior and responses to the current production system. These logged interactions consist of many types of biases. For example, a user may have clicked an item because it was selected by the current system, causing a feedback loop effect. Similarly, position bias refers to a type of selection bias toward the user clicking and watching a video displayed closer to the top of the list, regardless of its actual utility to the user. This bias can cause the more relevant videos in the list to be overlooked. To remove this bias and break the feedback loop, a common approach is to inject position as an input feature in model training and then remove the bias through ablation at serving time. Some methods also learn a bias term from the position and apply it as a normalizer or regularizer.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/multi-task-video-recsys/youtube_next_video_recommender.png" title="YouTube Ranker&amp;rsquo;s Popularity Debiasing Approach" data-thumbnail="/img/posts/2024/multi-task-video-recsys/youtube_next_video_recommender.png" data-sub-html="<h2>YouTube Ranker&#39;s Popularity Debiasing Approach</h2><p>YouTube Ranker&amp;rsquo;s Popularity Debiasing Approach</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-video-recsys/youtube_next_video_recommender.png"
+            srcset="/img/posts/2024/multi-task-video-recsys/youtube_next_video_recommender.png, /img/posts/2024/multi-task-video-recsys/youtube_next_video_recommender.png 1.5x, /img/posts/2024/multi-task-video-recsys/youtube_next_video_recommender.png 2x"
+            
+            alt="YouTube Ranker&amp;rsquo;s Popularity Debiasing Approach">
+    </a><figcaption class="image-caption">YouTube Ranker's Popularity Debiasing Approach</figcaption>
+    </figure></p>
+<p>In YouTube&rsquo;s MT Ranker model, Zhao et al.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> add a shallow tower to reduce the position bias, effectively making it similar to a <a href="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/#4-wide--deep-learning" target="_blank" rel="noopener noreferrer">wide and deep model architecture</a>. The tower uses input contributing to the selection bias (e.g., video position and device data) and outputs a scalar serving as a bias term (or estimated propensity score) to the final prediction of the main model. User utility is calculated from the main tower, and the bias component from the shallow tower is added to the final logits of the main model. At serving time, the feature is set to missing.</p>
+<h3 id="facebook-watchs-conformity-bias-fix" class="headerLink">
+    <a href="#facebook-watchs-conformity-bias-fix" class="header-mark"></a>Facebook Watch&rsquo;s Conformity Bias Fix</h3><p>Raul et al.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> hypothesize that often user-item interaction happens due to ecosystem factors rather than the actual user utility. For example, a user may watch a video just because it has lots of views, even when the video doesn&rsquo;t necessarily align with their true interests. Such conformity distorts the logged user interactions. The item-side debiasing approach described above does not consider the variety of users&rsquo; conformity. For example, a sports fan might purchase a popular bicycle because its features align with their true taste, while a non-enthusiast might purchase the same bike just because it is popular<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. Recommender systems may cause strong conformity bias if they fail to account for the fact that historical user interactions could be influenced by multiple factors, making them inconsistent with user preferences.</p>
+<p>To disentangle users&rsquo; conformity to popular items from their true interests, the authors implemented a Conformity-Aware MT model (CAM2) for Facebook Watch. Previously, Zheng et al.<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> tackled this problem by decomposing user interactions into two factors: conformity and interest, and learned separate embeddings for them with cause-specific data. User-item matching scores are computed for both causes and summed up. Effectively, this helps capture the fact that different users have different levels of influence on their judgment. CAM2 extends this idea by learning conformity and relevance-based representations over full data as auxiliary tasks in the same model by partitioning input features.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/multi-task-video-recsys/facebook_watch_cam2.png" title="Facebook&amp;rsquo;s CAM2" data-thumbnail="/img/posts/2024/multi-task-video-recsys/facebook_watch_cam2.png" data-sub-html="<h2>CAM2 Model Architecture</h2><p>Facebook&amp;rsquo;s CAM2</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-video-recsys/facebook_watch_cam2.png"
+            srcset="/img/posts/2024/multi-task-video-recsys/facebook_watch_cam2.png, /img/posts/2024/multi-task-video-recsys/facebook_watch_cam2.png 1.5x, /img/posts/2024/multi-task-video-recsys/facebook_watch_cam2.png 2x"
+            
+            alt="Facebook&amp;rsquo;s CAM2">
+    </a><figcaption class="image-caption">CAM2 Model Architecture</figcaption>
+    </figure></p>
+<p>CAM2 trains two separate cause-specific ResNet modules as an auxiliary task to learn conformity alignment and relevance along with corresponding loss values. Note that these losses are only used to train the causal architecture and not for inference. Gradient backpropagation from tasks architecture to the causal module is disabled. User conformity alignment is learned from statistical engagement-based features such as the number of video impressions, views, engagement rate, etc. User relevance is learned from rich attribute-based and content-based features such as user demographics, previously engaged videos, video interest, video quality features, etc. The authors hypothesize that this feature decomposition allows the model to learn more accurate embedding representations for both popular and long-tail groups.</p>
+<h3 id="amazon-primes-popularity-bias-fix" class="headerLink">
+    <a href="#amazon-primes-popularity-bias-fix" class="header-mark"></a>Amazon Prime&rsquo;s Popularity Bias Fix</h3><p>Gampa et al.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> described their implementation of a multi-territory recommender system at Amazon Prime Video. Their catalog has coverage of multi-territory videos where a locally popular item can be overshadowed by a globally prevalent item. Even if a video is popular in a specific territory, it may not have as much interaction data as a globally popular item in the same region. This can cause a feedback loop where items that are available in a lot of regions may always be ranked higher. To prevent overfitting on global titles and to improve fairness to local titles, the authors utilized a hard parameter-sharing MT model.</p>
+<p>Theoretically, Amazon could train separate region-specific models. However, such an approach can be costly to develop and maintain. In their solution, the authors first upsample input data by adding a disjoint set of active user data along with the regular random user set, hoping to increase the number of positive examples in minor territories. Next, they map the 200 territories into 4 geographically closer groups and develop an MTL-based two-tower model where the user tower is branched out to have 4 task-specific layers, one for each territory group.</p>
+<p><figure><a class="lightgallery" href="/img/posts/2024/multi-task-video-recsys/amazon_popularity_debias.png" title="MTL-based Two Tower Model" data-thumbnail="/img/posts/2024/multi-task-video-recsys/amazon_popularity_debias.png" data-sub-html="<h2>MTL-based Two Tower Model</h2><p>MTL-based Two Tower Model</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-video-recsys/amazon_popularity_debias.png"
+            srcset="/img/posts/2024/multi-task-video-recsys/amazon_popularity_debias.png, /img/posts/2024/multi-task-video-recsys/amazon_popularity_debias.png 1.5x, /img/posts/2024/multi-task-video-recsys/amazon_popularity_debias.png 2x"
+            
+            alt="MTL-based Two Tower Model">
+    </a><figcaption class="image-caption">MTL-based Two Tower Model</figcaption>
+    </figure></p>
+<p>During training, the shared blocks are always updated using backpropagation for all the data points, while the group-specific blocks are only updated for the data points coming from the respective group. The goal for the shared bottom is to enable regularization and transfer some of the learning from low-data territories to high-data territories.</p>
+<h2 id="other-useful-takeaways" class="headerLink">
+    <a href="#other-useful-takeaways" class="header-mark"></a>Other Useful Takeaways</h2><ul>
+<li>Ma et al.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> highlights several important observations.
 <ul>
-<li>The long-spanned persistency can be effective even if the timespan between positives is up to 60 seconds. Beyond that the positive pair might no longer share the same semantic context for learning high-level features corresponding in time, hence the corresponding representations might not be beneficial for downstream tasks.</li>
-<li>There was no performance difference between contrastive and non-contrastive methods.</li>
-<li>Multiple samples ($\rho$) from the same clip are beneficial to achieve high accuracy, with the best results achieved at $\rho = 4$.</li>
-<li>While MoCo performed the best for uncurated videos, BYOL and SimCLR showed better performance for short videos (10-16 seconds).</li>
-<li>Methods that used momentum encoders (like MoCo, BYOL) tend to do better than the methods with contrastive objectives (SimCLR, SwAV).</li>
+<li>They propose a coarse-to-fine MTL method to jointly predict click-through and playtime. They discretize playtime into several intervals and then use a coarse-to-fine strategy first to make a coarse estimate of playtime as a classification task, and then improve it through a regression task by estimating an offset amount. More importantly, their model accounts for the cascading relationship between click-through rate and playtime, i.e. a user must click the video before watching it.<br>
+Modeling this sequential relationship between these two tasks is quite relevant to many modern UI flows, where a user must click an in-feed suggestion for a video to trigger a full-screen short video viewing experience. But Click-through itself cannot capture any post-click engagement. Since playtime can capture post-click user activity, it should be used as a proxy for user engagement and satisfaction. With the joint, cascading-style modeling of CTR and watch time, we could optimize for downstream watch time and also disincentivize clickbait that leads to the user exiting the full-screen video viewing flow shortly after entering it.
+<figure><a class="lightgallery" href="/img/posts/2024/multi-task-video-recsys/youtube_shorts.png" title="Example UI: YouTube Shorts" data-thumbnail="/img/posts/2024/multi-task-video-recsys/youtube_shorts.png" data-sub-html="<h2>Tapping an in-feed suggestions takes user to full-screen short-video viewing experience.</h2><p>Example UI: YouTube Shorts</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-video-recsys/youtube_shorts.png"
+            srcset="/img/posts/2024/multi-task-video-recsys/youtube_shorts.png, /img/posts/2024/multi-task-video-recsys/youtube_shorts.png 1.5x, /img/posts/2024/multi-task-video-recsys/youtube_shorts.png 2x"
+            
+            alt="Example UI: YouTube Shorts">
+    </a><figcaption class="image-caption">Tapping an in-feed suggestions takes user to full-screen short-video viewing experience.</figcaption>
+    </figure></li>
+<li>The authors note that the playtime follows a long-tail distribution, and the logarithm of playtime is nearly Gaussian. So they use the log of playtime for playtime prediction. Several approaches in the past have tried modeling playtime as Weibull or Gamma distribution.
+<figure><a class="lightgallery" href="/img/posts/2024/multi-task-video-recsys/playtime_with_log.png" title="Histogram of playtime" data-thumbnail="/img/posts/2024/multi-task-video-recsys/playtime_with_log.png" data-sub-html="<h2>Histogram of short-video playtime</h2><p>Histogram of playtime</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-video-recsys/playtime_with_log.png"
+            srcset="/img/posts/2024/multi-task-video-recsys/playtime_with_log.png, /img/posts/2024/multi-task-video-recsys/playtime_with_log.png 1.5x, /img/posts/2024/multi-task-video-recsys/playtime_with_log.png 2x"
+            
+            alt="Histogram of playtime">
+    </a><figcaption class="image-caption">Histogram of short-video playtime</figcaption>
+    </figure></li>
+<li>Predicting watch time is hard due to three main reasons:
+<ul>
+<li>Several extraneous factors can affect playtime. For example, the user might leave while the video is still playing, the longer length of the video may dissuade time-constraint users from watching a relevant video, etc.</li>
+<li>Playtime exhibits a long-tail distribution.</li>
+<li>The real-world data samples are usually extremely biased. Several samples may not have any significant watch time.</li>
 </ul>
-<h3 id="amazons-inter-intra-video-contrastive-learning-iivcl" class="headerLink">
-    <a href="#amazons-inter-intra-video-contrastive-learning-iivcl" class="header-mark"></a>Amazon&rsquo;s Inter-Intra Video Contrastive Learning (IIVCL)</h3><p>The authors of <strong>N</strong>earest-<strong>N</strong>eighbor <strong>C</strong>ontrastive <strong>L</strong>earning of Visual <strong>R</strong>epresentations (NNCLR)<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> proposed a nearest-neighbor-based approach to sampling the nearest neighbor as a positive sample for images. The authors of IIVCL<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> extended this idea to the video domain to provision extra positive samples in addition to the previous CVRL and $\rho$-MoCo models&rsquo; approach of fetching two positive clips from the same video. The authors argue that by only considering clips from the same video to be positive, the previous methods neglect other semantically related videos that may also be useful and relevant as positives for contrastive learning. For example: in the following samples clip A and B are from the same skiing video, hence they are positives, while video 2 and video 3 are negatives for both. But this assumption ignores the fact that video 3 (snowboarding) is more similar to video 1 (skiing) than video 2 (push-ups).</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="/img/posts/2023/contrastive-video-representations/iivcl_example.png"
-        srcset="/img/posts/2023/contrastive-video-representations/iivcl_example.png, /img/posts/2023/contrastive-video-representations/iivcl_example.png 1.5x, /img/posts/2023/contrastive-video-representations/iivcl_example.png 2x"
-        
-        alt="IIVCL Example"
-        title="IIVCL Example" ><figcaption class="image-caption">Contrastive Learning in CVRL and ρ-MoCo neglects that video 3 is more similar to video 1 than video 2</figcaption>
-    </figure></p>
-<p>Hence there is a need to look beyond just the local intra-video similarities and consider global inter-video similarities as well. This ensures additional diversity in viewpoint and scene orientation that cannot be expressed through sampling sub-clips from the same video. And, it also makes it possible to learn from weaker yet relevant and useful positive pairs. However, only using global inter-video semantics will lead to losing granular details that are also important for video understanding. So an effective approach must use both local and global similarities. To achieve this, IIVCL creates a dynamically evolving queue from which the most similar videos (nearest neighbors) are found. Note that the intra-video clips are randomly sampled and there is no temporal ordering among them.</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="/img/posts/2023/contrastive-video-representations/iivcl_overall.png"
-        srcset="/img/posts/2023/contrastive-video-representations/iivcl_overall.png, /img/posts/2023/contrastive-video-representations/iivcl_overall.png 1.5x, /img/posts/2023/contrastive-video-representations/iivcl_overall.png 2x"
-        
-        alt="IIVCL Overview"
-        title="IIVCL Overview" ><figcaption class="image-caption">Current state-of-the-art (a) vs. inter-video nearest neighbor sampled from a queue(b) vs. IIVCL(c)</figcaption>
-    </figure></p>
-<p>As contrastive learning requires large batch sizes and computing video embeddings can be very expensive, the FIFO-style queue is updated with embeddings from a momentum encoder. The queue is updated at the end of each training setup (forward pass) by taking the n (batch size) embeddings from the current training step and inserting them into the end of the queue. The nearest neighbors are calculated from this queue by calculating the cosine similarities between the input video and the queue. Over the course of pretraining, the model continually evolves its notion of semantic similarity and becomes better at picking semantically similar nearest-neighbor clips. Hence, no clustering or separate training is required to get the global support set. Separate MLP projection heads are used to process the intra-video and nearest-neighbor positive pairs. Both of these pretext tasks are then combined using a multi-task loss. Similar to other methods, the trained model is evaluated using linear evaluation and fine-tuning protocols.</p>
-<h2 id="summary" class="headerLink">
-    <a href="#summary" class="header-mark"></a>Summary</h2><p>Advances in self-supervised learning have enabled the utilization of large-scale unlabeled data. Contrastive learning methods have further helped to reduce the performance gap between self-supervised and supervised methods. This article summarized some of the most popular ways to apply contrastive methods for effective representation learning for videos. These algorithms proposed different ways to address the spatial and temporal information in video data to achieve state-of-the-art performance for representation learning.</p>
+</li>
+</ul>
+</li>
+<li>In Song et al.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> MX Media describes their implementation of the TakaTak short-video MTL recommender system, and in Covington et al.<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> Google describes one of the earliest two-stage recommender systems deployed at YouTube. Both papers share several practical tips and are great reads for industry professionals.</li>
+<li>Tang et al.<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> serve the MT ranking model for Tencent News. For calculating the weighted score for each candidate video, they also multiply each score value with $f(\text{video length})$ non-linear transform function, such as sigmoid or log function, of the video duration.</li>
+<li>Covington et al.<sup id="fnref1:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> share several interesting observations from their work on YouTube.
+<ul>
+<li>Ranking by click-through rate often promotes deceptive videos, such as clickbait, that the user does not complete. Instead, watch time is better at capturing engagement.</li>
+<li>Users consistently prefer fresh content, though not at the expense of relevance.</li>
+<li>In addition to the first-order effect of simply recommending new videos that the user wants to watch, there is a critical secondary phenomenon of bootstrapping and propagating viral content.</li>
+<li>The distribution of videos popularity is highly non-stationary. Feeding the age of the training example as a feature during training could ensure that the model doesn&rsquo;t simply predict the average watch likelihood in the training window. At serving time, they set this feature set to zero (or slightly negative). This feature addition led the model to represent the time-dependent behavior of popular videos and dramatically increased the watch time on recently uploaded videos in A/B testing.</li>
+<li>Users are likely to discover video through other means than YouTube recommenders, such as embedded videos on other sites. To enable new content to effectively surface, it is important to also propagate such discoveries to others via collaborative filtering.</li>
+<li>Discarding sequence information from a user&rsquo;s search history and representing search queries with an unordered bag of words could help avoid some undesirable scenarios. For example, if a user recently searched for &lsquo;Taylor Swift&rsquo;, reproducing results from the same search to recommend the next video feed leads to a poor user experience.</li>
+<li>Features that describe the frequency of past video impressions are crucial to ensure that successive requests do not return identical items. But serving this up-to-the-second impression and the watch history requires an incredible amount of feature engineering effort.</li>
+<li>Generating a fixed number of training examples per user is equivalent to weighing users equally in the loss function, and prevents highly active users from dominating the loss.</li>
+<li>In their experiments, propagating information from the candidate generation stage to ranking stage was crucial. This information can be in the form of features like which sources nominated the candidate video, what score did they assign, etc.</li>
+<li>For the candidate generation step (two-tower model), simply averaging the embeddings of the user&rsquo;s historical interactions worked better than sumpool/maxpool.</li>
+<li>Predicting users&rsquo; next watch rather than predicting a randomly held-out watch always worked better.
+<figure><a class="lightgallery" href="/img/posts/2024/multi-task-video-recsys/youtube_next_item_vs_random_holdout.png" title="Label selection" data-thumbnail="/img/posts/2024/multi-task-video-recsys/youtube_next_item_vs_random_holdout.png" data-sub-html="<h2>Label selection</h2><p>Label selection</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-video-recsys/youtube_next_item_vs_random_holdout.png"
+            srcset="/img/posts/2024/multi-task-video-recsys/youtube_next_item_vs_random_holdout.png, /img/posts/2024/multi-task-video-recsys/youtube_next_item_vs_random_holdout.png 1.5x, /img/posts/2024/multi-task-video-recsys/youtube_next_item_vs_random_holdout.png 2x"
+            
+            alt="Label selection">
+    </a><figcaption class="image-caption">Label selection</figcaption>
+    </figure></li>
+<li>Proper normalization for continuous features was critical. Feeding powers of continuous features were found to improve offline accuracy. Given a feature $x$, they supplied raw normalized feature $\tilde{x}$ and powers $\tilde{x}^2$ and $\sqrt{\tilde{x}}$ giving the network more expressive power, allowing it to form super and sub-linear functions of the feature.
+<figure><a class="lightgallery" href="/img/posts/2024/multi-task-video-recsys/feature_normalization.png" title="Normalizing Continuous Features" data-thumbnail="/img/posts/2024/multi-task-video-recsys/feature_normalization.png" data-sub-html="<h2>Normalizing Continuous Features</h2><p>Normalizing Continuous Features</p>">
+        <img
+            
+            loading="lazy"
+            src="/img/posts/2024/multi-task-video-recsys/feature_normalization.png"
+            srcset="/img/posts/2024/multi-task-video-recsys/feature_normalization.png, /img/posts/2024/multi-task-video-recsys/feature_normalization.png 1.5x, /img/posts/2024/multi-task-video-recsys/feature_normalization.png 2x"
+            
+            alt="Normalizing Continuous Features">
+    </a><figcaption class="image-caption">Normalizing Continuous Features</figcaption>
+    </figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="conclusion" class="headerLink">
+    <a href="#conclusion" class="header-mark"></a>Conclusion</h2><p>This article concluded the two-part deep dive series about the evolution of the MTL-based video recommender system. It highlighted several nuanced and unique challenges while implementing such systems at a large scale. We looked at state-of-the-art disentanglement strategies to enable effective and efficient learning of inter-task relationships. The article also highlighted several real-world solutions from Kuaishou, Tencent, YouTube, Facebook, and Amazon Prime Video to address different biases and shared insights and takeaways that will be valuable for practitioners in this field.</p>
 <h2 id="references" class="headerLink">
     <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>Grill, J., Strub, F., Altch&rsquo;e, F., Tallec, C., Richemond, P.H., Buchatskaya, E., Doersch, C., Pires, B.Á., Guo, Z.D., Azar, M.G., Piot, B., Kavukcuoglu, K., Munos, R., &amp; Valko, M. (2020). Bootstrap Your Own Latent: A New Approach to Self-Supervised Learning. <em>ArXiv, abs/2006.07733</em>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Xin, S., Jiao, Y., Long, C., Wang, Y., Wang, X., Yang, S., Liu, J., &amp; Zhang, J. (2022). Prototype Feature Extraction for Multi-task Learning. <em>Proceedings of the ACM Web Conference 2022</em>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>He, K., Fan, H., Wu, Y., Xie, S., &amp; Girshick, R.B. (2019). Momentum Contrast for Unsupervised Visual Representation Learning. <em>2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 9726-9735.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Su, L., Pan, J., Wang, X., Xiao, X., Quan, S., Chen, X., &amp; Jiang, J. (2023). STEM: Unleashing the Power of Embeddings for Multi-task Recommendation. <em>AAAI Conference on Artificial Intelligence</em>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Wu, Z., Xiong, Y., Yu, S.X., &amp; Lin, D. (2018). Unsupervised Feature Learning via Non-parametric Instance Discrimination. <em>2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition</em>, 3733-3742.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Zhao, Z., Hong, L., Wei, L., Chen, J., Nath, A., Andrews, S., Kumthekar, A., Sathiamoorthy, M., Yi, X., &amp; Chi, E.H. (2019). Recommending what video to watch next: a multitask ranking system. <em>Proceedings of the 13th ACM Conference on Recommender Systems</em>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Chen, T., Kornblith, S., Norouzi, M., &amp; Hinton, G. (2020). A Simple Framework for Contrastive Learning of Visual Representations. <em>ArXiv</em>. /abs/2002.05709&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Raul, A., Porobo Dharwadker, A., &amp; Schumitsch, B. (2023). CAM2: Conformity-Aware Multi-Task Ranking Model for Large-Scale Recommender Systems. <em>Companion Proceedings of the ACM Web Conference 2023</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>Dwibedi, D., Aytar, Y., Tompson, J., Sermanet, P., &amp; Zisserman, A. (2021). With a Little Help from My Friends: Nearest-Neighbor Contrastive Learning of Visual Representations. <em>ArXiv</em>. /abs/2104.14548&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Zheng, Y., Gao, C., Li, X., He, X., Jin, D., &amp; Li, Y. (2020). Disentangling User Interest and Conformity for Recommendation with Causal Embedding. <em>ArXiv</em>. /abs/2006.11011&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>Qian, R., Meng, T., Gong, B., Yang, M., Wang, H., Belongie, S.J., &amp; Cui, Y. (2020). Spatiotemporal Contrastive Video Representation Learning. <em>2021 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 6960-6970.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Gampa, P., Javadi, F., Bayar, B., &amp; Yessenalina, A. (2023). Multi-Task Learning For Reduced Popularity Bias In Multi-Territory Video Recommendations. <em>ArXiv, abs/2310.03148</em>.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
-<p>Feichtenhofer, C., Fan, H., Malik, J., &amp; He, K. (2018). SlowFast Networks for Video Recognition. <em>2019 IEEE/CVF International Conference on Computer Vision (ICCV)</em>, 6201-6210.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Ma, S., Zha, Z., &amp; Wu, F. (2019). Knowing User Better: Jointly Predicting Click-Through and Playtime for Micro-Video. <em>2019 IEEE International Conference on Multimedia and Expo (ICME)</em>, 472-477.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:8">
-<p>Fan, D., Yang, D., Li, X., Bhat, V., &amp; Rohith, M.V. (2023). Nearest-Neighbor Inter-Intra Contrastive Learning from Unlabeled Videos. <em>ArXiv, abs/2303.07317</em>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Song, J., Jin, B., Yu, Y., Li, B., Dong, X., Zhuo, W., &amp; Zhou, S. (2022). MARS: A Multi-task Ranking Model for Recommending Micro-videos. <em>APWeb/WAIM</em>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>Covington, P., Adams, J.K., &amp; Sargin, E. (2016). Deep Neural Networks for YouTube Recommendations. <em>Proceedings of the 10th ACM Conference on Recommender Systems</em>.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>Tang, H., Liu, J., Zhao, M., &amp; Gong, X. (2020). Progressive Layered Extraction (PLE): A Novel Multi-Task Learning (MTL) Model for Personalized Recommendations. <em>Proceedings of the 14th ACM Conference on Recommender Systems</em>.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
@@ -289,20 +399,6 @@
 
 <h2>Related Content</h2>
 <div class="related-container">
-    <div class="related-item-container">
-            <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img
-        
-        loading="lazy"
-        src="/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp"
-        srcset="/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp, /posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp 1.5x, /posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp 2x"
-        
-        alt="/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp"
-        title="/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp" height="200"   width="400" ></a>
-            </div><h2 class="related-title">
-                <a href="/posts/2024/06/multi-task-video-recsys-p2/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</a>
-            </h2>
-        </div>
     <div class="related-item-container">
             <div class="related-image">
                 <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img
@@ -359,6 +455,20 @@
                 <a href="/posts/2023/12/towards-ranking-aware-llms/">Strategies for Effective and Efficient Text Ranking Using Large Language Models</a>
             </h2>
         </div>
+    <div class="related-item-container">
+            <div class="related-image">
+                <a href="/posts/2023/12/prompting-llm-for-ranking/"><img
+        
+        loading="lazy"
+        src="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
+        srcset="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 1.5x, /posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp 2x"
+        
+        alt="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp"
+        title="/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp" height="200"   width="400" ></a>
+            </div><h2 class="related-title">
+                <a href="/posts/2023/12/prompting-llm-for-ranking/">Prompting-based Methods for Text Ranking Using Large Language Models</a>
+            </h2>
+        </div>
     
 
 </div>
@@ -372,25 +482,24 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-03-27</span>
+                <span>Updated on 2024-06-22</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
-            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning" data-via="_reachsumit" data-hashtags="literature review,embeddings"><span class="fab fa-twitter fa-fw"></span></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-hashtag="literature review"><span class="fab fa-facebook-square fa-fw"></span></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/"><span class="fab fa-linkedin fa-fw"></span></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning" data-web><span class="fab fa-whatsapp fa-fw"></span></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning"><span class="fab fa-hacker-news fa-fw"></span></button><button title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/"><span class="fab fa-reddit fa-fw"></span></button><button title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning"><span data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></span></button><button title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/"><span class="fab fa-get-pocket fa-fw"></span></button><button title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning" data-image="featured-image.webp"><span class="fab fa-weibo fa-fw"></span></button><button title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning"><span class="fab fa-evernote fa-fw"></span></button><button title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2023/03/contrastive-video-representations/" data-title="Self-Supervised Contrastive Approaches for Video Representation Learning" data-description=""><span class="fab fa-trello fa-fw"></span></button></div>
+            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/" data-title="The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2" data-via="_reachsumit" data-hashtags="literature review,recsys,multi-task learning"><span class="fab fa-twitter fa-fw"></span></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/" data-hashtag="literature review"><span class="fab fa-facebook-square fa-fw"></span></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/"><span class="fab fa-linkedin fa-fw"></span></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/" data-title="The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2" data-web><span class="fab fa-whatsapp fa-fw"></span></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/" data-title="The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2"><span class="fab fa-hacker-news fa-fw"></span></button><button title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/"><span class="fab fa-reddit fa-fw"></span></button><button title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/" data-title="The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2"><span data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@v5.21.1/icons/line.svg"></span></button><button title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/"><span class="fab fa-get-pocket fa-fw"></span></button><button title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/" data-title="The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2" data-image="featured-image.webp"><span class="fab fa-weibo fa-fw"></span></button><button title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/" data-title="The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2"><span class="fab fa-evernote fa-fw"></span></button><button title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/" data-title="The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2" data-description=""><span class="fab fa-trello fa-fw"></span></button></div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/embeddings/">embeddings</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/literature-review/">literature review</a>,&nbsp;<a href="/tags/recsys/">recsys</a>,&nbsp;<a href="/tags/multi-task-learning/">multi-task learning</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/2023/03/pairing-for-representation/" class="prev" rel="prev" title="Positive and Negative Sampling Strategies for Representation Learning in Semantic Search"><i class="fas fa-angle-left fa-fw"></i>Positive and Negative Sampling Strategies for Representation Learning in Semantic Search</a>
-            <a href="/posts/2023/04/the-twitter-ml-algo/" class="next" rel="next" title="Twitter&#39;s For You Recommendation Algorithm">Twitter&#39;s For You Recommendation Algorithm<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/2024/06/multi-task-video-recsys-p1/" class="prev" rel="prev" title="The Evolution of Multi-task Learning Based Video Recommender Systems - Part 1"><i class="fas fa-angle-left fa-fw"></i>The Evolution of Multi-task Learning Based Video Recommender Systems - Part 1</a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
@@ -407,8 +516,8 @@
         </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-03-27T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Self-Supervised Contrastive Approaches for Video Representation Learning"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript">
+    </div><div class="assets"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2024-06-22T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="/js/gitalk.min.js" defer></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3" async></script></div>
