@@ -4,12 +4,26 @@
         <link>https://blog.reachsumit.com/tags/</link>
         <description>Tags - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Jun 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 11 Aug 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>advertising</title>
+    <link>https://blog.reachsumit.com/tags/advertising/</link>
+    <pubDate>Sun, 11 Aug 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/advertising/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>literature review</title>
     <link>https://blog.reachsumit.com/tags/literature-review/</link>
-    <pubDate>Sat, 22 Jun 2024 00:00:00 &#43;0000</pubDate><author>
+    <pubDate>Sun, 11 Aug 2024 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/tags/literature-review/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>LLM</title>
+    <link>https://blog.reachsumit.com/tags/llm/</link>
+    <pubDate>Sun, 11 Aug 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/tags/llm/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>multi-task learning</title>
@@ -31,13 +45,6 @@
     <pubDate>Sun, 07 Jan 2024 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/tags/behavior-modeling/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>LLM</title>
-    <link>https://blog.reachsumit.com/tags/llm/</link>
-    <pubDate>Tue, 26 Dec 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/tags/llm/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>ranking</title>
@@ -66,13 +73,6 @@
     <pubDate>Tue, 30 May 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
     </author><guid>https://blog.reachsumit.com/tags/graphs/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Mixture-of-experts</title>
-    <link>https://blog.reachsumit.com/tags/mixture-of-experts/</link>
-    <pubDate>Sun, 23 Apr 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/tags/mixture-of-experts/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

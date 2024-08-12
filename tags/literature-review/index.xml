@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/tags/literature-review/</link>
         <description>literature review - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Jun 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/literature-review/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 11 Aug 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/literature-review/" rel="self" type="application/rss+xml" /><item>
+    <title>Incorporating Ads into Large Language Models Outputs</title>
+    <link>https://blog.reachsumit.com/posts/2024/08/ads-llm/</link>
+    <pubDate>Sun, 11 Aug 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2024/08/ads-llm/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024/08/ads-llm/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This article provides an introduction to online advertising systems and explores research work that incorporates ads into the LLM responses to user queries of commercial nature.]]></description>
+</item><item>
     <title>The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</title>
     <link>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/</link>
     <pubDate>Sat, 22 Jun 2024 00:00:00 &#43;0000</pubDate><author>
@@ -86,14 +95,5 @@
                 <img src="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>In previous articles, I gave an introduction to graph representation learning and highlighted several shallow methods for learning homogeneous graph embeddings. This article focuses on shallow representation learning methods for heterogeneous graphs.
 While homogeneous networks have only one type of nodes and edges, heterogeneous networks contain different types of nodes or edges. So, a homogeneous network can also be considered as a special case of a heterogeneous network. Heterogeneous networks, also called heterogeneous information networks (HIN), are ubiquitous in real-world scenarios.]]></description>
-</item><item>
-    <title>Tuning Large Language Models for Recommendation Tasks</title>
-    <link>https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/</link>
-    <pubDate>Sun, 21 May 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/05/tuning-llm-for-recsys/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/05/tuning-llm-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Instruction-tuning methods enable open-source Large Language Models (LLMs) usage for building highly effective recommender systems on private data. This article highlights the latest research work on this paradigm of using LLMs for recommendation tasks.]]></description>
 </item></channel>
 </rss>

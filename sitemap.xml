@@ -2,8 +2,9 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p1/</loc><lastmod>2024-06-16T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/posts/2024/08/ads-llm/</loc><lastmod>2024-08-11T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p1/</loc><lastmod>2024-06-16T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/posts/2024/01/multi-task-learning-recsys/</loc><lastmod>2024-01-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/posts/2024/01/user-behavior-modeling-recsys/</loc><lastmod>2024-01-07T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/posts/2023/12/towards-ranking-aware-llms/</loc><lastmod>2023-12-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -35,17 +36,18 @@
             <loc>https://blog.reachsumit.com/posts/2020/07/twitter-search-redesign/</loc><lastmod>2020-07-19T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/posts/2020/07/spell-checker-fasttext/</loc><lastmod>2020-07-18T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/posts/2020/07/skip-list/</loc><lastmod>2020-07-14T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://blog.reachsumit.com/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/categories/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/tags/literature-review/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/tags/multi-task-learning/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/posts/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/categories/recommender-systems/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/tags/recsys/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.reachsumit.com/tags/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/</loc><lastmod>2024-08-11T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/tags/advertising/</loc><lastmod>2024-08-11T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/categories/</loc><lastmod>2024-08-11T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/categories/information-retrieval/</loc><lastmod>2024-08-11T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/tags/literature-review/</loc><lastmod>2024-08-11T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/tags/llm/</loc><lastmod>2024-08-11T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/posts/</loc><lastmod>2024-08-11T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/tags/</loc><lastmod>2024-08-11T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.reachsumit.com/tags/multi-task-learning/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://blog.reachsumit.com/categories/recommender-systems/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://blog.reachsumit.com/tags/recsys/</loc><lastmod>2024-06-22T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/tags/behavior-modeling/</loc><lastmod>2024-01-07T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://blog.reachsumit.com/categories/information-retrieval/</loc><lastmod>2024-01-02T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://blog.reachsumit.com/tags/llm/</loc><lastmod>2023-12-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/tags/ranking/</loc><lastmod>2024-01-02T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/tags/retrieval/</loc><lastmod>2023-12-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.reachsumit.com/talks/</loc><lastmod>2023-07-15T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
