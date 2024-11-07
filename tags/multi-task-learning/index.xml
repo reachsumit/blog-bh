@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>multi-task learning - Tag - Sumit&#39;s Diary</title>
+        <title>Multi-Task Learning - Tag - Sumit&#39;s Diary</title>
         <link>https://blog.reachsumit.com/tags/multi-task-learning/</link>
-        <description>multi-task learning - Tag - Sumit&#39;s Diary</description>
+        <description>Multi-Task Learning - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
             <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Jun 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/multi-task-learning/" rel="self" type="application/rss+xml" /><item>
     <title>The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</title>

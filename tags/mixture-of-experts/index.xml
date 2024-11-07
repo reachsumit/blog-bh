@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Mixture-of-experts - Tag - Sumit&#39;s Diary</title>
+        <title>Mixture-of-Experts - Tag - Sumit&#39;s Diary</title>
         <link>https://blog.reachsumit.com/tags/mixture-of-experts/</link>
-        <description>Mixture-of-experts - Tag - Sumit&#39;s Diary</description>
+        <description>Mixture-of-Experts - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
             <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 23 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/mixture-of-experts/" rel="self" type="application/rss+xml" /><item>
     <title>Mixture-of-Experts based Recommender Systems</title>
@@ -12,6 +12,6 @@
     </author><guid>https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/04/moe-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>The Mixture-of-Experts (MoE) is a classical ensemble learning technique originally proposed by Jacobs et. al1 in 1991. MoEs have the capability to substantially scale up the model capacity and only introduce small computation overhead. This ability combined with recent innovations in the deep learning domain has led to the wide-scale adoption of MoEs in healthcare, finance, pattern recognition, etc. They have been successfully utilized in large-scale applications such as Large Language Modeling (LLM), Machine Translation, and Recommendations.]]></description>
+            </div><p>The Mixture-of-Experts (MoE) is a classical ensemble learning technique originally proposed by Jacobs et. al<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> in 1991. MoEs have the capability to substantially scale up the model capacity and only introduce small computation overhead. This ability combined with recent innovations in the deep learning domain has led to the wide-scale adoption of MoEs in healthcare, finance, pattern recognition, etc. They have been successfully utilized in large-scale applications such as Large Language Modeling (LLM), Machine Translation, and Recommendations. This article gives an introduction to Mixture-of-Experts and some of the most important enhancements made to the original MoE proposal. Then we look at how MoEs have been adapted to compute recommendations by looking at examples of such systems in production.</p>]]></description>
 </item></channel>
 </rss>

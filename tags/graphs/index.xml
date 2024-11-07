@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>graphs - Tag - Sumit&#39;s Diary</title>
+        <title>Graphs - Tag - Sumit&#39;s Diary</title>
         <link>https://blog.reachsumit.com/tags/graphs/</link>
-        <description>graphs - Tag - Sumit&#39;s Diary</description>
+        <description>Graphs - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
             <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 30 May 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/graphs/" rel="self" type="application/rss+xml" /><item>
     <title>Shallow Embedding Models for Heterogeneous Graphs</title>
@@ -12,8 +12,8 @@
     </author><guid>https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>In previous articles, I gave an introduction to graph representation learning and highlighted several shallow methods for learning homogeneous graph embeddings. This article focuses on shallow representation learning methods for heterogeneous graphs.
-While homogeneous networks have only one type of nodes and edges, heterogeneous networks contain different types of nodes or edges. So, a homogeneous network can also be considered as a special case of a heterogeneous network. Heterogeneous networks, also called heterogeneous information networks (HIN), are ubiquitous in real-world scenarios.]]></description>
+            </div><p>In previous articles, I gave an <a href="https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/" rel="">introduction to graph representation learning</a> and highlighted several <a href="https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/" rel="">shallow methods for learning homogeneous graph embeddings</a>. This article focuses on shallow representation learning methods for heterogeneous graphs.</p>
+<p>While homogeneous networks have only one type of nodes and edges, heterogeneous networks contain different types of nodes or edges. So, a homogeneous network can also be considered as a special case of a heterogeneous network. Heterogeneous networks, also called heterogeneous information networks (HIN), are ubiquitous in real-world scenarios. For example, social media websites, like Facebook, contain a set of node types, such as users, posts, groups and, tags. By learning heterogeneous graph embeddings, we learn low-dimensional representations of the graph while preserving the heterogeneous structures and semantics for the downstream tasks (such as node classification, link prediction, etc.).</p>]]></description>
 </item><item>
     <title>Shallow Embedding Models for Homogeneous Graphs</title>
     <link>https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/</link>
@@ -22,7 +22,7 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     </author><guid>https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/05/shallow-homogeneous-graphs-rep/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>The previous article &ldquo;A Guide to Graph Representation Learning&rdquo; provided a comprehensive introduction to the state of graph representation learning, along with a review of the basic terminologies, techniques, and applications. If you are new to the graph learning domain, I&rsquo;d highly recommend you read the previous article first. This article takes a closer look at different types of shallow graph embedding models of homogeneous graphs. It also highlights a few real-world applications that build upon some of these ideas.]]></description>
+            </div><p>The previous article &ldquo;<a href="https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/" target="_blank" rel="noopener noreferrer">A Guide to Graph Representation Learning</a>&rdquo; provided a comprehensive introduction to the state of graph representation learning, along with a review of the basic terminologies, techniques, and applications. If you are new to the graph learning domain, I&rsquo;d highly recommend you read the previous article first. This article takes a closer look at different types of shallow graph embedding models of homogeneous graphs. It also highlights a few real-world applications that build upon some of these ideas.</p>]]></description>
 </item><item>
     <title>A Guide to Graph Representation Learning</title>
     <link>https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/</link>
@@ -31,6 +31,6 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     </author><guid>https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/04/intro-to-graph-representation-learning/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>In recent years, there has been a significant amount of research activity in the graph representation learning domain. These learning methods help in analyzing abstract graph structures in information networks and improve the performances of state-of-the-art machine learning solutions for real-world applications, such as social recommendations, targeted advertising, user search, etc. This article provides a comprehensive introduction to the graph representation learning domain, including common terminologies, deterministic and stochastic modeling techniques, taxonomy, evaluation methods, and applications.]]></description>
+            </div><p>In recent years, there has been a significant amount of research activity in the graph representation learning domain. These learning methods help in analyzing abstract graph structures in information networks and improve the performances of state-of-the-art machine learning solutions for real-world applications, such as social recommendations, targeted advertising, user search, etc. This article provides a comprehensive introduction to the graph representation learning domain, including common terminologies, deterministic and stochastic modeling techniques, taxonomy, evaluation methods, and applications.</p>]]></description>
 </item></channel>
 </rss>

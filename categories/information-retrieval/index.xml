@@ -75,6 +75,7 @@
     </author><guid>https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2022/11/feature-interactions-ir/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>IntroductionLarge-scale information retrieval applications, such as recommender systems, search ranking, and text analysis often leverage feature interactions for effective modeling. These models are commonly deployed at the ranking stage of the cascade-style systems. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second or higher-order feature interactions.]]></description>
+            </div><h2 id="introduction" class="headerLink">
+    <a href="#introduction" class="header-mark"></a>Introduction</h2><p>Large-scale information retrieval applications, such as recommender systems, search ranking, and text analysis often leverage feature interactions for effective modeling. These models are commonly deployed at the ranking stage of <a href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system" rel="">the cascade-style systems</a>. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second or higher-order feature interactions.</p>]]></description>
 </item></channel>
 </rss>
