@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/tags/recsys/</link>
         <description>Recsys - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Jun 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/recsys/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 06 Nov 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/recsys/" rel="self" type="application/rss+xml" /><item>
+    <title>Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions</title>
+    <link>https://blog.reachsumit.com/posts/2024/11/embedding-collapse-recsys/</link>
+    <pubDate>Wed, 06 Nov 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2024/11/embedding-collapse-recsys/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024/11/embedding-collapse-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Learned embeddings often suffer from &rsquo;embedding collapse&rsquo;, where they occupy only a small subspace of the available dimensions. This article explores the causes of embedding collapse, from two-tower models to GNN-based systems, and its impact on model scalability and recommendation quality. We discuss methods to detect collapse and examine recent solutions proposed by research teams at Visa, Facebook AI, and Tencent Ads to address this challenge.]]></description>
+</item><item>
     <title>The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</title>
     <link>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/</link>
     <pubDate>Sat, 22 Jun 2024 00:00:00 &#43;0000</pubDate><author>
@@ -85,16 +94,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/04/diffusion-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Diffusion Models have exhibited state-of-the-art results in image and audio synthesis domains. A recent line of research has started to adopt Diffusion for recommender systems. This article introduces Diffusion and its relevance to the recommendations domain and also highlights some of the most recent proposals on this novel theme.]]></description>
-</item><item>
-    <title>Zero and Few Shot Recommender Systems based on Large Language Models</title>
-    <link>https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/</link>
-    <pubDate>Mon, 10 Apr 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/04/llm-for-recsys/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/04/llm-for-recsys/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div><p>Recent developments in Large Language Models (LLMs) have brought a significant paradigm shift in Natural Language Processing (NLP) domain. These pretrained language models encode an extensive amount of world knowledge, and they can be applied to a multitude of downstream NLP applications with zero or just a handful of demonstrations.</p>
-<p>While existing recommender systems mainly focus on behavior data, large language models encode extensive world knowledge mined from large-scale web corpora. Hence these LLMs store knowledge that can complement the behavior data. For example, an LLM-based system, like ChatGPT, can easily recommend buying turkey on Thanksgiving day, in a zero-shot manner, even without having click behavior data related to turkeys or Thanksgiving.</p>
-<p>Many researchers have recently proposed different approaches to building recommender systems using LLMs. These methods convert different recommendation tasks into either language understanding or language generation templates. This article highlights the prominent work done on this theme.</p>]]></description>
 </item></channel>
 </rss>
