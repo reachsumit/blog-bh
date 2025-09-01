@@ -48,7 +48,7 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
                             "width":  1000 ,
                             "height":  300 
                         }],"genre": "posts","keywords":["literature review","graphs","embeddings"],"wordcount":  3812 ,
-        "url": "https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/","datePublished": "2023-05-30T00:00:00+00:00","dateModified": "2023-05-30T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/","datePublished": "2023-05-30T00:00:00+00:00","dateModified": "2023-05-30T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
@@ -58,43 +58,42 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     }</script></head>
 
 
-<body data-instant-intensity="viewport" ><script type="text/javascript">
-        function setTheme(theme) {
-          document.body.setAttribute('theme', theme); 
-          document.documentElement.className = theme;
-          document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
-          if (theme === 'light') {
-            document.documentElement.classList.remove('tw-dark')
-          } else {
-            document.documentElement.classList.add('tw-dark')
-          }
-          window.theme = theme;   
-          window.isDark = window.theme !== 'light' 
-        }
-        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
-        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
-        if (window.localStorage && localStorage.getItem('theme')) {
-            let theme = localStorage.getItem('theme');
-            if (theme === 'light' || theme === 'dark') {
-            setTheme(theme);
+<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script>
+    function setTheme(theme) {
+      document.body.setAttribute('theme', theme); 
+      document.documentElement.className = theme;
+      document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
+      if (theme === 'light') {
+        document.documentElement.classList.remove('tw-dark')
+      } else {
+        document.documentElement.classList.add('tw-dark')
+      }
+      window.theme = theme;   
+      window.isDark = window.theme !== 'light' 
+    }
+    function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+    function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+    if (window.localStorage && localStorage.getItem('theme')) {
+        let theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') {
+        setTheme(theme);
+        } else {
+            if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                setTheme('dark');
             } else {
-                if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    setTheme('dark');
-                } else {
-                    setTheme('light');
-                }
+                setTheme('light');
             }
-         } else { 
-            if ('light' === 'light' || 'light' === 'dark') 
-                setTheme('light'), saveTheme('light'); 
-            else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
         }
-        let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
-        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
-        window.switchThemeEventSet = new Set()
-    </script>
-    <div id="back-to-top"></div>
-    <div id="mask"></div><div class="wrapper"><header class="desktop print:!tw-hidden" id="header-desktop">
+      } else { 
+        if ('light' === 'light' || 'light' === 'dark') 
+            setTheme('light'), saveTheme('light'); 
+        else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
+    }
+    let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
+    getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    window.switchThemeEventSet = new Set()
+</script><div id="back-to-top"></div>
+    <div id="mask"></div><header class="desktop print:!tw-hidden" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="/" title="Sumit&#39;s Diary"><span id="desktop-header-typeit" class="typeit"></span></a>
@@ -154,7 +153,7 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
                     </button>
-                    <button class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                    <button class="search-button search-clear tw-h-fit" id="search-clear-mobile" title="Clear">
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></svg>
                     </button>
@@ -183,8 +182,7 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div><main class="main">
-            <div class="container"><div class="toc print:!tw-hidden" id="toc-auto">
+</div><main class="tw-mx-4 tw-flex-1"><div class="toc print:!tw-hidden" id="toc-auto">
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
@@ -245,19 +243,82 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2023-05-30" data-pagefind-body>Shallow Embedding Models for Heterogeneous Graphs</h1><div class="post-meta">
+    </div><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
+        <div class="toc tw-mx-4 tw-max-w-full">
+            <h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl">Contents</h2>
+            <div class="toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#definitions">Definitions</a>
+      <ul>
+        <li><a href="#information-network">Information Network</a></li>
+        <li><a href="#heterogeneous-graph">Heterogeneous graph</a></li>
+        <li><a href="#network-schema">Network Schema</a></li>
+        <li><a href="#meta-path">Meta-path</a>
+          <ul>
+            <li><a href="#limitations-of-meta-paths">Limitations of Meta-paths</a></li>
+          </ul>
+        </li>
+        <li><a href="#meta-graph">Meta-graph</a></li>
+        <li><a href="#heterogeneous-graph-embedding">Heterogeneous graph embedding</a></li>
+      </ul>
+    </li>
+    <li><a href="#why-cant-we-just-use-homogeneous-learning-methods">Why can&rsquo;t we just use homogeneous learning methods?</a>
+      <ul>
+        <li><a href="#complex-structure">Complex Structure</a></li>
+        <li><a href="#heterogeneous-attributes">Heterogeneous Attributes</a></li>
+        <li><a href="#application-dependent">Application Dependent</a></li>
+      </ul>
+    </li>
+    <li><a href="#learning-hg-embeddings">Learning HG Embeddings</a>
+      <ul>
+        <li><a href="#link-based-hg-embedding">Link-based HG Embedding</a>
+          <ul>
+            <li><a href="#pme">PME</a></li>
+            <li><a href="#pte">PTE</a></li>
+            <li><a href="#mne">MNE</a></li>
+          </ul>
+        </li>
+        <li><a href="#path-based-hg-embedding">Path-based HG Embedding</a>
+          <ul>
+            <li><a href="#metapath2vec-metapath2vec">Metapath2vec/ Metapath2vec++</a></li>
+            <li><a href="#hin2vec">HIN2vec</a></li>
+            <li><a href="#just">JUST</a></li>
+          </ul>
+        </li>
+        <li><a href="#subgraph-based-hg-embedding">Subgraph-based HG Embedding</a>
+          <ul>
+            <li><a href="#metagraph2vec">MetaGraph2Vec</a></li>
+            <li><a href="#dhne">DHNE</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#example-applications">Example Applications</a>
+      <ul>
+        <li><a href="#rating-prediction-with-herec">Rating Prediction with HERec</a></li>
+        <li><a href="#malware-detection-with-hindroid">Malware Detection with HinDroid</a></li>
+        <li><a href="#fraud-detection-with-hacud">Fraud Detection with HACUD</a></li>
+      </ul>
+    </li>
+    <li><a href="#toward-graph-neural-networks">Toward Graph Neural Networks</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+        </div>
+    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2023-05-30" data-pagefind-body>Shallow Embedding Models for Heterogeneous Graphs</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href=""><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg></a></span></div>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/graph-learning/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>Graph Learning</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2023-05-30">2023-05-30</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2023-05-30">2023-05-30</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;3812 words&nbsp;
                     <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;17 minutes&nbsp;</div>
-        </div><div class="featured-image"><img  loading="eager" src=/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image.webp    height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
+        </div><div class="featured-image"><img  loading="eager" src='/posts/2023/05/shallow-heterogeneous-graphs-rep/featured-image.webp'    height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span class="details-icon"><svg class="icon"
@@ -324,7 +385,7 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
 </nav></div>
             </div><div class="content" id="content" data-pagefind-body><p>In previous articles, I gave an <a href="https://blog.reachsumit.com/posts/2023/04/intro-to-graph-representation-learning/" rel="">introduction to graph representation learning</a> and highlighted several <a href="https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/" rel="">shallow methods for learning homogeneous graph embeddings</a>. This article focuses on shallow representation learning methods for heterogeneous graphs.</p>
 <p>While homogeneous networks have only one type of nodes and edges, heterogeneous networks contain different types of nodes or edges. So, a homogeneous network can also be considered as a special case of a heterogeneous network. Heterogeneous networks, also called heterogeneous information networks (HIN), are ubiquitous in real-world scenarios. For example, social media websites, like Facebook, contain a set of node types, such as users, posts, groups and, tags. By learning heterogeneous graph embeddings, we learn low-dimensional representations of the graph while preserving the heterogeneous structures and semantics for the downstream tasks (such as node classification, link prediction, etc.).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/hg_example.png" title="Example of a heterogeneous network" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/hg_example.png" data-sub-html="<h2>Example of a heterogeneous network</h2><p>Example of a heterogeneous network</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/hg_example.png   alt="Example of a heterogeneous network"  ></a><figcaption class="image-caption">Example of a heterogeneous network</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/hg_example.png" title="Example of a heterogeneous network" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/hg_example.png" data-sub-html="<h2>Example of a heterogeneous network</h2><p>Example of a heterogeneous network</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/hg_example.png'   alt="Example of a heterogeneous network"  ></a><figcaption class="image-caption">Example of a heterogeneous network</figcaption>
 </figure></p>
 <p>The above figure shows a toy example of a heterogeneous network built from NYTimes data. It has news articles, categories, phrases, locations, and datetimes as nodes<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. These nodes are connected through specific types of edges, such as $article \xrightarrow{\mathnormal{\text{belongs to}}} category$, $article \xrightarrow{mentions} location$,  $category \xrightarrow{includes} article$, etc.</p>
 <p>Heterogeneous networks (HGs) can also be constructed by fusing information across multiple data sources. For example, Google may fuse user information from Google Search, Gmail, Maps, etc. to create a HIN with nodes such as users, keywords, locations, etc. Similarly, Meta may fuse partial views of user information across social network platforms like Facebook and Instagram into a single HIN.</p>
@@ -333,16 +394,16 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     <a href="#information-network" class="header-mark"></a>Information Network</h3><p>An information network is an abstraction of the real world and is defined as a directed graph $G = (V,E)$ consisting of a set of nodes (or objects) and edges (or links/relations). Each node $v \in V$ belongs to one particular node type in the node type set $A: \varphi(v) \in A$, and each edge $e \in E$ belongs to a particular edge type in the edge type set $R: \psi(e) \in R$. Here $\varphi: V \rightarrow A$ is the node type mapping function and $\psi: E \rightarrow R$ is the edge type mapping function. If two edges have the same edge type, they share the connect the same type of nodes as well.</p>
 <h3 id="heterogeneous-graph" class="headerLink">
     <a href="#heterogeneous-graph" class="header-mark"></a>Heterogeneous graph</h3><p>A heterogeneous graph (HG), also called heterogeneous information network (HIN), is defined as a network $H = [V,E,X,Y,\varphi,\psi]$ with multiple types of nodes and/or edges. Each node $v_i$ and each edge $e_{ij}$ is potentially associated with an attribute $X_i$ and $Y_{ij}$ respectively. Given $A$ and $R$ represent the node types and edge types respectively, in HIN: $A + R &gt; 2$.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/hin_example.png" title="HIN Example" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/hin_example.png" data-sub-html="<h2>An example of a HIN</h2><p>HIN Example</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/hin_example.png   alt="HIN Example"  ></a><figcaption class="image-caption">An example of a HIN</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/hin_example.png" title="HIN Example" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/hin_example.png" data-sub-html="<h2>An example of a HIN</h2><p>HIN Example</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/hin_example.png'   alt="HIN Example"  ></a><figcaption class="image-caption">An example of a HIN</figcaption>
 </figure></p>
 <p>The figure above shows an example of a HIN with four node types (author, paper, venue, and term) and three edge types (author-write-paper, paper-contain-term, and conference-publish-paper)<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
 <h3 id="network-schema" class="headerLink">
     <a href="#network-schema" class="header-mark"></a>Network Schema</h3><p>The network schema for $G$ is defined as a meta template $S=(A,R)$  which can be considered as a directed graph defined over node types $A$ and with edges as relations from $R$. The network schema specifies type constraints on the set of nodes and edges, such that an information network can be considered as a network instance that follows the network schema. These constraints make a heterogeneous network semi-structured and guide the semantic exploration of the network<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/network_schema.png" title="Network Schema" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/network_schema.png" data-sub-html="<h2>Network Schema for the HIN mentioned earlier</h2><p>Network Schema</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/network_schema.png   alt="Network Schema"  ></a><figcaption class="image-caption">Network Schema for the HIN mentioned earlier</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/network_schema.png" title="Network Schema" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/network_schema.png" data-sub-html="<h2>Network Schema for the HIN mentioned earlier</h2><p>Network Schema</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/network_schema.png'   alt="Network Schema"  ></a><figcaption class="image-caption">Network Schema for the HIN mentioned earlier</figcaption>
 </figure></p>
 <h3 id="meta-path" class="headerLink">
     <a href="#meta-path" class="header-mark"></a>Meta-path</h3><p>A meta-path is based on a network schema $S$ and is denoted as $m=A_1 \xrightarrow{R_1} A_2 \xrightarrow{R_2} &hellip; \xrightarrow{R_l}A_{l+1}$ with node types $A_1, A_2, &hellip;, A_{l+1} \in A$ and edge types $R_1, R_2, &hellip;, R_{l+1} \in R$.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/metapath_example.png" title="Meta-path example" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/metapath_example.png" data-sub-html="<h2>Two common meta-paths in academic networks</h2><p>Meta-path example</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/metapath_example.png   alt="Meta-path example"  ></a><figcaption class="image-caption">Two common meta-paths in academic networks</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/metapath_example.png" title="Meta-path example" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/metapath_example.png" data-sub-html="<h2>Two common meta-paths in academic networks</h2><p>Meta-path example</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/metapath_example.png'   alt="Meta-path example"  ></a><figcaption class="image-caption">Two common meta-paths in academic networks</figcaption>
 </figure></p>
 <p>Each meta-path captures the proximity between the nodes on its two ends from a particular semantic perspective. For example, the two meta-paths shown in the above figure capture different semantics. The Author-Paper-Author (APA) meta-path indicates the co-author relationship, while Author-Paper-Conference-Paper-Author (APCPA) represents the co-conference relation.</p>
 <h4 id="limitations-of-meta-paths" class="headerLink">
@@ -354,7 +415,7 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
 </ul>
 <h3 id="meta-graph" class="headerLink">
     <a href="#meta-graph" class="header-mark"></a>Meta-graph</h3><p>A meta-graph is a directed acyclic graph (DAG) composed of multiple meta-paths with common nodes. Metagraph-based methods can incorporate complex structures like motifs.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/metagraph_example.png" title="Meta-graph example" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/metagraph_example.png" data-sub-html="<h2>A meta-graph for our academic network example</h2><p>Meta-graph example</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/metagraph_example.png   alt="Meta-graph example"  ></a><figcaption class="image-caption">A meta-graph for our academic network example</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/metagraph_example.png" title="Meta-graph example" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/metagraph_example.png" data-sub-html="<h2>A meta-graph for our academic network example</h2><p>Meta-graph example</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/metagraph_example.png'   alt="Meta-graph example"  ></a><figcaption class="image-caption">A meta-graph for our academic network example</figcaption>
 </figure></p>
 <h3 id="heterogeneous-graph-embedding" class="headerLink">
     <a href="#heterogeneous-graph-embedding" class="header-mark"></a>Heterogeneous graph embedding</h3><p>Heterogeneous graph embedding, or heterogeneous node embedding (HNE), learns a function $\Phi: V \rightarrow \mathcal{R}^d$ that maps the nodes $v \in V$ in HG to a low-dimensional Euclidean space with $d \ll |V|$. These latent representations (i.e. embeddings) of each node preserve the network topological information.</p>
@@ -371,14 +432,14 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
 <h3 id="link-based-hg-embedding" class="headerLink">
     <a href="#link-based-hg-embedding" class="header-mark"></a>Link-based HG Embedding</h3><h4 id="pme" class="headerLink">
     <a href="#pme" class="header-mark"></a>PME</h4><p>Chen et al.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> proposed the Projected Metric Embedding (PME) method based on metric or distance learning to capture both first-order and second-order proximities in a unified way. They noted that some of the earlier methods for learning HNE were based on the dot-product proximity calculation between nodes in the low-dimensional space. As the dot-product does not meet the triangle inequality, these methods were limited to only preserving the first-order proximity. For example, if both the vertices a and b are close to c, these methods couldn&rsquo;t capture the fact that a and b are also close to each other.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/pme_for_yelp.png" title="PME for Yelp" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/pme_for_yelp.png" data-sub-html="<h2>PME approach applied to Yelp data</h2><p>PME for Yelp</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/pme_for_yelp.png   alt="PME for Yelp"  ></a><figcaption class="image-caption">PME approach applied to Yelp data</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/pme_for_yelp.png" title="PME for Yelp" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/pme_for_yelp.png" data-sub-html="<h2>PME approach applied to Yelp data</h2><p>PME for Yelp</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/pme_for_yelp.png'   alt="PME for Yelp"  ></a><figcaption class="image-caption">PME approach applied to Yelp data</figcaption>
 </figure></p>
 <p>PME models objects and relationships in distinct spaces, i.e. one shared object space and multiple relation-specific object spaces, and performs Euclidian distance calculation in those spaces. In the example above, there are 4 types of nodes (user, business, attribute, and category), and 4 relations (user-user, user-business, business-attribute, and business-category). This network is then decomposed into 4 bipartite networks based on the 4 relations. Each bipartite network is projected to a relation-specific semantic space and then joint learning is applied to multiple semantic-specific Euclidean spaces. This captures heterogeneity by allowing some objects that are far away from each other in the object space to be close to each other in the relation-specific spaces. A margin-based triplet loss function is used to make the node pairs connected by a relation to be closer to each other than other node pairs without that specific relation.</p>
 <p>$$ \mathcal{L} = \sum_{r \in R}\sum_{(v_i,v_j) \in E_r}\sum_{(V_i,v_k) \notin E_r} [\xi + S_r(v_i,v_j)^2 - S_r(v_i,v_k)^2] $$</p>
 <p>Here $\xi$ denotes the margin, and $S$ is the distance function between the pairs. There are similar methods that exploit the relation-specific matrix to capture link heterogeneity. For example, the Embedding of Embedding (EOE) method for coupled HGs, and HeGAN that is based on GANs. Also, methods like <strong>Asp</strong>ect <strong>Em</strong>bedding (AspEM) and <strong>H</strong>IN <strong>E</strong>mbedding via <strong>E</strong>dge <strong>R</strong>epresentations (HEER) drop the distance metric and instead maximize the probability of observed relations (links).</p>
 <h4 id="pte" class="headerLink">
     <a href="#pte" class="header-mark"></a>PTE</h4><p>Tang et. al.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> proposed Predictive Text Embeddings (PTE) for learning low-dimensional word embeddings through a heterogeneous text network. The input HG contains words, documents, and labels as the nodes and connections between them as edges. The authors first project this HIN into several homogeneous/bipartite networks as shown below.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/pte.png" title="PTE Networks" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/pte.png" data-sub-html="<h2>text networks in PTE</h2><p>PTE Networks</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/pte.png   alt="PTE Networks"  ></a><figcaption class="image-caption">text networks in PTE</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/pte.png" title="PTE Networks" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/pte.png" data-sub-html="<h2>text networks in PTE</h2><p>PTE Networks</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/pte.png'   alt="PTE Networks"  ></a><figcaption class="image-caption">text networks in PTE</figcaption>
 </figure></p>
 <p>PTE then applies <a href="%28https://blog.reachsumit.com/posts/2023/05/shallow-homogeneous-graphs-rep/#large-scale-information-network-embedding-line%29." rel="">LINE</a> (from the same authors), which preserves the first- and second-order structures, to jointly optimize the bipartite network embeddings to generate a single HNE. The loss function simply minimizes the negative log-likelihood of the different bipartite networks:</p>
 <p>$$-\sum_{(i,j) \in E_{ww}} w_{ij} \log{p(v_i|v_j)} -\sum_{(i,j) \in E_{wd}} w_{ij} \log{p(v_i|d_j)} -\sum_{(i,j) \in E_{wl}} w_{ij} \log{p(v_i|l_j)}$$</p>
@@ -389,20 +450,20 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     <a href="#path-based-hg-embedding" class="header-mark"></a>Path-based HG Embedding</h3><p>To capture higher-order relations, such as author-author, paper-paper, and author-conference in the earlier example HIN, path-based methods utilize more complex semantic information. An underlying theme among these methods is to reduce complexity by choosing higher-order relations with rich semantics, such as meta-paths.</p>
 <h4 id="metapath2vec-metapath2vec" class="headerLink">
     <a href="#metapath2vec-metapath2vec" class="header-mark"></a>Metapath2vec/ Metapath2vec++</h4><p>Dong et al.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> proposed a meta-path-based random walk that can be applied to HGs and can capture both first-order and high-order proximities. As there can be a large number of high-order relations, the authors focus on the key idea which is to design specific meta-paths which restrict the transitions to only the specified types of nodes. These paths resulting from meta-path-guided random walks are fed to a skip-gram model (with negative sampling) for learning the representation of nodes by maximizing the probability of the context nodes, given the starting node.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/metapath2vec_arch.png" title="Metapath2vec Architecture" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/metapath2vec_arch.png" data-sub-html="<h2>An example architecture for meta-path PAP (Paper-Author-Paper). Source: [^2]</h2><p>Metapath2vec Architecture</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/metapath2vec_arch.png   alt="Metapath2vec Architecture"  ></a><figcaption class="image-caption">An example architecture for meta-path PAP (Paper-Author-Paper). Source: [^2]</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/metapath2vec_arch.png" title="Metapath2vec Architecture" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/metapath2vec_arch.png" data-sub-html="<h2>An example architecture for meta-path PAP (Paper-Author-Paper). Source: [^2]</h2><p>Metapath2vec Architecture</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/metapath2vec_arch.png'   alt="Metapath2vec Architecture"  ></a><figcaption class="image-caption">An example architecture for meta-path PAP (Paper-Author-Paper). Source: [^2]</figcaption>
 </figure></p>
 <p>The objective function of heterogeneous skip-gram is stated as: $arg max_{\theta} \sum_{v \in V} \sum_{t \in T_V} \sum_{c_t \in N_{t(v)}} \log{P(c_t|v;\theta)}$, where $t$ denotes the node type, $c_t$ is the context, $N_{t(v)}$ denotes the neighborhood of node $v$, and $P(c_t|v;\theta)$ is a softmax function.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/heterogeneous_skipgram.png" title="Metapath2vec Architecture" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/heterogeneous_skipgram.png" data-sub-html="<h2>Heterogeneous Skip-gram</h2><p>Metapath2vec Architecture</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/heterogeneous_skipgram.png   alt="Metapath2vec Architecture"  ></a><figcaption class="image-caption">Heterogeneous Skip-gram</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/heterogeneous_skipgram.png" title="Metapath2vec Architecture" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/heterogeneous_skipgram.png" data-sub-html="<h2>Heterogeneous Skip-gram</h2><p>Metapath2vec Architecture</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/heterogeneous_skipgram.png'   alt="Metapath2vec Architecture"  ></a><figcaption class="image-caption">Heterogeneous Skip-gram</figcaption>
 </figure></p>
 <p>The authors also propose a metapath2vec++ algorithm that samples the negative nodes of the same type as the central node by maintaining separate multinomial distributions for each node type in the output layer of the skip-gram model. The official code and dataset for this method are available <a href="https://ericdongyx.github.io/metapath2vec/m2v.html" target="_blank" rel="noopener noreferrer">on GitHub</a>.</p>
 <p>One extension of this algorithm is the HeteSpaceyWalk method in which the authors replace the random walk with a heterogeneous personalized spacey random walk to make the process more scalable.</p>
 <h4 id="hin2vec" class="headerLink">
     <a href="#hin2vec" class="header-mark"></a>HIN2vec</h4><p>In HIN2vec, Fu et al<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> proposed a hybrid approach that combines first-order relation and high-order relation (i.e. meta-paths). As shown in the figure below, HIN2vec works in a multi-label classification style by predicting whether two given nodes are connected by a meta-path. It uses a neural network and binary cross-entropy loss to fuse the one-hot vector representations of the two nodes $i$ and $j$ and the relation $r$. The jointly learned parameter matrices $W_I$, $W_J$, and $W_R$ are the mapping matrices that output the latent vectors. Compared to random-walk-based methods, HIN2vec can simultaneously integrate multiple meta-paths.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/hin2vec.png" title="HIN2vec architecture" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/hin2vec.png" data-sub-html="<h2>HIN2vec architecture</h2><p>HIN2vec architecture</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/hin2vec.png   alt="HIN2vec architecture"  ></a><figcaption class="image-caption">HIN2vec architecture</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/hin2vec.png" title="HIN2vec architecture" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/hin2vec.png" data-sub-html="<h2>HIN2vec architecture</h2><p>HIN2vec architecture</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/hin2vec.png'   alt="HIN2vec architecture"  ></a><figcaption class="image-caption">HIN2vec architecture</figcaption>
 </figure></p>
 <h4 id="just" class="headerLink">
     <a href="#just" class="header-mark"></a>JUST</h4><p>In <strong>Ju</strong>mp and <strong>St</strong>ay strategy (JUST) Hussein et al.<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> proposed random walks that do not rely on predefined meta-paths. Meta-paths require prior knowledge from domain experts and often require additional computation to combine meta-paths shorter than the predefined length. A vanilla random walk on a heterogeneous network will be biased towards the highly visible node type. To overcome this, at each step JUST tries to probabilistically balance between jumping to the next node of a different type or staying in the domain of the same node type.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/just_node_selection.png" title="JUST: next node selection" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/just_node_selection.png" data-sub-html="<h2>JUST: next node selection considering m=2 previously visited domains.</h2><p>JUST: next node selection</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/just_node_selection.png   alt="JUST: next node selection"  ></a><figcaption class="image-caption">JUST: next node selection considering m=2 previously visited domains.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/just_node_selection.png" title="JUST: next node selection" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/just_node_selection.png" data-sub-html="<h2>JUST: next node selection considering m=2 previously visited domains.</h2><p>JUST: next node selection</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/just_node_selection.png'   alt="JUST: next node selection"  ></a><figcaption class="image-caption">JUST: next node selection considering m=2 previously visited domains.</figcaption>
 </figure></p>
 <p>While jumping, their method tries to pick a domain different from the last m visited types. Configuring this value of m allows us to balance the node distribution over different types. The probability of staying is controlled using an exponential decay function which effectively balances the number of heterogeneous and homogeneous edges in a truncated random walk. Finally, a skip-gram model is used to generate the node embeddings.</p>
 <p>In a similar fashion, a method called BHIN2vec balances the influence of different relations on the embedding of a node by adjusting the training ratio of different tasks.</p>
@@ -410,31 +471,31 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     <a href="#subgraph-based-hg-embedding" class="header-mark"></a>Subgraph-based HG Embedding</h3><p>Utilizing subgraphs in HNE can help in capturing complex structural and semantic relationships in an HG. The two widely used subgraphs in HG are: <em>meta-graph</em> to reflect the high-order similarity between nodes, and <em>hyperedge</em> to connect a series of closely related nodes. In this section, we take a look at prominent algorithms based on these two subgraph structures.</p>
 <h4 id="metagraph2vec" class="headerLink">
     <a href="#metagraph2vec" class="header-mark"></a>MetaGraph2Vec</h4><p>In metagraph2vec, Zhang et al.<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup> proposed a way to generate heterogeneous node sequences using meta-graph-guided random walks. A meta-graph is a DAG defined on the given HIN schema which has only a single source node and a single target node. Real-world HINs often have to deal with sparse or missing connections. As the following example shows, meta-paths $\mathcal{P_1}$ and $\mathcal{P_2}$ will fail to capture path $a_1 \rightarrow a_4$ if the highlighted link is missing. However, the meta-graph $\mathcal{G}$ provides a richer structural context and is able to perform this random walk. This shows the meta-graph&rsquo;s capability to match more paths in a sparse context.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/metagraph.png" title="MetaGraph2Vec" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/metagraph.png" data-sub-html="<h2>two metapaths P1 and P2, a metagraph G, and an example random walk.</h2><p>MetaGraph2Vec</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/metagraph.png   alt="MetaGraph2Vec"  ></a><figcaption class="image-caption">two metapaths P1 and P2, a metagraph G, and an example random walk.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/metagraph.png" title="MetaGraph2Vec" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/metagraph.png" data-sub-html="<h2>two metapaths P1 and P2, a metagraph G, and an example random walk.</h2><p>MetaGraph2Vec</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/metagraph.png'   alt="MetaGraph2Vec"  ></a><figcaption class="image-caption">two metapaths P1 and P2, a metagraph G, and an example random walk.</figcaption>
 </figure></p>
 <p>The node sequences generated from this meta-graph-guided random walk are used to learn HNE through a heterogeneous skip-gram model. The authors also utilize a heterogeneous negative sampling method similar to the metapath2vec++ method.</p>
 <p>One extension of metagraph2vec is the mg2vec method that jointly learns embeddings for nodes and meta-graphs. In this method, meta-graphs assume a more active role in the learning process by mapping themselves to the same embedding space as the nodes.</p>
 <h4 id="dhne" class="headerLink">
     <a href="#dhne" class="header-mark"></a>DHNE</h4><p>Tu et al.<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> proposed Deep Hyper-Network Embedding (DHNE) model to embed hyper-networks with indecomposable hyperedges. In a hyper-network, the concept of edge goes beyond pairwise relationships to three or more objects being involved in each relationship. DHNE presents a deep model to produce a non-linear tuple-wise similarity function. The first layer in their architecture is an autoencoder that is designed to learn latent embeddings and preserve the second-order proximity. This is followed by a fully-connected layer that concatenates the learned embeddings and models a tuple-wise similarity function to preserve the first-order proximity.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/dhne_framework.png" title="DHNE framework" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/dhne_framework.png" data-sub-html="<h2>DHNE framework</h2><p>DHNE framework</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/dhne_framework.png   alt="DHNE framework"  ></a><figcaption class="image-caption">DHNE framework</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/dhne_framework.png" title="DHNE framework" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/dhne_framework.png" data-sub-html="<h2>DHNE framework</h2><p>DHNE framework</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/dhne_framework.png'   alt="DHNE framework"  ></a><figcaption class="image-caption">DHNE framework</figcaption>
 </figure></p>
 <h2 id="example-applications" class="headerLink">
     <a href="#example-applications" class="header-mark"></a>Example Applications</h2><h3 id="rating-prediction-with-herec" class="headerLink">
     <a href="#rating-prediction-with-herec" class="header-mark"></a>Rating Prediction with HERec</h3><p>Shi et al.<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup> proposed a HIN embedding-based recommendation approach, called HERec. Earlier HIN-based recommenders mostly used path-based semantics (such as meta-path-based similarity) between users and items in HIN. These similarities mainly characterize HIN semantic relations, and may not be directly applicable to recommendations. To address this, HERec uses a meta-path-based random walk strategy to generate node sequences. As shown in the figure below, these node sequences are then filtered so each sequence only contains the nodes with the same type as the starting node.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/herec_filter.png" title="HERec node sequence generation" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/herec_filter.png" data-sub-html="<h2>HERec: node sequence generation</h2><p>HERec node sequence generation</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/herec_filter.png   alt="HERec node sequence generation"  ></a><figcaption class="image-caption">HERec: node sequence generation</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/herec_filter.png" title="HERec node sequence generation" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/herec_filter.png" data-sub-html="<h2>HERec: node sequence generation</h2><p>HERec node sequence generation</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/herec_filter.png'   alt="HERec node sequence generation"  ></a><figcaption class="image-caption">HERec: node sequence generation</figcaption>
 </figure></p>
 <p>These node sequences are then used in a node2vec algorithm to learn node (user/item) embeddings. Embeddings learned through different meta-paths are fused together using three different fusion techniques (linear, personalized linear, and non-linear). Finally, the embeddings are fed into a matrix factorization algorithm, which is jointly trained with the fusion function for a rating prediction task.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/herec.png" title="HERec Approach" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/herec.png" data-sub-html="<h2>HERec Approach for HIN with 3 objects: User (U), Movie (M), Director (D). UU metapath indicates friendship, UMU metapath indicates co-watch relation.</h2><p>HERec Approach</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/herec.png   alt="HERec Approach"  ></a><figcaption class="image-caption">HERec Approach for HIN with 3 objects: User (U), Movie (M), Director (D). UU metapath indicates friendship, UMU metapath indicates co-watch relation.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/herec.png" title="HERec Approach" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/herec.png" data-sub-html="<h2>HERec Approach for HIN with 3 objects: User (U), Movie (M), Director (D). UU metapath indicates friendship, UMU metapath indicates co-watch relation.</h2><p>HERec Approach</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/herec.png'   alt="HERec Approach"  ></a><figcaption class="image-caption">HERec Approach for HIN with 3 objects: User (U), Movie (M), Director (D). UU metapath indicates friendship, UMU metapath indicates co-watch relation.</figcaption>
 </figure></p>
 <p><strong>H</strong>IN-based <strong>u</strong>nified <strong>e</strong>mbedding model for <strong>Rec</strong>ommendation (HueRec) is a related approach that unifies the interaction between different meta-path embeddings through an end-to-end learnable framework.</p>
 <h3 id="malware-detection-with-hindroid" class="headerLink">
     <a href="#malware-detection-with-hindroid" class="header-mark"></a>Malware Detection with HinDroid</h3><p>Hou et al.<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup> proposed a HIN-based malware detection system for the Android OS. First, they created a HIN with apps and APIs invoked by these apps as nodes and the corresponding API calls as links between the nodes. To extract the API calls, each Android Application Package (APK) is unzipped to retrieve the corresponding dex (Dalivik executable) file. This dex file is converted to an intermediate code using a de-compiler. API calls are extracted from this intermediate code and relationships between APIs are defined based on the corresponding code blocks, packages, and the invoke methods.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/hindroid.png" title="HinDroid Overview" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/hindroid.png" data-sub-html="<h2>HinDroid Overview</h2><p>HinDroid Overview</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/hindroid.png   alt="HinDroid Overview"  ></a><figcaption class="image-caption">HinDroid Overview</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/hindroid.png" title="HinDroid Overview" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/hindroid.png" data-sub-html="<h2>HinDroid Overview</h2><p>HinDroid Overview</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/hindroid.png'   alt="HinDroid Overview"  ></a><figcaption class="image-caption">HinDroid Overview</figcaption>
 </figure></p>
 <p>Next, the authors used a meta-path-based similarity approach to characterize the semantic relatedness of these nodes. These similarities between apps capture whether the apps are using the same APIs, and also whether the APIs have similar usage patterns. They defined a meta-path $App \xrightarrow{contains} API \xrightarrow{\text{same code block}} API \xrightarrow{contains^{-1}} App$ to compute the similarity between two apps based on API calls and types of API calls. Different similarities are then aggregated using multi-kernel (SVMs) learning, and then each meta-path is automatically weighted by the learning algorithm. Finally, these extracted features are fed to a binary classification model to label the app as either benign or malicious. HinDroid has been incorporated into the scanning tool of Comodo Mobile Security products.</p>
 <h3 id="fraud-detection-with-hacud" class="headerLink">
     <a href="#fraud-detection-with-hacud" class="header-mark"></a>Fraud Detection with HACUD</h3><p>Hu et al.<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup> from Ant Financial Group proposed a fraud detection model in credit payment services, called the <strong>H</strong>ierarchical <strong>A</strong>ttention mechanism based <strong>C</strong>ash-out <strong>U</strong>ser <strong>D</strong>etection model (HACUD). First, they model the payment service scenario as an attributed HIN by exploiting the interaction relations between users. Their HIN consists of three types of nodes: users (U), merchants (M), and devices (D). Along with attributes, HIN also contains rich interactions among nodes, represented as links. The fraudulent user not only has abnormal attributes but also abnormal behavior in interaction relations, such as simultaneous transactions or transactions with particular merchants (for example, pre-paid card sellers).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/hacud.png" title="HACUD architecture" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/hacud.png" data-sub-html="<h2>HACUD architecture</h2><p>HACUD architecture</p>"><img  loading="lazy" src=/img/posts/2023/shallow-heterogeneous-graphs-rep/hacud.png   alt="HACUD architecture"  ></a><figcaption class="image-caption">HACUD architecture</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/shallow-heterogeneous-graphs-rep/hacud.png" title="HACUD architecture" data-thumbnail="/img/posts/2023/shallow-heterogeneous-graphs-rep/hacud.png" data-sub-html="<h2>HACUD architecture</h2><p>HACUD architecture</p>"><img  loading="lazy" src='/img/posts/2023/shallow-heterogeneous-graphs-rep/hacud.png'   alt="HACUD architecture"  ></a><figcaption class="image-caption">HACUD architecture</figcaption>
 </figure></p>
 <p>Next, meta-path (UMU and UU) based neighbors are used to exploit structure information and generate node sequences from neighbors. The authors hypothesize that node attributes and meta-paths have different importance, which can be learned through a hierarchical attention mechanism. The first layer of this mechanism models the contribution of attributes while the second layer does the same for the different meta-paths. Finally, a fraudulent user probability is calculated based on aggregated feature representations via an MLP layer. This classification model is trained with a maximum likelihood objective and SGD.</p>
 <h2 id="toward-graph-neural-networks" class="headerLink">
@@ -501,35 +562,35 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
 <div class="related-container">
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/11/embedding-collapse-recsys/"><img   src=/posts/2024/11/embedding-collapse-recsys/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/11/embedding-collapse-recsys/"><img   src='/posts/2024/11/embedding-collapse-recsys/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/11/embedding-collapse-recsys/">Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/08/ads-llm/"><img   src=/posts/2024/08/ads-llm/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/08/ads-llm/"><img   src='/posts/2024/08/ads-llm/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/08/ads-llm/">Incorporating Ads into Large Language Models Outputs</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img   src=/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img   src='/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/06/multi-task-video-recsys-p2/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img   src=/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img   src='/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/06/multi-task-video-recsys-p1/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 1</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/01/multi-task-learning-recsys/"><img   src=/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/01/multi-task-learning-recsys/"><img   src='/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/01/multi-task-learning-recsys/">An Introduction to Multi-Task Learning based Recommender Systems</a>
             </h2>
@@ -553,8 +614,7 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
         </div>
         <div class="post-info-line print:!tw-hidden">
             <div class="post-info-md"></div>
-            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/" data-title="Shallow Embedding Models for Heterogeneous Graphs" data-via="_reachsumit" data-hashtags="literature review,graphs,embeddings"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/" data-hashtag="literature review"><svg class="icon"
+            <div class="post-info-share"><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/" data-hashtag="literature review"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/" data-title="Shallow Embedding Models for Heterogeneous Graphs" data-web><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/05/shallow-heterogeneous-graphs-rep/" data-title="Shallow Embedding Models for Heterogeneous Graphs"><svg class="icon"
@@ -569,7 +629,7 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
 
     <div class="post-info-more">
         <section class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href=""></a>,&nbsp;<a href="/tags/graphs/">Graphs</a>,&nbsp;<a href="/tags/embeddings/">Embeddings</a></section>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/literature-review/">Literature Review</a>,&nbsp;<a href="/tags/graphs/">Graphs</a>,&nbsp;<a href="/tags/embeddings/">Embeddings</a></section>
         <section class="print:!tw-hidden">
             <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">Back</button></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -582,22 +642,26 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
 </div>
 <div id="comments" class="print:!tw-hidden tw-pt-32 tw-pb-8"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
-            </noscript></div></article></div>
-        </main><footer class="footer">
+            </noscript></div></article></main><footer class="footer">
         <div class="footer-container"><div class="footer-line"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2024<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2025<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
-        </div></footer></div>
-
-    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button tw-transition-opacity tw-opacity-0" title="Back to Top">
-            <svg class="icon"
+        </div></footer><div class="print:!tw-hidden tw-flex tw-flex-col tw-fixed tw-right-4 tw-bottom-4 tw-gap-2"><a href="#back-to-top" id="back-to-top-button" class="tw-transition-opacity tw-opacity-0 tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="Back to Top">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
-        </a><a href="#comments" id="view-comments" class="fixed-button" title="View Comments">
-            <svg class="icon"
+  </a>
+
+  <button id="toc-drawer-button" class="tw-block tw-bg-bgColor-secondary tw-rounded-full md:tw-hidden" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;">
+      <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
+  </button><a href="#comments" id="view-comments" class="tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="View Comments">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
-        </a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+  </a></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"></noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript>
 <script>window.config={"algoliasearch.min.js":"https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js","autocomplete.min.js":"https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js","comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-05-30T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Shallow Embedding Models for Heterogeneous Graphs"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script
     src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"
@@ -605,11 +669,17 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"
+    
+      defer
     
   ></script><script
     src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"
@@ -655,25 +725,24 @@ While homogeneous networks have only one type of nodes and edges, heterogeneous 
     
       defer
     
-  ></script><script type="text/javascript">
+  ></script><script>
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script
     src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3"
     async
   ></script>
-    
-    <script type="speculationrules">
-        {
-          "prerender": [
-            {
-              "where": { "href_matches": "/*" },
-              "eagerness": "moderate"
-            }
-          ]
-        }
-    </script>
-      
+
+<script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+</script>
 </body>
 
 </html>

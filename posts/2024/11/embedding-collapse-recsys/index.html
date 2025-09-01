@@ -46,7 +46,7 @@
                             "width":  1000 ,
                             "height":  300 
                         }],"genre": "posts","keywords":["literature review","recsys","embeddings"],"wordcount":  4373 ,
-        "url": "https://blog.reachsumit.com/posts/2024/11/embedding-collapse-recsys/","datePublished": "2024-11-06T00:00:00+00:00","dateModified": "2024-11-06T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https://blog.reachsumit.com/posts/2024/11/embedding-collapse-recsys/","datePublished": "2024-11-06T00:00:00+00:00","dateModified": "2024-11-06T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
@@ -56,43 +56,42 @@
     }</script></head>
 
 
-<body data-instant-intensity="viewport" ><script type="text/javascript">
-        function setTheme(theme) {
-          document.body.setAttribute('theme', theme); 
-          document.documentElement.className = theme;
-          document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
-          if (theme === 'light') {
-            document.documentElement.classList.remove('tw-dark')
-          } else {
-            document.documentElement.classList.add('tw-dark')
-          }
-          window.theme = theme;   
-          window.isDark = window.theme !== 'light' 
-        }
-        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
-        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
-        if (window.localStorage && localStorage.getItem('theme')) {
-            let theme = localStorage.getItem('theme');
-            if (theme === 'light' || theme === 'dark') {
-            setTheme(theme);
+<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script>
+    function setTheme(theme) {
+      document.body.setAttribute('theme', theme); 
+      document.documentElement.className = theme;
+      document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
+      if (theme === 'light') {
+        document.documentElement.classList.remove('tw-dark')
+      } else {
+        document.documentElement.classList.add('tw-dark')
+      }
+      window.theme = theme;   
+      window.isDark = window.theme !== 'light' 
+    }
+    function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+    function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+    if (window.localStorage && localStorage.getItem('theme')) {
+        let theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') {
+        setTheme(theme);
+        } else {
+            if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                setTheme('dark');
             } else {
-                if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    setTheme('dark');
-                } else {
-                    setTheme('light');
-                }
+                setTheme('light');
             }
-         } else { 
-            if ('light' === 'light' || 'light' === 'dark') 
-                setTheme('light'), saveTheme('light'); 
-            else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
         }
-        let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
-        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
-        window.switchThemeEventSet = new Set()
-    </script>
-    <div id="back-to-top"></div>
-    <div id="mask"></div><div class="wrapper"><header class="desktop print:!tw-hidden" id="header-desktop">
+      } else { 
+        if ('light' === 'light' || 'light' === 'dark') 
+            setTheme('light'), saveTheme('light'); 
+        else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
+    }
+    let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
+    getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    window.switchThemeEventSet = new Set()
+</script><div id="back-to-top"></div>
+    <div id="mask"></div><header class="desktop print:!tw-hidden" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="/" title="Sumit&#39;s Diary"><span id="desktop-header-typeit" class="typeit"></span></a>
@@ -152,7 +151,7 @@
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
                     </button>
-                    <button class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                    <button class="search-button search-clear tw-h-fit" id="search-clear-mobile" title="Clear">
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></svg>
                     </button>
@@ -181,8 +180,7 @@
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div><main class="main">
-            <div class="container"><div class="toc print:!tw-hidden" id="toc-auto">
+</div><main class="tw-mx-4 tw-flex-1"><div class="toc print:!tw-hidden" id="toc-auto">
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
@@ -224,19 +222,63 @@
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2024-11-06" data-pagefind-body>Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions</h1><div class="post-meta">
+    </div><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
+        <div class="toc tw-mx-4 tw-max-w-full">
+            <h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl">Contents</h2>
+            <div class="toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#what-is-embedding-collapse">What is Embedding Collapse?</a></li>
+    <li><a href="#how-can-we-measure-embedding-collapse">How Can We Measure Embedding Collapse?</a>
+      <ul>
+        <li><a href="#standard-deviation-of-the-normalized-embeddings">Standard Deviation of the Normalized Embeddings</a></li>
+        <li><a href="#extremely-small-singular-values">Extremely Small Singular Values</a></li>
+        <li><a href="#information-abundance">Information Abundance</a></li>
+        <li><a href="#effective-rank">Effective Rank</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-causes-embedding-collapse">What Causes Embedding Collapse?</a>
+      <ul>
+        <li><a href="#two-tower-models">Two-Tower Models</a></li>
+        <li><a href="#feature-interaction-based-models">Feature-Interaction Based Models</a></li>
+        <li><a href="#gnn-based-models">GNN-based Models</a></li>
+      </ul>
+    </li>
+    <li><a href="#why-is-embedding-collapse-bad">Why is Embedding Collapse bad?</a>
+      <ul>
+        <li><a href="#reduced-representation-power">Reduced Representation Power</a></li>
+        <li><a href="#learning-and-optimization-issues">Learning and Optimization Issues</a></li>
+        <li><a href="#barrier-to-scaling">Barrier to Scaling</a></li>
+        <li><a href="#increased-popularity-bias">Increased Popularity Bias</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-to-handle-embedding-collapse">How to Handle Embedding Collapse?</a>
+      <ul>
+        <li><a href="#contrastive-learning-via-negative-sampling">Contrastive Learning via Negative Sampling</a></li>
+        <li><a href="#non-contrastive-structural-fixes">Non-contrastive Structural Fixes</a></li>
+        <li><a href="#multi-embedding-design">Multi-Embedding Design</a></li>
+        <li><a href="#loss-function-based-solutions">Loss Function-based solutions</a></li>
+        <li><a href="#balancing-embedding-spectrum">Balancing Embedding Spectrum</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+        </div>
+    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2024-11-06" data-pagefind-body>Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href=""><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg></a></span></div>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>Recommender Systems</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2024-11-06">2024-11-06</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2024-11-06">2024-11-06</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;4373 words&nbsp;
                     <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;20 minutes&nbsp;</div>
-        </div><div class="featured-image"><img  loading="eager" src=/posts/2024/11/embedding-collapse-recsys/featured-image.webp    height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
+        </div><div class="featured-image"><img  loading="eager" src='/posts/2024/11/embedding-collapse-recsys/featured-image.webp'    height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span class="details-icon"><svg class="icon"
@@ -286,7 +328,7 @@
     <a href="#introduction" class="header-mark"></a>Introduction</h2><p>Representation learning methods are used in modern recommender systems to learn high-quality representations, often without relying on human annotators. These methods represent users and items as low-dimensional representations, approximating the sparse, high-dimensional, user-item interaction matrix. The number of dimensions $d$ in these latent vectors is much smaller than dimension $D$ of the sparse interaction matrix ($d \ll D$). This article describes an issue, called Embedding Collapse, where these learned representations tend to span a subspace of the whole embedding space ($\lt d$), leading to suboptimal solutions.</p>
 <h2 id="what-is-embedding-collapse" class="headerLink">
     <a href="#what-is-embedding-collapse" class="header-mark"></a>What is Embedding Collapse?</h2><p>Embedding Collapse refers to a phenomenon in representation learning that can be categorized into the following two types.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/embedding_collapse_types.png" title="Types of Collapse" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/embedding_collapse_types.png" data-sub-html="<h2>In complete collapse vectors collapse to the same point (left), while in dimensional collapse, they span a subspace of embedding rank.</h2><p>Types of Collapse</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/embedding_collapse_types.png   alt="Types of Collapse"  ></a><figcaption class="image-caption">In complete collapse vectors collapse to the same point (left), while in dimensional collapse, they span a subspace of embedding rank.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/embedding_collapse_types.png" title="Types of Collapse" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/embedding_collapse_types.png" data-sub-html="<h2>In complete collapse vectors collapse to the same point (left), while in dimensional collapse, they span a subspace of embedding rank.</h2><p>Types of Collapse</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/embedding_collapse_types.png'   alt="Types of Collapse"  ></a><figcaption class="image-caption">In complete collapse vectors collapse to the same point (left), while in dimensional collapse, they span a subspace of embedding rank.</figcaption>
 </figure></p>
 <ul>
 <li><strong>Complete Collapse</strong>, where the representation vectors shrink to a single point in the embedding space (i.e. constant features), meaning that the model creates the same embedding for each input.</li>
@@ -302,12 +344,12 @@
         <div class="admonition-content">Complete Collapse is sometimes called &ldquo;full collapse&rdquo;, or simply &ldquo;embedding collapse&rdquo;. While some researchers often refer to dimensional collapse as &ldquo;embedding dimensional collapse&rdquo;, or &ldquo;spectral collapse&rdquo;. To avoid ambiguity, this article uses &ldquo;embedding collapse&rdquo; as an umbrella term that includes both collapse patterns.</div></div></div>
 <p>Mathematically, the embedding collapse issue can be formulated as $\text{rank}(H^{(L)}) \leq \epsilon$, where $H^{(L)}$ is the embedding when effective rank converges after updating $L$ times, $\epsilon \lt d$, and a smaller $\epsilon$ indicates a more serious collapse. We will revisit effective rank in more detail in the next section.</p>
 <p>Under ideal conditions, when there is no collapse, representations of items from the same group are closer to each other, while those of items from different groups are as far from each other as possible, as visualized in the next figure <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/embedding_collapse_scenarios.png" title="Different collapsing patterns visualized for three item groups" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/embedding_collapse_scenarios.png" data-sub-html="<h2>Different collapsing patterns visualized for three item groups</h2><p>Different collapsing patterns visualized for three item groups</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/embedding_collapse_scenarios.png   alt="Different collapsing patterns visualized for three item groups"  ></a><figcaption class="image-caption">Different collapsing patterns visualized for three item groups</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/embedding_collapse_scenarios.png" title="Different collapsing patterns visualized for three item groups" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/embedding_collapse_scenarios.png" data-sub-html="<h2>Different collapsing patterns visualized for three item groups</h2><p>Different collapsing patterns visualized for three item groups</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/embedding_collapse_scenarios.png'   alt="Different collapsing patterns visualized for three item groups"  ></a><figcaption class="image-caption">Different collapsing patterns visualized for three item groups</figcaption>
 </figure></p>
 <h2 id="how-can-we-measure-embedding-collapse" class="headerLink">
     <a href="#how-can-we-measure-embedding-collapse" class="header-mark"></a>How Can We Measure Embedding Collapse?</h2><h3 id="standard-deviation-of-the-normalized-embeddings" class="headerLink">
     <a href="#standard-deviation-of-the-normalized-embeddings" class="header-mark"></a>Standard Deviation of the Normalized Embeddings</h3><p>In Chen et al.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, Facebook AI researchers looked at the standard deviation of the normalized embeddings to measure embedding collapse. They take the encoder output embedding $z$ and L2-normalize it to get $ \frac{z}{||z||_2} $. Next, the standard deviation of these normalized embeddings is computed across all samples for each dimension in the embedding space. If the embeddings collapse to a constant vector, the standard deviation will be zero for each dimension (i.e., complete collapse). If the embedding follows a zero-mean isotropic Gaussian distribution, the deviation of normalized embedding will be $\frac{1}{\sqrt{d}}$ where $d$ is the embedding dimension. So to use this method, you can track the per-dimension standard deviation averaged over all dimensions during training and compare it against the theoretical $\frac{1}{\sqrt{d}}$ reference for well-distributed embeddings.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/std_method.png" title="STD method" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/std_method.png" data-sub-html="<h2>Per-dimension std of l2-normalized embeddings averaged over all embedding, plotted per epoch</h2><p>STD method</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/std_method.png   alt="STD method"  ></a><figcaption class="image-caption">Per-dimension std of l2-normalized embeddings averaged over all embedding, plotted per epoch</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/std_method.png" title="STD method" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/std_method.png" data-sub-html="<h2>Per-dimension std of l2-normalized embeddings averaged over all embedding, plotted per epoch</h2><p>STD method</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/std_method.png'   alt="STD method"  ></a><figcaption class="image-caption">Per-dimension std of l2-normalized embeddings averaged over all embedding, plotted per epoch</figcaption>
 </figure></p>
 <div class="details admonition tip open">
     <div class="details-summary admonition-title">
@@ -321,35 +363,30 @@
     <a href="#extremely-small-singular-values" class="header-mark"></a>Extremely Small Singular Values</h3><p>In Jing et al.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, researchers at Facebook AI proposed using the Singular Value Decomposition (SVD) of the embedding covariance matrix to quantify embedding collapse. SVD decomposes the covariance matrix $C = U \Sigma V^T$, where $\Sigma$ contains singular values in ascending order. These singular values directly measure the variance explained along different orthogonal directions in the embedding space. A &ldquo;healthy&rdquo; embedding distribution should have non-zero singular values across dimensions signifying utilization of all available dimensions. The authors plot the singular values in descending order to visually examine the effective embedding dimensionality. All singular values being close to zero indicates complete collapse, while some singular values being near zero indicates dimensional collapse. The code sample below is adapted from the official GitHub repo of the DirectCLR paper (<a href="https://github.com/facebookresearch/directclr/blob/main/spectrum.py" target="_blank" rel="noopener noreferrer">reference</a>).</p>
 <div class="code-block highlight is-open  is-wrap tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">Python</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">Python</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -427,50 +464,45 @@
 </span></span><span class="line"><span class="cl">    <span class="c1"># set other plot params like title, labels, figure size, etc.</span>
 </span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre>
 </div>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/directclr_singular_values.png" title="An example singular value spectrum of an embedding space." data-thumbnail="/img/posts/2024/embedding-collapse-recsys/directclr_singular_values.png" data-sub-html="<h2>An example singular value spectrum of an embedding space. Each embedding vector has 128 dimensions. A number of singular values drop to zero, indicating dimensional collapse.</h2><p>An example singular value spectrum of an embedding space.</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/directclr_singular_values.png   alt="An example singular value spectrum of an embedding space."  ></a><figcaption class="image-caption">An example singular value spectrum of an embedding space. Each embedding vector has 128 dimensions. A number of singular values drop to zero, indicating dimensional collapse.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/directclr_singular_values.png" title="An example singular value spectrum of an embedding space." data-thumbnail="/img/posts/2024/embedding-collapse-recsys/directclr_singular_values.png" data-sub-html="<h2>An example singular value spectrum of an embedding space. Each embedding vector has 128 dimensions. A number of singular values drop to zero, indicating dimensional collapse.</h2><p>An example singular value spectrum of an embedding space.</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/directclr_singular_values.png'   alt="An example singular value spectrum of an embedding space."  ></a><figcaption class="image-caption">An example singular value spectrum of an embedding space. Each embedding vector has 128 dimensions. A number of singular values drop to zero, indicating dimensional collapse.</figcaption>
 </figure></p>
 <p>Similarly, Chen et al.<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> calculated singular values of user and item representations&rsquo; covariance matrix in sorted order and linearly scaled them to $[0, 1]$. The authors found that all of their tested baseline methods suffered from different levels of dimensional collapse, indicating high redundancy and less information encoded by the learned dimensions.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/visa_svd_visualization.png" title="Singular Value Spectrum" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/visa_svd_visualization.png" data-sub-html="<h2>128 singular values spectrum for user embeddings learned with four different methods. Less than 10 out of 128 singular values are non-zero with LightGCN method, indicating dimensional collapse.</h2><p>Singular Value Spectrum</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/visa_svd_visualization.png   alt="Singular Value Spectrum"  ></a><figcaption class="image-caption">128 singular values spectrum for user embeddings learned with four different methods. Less than 10 out of 128 singular values are non-zero with LightGCN method, indicating dimensional collapse.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/visa_svd_visualization.png" title="Singular Value Spectrum" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/visa_svd_visualization.png" data-sub-html="<h2>128 singular values spectrum for user embeddings learned with four different methods. Less than 10 out of 128 singular values are non-zero with LightGCN method, indicating dimensional collapse.</h2><p>Singular Value Spectrum</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/visa_svd_visualization.png'   alt="Singular Value Spectrum"  ></a><figcaption class="image-caption">128 singular values spectrum for user embeddings learned with four different methods. Less than 10 out of 128 singular values are non-zero with LightGCN method, indicating dimensional collapse.</figcaption>
 </figure></p>
 <p>In Hua et al.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, the authors directly visualized the output of the projector layer in 2D projection space to build up intuitions about the reachable collapse patterns. To do this they simply set the output dimension of the projector to 2, and plot visualization like the one shown below.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/plot_2d_collapse.png" title="Direct Visualization of 2-d projection space to identify reachable collapse patterns." data-thumbnail="/img/posts/2024/embedding-collapse-recsys/plot_2d_collapse.png" data-sub-html="<h2>Direct Visualization of 2-d projection space to identify reachable collapse patterns.</h2><p>Direct Visualization of 2-d projection space to identify reachable collapse patterns.</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/plot_2d_collapse.png   alt="Direct Visualization of 2-d projection space to identify reachable collapse patterns."  ></a><figcaption class="image-caption">Direct Visualization of 2-d projection space to identify reachable collapse patterns.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/plot_2d_collapse.png" title="Direct Visualization of 2-d projection space to identify reachable collapse patterns." data-thumbnail="/img/posts/2024/embedding-collapse-recsys/plot_2d_collapse.png" data-sub-html="<h2>Direct Visualization of 2-d projection space to identify reachable collapse patterns.</h2><p>Direct Visualization of 2-d projection space to identify reachable collapse patterns.</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/plot_2d_collapse.png'   alt="Direct Visualization of 2-d projection space to identify reachable collapse patterns."  ></a><figcaption class="image-caption">Direct Visualization of 2-d projection space to identify reachable collapse patterns.</figcaption>
 </figure></p>
 <h3 id="information-abundance" class="headerLink">
     <a href="#information-abundance" class="header-mark"></a>Information Abundance</h3><p>In Guo et al.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, researchers at Tsinghua University propose Information Abundance (IA) as a metric to quantify the dimensional collapse of an embedding matrix. It is calculated as the sum of all singular values, divided by the maximum singular value. For an embedding matrix with balanced distribution in the vector space, all singular values will be similar, hence information abundance would be high. On the flip side, if a matrix does not effectively utilize its available dimensions, a certain set of smaller singular values can be compressed,  hence the corresponding information abundance value will be small. Mathematically, IA is defined as: $\text{IA}(E) = \frac{\lVert \sigma \rVert_1}{\lVert \sigma \rVert_\infty}$. This formulation is a continuous extension of the concept of matrix rank. A value of 1 for IA indicates complete collapse, while K (i.e. the number of embedding dimensions) indicates no collapse. The authors also use IA to show that the embedding collapse phenomenon is not just a consequence of the cardinality of categorical fields. As shown in the next figure, the learned embeddings of a DCNv2 model on the Criteo dataset have lower IA than random initialization, even in fields where full dimensionality ($D&gt;K$) is theoretically possible. Meaning that the learned embedding matrix is approximately low-rank.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/criteo_learned_vs_random_ia.png" title="Information Abundance Visualization" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/criteo_learned_vs_random_ia.png" data-sub-html="<h2>Information Abundance shown be lower on trained embeddings compared to random initialization. Fields are sorted by cardinality.</h2><p>Information Abundance Visualization</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/criteo_learned_vs_random_ia.png   alt="Information Abundance Visualization"  ></a><figcaption class="image-caption">Information Abundance shown be lower on trained embeddings compared to random initialization. Fields are sorted by cardinality.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/criteo_learned_vs_random_ia.png" title="Information Abundance Visualization" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/criteo_learned_vs_random_ia.png" data-sub-html="<h2>Information Abundance shown be lower on trained embeddings compared to random initialization. Fields are sorted by cardinality.</h2><p>Information Abundance Visualization</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/criteo_learned_vs_random_ia.png'   alt="Information Abundance Visualization"  ></a><figcaption class="image-caption">Information Abundance shown be lower on trained embeddings compared to random initialization. Fields are sorted by cardinality.</figcaption>
 </figure></p>
 <p>In Pan et al.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, the Tencent Ads system also uses IA as a general quantification for collapse. The following code for plotting singular values is adapted from their RecScope GitHub repo (<a href="https://github.com/junwei-pan/RecScope/blob/main/Dimensional_Collapse/analysis_dcnv2.ipynb" target="_blank" rel="noopener noreferrer">reference</a>).</p>
 <div class="code-block highlight is-open  is-wrap tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">Python</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">Python</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -548,40 +580,35 @@
     <a href="#effective-rank" class="header-mark"></a>Effective Rank</h3><p>In 2007, Roy et al.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> introduced the concept of Effective Rank (erank) as a measure that quantifies how many embeddings a matrix is &ldquo;effectively&rdquo; using. It is a real-valued metric (an extension of the integer-valued rank) that is always between 1 and the actual rank. Imagine a 2D space where 90% of the variance is in one direction, while only 10% is in the other. The traditional rank in this case is still 2, whereas the effective rank will be closer to 1, reflecting the domination of one dimension. The effective rank of a matrix $A$ represents the average number of significant dimensions in the range of $A$. To compute erank, singular values of the matrix are normalized into a probability distribution. The entropy of this distribution measures the dimensional balance. High entropy indicates dimensions are being used evenly and hence erank is high. Similarly, uneven dimensional usage will lead to low entropy and low erank.</p>
 <p>Mathematically, given the singular values of the embedding matrix $A: \sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_d \geq 0$, let $p_k = \frac{\sigma_k^2}{\sum_k \sigma_k^2}$, then erank is defined as: $\text{erank}(H) = \exp \left( H(p_1, \cdots, p_d) \right)$, where $H(p_1, \cdots, p_d) = -\sum_k p_k \log p_k$ is the Shannon entropy.</p>
 <p>Zhang et al.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> used erank as evidence of embedding collapse in contrastive learning-based recommender systems. They tracked the change in erank during training to observe the dimensional diversity.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/erank_usage.png" title="erank usage example" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/erank_usage.png" data-sub-html="<h2>Effective Rank w.r.t. epoch number to observe the balance of spectrum of representations during training for three different methods.</h2><p>erank usage example</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/erank_usage.png   alt="erank usage example"  ></a><figcaption class="image-caption">Effective Rank w.r.t. epoch number to observe the balance of spectrum of representations during training for three different methods.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/erank_usage.png" title="erank usage example" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/erank_usage.png" data-sub-html="<h2>Effective Rank w.r.t. epoch number to observe the balance of spectrum of representations during training for three different methods.</h2><p>erank usage example</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/erank_usage.png'   alt="erank usage example"  ></a><figcaption class="image-caption">Effective Rank w.r.t. epoch number to observe the balance of spectrum of representations during training for three different methods.</figcaption>
 </figure></p>
 <p>Peng et al.<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> also utilized erank in a similar fashion. The following code is adapted from their implementation on GitHub (<a href="https://github.com/tanatosuu/directspec/blob/main/directspec_mf.py" target="_blank" rel="noopener noreferrer">reference</a>).</p>
 <div class="code-block highlight is-open  is-wrap tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">Python</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">Python</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -698,22 +725,22 @@
     <a href="#learning-and-optimization-issues" class="header-mark"></a>Learning and Optimization Issues</h3><p>Hua et al.<sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> observe that with collapsed solutions, gradients become negligible thus compromising learning and utility. It also reduces the model&rsquo;s generalization ability, as collapse creates a bottleneck preventing learning of complex patterns. This often translates to poor performance on long-tail items.</p>
 <h3 id="barrier-to-scaling" class="headerLink">
     <a href="#barrier-to-scaling" class="header-mark"></a>Barrier to Scaling</h3><p>Recent research in domains like language modeling has shown that large-scale models with billions of parameters can achieve remarkable performance. However, scaling recommender systems have been challenging. Tencent&rsquo;s Ads Recommendation team shared that more than 99.99% of parameters in their production model are from feature embeddings<sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>. Upon scaling up their recommender systems by increasing embedding dimensions from 64 to 192, they observed no significant performance improvement and even observed performance degradation at times. They found that their embeddings ended up spanning only a lower-dimensional subspace, leading to vast wastage of model capacity as well as reduced ability to capture complex user-item relationships. These findings led them to propose the interaction-collapse theory discussed in the previous section.
-<figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/recsys_scaling_problem.png" title="Collapse worsens when scaling up the model" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/recsys_scaling_problem.png" data-sub-html="<h2>Singular values of a DCNv2 model at different scales (by embedding size) showing embedding collapse.</h2><p>Collapse worsens when scaling up the model</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/recsys_scaling_problem.png   alt="Collapse worsens when scaling up the model"  ></a><figcaption class="image-caption">Singular values of a DCNv2 model at different scales (by embedding size) showing embedding collapse.</figcaption>
+<figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/recsys_scaling_problem.png" title="Collapse worsens when scaling up the model" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/recsys_scaling_problem.png" data-sub-html="<h2>Singular values of a DCNv2 model at different scales (by embedding size) showing embedding collapse.</h2><p>Collapse worsens when scaling up the model</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/recsys_scaling_problem.png'   alt="Collapse worsens when scaling up the model"  ></a><figcaption class="image-caption">Singular values of a DCNv2 model at different scales (by embedding size) showing embedding collapse.</figcaption>
 </figure></p>
 <h3 id="increased-popularity-bias" class="headerLink">
     <a href="#increased-popularity-bias" class="header-mark"></a>Increased Popularity Bias</h3><p>Zhang et al.<sup id="fnref1:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> found that when embeddings collapse to a lower dimensional space, they tend to cluster towards a few popular items, leading to popularity bias. The authors posit that the dimensionality collapse and popularity bias in collaborative filtering are two sides of the same coin. Most users only interact with a small subset of items in the vast interaction space, hence the popular items already disproportionately influence learning, for example during message passing in Graph Collaborative Filtering (GCF). Embedding collapse further exacerbates this problem. User embeddings collapsing around a few popular item embeddings means that popular items will get recommended more. As shown in the next figure, user and item embedding cluster in just a few regions. Unpopular items get clustered together in one area with sparse user embeddings nearby, meaning that these items rarely get recommended. This creates a &ldquo;Matthew Effect&rdquo;, where popular items get more popular, and discovery for niche or long-tail items gets reduced.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/popularity_bias.png" title="How embedding collapse causes popularity bias" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/popularity_bias.png" data-sub-html="<h2>2D PCA and l2-normalization applied on LightGCN embeddings for visualization shows dense user clusters align with popular item clusters. The gaps in unpopular item embeddings cause effective rank to drop.</h2><p>How embedding collapse causes popularity bias</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/popularity_bias.png   alt="How embedding collapse causes popularity bias"  ></a><figcaption class="image-caption">2D PCA and l2-normalization applied on LightGCN embeddings for visualization shows dense user clusters align with popular item clusters. The gaps in unpopular item embeddings cause effective rank to drop.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/popularity_bias.png" title="How embedding collapse causes popularity bias" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/popularity_bias.png" data-sub-html="<h2>2D PCA and l2-normalization applied on LightGCN embeddings for visualization shows dense user clusters align with popular item clusters. The gaps in unpopular item embeddings cause effective rank to drop.</h2><p>How embedding collapse causes popularity bias</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/popularity_bias.png'   alt="How embedding collapse causes popularity bias"  ></a><figcaption class="image-caption">2D PCA and l2-normalization applied on LightGCN embeddings for visualization shows dense user clusters align with popular item clusters. The gaps in unpopular item embeddings cause effective rank to drop.</figcaption>
 </figure></p>
 <h2 id="how-to-handle-embedding-collapse" class="headerLink">
     <a href="#how-to-handle-embedding-collapse" class="header-mark"></a>How to Handle Embedding Collapse?</h2><h3 id="contrastive-learning-via-negative-sampling" class="headerLink">
     <a href="#contrastive-learning-via-negative-sampling" class="header-mark"></a>Contrastive Learning via Negative Sampling</h3><p>Contrastive Learning is quite popular in un-/self- supervised learning and several contrastive learning solutions are based on Siamese networks. Contrastive learning via negative sampling is intended to solve the complete collapse issue. By pulling the positive pairs closer and pushing the negative pairs apart in the embedding space, it forces embeddings to spread out to minimize loss. Using larger batch sizes to provide more negative samples has also been shown to be helpful. Negative sampling acts as a high-pass filter and allows high-frequency components (i.e. unique/distinct patterns) to pass through. In recommender systems, it offers a promising solution to address cold-start issues and reduce exposure bias. However, it is not a strong enough deterrent for solving dimensional collapse. In practice, contrastive learning benefits from a large number of negative samples, but increasing the negative sampling ratio can&rsquo;t alleviate collapse beyond a certain ratio<sup id="fnref3:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>. Also, negative sampling only works with certain loss functions like Bayesian Personalized Ranking (BPR), and Binary Cross-Entropy (BCE).</p>
 <h3 id="non-contrastive-structural-fixes" class="headerLink">
     <a href="#non-contrastive-structural-fixes" class="header-mark"></a>Non-contrastive Structural Fixes</h3><p>Hua et al.<sup id="fnref2:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> connect dimensional collapse with a strong correlation between axes and propose a feature decorrelation approach, i.e. standardizing the covariance matrix in a non-contrastive learning setup. The authors show that the complete collapse pattern is associated with vanishing gradients and it can be addressed by the standard Batch Normalization (BN) that centers and scales activations. While BN standardizes the variance of features, it does not address the string correlation between different feature dimensions. Therefore it cannot prevent dimensional collapse where features become highly correlated. The authors further propose a decorrelated batch normalization (DBN) to help prevent dimensional collapse. Among other non-contrastive solutions, Chen et al.<sup id="fnref2:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> propose a stop-gradient-based method to prevent collapse.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/feature_decorrelation.png" title="DBN aims to prevent collapse by decorrelating features" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/feature_decorrelation.png" data-sub-html="<h2>DBN aims to prevent collapse by decorrelating features</h2><p>DBN aims to prevent collapse by decorrelating features</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/feature_decorrelation.png   alt="DBN aims to prevent collapse by decorrelating features"  ></a><figcaption class="image-caption">DBN aims to prevent collapse by decorrelating features</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/feature_decorrelation.png" title="DBN aims to prevent collapse by decorrelating features" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/feature_decorrelation.png" data-sub-html="<h2>DBN aims to prevent collapse by decorrelating features</h2><p>DBN aims to prevent collapse by decorrelating features</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/feature_decorrelation.png'   alt="DBN aims to prevent collapse by decorrelating features"  ></a><figcaption class="image-caption">DBN aims to prevent collapse by decorrelating features</figcaption>
 </figure></p>
 <h3 id="multi-embedding-design" class="headerLink">
     <a href="#multi-embedding-design" class="header-mark"></a>Multi-Embedding Design</h3><p>In their interaction-collapse theory for feature-interaction-based recommender systems, Guo et al.<sup id="fnref2:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> highlighted the need to maintain feature interactions while preventing collapse. They empirically show that suppressing feature interactions may lead to a less collapsed model, but the model also falls into the issue of overfitting and lacking scalability. As a solution, they proposed creating multiple embedding sets instead of increasing the embedding size. Each feature interaction module has its own embedding set, and the output from different independent embedding sets is combined at the end. This separation of field-level interactions helps to learn different interaction patterns jointly and results in embedding sets with large diversity. To prevent the reduction of multiple embedding into a single embedding, a non-linear projection is also added after the interaction. The output projections are averaged to produce the final representation.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/tencent_multi_embedding_solution.png" title="Tencent Ads System&rsquo; Multi-Embedding Design" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/tencent_multi_embedding_solution.png" data-sub-html="<h2>Traditional single embedding (left) vs Tencent&#39;s Multi-embedding design with M independent embedding sets each with its own interaction module (right).</h2><p>Tencent Ads System&rsquo; Multi-Embedding Design</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/tencent_multi_embedding_solution.png   alt="Tencent Ads System&rsquo; Multi-Embedding Design"  ></a><figcaption class="image-caption">Traditional single embedding (left) vs Tencent's Multi-embedding design with M independent embedding sets each with its own interaction module (right).</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/tencent_multi_embedding_solution.png" title="Tencent Ads System&rsquo; Multi-Embedding Design" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/tencent_multi_embedding_solution.png" data-sub-html="<h2>Traditional single embedding (left) vs Tencent&#39;s Multi-embedding design with M independent embedding sets each with its own interaction module (right).</h2><p>Tencent Ads System&rsquo; Multi-Embedding Design</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/tencent_multi_embedding_solution.png'   alt="Tencent Ads System&rsquo; Multi-Embedding Design"  ></a><figcaption class="image-caption">Traditional single embedding (left) vs Tencent's Multi-embedding design with M independent embedding sets each with its own interaction module (right).</figcaption>
 </figure></p>
 <h3 id="loss-function-based-solutions" class="headerLink">
     <a href="#loss-function-based-solutions" class="header-mark"></a>Loss Function-based solutions</h3><p>Wang et al.<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> proposed two-key properties for representation learning that contrastive loss asymptotically optimizes.</p>
@@ -724,35 +751,30 @@
 <p>They provide directly optimizable metrics to quantify and optimize these properties and show that directly optimizing for these two properties leads to representations with comparable or better performance at downstream tasks than contrastive learning.</p>
 <div class="code-block highlight is-open  is-wrap tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">Python</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">Python</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -831,7 +853,7 @@
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">sq_pdist</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">exp</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">loss</span> <span class="o">=</span> <span class="n">lalign</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">lam</span> <span class="o">*</span> <span class="p">(</span><span class="n">lunif</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">lunif</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span></span></span></code></pre>
 </div>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/key_feature_distribution_properties.png" title="Key Feature Distribution Properties" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/key_feature_distribution_properties.png" data-sub-html="<h2>Illustration of alignment and uniformity of feature distributions on the output unit hypersphere.</h2><p>Key Feature Distribution Properties</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/key_feature_distribution_properties.png   alt="Key Feature Distribution Properties"  ></a><figcaption class="image-caption">Illustration of alignment and uniformity of feature distributions on the output unit hypersphere.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/key_feature_distribution_properties.png" title="Key Feature Distribution Properties" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/key_feature_distribution_properties.png" data-sub-html="<h2>Illustration of alignment and uniformity of feature distributions on the output unit hypersphere.</h2><p>Key Feature Distribution Properties</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/key_feature_distribution_properties.png'   alt="Key Feature Distribution Properties"  ></a><figcaption class="image-caption">Illustration of alignment and uniformity of feature distributions on the output unit hypersphere.</figcaption>
 </figure></p>
 <p>In Chen et al.<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, researchers at Visa build on this work in the recommender systems domain and propose a different balance of geometric properties:</p>
 <ul>
@@ -839,7 +861,7 @@
 <li><strong>Compactness</strong> uses rate-distortion theory to replace the uniformity principle by finding the optimal coding length of user/item embeddings, subject to a given distortion.</li>
 </ul>
 <p>The authors propose a method called nCL (non-contrastive learning) that achieves the two properties by maximizing the overall volume of embeddings while minimizing within-cluster volume. For obtaining cluster information they propose a graph topology-based variant and a learned assignments variant.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/visa_ncl.png" title="Architecture Flow for nCL" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/visa_ncl.png" data-sub-html="<h2>Architecture Flow for nCL</h2><p>Architecture Flow for nCL</p>"><img  loading="lazy" src=/img/posts/2024/embedding-collapse-recsys/visa_ncl.png   alt="Architecture Flow for nCL"  ></a><figcaption class="image-caption">Architecture Flow for nCL</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/embedding-collapse-recsys/visa_ncl.png" title="Architecture Flow for nCL" data-thumbnail="/img/posts/2024/embedding-collapse-recsys/visa_ncl.png" data-sub-html="<h2>Architecture Flow for nCL</h2><p>Architecture Flow for nCL</p>"><img  loading="lazy" src='/img/posts/2024/embedding-collapse-recsys/visa_ncl.png'   alt="Architecture Flow for nCL"  ></a><figcaption class="image-caption">Architecture Flow for nCL</figcaption>
 </figure></p>
 <p>In Zhang et al.<sup id="fnref2:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>, the authors propose a loss function called LogDet, defined as: $L_{logdet} = tr(ΣU + ΣI) - \log{\det{(ΣUΣI)}}$</p>
 <p>where $ΣU$ and $ΣI$ are the covariance matrices for user and item embeddings respectively, $tr$ is the trace operation (sum of diagonal elements), $det$ is the determinant and $log$ is the natural logarithm. If any singular value approaches 0, the log det term approaches negative infinity. This strategy creates an infinite penalty, strictly preventing collapse, whereas previous methods apply a finite penalty, like uniformity loss.</p>
@@ -892,35 +914,35 @@
 <div class="related-container">
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/08/ads-llm/"><img   src=/posts/2024/08/ads-llm/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/08/ads-llm/"><img   src='/posts/2024/08/ads-llm/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/08/ads-llm/">Incorporating Ads into Large Language Models Outputs</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img   src=/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img   src='/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/06/multi-task-video-recsys-p2/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img   src=/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img   src='/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/06/multi-task-video-recsys-p1/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 1</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/01/multi-task-learning-recsys/"><img   src=/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/01/multi-task-learning-recsys/"><img   src='/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/01/multi-task-learning-recsys/">An Introduction to Multi-Task Learning based Recommender Systems</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/01/user-behavior-modeling-recsys/"><img   src=/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/01/user-behavior-modeling-recsys/"><img   src='/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/01/user-behavior-modeling-recsys/">A Guide to User Behavior Modeling</a>
             </h2>
@@ -944,8 +966,7 @@
         </div>
         <div class="post-info-line print:!tw-hidden">
             <div class="post-info-md"></div>
-            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2024/11/embedding-collapse-recsys/" data-title="Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions" data-via="_reachsumit" data-hashtags="literature review,recsys,embeddings"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2024/11/embedding-collapse-recsys/" data-hashtag="literature review"><svg class="icon"
+            <div class="post-info-share"><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2024/11/embedding-collapse-recsys/" data-hashtag="literature review"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2024/11/embedding-collapse-recsys/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2024/11/embedding-collapse-recsys/" data-title="Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions" data-web><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2024/11/embedding-collapse-recsys/" data-title="Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions"><svg class="icon"
@@ -960,7 +981,7 @@
 
     <div class="post-info-more">
         <section class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href=""></a>,&nbsp;<a href="/tags/recsys/">Recsys</a>,&nbsp;<a href="/tags/embeddings/">Embeddings</a></section>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/literature-review/">Literature Review</a>,&nbsp;<a href="/tags/recsys/">Recsys</a>,&nbsp;<a href="/tags/embeddings/">Embeddings</a></section>
         <section class="print:!tw-hidden">
             <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">Back</button></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -971,22 +992,26 @@
 </div>
 <div id="comments" class="print:!tw-hidden tw-pt-32 tw-pb-8"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
-            </noscript></div></article></div>
-        </main><footer class="footer">
+            </noscript></div></article></main><footer class="footer">
         <div class="footer-container"><div class="footer-line"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2024<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2025<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
-        </div></footer></div>
-
-    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button tw-transition-opacity tw-opacity-0" title="Back to Top">
-            <svg class="icon"
+        </div></footer><div class="print:!tw-hidden tw-flex tw-flex-col tw-fixed tw-right-4 tw-bottom-4 tw-gap-2"><a href="#back-to-top" id="back-to-top-button" class="tw-transition-opacity tw-opacity-0 tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="Back to Top">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
-        </a><a href="#comments" id="view-comments" class="fixed-button" title="View Comments">
-            <svg class="icon"
+  </a>
+
+  <button id="toc-drawer-button" class="tw-block tw-bg-bgColor-secondary tw-rounded-full md:tw-hidden" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;">
+      <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
+  </button><a href="#comments" id="view-comments" class="tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="View Comments">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
-        </a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+  </a></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"></noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript>
 <script>window.config={"algoliasearch.min.js":"https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js","autocomplete.min.js":"https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js","comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2024-11-06T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script
     src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"
@@ -994,11 +1019,17 @@
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"
+    
+      defer
     
   ></script><script
     src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"
@@ -1044,25 +1075,24 @@
     
       defer
     
-  ></script><script type="text/javascript">
+  ></script><script>
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script
     src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3"
     async
   ></script>
-    
-    <script type="speculationrules">
-        {
-          "prerender": [
-            {
-              "where": { "href_matches": "/*" },
-              "eagerness": "moderate"
-            }
-          ]
-        }
-    </script>
-      
+
+<script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+</script>
 </body>
 
 </html>

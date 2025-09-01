@@ -46,7 +46,7 @@
                             "width":  1000 ,
                             "height":  300 
                         }],"genre": "posts","keywords":["literature review","recsys","Mixture-of-experts"],"wordcount":  2913 ,
-        "url": "https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/","datePublished": "2023-04-23T00:00:00+00:00","dateModified": "2023-04-23T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/","datePublished": "2023-04-23T00:00:00+00:00","dateModified": "2023-04-23T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
@@ -56,43 +56,42 @@
     }</script></head>
 
 
-<body data-instant-intensity="viewport" ><script type="text/javascript">
-        function setTheme(theme) {
-          document.body.setAttribute('theme', theme); 
-          document.documentElement.className = theme;
-          document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
-          if (theme === 'light') {
-            document.documentElement.classList.remove('tw-dark')
-          } else {
-            document.documentElement.classList.add('tw-dark')
-          }
-          window.theme = theme;   
-          window.isDark = window.theme !== 'light' 
-        }
-        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
-        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
-        if (window.localStorage && localStorage.getItem('theme')) {
-            let theme = localStorage.getItem('theme');
-            if (theme === 'light' || theme === 'dark') {
-            setTheme(theme);
+<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script>
+    function setTheme(theme) {
+      document.body.setAttribute('theme', theme); 
+      document.documentElement.className = theme;
+      document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
+      if (theme === 'light') {
+        document.documentElement.classList.remove('tw-dark')
+      } else {
+        document.documentElement.classList.add('tw-dark')
+      }
+      window.theme = theme;   
+      window.isDark = window.theme !== 'light' 
+    }
+    function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+    function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+    if (window.localStorage && localStorage.getItem('theme')) {
+        let theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') {
+        setTheme(theme);
+        } else {
+            if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                setTheme('dark');
             } else {
-                if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    setTheme('dark');
-                } else {
-                    setTheme('light');
-                }
+                setTheme('light');
             }
-         } else { 
-            if ('light' === 'light' || 'light' === 'dark') 
-                setTheme('light'), saveTheme('light'); 
-            else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
         }
-        let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
-        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
-        window.switchThemeEventSet = new Set()
-    </script>
-    <div id="back-to-top"></div>
-    <div id="mask"></div><div class="wrapper"><header class="desktop print:!tw-hidden" id="header-desktop">
+      } else { 
+        if ('light' === 'light' || 'light' === 'dark') 
+            setTheme('light'), saveTheme('light'); 
+        else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
+    }
+    let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
+    getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    window.switchThemeEventSet = new Set()
+</script><div id="back-to-top"></div>
+    <div id="mask"></div><header class="desktop print:!tw-hidden" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="/" title="Sumit&#39;s Diary"><span id="desktop-header-typeit" class="typeit"></span></a>
@@ -152,7 +151,7 @@
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
                     </button>
-                    <button class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                    <button class="search-button search-clear tw-h-fit" id="search-clear-mobile" title="Clear">
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></svg>
                     </button>
@@ -181,8 +180,7 @@
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div><main class="main">
-            <div class="container"><div class="toc print:!tw-hidden" id="toc-auto">
+</div><main class="tw-mx-4 tw-flex-1"><div class="toc print:!tw-hidden" id="toc-auto">
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
@@ -212,19 +210,51 @@
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2023-04-23" data-pagefind-body>Mixture-of-Experts based Recommender Systems</h1><div class="post-meta">
+    </div><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
+        <div class="toc tw-mx-4 tw-max-w-full">
+            <h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl">Contents</h2>
+            <div class="toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction-to-mixture-of-experts-moe">Introduction to Mixture-of-Experts (MoE)</a>
+      <ul>
+        <li><a href="#make-experts-complete-not-cooperate">Make experts complete, not cooperate</a></li>
+        <li><a href="#advantages-of-moe">Advantages of MoE</a></li>
+        <li><a href="#problems-with-moe">Problems with MoE</a></li>
+        <li><a href="#moe-variants">MoE Variants</a>
+          <ul>
+            <li><a href="#hierarchical-mixture-of-experts">Hierarchical Mixture of Experts</a></li>
+            <li><a href="#deep-mixture-of-experts">Deep Mixture of Experts</a></li>
+            <li><a href="#sparsely-gated-mixture-of-experts">Sparsely-gated Mixture of Experts</a></li>
+            <li><a href="#multi-gate-mixture-of-experts">Multi-gate Mixture-of-Experts</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#mixture-of-expert-for-recommendations">Mixture-of-Expert for Recommendations</a>
+      <ul>
+        <li><a href="#youtubes-next-video-recommendation">YouTube&rsquo;s Next Video Recommendation</a></li>
+        <li><a href="#gmails-mixture-of-sequential-experts">GMail&rsquo;s Mixture of Sequential Experts</a></li>
+        <li><a href="#kuaishous-kwai-recommender-system">Kuaishou&rsquo;s Kwai Recommender System</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+        </div>
+    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2023-04-23" data-pagefind-body>Mixture-of-Experts based Recommender Systems</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href=""><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg></a></span></div>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/recommender-systems/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>Recommender Systems</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2023-04-23">2023-04-23</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2023-04-23">2023-04-23</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;2913 words&nbsp;
                     <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;13 minutes&nbsp;</div>
-        </div><div class="featured-image"><img  loading="eager" src=/posts/2023/04/moe-for-recsys/featured-image.webp    height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
+        </div><div class="featured-image"><img  loading="eager" src='/posts/2023/04/moe-for-recsys/featured-image.webp'    height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span class="details-icon"><svg class="icon"
@@ -262,7 +292,7 @@
 <h2 id="introduction-to-mixture-of-experts-moe" class="headerLink">
     <a href="#introduction-to-mixture-of-experts-moe" class="header-mark"></a>Introduction to Mixture-of-Experts (MoE)</h2><p>Generally speaking, MoE architecture is an ensemble of many models (aka experts). We train a number of these experts, each of which can be trained on a subspace of the problem, and then specialize in that specific part of the input space. The underlying assumption is that our data comes from different regimes. Many datasets can be naturally divided into categories that correspond to different subtasks. For example: in financial data, the state of the economy has a big effect on mapping inputs to outputs. So you might want different models for different states of the economy.</p>
 <p>Each of the experts can be any machine learning algorithm such as an SVM, HMM, a small neural network, or even just a simple matrix multiplication. These experts often have the same architecture and are also trained by the same algorithm. Additionally, MoEs include a gating (or routing) function that acts as a manager that forwards individual inputs to the best experts based on their specialization.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/moe_classification_example.png" title="A simple classification example for MoE" data-thumbnail="/img/posts/2023/moe-for-recsys/moe_classification_example.png" data-sub-html="<h2>A simple classification example for MoE</h2><p>A simple classification example for MoE</p>"><img  loading="lazy" src=/img/posts/2023/moe-for-recsys/moe_classification_example.png   alt="A simple classification example for MoE"  ></a><figcaption class="image-caption">A simple classification example for MoE</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/moe_classification_example.png" title="A simple classification example for MoE" data-thumbnail="/img/posts/2023/moe-for-recsys/moe_classification_example.png" data-sub-html="<h2>A simple classification example for MoE</h2><p>A simple classification example for MoE</p>"><img  loading="lazy" src='/img/posts/2023/moe-for-recsys/moe_classification_example.png'   alt="A simple classification example for MoE"  ></a><figcaption class="image-caption">A simple classification example for MoE</figcaption>
 </figure></p>
 <p>In the classification example shown above, the blue circles and red diamonds correspond to two different classes. The gate does a soft partition of the input space and defines the regions where the individual experts are trustworthy. For example, Expert 1 is responsible for the left of the gating line, whereas Expert 2&rsquo;s opinion is considered for the data points to the right of it. This approach simplifies a non-linear classification problem into two linear classification problems<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
 <p>This divide-and-conquer approach to problem-solving also underlies many other predictive modeling ensembles, like Boosting methods. However, all the trained models in Boosting are given some weightage regardless of the current input we are dealing with, so the result will be combined from all models. On the other hand, the routing scheme in MoE only incurs computational cost corresponding to the selected experts. Hence MoEs enable a paradigm called Conditional Computation and perform effectively when there is a large amount of training data. Also, because the input is fractionated, MoE models often do not perform well with small datasets.</p>
@@ -270,7 +300,7 @@
     <a href="#make-experts-complete-not-cooperate" class="header-mark"></a>Make experts complete, not cooperate</h3><p>Training a single, multilayer network to perform different subtasks on different occasions can lead to strong interference effects that lead to slow learning and poor generalization. If the number of subtasks is known prior to training, one option, for example, is to make the final output of the whole system to be a linear combination of the outputs of the local experts, each given their own proportional weights. So, the error value on case c can be calculated as:</p>
 <p>$$ E^c = || y^c - \sum_{i} w_i^c o_i^c ||^2 $$</p>
 <p>where $o_i^c$ is the output vector of $i$th expert and $w_i^c$ is the proportional contribution of expert $i$, and $y^c$ is the desired output. Note that the CART algorithm uses a similar approach. One problem with such an error measure is that it encourages cooperation as there is a strong coupling between the experts. Each local expert will have to make its output cancel the residual error that is left by the combined effect of other experts. And, if the weight of one expert changes, the residual error changes, and the error derivatives for all other local experts also change.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/moe.png" title="Mixture of Experts" data-thumbnail="/img/posts/2023/moe-for-recsys/moe.png" data-sub-html="<h2>Mixture of Experts</h2><p>Mixture of Experts</p>"><img  loading="lazy" src=/img/posts/2023/moe-for-recsys/moe.png   alt="Mixture of Experts"  ></a><figcaption class="image-caption">Mixture of Experts</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/moe.png" title="Mixture of Experts" data-thumbnail="/img/posts/2023/moe-for-recsys/moe.png" data-sub-html="<h2>Mixture of Experts</h2><p>Mixture of Experts</p>"><img  loading="lazy" src='/img/posts/2023/moe-for-recsys/moe.png'   alt="Mixture of Experts"  ></a><figcaption class="image-caption">Mixture of Experts</figcaption>
 </figure></p>
 <p>The interference can be reduced by using a system composed of several different &ldquo;expert&rdquo; networks plus a gating network that decides which of the experts should be used for each training case. Instead of using a linear combination of experts, we can use a manager layer (aka a gating network) that makes a stochastic decision about which single expert to use for specific input. The gating network allows the mixing proportions of the experts to be determined by the input vector. This gives us a system of competing local experts where each expert is required to produce the whole of the output vector rather than a residual effectively making the experts independent of each other.</p>
 <p>$$ E^c  = || y^c - o_i^c ||^2 = \sum_{i} p_i^c || y^c - o_i^c ||^2  $$</p>
@@ -293,24 +323,24 @@
     <a href="#moe-variants" class="header-mark"></a>MoE Variants</h3><p>Since their inception over 30 years ago, MoEs have been revised many times and several improvements have been proposed. This section highlights a few of them.</p>
 <h4 id="hierarchical-mixture-of-experts" class="headerLink">
     <a href="#hierarchical-mixture-of-experts" class="header-mark"></a>Hierarchical Mixture of Experts</h4><p>The Hierarchical Mixture-of-Experts (HME) algorithm proposed by Jordan et. al<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> takes a recursive approach to decompose the predictive modeling task. During MoE training, the gate and expert parameters are decoupled and estimated separately. This modularity led to the development of HMEs. HME learns a hierarchy of gating networks in a tree structure, such that the output is conditioned on multiple levels of gating functions. The outputs are then mixed according to the gating weights at each node.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/hmoe.png" title="Two-level HME Architecture" data-thumbnail="/img/posts/2023/moe-for-recsys/hmoe.png" data-sub-html="<h2>Two-level HME Architecture</h2><p>Two-level HME Architecture</p>"><img  loading="lazy" src=/img/posts/2023/moe-for-recsys/hmoe.png   alt="Two-level HME Architecture"  ></a><figcaption class="image-caption">Two-level HME Architecture</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/hmoe.png" title="Two-level HME Architecture" data-thumbnail="/img/posts/2023/moe-for-recsys/hmoe.png" data-sub-html="<h2>Two-level HME Architecture</h2><p>Two-level HME Architecture</p>"><img  loading="lazy" src='/img/posts/2023/moe-for-recsys/hmoe.png'   alt="Two-level HME Architecture"  ></a><figcaption class="image-caption">Two-level HME Architecture</figcaption>
 </figure></p>
 <p>The above example shows a two-level HME architecture with two MoE components at the bottom, each consisting of a single gate and two experts. Compared to the CART algorithm&rsquo;s greedy approach, splits in HME are probabilistic functions. So HME can also be thought of as a statistical approach to decision tree modeling that has the capability of recovering from a poor decision somewhere further up the tree.</p>
 <h4 id="deep-mixture-of-experts" class="headerLink">
     <a href="#deep-mixture-of-experts" class="header-mark"></a>Deep Mixture of Experts</h4><p>Eigen et. al<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> proposed a Deep Mixture of Experts (DMoE) model that stacks MoEs such that a suitable expert combination is dynamically assembled for a given input. DMoE uses multiple sets of gating and experts to exponentially increase the number of effective paths, yet maintains a modest model size by associating each input with a subset of experts at each layer.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/dmoe.png" title="DMoE" data-thumbnail="/img/posts/2023/moe-for-recsys/dmoe.png" data-sub-html="<h2>DMoE Architecture</h2><p>DMoE</p>"><img  loading="lazy" src=/img/posts/2023/moe-for-recsys/dmoe.png   alt="DMoE"  ></a><figcaption class="image-caption">DMoE Architecture</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/dmoe.png" title="DMoE" data-thumbnail="/img/posts/2023/moe-for-recsys/dmoe.png" data-sub-html="<h2>DMoE Architecture</h2><p>DMoE</p>"><img  loading="lazy" src='/img/posts/2023/moe-for-recsys/dmoe.png'   alt="DMoE"  ></a><figcaption class="image-caption">DMoE Architecture</figcaption>
 </figure></p>
 <p>The above example shows a DMoE with two sets of experts with gating networks. It dynamically computes a suitable expert combination by conditioning the experts and gating networks on the output of the previous layers. To ensure that the experts at the first layer do not overpower the remaining experts, the authors propose an explicit constraint on relative gating assignments applied temporarily during training.</p>
 <h4 id="sparsely-gated-mixture-of-experts" class="headerLink">
     <a href="#sparsely-gated-mixture-of-experts" class="header-mark"></a>Sparsely-gated Mixture of Experts</h4><p>One of the most influential improvements to MoEs was proposed by Shazeer et. al<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> which offered a dramatic increase in model capacity without a proportional increase in computation. Their Sparsely-gated Mixture-of-Experts model can achieve more than 1000x improvement in model capacity while incurring only a minor loss in computational efficiency. While scaling a traditional deep learning model costs a significant amount of compute because the entire model is activated for every example, the gating method proposed in this paper selects a sparse combination of experts to process each input. Before taking the softmax in a standard gating network, they add a tunable Gaussian noise, and then keep only the top-k values, setting the rest to $-\infty$ (making the corresponding gate outputs to be 0).</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/sparse_moe.png" title="Sparsely-gated MoE" data-thumbnail="/img/posts/2023/moe-for-recsys/sparse_moe.png" data-sub-html="<h2>Sparsely-gated MoE</h2><p>Sparsely-gated MoE</p>"><img  loading="lazy" src=/img/posts/2023/moe-for-recsys/sparse_moe.png   alt="Sparsely-gated MoE"  ></a><figcaption class="image-caption">Sparsely-gated MoE</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/sparse_moe.png" title="Sparsely-gated MoE" data-thumbnail="/img/posts/2023/moe-for-recsys/sparse_moe.png" data-sub-html="<h2>Sparsely-gated MoE</h2><p>Sparsely-gated MoE</p>"><img  loading="lazy" src='/img/posts/2023/moe-for-recsys/sparse_moe.png'   alt="Sparsely-gated MoE"  ></a><figcaption class="image-caption">Sparsely-gated MoE</figcaption>
 </figure></p>
 <p>The above example shows their proposed MoE layer embedded within a recurrent model. The sparse gating function in the example has selected two experts to perform computations. They trained the model on language modeling and machine translation tasks and show that different experts tend to become highly specialized based on input syntax and semantics. The paper also proposes parallelism techniques for increasing batch sizes and additional loss terms to balance the utilization of experts.</p>
 <p>Some recent studies show that using sparsely-gated MoEs for Large Language Modeling (LLM) can lead to similar performance as achieved by a dense model that requires four times as much compute<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>. Meta also used the sparsely-gated MoE technique for its No Language Left Behind (NLLB-200) model that provides translation capability for low-resource languages with relatively little data<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
 <h4 id="multi-gate-mixture-of-experts" class="headerLink">
     <a href="#multi-gate-mixture-of-experts" class="header-mark"></a>Multi-gate Mixture-of-Experts</h4><p>In Multi-gate Mixture-of-Experts (MMoE), Ma el. al<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> adapted the MoE structure to multi-task learning. The goal of multi-task learning is to build a single model that learns multiple tasks simultaneously. The authors hypothesize that such learning is sensitive to the differences in data distributions and the relationship between tasks. Such factors can affect a model&rsquo;s performance especially when model parameters are shared among the tasks.</p>
 <p>They propose a novel approach that is based on MoEs and explicitly models task relationships along with learning task-specific functionalities. In their architecture, the expert submodels (feed-forward networks) are shared across all tasks, while the gating networks are task-specific. Each task also has a task-specific &ldquo;tower&rdquo; to decouple the optimization for tasks. The key idea here is that the commonly used shared-bottom model structure is replaced by MoEs.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/mmoe.png" title="MMoE" data-thumbnail="/img/posts/2023/moe-for-recsys/mmoe.png" data-sub-html="<h2>MMoE Architecture</h2><p>MMoE</p>"><img  loading="lazy" src=/img/posts/2023/moe-for-recsys/mmoe.png   alt="MMoE"  ></a><figcaption class="image-caption">MMoE Architecture</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/mmoe.png" title="MMoE" data-thumbnail="/img/posts/2023/moe-for-recsys/mmoe.png" data-sub-html="<h2>MMoE Architecture</h2><p>MMoE</p>"><img  loading="lazy" src='/img/posts/2023/moe-for-recsys/mmoe.png'   alt="MMoE"  ></a><figcaption class="image-caption">MMoE Architecture</figcaption>
 </figure></p>
 <p>The above example shows an MMoE architecture for two tasks. Their gating networks allow different tasks to utilize different experts differently. Through experiments, the authors show that MMoE architecture outperforms baseline methods, especially when the correlation among tasks is low. The authors test MMoEs in large-scale recommender systems at Google by training a ranking model optimized for user engagement and user satisfaction objectives. However, because training task-specific models can lead to learning billions of parameters for individual tasks, the authors simply change the top layer of the shared-bottom network to an MMoE layer.</p>
 <h2 id="mixture-of-expert-for-recommendations" class="headerLink">
@@ -318,17 +348,17 @@
 <p>Some of the widely used multi-task learning models are based on a shared-bottom model structure. These systems suffer from optimization conflicts caused by different tasks sharing the same set of parameters. Data sparsity, data heterogeneity, and users&rsquo; complex underlying intents are some of the other common challenges faced by these multi-task learning systems. Recently, some large-scale recommendation systems have started to utilize MMoE for multi-task modeling and achieve state-of-the-art results for recommendations. This section highlights some notable examples from the industry.</p>
 <h3 id="youtubes-next-video-recommendation" class="headerLink">
     <a href="#youtubes-next-video-recommendation" class="header-mark"></a>YouTube&rsquo;s Next Video Recommendation</h3><p>Zhao et. al<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup> from Google proposed an MMoE-based multi-objective ranking system for recommending what video to watch next on YouTube. They first group their task objective into two categories: engagement and satisfaction. Given the list of candidate videos from the retrieval step, their ranking system uses candidate, user, and context features to learn to predict the probabilities corresponding to the two categories of user behavior.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/youtube_mmoe.png" title="YouTube&rsquo;s MMoE" data-thumbnail="/img/posts/2023/moe-for-recsys/youtube_mmoe.png" data-sub-html="<h2>YouTube&#39;s MMoE</h2><p>YouTube&rsquo;s MMoE</p>"><img  loading="lazy" src=/img/posts/2023/moe-for-recsys/youtube_mmoe.png   alt="YouTube&rsquo;s MMoE"  ></a><figcaption class="image-caption">YouTube's MMoE</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/youtube_mmoe.png" title="YouTube&rsquo;s MMoE" data-thumbnail="/img/posts/2023/moe-for-recsys/youtube_mmoe.png" data-sub-html="<h2>YouTube&#39;s MMoE</h2><p>YouTube&rsquo;s MMoE</p>"><img  loading="lazy" src='/img/posts/2023/moe-for-recsys/youtube_mmoe.png'   alt="YouTube&rsquo;s MMoE"  ></a><figcaption class="image-caption">YouTube's MMoE</figcaption>
 </figure></p>
 <p>They substitute the last shared-bottom layer in their previous model with the MoE layer with task-specific gating and experts shared across tasks. They chose to not apply the MoE layer directly to the input because the high dimensionality of input would lead to significant model training and serving costs. In the paper, they also describe a shallow tower learned alongside this MMoE to reduce selection biases.</p>
 <h3 id="gmails-mixture-of-sequential-experts" class="headerLink">
     <a href="#gmails-mixture-of-sequential-experts" class="header-mark"></a>GMail&rsquo;s Mixture of Sequential Experts</h3><p>Qin et. al<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> from Google, proposed a Mixture-of-Sequential-Experts (MoSE) framework for multi-task modeling that focuses on sequential data (like user behavior from search or browsing logs) instead of non-sequential data (like user query and context) to model user behavior. In order to incorporate temporal dependencies from sequential data modeling into the MMoE structure, they utilized an LSTM shared-bottom, LSTM-based experts and LSTM task-towers.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/gmail_mmoe.png" title="MoSE model structure" data-thumbnail="/img/posts/2023/moe-for-recsys/gmail_mmoe.png" data-sub-html="<h2>MoSE model structure</h2><p>MoSE model structure</p>"><img  loading="lazy" src=/img/posts/2023/moe-for-recsys/gmail_mmoe.png   alt="MoSE model structure"  ></a><figcaption class="image-caption">MoSE model structure</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/gmail_mmoe.png" title="MoSE model structure" data-thumbnail="/img/posts/2023/moe-for-recsys/gmail_mmoe.png" data-sub-html="<h2>MoSE model structure</h2><p>MoSE model structure</p>"><img  loading="lazy" src='/img/posts/2023/moe-for-recsys/gmail_mmoe.png'   alt="MoSE model structure"  ></a><figcaption class="image-caption">MoSE model structure</figcaption>
 </figure></p>
 <p>Their experiments showed that the LSTM-based MMoE (MoSE) performed better at modeling user activity streams than the FFN-based MMoE model.</p>
 <h3 id="kuaishous-kwai-recommender-system" class="headerLink">
     <a href="#kuaishous-kwai-recommender-system" class="header-mark"></a>Kuaishou&rsquo;s Kwai Recommender System</h3><p>In Personalized Cold Start Modules (POSO), Dai et. al<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup> explained their recommendation system used in the Kwai app. The input consists of sequential features (like the user&rsquo;s historical interaction) and non-sequential features (like user ID). All of these features are first mapped into low-dimensional vectors using an embedding look-up table. For each sequential feature, a multi-head attention (MHA) module is used to fuse the embeddings into a concatenation of vector outputs from each head. These sequential and non-sequential vectors are then concatenated and fed into an MMoE layer, which is followed by a task-specific MLP that predicts the probabilities for user behavior specific to the task.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/kwai_mmoe.png" title="Kwai&rsquo;s Recommender System" data-thumbnail="/img/posts/2023/moe-for-recsys/kwai_mmoe.png" data-sub-html="<h2>Kwai&#39;s recommender system in production</h2><p>Kwai&rsquo;s Recommender System</p>"><img  loading="lazy" src=/img/posts/2023/moe-for-recsys/kwai_mmoe.png   alt="Kwai&rsquo;s Recommender System"  ></a><figcaption class="image-caption">Kwai's recommender system in production</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/moe-for-recsys/kwai_mmoe.png" title="Kwai&rsquo;s Recommender System" data-thumbnail="/img/posts/2023/moe-for-recsys/kwai_mmoe.png" data-sub-html="<h2>Kwai&#39;s recommender system in production</h2><p>Kwai&rsquo;s Recommender System</p>"><img  loading="lazy" src='/img/posts/2023/moe-for-recsys/kwai_mmoe.png'   alt="Kwai&rsquo;s Recommender System"  ></a><figcaption class="image-caption">Kwai's recommender system in production</figcaption>
 </figure></p>
 <h2 id="summary" class="headerLink">
     <a href="#summary" class="header-mark"></a>Summary</h2><p>Mixture-of-Experts have seen a wide-scale adoption in the industry for a number of applications. Their learning procedure divides up the task into appropriate subtasks, each of which can be solved by a very simple expert network. A gating network further reduces the computational overhead by deciding which of the experts should be used for each input. MoEs can automatically adjust parameterization between modeling shared information and modeling task-specific information. MoE layers in deep learning achieve conditional computation where only parts of a network are active on a per-example basis at both training and serving time. This capability translates to parallelizable training and fast inference, making MoEs lucrative for large-scale systems. This article introduced MoE and its variants in detail and highlighted several industrial recommender systems that utilized mixture-of-experts.</p>
@@ -386,35 +416,35 @@
 <div class="related-container">
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/11/embedding-collapse-recsys/"><img   src=/posts/2024/11/embedding-collapse-recsys/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/11/embedding-collapse-recsys/"><img   src='/posts/2024/11/embedding-collapse-recsys/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/11/embedding-collapse-recsys/">Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/08/ads-llm/"><img   src=/posts/2024/08/ads-llm/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/08/ads-llm/"><img   src='/posts/2024/08/ads-llm/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/08/ads-llm/">Incorporating Ads into Large Language Models Outputs</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img   src=/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img   src='/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/06/multi-task-video-recsys-p2/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img   src=/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img   src='/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/06/multi-task-video-recsys-p1/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 1</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/01/multi-task-learning-recsys/"><img   src=/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/01/multi-task-learning-recsys/"><img   src='/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/01/multi-task-learning-recsys/">An Introduction to Multi-Task Learning based Recommender Systems</a>
             </h2>
@@ -438,8 +468,7 @@
         </div>
         <div class="post-info-line print:!tw-hidden">
             <div class="post-info-md"></div>
-            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-title="Mixture-of-Experts based Recommender Systems" data-via="_reachsumit" data-hashtags="literature review,recsys,Mixture-of-experts"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-hashtag="literature review"><svg class="icon"
+            <div class="post-info-share"><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-hashtag="literature review"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-title="Mixture-of-Experts based Recommender Systems" data-web><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/04/moe-for-recsys/" data-title="Mixture-of-Experts based Recommender Systems"><svg class="icon"
@@ -454,7 +483,7 @@
 
     <div class="post-info-more">
         <section class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href=""></a>,&nbsp;<a href="/tags/recsys/">Recsys</a>,&nbsp;<a href="/tags/mixture-of-experts/">Mixture-of-Experts</a></section>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/literature-review/">Literature Review</a>,&nbsp;<a href="/tags/recsys/">Recsys</a>,&nbsp;<a href="/tags/mixture-of-experts/">Mixture-of-Experts</a></section>
         <section class="print:!tw-hidden">
             <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">Back</button></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -467,22 +496,26 @@
 </div>
 <div id="comments" class="print:!tw-hidden tw-pt-32 tw-pb-8"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
-            </noscript></div></article></div>
-        </main><footer class="footer">
+            </noscript></div></article></main><footer class="footer">
         <div class="footer-container"><div class="footer-line"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2024<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2025<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
-        </div></footer></div>
-
-    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button tw-transition-opacity tw-opacity-0" title="Back to Top">
-            <svg class="icon"
+        </div></footer><div class="print:!tw-hidden tw-flex tw-flex-col tw-fixed tw-right-4 tw-bottom-4 tw-gap-2"><a href="#back-to-top" id="back-to-top-button" class="tw-transition-opacity tw-opacity-0 tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="Back to Top">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
-        </a><a href="#comments" id="view-comments" class="fixed-button" title="View Comments">
-            <svg class="icon"
+  </a>
+
+  <button id="toc-drawer-button" class="tw-block tw-bg-bgColor-secondary tw-rounded-full md:tw-hidden" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;">
+      <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
+  </button><a href="#comments" id="view-comments" class="tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="View Comments">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
-        </a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+  </a></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"></noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript>
 <script>window.config={"algoliasearch.min.js":"https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js","autocomplete.min.js":"https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js","comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-04-23T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Mixture-of-Experts based Recommender Systems"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script
     src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"
@@ -490,11 +523,17 @@
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"
+    
+      defer
     
   ></script><script
     src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"
@@ -540,25 +579,24 @@
     
       defer
     
-  ></script><script type="text/javascript">
+  ></script><script>
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script
     src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3"
     async
   ></script>
-    
-    <script type="speculationrules">
-        {
-          "prerender": [
-            {
-              "where": { "href_matches": "/*" },
-              "eagerness": "moderate"
-            }
-          ]
-        }
-    </script>
-      
+
+<script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+</script>
 </body>
 
 </html>

@@ -45,7 +45,7 @@
                             "width":  1000 ,
                             "height":  300 
                         }],"genre": "posts","keywords":["recsys","literature review"],"wordcount":  2750 ,
-        "url": "https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/","datePublished": "2022-11-06T00:00:00+00:00","dateModified": "2023-06-03T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/","datePublished": "2022-11-06T00:00:00+00:00","dateModified": "2023-06-03T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
@@ -55,43 +55,42 @@
     }</script></head>
 
 
-<body data-instant-intensity="viewport" ><script type="text/javascript">
-        function setTheme(theme) {
-          document.body.setAttribute('theme', theme); 
-          document.documentElement.className = theme;
-          document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
-          if (theme === 'light') {
-            document.documentElement.classList.remove('tw-dark')
-          } else {
-            document.documentElement.classList.add('tw-dark')
-          }
-          window.theme = theme;   
-          window.isDark = window.theme !== 'light' 
-        }
-        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
-        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
-        if (window.localStorage && localStorage.getItem('theme')) {
-            let theme = localStorage.getItem('theme');
-            if (theme === 'light' || theme === 'dark') {
-            setTheme(theme);
+<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script>
+    function setTheme(theme) {
+      document.body.setAttribute('theme', theme); 
+      document.documentElement.className = theme;
+      document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
+      if (theme === 'light') {
+        document.documentElement.classList.remove('tw-dark')
+      } else {
+        document.documentElement.classList.add('tw-dark')
+      }
+      window.theme = theme;   
+      window.isDark = window.theme !== 'light' 
+    }
+    function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+    function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+    if (window.localStorage && localStorage.getItem('theme')) {
+        let theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') {
+        setTheme(theme);
+        } else {
+            if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                setTheme('dark');
             } else {
-                if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    setTheme('dark');
-                } else {
-                    setTheme('light');
-                }
+                setTheme('light');
             }
-         } else { 
-            if ('light' === 'light' || 'light' === 'dark') 
-                setTheme('light'), saveTheme('light'); 
-            else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
         }
-        let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
-        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
-        window.switchThemeEventSet = new Set()
-    </script>
-    <div id="back-to-top"></div>
-    <div id="mask"></div><div class="wrapper"><header class="desktop print:!tw-hidden" id="header-desktop">
+      } else { 
+        if ('light' === 'light' || 'light' === 'dark') 
+            setTheme('light'), saveTheme('light'); 
+        else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
+    }
+    let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
+    getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    window.switchThemeEventSet = new Set()
+</script><div id="back-to-top"></div>
+    <div id="mask"></div><header class="desktop print:!tw-hidden" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="/" title="Sumit&#39;s Diary"><span id="desktop-header-typeit" class="typeit"></span></a>
@@ -151,7 +150,7 @@
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
                     </button>
-                    <button class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                    <button class="search-button search-clear tw-h-fit" id="search-clear-mobile" title="Clear">
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></svg>
                     </button>
@@ -180,8 +179,7 @@
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div><main class="main">
-            <div class="container"><div class="toc print:!tw-hidden" id="toc-auto">
+</div><main class="tw-mx-4 tw-flex-1"><div class="toc print:!tw-hidden" id="toc-auto">
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
@@ -242,19 +240,82 @@
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2022-11-06" data-pagefind-body>Feature-Interactions Based Information Retrieval Models</h1><div class="post-meta">
+    </div><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
+        <div class="toc tw-mx-4 tw-max-w-full">
+            <h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl">Contents</h2>
+            <div class="toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#why-should-we-model-feature-interactions">Why Should We Model Feature Interactions?</a></li>
+        <li><a href="#order-of-interaction">Order of Interaction</a></li>
+        <li><a href="#data-sparsity">Data Sparsity</a></li>
+        <li><a href="#memorization-vs-generalization-paradigm">Memorization vs Generalization Paradigm</a></li>
+      </ul>
+    </li>
+    <li><a href="#model-architectures">Model Architectures</a>
+      <ul>
+        <li><a href="#1-factorization-machine-fm">1. Factorization Machine (FM)</a>
+          <ul>
+            <li><a href="#implementation">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-field-aware-factorization-machine-ffm">2. Field-Aware Factorization Machine (FFM)</a>
+          <ul>
+            <li><a href="#implementation-1">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-attentional-factorization-machine-afm">3. Attentional Factorization Machine (AFM)</a>
+          <ul>
+            <li><a href="#implementation-2">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-wide--deep-learning">4. Wide &amp; Deep Learning</a>
+          <ul>
+            <li><a href="#implementation-3">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-deepfm">5. DeepFM</a>
+          <ul>
+            <li><a href="#implementation-4">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-neural-factorization-machine-nfm">6. Neural Factorization Machine (NFM)</a>
+          <ul>
+            <li><a href="#implementation-5">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-deep-learning-recommendation-model-dlrm">7. Deep Learning Recommendation Model (DLRM)</a>
+          <ul>
+            <li><a href="#implementation-6">Implementation</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#toy-experiment">Toy Experiment</a>
+      <ul>
+        <li><a href="#dataset-preprocessing">Dataset Preprocessing</a></li>
+        <li><a href="#comparison-results">Comparison Results</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+        </div>
+    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2022-11-06" data-pagefind-body>Feature-Interactions Based Information Retrieval Models</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href=""><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg></a></span></div>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>Information Retrieval</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2022-11-06">2022-11-06</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2023-06-03">2023-06-03</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;2750 words&nbsp;
                     <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;13 minutes&nbsp;</div>
-        </div><div class="featured-image"><img  loading="eager" src=/posts/2022/11/feature-interactions-ir/featured-image.webp   alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
+        </div><div class="featured-image"><img  loading="eager" src='/posts/2022/11/feature-interactions-ir/featured-image.webp'   alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span class="details-icon"><svg class="icon"
@@ -323,7 +384,7 @@
     <a href="#introduction" class="header-mark"></a>Introduction</h2><p>Large-scale information retrieval applications, such as recommender systems, search ranking, and text analysis often leverage feature interactions for effective modeling. These models are commonly deployed at the ranking stage of <a href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system" rel="">the cascade-style systems</a>. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second or higher-order feature interactions.</p>
 <h3 id="why-should-we-model-feature-interactions" class="headerLink">
     <a href="#why-should-we-model-feature-interactions" class="header-mark"></a>Why Should We Model Feature Interactions?</h3><p>As an example, consider an artificial Click-through rate (CTR) dataset shown in the table below, where + and - represent the number of clicked and unclicked impressions respectively.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/table_1_ctr_example.png   alt="Using Factor Matrices"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/table_1_ctr_example.png'   alt="Using Factor Matrices"  ></p>
 <p>We can see that an ad from Gucci has a high CTR on Vogue. It is difficult for linear models to learn this information because they learn the two weights Gucci and Vogue separately. To address this problem, a machine learning model will have to learn the effect of their feature interaction. Algorithms such as Poly2 (degree-2 polynomial) do this by learning a dedicated weight for each feature conjunction ($O(n^{2})$ time complexity).</p>
 <h3 id="order-of-interaction" class="headerLink">
     <a href="#order-of-interaction" class="header-mark"></a>Order of Interaction</h3><p>An order-2 interaction can be between two features, such as app category and timestamp. For example, people often download Uber apps for food delivery at meal-time. Similarly, an order-3 interaction can be between app category, user gender, and age. For example, a report showed that male teenagers like shooting and RPG games. Some research works argue that considering low- and high-order feature interactions simultaneously brings additional improvement over the cases of considering either alone<cite><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite>. For a highly sparse dataset, these feature interactions are often hidden and difficult to identify a priori.</p>
@@ -346,26 +407,26 @@
     <a href="#model-architectures" class="header-mark"></a>Model Architectures</h2><p>In this article, I will introduce, implement and compare seven popular model architectures that try to balance both memorization and generalization to some degree. Each of the model implementations is done in its standalone Jupyter Notebook file and is linked in the corresponding section below. Every notebook contains code for data preprocessing, model definition, training, and evaluation as applicable to the respective model.</p>
 <h3 id="1-factorization-machine-fm" class="headerLink">
     <a href="#1-factorization-machine-fm" class="header-mark"></a>1. Factorization Machine (FM)</h3><p>Factorization Machines (FMs) were originally purposed in 2010 as a supervised machine-learning method for collaborative recommendations. FMs allow parameter estimation under very sparse data where its predecessors, like SVMs failed, and unlike Matrix Factorization it isn&rsquo;t limited to modeling the relation of two entities only. FMs learn second-order feature interactions on top of a linear model by modeling all interactions between each pair of features. They can also be optimized to work in linear time complexity. While in principle, FM can model high-order feature interaction, in practice usually only order-2 features are considered due to high complexity.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/fm_equation_1.png   alt="FM equation 1"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/fm_equation_1.png'   alt="FM equation 1"  ></p>
 <p>where $w_{0}$ is the global bias, $w_{i}$ denotes the weight of the i-th feature, and $ŵ_{ij}$ denotes the weight of the cross feature $x_{i}x_{j}$, which is factorized as: $ŵ_{ij} = v_{i}^{T} v_{j}$, where $v_{i} \in R^{k}$ denotes the embedding vector for feature i, and k denotes the size of the embedding vector.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_example.png" title="FM example" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_example.png" data-sub-html="<h2>Example: a movie review system dataset</h2><p>FM example</p>"><img  loading="lazy" src=/img/posts/2022/feature-interactions-ir/fm_example.png   alt="FM example"  ></a><figcaption class="image-caption">Example: a movie review system dataset</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2022/feature-interactions-ir/fm_example.png" title="FM example" data-thumbnail="/img/posts/2022/feature-interactions-ir/fm_example.png" data-sub-html="<h2>Example: a movie review system dataset</h2><p>FM example</p>"><img  loading="lazy" src='/img/posts/2022/feature-interactions-ir/fm_example.png'   alt="FM example"  ></a><figcaption class="image-caption">Example: a movie review system dataset</figcaption>
 </figure></p>
 <p>The example above shows a sparse input feature vector x with corresponding target y. We have binary indicator variables for the user, movie, and the last movie rated, along with a normalized rating for other movies and timestamps. Let&rsquo;s say we want to estimate the interaction between the user Alice (A) and the movie Star Trek (ST). You will notice that we do not have any example in x with an interaction between A and ST. FM can still estimate this by using the factorized interaction parameters $\langle v_{A}, v_{ST} \rangle$ even in this case.</p>
 <h4 id="implementation" class="headerLink">
     <a href="#implementation" class="header-mark"></a>Implementation</h4><p>Suppose we have M training examples, n features and we want to factorize feature interaction with vectors of size k i.e. dimensionality of $v_{i}$. Let us denote our trainset as $X \in R^{M×n}$, and matrix of $v_{i}$ (the ith row is $v_{i}$) as $V \in R^{n×k}$. Also, let&rsquo;s denote the feature vector for the jth object as $x_{j}$. So:</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/fm_equation_3.png   alt="FM equation 3"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/fm_equation_3.png'   alt="FM equation 3"  ></p>
 <p>The number in brackets indicates the index of the sample for x and the index of the feature for v. Also, the FM equation can be expressed as:</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/fm_equation_2.png   alt="FM equation 2"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/fm_equation_2.png'   alt="FM equation 2"  ></p>
 <p>$S_{1}$ is a dot product of feature vector $x_{j}$ and ith column of V. If we multiply X and V, we get:</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/fm_equation_4.png   alt="FM equation 4"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/fm_equation_4.png'   alt="FM equation 4"  ></p>
 <p>So if square XV element-wise and then find the sum of each row, we obtain a vector of $S_{1}^{2}$ terms for each training sample. Also, if we first square X and V element-wise, then multiply them, and finally sum by rows, we&rsquo;ll get $S_{2}$ term for each training object. So, conceptually, we can express the final term like this:</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/fm_equation_6.png   alt="FM equation 6"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/fm_equation_6.png'   alt="FM equation 6"  ></p>
 <p><strong>PyTorch Code</strong></p>
 <p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/2a639276fc781870c4dcd480a3417bf9" target="_blank" rel="noopener noreferrer">https://gist.github.com/reachsumit/2a639276fc781870c4dcd480a3417bf9</a></p>
 <p>You can read more about FMs in the <a href="https://ieeexplore.ieee.org/document/5694074" target="_blank" rel="noopener noreferrer">original paper</a> and the <a href="https://github.com/srendle/libfm" target="_blank" rel="noopener noreferrer">official codebase</a>.</p>
 <h3 id="2-field-aware-factorization-machine-ffm" class="headerLink">
     <a href="#2-field-aware-factorization-machine-ffm" class="header-mark"></a>2. Field-Aware Factorization Machine (FFM)</h3><p>Let&rsquo;s revisit the artificial dataset example from earlier and add another column Gender to it. One observation of such a dataset might look like this:</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/ffm_example.png   alt="FFM example"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/ffm_example.png'   alt="FFM example"  ></p>
 <p>FMs will model the effect of feature conjunction as: $w_{ESPN} \cdot w_{Nike} + w_{ESPN} \cdot w_{Male} + w_{Nike} \cdot w_{Male}$. Field-aware factorization machines (FFMs) extend FMs by introducing the concept of fields and features. With the same example, Publisher, Advertiser, and Gender will be called fields, while values like ESPN, Nike, and Male will be called their features. Note that in FMs every feature has only one latent vector to learn the latent effect with any other features. For example, for ESPN $w_{ESPN}$ is used to learn the latent effect with Nike ($w_{ESPN} \cdot w_{Nike}$) and Male ($w_{ESPN} \cdot w_{Male}$). However, because Nike and Male belong to different fields, the latent effects of (EPSN, Nike) and (EPSN, Male) may be different.</p>
 <p>In FFMs, each feature has several latent vectors. Depending on the field of other features, one of them is used to do the inner product. So, for the same example, the feature interaction effect is modeled by FFM as: $w_{ESPN,A} \cdot w_{Nike,P} + w_{ESPN,G} \cdot w_{Male,P} + w_{Nike,G} \cdot w_{Male,A}$. To learn the latent effect of (ESPN, NIKE), for example, $w_{ESPN,A}$ is used because Nike belongs to the field Advertiser, and $w_{Nike,P}$ is used because ESPN belongs to the field Publisher.</p>
 <p>If f is the number of fields, then the number of variables of FFMs is nfk, and the time complexity is $O(\bar{n}^{2}k)$. Note that because each latent vector in FFMs only needs to learn the effect with a specific field, usually: $k_{FFM} \ll k_{FM}$. FFM authors empirically show that for large, sparse datasets with many categorical features, FFMs perform better than FMs. Whereas for small and dense datasets or numerical datasets, FMs perform better than FFMs.</p>
@@ -375,7 +436,7 @@
 <p>You can read more about FFMs in the <a href="https://dl.acm.org/doi/10.1145/2959100.2959134" target="_blank" rel="noopener noreferrer">original paper</a> and the <a href="https://github.com/ycjuan/libffm" target="_blank" rel="noopener noreferrer">official codebase</a>.</p>
 <h3 id="3-attentional-factorization-machine-afm" class="headerLink">
     <a href="#3-attentional-factorization-machine-afm" class="header-mark"></a>3. Attentional Factorization Machine (AFM)</h3><p>However, despite its effectiveness, FMs model all feature interactions with the same weight, but not all feature interactions are equally useful and predictive. For example, the interactions with useless features may even introduce noise leading to degraded model performance. Attentional Factorization Machines (AFMs) fix this by learning the importance of each feature interaction from data via a neural attention network.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/afm_arch.png   alt="AFM architecture"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/afm_arch.png'   alt="AFM architecture"  ></p>
 <p>AFM starts with sparse input and embedding layer and inspired by FM&rsquo;s inner product, it expands m vectors to $\frac{m(m-1)}{2}$  interacted vectors, where each interacted vector is the element-wise product of two distinct vectors to encode their interaction. The output of the pair-wise interaction layer is fed into an attention-based pooling layer, the idea here is to allow different parts to contribute differently when compressing them to a single representation. An attention mechanism is applied to feature interactions by performing a weighted sum on the interacted vectors. This weight or attention score can be thought of as the importance of weight $\hat{w}_{ij}$ in predicting the target. One shortcoming of AFM architecture is that it models only second-order feature interactions.</p>
 <h4 id="implementation-2" class="headerLink">
     <a href="#implementation-2" class="header-mark"></a>Implementation</h4><p><strong>PyTorch Code</strong></p>
@@ -383,7 +444,7 @@
 <p>You can read more about AFMs in the <a href="https://arxiv.org/abs/1708.04617" target="_blank" rel="noopener noreferrer">original paper</a> and the <a href="https://github.com/hexiangnan/neural_factorization_machine" target="_blank" rel="noopener noreferrer">official codebase</a>.</p>
 <h3 id="4-wide--deep-learning" class="headerLink">
     <a href="#4-wide--deep-learning" class="header-mark"></a>4. Wide &amp; Deep Learning</h3><p>The Wide &amp; Deep learning framework was proposed by Google to achieve both memorization and generalization in one model, by jointly training a linear model component and a neural network component. The wide component is a generalized linear model to which raw input features and transformed features (such as cross-product transformations) are supplied. The deep component is a feed-forward neural network, which consumes sparse categorical features in embedding vector form. The wide and deep parts are combined using a weighted sum of their output log odds as the prediction which is then fed to a common loss function for joint training.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/wnd_arch.png   alt="W&amp;D architecture"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/wnd_arch.png'   alt="W&amp;D architecture"  ></p>
 <p>The authors claim that wide linear models can effectively memorize sparse feature interactions using cross-product feature transformations, while deep neural networks can generalize to previously unseen feature interactions through low-dimensional embeddings. Note that the wide and deep parts work with two different inputs and the input to the wide part still relies on expertise feature engineering. The model also suffers from the same problem as the linear models like Polynomial Regression that feature interactions can not be learned for unobserved cross features.</p>
 <h4 id="implementation-3" class="headerLink">
     <a href="#implementation-3" class="header-mark"></a>Implementation</h4><p><strong>PyTorch Code</strong></p>
@@ -391,25 +452,24 @@
 <p>You can read more about Wide&amp;Deep in the <a href="https://arxiv.org/abs/1606.07792" target="_blank" rel="noopener noreferrer">original paper</a> and the <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/DNNLinearCombinedClassifier" target="_blank" rel="noopener noreferrer">official codebase</a>.</p>
 <h3 id="5-deepfm" class="headerLink">
     <a href="#5-deepfm" class="header-mark"></a>5. DeepFM</h3><p>DeepFM model architecture combines the power of FMs and deep learning to overcome the issues with Wide&amp;Deep networks. DeepFM uses a single shared input to its wide and deep parts, with no need for any special feature engineering besides raw features. It models low-order feature interactions like FM and models high-order feature interactions like DNN.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/deepfm_arch.png   alt="DeepFM architecture"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/deepfm_arch.png'   alt="DeepFM architecture"  ></p>
 <h4 id="implementation-4" class="headerLink">
     <a href="#implementation-4" class="header-mark"></a>Implementation</h4><p><strong>PyTorch Code</strong></p>
 <p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/79237a4de62b4033e2576c55df3dc056" target="_blank" rel="noopener noreferrer">https://gist.github.com/reachsumit/79237a4de62b4033e2576c55df3dc056</a></p>
 <p>You can read more about DeepFM in the <a href="https://arxiv.org/abs/1703.04247" target="_blank" rel="noopener noreferrer">original paper</a>.</p>
 <h3 id="6-neural-factorization-machine-nfm" class="headerLink">
     <a href="#6-neural-factorization-machine-nfm" class="header-mark"></a>6. Neural Factorization Machine (NFM)</h3><p>Neural Factorization Machine (NFM) model architecture was also proposed by the authors of the AFM paper with the same goal of overcoming the insufficient linear modeling of feature interactions in FM. After the sparse input and embedding layer, this time the authors propose a Bi-Interaction layer that models the second-order feature interactions. This layer is a pooling layer that converts a set of the embedding vectors set input to one vector by performing an element-wise product of vectors: $\sum_{i=1}^{n} \sum_{j=i+1}^{n} x_{i}v_{i} \odot  x_{j}v_{j}$, and passes it on to another set of fully connected layers.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/nfm_arch.png   alt="NFM architecture"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/nfm_arch.png'   alt="NFM architecture"  ></p>
 <h4 id="implementation-5" class="headerLink">
     <a href="#implementation-5" class="header-mark"></a>Implementation</h4><p><strong>PyTorch Code</strong></p>
 <p>Refer to this Gist for the complete code for this experiment: <a href="https://gist.github.com/reachsumit/f29d7001b7687785f33636c9bca302c3" target="_blank" rel="noopener noreferrer">https://gist.github.com/reachsumit/f29d7001b7687785f33636c9bca302c3</a></p>
 <p>You can read more about NFM in the <a href="https://arxiv.org/abs/1708.05027" target="_blank" rel="noopener noreferrer">original paper</a> and the <a href="https://github.com/hexiangnan/neural_factorization_machine" target="_blank" rel="noopener noreferrer">official codebase</a>.</p>
 <h3 id="7-deep-learning-recommendation-model-dlrm" class="headerLink">
     <a href="#7-deep-learning-recommendation-model-dlrm" class="header-mark"></a>7. Deep Learning Recommendation Model (DLRM)</h3><p>The Deep Learning Recommendation Model (DLRM) was proposed by Facebook in 2019. The DLRM architecture can be thought of as a simplified version of DeepFM architecture. DLRM tries to stay away from high-order interactions by not passing the embedded categorical features through an MLP layer. First, it makes the continuous features go through a &ldquo;bottom&rdquo; MLP layer such that they have the same length as the embedding vectors. Then, it computes the dot product between all combinations of embedding vectors and the bottom MLP output from the previous step. The dot product output is then concatenated with the bottom MLP output and is passed to a &ldquo;top&rdquo; MLP layer to compute the final output.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/dlrm_arch.png   alt="DLRM architecture"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/dlrm_arch.png'   alt="DLRM architecture"  ></p>
 <p>This architecture design is tailored to mimic the way Factorization Machines compute the second-order interactions between the embeddings, and the paper also says:</p>
 <blockquote>
   <p>We argue that higher-order interactions beyond second-order found in other networks may not necessarily be worth the additional computational/memory cost.</p>
-
 </blockquote><h4 id="implementation-6" class="headerLink">
     <a href="#implementation-6" class="header-mark"></a>Implementation</h4><p>The paper also notes that DLRM contains far more parameters than common models like CNNs, RNNs, GANs, and transformers, making the training time for this model go up to several weeks. They also propose a framework to parallelize DLRM operations. Due to high compute requirements, I couldn&rsquo;t train the DLRM model myself. DLRM results in this experimentation are with a simplified implementation using a concatenation of bottom MLP output and embedding output, instead of their dot product.</p>
 <p><strong>PyTorch Code</strong></p>
@@ -428,11 +488,11 @@
 <li>The dataset was split into train-test with an 80-20 ratio.</li>
 </ul>
 <p>The following diagram shows the various features generated through preprocessing. Some or all of these features are used during experimentation depending upon the specific model architecture.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/input_features.png   alt="input features"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/input_features.png'   alt="input features"  ></p>
 <p>Refer to the respective notebook for data preprocessing steps specific to each model.</p>
 <h3 id="comparison-results" class="headerLink">
     <a href="#comparison-results" class="header-mark"></a>Comparison Results</h3><p>The mean rank of the test set examples was computed using each model, and the following chart shows their comparison based on the best rank achieved on the test set. In short, for this experiment: AFM &gt; FFM &raquo; DeepFM &gt; DLRM_simplified &gt; Wide &amp; Deep &gt; NFM &gt; FM.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2022/feature-interactions-ir/final_comparison.png   alt="Comparing all models"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2022/feature-interactions-ir/final_comparison.png'   alt="Comparing all models"  ></p>
 <h2 id="summary" class="headerLink">
     <a href="#summary" class="header-mark"></a>Summary</h2><p>In this article, we defined the need for modeling feature interactions and then looked at some of the most popular machine-learning algorithms designed to estimate feature interactions under sparse settings. We implemented all of the algorithms in Python and compared their results on a toy dataset.</p>
 <h2 id="references" class="headerLink">
@@ -456,35 +516,35 @@
 <div class="related-container">
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/11/embedding-collapse-recsys/"><img   src=/posts/2024/11/embedding-collapse-recsys/featured-image-preview.webp   alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
+                <a href="/posts/2024/11/embedding-collapse-recsys/"><img   src='/posts/2024/11/embedding-collapse-recsys/featured-image-preview.webp'   alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/11/embedding-collapse-recsys/">Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/08/ads-llm/"><img   src=/posts/2024/08/ads-llm/featured-image-preview.webp   alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
+                <a href="/posts/2024/08/ads-llm/"><img   src='/posts/2024/08/ads-llm/featured-image-preview.webp'   alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/08/ads-llm/">Incorporating Ads into Large Language Models Outputs</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img   src=/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp   alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
+                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img   src='/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp'   alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/06/multi-task-video-recsys-p2/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img   src=/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp   alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
+                <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img   src='/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp'   alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/06/multi-task-video-recsys-p1/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 1</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/01/multi-task-learning-recsys/"><img   src=/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp   alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
+                <a href="/posts/2024/01/multi-task-learning-recsys/"><img   src='/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp'   alt="Large-scale information retrieval applications, such as recommender systems, targeted advertisement, search ranking, and text analysis often leverage feature interactions for effective modeling. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second-order and above feature interactions." height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/01/multi-task-learning-recsys/">An Introduction to Multi-Task Learning based Recommender Systems</a>
             </h2>
@@ -508,8 +568,7 @@
         </div>
         <div class="post-info-line print:!tw-hidden">
             <div class="post-info-md"></div>
-            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models" data-via="_reachsumit" data-hashtags="recsys,literature review"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-hashtag="recsys"><svg class="icon"
+            <div class="post-info-share"><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-hashtag="recsys"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models" data-web><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/" data-title="Feature-Interactions Based Information Retrieval Models"><svg class="icon"
@@ -524,7 +583,7 @@
 
     <div class="post-info-more">
         <section class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/recsys/">Recsys</a>,&nbsp;<a href=""></a></section>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/recsys/">Recsys</a>,&nbsp;<a href="/tags/literature-review/">Literature Review</a></section>
         <section class="print:!tw-hidden">
             <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">Back</button></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -537,22 +596,26 @@
 </div>
 <div id="comments" class="print:!tw-hidden tw-pt-32 tw-pb-8"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
-            </noscript></div></article></div>
-        </main><footer class="footer">
+            </noscript></div></article></main><footer class="footer">
         <div class="footer-container"><div class="footer-line"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2024<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2025<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
-        </div></footer></div>
-
-    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button tw-transition-opacity tw-opacity-0" title="Back to Top">
-            <svg class="icon"
+        </div></footer><div class="print:!tw-hidden tw-flex tw-flex-col tw-fixed tw-right-4 tw-bottom-4 tw-gap-2"><a href="#back-to-top" id="back-to-top-button" class="tw-transition-opacity tw-opacity-0 tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="Back to Top">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
-        </a><a href="#comments" id="view-comments" class="fixed-button" title="View Comments">
-            <svg class="icon"
+  </a>
+
+  <button id="toc-drawer-button" class="tw-block tw-bg-bgColor-secondary tw-rounded-full md:tw-hidden" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;">
+      <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
+  </button><a href="#comments" id="view-comments" class="tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="View Comments">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
-        </a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+  </a></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"></noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript>
 <script>window.config={"algoliasearch.min.js":"https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js","autocomplete.min.js":"https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js","comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2022-11-06T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Feature-Interactions Based Information Retrieval Models"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script
     src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"
@@ -560,11 +623,17 @@
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"
+    
+      defer
     
   ></script><script
     src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"
@@ -610,25 +679,24 @@
     
       defer
     
-  ></script><script type="text/javascript">
+  ></script><script>
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script
     src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3"
     async
   ></script>
-    
-    <script type="speculationrules">
-        {
-          "prerender": [
-            {
-              "where": { "href_matches": "/*" },
-              "eagerness": "moderate"
-            }
-          ]
-        }
-    </script>
-      
+
+<script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+</script>
 </body>
 
 </html>

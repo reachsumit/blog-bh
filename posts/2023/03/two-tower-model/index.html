@@ -46,7 +46,7 @@
                             "width":  1000 ,
                             "height":  300 
                         }],"genre": "posts","keywords":["literature review","recsys","ranking"],"wordcount":  2373 ,
-        "url": "https://blog.reachsumit.com/posts/2023/03/two-tower-model/","datePublished": "2023-03-04T00:00:00+00:00","dateModified": "2024-01-02T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https://blog.reachsumit.com/posts/2023/03/two-tower-model/","datePublished": "2023-03-04T00:00:00+00:00","dateModified": "2024-01-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
@@ -56,43 +56,42 @@
     }</script></head>
 
 
-<body data-instant-intensity="viewport" ><script type="text/javascript">
-        function setTheme(theme) {
-          document.body.setAttribute('theme', theme); 
-          document.documentElement.className = theme;
-          document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
-          if (theme === 'light') {
-            document.documentElement.classList.remove('tw-dark')
-          } else {
-            document.documentElement.classList.add('tw-dark')
-          }
-          window.theme = theme;   
-          window.isDark = window.theme !== 'light' 
-        }
-        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
-        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
-        if (window.localStorage && localStorage.getItem('theme')) {
-            let theme = localStorage.getItem('theme');
-            if (theme === 'light' || theme === 'dark') {
-            setTheme(theme);
+<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script>
+    function setTheme(theme) {
+      document.body.setAttribute('theme', theme); 
+      document.documentElement.className = theme;
+      document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
+      if (theme === 'light') {
+        document.documentElement.classList.remove('tw-dark')
+      } else {
+        document.documentElement.classList.add('tw-dark')
+      }
+      window.theme = theme;   
+      window.isDark = window.theme !== 'light' 
+    }
+    function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+    function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+    if (window.localStorage && localStorage.getItem('theme')) {
+        let theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') {
+        setTheme(theme);
+        } else {
+            if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                setTheme('dark');
             } else {
-                if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    setTheme('dark');
-                } else {
-                    setTheme('light');
-                }
+                setTheme('light');
             }
-         } else { 
-            if ('light' === 'light' || 'light' === 'dark') 
-                setTheme('light'), saveTheme('light'); 
-            else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
         }
-        let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
-        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
-        window.switchThemeEventSet = new Set()
-    </script>
-    <div id="back-to-top"></div>
-    <div id="mask"></div><div class="wrapper"><header class="desktop print:!tw-hidden" id="header-desktop">
+      } else { 
+        if ('light' === 'light' || 'light' === 'dark') 
+            setTheme('light'), saveTheme('light'); 
+        else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
+    }
+    let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
+    getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    window.switchThemeEventSet = new Set()
+</script><div id="back-to-top"></div>
+    <div id="mask"></div><header class="desktop print:!tw-hidden" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="/" title="Sumit&#39;s Diary"><span id="desktop-header-typeit" class="typeit"></span></a>
@@ -152,7 +151,7 @@
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
                     </button>
-                    <button class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                    <button class="search-button search-clear tw-h-fit" id="search-clear-mobile" title="Clear">
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></svg>
                     </button>
@@ -181,8 +180,7 @@
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div><main class="main">
-            <div class="container"><div class="toc print:!tw-hidden" id="toc-auto">
+</div><main class="tw-mx-4 tw-flex-1"><div class="toc print:!tw-hidden" id="toc-auto">
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
@@ -209,19 +207,48 @@
     <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2023-03-04" data-pagefind-body>Two Tower Model Architecture: Current State and Promising Extensions</h1><div class="post-meta">
+    </div><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
+        <div class="toc tw-mx-4 tw-max-w-full">
+            <h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl">Contents</h2>
+            <div class="toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#cascade-ranking-system">Cascade Ranking System</a></li>
+    <li><a href="#two-tower-model">Two Tower Model</a></li>
+    <li><a href="#related-dnn-paradigms">Related DNN Paradigms</a></li>
+    <li><a href="#comparing-dual-encoder-architectures">Comparing Dual Encoder Architectures</a></li>
+    <li><a href="#enhancing-two-tower-model">Enhancing Two Tower Model</a>
+      <ul>
+        <li><a href="#dual-augmented-two-tower-model-dat">Dual Augmented Two-Tower Model (DAT)</a></li>
+        <li><a href="#interaction-enhanced-two-tower-model-inttower">Interaction Enhanced Two Tower Model (IntTower)</a>
+          <ul>
+            <li><a href="#light-se-block">Light-SE Block</a></li>
+            <li><a href="#fe-block">FE-Block</a></li>
+            <li><a href="#cir-module">CIR Module</a></li>
+            <li><a href="#inttower-model-architecture">IntTower Model Architecture</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#other-alternatives-to-two-tower-model">Other Alternatives to Two Tower Model</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+        </div>
+    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2023-03-04" data-pagefind-body>Two Tower Model Architecture: Current State and Promising Extensions</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href=""><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg></a></span></div>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>Information Retrieval</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2023-03-04">2023-03-04</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2024-01-02">2024-01-02</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;2373 words&nbsp;
                     <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;11 minutes&nbsp;</div>
-        </div><div class="featured-image"><img  loading="eager" src=/posts/2023/03/two-tower-model/featured-image.webp    height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
+        </div><div class="featured-image"><img  loading="eager" src='/posts/2023/03/two-tower-model/featured-image.webp'    height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span class="details-icon"><svg class="icon"
@@ -256,50 +283,50 @@
     <a href="#introduction" class="header-mark"></a>Introduction</h2><p>Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state.</p>
 <h2 id="cascade-ranking-system" class="headerLink">
     <a href="#cascade-ranking-system" class="header-mark"></a>Cascade Ranking System</h2><p>Large-scale information retrieval and item recommendation services often contain tens of millions of candidate items or documents. A search query on Google may have matching keywords in millions of documents (web pages), and Instagram may have thousands or even millions of candidate videos for generating a recommended feed for a user. Designing such systems often has to deal with the additional challenge of strict strict latency constraints. Studies have shown that even a 100ms increase in response time leads to degraded user experience and a measurable impact on revenue <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. A single, complex ranking algorithm cannot efficiently rank such large sets of candidates. Hence, a multi-stage ranking system is commonly adopted to balance efficiency and effectiveness.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2023/two-tower-model/cascade_ranking_system.png   alt="Cascade ranking architecture"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2023/two-tower-model/cascade_ranking_system.png'   alt="Cascade ranking architecture"  ></p>
 <p>In this system, simpler and faster algorithms that focus on recall metrics are employed at earlier steps (Recall and Pre-Ranking). Whereas the large-scale deep neural networks are employed at the later steps (Ranking and Re-Ranking). Keeping latency expectations and accuracy tradeoffs in mind, an appropriate algorithm is used at each step. Each algorithm calculates some form of relevance or similarity value for every single candidate and passes the most relevant candidate set onto the next step.</p>
 <p>In an earlier blog post <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, I introduced several interaction-focused DNN algorithms that can be used for the ranking stage. I recommend going through <a href="https://blog.reachsumit.com/posts/2022/11/sparse-recsys/" target="_blank" rel="noopener noreferrer">that article</a> for developing a good understanding of these algorithms. This current article will mainly talk about the Two Tower model in the context of the pre-ranking stage.</p>
 <h2 id="two-tower-model" class="headerLink">
     <a href="#two-tower-model" class="header-mark"></a>Two Tower Model</h2><p>The pre-ranking stage does the initial filtering of the candidates received from the preceding recall or retrieval stage. Compared to the ranking stage, the pre-ranking model has to evaluate a larger number of candidates and therefore a faster approach is preferred here. The following figure shows the development history of pre-ranking systems from an ads recommendation modeling perspective <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2023/two-tower-model/pre_ranking_generations.png   alt="pre-ranking generations"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2023/two-tower-model/pre_ranking_generations.png'   alt="pre-ranking generations"  ></p>
 <p>Here $x_{u}$, $x_{a}$, $x_{ua}$ are the raw user features, ad features, and cross features. The first generation calculated the pre-rank score in a non-personalized way by averaging the recent click-through rate of each ad. Logistic regression used in the second generation is also a lightweight algorithm that can be deployed in online learning and serving manner. The third generation commonly used a Two Tower model which is a vector-produced based DNN. In this method, user and ad features pass through embedding and DNN layers to generate a latent vector representation for both the user and the ad. Then an inner product of the two vectors is calculated to obtain the pre-ranking score. This Two Tower structure was originally developed in search systems as a means to map a query to the most relevant documents<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2023/two-tower-model/two_tower_model.png   alt="Two Tower model architecture"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2023/two-tower-model/two_tower_model.png'   alt="Two Tower model architecture"  ></p>
 <p>The reason why the Two Tower model rose to popularity was its accuracy as well as its inference efficiency-focused design. The two towers generate latent representations independently in parallel and interact only at the output layer (referred to as &ldquo;late interaction&rdquo;). Often the learned ad or item tower embeddings are also frozen after training and stored in an indexing service for a quicker operation at inference time.</p>
 <h2 id="related-dnn-paradigms" class="headerLink">
     <a href="#related-dnn-paradigms" class="header-mark"></a>Related DNN Paradigms</h2><p>The information retrieval domain has several other DNN paradigms related to the Two Tower model. The following figure shows some examples in the context of neural matching applications (query to document matching)<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2023/two-tower-model/related_dnn_paradigms.png   alt="Related DNN Paradigms"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2023/two-tower-model/related_dnn_paradigms.png'   alt="Related DNN Paradigms"  ></p>
 <p>As you can see, the Two Tower model (Figure a) is a representation-based ranker architecture, which independently computes embeddings for the query and documents and estimates their similarity via interaction between them at the output layer. The other paradigms represent more interaction-focused rankers. Models like <em>DRMM</em>, and <em>KNRM</em> (Figure b) model word- and phrase-level relationships across query and document using an interaction matrix and then feed it to a neural network like CNN or MLP. Similarly, models like <em>BERT</em> (Figure c), also called cross-encoders, are much more powerful as they model interactions between words as well as across the query and documents at the same time. On the other hand, models like <em>ColBERT</em> (<strong>Co</strong>ntextualized <strong>l</strong>ater interactions over <strong>BERT</strong>) (Figure d) keep interactions within the query and document features while delaying the query-document interaction to the output layer. This allows the model to preserve the &ldquo;query-document decoupling&rdquo; (or &ldquo;user-item decoupling&rdquo;) architecture paradigm, and the document or item embeddings can be frozen after training and served through an index at the inference time as shown on the left in the figure below. Inference costs can be further reduced if the application can work with freezing both towers. For example, as shown on the right in the following figure, Alibaba creates indexes out of the learned embeddings from both towers and retrains the model offline on a daily frequency <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2023/two-tower-model/related_dnn_paradigms_2.png   alt="Related DNN Paradigms - 2"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2023/two-tower-model/related_dnn_paradigms_2.png'   alt="Related DNN Paradigms - 2"  ></p>
 <h2 id="comparing-dual-encoder-architectures" class="headerLink">
     <a href="#comparing-dual-encoder-architectures" class="header-mark"></a>Comparing Dual Encoder Architectures</h2><p>Two tower models, like DSSM, are also called the <strong>dual encoder</strong> or <strong>bi-encoder</strong> architecture as they encode the input (such as a query, an image, or a document) into an embedding using the two sub-networks (&quot;<em>towers</em>&quot; or &ldquo;<em>encoders</em>&rdquo;). The model is then optimized based on similarity metrics in the embedding space. Dual encoders have shown excellent performance in a wide range of information retrieval tasks, such as question-answering, entity linking, dense retrieval, etc. They are also easy to productionize because the embedding for new or updated documents can be dynamically added to the embedding index, without retraining the encoders<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
 <p>A <strong>Siamese encoder</strong> model is a type of dual encoder that consists of two identical sub-networks joined at their outputs. Generally, the two sub-networks also share their parameters. The Siamese architecture was originally proposed by Bromley et al.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> for signature verification application. It processes two inputs concurrently and maps them onto a single scalar output representing the distance or similarity between the inputs. On the other hand, an asymmetric dual encoder (<em>ADE</em>) refers to a model with two distinctly parameterized encoders. In practice, ADEs are used when a certain asymmetry is required in the dual encoders. Dong et al.<sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> conducted a study to explore the different ways dual encoders can be structured and compared their efficacy on the question-answering retrieval task.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/dual_encoder_architectures.png" title="Dual encoder architectures" data-thumbnail="/img/posts/2023/two-tower-model/dual_encoder_architectures.png" data-sub-html="<h2>Dual encoders architectures. SDE: Siamese Dual Encoder, ADE: Asymmetric Dual Encoder, ADE-STE: ADE with shared token embedder, ADE-FTE: ADE with frozen token embedder, ADE-SPL: ADE with shared projection layer.</h2><p>Dual encoder architectures</p>"><img  loading="lazy" src=/img/posts/2023/two-tower-model/dual_encoder_architectures.png   alt="Dual encoder architectures"  ></a><figcaption class="image-caption">Dual encoders architectures. SDE: Siamese Dual Encoder, ADE: Asymmetric Dual Encoder, ADE-STE: ADE with shared token embedder, ADE-FTE: ADE with frozen token embedder, ADE-SPL: ADE with shared projection layer.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2023/two-tower-model/dual_encoder_architectures.png" title="Dual encoder architectures" data-thumbnail="/img/posts/2023/two-tower-model/dual_encoder_architectures.png" data-sub-html="<h2>Dual encoders architectures. SDE: Siamese Dual Encoder, ADE: Asymmetric Dual Encoder, ADE-STE: ADE with shared token embedder, ADE-FTE: ADE with frozen token embedder, ADE-SPL: ADE with shared projection layer.</h2><p>Dual encoder architectures</p>"><img  loading="lazy" src='/img/posts/2023/two-tower-model/dual_encoder_architectures.png'   alt="Dual encoder architectures"  ></a><figcaption class="image-caption">Dual encoders architectures. SDE: Siamese Dual Encoder, ADE: Asymmetric Dual Encoder, ADE-STE: ADE with shared token embedder, ADE-FTE: ADE with frozen token embedder, ADE-SPL: ADE with shared projection layer.</figcaption>
 </figure></p>
 <p>The study concluded that the Siamese Dual Encoders (<em>SDE</em>s) perform significantly better than Asymmetric Dual Encoders (<em>ADE</em>s) because ADEs tend to embed the two inputs into disjoint embedding spaces, which hurts the retrieval quality. They also found that ADE performance can be enhanced to be on par or even better than SDEs by sharing a projection layer between the two encoders (<em>ADE-SPL</em>). However, sharing the token embedders between the two towers (<em>ADE-STE</em>) or freezing the token embedders during training (<em>ADE-FTE</em>) only brings marginal improvements.</p>
 <h2 id="enhancing-two-tower-model" class="headerLink">
     <a href="#enhancing-two-tower-model" class="header-mark"></a>Enhancing Two Tower Model</h2><p>In this section, we look at some of the proposals from different researchers for extending the Two Tower model. One common problem with the Two Tower model that this research works focus on is the lack of information interaction between the two towers. As we saw earlier, the Two Tower model trains the latent embeddings in both towers independently and without using any enriching information from the other tower. This limitation hinders the model&rsquo;s performance.</p>
 <h3 id="dual-augmented-two-tower-model-dat" class="headerLink">
     <a href="#dual-augmented-two-tower-model-dat" class="header-mark"></a>Dual Augmented Two-Tower Model (DAT)</h3><p>To model feature interactions between two towers, Yu et al.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> proposed augmenting the embedding input of each tower with a vector ($a_{u}$ and $a_{v}$ in the figure below) that captures historical positive interaction information from the other tower. $a_{u}$ and $a_{v}$ vectors get updated during the training process and are used to model the information interaction between the two towers by regarding them as the input feature of the two towers. This paper also proposes a new category alignment loss to handle the imbalance among different categories of items by transferring the knowledge learned from the category with a large amount of data to other categories. Later research showed that the gains achieved by the DAT model are still limited.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2023/two-tower-model/dat_model.png   alt="DAT model"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2023/two-tower-model/dat_model.png'   alt="DAT model"  ></p>
 <h3 id="interaction-enhanced-two-tower-model-inttower" class="headerLink">
     <a href="#interaction-enhanced-two-tower-model-inttower" class="header-mark"></a>Interaction Enhanced Two Tower Model (IntTower)</h3><p>The authors of this research design a two-tower model that emphasizes both information interactions and inference efficiency <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>. Their proposed model consists of three new blocks, as mentioned below.</p>
 <h4 id="light-se-block" class="headerLink">
     <a href="#light-se-block" class="header-mark"></a>Light-SE Block</h4><p>This module is used to identify the importance of different features and obtain refined feature representations in each tower. The design of this module is based on the SENET model proposed in the &ldquo;Squeeze-and-Excitation Networks&rdquo; paper <sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>. SENET is used in the computer vision domain to explicitly model the interdependencies between the image channels through feature recalibration, i.e. selectively emphasizing informative features and suppressing less useful ones. The basic structure of the SE building block is shown in the next figure.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2023/two-tower-model/senet_block.png   alt="SENET block"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2023/two-tower-model/senet_block.png'   alt="SENET block"  ></p>
 <p>First, a squeeze operation aggregates the feature maps across spatial dimensions to produce a channel descriptor. An excitation operation then excites informative features by a self-gating mechanism based on channel dependence (similar to calculating attention weights). The final output of the block is obtained through a scaling step by rescaling the transformation output with the learned activations. The authors of the IntTower paper adopt a more lightweight approach with a single FC layer to obtain the feature importance. The following figure shows the SENET and Light-SE blocks side-by-side.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2023/two-tower-model/senet_lightse.png   alt="SENET vs LightSE"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2023/two-tower-model/senet_lightse.png'   alt="SENET vs LightSE"  ></p>
 <h4 id="fe-block" class="headerLink">
     <a href="#fe-block" class="header-mark"></a>FE-Block</h4><p>The purposed FE (Fine-grained and Early Feature Interaction) Block is inspired by the later interaction style of ColBERT. It performs fine-grained early feature interaction between multi-layer user representations and the last layer of item representation.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2023/two-tower-model/fe_block_cir_block.png   alt="FE block and CIR module"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2023/two-tower-model/fe_block_cir_block.png'   alt="FE block and CIR module"  ></p>
 <h4 id="cir-module" class="headerLink">
     <a href="#cir-module" class="header-mark"></a>CIR Module</h4><p>A Contrastive Interaction Regularization (CIR) module was also purposed to shorten the distance between a user and positive items using InfoNCE loss function <sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>. During training, this loss value is combined with the logloss between the model prediction scores and the true labels.</p>
 <h4 id="inttower-model-architecture" class="headerLink">
-    <a href="#inttower-model-architecture" class="header-mark"></a>IntTower Model Architecture</h4><p><img class="tw-inline" loading="lazy" src=/img/posts/2023/two-tower-model/inttower_arch.png   alt="IntTower architecture"  ></p>
+    <a href="#inttower-model-architecture" class="header-mark"></a>IntTower Model Architecture</h4><p><img class="tw-inline" loading="lazy" src='/img/posts/2023/two-tower-model/inttower_arch.png'   alt="IntTower architecture"  ></p>
 <p>As shown in the figure above, the IntTower model architecture combines the three blocks described earlier. Through experimentation, the authors show that the IntTower model outperforms other pre-ranking algorithms (Logistic Regression, Two-Tower, DAT, COLD) and even performs comparably to some ranking algorithms (Wide&amp;Deep, DeepFM, DCN, AutoInt). Compared with the Two Tower model, the increased parameters count and training time of IntTower are negligible and the serving latency is also acceptable. The authors also investigate the user and item representations generated by Two Tower and IntTower models by projecting them into 2-dimensions using t-SNE. As shown in the next figure, the IntTower representations have the user and positive items in the same cluster while negative items are far away from the user.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2023/two-tower-model/embedding_reps.png   alt="Embedding representations"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2023/two-tower-model/embedding_reps.png'   alt="Embedding representations"  ></p>
 <h2 id="other-alternatives-to-two-tower-model" class="headerLink">
     <a href="#other-alternatives-to-two-tower-model" class="header-mark"></a>Other Alternatives to Two Tower Model</h2><p>Apart from Two Tower models, there has been some research work with single-tower structures to fully model feature interactions and further improve prediction accuracy. However, due to the lack of a &ldquo;user-item decoupling architecture&rdquo; paradigm, these models have to employ several optimization tricks to alleviate efficiency degradations. For example, the COLD (<strong>C</strong>omputing power cost-aware <strong>O</strong>nline and <strong>L</strong>ightweight <strong>D</strong>eep pre-ranking system) model <cite><sup id="fnref2:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite> performs offline feature selection experiments to find out a set of important features for the ranking algorithm that are optimal concerning metrics such as QPS (queries per second) and RT (return time). Similarly, FSCD (<strong>F</strong>eature Selection method based on feature <strong>C</strong>omplexity and variational <strong>D</strong>ropout) model <sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> uses learnable dropout parameters to perform feature-wise regularization such that the pre-ranking model is effectively inherited from that of the ranking model.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/2023/two-tower-model/single_towers.png   alt="Single Tower Models"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/2023/two-tower-model/single_towers.png'   alt="Single Tower Models"  ></p>
 <h2 id="conclusion" class="headerLink">
     <a href="#conclusion" class="header-mark"></a>Conclusion</h2><p>This article introduced the historical evolution of pre-ranking approaches in the context of cascade ranking-based systems. We learned how the balance of efficiency and effectiveness makes Two Tower models an excellent choice for several information retrieval use cases. We also explored several recent research proposals that combine ideas from related domains to enhance the Two Tower model. We wrapped up the article with a look at some of the available alternatives to the Two Tower model architecture.</p>
 <h2 id="references" class="headerLink">
@@ -353,35 +380,35 @@
 <div class="related-container">
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/11/embedding-collapse-recsys/"><img   src=/posts/2024/11/embedding-collapse-recsys/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/11/embedding-collapse-recsys/"><img   src='/posts/2024/11/embedding-collapse-recsys/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/11/embedding-collapse-recsys/">Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/08/ads-llm/"><img   src=/posts/2024/08/ads-llm/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/08/ads-llm/"><img   src='/posts/2024/08/ads-llm/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/08/ads-llm/">Incorporating Ads into Large Language Models Outputs</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img   src=/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img   src='/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/06/multi-task-video-recsys-p2/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img   src=/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img   src='/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/06/multi-task-video-recsys-p1/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 1</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/01/multi-task-learning-recsys/"><img   src=/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/01/multi-task-learning-recsys/"><img   src='/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/01/multi-task-learning-recsys/">An Introduction to Multi-Task Learning based Recommender Systems</a>
             </h2>
@@ -405,8 +432,7 @@
         </div>
         <div class="post-info-line print:!tw-hidden">
             <div class="post-info-md"></div>
-            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-title="Two Tower Model Architecture: Current State and Promising Extensions" data-via="_reachsumit" data-hashtags="literature review,recsys,ranking"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-hashtag="literature review"><svg class="icon"
+            <div class="post-info-share"><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-hashtag="literature review"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-title="Two Tower Model Architecture: Current State and Promising Extensions" data-web><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2023/03/two-tower-model/" data-title="Two Tower Model Architecture: Current State and Promising Extensions"><svg class="icon"
@@ -421,7 +447,7 @@
 
     <div class="post-info-more">
         <section class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href=""></a>,&nbsp;<a href="/tags/recsys/">Recsys</a>,&nbsp;<a href="/tags/ranking/">Ranking</a></section>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/literature-review/">Literature Review</a>,&nbsp;<a href="/tags/recsys/">Recsys</a>,&nbsp;<a href="/tags/ranking/">Ranking</a></section>
         <section class="print:!tw-hidden">
             <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">Back</button></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -434,22 +460,26 @@
 </div>
 <div id="comments" class="print:!tw-hidden tw-pt-32 tw-pb-8"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
-            </noscript></div></article></div>
-        </main><footer class="footer">
+            </noscript></div></article></main><footer class="footer">
         <div class="footer-container"><div class="footer-line"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2024<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2025<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
-        </div></footer></div>
-
-    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button tw-transition-opacity tw-opacity-0" title="Back to Top">
-            <svg class="icon"
+        </div></footer><div class="print:!tw-hidden tw-flex tw-flex-col tw-fixed tw-right-4 tw-bottom-4 tw-gap-2"><a href="#back-to-top" id="back-to-top-button" class="tw-transition-opacity tw-opacity-0 tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="Back to Top">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
-        </a><a href="#comments" id="view-comments" class="fixed-button" title="View Comments">
-            <svg class="icon"
+  </a>
+
+  <button id="toc-drawer-button" class="tw-block tw-bg-bgColor-secondary tw-rounded-full md:tw-hidden" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;">
+      <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
+  </button><a href="#comments" id="view-comments" class="tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="View Comments">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
-        </a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+  </a></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"></noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript>
 <script>window.config={"algoliasearch.min.js":"https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js","autocomplete.min.js":"https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js","comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2023-03-04T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Two Tower Model Architecture: Current State and Promising Extensions"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script
     src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"
@@ -457,11 +487,17 @@
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"
+    
+      defer
     
   ></script><script
     src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"
@@ -507,25 +543,24 @@
     
       defer
     
-  ></script><script type="text/javascript">
+  ></script><script>
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script
     src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3"
     async
   ></script>
-    
-    <script type="speculationrules">
-        {
-          "prerender": [
-            {
-              "where": { "href_matches": "/*" },
-              "eagerness": "moderate"
-            }
-          ]
-        }
-    </script>
-      
+
+<script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+</script>
 </body>
 
 </html>

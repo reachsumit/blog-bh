@@ -46,7 +46,7 @@
                             "width":  1000 ,
                             "height":  300 
                         }],"genre": "posts","keywords":["literature review","advertising","LLM"],"wordcount":  3514 ,
-        "url": "https://blog.reachsumit.com/posts/2024/08/ads-llm/","datePublished": "2024-08-11T00:00:00+00:00","dateModified": "2024-08-11T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https://blog.reachsumit.com/posts/2024/08/ads-llm/","datePublished": "2024-08-11T00:00:00+00:00","dateModified": "2024-08-11T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
@@ -56,43 +56,42 @@
     }</script></head>
 
 
-<body data-instant-intensity="viewport" ><script type="text/javascript">
-        function setTheme(theme) {
-          document.body.setAttribute('theme', theme); 
-          document.documentElement.className = theme;
-          document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
-          if (theme === 'light') {
-            document.documentElement.classList.remove('tw-dark')
-          } else {
-            document.documentElement.classList.add('tw-dark')
-          }
-          window.theme = theme;   
-          window.isDark = window.theme !== 'light' 
-        }
-        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
-        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
-        if (window.localStorage && localStorage.getItem('theme')) {
-            let theme = localStorage.getItem('theme');
-            if (theme === 'light' || theme === 'dark') {
-            setTheme(theme);
+<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script>
+    function setTheme(theme) {
+      document.body.setAttribute('theme', theme); 
+      document.documentElement.className = theme;
+      document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
+      if (theme === 'light') {
+        document.documentElement.classList.remove('tw-dark')
+      } else {
+        document.documentElement.classList.add('tw-dark')
+      }
+      window.theme = theme;   
+      window.isDark = window.theme !== 'light' 
+    }
+    function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+    function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+    if (window.localStorage && localStorage.getItem('theme')) {
+        let theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') {
+        setTheme(theme);
+        } else {
+            if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                setTheme('dark');
             } else {
-                if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    setTheme('dark');
-                } else {
-                    setTheme('light');
-                }
+                setTheme('light');
             }
-         } else { 
-            if ('light' === 'light' || 'light' === 'dark') 
-                setTheme('light'), saveTheme('light'); 
-            else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
         }
-        let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
-        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
-        window.switchThemeEventSet = new Set()
-    </script>
-    <div id="back-to-top"></div>
-    <div id="mask"></div><div class="wrapper"><header class="desktop print:!tw-hidden" id="header-desktop">
+      } else { 
+        if ('light' === 'light' || 'light' === 'dark') 
+            setTheme('light'), saveTheme('light'); 
+        else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
+    }
+    let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
+    getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    window.switchThemeEventSet = new Set()
+</script><div id="back-to-top"></div>
+    <div id="mask"></div><header class="desktop print:!tw-hidden" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="/" title="Sumit&#39;s Diary"><span id="desktop-header-typeit" class="typeit"></span></a>
@@ -152,7 +151,7 @@
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
                     </button>
-                    <button class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                    <button class="search-button search-clear tw-h-fit" id="search-clear-mobile" title="Clear">
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></svg>
                     </button>
@@ -181,8 +180,7 @@
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div><main class="main">
-            <div class="container"><div class="toc print:!tw-hidden" id="toc-auto">
+</div><main class="tw-mx-4 tw-flex-1"><div class="toc print:!tw-hidden" id="toc-auto">
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
@@ -209,19 +207,48 @@
     <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2024-08-11" data-pagefind-body>Incorporating Ads into Large Language Models Outputs</h1><div class="post-meta">
+    </div><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
+        <div class="toc tw-mx-4 tw-max-w-full">
+            <h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl">Contents</h2>
+            <div class="toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#auction-driven-advertising">Auction-driven Advertising</a>
+      <ul>
+        <li><a href="#different-forms-of-advertising">Different Forms of Advertising</a></li>
+        <li><a href="#auction-mechanism">Auction Mechanism</a>
+          <ul>
+            <li><a href="#sponsored-search">Sponsored Search</a></li>
+            <li><a href="#display-advertising">Display Advertising</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#llm-based-advertising">LLM-based Advertising</a>
+      <ul>
+        <li><a href="#framework">Framework</a></li>
+        <li><a href="#unique-challenges">Unique Challenges</a></li>
+        <li><a href="#token-auction">Token Auction</a></li>
+        <li><a href="#auction-for-allocation-in-llm-based-summarization">Auction for Allocation in LLM-based Summarization</a></li>
+        <li><a href="#segment-auction">Segment Auction</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+        </div>
+    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2024-08-11" data-pagefind-body>Incorporating Ads into Large Language Models Outputs</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href=""><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg></a></span></div>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>Information Retrieval</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2024-08-11">2024-08-11</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2024-08-11">2024-08-11</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;3514 words&nbsp;
                     <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;16 minutes&nbsp;</div>
-        </div><div class="featured-image"><img  loading="eager" src=/posts/2024/08/ads-llm/featured-image.webp    height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
+        </div><div class="featured-image"><img  loading="eager" src='/posts/2024/08/ads-llm/featured-image.webp'    height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span class="details-icon"><svg class="icon"
@@ -259,13 +286,13 @@
 <ul>
 <li>
 <p><strong>Sponsored Search</strong> is a form of advertising where ads are placed alongside search engine results when a user searches for some keywords. These ads are how Google converts billions of searches into revenue. Google provides the opportunity to (at most 4) advertisers to attract customers to their products or services by having their ads appear in search results.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/sponsored_search.png" title="Example of a sponsored search" data-thumbnail="/img/posts/2024/ads-llm/sponsored_search.png" data-sub-html="<h2>Example of a sponsored search results on Google</h2><p>Example of a sponsored search</p>"><img  loading="lazy" src=/img/posts/2024/ads-llm/sponsored_search.png   alt="Example of a sponsored search"  ></a><figcaption class="image-caption">Example of a sponsored search results on Google</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/sponsored_search.png" title="Example of a sponsored search" data-thumbnail="/img/posts/2024/ads-llm/sponsored_search.png" data-sub-html="<h2>Example of a sponsored search results on Google</h2><p>Example of a sponsored search</p>"><img  loading="lazy" src='/img/posts/2024/ads-llm/sponsored_search.png'   alt="Example of a sponsored search"  ></a><figcaption class="image-caption">Example of a sponsored search results on Google</figcaption>
 </figure></p>
 <p>As seen above, sponsored search results are usually displayed in a similar format as the algorithmic results— they are all a list of items each containing a title, text description, and hyperlink to their corresponding webpage. Each position in the list is also called a slot. The ads that appear on a higher-ranked slot, i.e. higher on the results page, usually get more clicks, and hence are more desirable to advertisers. The platform decides how many slots to allocate for ads in the search engine results page (SERP). Search and native ads are better at capturing user attention and are viewed ~50% more than display ads<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 </li>
 <li>
 <p><strong>Display Advertising</strong>, on the other hand, refers to placing ads on websites in various formats such as banners, pop-ups, images, or videos. These ads are not necessarily related to the webpage content but are targeted based on factors such as user demographics, inferred interests, context, etc. The first ever digital banner ad appeared on the Wired magazine&rsquo;s website (hotwired.com) on October 27, 1994 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. The ad was a part of AT&amp;T&rsquo;s &ldquo;futuristic technological wonders&rdquo; campaign.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/first_banner_ad.png" title="&ldquo;World&rsquo;s first banner ad&rdquo;" data-thumbnail="/img/posts/2024/ads-llm/first_banner_ad.png" data-sub-html="<h2>AT&amp;T&#39;s banner ad at hotwired (1994). The ad ran over 4 months, and 44% of those who saw the ad clicked on it.</h2><p>&ldquo;World&rsquo;s first banner ad&rdquo;</p>"><img  loading="lazy" src=/img/posts/2024/ads-llm/first_banner_ad.png   alt="&ldquo;World&rsquo;s first banner ad&rdquo;"  ></a><figcaption class="image-caption">AT&T's banner ad at hotwired (1994). The ad ran over 4 months, and 44% of those who saw the ad clicked on it.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/first_banner_ad.png" title="&ldquo;World&rsquo;s first banner ad&rdquo;" data-thumbnail="/img/posts/2024/ads-llm/first_banner_ad.png" data-sub-html="<h2>AT&amp;T&#39;s banner ad at hotwired (1994). The ad ran over 4 months, and 44% of those who saw the ad clicked on it.</h2><p>&ldquo;World&rsquo;s first banner ad&rdquo;</p>"><img  loading="lazy" src='/img/posts/2024/ads-llm/first_banner_ad.png'   alt="&ldquo;World&rsquo;s first banner ad&rdquo;"  ></a><figcaption class="image-caption">AT&T's banner ad at hotwired (1994). The ad ran over 4 months, and 44% of those who saw the ad clicked on it.</figcaption>
 </figure></p>
 </li>
 </ul>
@@ -295,7 +322,7 @@
 <p>At present, these LLM services are extremely costly to operate and predominantly follow a subscription-based model. Several online products like search engines, and social media websites, have incorporated an ad-supported model to provide their services for free. It is a natural question to ask whether ads could also alleviate some of the serving costs of LLM-based services. With advertisements, LLM providers can generate additional revenue, enabling them to subsidize free access to information for individuals who are unable to get a paid subscription. Researchers, some from LLM providers like Google, have contemplated incorporating ads into LLM outputs without compromising content integrity.</p>
 <h3 id="framework" class="headerLink">
     <a href="#framework" class="header-mark"></a>Framework</h3><p>Feizi et al. proposed a general framework for LLM-based advertising (LLMA)<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> as shown below.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/llma.png" title="LLMA Framework" data-thumbnail="/img/posts/2024/ads-llm/llma.png" data-sub-html="<h2>LLMA Framework</h2><p>LLMA Framework</p>"><img  loading="lazy" src=/img/posts/2024/ads-llm/llma.png   alt="LLMA Framework"  ></a><figcaption class="image-caption">LLMA Framework</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/llma.png" title="LLMA Framework" data-thumbnail="/img/posts/2024/ads-llm/llma.png" data-sub-html="<h2>LLMA Framework</h2><p>LLMA Framework</p>"><img  loading="lazy" src='/img/posts/2024/ads-llm/llma.png'   alt="LLMA Framework"  ></a><figcaption class="image-caption">LLMA Framework</figcaption>
 </figure></p>
 <p>Suppose that the user submits a query $q$ and the original LLM output is $X$. Context information such as the user segment, device, date, etc. is denoted $c$. $V = {{adv}_1,{adv}_n,\cdots{adv}_n}$ is the set of $n$ advertisers, and $D={{ad}_1,\cdots{ad}_n}$ is the set of ads, assuming each advertiser only has a single ad.</p>
 <p>The framework consists of four modules:</p>
@@ -305,9 +332,9 @@
 <li><strong>Prediction</strong> module predicts the quality of output $X_i$ by computing metrics like user satisfaction rate ${sr}_i$  and click-through rate ${ctr}_i$. This step is similar to the current online advertising and is a critical calculation as it determines the auction winner and directly affects the revenue.</li>
 <li><strong>Auction</strong> module determines the winner of the auction and the amount to be charged to the corresponding advertiser. This module takes $(bid_i, sr_i, ctr_i)$  ${i \in [n]}$ as input and output an allocation $a\in{0,1}^n$ and a payment $p \in \mathbb{R}_{\geq 0}$. It is essential for this module to also balance user satisfaction and utility with short-term revenue.</li>
 </ul>
-<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/unstructured_llm_ad_example.png" title="Unstructured Advertisement in LLM Output" data-thumbnail="/img/posts/2024/ads-llm/unstructured_llm_ad_example.png" data-sub-html="<h2>An example of an unstructured ad incoporated (right) into the original LLM output (left)</h2><p>Unstructured Advertisement in LLM Output</p>"><img  loading="lazy" src=/img/posts/2024/ads-llm/unstructured_llm_ad_example.png   alt="Unstructured Advertisement in LLM Output"  ></a><figcaption class="image-caption">An example of an unstructured ad incoporated (right) into the original LLM output (left)</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/unstructured_llm_ad_example.png" title="Unstructured Advertisement in LLM Output" data-thumbnail="/img/posts/2024/ads-llm/unstructured_llm_ad_example.png" data-sub-html="<h2>An example of an unstructured ad incoporated (right) into the original LLM output (left)</h2><p>Unstructured Advertisement in LLM Output</p>"><img  loading="lazy" src='/img/posts/2024/ads-llm/unstructured_llm_ad_example.png'   alt="Unstructured Advertisement in LLM Output"  ></a><figcaption class="image-caption">An example of an unstructured ad incoporated (right) into the original LLM output (left)</figcaption>
 </figure></p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/structured_llm_ad_example.png" title="Unstructured Advertisement in LLM Output" data-thumbnail="/img/posts/2024/ads-llm/structured_llm_ad_example.png" data-sub-html="<h2>An example of a structured ad incoporated (right) into the original LLM output (left)</h2><p>Unstructured Advertisement in LLM Output</p>"><img  loading="lazy" src=/img/posts/2024/ads-llm/structured_llm_ad_example.png   alt="Unstructured Advertisement in LLM Output"  ></a><figcaption class="image-caption">An example of a structured ad incoporated (right) into the original LLM output (left)</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/structured_llm_ad_example.png" title="Unstructured Advertisement in LLM Output" data-thumbnail="/img/posts/2024/ads-llm/structured_llm_ad_example.png" data-sub-html="<h2>An example of a structured ad incoporated (right) into the original LLM output (left)</h2><p>Unstructured Advertisement in LLM Output</p>"><img  loading="lazy" src='/img/posts/2024/ads-llm/structured_llm_ad_example.png'   alt="Unstructured Advertisement in LLM Output"  ></a><figcaption class="image-caption">An example of a structured ad incoporated (right) into the original LLM output (left)</figcaption>
 </figure></p>
 <h3 id="unique-challenges" class="headerLink">
     <a href="#unique-challenges" class="header-mark"></a>Unique Challenges</h3><p>There are several other unique challenges in LLM-based advertising, compared to standard search advertising, such as:</p>
@@ -325,21 +352,21 @@
 <p>In practice, however, requiring advertisers to provide their desired distribution and corresponding bid for every token would introduce a large communication overhead. Advertisers&rsquo; spend grows with the the length of generated sequence and they could have paid a significant amount of money before the token generation reached a point (for example, a negation) where they do not want to bid any further. To address all these limitations, Soumalias et al.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> propose an auction mechanism that does not depend on the agents&rsquo; value functions, but only on their value for the candidate sequences. This approach does not require access to model weights and only relies on LLM API calls. Their modeling objective mirrors the Reinforcement Learning from the Human Feedback (RLHF) approach but with human feedback reward function replaced with the sum of agents&rsquo; rewards. As the computational resources increase, their method provably converges to the output of the optimally fine-tuned LLM for the platform&rsquo;s objective. Their payment rule is also strategyproof, meaning that the agents have no incentive for over- or under-bidding.</p>
 <h3 id="auction-for-allocation-in-llm-based-summarization" class="headerLink">
     <a href="#auction-for-allocation-in-llm-based-summarization" class="header-mark"></a>Auction for Allocation in LLM-based Summarization</h3><p>Search engines like Google Search and Microsoft Bing have started to use their genAI products to provide an augmented search summarization to enhance user search experience. In this scenario, the user submits a query of commercial nature to the search engine, a set of relevant ads is then given as input to an LLM, and it returns a summarized paragraph that is much more helpful to the user, for example, for comparing prices, product features, finding a specific product based on their need.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/google_genai_search_summary.png" title="Google&rsquo;s Search Generative Experience" data-thumbnail="/img/posts/2024/ads-llm/google_genai_search_summary.png" data-sub-html="<h2>An example of Google&#39;s Search Generative Experience (SGE)</h2><p>Google&rsquo;s Search Generative Experience</p>"><img  loading="lazy" src=/img/posts/2024/ads-llm/google_genai_search_summary.png   alt="Google&rsquo;s Search Generative Experience"  ></a><figcaption class="image-caption">An example of Google's Search Generative Experience (SGE)</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/google_genai_search_summary.png" title="Google&rsquo;s Search Generative Experience" data-thumbnail="/img/posts/2024/ads-llm/google_genai_search_summary.png" data-sub-html="<h2>An example of Google&#39;s Search Generative Experience (SGE)</h2><p>Google&rsquo;s Search Generative Experience</p>"><img  loading="lazy" src='/img/posts/2024/ads-llm/google_genai_search_summary.png'   alt="Google&rsquo;s Search Generative Experience"  ></a><figcaption class="image-caption">An example of Google's Search Generative Experience (SGE)</figcaption>
 </figure></p>
 <p>In Dubey et al.<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>, Google researchers proposed an ad auction in a similar LLM-based summarization setting. The display in this scenario is a summary paragraph of multiple ads, and bidders bid for placement of their ads within this LLM-generated summary.  In a standard position auction, the estimate of the click-through rate, welfare, and revenue is known for each combination of position allocation at decision time. Hence, it is feasible to make effective decisions on allocation and pricing. However, in an LLM-based advertising scenario, the final summarized ad text is determined at runtime, which the auction can not control. The authors propose a framework applicable to this summarization setting and a mechanism that provides good auction incentives with high social welfare, bringing value to advertisers as well as users.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/auctions_with_llm_summary.png" title="Framework for auctions with LLM summaries" data-thumbnail="/img/posts/2024/ads-llm/auctions_with_llm_summary.png" data-sub-html="<h2>Framework for auctions with LLM summaries</h2><p>Framework for auctions with LLM summaries</p>"><img  loading="lazy" src=/img/posts/2024/ads-llm/auctions_with_llm_summary.png   alt="Framework for auctions with LLM summaries"  ></a><figcaption class="image-caption">Framework for auctions with LLM summaries</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/auctions_with_llm_summary.png" title="Framework for auctions with LLM summaries" data-thumbnail="/img/posts/2024/ads-llm/auctions_with_llm_summary.png" data-sub-html="<h2>Framework for auctions with LLM summaries</h2><p>Framework for auctions with LLM summaries</p>"><img  loading="lazy" src='/img/posts/2024/ads-llm/auctions_with_llm_summary.png'   alt="Framework for auctions with LLM summaries"  ></a><figcaption class="image-caption">Framework for auctions with LLM summaries</figcaption>
 </figure></p>
 <p>The auction module takes ads and click-through rate predictions from a predicted click-through rate (pCTR) module. Auction module outputs prices, and a &ldquo;prominence allocation&rdquo; output to be fed to the LLM module. This prominence value is an abstract concept and represents the relative importance an ad should get in the LLM-generated summary. For example, it could be a tuple indicating the space and attractiveness of an ad creative. LLM output follows the auction module&rsquo;s guidance via the prominences. The pCTR module uses prominences as features and generates an unbiased estimate of the click-through rate function.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/llm_ad_summary_output.png" title="LLM Ad Summary Output Example" data-thumbnail="/img/posts/2024/ads-llm/llm_ad_summary_output.png" data-sub-html="<h2>Three synthetic ads generated by Gemini Pro with query &#39;Leaning golf&#39;, summarized to total word length 60, in A with prominence outputs [0.41, 0.33, 0.25] i.e. with word lengths [25, 20, 15] and in B with prominence outputs [0.58, 0.4, 0.0] i.e. with word lengths [35, 25, 0].</h2><p>LLM Ad Summary Output Example</p>"><img  loading="lazy" src=/img/posts/2024/ads-llm/llm_ad_summary_output.png   alt="LLM Ad Summary Output Example"  ></a><figcaption class="image-caption">Three synthetic ads generated by Gemini Pro with query 'Leaning golf', summarized to total word length 60, in A with prominence outputs [0.41, 0.33, 0.25] i.e. with word lengths [25, 20, 15] and in B with prominence outputs [0.58, 0.4, 0.0] i.e. with word lengths [35, 25, 0].</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/llm_ad_summary_output.png" title="LLM Ad Summary Output Example" data-thumbnail="/img/posts/2024/ads-llm/llm_ad_summary_output.png" data-sub-html="<h2>Three synthetic ads generated by Gemini Pro with query &#39;Leaning golf&#39;, summarized to total word length 60, in A with prominence outputs [0.41, 0.33, 0.25] i.e. with word lengths [25, 20, 15] and in B with prominence outputs [0.58, 0.4, 0.0] i.e. with word lengths [35, 25, 0].</h2><p>LLM Ad Summary Output Example</p>"><img  loading="lazy" src='/img/posts/2024/ads-llm/llm_ad_summary_output.png'   alt="LLM Ad Summary Output Example"  ></a><figcaption class="image-caption">Three synthetic ads generated by Gemini Pro with query 'Leaning golf', summarized to total word length 60, in A with prominence outputs [0.41, 0.33, 0.25] i.e. with word lengths [25, 20, 15] and in B with prominence outputs [0.58, 0.4, 0.0] i.e. with word lengths [35, 25, 0].</figcaption>
 </figure></p>
 <p>The authors consider the word limit allocated to each ad as its prominence score and share a case study named dynamic word-length summary (DWLS). Under this setup, the auction&rsquo;s goal is to decide the order of the ads, and the fraction of words allocated to each ad. Each ad is summarized separately using a Chain-of-Thought prompting with an iterative reasoning approach with the Gemini 1.0 Pro model.</p>
 <h3 id="segment-auction" class="headerLink">
     <a href="#segment-auction" class="header-mark"></a>Segment Auction</h3><p>Hajiaghayi et al.<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> proposed a segment auction where an ad is probabilistically retrieved for each discourse segment according to its bid and relevance. A segment in this scenario is an abstraction of a series of tokens and could be a paragraph, a section, or the entire output.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/segment_auction_with_rag.png" title="Segment Auction with RAG" data-thumbnail="/img/posts/2024/ads-llm/segment_auction_with_rag.png" data-sub-html="<h2>Segment Auction with RAG</h2><p>Segment Auction with RAG</p>"><img  loading="lazy" src=/img/posts/2024/ads-llm/segment_auction_with_rag.png   alt="Segment Auction with RAG"  ></a><figcaption class="image-caption">Segment Auction with RAG</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/segment_auction_with_rag.png" title="Segment Auction with RAG" data-thumbnail="/img/posts/2024/ads-llm/segment_auction_with_rag.png" data-sub-html="<h2>Segment Auction with RAG</h2><p>Segment Auction with RAG</p>"><img  loading="lazy" src='/img/posts/2024/ads-llm/segment_auction_with_rag.png'   alt="Segment Auction with RAG"  ></a><figcaption class="image-caption">Segment Auction with RAG</figcaption>
 </figure></p>
 <p>Given a user query, the system uses retrieval augmented generation (RAG) to retrieve relevant ads from a database. An auction module takes corresponding bids and click probabilities (aligned with retrieval probabilities, or the calibrated relevance scores) as input, and outputs the winning ad. LLM output is based on this winning ad and contains a mention of the ad along with a hyperlink. The auction can be conducted separately for each segment or for multiple segments at once.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/rag_single_segment_auction_example_prompt.png" title="Prompt used for Ad Segment generation" data-thumbnail="/img/posts/2024/ads-llm/rag_single_segment_auction_example_prompt.png" data-sub-html="<h2>The winning ad is provided to LLM context for each segment and the model is asked to generate an additional segment incorporating the ad.</h2><p>Prompt used for Ad Segment generation</p>"><img  loading="lazy" src=/img/posts/2024/ads-llm/rag_single_segment_auction_example_prompt.png   alt="Prompt used for Ad Segment generation"  ></a><figcaption class="image-caption">The winning ad is provided to LLM context for each segment and the model is asked to generate an additional segment incorporating the ad.</figcaption>
+<p><figure><a class="lightgallery" href="/img/posts/2024/ads-llm/rag_single_segment_auction_example_prompt.png" title="Prompt used for Ad Segment generation" data-thumbnail="/img/posts/2024/ads-llm/rag_single_segment_auction_example_prompt.png" data-sub-html="<h2>The winning ad is provided to LLM context for each segment and the model is asked to generate an additional segment incorporating the ad.</h2><p>Prompt used for Ad Segment generation</p>"><img  loading="lazy" src='/img/posts/2024/ads-llm/rag_single_segment_auction_example_prompt.png'   alt="Prompt used for Ad Segment generation"  ></a><figcaption class="image-caption">The winning ad is provided to LLM context for each segment and the model is asked to generate an additional segment incorporating the ad.</figcaption>
 </figure></p>
 <p>The authors propose and maximize a new notion of social welfare to balance allocation efficiency and fairness. Then they extend their results to multi-ad allocation per segment. The authors also conduct an experiment using publicly available LLM APIs to validate the effectiveness and feasibility of their approach. The experiments conclude with an interesting tradeoff between output quality and revenue, where single-ad segment auctions generate higher revenue, but multi-ad auctions lead to higher quality output.</p>
 <h2 id="conclusion" class="headerLink">
@@ -389,35 +416,35 @@
 <div class="related-container">
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/11/embedding-collapse-recsys/"><img   src=/posts/2024/11/embedding-collapse-recsys/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/11/embedding-collapse-recsys/"><img   src='/posts/2024/11/embedding-collapse-recsys/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/11/embedding-collapse-recsys/">Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img   src=/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/06/multi-task-video-recsys-p2/"><img   src='/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/06/multi-task-video-recsys-p2/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img   src=/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/06/multi-task-video-recsys-p1/"><img   src='/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/06/multi-task-video-recsys-p1/">The Evolution of Multi-task Learning Based Video Recommender Systems - Part 1</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/01/multi-task-learning-recsys/"><img   src=/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/01/multi-task-learning-recsys/"><img   src='/posts/2024/01/multi-task-learning-recsys/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/01/multi-task-learning-recsys/">An Introduction to Multi-Task Learning based Recommender Systems</a>
             </h2>
         </div>
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2024/01/user-behavior-modeling-recsys/"><img   src=/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2024/01/user-behavior-modeling-recsys/"><img   src='/posts/2024/01/user-behavior-modeling-recsys/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2024/01/user-behavior-modeling-recsys/">A Guide to User Behavior Modeling</a>
             </h2>
@@ -441,8 +468,7 @@
         </div>
         <div class="post-info-line print:!tw-hidden">
             <div class="post-info-md"></div>
-            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2024/08/ads-llm/" data-title="Incorporating Ads into Large Language Models Outputs" data-via="_reachsumit" data-hashtags="literature review,advertising,LLM"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2024/08/ads-llm/" data-hashtag="literature review"><svg class="icon"
+            <div class="post-info-share"><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2024/08/ads-llm/" data-hashtag="literature review"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2024/08/ads-llm/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2024/08/ads-llm/" data-title="Incorporating Ads into Large Language Models Outputs" data-web><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2024/08/ads-llm/" data-title="Incorporating Ads into Large Language Models Outputs"><svg class="icon"
@@ -457,7 +483,7 @@
 
     <div class="post-info-more">
         <section class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href=""></a>,&nbsp;<a href="/tags/advertising/">Advertising</a>,&nbsp;<a href="/tags/llm/">LLM</a></section>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/literature-review/">Literature Review</a>,&nbsp;<a href="/tags/advertising/">Advertising</a>,&nbsp;<a href="/tags/llm/">LLM</a></section>
         <section class="print:!tw-hidden">
             <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">Back</button></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -470,22 +496,29 @@
 </div>
 <div id="comments" class="print:!tw-hidden tw-pt-32 tw-pb-8"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
-            </noscript></div></article></div>
-        </main><footer class="footer">
+            </noscript></div></article></main><footer class="footer">
         <div class="footer-container"><div class="footer-line"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2024<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2025<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
-        </div></footer></div>
-
-    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button tw-transition-opacity tw-opacity-0" title="Back to Top">
-            <svg class="icon"
+        </div></footer><div class="print:!tw-hidden tw-flex tw-flex-col tw-fixed tw-right-4 tw-bottom-4 tw-gap-2"><a href="#back-to-top" id="back-to-top-button" class="tw-transition-opacity tw-opacity-0 tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="Back to Top">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
-        </a><a href="#comments" id="view-comments" class="fixed-button" title="View Comments">
-            <svg class="icon"
+  </a>
+
+  <button id="toc-drawer-button" class="tw-block tw-bg-bgColor-secondary tw-rounded-full md:tw-hidden" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;">
+      <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
+  </button><a href="#comments" id="view-comments" class="tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="View Comments">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
-        </a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+  </a></div>
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: (window.theme === 'dark' ? 'dark' : 'default') });
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"></noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript>
 <script>window.config={"algoliasearch.min.js":"https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js","autocomplete.min.js":"https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js","comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2024-08-11T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Incorporating Ads into Large Language Models Outputs"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script
     src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"
@@ -493,11 +526,17 @@
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"
+    
+      defer
     
   ></script><script
     src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"
@@ -543,25 +582,24 @@
     
       defer
     
-  ></script><script type="text/javascript">
+  ></script><script>
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script
     src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3"
     async
   ></script>
-    
-    <script type="speculationrules">
-        {
-          "prerender": [
-            {
-              "where": { "href_matches": "/*" },
-              "eagerness": "moderate"
-            }
-          ]
-        }
-    </script>
-      
+
+<script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+</script>
 </body>
 
 </html>

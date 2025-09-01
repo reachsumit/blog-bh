@@ -44,7 +44,7 @@
                             "width":  1000 ,
                             "height":  300 
                         }],"genre": "posts","keywords":["data structure"],"wordcount":  3365 ,
-        "url": "https://blog.reachsumit.com/posts/2020/07/skip-list/","datePublished": "2020-07-14T00:00:00+00:00","dateModified": "2020-07-14T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https://blog.reachsumit.com/posts/2020/07/skip-list/","datePublished": "2020-07-14T00:00:00+00:00","dateModified": "2020-07-14T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
@@ -54,43 +54,42 @@
     }</script></head>
 
 
-<body data-instant-intensity="viewport" ><script type="text/javascript">
-        function setTheme(theme) {
-          document.body.setAttribute('theme', theme); 
-          document.documentElement.className = theme;
-          document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
-          if (theme === 'light') {
-            document.documentElement.classList.remove('tw-dark')
-          } else {
-            document.documentElement.classList.add('tw-dark')
-          }
-          window.theme = theme;   
-          window.isDark = window.theme !== 'light' 
-        }
-        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
-        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
-        if (window.localStorage && localStorage.getItem('theme')) {
-            let theme = localStorage.getItem('theme');
-            if (theme === 'light' || theme === 'dark') {
-            setTheme(theme);
+<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script>
+    function setTheme(theme) {
+      document.body.setAttribute('theme', theme); 
+      document.documentElement.className = theme;
+      document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
+      if (theme === 'light') {
+        document.documentElement.classList.remove('tw-dark')
+      } else {
+        document.documentElement.classList.add('tw-dark')
+      }
+      window.theme = theme;   
+      window.isDark = window.theme !== 'light' 
+    }
+    function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+    function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+    if (window.localStorage && localStorage.getItem('theme')) {
+        let theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') {
+        setTheme(theme);
+        } else {
+            if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                setTheme('dark');
             } else {
-                if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    setTheme('dark');
-                } else {
-                    setTheme('light');
-                }
+                setTheme('light');
             }
-         } else { 
-            if ('light' === 'light' || 'light' === 'dark') 
-                setTheme('light'), saveTheme('light'); 
-            else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
         }
-        let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
-        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
-        window.switchThemeEventSet = new Set()
-    </script>
-    <div id="back-to-top"></div>
-    <div id="mask"></div><div class="wrapper"><header class="desktop print:!tw-hidden" id="header-desktop">
+      } else { 
+        if ('light' === 'light' || 'light' === 'dark') 
+            setTheme('light'), saveTheme('light'); 
+        else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
+    }
+    let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
+    getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    window.switchThemeEventSet = new Set()
+</script><div id="back-to-top"></div>
+    <div id="mask"></div><header class="desktop print:!tw-hidden" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="/" title="Sumit&#39;s Diary"><span id="desktop-header-typeit" class="typeit"></span></a>
@@ -150,7 +149,7 @@
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
                     </button>
-                    <button class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                    <button class="search-button search-clear tw-h-fit" id="search-clear-mobile" title="Clear">
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></svg>
                     </button>
@@ -179,8 +178,7 @@
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div><main class="main">
-            <div class="container"><div class="toc print:!tw-hidden" id="toc-auto">
+</div><main class="tw-mx-4 tw-flex-1"><div class="toc print:!tw-hidden" id="toc-auto">
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
@@ -207,19 +205,48 @@
     <li><a href="#reference-and-further-reading">Reference and Further Reading</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2020-07-14" data-pagefind-body>Skip List Data Structure - Explained!</h1><div class="post-meta">
+    </div><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
+        <div class="toc tw-mx-4 tw-max-w-full">
+            <h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl">Contents</h2>
+            <div class="toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-am-i-writing-about-skip-lists"><strong>Why am I writing about Skip Lists?</strong></a></li>
+    <li><a href="#why-do-we-need-skip-lists"><strong>Why do we need Skip Lists?</strong></a>
+      <ul>
+        <li><a href="#the-problem-search"><strong>The Problem: Search</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#option-1-linearly-searching-an-array">Option 1: Linearly Searching an Array</a></li>
+    <li><a href="#option-2-binary-search-on-an-array">Option 2: Binary Search on an Array</a></li>
+    <li><a href="#option-3-linear-search-with-linked-lists">Option 3: Linear search with Linked Lists</a></li>
+    <li><a href="#option-4-pseudo-binary-search-with-linked-lists-skip-list">Option 4: Pseudo-binary search with Linked Lists [Skip List]</a>
+      <ul>
+        <li><a href="#skip-lists---intuition">Skip Lists - Intuition</a></li>
+        <li><a href="#skip-lists---basics">Skip Lists - Basics</a></li>
+        <li><a href="#skip-list---definition">Skip List - Definition</a></li>
+        <li><a href="#searching-in-skip-list">Searching in Skip List</a></li>
+        <li><a href="#inserting-in-skip-list">Inserting in Skip List</a></li>
+        <li><a href="#deletion-in-skip-list">Deletion in Skip List</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#reference-and-further-reading">Reference and Further Reading</a></li>
+  </ul>
+</nav></div>
+        </div>
+    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2020-07-14" data-pagefind-body>Skip List Data Structure - Explained!</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href=""><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg></a></span></div>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/software-engineering/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>Software Engineering</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2020-07-14">2020-07-14</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2020-07-14">2020-07-14</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;3365 words&nbsp;
                     <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;15 minutes&nbsp;</div>
-        </div><div class="featured-image"><img  loading="eager" src=/posts/2020/07/skip-list/featured-image.webp    height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
+        </div><div class="featured-image"><img  loading="eager" src='/posts/2020/07/skip-list/featured-image.webp'    height="600" width="1200"></div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span class="details-icon"><svg class="icon"
@@ -257,13 +284,13 @@
 <h3 id="the-problem-search" class="headerLink">
     <a href="#the-problem-search" class="header-mark"></a><strong>The Problem: Search</strong></h3><p>Let&rsquo;s say you have an array of sorted values as shown below, and your task is to find whether a given value exists in the array or not.</p>
 <p>Given an array:</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/1simplearray.png   alt="simple array"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/1simplearray.png'   alt="simple array"  ></p>
 <p>find whether value <code>57</code> exists in this array or not</p>
 <h2 id="option-1-linearly-searching-an-array" class="headerLink">
     <a href="#option-1-linearly-searching-an-array" class="header-mark"></a>Option 1: Linearly Searching an Array</h2><p>As the name suggests, in linear search you can simply traverse the list from one end to the other and compare each item you see with the target value you&rsquo;re looking for. You can stop the linear traversal if you find a matching value.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/2linsearchfound.png   alt="Linear Search - Success"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/2linsearchfound.png'   alt="Linear Search - Success"  ></p>
 <p>You can stop the search if at any point of time you see an item whose value is bigger than the one you&rsquo;re looking for.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/3linsearchnotfound.png   alt="Linear Search - Fail"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/3linsearchnotfound.png'   alt="Linear Search - Fail"  ></p>
 <div class="details admonition question">
     <div class="details-summary admonition-title">
         <span class="icon"><svg class="icon"
@@ -283,16 +310,15 @@
 <h2 id="option-2-binary-search-on-an-array" class="headerLink">
     <a href="#option-2-binary-search-on-an-array" class="header-mark"></a>Option 2: Binary Search on an Array</h2><p>The binary search concept is simple. Think of how you search for a given word in a dictionary. Say if you are trying to find the word &ldquo;quirky&rdquo; in the dictionary, you do not need to linearly read each word in the dictionary one-by-one to know if the word exists in the dictionary. Because you have established that the dictionary has the all of the words in alphabetical sorted order. You can simply flip through the book, notice which word you are at, then either go left or right depending on whether the word starts with a character that comes before or after &lsquo;q&rsquo;.</p>
 <p>Going back to our example, let&rsquo;s first check the value at the center of the sequence, if the value matches our target. we can successfully end the search.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/25binsearchoneshot.png   alt="Binary Search - Success"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/25binsearchoneshot.png'   alt="Binary Search - Success"  ></p>
 <p>But if it is not the value we are looking for, we will compare the value of the middle position with our target value. If our target value is smaller, we need to look into smaller numbers, so we go towards left and ignore the values on the right.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/3binsearchstart.png   alt="Binary Search - 1"  ></p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/4binsearch.png   alt="Binary Search - 2"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/3binsearchstart.png'   alt="Binary Search - 1"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/4binsearch.png'   alt="Binary Search - 2"  ></p>
 <blockquote>
   <p>By following this binary search approach have reduced our search space and the required number of comparisons by half. Also, we repeat the same process on the &ldquo;valid&rdquo; half, i.e. we directly go the middle value of the left sub-array and see if we have a match, if not, we again decide whether to go left or right, and hence reduce our candidate search space by half again.</p>
-
-</blockquote><p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/5binsearch.png   alt="Binary Search - 3"  ></p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/6binsearch.png   alt="Binary Search - 4"  ></p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/7binsearchfound.png   alt="Binary Search - 5"  ></p>
+</blockquote><p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/5binsearch.png'   alt="Binary Search - 3"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/6binsearch.png'   alt="Binary Search - 4"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/7binsearchfound.png'   alt="Binary Search - 5"  ></p>
 <div class="details admonition question">
     <div class="details-summary admonition-title">
         <span class="icon"><svg class="icon"
@@ -310,8 +336,8 @@
     </div>
     <div class="details-content">
         <div class="admonition-content">One big issue, here, is that while sequential storage (for example, arrays) makes in easy and cheap to design binary search algorithms, it makes it costlier for us to implement an insertion and deletion strategy. For example, if you insert an item at a specific index in the array, you will have to shift the values on its right by one place to the right. Similarly if you delete a value at an arbitrary index inside the array, you will have to left shift all the values to the right of that index by one place. (see examples below)</div></div></div>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/8arrayinsertion.png   alt="array insertion"  ></p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/9arraydeletion.png   alt="array deletion"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/8arrayinsertion.png'   alt="array insertion"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/9arraydeletion.png'   alt="array deletion"  ></p>
 <p>As you can imagine, having extra space on the right of the array would be convenient else you would have to call for dynamic allocation of memory at every insertion and copy over the whole array to newly allocated array memory. List data structure in Python, allocates list in a similar way that leaves capacity at the end of the sequence for future expansion. If we run out of space in the list, Python allocates a new and much larger (double the size, for example) sized list, copies over each value from the old list to new list, and then deletes the old list. (This is why the insertion in a Python list is <a href="https://en.wikipedia.org/wiki/Amortized_analysis" target="_blank" rel="noopener noreferrer">Amortized</a> <strong>O(1)</strong> complexity)</p>
 <div class="details admonition question">
     <div class="details-summary admonition-title">
@@ -323,16 +349,15 @@
         <div class="admonition-content">Yes, we can use Linked Lists!</div></div></div>
 <h2 id="option-3-linear-search-with-linked-lists" class="headerLink">
     <a href="#option-3-linear-search-with-linked-lists" class="header-mark"></a>Option 3: Linear search with Linked Lists</h2><p>Linked Lists are dynamic data structures that store values in non-contiguous memory blocks (called nodes). Each block refers to the other using memory pointers. These pointers are sort of the links in a chain that define the ordering among the non-contiguous nodes. A Singly Linked list represents a sequential structure where each node maintains a pointer to the element that follows it in the sequence. In linked lists we also maintain additional reference to the list nodes. Head is one such reference which is variable that stores the address for the first element in the list (stores null pointer if the list is empty).</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/10singlyll.png   alt="Linked List - simple"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/10singlyll.png'   alt="Linked List - simple"  ></p>
 <p>Insertion and deletion at any arbitrary location is straightforward, as you would simply reconnect the links of the nodes previous and next positions from the target position.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/12singlyllinsertion.png   alt="Linked List - Insertion"  ></p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/13singlylldeletion.png   alt="Linked List - Deletion"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/12singlyllinsertion.png'   alt="Linked List - Insertion"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/13singlylldeletion.png'   alt="Linked List - Deletion"  ></p>
 <p>We can also have a Doubly Linked List where each node stores the pointer to the previous as well as the next node in the sequence.  A tail reference may also be used to store pointer to the last node in the linked list.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/11doublyll.png   alt="Doubly Linked List - simple"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/11doublyll.png'   alt="Doubly Linked List - simple"  ></p>
 <p>As you would notice, random access in linked lists are not possible. And to find a value in the list, we would simply have to traverse the list from one end, say from the node referred by Head, towards the other end till we find what we are looking for. So, even though you can insert and delete in <strong>O(1),</strong> you still need the reference to the target location. Finding the target location is again <strong>O(n)</strong>.</p>
 <blockquote>
   <p>With Linked Lists, while we solved the issue of costly insertions and deletions, we haven&rsquo;t quite found a good solution to quickly access a target value in the list (or find if the value exists).</p>
-
 </blockquote><p>Wouldn&rsquo;t it be great if we could have the random access (or something close to it) in the list to simply our find, insert and delete operations? Well this is where Skip List come handy!</p>
 <h2 id="option-4-pseudo-binary-search-with-linked-lists-skip-list" class="headerLink">
     <a href="#option-4-pseudo-binary-search-with-linked-lists-skip-list" class="header-mark"></a>Option 4: Pseudo-binary search with Linked Lists [Skip List]</h2><p>Technical advances have made low latency highly desirable for software applications. How well the underlying algorithm scales to demand can make or break a product. On the other hand, the memory/storage costs is getting cheaper by day. This propels many system designers to make decisions that balance compromises that spend extra money on storage costs, while opting for algorithms with low time complexities. Skip Lists is a good example of one such compromise.</p>
@@ -340,28 +365,27 @@
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"/></svg> here</a>) as a probabilistic alternative to balanced trees. Skip lists are relatively easy to implement, specially when compared to balanced trees like AVL Trees or Red Black Trees. If you have used the Balanced Trees before, you may remember how they are great data structures to maintain relative order of elements in a sequence, while making search operations easy. However, insertions and deletions in Balanced Trees are quite complex as we have the additional task to strictly ensure the tree is balanced at all times.</p>
 <blockquote>
   <p>Skip Lists introduce randomness in by making balancing of the data structure to be probabilistic. While it definitely makes evaluating complexity of the algorithm to be much harder, the insertion, deletion operations become much faster and simpler to implement. The complexities are calculated based on expectation, but they have a high probability, such that we can say with high confidence (but not absolute guarantee) that the run time complexity would be O(log(n)) apart from some specific worst-case scenarios as we would see soon.</p>
-
 </blockquote><h3 id="skip-lists---intuition" class="headerLink">
     <a href="#skip-lists---intuition" class="header-mark"></a>Skip Lists - Intuition</h3><p>Following is the map of New York Subway&rsquo;s &ldquo;7&rdquo; train.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/nyc-metro-route-7-flushing-local-map.png   alt="New York Metro Map 7"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/nyc-metro-route-7-flushing-local-map.png'   alt="New York Metro Map 7"  ></p>
 <p>Each point on the horizontal line represents on train stop on a specific street. The line at the top is the local train that has much more number of stops compared to the express line on the below it. Government decides where to put the stops based on factors like nearby facilities, neighborhood, business centers etc. Let&rsquo;s simplify the above route map and display stations by the street numbers.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/14nycmap.png   alt="New York Map simplified"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/14nycmap.png'   alt="New York Map simplified"  ></p>
 <p>In the simplified map above, the express line is shown at the top and local line is below it. Now if you had this map and you were supposed to travel from stop <code>14</code> to stop <code>59</code>. How would you plan your trip route? For simplicity let&rsquo;s assume we can&rsquo;t overshoot, meaning that we can&rsquo;t go some station to the right and then travel back towards left. You would probably want to take the express line from stop <code>14</code> and get down on stop <code>42</code>. Then take the local train from stop 42 and reach the destination 59 from there, as shown below.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/15nycpath.png   alt="New York Map traverse"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/15nycpath.png'   alt="New York Map traverse"  ></p>
 <p>As you would notice, by taking the express route you would be able to skip some stations along the way and maybe even reach the destination much faster compared to taking the local train from a original stop and traveling each station one by one to reach a destination stop. This is exactly the core idea behind Skip List. With Skip Lists, we introduce redundant travel paths at the cost of additional space, but the additional travel paths have lesser and lesser number of &ldquo;stops&rdquo; such that the linear traversal is much faster if we travel in those additional lanes.</p>
 <h3 id="skip-lists---basics" class="headerLink">
     <a href="#skip-lists---basics" class="header-mark"></a>Skip Lists - Basics</h3><p>Let&rsquo;s now build the concept of Skips Lists from bottom to top.</p>
 <p>Assume that we have a Doubly Linked List which is unsorted. What do you think would be the search complexity for this list?</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/16doublyllunsearch.png   alt="Doubly Linked List - Search"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/16doublyllunsearch.png'   alt="Doubly Linked List - Search"  ></p>
 <p>Search would be done in <strong>O(n)</strong>, because you would have to traverse the list linearly to find your target node.</p>
 <p>Let&rsquo;s assume that the list is now sorted as shown below. What do you think is the search complexity now?</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/17doublyllsearch.png   alt="Doubly Linked List - Sorted Search"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/17doublyllsearch.png'   alt="Doubly Linked List - Sorted Search"  ></p>
 <p>Well, it&rsquo;s still <strong>O(n)</strong>. Even if it sorted, the linked list structure doesn&rsquo;t provide us random access, hence we can&rsquo;t simply calculate the next middle index and access that middle node in <strong>O(1)</strong>.</p>
 <p>Now, let&rsquo;s put our &ldquo;express line&rdquo; on top of the existing structure. We are going to create a second Doubly Linked List and place the second list above of the first list such that each node has four reference to neighboring nodes: left, right, above, below.</p>
 <p>which can be visualized as:</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/175doublyllsearch.png   alt="Doubly Linked Lists - Joined"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/175doublyllsearch.png'   alt="Doubly Linked Lists - Joined"  ></p>
 <p>Now given this Skip Lists structure, you can find the number 73 with lesser number of comparison operations. You can start traversing from the top list first, and at every node see if the next node overshoots the value that you are looking for. If it doesn&rsquo;t simply go the next node in the list on the top, else go to the list on the bottom and continue your linear search in the bottom list.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/18doublyllsearch.png   alt="Doubly Linked List - Search"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/18doublyllsearch.png'   alt="Doubly Linked List - Search"  ></p>
 <p>We can summarize the searching approach in a simple algorithm.</p>
 <div class="details admonition abstract open">
     <div class="details-summary admonition-title">
@@ -413,42 +437,41 @@ However, our Skip List don&rsquo;t have to limited to 2 lists. We can have more 
 </ul>
 </div></div></div>
 <p>Let&rsquo;s first simplify the visualization for our nodes and connection in Skip List.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/19simplify.png   alt="Skip List - Simplify"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/19simplify.png'   alt="Skip List - Simplify"  ></p>
 <p>A standard, simplified Skip List would look like this:</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/20simpleskiplist.png   alt="Skip List - example"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/20simpleskiplist.png'   alt="Skip List - example"  ></p>
 <p>Now, let&rsquo;s see how some of the basic operations are performed on a Skip List.</p>
 <h3 id="searching-in-skip-list" class="headerLink">
     <a href="#searching-in-skip-list" class="header-mark"></a>Searching in Skip List</h3><p>Searching in a Skip List in straightforward. We have already seen an example above with two lists.  We can extend the same approach to a Skip List with <code>h</code> lists. We will simply start with the leftmost node in the list on top. Go down if the next value in the same list is greater than the one we are looking for, go right otherwise.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/21skiplistsearch.png   alt="Skip List - Search"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/21skiplistsearch.png'   alt="Skip List - Search"  ></p>
 <p>The main idea is again to skip comparisons with as many keys as possible, while compromising a little on the extra storage required in the additional lists containing subset of all keys. On average,  &ldquo;expected&rdquo; Search complexity for Skip List is <strong>O(log(n))</strong></p>
 <h3 id="inserting-in-skip-list" class="headerLink">
     <a href="#inserting-in-skip-list" class="header-mark"></a>Inserting in Skip List</h3><p>To insert a new node, we would first find the location where this new key should be inserted in the list at the very bottom. This can be simply done be re-using the search logic, we start traversing to the right from the list on top and we go one step down if the next item is bigger than the key that we want to insert, else go right. Once we reach at a position in bottom list where we can&rsquo;t go more to the right, we insert the new value on the right side of that position.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/22skiplistinsert1.png   alt="Skip List - Insert 1"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/22skiplistinsert1.png'   alt="Skip List - Insert 1"  ></p>
 <p>Skip List after inserting 67:</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/23skiplistinsert2.png   alt="Skip List - Insert 2"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/23skiplistinsert2.png'   alt="Skip List - Insert 2"  ></p>
 <blockquote>
   <p>Now comes the probabilistic part, after inserting the new node in the list \(L_i\) we have to also insert the node in list above it, i.e. list \(L_{i+1}\) with probability \(\frac{1}{2}\). We do this with a simple coin toss, such that if we get a head we insert the node in the list \(L_{i+1}\) and toss the coin again, we stop when we get a tail. We may repeat the coin toss till we keep getting heads, even if we have to insert a new layer (list) at the top.</p>
-
-</blockquote><p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/24skiplistinsert3.png   alt="Skip List - Insert 3"  ></p>
+</blockquote><p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/24skiplistinsert3.png'   alt="Skip List - Insert 3"  ></p>
 <p>Note that we also need to &ldquo;re-hook&rdquo; the links for the newly inserted node. The new node needs to have it&rsquo;s &lsquo;below&rsquo; reference pointing to the node below, and the node below would have &lsquo;above&rsquo; reference pointer to the new node. To find the &rsquo;left&rsquo; neighbor for the new node, we simply traverse towards left from the node below it and return &lsquo;above&rsquo; pointer from a node for which &lsquo;above&rsquo; pointer is not null. The &lsquo;right&rsquo; reference of the &rsquo;left&rsquo; neighbor is used to update the &lsquo;right&rsquo; reference of the new node. Also, the &rsquo;left&rsquo; reference for the new node&rsquo;s right neighbor is also updated to the new node. This re-hooking operation is actually pretty easy to implement with Linked Lists.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/25skiplistinsert4.png   alt="Skip List - Insert 4"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/25skiplistinsert4.png'   alt="Skip List - Insert 4"  ></p>
 <p>Let&rsquo;s toss the coin again.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/26skiplistinsert5.png   alt="Skip List - Insert 5"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/26skiplistinsert5.png'   alt="Skip List - Insert 5"  ></p>
 <p>Last toss gave us another Head, so let&rsquo;s toss the coin again.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/27skiplistinsert6.png   alt="Skip List - Insert 6"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/27skiplistinsert6.png'   alt="Skip List - Insert 6"  ></p>
 <p>We got a Tail this time, so no more insertions are required.</p>
 <p>As you see the probability of a node also getting inserted in the layer above it get reduced by half after every layer. Still, there is a worst case possibility that you would keep getting Heads indefinitely, although the probability of that happening is extremely small. To avoid such cases when you may get a large number of heads sequentially, you could also use a termination condition where you stop inserting if you reach a predefined threshold for the number of layers (height) or a predefined threshold for the number of nodes in a specific layer. Although the expected time complexity would still be <strong>O(log(n))</strong> for all operations.</p>
 <h3 id="deletion-in-skip-list" class="headerLink">
     <a href="#deletion-in-skip-list" class="header-mark"></a>Deletion in Skip List</h3><p>Deletion operation in Skip List is pretty straightforward. We first perform search operation to find the location of the node. If we find the node, we simply delete it at all levels. Before deleting a node, we simply ensure that no other node is pointing to it.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/28skiplistdelete1.png   alt="Skip List - Delete Search"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/28skiplistdelete1.png'   alt="Skip List - Delete Search"  ></p>
 <p>Release all references to this node. And move to the node below it.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/29skiplistdelete2.png   alt="Skip List - Delete 1"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/29skiplistdelete2.png'   alt="Skip List - Delete 1"  ></p>
 <p>Remove all references to this node and release it. Move to the node below in the bottom list.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/30skiplistdelete3.png   alt="Skip List - Delete 2"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/30skiplistdelete3.png'   alt="Skip List - Delete 2"  ></p>
 <p>Release this node as well.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/31skiplistdelete4.png   alt="Skip List - Delete 3"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/31skiplistdelete4.png'   alt="Skip List - Delete 3"  ></p>
 <p>This is how our Skip List looks like after deletion.</p>
-<p><img class="tw-inline" loading="lazy" src=/img/posts/skip-list/32skiplistdelete5.png   alt="Skip List - Delete 4"  ></p>
+<p><img class="tw-inline" loading="lazy" src='/img/posts/skip-list/32skiplistdelete5.png'   alt="Skip List - Delete 4"  ></p>
 <h2 id="conclusion" class="headerLink">
     <a href="#conclusion" class="header-mark"></a>Conclusion</h2><p>In this article we saw how Skip List is a probabilistic data structure that loosely resembles a balanced binary tree. It is also easy to implement and very fast as the search, insert, delete operations have an expected time complexity of <strong>O(log(n))</strong>, along with <strong>O(n)</strong> expected space complexity. in next article, I will introduce a practical application of Skip List and explain how Twitter used Skip List to get a huge improvement in their search indexing latency.</p>
 <h2 id="reference-and-further-reading" class="headerLink">
@@ -469,7 +492,7 @@ However, our Skip List don&rsquo;t have to limited to 2 lists. We can have more 
 <div class="related-container">
     <div class="related-item-container">
             <div class="related-image">
-                <a href="/posts/2020/07/twitter-search-redesign/"><img   src=/posts/2020/07/twitter-search-redesign/featured-image-preview.webp    height="200" width="400"></a>
+                <a href="/posts/2020/07/twitter-search-redesign/"><img   src='/posts/2020/07/twitter-search-redesign/featured-image-preview.webp'    height="200" width="400"></a>
             </div><h2 class="related-title">
                 <a href="/posts/2020/07/twitter-search-redesign/">How Twitter Reduced Search Indexing Latency to One Second</a>
             </h2>
@@ -493,8 +516,7 @@ However, our Skip List don&rsquo;t have to limited to 2 lists. We can have more 
         </div>
         <div class="post-info-line print:!tw-hidden">
             <div class="post-info-md"></div>
-            <div class="post-info-share"><button title="Share on Twitter" data-sharer="twitter" data-url="https://blog.reachsumit.com/posts/2020/07/skip-list/" data-title="Skip List Data Structure - Explained!" data-via="_reachsumit" data-hashtags="data structure"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></button><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2020/07/skip-list/" data-hashtag="data structure"><svg class="icon"
+            <div class="post-info-share"><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2020/07/skip-list/" data-hashtag="data structure"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2020/07/skip-list/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2020/07/skip-list/" data-title="Skip List Data Structure - Explained!" data-web><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2020/07/skip-list/" data-title="Skip List Data Structure - Explained!"><svg class="icon"
@@ -509,7 +531,7 @@ However, our Skip List don&rsquo;t have to limited to 2 lists. We can have more 
 
     <div class="post-info-more">
         <section class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href=""></a></section>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/data-structure/">Data Structure</a></section>
         <section class="print:!tw-hidden">
             <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">Back</button></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -521,22 +543,26 @@ However, our Skip List don&rsquo;t have to limited to 2 lists. We can have more 
 </div>
 <div id="comments" class="print:!tw-hidden tw-pt-32 tw-pb-8"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
-            </noscript></div></article></div>
-        </main><footer class="footer">
+            </noscript></div></article></main><footer class="footer">
         <div class="footer-container"><div class="footer-line"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2024<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2020 - 2025<span class="author">&nbsp;<a href="https://reachsumit.com" target="_blank" rel="noopener noreferrer">Sumit Kumar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
-        </div></footer></div>
-
-    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button tw-transition-opacity tw-opacity-0" title="Back to Top">
-            <svg class="icon"
+        </div></footer><div class="print:!tw-hidden tw-flex tw-flex-col tw-fixed tw-right-4 tw-bottom-4 tw-gap-2"><a href="#back-to-top" id="back-to-top-button" class="tw-transition-opacity tw-opacity-0 tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="Back to Top">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
-        </a><a href="#comments" id="view-comments" class="fixed-button" title="View Comments">
-            <svg class="icon"
+  </a>
+
+  <button id="toc-drawer-button" class="tw-block tw-bg-bgColor-secondary tw-rounded-full md:tw-hidden" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;">
+      <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
+  </button><a href="#comments" id="view-comments" class="tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="View Comments">
+      <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
-        </a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+  </a></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"></noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript><link rel="stylesheet" href="/css/411dff.min.css">
 <script>window.config={"algoliasearch.min.js":"https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js","autocomplete.min.js":"https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js","comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2020-07-14T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Skip List Data Structure - Explained!"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script
     src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"
@@ -544,11 +570,17 @@ However, our Skip List don&rsquo;t have to limited to 2 lists. We can have more 
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"
     
+      defer
+    
   ></script><script
     src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"
+    
+      defer
     
   ></script><script
     src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"
@@ -594,25 +626,24 @@ However, our Skip List don&rsquo;t have to limited to 2 lists. We can have more 
     
       defer
     
-  ></script><script type="text/javascript">
+  ></script><script>
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-TGH87J92Z3');
         </script><script
     src="https://www.googletagmanager.com/gtag/js?id=G-TGH87J92Z3"
     async
   ></script>
-    
-    <script type="speculationrules">
-        {
-          "prerender": [
-            {
-              "where": { "href_matches": "/*" },
-              "eagerness": "moderate"
-            }
-          ]
-        }
-    </script>
-      
+
+<script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+</script>
 </body>
 
 </html>
