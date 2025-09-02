@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/categories/information-retrieval/</link>
         <description>Information Retrieval - Category - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sun, 11 Aug 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/information-retrieval/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Mon, 01 Sep 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/information-retrieval/" rel="self" type="application/rss+xml" /><item>
+    <title>The Hidden Costs of Naive Retrieval: Adaptive RAG, Part 1</title>
+    <link>https://blog.reachsumit.com/posts/2025/09/problems-with-naive-rag/</link>
+    <pubDate>Mon, 01 Sep 2025 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2025/09/problems-with-naive-rag/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2025/09/problems-with-naive-rag/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Retrieval-Augmented Generation (RAG) isn&rsquo;t a silver bullet. This post highlights the hidden costs associated with RAG and make the case for a smarter, adaptive approach.]]></description>
+</item><item>
     <title>Incorporating Ads into Large Language Models Outputs</title>
     <link>https://blog.reachsumit.com/posts/2024/08/ads-llm/</link>
     <pubDate>Sun, 11 Aug 2024 00:00:00 &#43;0000</pubDate><author>

@@ -7,6 +7,15 @@
             <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Mon, 01 Sep 2025 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.reachsumit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>The Hidden Costs of Naive Retrieval: Adaptive RAG, Part 1</title>
+    <link>https://blog.reachsumit.com/posts/2025/09/problems-with-naive-rag/</link>
+    <pubDate>Mon, 01 Sep 2025 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2025/09/problems-with-naive-rag/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2025/09/problems-with-naive-rag/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Retrieval-Augmented Generation (RAG) isn&rsquo;t a silver bullet. This post highlights the hidden costs associated with RAG and make the case for a smarter, adaptive approach.]]></description>
+</item><item>
     <title>Embedding Collapse in Recommender Systems: Causes, Consequences, and Solutions</title>
     <link>https://blog.reachsumit.com/posts/2024/11/embedding-collapse-recsys/</link>
     <pubDate>Wed, 06 Nov 2024 00:00:00 &#43;0000</pubDate><author>
@@ -87,14 +96,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/09/generative-retrieval/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Auto-regressive search engines emerge as a promising paradigm for next-gen information retrieval systems. This article introduces this generative retrieval and the various latest techniques that have been proposed to improve its effectiveness.]]></description>
-</item><item>
-    <title>Representing Users and Items in Large Language Models based Recommender Systems</title>
-    <link>https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/</link>
-    <pubDate>Sun, 18 Jun 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/06/llms-for-recsys-entity-representation/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/06/llms-for-recsys-entity-representation/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Large Language Models (LLMs) have emerged as viable tools for various recommendation tasks. This article highlights various methods for incorporating users, items, and behavior data into the instructions for LLMs.]]></description>
 </item></channel>
 </rss>
