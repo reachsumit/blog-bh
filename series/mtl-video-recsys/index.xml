@@ -1,0 +1,26 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Multi-task Learning for Video Recsys - Series - Sumit&#39;s Diary</title>
+        <link>https://blog.reachsumit.com/series/mtl-video-recsys/</link>
+        <description>Multi-task Learning for Video Recsys - Series - Sumit&#39;s Diary</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sat, 22 Jun 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/series/mtl-video-recsys/" rel="self" type="application/rss+xml" /><item>
+    <title>The Evolution of Multi-task Learning Based Video Recommender Systems - Part 1</title>
+    <link>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p1/</link>
+    <pubDate>Sun, 16 Jun 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024/06/multi-task-video-recsys-p1/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This article introduces the multi-task learning paradigm adopted by various large-scale video recommender systems. It introduces a general setup for such an MTL-based recommender. It highlights several associated challenges and describes solutions adopted by various state-of-the-art recommenders in the industry.]]></description>
+</item><item>
+    <title>The Evolution of Multi-task Learning Based Video Recommender Systems - Part 2</title>
+    <link>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/</link>
+    <pubDate>Sat, 22 Jun 2024 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p2/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024/06/multi-task-video-recsys-p2/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This article continues the discussion on the evolution of multi-task learning-based large-scale recommender systems. We take a look at strategies from Kuaishou, Tencent, YouTube, Facebook, and Amazon Prime Video to disentangle input space and address systematic biases. The article ends with sharing several tips and learnings for professionals working in this domain.]]></description>
+</item></channel>
+</rss>
