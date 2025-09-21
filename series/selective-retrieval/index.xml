@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/series/selective-retrieval/</link>
         <description>Adaptive RAG (Selective Retrieval) - Series - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Mon, 01 Sep 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/series/selective-retrieval/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sun, 21 Sep 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/series/selective-retrieval/" rel="self" type="application/rss+xml" /><item>
+    <title>Deciding When Not to Retrieve: Adaptive RAG, Part 2</title>
+    <link>https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/</link>
+    <pubDate>Sun, 21 Sep 2025 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2025/09/deciding-when-not-to-retrieve/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Building on part 1&rsquo;s exploration of naive RAG&rsquo;s limitations, this post introduces adaptive retrieval frameworks and pre-generation retrieval decision-making methods that determine if retrieval is truly necessary.]]></description>
+</item><item>
     <title>The Hidden Costs of Naive Retrieval: Adaptive RAG, Part 1</title>
     <link>https://blog.reachsumit.com/posts/2025/09/problems-with-naive-rag/</link>
     <pubDate>Mon, 01 Sep 2025 00:00:00 &#43;0000</pubDate><author>
