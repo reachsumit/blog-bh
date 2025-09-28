@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/tags/retrieval/</link>
         <description>Retrieval - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sun, 21 Sep 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/retrieval/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sat, 27 Sep 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/retrieval/" rel="self" type="application/rss+xml" /><item>
+    <title>Probing LLMs&#39; Knowledge Boundary: Adaptive RAG, Part 3</title>
+    <link>https://blog.reachsumit.com/posts/2025/09/probing-llms-knowledge-boundary/</link>
+    <pubDate>Sat, 27 Sep 2025 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2025/09/probing-llms-knowledge-boundary/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2025/09/probing-llms-knowledge-boundary/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This post introduces techniques that probe the LLM&rsquo;s internal confidence and knowledge boundaries. We explore prompt-based confidence detection, consistency-based uncertainty estimation, and internal state analysis approaches to determine when retrieval is truly necessary.]]></description>
+</item><item>
     <title>Deciding When Not to Retrieve: Adaptive RAG, Part 2</title>
     <link>https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/</link>
     <pubDate>Sun, 21 Sep 2025 00:00:00 &#43;0000</pubDate><author>

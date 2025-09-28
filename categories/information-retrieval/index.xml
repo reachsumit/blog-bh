@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/categories/information-retrieval/</link>
         <description>Information Retrieval - Category - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sun, 21 Sep 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/information-retrieval/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sat, 27 Sep 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/information-retrieval/" rel="self" type="application/rss+xml" /><item>
+    <title>Probing LLMs&#39; Knowledge Boundary: Adaptive RAG, Part 3</title>
+    <link>https://blog.reachsumit.com/posts/2025/09/probing-llms-knowledge-boundary/</link>
+    <pubDate>Sat, 27 Sep 2025 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2025/09/probing-llms-knowledge-boundary/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2025/09/probing-llms-knowledge-boundary/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This post introduces techniques that probe the LLM&rsquo;s internal confidence and knowledge boundaries. We explore prompt-based confidence detection, consistency-based uncertainty estimation, and internal state analysis approaches to determine when retrieval is truly necessary.]]></description>
+</item><item>
     <title>Deciding When Not to Retrieve: Adaptive RAG, Part 2</title>
     <link>https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/</link>
     <pubDate>Sun, 21 Sep 2025 00:00:00 &#43;0000</pubDate><author>
@@ -85,15 +94,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/03/two-tower-model/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state.]]></description>
-</item><item>
-    <title>Feature-Interactions Based Information Retrieval Models</title>
-    <link>https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/</link>
-    <pubDate>Sun, 06 Nov 2022 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2022/11/feature-interactions-ir/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2022/11/feature-interactions-ir/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div><h2 id="introduction" class="headerLink">
-    <a href="#introduction" class="header-mark"></a>Introduction</h2><p>Large-scale information retrieval applications, such as recommender systems, search ranking, and text analysis often leverage feature interactions for effective modeling. These models are commonly deployed at the ranking stage of <a href="https://blog.reachsumit.com/posts/2023/03/two-tower-model/#cascade-ranking-system" rel="">the cascade-style systems</a>. In this article, I summarize the need for modeling feature interactions and introduce some of the most popular ML architectures designed around this theme. This article also highlights the high data sparsity issue, that makes it hard for ML algorithms to model second or higher-order feature interactions.</p>]]></description>
 </item></channel>
 </rss>
