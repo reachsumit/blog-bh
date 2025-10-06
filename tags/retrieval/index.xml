@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/tags/retrieval/</link>
         <description>Retrieval - Tag - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sat, 27 Sep 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/retrieval/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sun, 05 Oct 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/tags/retrieval/" rel="self" type="application/rss+xml" /><item>
+    <title> Teaching Models to Decide When to Retrieve: Adaptive RAG, Part 4</title>
+    <link>https://blog.reachsumit.com/posts/2025/10/learning-to-retrieve/</link>
+    <pubDate>Sun, 05 Oct 2025 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2025/10/learning-to-retrieve/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2025/10/learning-to-retrieve/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This final post of the Adaptive RAG series explores methods that treat adaptive retrieval as a learned skill and explicitly teach models when to retrieve. We examine three paradigms in increasing order of sophistication.]]></description>
+</item><item>
     <title>Probing LLMs&#39; Knowledge Boundary: Adaptive RAG, Part 3</title>
     <link>https://blog.reachsumit.com/posts/2025/09/probing-llms-knowledge-boundary/</link>
     <pubDate>Sat, 27 Sep 2025 00:00:00 &#43;0000</pubDate><author>

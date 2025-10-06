@@ -4,7 +4,16 @@
         <link>https://blog.reachsumit.com/categories/information-retrieval/</link>
         <description>Information Retrieval - Category - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sat, 27 Sep 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/information-retrieval/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sun, 05 Oct 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/categories/information-retrieval/" rel="self" type="application/rss+xml" /><item>
+    <title> Teaching Models to Decide When to Retrieve: Adaptive RAG, Part 4</title>
+    <link>https://blog.reachsumit.com/posts/2025/10/learning-to-retrieve/</link>
+    <pubDate>Sun, 05 Oct 2025 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2025/10/learning-to-retrieve/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2025/10/learning-to-retrieve/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This final post of the Adaptive RAG series explores methods that treat adaptive retrieval as a learned skill and explicitly teach models when to retrieve. We examine three paradigms in increasing order of sophistication.]]></description>
+</item><item>
     <title>Probing LLMs&#39; Knowledge Boundary: Adaptive RAG, Part 3</title>
     <link>https://blog.reachsumit.com/posts/2025/09/probing-llms-knowledge-boundary/</link>
     <pubDate>Sat, 27 Sep 2025 00:00:00 &#43;0000</pubDate><author>
@@ -85,14 +94,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023/03/llm-for-text-ranking/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Large Language Models (LLMs), like GPT-x, PaLM, BLOOM, have shaken up the NLP domain and completely redefined the state-of-the-art for a variety of tasks. One reason for the popularity of these LLMs has been their out-of-the-box capability to produce excellent performance with none to little domain-specific labeled data. The information retrieval community is also witnessing a revolution due to LLMs. These large pre-trained models can understand task instructions specified in natural language and then perform well on tasks in a zero-shot or few-shot manner. In this article, I review this theme and some of the most prominent ideas proposed by researchers in the last few months to enable zero/few-shot learning in text retrieval and ranking applications like search ranking, question answering, fact verification, etc.]]></description>
-</item><item>
-    <title>Two Tower Model Architecture: Current State and Promising Extensions</title>
-    <link>https://blog.reachsumit.com/posts/2023/03/two-tower-model/</link>
-    <pubDate>Sat, 04 Mar 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2023/03/two-tower-model/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2023/03/two-tower-model/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Two-tower model is widely adopted in industrial-scale retrieval and ranking workflows across a broad range of application domains, such as content recommendations, advertisement systems, and search engines. It is also the current go-to state-of-the-art solution for pre-ranking tasks. This article explores the history and current state of the Two Tower models and also highlights potential improvements proposed in some of the recently published literature. The goal here is to help understand what makes the Two Tower model an appropriate choice for a bunch of applications, and how it can be potentially extended from its current state.]]></description>
 </item></channel>
 </rss>

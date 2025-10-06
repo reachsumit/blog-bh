@@ -4,15 +4,15 @@
         <link>https://blog.reachsumit.com/series/selective-retrieval/</link>
         <description>Adaptive RAG (Selective Retrieval) - Series - Sumit&#39;s Diary</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@reachsumit.com (Sumit Kumar)</managingEditor>
-            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sat, 27 Sep 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/series/selective-retrieval/" rel="self" type="application/rss+xml" /><item>
-    <title>Probing LLMs&#39; Knowledge Boundary: Adaptive RAG, Part 3</title>
-    <link>https://blog.reachsumit.com/posts/2025/09/probing-llms-knowledge-boundary/</link>
-    <pubDate>Sat, 27 Sep 2025 00:00:00 &#43;0000</pubDate><author>
+            <webMaster>hello@reachsumit.com (Sumit Kumar)</webMaster><lastBuildDate>Sun, 05 Oct 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.reachsumit.com/series/selective-retrieval/" rel="self" type="application/rss+xml" /><item>
+    <title>The Hidden Costs of Naive Retrieval: Adaptive RAG, Part 1</title>
+    <link>https://blog.reachsumit.com/posts/2025/09/problems-with-naive-rag/</link>
+    <pubDate>Mon, 01 Sep 2025 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2025/09/probing-llms-knowledge-boundary/</guid>
+    </author><guid>https://blog.reachsumit.com/posts/2025/09/problems-with-naive-rag/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2025/09/probing-llms-knowledge-boundary/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>This post introduces techniques that probe the LLM&rsquo;s internal confidence and knowledge boundaries. We explore prompt-based confidence detection, consistency-based uncertainty estimation, and internal state analysis approaches to determine when retrieval is truly necessary.]]></description>
+                <img src="/posts/2025/09/problems-with-naive-rag/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>Retrieval-Augmented Generation (RAG) isn&rsquo;t a silver bullet. This post highlights the hidden costs associated with RAG and makes the case for a smarter, adaptive approach.]]></description>
 </item><item>
     <title>Deciding When Not to Retrieve: Adaptive RAG, Part 2</title>
     <link>https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/</link>
@@ -23,13 +23,22 @@
                 <img src="/posts/2025/09/deciding-when-not-to-retrieve/featured-image-preview.webp" referrerpolicy="no-referrer">
             </div>Building on part 1&rsquo;s exploration of naive RAG&rsquo;s limitations, this post introduces adaptive retrieval frameworks and pre-generation retrieval decision-making methods that determine if retrieval is truly necessary.]]></description>
 </item><item>
-    <title>The Hidden Costs of Naive Retrieval: Adaptive RAG, Part 1</title>
-    <link>https://blog.reachsumit.com/posts/2025/09/problems-with-naive-rag/</link>
-    <pubDate>Mon, 01 Sep 2025 00:00:00 &#43;0000</pubDate><author>
+    <title>Probing LLMs&#39; Knowledge Boundary: Adaptive RAG, Part 3</title>
+    <link>https://blog.reachsumit.com/posts/2025/09/probing-llms-knowledge-boundary/</link>
+    <pubDate>Sat, 27 Sep 2025 00:00:00 &#43;0000</pubDate><author>
         <name>Sumit Kumar</name>
-    </author><guid>https://blog.reachsumit.com/posts/2025/09/problems-with-naive-rag/</guid>
+    </author><guid>https://blog.reachsumit.com/posts/2025/09/probing-llms-knowledge-boundary/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/posts/2025/09/problems-with-naive-rag/featured-image-preview.webp" referrerpolicy="no-referrer">
-            </div>Retrieval-Augmented Generation (RAG) isn&rsquo;t a silver bullet. This post highlights the hidden costs associated with RAG and makes the case for a smarter, adaptive approach.]]></description>
+                <img src="/posts/2025/09/probing-llms-knowledge-boundary/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This post introduces techniques that probe the LLM&rsquo;s internal confidence and knowledge boundaries. We explore prompt-based confidence detection, consistency-based uncertainty estimation, and internal state analysis approaches to determine when retrieval is truly necessary.]]></description>
+</item><item>
+    <title> Teaching Models to Decide When to Retrieve: Adaptive RAG, Part 4</title>
+    <link>https://blog.reachsumit.com/posts/2025/10/learning-to-retrieve/</link>
+    <pubDate>Sun, 05 Oct 2025 00:00:00 &#43;0000</pubDate><author>
+        <name>Sumit Kumar</name>
+    </author><guid>https://blog.reachsumit.com/posts/2025/10/learning-to-retrieve/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/posts/2025/10/learning-to-retrieve/featured-image-preview.webp" referrerpolicy="no-referrer">
+            </div>This final post of the Adaptive RAG series explores methods that treat adaptive retrieval as a learned skill and explicitly teach models when to retrieve. We examine three paradigms in increasing order of sophistication.]]></description>
 </item></channel>
 </rss>

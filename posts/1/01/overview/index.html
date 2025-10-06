@@ -4,52 +4,34 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noodp" /><title>Deciding When Not to Retrieve: Adaptive RAG, Part 2 - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:url" content="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/">
+    <meta name="robots" content="noodp" /><title> - Sumit&#39;s Diary</title><meta name="Description" content="Welcome to Sumit Kumar&#39;s Personal Blog!"><meta property="og:url" content="https://blog.reachsumit.com/posts/1/01/overview/">
   <meta property="og:site_name" content="Sumit&#39;s Diary">
-  <meta property="og:title" content="Deciding When Not to Retrieve: Adaptive RAG, Part 2">
-  <meta property="og:description" content="Building on part 1’s exploration of naive RAG’s limitations, this post introduces adaptive retrieval frameworks and pre-generation retrieval decision-making methods that determine if retrieval is truly necessary.">
+  <meta property="og:title" content="Sumit&#39;s Diary">
+  <meta property="og:description" content="Welcome to Sumit Kumar&#39;s Personal Blog!">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-09-21T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-09-21T00:00:00+00:00">
-    <meta property="article:tag" content="Retrieval">
-    <meta property="article:tag" content="Rag">
-    <meta property="article:tag" content="Adaptive-Rag">
-    <meta property="og:image" content="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/featured-image-preview.webp">
-      <meta property="og:see_also" content="https://blog.reachsumit.com/posts/2025/09/problems-with-naive-rag/">
-      <meta property="og:see_also" content="https://blog.reachsumit.com/posts/2025/09/probing-llms-knowledge-boundary/">
-      <meta property="og:see_also" content="https://blog.reachsumit.com/posts/2025/10/learning-to-retrieve/">
+    <meta property="og:image" content="https://blog.reachsumit.com/logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/featured-image-preview.webp">
-  <meta name="twitter:title" content="Deciding When Not to Retrieve: Adaptive RAG, Part 2">
-  <meta name="twitter:description" content="Building on part 1’s exploration of naive RAG’s limitations, this post introduces adaptive retrieval frameworks and pre-generation retrieval decision-making methods that determine if retrieval is truly necessary.">
+  <meta name="twitter:image" content="https://blog.reachsumit.com/logo.png">
+  <meta name="twitter:title" content="Sumit&#39;s Diary">
+  <meta name="twitter:description" content="Welcome to Sumit Kumar&#39;s Personal Blog!">
       <meta name="twitter:site" content="@_reachsumit">
 <meta name="application-name" content="Sumit&#39;s Diary">
 <meta name="apple-mobile-web-app-title" content="Sumit&#39;s Diary">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><meta name="twitter:creator" content="@_reachsumit" /><link rel="icon" href="/img/avatar/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
-<link rel="canonical" href="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/" /><link rel="prev" href="https://blog.reachsumit.com/posts/2025/09/problems-with-naive-rag/" /><link rel="next" href="https://blog.reachsumit.com/posts/2025/09/probing-llms-knowledge-boundary/" />
+<link rel="canonical" href="https://blog.reachsumit.com/posts/1/01/overview/" /><link rel="prev" href="https://blog.reachsumit.com/posts/1/01/raggate_mha.png/" /><link rel="next" href="https://blog.reachsumit.com/posts/2020/07/skip-list/" />
 <link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css"><script type="application/ld+json">{"@context": "https://schema.org","@type": "BlogPosting",
-        "headline": "Deciding When Not to Retrieve: Adaptive RAG, Part 2",
+        "headline": "",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/"
-        },"image": [{
-                            "@type": "ImageObject",
-                            "url": "https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/featured-image.webp",
-                            "width":  1200 ,
-                            "height":  600 
-                        },{
-                            "@type": "ImageObject",
-                            "url": "https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/featured-image-preview.webp",
-                            "width":  1000 ,
-                            "height":  300 
-                        }],"genre": "posts","keywords":["retrieval","rag","adaptive-rag"],"wordcount":  2242 ,
-        "url": "https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/","datePublished": "2025-09-21T00:00:00+00:00","dateModified": "2025-09-21T00:00:00+00:00","publisher": {
+            "@id": "https://blog.reachsumit.com/posts/1/01/overview/"
+        },"image": ["https://blog.reachsumit.com/images/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  0 ,
+        "url": "https://blog.reachsumit.com/posts/1/01/overview/","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https://blog.reachsumit.com/images/avatar.png"},"author": {
                 "@type": "Person",
@@ -183,257 +165,33 @@
     <div id="search-dropdown-mobile"></div>
 </div><main class="tw-mx-4 tw-flex-1"><div class="toc print:!tw-hidden" id="toc-auto">
         <h2 class="toc-title">Contents</h2>
-        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#adaptive-rag">Adaptive RAG</a>
-      <ul>
-        <li><a href="#selective-retrieval">Selective Retrieval</a></li>
-        <li><a href="#selective-retrieval-vs-uncertainty-estimation-techniques">Selective Retrieval vs Uncertainty Estimation Techniques</a>
-          <ul>
-            <li><a href="#how-to-evaluate-adaptive-rag">How to Evaluate Adaptive RAG</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#retrieval-decision-making-without-generation">Retrieval Decision-Making Without Generation</a></li>
-    <li><a href="#summary">Summary</a></li>
-    <li><a href="#references">References</a></li>
-  </ul>
-</nav></div>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents"></nav></div>
     </div><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
         <div class="toc tw-mx-4 tw-max-w-full">
             <h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl">Contents</h2>
-            <div class="toc-content"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#adaptive-rag">Adaptive RAG</a>
-      <ul>
-        <li><a href="#selective-retrieval">Selective Retrieval</a></li>
-        <li><a href="#selective-retrieval-vs-uncertainty-estimation-techniques">Selective Retrieval vs Uncertainty Estimation Techniques</a>
-          <ul>
-            <li><a href="#how-to-evaluate-adaptive-rag">How to Evaluate Adaptive RAG</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#retrieval-decision-making-without-generation">Retrieval Decision-Making Without Generation</a></li>
-    <li><a href="#summary">Summary</a></li>
-    <li><a href="#references">References</a></li>
-  </ul>
-</nav></div>
+            <div class="toc-content"><nav id="TableOfContents"></nav></div>
         </div>
-    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2025-09-21" data-pagefind-body>Deciding When Not to Retrieve: Adaptive RAG, Part 2</h1><div class="post-meta">
+    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:0001-01-01" data-pagefind-body></h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><a href="https://reachsumit.com" title="Author" target="_blank" rel="noopener noreferrer author" class="author">Sumit Kumar</a>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/categories/information-retrieval/"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>Information Retrieval</a></span>&nbsp;<span class="post-category">and</span>&nbsp;<span class="post-series">series <a href="/series/selective-retrieval/"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V86a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v340a6 6 0 0 1-6 6zm-42-92v24c0 6.627-5.373 12-12 12H204c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h200c6.627 0 12 5.373 12 12zm0-96v24c0 6.627-5.373 12-12 12H204c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h200c6.627 0 12 5.373 12 12zm0-96v24c0 6.627-5.373 12-12 12H204c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h200c6.627 0 12 5.373 12 12zm-252 12c0 19.882-16.118 36-36 36s-36-16.118-36-36 16.118-36 36-36 36 16.118 36 36zm0 96c0 19.882-16.118 36-36 36s-36-16.118-36-36 16.118-36 36-36 36 16.118 36 36zm0 96c0 19.882-16.118 36-36 36s-36-16.118-36-36 16.118-36 36-36 36 16.118 36 36z"/></svg>Adaptive RAG (Selective Retrieval)</a></span></div>
+                </span></div>
             <div class="post-meta-line"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2025-09-21">2025-09-21</time>&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2025-09-21">2025-09-21</time>&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;2242 words&nbsp;
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;0 words&nbsp;
                     <svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;10 minutes&nbsp;</div>
-        </div><div class="featured-image"><img  loading="eager" src='/posts/2025/09/deciding-when-not-to-retrieve/featured-image.webp'    height="600" width="1200"></div><div class="details series-nav open">
-                                <div class="details-summary series-title">
-                                    <span>Series - Adaptive RAG (Selective Retrieval)</span>
-                                    <span class="details-icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-                                </div>
-                                <div class="details-content series-content">
-                                    <nav>
-                                        <ul>
-                                                    <li><a href="/posts/2025/09/problems-with-naive-rag/">The Hidden Costs of Naive Retrieval: Adaptive RAG, Part 1</a></li><li><span class="active">Deciding When Not to Retrieve: Adaptive RAG, Part 2</span></li>
-                                                    <li><a href="/posts/2025/09/probing-llms-knowledge-boundary/">Probing LLMs&#39; Knowledge Boundary: Adaptive RAG, Part 3</a></li>
-                                                    <li><a href="/posts/2025/10/learning-to-retrieve/"> Teaching Models to Decide When to Retrieve: Adaptive RAG, Part 4</a></li></ul>
-                                    </nav>
-                                </div>
-                            </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;0 minutes&nbsp;</div>
+        </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#adaptive-rag">Adaptive RAG</a>
-      <ul>
-        <li><a href="#selective-retrieval">Selective Retrieval</a></li>
-        <li><a href="#selective-retrieval-vs-uncertainty-estimation-techniques">Selective Retrieval vs Uncertainty Estimation Techniques</a>
-          <ul>
-            <li><a href="#how-to-evaluate-adaptive-rag">How to Evaluate Adaptive RAG</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#retrieval-decision-making-without-generation">Retrieval Decision-Making Without Generation</a></li>
-    <li><a href="#summary">Summary</a></li>
-    <li><a href="#references">References</a></li>
-  </ul>
-</nav></div>
-            </div><div class="content" id="content" data-pagefind-body><p>In the previous post, we established that retrieval isn&rsquo;t always beneficial. While Retrieval-Augmented Generation (RAG) improves LLM performance on knowledge-intensive tasks, the naive &ldquo;retrieve-then-read&rdquo; paradigm has several limitations. Indiscriminate retrieval can introduce noise and degrade performance on questions about popular entities, increase computational costs, and even harm response quality when the LLM&rsquo;s parametric knowledge would suffice.</p>
-<p>So how can we build RAG systems that intelligently decide when to retrieve? This post introduces Selective Retrieval techniques that dynamically determine the necessity of external knowledge for each query. We will look at foundational frameworks for these adaptive systems and explore the methods that make retrieval decisions based purely on input characteristics.</p>
-<h2 id="adaptive-rag" class="headerLink">
-    <a href="#adaptive-rag" class="header-mark"></a>Adaptive RAG</h2><p>Adaptive Retrieval-Augmented Generation (ARAG) refers to the broad field of research that is focused on creating more dynamic, configurable, instance-specific RAG strategies. This paradigm usually includes the following techniques:</p>
-<ul>
-<li>
-<p><strong>Active Retrieval</strong>: Dynamically refining or re-issuing queries if the initial results are insufficient.</p>
-</li>
-<li>
-<p><strong>Query Decomposition</strong>: Breaking down complex queries into subqueries that are handled with iterative retrieval.</p>
-</li>
-<li>
-<p><strong>Knowledge Critiquing</strong>: Revising or filtering the retrieved knowledge after it&rsquo;s been fetched but before generation</p>
-</li>
-</ul>
-<p>The focus of this series is specifically on an ARAG technique called <strong>Selective Retrieval</strong>, i.e., the task of deciding whether to skip the retrieval step entirely. Several research works cited in this series also incorporate more than one ARAG technique to achieve their goal. Therefore, they use Selective Retrieval and Adaptive RAG terms interchangeably, sometimes also calling it dynamic RAG. But it is useful to distinguish terminology before we dive deep into specific techniques, and understand that the main focus will be on selective retrieval, even if the specific methods are being referred to as Adaptive Retrieval techniques.</p>
-<h3 id="selective-retrieval" class="headerLink">
-    <a href="#selective-retrieval" class="header-mark"></a>Selective Retrieval</h3><p>To address the challenges listed in the previous section, it is necessary to investigate whether or not LLMs can correctly answer questions without using external evidence <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Indiscriminately retrieving for every query is inefficient and can introduce noise. For example, an LLM&rsquo;s parametric knowledge is sufficient for simple factual questions like &lsquo;What is the capital of France?&rsquo; or &lsquo;How many days are in a week?&rsquo;.</p>
-<p>Several researchers have proposed Selective Retrieval methods to dynamically determine the necessity of retrieval. Unlike traditional models that either always incorporate context or never consider it, or retrieve context based on a heuristic (retrieve after every n tokens/sentences/turns, etc.), selective retrieval allows the model to selectively retrieve context based on the specific requirements of each question <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. This way, the model can strike a balance between utilizing context and parametric memory.</p>
-<h3 id="selective-retrieval-vs-uncertainty-estimation-techniques" class="headerLink">
-    <a href="#selective-retrieval-vs-uncertainty-estimation-techniques" class="header-mark"></a>Selective Retrieval vs Uncertainty Estimation Techniques</h3><h4 id="how-to-evaluate-adaptive-rag" class="headerLink">
-    <a href="#how-to-evaluate-adaptive-rag" class="header-mark"></a>How to Evaluate Adaptive RAG</h4><p>Before diving into different ways to build an Adaptive RAG system, let&rsquo;s establish how we can fairly compare them. One way to achieve this is by understanding the tradeoffs between Selective Retrieval systems and existing approaches that operate on different principles. Moskvoretskii et al.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> provided a framework to compare classic Uncertainty Estimation (UE) methods against ARAG. Note that the authors of this paper use the term Adaptive RAG to describe the complex, purpose-built pipelines for selective retrieval.</p>
-<p>UE methods treat the retrieval decision as a separate, one-time gating task. For a given user question, the model first generates an answer using only its internal knowledge. A specific UE metric is then applied to this generated answer (or to the generation process) to produce a single uncertainty score. The scoring methods generally fall into two categories:</p>
-<ul>
-<li>
-<p><strong>Logit-based</strong>: These methods require only one generation and look at the token probabilities from the model&rsquo;s single, initial generation pass. For example, Mean Token Entropy calculates the average entropy for every token in the sequence to assess if the model was consistently unsure.</p>
-</li>
-<li>
-<p><strong>Consistency-based</strong>: These methods require LLMs to generate multiple different answers (e.g., 10-20 samples) to the same question. Then, they measure the diversity of this set of answers. For example, Lexical Similarity computes the average similarity score for all pairs of responses to assess uncertainty. This approach is usually effective, but has a large overhead due to the need for multiple calls to the LM.</p>
-</li>
-</ul>
-<p>While UE methods make a single, upfront decision on whether retrieval is necessary for a given question, ARAG methods dynamically interleave the generation and decision-making. They often integrate the uncertainty check within an iterative generation loop and make a retrieval decision at multiple points during the generation process.</p>
-<p>Moskvoretskii et al. conducted a large-scale study that compared 8 recent ARAG models, like DRAGIN, SeaKR, (will be covered in next post), and 27 UE techniques across 6 QA datasets, and proposed a 3-part evaluation framework:</p>
-<ul>
-<li>
-<p><strong>QA Performance</strong>: Standard metrics like accuracy, F1-score etc.</p>
-</li>
-<li>
-<p><strong>Efficiency</strong>: Measured by both the number of retriever calls (RC) and the number of LLM calls (LMC). The authors argue that while many recent ARAG methods narrowly focus on reducing RC, they ignore the potential higher cost of LMC required by their method to make their retrieval decisions.</p>
-</li>
-<li>
-<p><strong>Self-knowledge</strong>: This dimension uses metrics like ROC-AUC to measure a method&rsquo;s ability to identify the model&rsquo;s knowledge gaps, separately from its final QA score. This metric sees how well a method&rsquo;s uncertainty score correlates with the model&rsquo;s actual correctness. It highlights that a system can get the answer right without being good at knowing when it truly needs help.</p>
-</li>
-</ul>
-<p>The study advocates for more prudence when designing a retrieval strategy. It found that the simple, general UE methods often outperformed the complex, purpose-built ARAG pipelines, while being significantly more compute-efficient, often requiring several times fewer RC and LMC. They also found that there&rsquo;s often a disconnect between performance and self-awareness. For example, methods like DRAGIN showed strong downstream QA performance while being poor at the self-knowledge task. Trainable ARAG methods were found to be the most effective at self-knowledge tasks for complex, multi-hop questions. As simple UE methods can be surprisingly effective, especially for straightforward tasks, the study suggests carefully evaluating ARAG methods to ensure their added complexity has a worthwhile return on investment.</p>
-<p>With this framework in mind, let&rsquo;s examine a few methods that are arguably the most efficient ARAG approaches, as they decide to retrieve before the LLM even begins to generate an answer.</p>
-<h2 id="retrieval-decision-making-without-generation" class="headerLink">
-    <a href="#retrieval-decision-making-without-generation" class="header-mark"></a>Retrieval Decision-Making Without Generation</h2><p>In this section, we take a look at ARAG methods that avoid the computational overhead of LLM-based uncertainty estimation by making retrieval decisions based purely on the characteristics of the input question.</p>
-<p><strong>Retrieve for Long-Tail Factual Knowledge</strong></p>
-<p>Mallen et al.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> conducted a large-scale knowledge probing of LMs on factual knowledge memorization. The researchers found that language models struggle with less popular factual knowledge, and retrieval-augmentation helps significantly in these cases. The authors hypothesized and empirically proved that factual knowledge that is frequently discussed is easily memorized by LMs. For less common subject entities (long-tail questions), they require retrieving external non-parametric memories. However, as shown in the figure below, retrieval augmentation can also hurt performance on questions about popular entities when the retrieved context is noisy or misleading. Also, scaling the model helps to some degree, but fails to appreciably improve memorization of factual knowledge in the long tail.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2025/retrieval-timing-judgement/accuracy_vs_popularity.png" title="Relationship between entity popularity and retrieval effectiveness" data-thumbnail="/img/posts/2025/retrieval-timing-judgement/accuracy_vs_popularity.png" data-sub-html="<h2>GPT-3 performance on factual questions shows that retrieval helps with unpopular entities (left side) but can hurt performance on popular entities (right side) when retrieved context is noisy. The adaptive retrieval (red line) optimizes this trade-off.</h2><p>Relationship between entity popularity and retrieval effectiveness</p>"><img  loading="lazy" src='/img/posts/2025/retrieval-timing-judgement/accuracy_vs_popularity.png'   alt="Relationship between entity popularity and retrieval effectiveness"  ></a><figcaption class="image-caption">GPT-3 performance on factual questions shows that retrieval helps with unpopular entities (left side) but can hurt performance on popular entities (right side) when retrieved context is noisy. The adaptive retrieval (red line) optimizes this trade-off.</figcaption>
-</figure></p>
-<p>The authors proposed a solution that adaptively combines parametric and non-parametric memories based on popularity. Using a development set, they chose a popularity threshold such that retrieval is only triggered for questions whose subject entities&rsquo; popularity is lower than the threshold. This simple strategy showed improved performance for large models, achieving 15% cost reduction for GPT-3 while maintaining equivalent performance. However, smaller models did not realize the same benefits; for example, Llama-2 7B had a 99.86% retrieval usage rate, essentially retrieving for almost every question due to its less reliable parametric memory.</p>
-<p>Notably, this method struggles when questions lack explicit entities, and if the definition of popularity (such as frequency or hyperlink counts of entities on Wikipedia) does not accurately reflect. For open-domain question answering, determining a popularity score from available datasets is not a generalizable approach. Also, this method&rsquo;s effectiveness depends on the quality of popularity metrics; simple approaches like Wikipedia page views may not accurately reflect entity familiarity across different domains or time periods. The code for this research work is available on <a href="https://github.com/AlexTMallen/adaptive-retrieval" target="_blank" rel="noopener noreferrer">Github</a>.</p>
-<p><strong>Using External Features Derived From the Question</strong></p>
-<p>Marina et al.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> argue that the conventional ARAG methods are inefficient because, to decide if an LLM needs help, they usually have to ask the LLM itself. Typically, this involves measuring the model&rsquo;s internal uncertainty, such as token probability, output consistency, etc. The computationally expensive nature of this approach can offset the efficiency gains that adaptive retrieval aims to achieve. The authors propose lightweight, efficient, LLM-independent methods that rely solely on the external information derived from the question itself. These lightweight, pre-computed &ldquo;external features&rdquo; can predict the need for retrieval just as effectively as LLM-based methods, but at a fraction of the computational cost.</p>
-<p>The researchers proposed and evaluated 27 distinct external features, organized into the following 7 analytical groups.</p>
-<ol>
-<li>
-<p><strong>Graph Features</strong>: Entities within the question are linked to a knowledge graph (e.g., Wikipedia). Features include the minimum, maximum, and mean number of connections (triplets) the entities have as subjects or objects, which can indicate their prominence or the density of available information.</p>
-</li>
-<li>
-<p><strong>Popularity Features</strong>: These features capture how well-known an entity is by measuring the minimum, maximum, and mean number of Wikipedia page views per entity in question over the last year.</p>
-</li>
-<li>
-<p><strong>Frequency Features</strong>: Measures minimum, maximum, and mean frequencies of entities appearing in a reference text collection, and the frequency of the least common n-gram in the question.</p>
-</li>
-<li>
-<p><strong>Knowledgeability Features</strong>: An LLM (e.g., LLaMA 3.1-8B-Instruct) is prompted offline to self-assess and provide a numerical score (0-100) of its confidence in knowing about various entities. These scores are precomputed for entities, allowing the system to look up the model&rsquo;s likely knowledge level at inference time.
-<div class="details admonition quote">
-    <div class="details-summary admonition-title">
-        <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"/></svg></span>Prompt: Knowledgeability<span class="details-icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-    </div>
-    <div class="details-content">
-        <div class="admonition-content">Answer the following question based on your internal knowledge with one or few words.<br>
-If you are sure the answer is accurate and correct, please say ‘100’. If you are not confident with the answer, please range your knowledgability from 0 to 100, say just number. For example, &lsquo;40&rsquo;.<br>
-Question: {question}. Answer:</div></div></div></p>
-</li>
-<li>
-<p><strong>Question Type Features</strong>: A BERT-based classifier is trained to predict the probability that a question belongs to one of nine categories, such as <code>ordinal</code>, <code>count</code>, <code>superlative</code>, and <code>multihop</code>.</p>
-</li>
-<li>
-<p><strong>Question-Complexity Features</strong>: A DistilBERT model is trained to classify a question&rsquo;s reasoning complexity as either simple (<code>One-hop</code>) or complex (<code>Multi-hop</code>).</p>
-</li>
-<li>
-<p><strong>Context Relevance Features</strong>: For RAG systems that perform an initial retrieval, this group uses a cross-encoder to score the probability that a retrieved document is relevant to the question.</p>
-</li>
-</ol>
-<p>These features are precomputed and serve as inputs to a simple classification model that acts as a &lsquo;gatekeeper&rsquo;. In the training data, each question is represented by its feature vector. In their experiments, the authors found a scikit-learn <code>VotingClassifier</code> ensemble of CatBoost and Random Forest to work quite well. During inference, the question is passed through the same pipeline, and the trained classifier makes a binary <code>retrieve</code> or <code>do not retrieve</code> prediction. This way, the expensive generation process is efficiently kept separate from the retrieval decision-making step.</p>
-<p><figure><a class="lightgallery" href="/img/posts/2025/retrieval-timing-judgement/pflops_vs_inaccuracy.png" title="Computational efficiency comparison of ARAG methods" data-thumbnail="/img/posts/2025/retrieval-timing-judgement/pflops_vs_inaccuracy.png" data-sub-html="<h2>External features achieve comparable accuracy to complex uncertainty-based methods while requiring orders of magnitude fewer computational resources. Point size indicates the number of LLM calls required.</h2><p>Computational efficiency comparison of ARAG methods</p>"><img  loading="lazy" src='/img/posts/2025/retrieval-timing-judgement/pflops_vs_inaccuracy.png'   alt="Computational efficiency comparison of ARAG methods"  ></a><figcaption class="image-caption">External features achieve comparable accuracy to complex uncertainty-based methods while requiring orders of magnitude fewer computational resources. Point size indicates the number of LLM calls required.</figcaption>
-</figure></p>
-<p>The authors demonstrate that their approach is exceptionally efficient. For many of the external features, the decision-making process was computationally negligible, accounting for less than 1% of the total FLOPS required for the final answer generation, while achieving comparable QA performance. They also found that for complex, multi-hop questions, external features like Question Type and Context Relevance were more predictive of retrieval needs than the LLM&rsquo;s own uncertainty signals. Their analysis also found that external features are often more &ldquo;substitutive than complementary&rdquo;, exhibiting strong correlations despite their differences.</p>
-<h2 id="summary" class="headerLink">
-    <a href="#summary" class="header-mark"></a>Summary</h2><p>This post established the foundation for intelligent retrieval decision-making in RAG systems. It introduced Adaptive RAG (ARAG) as a broad framework incorporating dynamic retrieval strategies, with Selective Retrieval as the primary focus for deciding whether to skip retrieval entirely. We looked at a three-dimensional framework that provides metrics for comparing ARAG methods. Finally, the post described two pre-generation retrieval decision methods (popularity-based retrieval triggers and LLM-independent feature engineering).</p>
-<p>The evidence suggests that simpler, pre-generation decision methods can often outperform complex purpose-built ARAG pipelines, especially for single-hop questions, while requiring significantly fewer computational resources. In Part 3, we will explore more sophisticated selective retrieval methods that estimate the LLM&rsquo;s own confidence and knowledge boundaries to offer more nuanced decision-making, particularly in complex reasoning scenarios.</p>
-<h2 id="references" class="headerLink">
-    <a href="#references" class="header-mark"></a>References</h2><div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>Li, J., Tang, T., Zhao, W. X., Wang, J., Nie, J., &amp; Wen, J. (2023). The Web Can Be Your Oyster for Improving Large Language Models. <em>ArXiv</em>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p>Labruna, T., Campos, J. A., &amp; Azkune, G. (2024). When to Retrieve: Teaching LLMs to Utilize Information Retrieval Effectively. <em>ArXiv</em>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:3">
-<p>Moskvoretskii, V., Lysyuk, M., Salnikov, M., Ivanov, N., Pletenev, S., Galimzianova, D., Krayko, N., Konovalov, V., Nikishina, I., &amp; Panchenko, A. (2025). Adaptive Retrieval Without Self-Knowledge? Bringing Uncertainty Back Home. <em>ArXiv</em>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:4">
-<p>Mallen, A., Asai, A., Zhong, V., Das, R., Khashabi, D., &amp; Hajishirzi, H. (2022). When Not to Trust Language Models: Investigating Effectiveness of Parametric and Non-Parametric Memories. <em>ArXiv</em>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:5">
-<p>Marina, M., Ivanov, N., Pletenev, S., Salnikov, M., Galimzianova, D., Krayko, N., Konovalov, V., Panchenko, A., &amp; Moskvoretskii, V. (2025). LLM-Independent Adaptive RAG: Let the Question Speak for Itself. <em>ArXiv</em>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>
-</div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content" data-pagefind-body></div>
 		
         
-
-
-<h2>Related Content</h2>
-<div class="related-container">
-    <div class="related-item-container">
-            <div class="related-image">
-                <a href="/posts/2025/10/learning-to-retrieve/"><img   src='/posts/2025/10/learning-to-retrieve/featured-image-preview.webp'    height="200" width="400"></a>
-            </div><h2 class="related-title">
-                <a href="/posts/2025/10/learning-to-retrieve/"> Teaching Models to Decide When to Retrieve: Adaptive RAG, Part 4</a>
-            </h2>
-        </div>
-    <div class="related-item-container">
-            <div class="related-image">
-                <a href="/posts/2025/09/probing-llms-knowledge-boundary/"><img   src='/posts/2025/09/probing-llms-knowledge-boundary/featured-image-preview.webp'    height="200" width="400"></a>
-            </div><h2 class="related-title">
-                <a href="/posts/2025/09/probing-llms-knowledge-boundary/">Probing LLMs&#39; Knowledge Boundary: Adaptive RAG, Part 3</a>
-            </h2>
-        </div>
-    <div class="related-item-container">
-            <div class="related-image">
-                <a href="/posts/2025/09/problems-with-naive-rag/"><img   src='/posts/2025/09/problems-with-naive-rag/featured-image-preview.webp'    height="200" width="400"></a>
-            </div><h2 class="related-title">
-                <a href="/posts/2025/09/problems-with-naive-rag/">The Hidden Costs of Naive Retrieval: Adaptive RAG, Part 1</a>
-            </h2>
-        </div>
-    <div class="related-item-container">
-            <div class="related-image">
-                <a href="/posts/2023/12/towards-ranking-aware-llms/"><img   src='/posts/2023/12/towards-ranking-aware-llms/featured-image-preview.webp'    height="200" width="400"></a>
-            </div><h2 class="related-title">
-                <a href="/posts/2023/12/towards-ranking-aware-llms/">Strategies for Effective and Efficient Text Ranking Using Large Language Models</a>
-            </h2>
-        </div>
-    <div class="related-item-container">
-            <div class="related-image">
-                <a href="/posts/2023/12/prompting-llm-for-ranking/"><img   src='/posts/2023/12/prompting-llm-for-ranking/featured-image-preview.webp'    height="200" width="400"></a>
-            </div><h2 class="related-title">
-                <a href="/posts/2023/12/prompting-llm-for-ranking/">Prompting-based Methods for Text Ranking Using Large Language Models</a>
-            </h2>
-        </div>
-    
-
-</div>
 
 
         <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
@@ -444,36 +202,35 @@ Question: {question}. Answer:</div></div></div></p>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-09-21</span>
+                <span>Updated on 0001-01-01</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line print:!tw-hidden">
             <div class="post-info-md"></div>
-            <div class="post-info-share"><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/" data-hashtag="retrieval"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/" data-title="Deciding When Not to Retrieve: Adaptive RAG, Part 2" data-web><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/" data-title="Deciding When Not to Retrieve: Adaptive RAG, Part 2"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M0 32v448h448V32H0zm21.2 197.2H21c.1-.1.2-.3.3-.4 0 .1 0 .3-.1.4zm218 53.9V384h-31.4V281.3L128 128h37.3c52.5 98.3 49.2 101.2 59.3 125.6 12.3-27 5.8-24.4 60.6-125.6H320l-80.8 155.1z"/></svg></button><button title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"/></svg></button><button title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/" data-title="Deciding When Not to Retrieve: Adaptive RAG, Part 2"><svg class="icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LINE</title><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg></button><button title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M407.6 64h-367C18.5 64 0 82.5 0 104.6v135.2C0 364.5 99.7 464 224.2 464c124 0 223.8-99.5 223.8-224.2V104.6c0-22.4-17.7-40.6-40.4-40.6zm-162 268.5c-12.4 11.8-31.4 11.1-42.4 0C89.5 223.6 88.3 227.4 88.3 209.3c0-16.9 13.8-30.7 30.7-30.7 17 0 16.1 3.8 105.2 89.3 90.6-86.9 88.6-89.3 105.5-89.3 16.9 0 30.7 13.8 30.7 30.7 0 17.8-2.9 15.7-114.8 123.2z"/></svg></button><button title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/" data-title="Deciding When Not to Retrieve: Adaptive RAG, Part 2" data-image="featured-image.webp"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8.3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4.6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"/></svg></button><button title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/" data-title="Deciding When Not to Retrieve: Adaptive RAG, Part 2"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M120.82 132.21c1.6 22.31-17.55 21.59-21.61 21.59-68.93 0-73.64-1-83.58 3.34-.56.22-.74 0-.37-.37L123.79 46.45c.38-.37.6-.22.38.37-4.35 9.99-3.35 15.09-3.35 85.39zm79 308c-14.68-37.08 13-76.93 52.52-76.62 17.49 0 22.6 23.21 7.95 31.42-6.19 3.3-24.95 1.74-25.14 19.2-.05 17.09 19.67 25 31.2 24.89A45.64 45.64 0 0 0 312 393.45v-.08c0-11.63-7.79-47.22-47.54-55.34-7.72-1.54-65-6.35-68.35-50.52-3.74 16.93-17.4 63.49-43.11 69.09-8.74 1.94-69.68 7.64-112.92-36.77 0 0-18.57-15.23-28.23-57.95-3.38-15.75-9.28-39.7-11.14-62 0-18 11.14-30.45 25.07-32.2 81 0 90 2.32 101-7.8 9.82-9.24 7.8-15.5 7.8-102.78 1-8.3 7.79-30.81 53.41-24.14 6 .86 31.91 4.18 37.48 30.64l64.26 11.15c20.43 3.71 70.94 7 80.6 57.94 22.66 121.09 8.91 238.46 7.8 238.46C362.15 485.53 267.06 480 267.06 480c-18.95-.23-54.25-9.4-67.27-39.83zm80.94-204.84c-1 1.92-2.2 6 .85 7 14.09 4.93 39.75 6.84 45.88 5.53 3.11-.25 3.05-4.43 2.48-6.65-3.53-21.85-40.83-26.5-49.24-5.92z"/></svg></button><button title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/2025/09/deciding-when-not-to-retrieve/" data-title="Deciding When Not to Retrieve: Adaptive RAG, Part 2" data-description=""><svg class="icon"
+            <div class="post-info-share"><button title="Share on Facebook" data-sharer="facebook" data-url="https://blog.reachsumit.com/posts/1/01/overview/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></button><button title="Share on Linkedin" data-sharer="linkedin" data-url="https://blog.reachsumit.com/posts/1/01/overview/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></button><button title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://blog.reachsumit.com/posts/1/01/overview/" data-title="" data-web><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></button><button title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.reachsumit.com/posts/1/01/overview/" data-title=""><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M0 32v448h448V32H0zm21.2 197.2H21c.1-.1.2-.3.3-.4 0 .1 0 .3-.1.4zm218 53.9V384h-31.4V281.3L128 128h37.3c52.5 98.3 49.2 101.2 59.3 125.6 12.3-27 5.8-24.4 60.6-125.6H320l-80.8 155.1z"/></svg></button><button title="Share on Reddit" data-sharer="reddit" data-url="https://blog.reachsumit.com/posts/1/01/overview/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"/></svg></button><button title="Share on Line" data-sharer="line" data-url="https://blog.reachsumit.com/posts/1/01/overview/" data-title=""><svg class="icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LINE</title><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg></button><button title="Share on Pocket" data-sharer="pocket" data-url="https://blog.reachsumit.com/posts/1/01/overview/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M407.6 64h-367C18.5 64 0 82.5 0 104.6v135.2C0 364.5 99.7 464 224.2 464c124 0 223.8-99.5 223.8-224.2V104.6c0-22.4-17.7-40.6-40.4-40.6zm-162 268.5c-12.4 11.8-31.4 11.1-42.4 0C89.5 223.6 88.3 227.4 88.3 209.3c0-16.9 13.8-30.7 30.7-30.7 17 0 16.1 3.8 105.2 89.3 90.6-86.9 88.6-89.3 105.5-89.3 16.9 0 30.7 13.8 30.7 30.7 0 17.8-2.9 15.7-114.8 123.2z"/></svg></button><button title="Share on 微博" data-sharer="weibo" data-url="https://blog.reachsumit.com/posts/1/01/overview/" data-title=""><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8.3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4.6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"/></svg></button><button title="Share on Evernote" data-sharer="evernote" data-url="https://blog.reachsumit.com/posts/1/01/overview/" data-title=""><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M120.82 132.21c1.6 22.31-17.55 21.59-21.61 21.59-68.93 0-73.64-1-83.58 3.34-.56.22-.74 0-.37-.37L123.79 46.45c.38-.37.6-.22.38.37-4.35 9.99-3.35 15.09-3.35 85.39zm79 308c-14.68-37.08 13-76.93 52.52-76.62 17.49 0 22.6 23.21 7.95 31.42-6.19 3.3-24.95 1.74-25.14 19.2-.05 17.09 19.67 25 31.2 24.89A45.64 45.64 0 0 0 312 393.45v-.08c0-11.63-7.79-47.22-47.54-55.34-7.72-1.54-65-6.35-68.35-50.52-3.74 16.93-17.4 63.49-43.11 69.09-8.74 1.94-69.68 7.64-112.92-36.77 0 0-18.57-15.23-28.23-57.95-3.38-15.75-9.28-39.7-11.14-62 0-18 11.14-30.45 25.07-32.2 81 0 90 2.32 101-7.8 9.82-9.24 7.8-15.5 7.8-102.78 1-8.3 7.79-30.81 53.41-24.14 6 .86 31.91 4.18 37.48 30.64l64.26 11.15c20.43 3.71 70.94 7 80.6 57.94 22.66 121.09 8.91 238.46 7.8 238.46C362.15 485.53 267.06 480 267.06 480c-18.95-.23-54.25-9.4-67.27-39.83zm80.94-204.84c-1 1.92-2.2 6 .85 7 14.09 4.93 39.75 6.84 45.88 5.53 3.11-.25 3.05-4.43 2.48-6.65-3.53-21.85-40.83-26.5-49.24-5.92z"/></svg></button><button title="Share on Trello" data-sharer="trello" data-url="https://blog.reachsumit.com/posts/1/01/overview/" data-title="" data-description=""><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M392.3 32H56.1C25.1 32 0 57.1 0 88c-.1 0 0-4 0 336 0 30.9 25.1 56 56 56h336.2c30.8-.2 55.7-25.2 55.7-56V88c.1-30.8-24.8-55.8-55.6-56zM197 371.3c-.2 14.7-12.1 26.6-26.9 26.6H87.4c-14.8.1-26.9-11.8-27-26.6V117.1c0-14.8 12-26.9 26.9-26.9h82.9c14.8 0 26.9 12 26.9 26.9v254.2zm193.1-112c0 14.8-12 26.9-26.9 26.9h-81c-14.8 0-26.9-12-26.9-26.9V117.2c0-14.8 12-26.9 26.8-26.9h81.1c14.8 0 26.9 12 26.9 26.9v142.1z"/></svg></button></div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/retrieval/">Retrieval</a>,&nbsp;<a href="/tags/rag/">Rag</a>,&nbsp;<a href="/tags/adaptive-rag/">Adaptive-Rag</a></section>
+        <section class="post-tags"></section>
         <section class="print:!tw-hidden">
             <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">Back</button></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav print:tw-hidden"><a href="/posts/2025/09/problems-with-naive-rag/" class="prev" rel="prev" title="The Hidden Costs of Naive Retrieval: Adaptive RAG, Part 1"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>The Hidden Costs of Naive Retrieval: Adaptive RAG, Part 1</a>
-            <a href="/posts/2025/09/probing-llms-knowledge-boundary/" class="next" rel="next" title="Probing LLMs&#39; Knowledge Boundary: Adaptive RAG, Part 3">Probing LLMs&#39; Knowledge Boundary: Adaptive RAG, Part 3<svg class="icon"
+    <div class="post-nav print:tw-hidden"><a href="/posts/1/01/raggate_mha.png/" class="prev" rel="prev" title=""><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg></a>
+            <a href="/posts/2020/07/skip-list/" class="next" rel="next" title="Skip List Data Structure - Explained!">Skip List Data Structure - Explained!<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></a></div>
 </div>
 <div id="comments" class="print:!tw-hidden tw-pt-32 tw-pb-8"><div id="gitalk" class="comment"></div><noscript>
@@ -496,26 +253,10 @@ Question: {question}. Answer:</div></div></div></p>
       <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
   </a></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"></noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/copy-tex.min.css"></noscript>
-<script>window.config={"algoliasearch.min.js":"https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js","autocomplete.min.js":"https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js","comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"2025-09-21T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":"Deciding When Not to Retrieve: Adaptive RAG, Part 2"}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script
+<script>window.config={"algoliasearch.min.js":"https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js","autocomplete.min.js":"https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js","comment":{"gitalk":{"admin":["reachsumit"],"clientID":"e13962a172516867862a","clientSecret":"43e82fd70da96d006eec6c9bee0a861aaa13ee89","id":"0001-01-01T00:00:00Z","owner":"reachsumit","repo":"reachsumit-blog-gitalk","title":""}},"data":{"desktop-header-typeit":"Sumit's Diary","mobile-header-typeit":"Sumit's Diary"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"LV11CUNTAX","algoliaIndex":"blog_reachsumit","algoliaSearchKey":"98d868016771f8a06b967e7eb3eaf63a","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":2700,"speed":100}};</script><script
     src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/src/tablesort.min.js"
-    
-  ></script><script
-    src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"
-    
-      defer
-    
-  ></script><script
-    src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"
-    
-      defer
-    
-  ></script><script
-    src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"
-    
-      defer
     
   ></script><script
     src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.2/sharer.min.js"
